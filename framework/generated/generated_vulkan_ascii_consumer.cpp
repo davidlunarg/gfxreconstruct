@@ -34,6 +34,8 @@
 GFXRECON_BEGIN_NAMESPACE(gfxrecon)
 GFXRECON_BEGIN_NAMESPACE(decode)
 
+static uint32_t frameNumber = 0; // FNA
+
 void VulkanAsciiConsumer::Process_vkCreateInstance(
     VkResult                                    returnValue,
     const StructPointerDecoder<Decoded_VkInstanceCreateInfo>& pCreateInfo,
@@ -42,6 +44,7 @@ void VulkanAsciiConsumer::Process_vkCreateInstance(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCreateInstance(pCreateInfo, pAllocator, pInstance)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -103,6 +106,7 @@ void VulkanAsciiConsumer::Process_vkDestroyInstance(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkDestroyInstance(instance, pAllocator)");
     fprintf(outputFile, " returns void:\n");
 
@@ -140,6 +144,7 @@ void VulkanAsciiConsumer::Process_vkEnumeratePhysicalDevices(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkEnumeratePhysicalDevices(instance, pPhysicalDeviceCount, pPhysicalDevices)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -192,6 +197,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceFeatures(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPhysicalDeviceFeatures(physicalDevice, pFeatures)");
     fprintf(outputFile, " returns void:\n");
 
@@ -228,6 +234,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceFormatProperties(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPhysicalDeviceFormatProperties(physicalDevice, format, pFormatProperties)");
     fprintf(outputFile, " returns void:\n");
 
@@ -279,6 +286,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPhysicalDeviceImageFormatProperties(physicalDevice, format, type, tiling, usage, flags, pImageFormatProperties)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -360,6 +368,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceProperties(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPhysicalDeviceProperties(physicalDevice, pProperties)");
     fprintf(outputFile, " returns void:\n");
 
@@ -396,6 +405,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPhysicalDeviceQueueFamilyProperties(physicalDevice, pQueueFamilyPropertyCount, pQueueFamilyProperties)");
     fprintf(outputFile, " returns void:\n");
 
@@ -445,6 +455,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceMemoryProperties(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPhysicalDeviceMemoryProperties(physicalDevice, pMemoryProperties)");
     fprintf(outputFile, " returns void:\n");
 
@@ -483,6 +494,7 @@ void VulkanAsciiConsumer::Process_vkCreateDevice(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCreateDevice(physicalDevice, pCreateInfo, pAllocator, pDevice)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -551,6 +563,7 @@ void VulkanAsciiConsumer::Process_vkDestroyDevice(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkDestroyDevice(device, pAllocator)");
     fprintf(outputFile, " returns void:\n");
 
@@ -588,6 +601,7 @@ void VulkanAsciiConsumer::Process_vkGetDeviceQueue(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetDeviceQueue(device, queueFamilyIndex, queueIndex, pQueue)");
     fprintf(outputFile, " returns void:\n");
 
@@ -639,6 +653,7 @@ void VulkanAsciiConsumer::Process_vkQueueSubmit(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkQueueSubmit(queue, submitCount, pSubmits, fence)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -689,6 +704,7 @@ void VulkanAsciiConsumer::Process_vkQueueWaitIdle(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkQueueWaitIdle(queue)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -710,6 +726,7 @@ void VulkanAsciiConsumer::Process_vkDeviceWaitIdle(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkDeviceWaitIdle(device)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -734,6 +751,7 @@ void VulkanAsciiConsumer::Process_vkAllocateMemory(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkAllocateMemory(device, pAllocateInfo, pAllocator, pMemory)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -803,6 +821,7 @@ void VulkanAsciiConsumer::Process_vkFreeMemory(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkFreeMemory(device, memory, pAllocator)");
     fprintf(outputFile, " returns void:\n");
 
@@ -850,6 +869,7 @@ void VulkanAsciiConsumer::Process_vkMapMemory(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkMapMemory(device, memory, offset, size, flags, ppData)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -914,6 +934,7 @@ void VulkanAsciiConsumer::Process_vkUnmapMemory(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkUnmapMemory(device, memory)");
     fprintf(outputFile, " returns void:\n");
 
@@ -942,6 +963,7 @@ void VulkanAsciiConsumer::Process_vkFlushMappedMemoryRanges(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkFlushMappedMemoryRanges(device, memoryRangeCount, pMemoryRanges)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -987,6 +1009,7 @@ void VulkanAsciiConsumer::Process_vkInvalidateMappedMemoryRanges(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkInvalidateMappedMemoryRanges(device, memoryRangeCount, pMemoryRanges)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -1031,6 +1054,7 @@ void VulkanAsciiConsumer::Process_vkGetDeviceMemoryCommitment(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetDeviceMemoryCommitment(device, memory, pCommittedMemoryInBytes)");
     fprintf(outputFile, " returns void:\n");
 
@@ -1075,6 +1099,7 @@ void VulkanAsciiConsumer::Process_vkBindBufferMemory(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkBindBufferMemory(device, buffer, memory, memoryOffset)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -1120,6 +1145,7 @@ void VulkanAsciiConsumer::Process_vkBindImageMemory(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkBindImageMemory(device, image, memory, memoryOffset)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -1163,6 +1189,7 @@ void VulkanAsciiConsumer::Process_vkGetBufferMemoryRequirements(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetBufferMemoryRequirements(device, buffer, pMemoryRequirements)");
     fprintf(outputFile, " returns void:\n");
 
@@ -1206,6 +1233,7 @@ void VulkanAsciiConsumer::Process_vkGetImageMemoryRequirements(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetImageMemoryRequirements(device, image, pMemoryRequirements)");
     fprintf(outputFile, " returns void:\n");
 
@@ -1250,6 +1278,7 @@ void VulkanAsciiConsumer::Process_vkGetImageSparseMemoryRequirements(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetImageSparseMemoryRequirements(device, image, pSparseMemoryRequirementCount, pSparseMemoryRequirements)");
     fprintf(outputFile, " returns void:\n");
 
@@ -1312,6 +1341,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPhysicalDeviceSparseImageFormatProperties(physicalDevice, format, type, samples, usage, tiling, pPropertyCount, pProperties)");
     fprintf(outputFile, " returns void:\n");
 
@@ -1411,6 +1441,7 @@ void VulkanAsciiConsumer::Process_vkQueueBindSparse(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkQueueBindSparse(queue, bindInfoCount, pBindInfo, fence)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -1464,6 +1495,7 @@ void VulkanAsciiConsumer::Process_vkCreateFence(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCreateFence(device, pCreateInfo, pAllocator, pFence)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -1533,6 +1565,7 @@ void VulkanAsciiConsumer::Process_vkDestroyFence(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkDestroyFence(device, fence, pAllocator)");
     fprintf(outputFile, " returns void:\n");
 
@@ -1577,6 +1610,7 @@ void VulkanAsciiConsumer::Process_vkResetFences(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkResetFences(device, fenceCount, pFences)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -1622,6 +1656,7 @@ void VulkanAsciiConsumer::Process_vkGetFenceStatus(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetFenceStatus(device, fence)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -1654,6 +1689,7 @@ void VulkanAsciiConsumer::Process_vkWaitForFences(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkWaitForFences(device, fenceCount, pFences, waitAll, timeout)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -1715,6 +1751,7 @@ void VulkanAsciiConsumer::Process_vkCreateSemaphore(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCreateSemaphore(device, pCreateInfo, pAllocator, pSemaphore)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -1784,6 +1821,7 @@ void VulkanAsciiConsumer::Process_vkDestroySemaphore(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkDestroySemaphore(device, semaphore, pAllocator)");
     fprintf(outputFile, " returns void:\n");
 
@@ -1829,6 +1867,7 @@ void VulkanAsciiConsumer::Process_vkCreateEvent(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCreateEvent(device, pCreateInfo, pAllocator, pEvent)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -1898,6 +1937,7 @@ void VulkanAsciiConsumer::Process_vkDestroyEvent(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkDestroyEvent(device, event, pAllocator)");
     fprintf(outputFile, " returns void:\n");
 
@@ -1941,6 +1981,7 @@ void VulkanAsciiConsumer::Process_vkGetEventStatus(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetEventStatus(device, event)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -1970,6 +2011,7 @@ void VulkanAsciiConsumer::Process_vkSetEvent(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkSetEvent(device, event)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -1999,6 +2041,7 @@ void VulkanAsciiConsumer::Process_vkResetEvent(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkResetEvent(device, event)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -2030,6 +2073,7 @@ void VulkanAsciiConsumer::Process_vkCreateQueryPool(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCreateQueryPool(device, pCreateInfo, pAllocator, pQueryPool)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -2099,6 +2143,7 @@ void VulkanAsciiConsumer::Process_vkDestroyQueryPool(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkDestroyQueryPool(device, queryPool, pAllocator)");
     fprintf(outputFile, " returns void:\n");
 
@@ -2148,6 +2193,7 @@ void VulkanAsciiConsumer::Process_vkGetQueryPoolResults(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetQueryPoolResults(device, queryPool, firstQuery, queryCount, dataSize, pData, stride, flags)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -2230,6 +2276,7 @@ void VulkanAsciiConsumer::Process_vkCreateBuffer(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCreateBuffer(device, pCreateInfo, pAllocator, pBuffer)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -2299,6 +2346,7 @@ void VulkanAsciiConsumer::Process_vkDestroyBuffer(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkDestroyBuffer(device, buffer, pAllocator)");
     fprintf(outputFile, " returns void:\n");
 
@@ -2344,6 +2392,7 @@ void VulkanAsciiConsumer::Process_vkCreateBufferView(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCreateBufferView(device, pCreateInfo, pAllocator, pView)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -2412,6 +2461,7 @@ void VulkanAsciiConsumer::Process_vkDestroyBufferView(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkDestroyBufferView(device, bufferView, pAllocator)");
     fprintf(outputFile, " returns void:\n");
 
@@ -2457,6 +2507,7 @@ void VulkanAsciiConsumer::Process_vkCreateImage(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCreateImage(device, pCreateInfo, pAllocator, pImage)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -2526,6 +2577,7 @@ void VulkanAsciiConsumer::Process_vkDestroyImage(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkDestroyImage(device, image, pAllocator)");
     fprintf(outputFile, " returns void:\n");
 
@@ -2570,6 +2622,7 @@ void VulkanAsciiConsumer::Process_vkGetImageSubresourceLayout(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetImageSubresourceLayout(device, image, pSubresource, pLayout)");
     fprintf(outputFile, " returns void:\n");
 
@@ -2631,6 +2684,7 @@ void VulkanAsciiConsumer::Process_vkCreateImageView(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCreateImageView(device, pCreateInfo, pAllocator, pView)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -2699,6 +2753,7 @@ void VulkanAsciiConsumer::Process_vkDestroyImageView(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkDestroyImageView(device, imageView, pAllocator)");
     fprintf(outputFile, " returns void:\n");
 
@@ -2744,6 +2799,7 @@ void VulkanAsciiConsumer::Process_vkCreateShaderModule(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCreateShaderModule(device, pCreateInfo, pAllocator, pShaderModule)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -2813,6 +2869,7 @@ void VulkanAsciiConsumer::Process_vkDestroyShaderModule(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkDestroyShaderModule(device, shaderModule, pAllocator)");
     fprintf(outputFile, " returns void:\n");
 
@@ -2858,6 +2915,7 @@ void VulkanAsciiConsumer::Process_vkCreatePipelineCache(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCreatePipelineCache(device, pCreateInfo, pAllocator, pPipelineCache)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -2927,6 +2985,7 @@ void VulkanAsciiConsumer::Process_vkDestroyPipelineCache(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkDestroyPipelineCache(device, pipelineCache, pAllocator)");
     fprintf(outputFile, " returns void:\n");
 
@@ -2972,6 +3031,7 @@ void VulkanAsciiConsumer::Process_vkGetPipelineCacheData(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPipelineCacheData(device, pipelineCache, pDataSize, pData)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -3034,6 +3094,7 @@ void VulkanAsciiConsumer::Process_vkMergePipelineCaches(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkMergePipelineCaches(device, dstCache, srcCacheCount, pSrcCaches)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -3090,6 +3151,7 @@ void VulkanAsciiConsumer::Process_vkCreateGraphicsPipelines(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCreateGraphicsPipelines(device, pipelineCache, createInfoCount, pCreateInfos, pAllocator, pPipelines)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -3177,6 +3239,7 @@ void VulkanAsciiConsumer::Process_vkCreateComputePipelines(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCreateComputePipelines(device, pipelineCache, createInfoCount, pCreateInfos, pAllocator, pPipelines)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -3260,6 +3323,7 @@ void VulkanAsciiConsumer::Process_vkDestroyPipeline(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkDestroyPipeline(device, pipeline, pAllocator)");
     fprintf(outputFile, " returns void:\n");
 
@@ -3305,6 +3369,7 @@ void VulkanAsciiConsumer::Process_vkCreatePipelineLayout(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCreatePipelineLayout(device, pCreateInfo, pAllocator, pPipelineLayout)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -3374,6 +3439,7 @@ void VulkanAsciiConsumer::Process_vkDestroyPipelineLayout(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkDestroyPipelineLayout(device, pipelineLayout, pAllocator)");
     fprintf(outputFile, " returns void:\n");
 
@@ -3419,6 +3485,7 @@ void VulkanAsciiConsumer::Process_vkCreateSampler(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCreateSampler(device, pCreateInfo, pAllocator, pSampler)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -3488,6 +3555,7 @@ void VulkanAsciiConsumer::Process_vkDestroySampler(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkDestroySampler(device, sampler, pAllocator)");
     fprintf(outputFile, " returns void:\n");
 
@@ -3533,6 +3601,7 @@ void VulkanAsciiConsumer::Process_vkCreateDescriptorSetLayout(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCreateDescriptorSetLayout(device, pCreateInfo, pAllocator, pSetLayout)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -3602,6 +3671,7 @@ void VulkanAsciiConsumer::Process_vkDestroyDescriptorSetLayout(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkDestroyDescriptorSetLayout(device, descriptorSetLayout, pAllocator)");
     fprintf(outputFile, " returns void:\n");
 
@@ -3647,6 +3717,7 @@ void VulkanAsciiConsumer::Process_vkCreateDescriptorPool(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCreateDescriptorPool(device, pCreateInfo, pAllocator, pDescriptorPool)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -3716,6 +3787,7 @@ void VulkanAsciiConsumer::Process_vkDestroyDescriptorPool(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkDestroyDescriptorPool(device, descriptorPool, pAllocator)");
     fprintf(outputFile, " returns void:\n");
 
@@ -3760,6 +3832,7 @@ void VulkanAsciiConsumer::Process_vkResetDescriptorPool(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkResetDescriptorPool(device, descriptorPool, flags)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -3797,6 +3870,7 @@ void VulkanAsciiConsumer::Process_vkAllocateDescriptorSets(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkAllocateDescriptorSets(device, pAllocateInfo, pDescriptorSets)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -3853,6 +3927,7 @@ void VulkanAsciiConsumer::Process_vkFreeDescriptorSets(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkFreeDescriptorSets(device, descriptorPool, descriptorSetCount, pDescriptorSets)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -3907,6 +3982,7 @@ void VulkanAsciiConsumer::Process_vkUpdateDescriptorSets(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkUpdateDescriptorSets(device, descriptorWriteCount, pDescriptorWrites, descriptorCopyCount, pDescriptorCopies)");
     fprintf(outputFile, " returns void:\n");
 
@@ -3973,6 +4049,7 @@ void VulkanAsciiConsumer::Process_vkCreateFramebuffer(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCreateFramebuffer(device, pCreateInfo, pAllocator, pFramebuffer)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -4042,6 +4119,7 @@ void VulkanAsciiConsumer::Process_vkDestroyFramebuffer(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkDestroyFramebuffer(device, framebuffer, pAllocator)");
     fprintf(outputFile, " returns void:\n");
 
@@ -4087,6 +4165,7 @@ void VulkanAsciiConsumer::Process_vkCreateRenderPass(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCreateRenderPass(device, pCreateInfo, pAllocator, pRenderPass)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -4156,6 +4235,7 @@ void VulkanAsciiConsumer::Process_vkDestroyRenderPass(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkDestroyRenderPass(device, renderPass, pAllocator)");
     fprintf(outputFile, " returns void:\n");
 
@@ -4199,6 +4279,7 @@ void VulkanAsciiConsumer::Process_vkGetRenderAreaGranularity(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetRenderAreaGranularity(device, renderPass, pGranularity)");
     fprintf(outputFile, " returns void:\n");
 
@@ -4244,6 +4325,7 @@ void VulkanAsciiConsumer::Process_vkCreateCommandPool(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCreateCommandPool(device, pCreateInfo, pAllocator, pCommandPool)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -4313,6 +4395,7 @@ void VulkanAsciiConsumer::Process_vkDestroyCommandPool(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkDestroyCommandPool(device, commandPool, pAllocator)");
     fprintf(outputFile, " returns void:\n");
 
@@ -4357,6 +4440,7 @@ void VulkanAsciiConsumer::Process_vkResetCommandPool(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkResetCommandPool(device, commandPool, flags)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -4394,6 +4478,7 @@ void VulkanAsciiConsumer::Process_vkAllocateCommandBuffers(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkAllocateCommandBuffers(device, pAllocateInfo, pCommandBuffers)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -4449,6 +4534,7 @@ void VulkanAsciiConsumer::Process_vkFreeCommandBuffers(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkFreeCommandBuffers(device, commandPool, commandBufferCount, pCommandBuffers)");
     fprintf(outputFile, " returns void:\n");
 
@@ -4499,6 +4585,7 @@ void VulkanAsciiConsumer::Process_vkBeginCommandBuffer(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkBeginCommandBuffer(commandBuffer, pBeginInfo)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -4536,6 +4623,7 @@ void VulkanAsciiConsumer::Process_vkEndCommandBuffer(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkEndCommandBuffer(commandBuffer)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -4558,6 +4646,7 @@ void VulkanAsciiConsumer::Process_vkResetCommandBuffer(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkResetCommandBuffer(commandBuffer, flags)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -4587,6 +4676,7 @@ void VulkanAsciiConsumer::Process_vkCmdBindPipeline(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdBindPipeline(commandBuffer, pipelineBindPoint, pipeline)");
     fprintf(outputFile, " returns void:\n");
 
@@ -4625,6 +4715,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetViewport(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdSetViewport(commandBuffer, firstViewport, viewportCount, pViewports)");
     fprintf(outputFile, " returns void:\n");
 
@@ -4675,6 +4766,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetScissor(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdSetScissor(commandBuffer, firstScissor, scissorCount, pScissors)");
     fprintf(outputFile, " returns void:\n");
 
@@ -4723,6 +4815,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetLineWidth(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdSetLineWidth(commandBuffer, lineWidth)");
     fprintf(outputFile, " returns void:\n");
 
@@ -4751,6 +4844,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetDepthBias(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdSetDepthBias(commandBuffer, depthBiasConstantFactor, depthBiasClamp, depthBiasSlopeFactor)");
     fprintf(outputFile, " returns void:\n");
 
@@ -4791,6 +4885,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetBlendConstants(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdSetBlendConstants(commandBuffer, blendConstants)");
     fprintf(outputFile, " returns void:\n");
 
@@ -4822,6 +4917,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetDepthBounds(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdSetDepthBounds(commandBuffer, minDepthBounds, maxDepthBounds)");
     fprintf(outputFile, " returns void:\n");
 
@@ -4856,6 +4952,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetStencilCompareMask(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdSetStencilCompareMask(commandBuffer, faceMask, compareMask)");
     fprintf(outputFile, " returns void:\n");
 
@@ -4890,6 +4987,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetStencilWriteMask(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdSetStencilWriteMask(commandBuffer, faceMask, writeMask)");
     fprintf(outputFile, " returns void:\n");
 
@@ -4924,6 +5022,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetStencilReference(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdSetStencilReference(commandBuffer, faceMask, reference)");
     fprintf(outputFile, " returns void:\n");
 
@@ -4963,6 +5062,7 @@ void VulkanAsciiConsumer::Process_vkCmdBindDescriptorSets(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdBindDescriptorSets(commandBuffer, pipelineBindPoint, layout, firstSet, descriptorSetCount, pDescriptorSets, dynamicOffsetCount, pDynamicOffsets)");
     fprintf(outputFile, " returns void:\n");
 
@@ -5054,6 +5154,7 @@ void VulkanAsciiConsumer::Process_vkCmdBindIndexBuffer(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdBindIndexBuffer(commandBuffer, buffer, offset, indexType)");
     fprintf(outputFile, " returns void:\n");
 
@@ -5100,6 +5201,7 @@ void VulkanAsciiConsumer::Process_vkCmdBindVertexBuffers(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdBindVertexBuffers(commandBuffer, firstBinding, bindingCount, pBuffers, pOffsets)");
     fprintf(outputFile, " returns void:\n");
 
@@ -5168,6 +5270,7 @@ void VulkanAsciiConsumer::Process_vkCmdDraw(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdDraw(commandBuffer, vertexCount, instanceCount, firstVertex, firstInstance)");
     fprintf(outputFile, " returns void:\n");
 
@@ -5219,6 +5322,7 @@ void VulkanAsciiConsumer::Process_vkCmdDrawIndexed(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdDrawIndexed(commandBuffer, indexCount, instanceCount, firstIndex, vertexOffset, firstInstance)");
     fprintf(outputFile, " returns void:\n");
 
@@ -5276,6 +5380,7 @@ void VulkanAsciiConsumer::Process_vkCmdDrawIndirect(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdDrawIndirect(commandBuffer, buffer, offset, drawCount, stride)");
     fprintf(outputFile, " returns void:\n");
 
@@ -5326,6 +5431,7 @@ void VulkanAsciiConsumer::Process_vkCmdDrawIndexedIndirect(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdDrawIndexedIndirect(commandBuffer, buffer, offset, drawCount, stride)");
     fprintf(outputFile, " returns void:\n");
 
@@ -5375,6 +5481,7 @@ void VulkanAsciiConsumer::Process_vkCmdDispatch(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdDispatch(commandBuffer, groupCountX, groupCountY, groupCountZ)");
     fprintf(outputFile, " returns void:\n");
 
@@ -5416,6 +5523,7 @@ void VulkanAsciiConsumer::Process_vkCmdDispatchIndirect(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdDispatchIndirect(commandBuffer, buffer, offset)");
     fprintf(outputFile, " returns void:\n");
 
@@ -5452,6 +5560,7 @@ void VulkanAsciiConsumer::Process_vkCmdCopyBuffer(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdCopyBuffer(commandBuffer, srcBuffer, dstBuffer, regionCount, pRegions)");
     fprintf(outputFile, " returns void:\n");
 
@@ -5512,6 +5621,7 @@ void VulkanAsciiConsumer::Process_vkCmdCopyImage(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdCopyImage(commandBuffer, srcImage, srcImageLayout, dstImage, dstImageLayout, regionCount, pRegions)");
     fprintf(outputFile, " returns void:\n");
 
@@ -5593,6 +5703,7 @@ void VulkanAsciiConsumer::Process_vkCmdBlitImage(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdBlitImage(commandBuffer, srcImage, srcImageLayout, dstImage, dstImageLayout, regionCount, pRegions, filter)");
     fprintf(outputFile, " returns void:\n");
 
@@ -5682,6 +5793,7 @@ void VulkanAsciiConsumer::Process_vkCmdCopyBufferToImage(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdCopyBufferToImage(commandBuffer, srcBuffer, dstImage, dstImageLayout, regionCount, pRegions)");
     fprintf(outputFile, " returns void:\n");
 
@@ -5751,6 +5863,7 @@ void VulkanAsciiConsumer::Process_vkCmdCopyImageToBuffer(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdCopyImageToBuffer(commandBuffer, srcImage, srcImageLayout, dstBuffer, regionCount, pRegions)");
     fprintf(outputFile, " returns void:\n");
 
@@ -5819,6 +5932,7 @@ void VulkanAsciiConsumer::Process_vkCmdUpdateBuffer(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdUpdateBuffer(commandBuffer, dstBuffer, dstOffset, dataSize, pData)");
     fprintf(outputFile, " returns void:\n");
 
@@ -5876,6 +5990,7 @@ void VulkanAsciiConsumer::Process_vkCmdFillBuffer(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdFillBuffer(commandBuffer, dstBuffer, dstOffset, size, data)");
     fprintf(outputFile, " returns void:\n");
 
@@ -5927,6 +6042,7 @@ void VulkanAsciiConsumer::Process_vkCmdClearColorImage(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdClearColorImage(commandBuffer, image, imageLayout, pColor, rangeCount, pRanges)");
     fprintf(outputFile, " returns void:\n");
 
@@ -6006,6 +6122,7 @@ void VulkanAsciiConsumer::Process_vkCmdClearDepthStencilImage(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdClearDepthStencilImage(commandBuffer, image, imageLayout, pDepthStencil, rangeCount, pRanges)");
     fprintf(outputFile, " returns void:\n");
 
@@ -6083,6 +6200,7 @@ void VulkanAsciiConsumer::Process_vkCmdClearAttachments(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdClearAttachments(commandBuffer, attachmentCount, pAttachments, rectCount, pRects)");
     fprintf(outputFile, " returns void:\n");
 
@@ -6151,6 +6269,7 @@ void VulkanAsciiConsumer::Process_vkCmdResolveImage(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdResolveImage(commandBuffer, srcImage, srcImageLayout, dstImage, dstImageLayout, regionCount, pRegions)");
     fprintf(outputFile, " returns void:\n");
 
@@ -6227,6 +6346,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetEvent(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdSetEvent(commandBuffer, event, stageMask)");
     fprintf(outputFile, " returns void:\n");
 
@@ -6261,6 +6381,7 @@ void VulkanAsciiConsumer::Process_vkCmdResetEvent(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdResetEvent(commandBuffer, event, stageMask)");
     fprintf(outputFile, " returns void:\n");
 
@@ -6303,6 +6424,7 @@ void VulkanAsciiConsumer::Process_vkCmdWaitEvents(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdWaitEvents(commandBuffer, eventCount, pEvents, srcStageMask, dstStageMask, memoryBarrierCount, pMemoryBarriers, bufferMemoryBarrierCount, pBufferMemoryBarriers, imageMemoryBarrierCount, pImageMemoryBarriers)");
     fprintf(outputFile, " returns void:\n");
 
@@ -6433,6 +6555,7 @@ void VulkanAsciiConsumer::Process_vkCmdPipelineBarrier(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdPipelineBarrier(commandBuffer, srcStageMask, dstStageMask, dependencyFlags, memoryBarrierCount, pMemoryBarriers, bufferMemoryBarrierCount, pBufferMemoryBarriers, imageMemoryBarrierCount, pImageMemoryBarriers)");
     fprintf(outputFile, " returns void:\n");
 
@@ -6541,6 +6664,7 @@ void VulkanAsciiConsumer::Process_vkCmdBeginQuery(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdBeginQuery(commandBuffer, queryPool, query, flags)");
     fprintf(outputFile, " returns void:\n");
 
@@ -6582,6 +6706,7 @@ void VulkanAsciiConsumer::Process_vkCmdEndQuery(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdEndQuery(commandBuffer, queryPool, query)");
     fprintf(outputFile, " returns void:\n");
 
@@ -6617,6 +6742,7 @@ void VulkanAsciiConsumer::Process_vkCmdResetQueryPool(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdResetQueryPool(commandBuffer, queryPool, firstQuery, queryCount)");
     fprintf(outputFile, " returns void:\n");
 
@@ -6659,6 +6785,7 @@ void VulkanAsciiConsumer::Process_vkCmdWriteTimestamp(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdWriteTimestamp(commandBuffer, pipelineStage, queryPool, query)");
     fprintf(outputFile, " returns void:\n");
 
@@ -6708,6 +6835,7 @@ void VulkanAsciiConsumer::Process_vkCmdCopyQueryPoolResults(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdCopyQueryPoolResults(commandBuffer, queryPool, firstQuery, queryCount, dstBuffer, dstOffset, stride, flags)");
     fprintf(outputFile, " returns void:\n");
 
@@ -6780,6 +6908,7 @@ void VulkanAsciiConsumer::Process_vkCmdPushConstants(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdPushConstants(commandBuffer, layout, stageFlags, offset, size, pValues)");
     fprintf(outputFile, " returns void:\n");
 
@@ -6844,6 +6973,7 @@ void VulkanAsciiConsumer::Process_vkCmdBeginRenderPass(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdBeginRenderPass(commandBuffer, pRenderPassBegin, contents)");
     fprintf(outputFile, " returns void:\n");
 
@@ -6889,6 +7019,7 @@ void VulkanAsciiConsumer::Process_vkCmdNextSubpass(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdNextSubpass(commandBuffer, contents)");
     fprintf(outputFile, " returns void:\n");
 
@@ -6917,6 +7048,7 @@ void VulkanAsciiConsumer::Process_vkCmdEndRenderPass(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdEndRenderPass(commandBuffer)");
     fprintf(outputFile, " returns void:\n");
 
@@ -6937,6 +7069,7 @@ void VulkanAsciiConsumer::Process_vkCmdExecuteCommands(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdExecuteCommands(commandBuffer, commandBufferCount, pCommandBuffers)");
     fprintf(outputFile, " returns void:\n");
 
@@ -6982,6 +7115,7 @@ void VulkanAsciiConsumer::Process_vkBindBufferMemory2(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkBindBufferMemory2(device, bindInfoCount, pBindInfos)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -7027,6 +7161,7 @@ void VulkanAsciiConsumer::Process_vkBindImageMemory2(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkBindImageMemory2(device, bindInfoCount, pBindInfos)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -7073,6 +7208,7 @@ void VulkanAsciiConsumer::Process_vkGetDeviceGroupPeerMemoryFeatures(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetDeviceGroupPeerMemoryFeatures(device, heapIndex, localDeviceIndex, remoteDeviceIndex, pPeerMemoryFeatures)");
     fprintf(outputFile, " returns void:\n");
 
@@ -7128,6 +7264,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetDeviceMask(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdSetDeviceMask(commandBuffer, deviceMask)");
     fprintf(outputFile, " returns void:\n");
 
@@ -7159,6 +7296,7 @@ void VulkanAsciiConsumer::Process_vkCmdDispatchBase(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdDispatchBase(commandBuffer, baseGroupX, baseGroupY, baseGroupZ, groupCountX, groupCountY, groupCountZ)");
     fprintf(outputFile, " returns void:\n");
 
@@ -7222,6 +7360,7 @@ void VulkanAsciiConsumer::Process_vkEnumeratePhysicalDeviceGroups(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkEnumeratePhysicalDeviceGroups(instance, pPhysicalDeviceGroupCount, pPhysicalDeviceGroupProperties)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -7274,6 +7413,7 @@ void VulkanAsciiConsumer::Process_vkGetImageMemoryRequirements2(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetImageMemoryRequirements2(device, pInfo, pMemoryRequirements)");
     fprintf(outputFile, " returns void:\n");
 
@@ -7326,6 +7466,7 @@ void VulkanAsciiConsumer::Process_vkGetBufferMemoryRequirements2(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetBufferMemoryRequirements2(device, pInfo, pMemoryRequirements)");
     fprintf(outputFile, " returns void:\n");
 
@@ -7379,6 +7520,7 @@ void VulkanAsciiConsumer::Process_vkGetImageSparseMemoryRequirements2(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetImageSparseMemoryRequirements2(device, pInfo, pSparseMemoryRequirementCount, pSparseMemoryRequirements)");
     fprintf(outputFile, " returns void:\n");
 
@@ -7444,6 +7586,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceFeatures2(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPhysicalDeviceFeatures2(physicalDevice, pFeatures)");
     fprintf(outputFile, " returns void:\n");
 
@@ -7479,6 +7622,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceProperties2(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPhysicalDeviceProperties2(physicalDevice, pProperties)");
     fprintf(outputFile, " returns void:\n");
 
@@ -7515,6 +7659,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceFormatProperties2(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPhysicalDeviceFormatProperties2(physicalDevice, format, pFormatProperties)");
     fprintf(outputFile, " returns void:\n");
 
@@ -7562,6 +7707,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPhysicalDeviceImageFormatProperties2(physicalDevice, pImageFormatInfo, pImageFormatProperties)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -7616,6 +7762,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPhysicalDeviceQueueFamilyProperties2(physicalDevice, pQueueFamilyPropertyCount, pQueueFamilyProperties)");
     fprintf(outputFile, " returns void:\n");
 
@@ -7665,6 +7812,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceMemoryProperties2(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPhysicalDeviceMemoryProperties2(physicalDevice, pMemoryProperties)");
     fprintf(outputFile, " returns void:\n");
 
@@ -7702,6 +7850,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPhysicalDeviceSparseImageFormatProperties2(physicalDevice, pFormatInfo, pPropertyCount, pProperties)");
     fprintf(outputFile, " returns void:\n");
 
@@ -7768,6 +7917,7 @@ void VulkanAsciiConsumer::Process_vkTrimCommandPool(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkTrimCommandPool(device, commandPool, flags)");
     fprintf(outputFile, " returns void:\n");
 
@@ -7802,6 +7952,7 @@ void VulkanAsciiConsumer::Process_vkGetDeviceQueue2(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetDeviceQueue2(device, pQueueInfo, pQueue)");
     fprintf(outputFile, " returns void:\n");
 
@@ -7855,6 +8006,7 @@ void VulkanAsciiConsumer::Process_vkCreateSamplerYcbcrConversion(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCreateSamplerYcbcrConversion(device, pCreateInfo, pAllocator, pYcbcrConversion)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -7924,6 +8076,7 @@ void VulkanAsciiConsumer::Process_vkDestroySamplerYcbcrConversion(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkDestroySamplerYcbcrConversion(device, ycbcrConversion, pAllocator)");
     fprintf(outputFile, " returns void:\n");
 
@@ -7969,6 +8122,7 @@ void VulkanAsciiConsumer::Process_vkCreateDescriptorUpdateTemplate(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCreateDescriptorUpdateTemplate(device, pCreateInfo, pAllocator, pDescriptorUpdateTemplate)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -8038,6 +8192,7 @@ void VulkanAsciiConsumer::Process_vkDestroyDescriptorUpdateTemplate(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkDestroyDescriptorUpdateTemplate(device, descriptorUpdateTemplate, pAllocator)");
     fprintf(outputFile, " returns void:\n");
 
@@ -8081,6 +8236,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalBufferProperties(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPhysicalDeviceExternalBufferProperties(physicalDevice, pExternalBufferInfo, pExternalBufferProperties)");
     fprintf(outputFile, " returns void:\n");
 
@@ -8133,6 +8289,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalFenceProperties(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPhysicalDeviceExternalFenceProperties(physicalDevice, pExternalFenceInfo, pExternalFenceProperties)");
     fprintf(outputFile, " returns void:\n");
 
@@ -8185,6 +8342,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalSemaphoreProperties
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPhysicalDeviceExternalSemaphoreProperties(physicalDevice, pExternalSemaphoreInfo, pExternalSemaphoreProperties)");
     fprintf(outputFile, " returns void:\n");
 
@@ -8237,6 +8395,7 @@ void VulkanAsciiConsumer::Process_vkGetDescriptorSetLayoutSupport(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetDescriptorSetLayoutSupport(device, pCreateInfo, pSupport)");
     fprintf(outputFile, " returns void:\n");
 
@@ -8290,6 +8449,7 @@ void VulkanAsciiConsumer::Process_vkDestroySurfaceKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkDestroySurfaceKHR(instance, surface, pAllocator)");
     fprintf(outputFile, " returns void:\n");
 
@@ -8335,6 +8495,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceSupportKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPhysicalDeviceSurfaceSupportKHR(physicalDevice, queueFamilyIndex, surface, pSupported)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -8387,6 +8548,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilitiesKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPhysicalDeviceSurfaceCapabilitiesKHR(physicalDevice, surface, pSurfaceCapabilities)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -8434,6 +8596,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceFormatsKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPhysicalDeviceSurfaceFormatsKHR(physicalDevice, surface, pSurfaceFormatCount, pSurfaceFormats)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -8495,6 +8658,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfacePresentModesKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPhysicalDeviceSurfacePresentModesKHR(physicalDevice, surface, pPresentModeCount, pPresentModes)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -8558,6 +8722,7 @@ void VulkanAsciiConsumer::Process_vkCreateSwapchainKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCreateSwapchainKHR(device, pCreateInfo, pAllocator, pSwapchain)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -8627,6 +8792,7 @@ void VulkanAsciiConsumer::Process_vkDestroySwapchainKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkDestroySwapchainKHR(device, swapchain, pAllocator)");
     fprintf(outputFile, " returns void:\n");
 
@@ -8672,6 +8838,7 @@ void VulkanAsciiConsumer::Process_vkGetSwapchainImagesKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetSwapchainImagesKHR(device, swapchain, pSwapchainImageCount, pSwapchainImages)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -8736,6 +8903,7 @@ void VulkanAsciiConsumer::Process_vkAcquireNextImageKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkAcquireNextImageKHR(device, swapchain, timeout, semaphore, fence, pImageIndex)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -8801,6 +8969,7 @@ void VulkanAsciiConsumer::Process_vkQueuePresentKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkQueuePresentKHR(queue, pPresentInfo)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -8830,6 +8999,8 @@ void VulkanAsciiConsumer::Process_vkQueuePresentKHR(
     OutputString(outputFile, "\n"); // HHS
 
     OutputString(outputFile, "\n"); // HDS
+
+    frameNumber++;
 }
 
 void VulkanAsciiConsumer::Process_vkGetDeviceGroupPresentCapabilitiesKHR(
@@ -8839,6 +9010,7 @@ void VulkanAsciiConsumer::Process_vkGetDeviceGroupPresentCapabilitiesKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetDeviceGroupPresentCapabilitiesKHR(device, pDeviceGroupPresentCapabilities)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -8878,6 +9050,7 @@ void VulkanAsciiConsumer::Process_vkGetDeviceGroupSurfacePresentModesKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetDeviceGroupSurfacePresentModesKHR(device, surface, pModes)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -8924,6 +9097,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDevicePresentRectanglesKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPhysicalDevicePresentRectanglesKHR(physicalDevice, surface, pRectCount, pRects)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -8984,6 +9158,7 @@ void VulkanAsciiConsumer::Process_vkAcquireNextImage2KHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkAcquireNextImage2KHR(device, pAcquireInfo, pImageIndex)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -9039,6 +9214,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceDisplayPropertiesKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPhysicalDeviceDisplayPropertiesKHR(physicalDevice, pPropertyCount, pProperties)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -9092,6 +9268,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPhysicalDeviceDisplayPlanePropertiesKHR(physicalDevice, pPropertyCount, pProperties)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -9146,6 +9323,7 @@ void VulkanAsciiConsumer::Process_vkGetDisplayPlaneSupportedDisplaysKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetDisplayPlaneSupportedDisplaysKHR(physicalDevice, planeIndex, pDisplayCount, pDisplays)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -9208,6 +9386,7 @@ void VulkanAsciiConsumer::Process_vkGetDisplayModePropertiesKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetDisplayModePropertiesKHR(physicalDevice, display, pPropertyCount, pProperties)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -9270,6 +9449,7 @@ void VulkanAsciiConsumer::Process_vkCreateDisplayModeKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCreateDisplayModeKHR(physicalDevice, display, pCreateInfo, pAllocator, pMode)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -9348,6 +9528,7 @@ void VulkanAsciiConsumer::Process_vkGetDisplayPlaneCapabilitiesKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetDisplayPlaneCapabilitiesKHR(physicalDevice, mode, planeIndex, pCapabilities)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -9402,6 +9583,7 @@ void VulkanAsciiConsumer::Process_vkCreateDisplayPlaneSurfaceKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCreateDisplayPlaneSurfaceKHR(instance, pCreateInfo, pAllocator, pSurface)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -9475,6 +9657,7 @@ void VulkanAsciiConsumer::Process_vkCreateSharedSwapchainsKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCreateSharedSwapchainsKHR(device, swapchainCount, pCreateInfos, pAllocator, pSwapchains)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -9554,6 +9737,7 @@ void VulkanAsciiConsumer::Process_vkCreateXlibSurfaceKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCreateXlibSurfaceKHR(instance, pCreateInfo, pAllocator, pSurface)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -9625,6 +9809,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceXlibPresentationSupportKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPhysicalDeviceXlibPresentationSupportKHR(physicalDevice, queueFamilyIndex, dpy, visualID)");
     fprintf(outputFile, " returns %u:\n", returnValue);
 
@@ -9669,6 +9854,7 @@ void VulkanAsciiConsumer::Process_vkCreateXcbSurfaceKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCreateXcbSurfaceKHR(instance, pCreateInfo, pAllocator, pSurface)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -9740,6 +9926,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceXcbPresentationSupportKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPhysicalDeviceXcbPresentationSupportKHR(physicalDevice, queueFamilyIndex, connection, visual_id)");
     fprintf(outputFile, " returns %u:\n", returnValue);
 
@@ -9791,6 +9978,7 @@ void VulkanAsciiConsumer::Process_vkCreateWaylandSurfaceKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCreateWaylandSurfaceKHR(instance, pCreateInfo, pAllocator, pSurface)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -9861,6 +10049,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceWaylandPresentationSupportK
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPhysicalDeviceWaylandPresentationSupportKHR(physicalDevice, queueFamilyIndex, display)");
     fprintf(outputFile, " returns %u:\n", returnValue);
 
@@ -9905,6 +10094,7 @@ void VulkanAsciiConsumer::Process_vkCreateAndroidSurfaceKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCreateAndroidSurfaceKHR(instance, pCreateInfo, pAllocator, pSurface)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -9977,6 +10167,7 @@ void VulkanAsciiConsumer::Process_vkCreateWin32SurfaceKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCreateWin32SurfaceKHR(instance, pCreateInfo, pAllocator, pSurface)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -10046,6 +10237,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceWin32PresentationSupportKHR
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPhysicalDeviceWin32PresentationSupportKHR(physicalDevice, queueFamilyIndex)");
     fprintf(outputFile, " returns %u:\n", returnValue);
 
@@ -10073,6 +10265,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceFeatures2KHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPhysicalDeviceFeatures2KHR(physicalDevice, pFeatures)");
     fprintf(outputFile, " returns void:\n");
 
@@ -10108,6 +10301,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceProperties2KHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPhysicalDeviceProperties2KHR(physicalDevice, pProperties)");
     fprintf(outputFile, " returns void:\n");
 
@@ -10144,6 +10338,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceFormatProperties2KHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPhysicalDeviceFormatProperties2KHR(physicalDevice, format, pFormatProperties)");
     fprintf(outputFile, " returns void:\n");
 
@@ -10191,6 +10386,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2KHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPhysicalDeviceImageFormatProperties2KHR(physicalDevice, pImageFormatInfo, pImageFormatProperties)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -10245,6 +10441,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2KHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPhysicalDeviceQueueFamilyProperties2KHR(physicalDevice, pQueueFamilyPropertyCount, pQueueFamilyProperties)");
     fprintf(outputFile, " returns void:\n");
 
@@ -10294,6 +10491,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceMemoryProperties2KHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPhysicalDeviceMemoryProperties2KHR(physicalDevice, pMemoryProperties)");
     fprintf(outputFile, " returns void:\n");
 
@@ -10331,6 +10529,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPhysicalDeviceSparseImageFormatProperties2KHR(physicalDevice, pFormatInfo, pPropertyCount, pProperties)");
     fprintf(outputFile, " returns void:\n");
 
@@ -10400,6 +10599,7 @@ void VulkanAsciiConsumer::Process_vkGetDeviceGroupPeerMemoryFeaturesKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetDeviceGroupPeerMemoryFeaturesKHR(device, heapIndex, localDeviceIndex, remoteDeviceIndex, pPeerMemoryFeatures)");
     fprintf(outputFile, " returns void:\n");
 
@@ -10455,6 +10655,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetDeviceMaskKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdSetDeviceMaskKHR(commandBuffer, deviceMask)");
     fprintf(outputFile, " returns void:\n");
 
@@ -10486,6 +10687,7 @@ void VulkanAsciiConsumer::Process_vkCmdDispatchBaseKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdDispatchBaseKHR(commandBuffer, baseGroupX, baseGroupY, baseGroupZ, groupCountX, groupCountY, groupCountZ)");
     fprintf(outputFile, " returns void:\n");
 
@@ -10549,6 +10751,7 @@ void VulkanAsciiConsumer::Process_vkTrimCommandPoolKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkTrimCommandPoolKHR(device, commandPool, flags)");
     fprintf(outputFile, " returns void:\n");
 
@@ -10585,6 +10788,7 @@ void VulkanAsciiConsumer::Process_vkEnumeratePhysicalDeviceGroupsKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkEnumeratePhysicalDeviceGroupsKHR(instance, pPhysicalDeviceGroupCount, pPhysicalDeviceGroupProperties)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -10638,6 +10842,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalBufferPropertiesKHR
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPhysicalDeviceExternalBufferPropertiesKHR(physicalDevice, pExternalBufferInfo, pExternalBufferProperties)");
     fprintf(outputFile, " returns void:\n");
 
@@ -10692,6 +10897,7 @@ void VulkanAsciiConsumer::Process_vkGetMemoryWin32HandleKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetMemoryWin32HandleKHR(device, pGetWin32HandleInfo, pHandle)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -10747,6 +10953,7 @@ void VulkanAsciiConsumer::Process_vkGetMemoryWin32HandlePropertiesKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetMemoryWin32HandlePropertiesKHR(device, handleType, handle, pMemoryWin32HandleProperties)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -10811,6 +11018,7 @@ void VulkanAsciiConsumer::Process_vkGetMemoryFdKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetMemoryFdKHR(device, pGetFdInfo, pFd)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -10866,6 +11074,7 @@ void VulkanAsciiConsumer::Process_vkGetMemoryFdPropertiesKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetMemoryFdPropertiesKHR(device, handleType, fd, pMemoryFdProperties)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -10922,6 +11131,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalSemaphoreProperties
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPhysicalDeviceExternalSemaphorePropertiesKHR(physicalDevice, pExternalSemaphoreInfo, pExternalSemaphoreProperties)");
     fprintf(outputFile, " returns void:\n");
 
@@ -10975,6 +11185,7 @@ void VulkanAsciiConsumer::Process_vkImportSemaphoreWin32HandleKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkImportSemaphoreWin32HandleKHR(device, pImportSemaphoreWin32HandleInfo)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -11014,6 +11225,7 @@ void VulkanAsciiConsumer::Process_vkGetSemaphoreWin32HandleKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetSemaphoreWin32HandleKHR(device, pGetWin32HandleInfo, pHandle)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -11068,6 +11280,7 @@ void VulkanAsciiConsumer::Process_vkImportSemaphoreFdKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkImportSemaphoreFdKHR(device, pImportSemaphoreFdInfo)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -11107,6 +11320,7 @@ void VulkanAsciiConsumer::Process_vkGetSemaphoreFdKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetSemaphoreFdKHR(device, pGetFdInfo, pFd)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -11164,6 +11378,7 @@ void VulkanAsciiConsumer::Process_vkCmdPushDescriptorSetKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdPushDescriptorSetKHR(commandBuffer, pipelineBindPoint, layout, set, descriptorWriteCount, pDescriptorWrites)");
     fprintf(outputFile, " returns void:\n");
 
@@ -11233,6 +11448,7 @@ void VulkanAsciiConsumer::Process_vkCreateDescriptorUpdateTemplateKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCreateDescriptorUpdateTemplateKHR(device, pCreateInfo, pAllocator, pDescriptorUpdateTemplate)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -11302,6 +11518,7 @@ void VulkanAsciiConsumer::Process_vkDestroyDescriptorUpdateTemplateKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkDestroyDescriptorUpdateTemplateKHR(device, descriptorUpdateTemplate, pAllocator)");
     fprintf(outputFile, " returns void:\n");
 
@@ -11348,6 +11565,7 @@ void VulkanAsciiConsumer::Process_vkCreateRenderPass2KHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCreateRenderPass2KHR(device, pCreateInfo, pAllocator, pRenderPass)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -11417,6 +11635,7 @@ void VulkanAsciiConsumer::Process_vkCmdBeginRenderPass2KHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdBeginRenderPass2KHR(commandBuffer, pRenderPassBegin, pSubpassBeginInfo)");
     fprintf(outputFile, " returns void:\n");
 
@@ -11469,6 +11688,7 @@ void VulkanAsciiConsumer::Process_vkCmdNextSubpass2KHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdNextSubpass2KHR(commandBuffer, pSubpassBeginInfo, pSubpassEndInfo)");
     fprintf(outputFile, " returns void:\n");
 
@@ -11520,6 +11740,7 @@ void VulkanAsciiConsumer::Process_vkCmdEndRenderPass2KHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdEndRenderPass2KHR(commandBuffer, pSubpassEndInfo)");
     fprintf(outputFile, " returns void:\n");
 
@@ -11557,6 +11778,7 @@ void VulkanAsciiConsumer::Process_vkGetSwapchainStatusKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetSwapchainStatusKHR(device, swapchain)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -11587,6 +11809,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalFencePropertiesKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPhysicalDeviceExternalFencePropertiesKHR(physicalDevice, pExternalFenceInfo, pExternalFenceProperties)");
     fprintf(outputFile, " returns void:\n");
 
@@ -11640,6 +11863,7 @@ void VulkanAsciiConsumer::Process_vkImportFenceWin32HandleKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkImportFenceWin32HandleKHR(device, pImportFenceWin32HandleInfo)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -11679,6 +11903,7 @@ void VulkanAsciiConsumer::Process_vkGetFenceWin32HandleKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetFenceWin32HandleKHR(device, pGetWin32HandleInfo, pHandle)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -11733,6 +11958,7 @@ void VulkanAsciiConsumer::Process_vkImportFenceFdKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkImportFenceFdKHR(device, pImportFenceFdInfo)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -11772,6 +11998,7 @@ void VulkanAsciiConsumer::Process_vkGetFenceFdKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetFenceFdKHR(device, pGetFdInfo, pFd)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -11827,6 +12054,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2KHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPhysicalDeviceSurfaceCapabilities2KHR(physicalDevice, pSurfaceInfo, pSurfaceCapabilities)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -11883,6 +12111,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceFormats2KHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPhysicalDeviceSurfaceFormats2KHR(physicalDevice, pSurfaceInfo, pSurfaceFormatCount, pSurfaceFormats)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -11953,6 +12182,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceDisplayProperties2KHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPhysicalDeviceDisplayProperties2KHR(physicalDevice, pPropertyCount, pProperties)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -12006,6 +12236,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceDisplayPlaneProperties2KHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPhysicalDeviceDisplayPlaneProperties2KHR(physicalDevice, pPropertyCount, pProperties)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -12060,6 +12291,7 @@ void VulkanAsciiConsumer::Process_vkGetDisplayModeProperties2KHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetDisplayModeProperties2KHR(physicalDevice, display, pPropertyCount, pProperties)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -12120,6 +12352,7 @@ void VulkanAsciiConsumer::Process_vkGetDisplayPlaneCapabilities2KHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetDisplayPlaneCapabilities2KHR(physicalDevice, pDisplayPlaneInfo, pCapabilities)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -12175,6 +12408,7 @@ void VulkanAsciiConsumer::Process_vkGetImageMemoryRequirements2KHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetImageMemoryRequirements2KHR(device, pInfo, pMemoryRequirements)");
     fprintf(outputFile, " returns void:\n");
 
@@ -12227,6 +12461,7 @@ void VulkanAsciiConsumer::Process_vkGetBufferMemoryRequirements2KHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetBufferMemoryRequirements2KHR(device, pInfo, pMemoryRequirements)");
     fprintf(outputFile, " returns void:\n");
 
@@ -12280,6 +12515,7 @@ void VulkanAsciiConsumer::Process_vkGetImageSparseMemoryRequirements2KHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetImageSparseMemoryRequirements2KHR(device, pInfo, pSparseMemoryRequirementCount, pSparseMemoryRequirements)");
     fprintf(outputFile, " returns void:\n");
 
@@ -12349,6 +12585,7 @@ void VulkanAsciiConsumer::Process_vkCreateSamplerYcbcrConversionKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCreateSamplerYcbcrConversionKHR(device, pCreateInfo, pAllocator, pYcbcrConversion)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -12418,6 +12655,7 @@ void VulkanAsciiConsumer::Process_vkDestroySamplerYcbcrConversionKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkDestroySamplerYcbcrConversionKHR(device, ycbcrConversion, pAllocator)");
     fprintf(outputFile, " returns void:\n");
 
@@ -12463,6 +12701,7 @@ void VulkanAsciiConsumer::Process_vkBindBufferMemory2KHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkBindBufferMemory2KHR(device, bindInfoCount, pBindInfos)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -12508,6 +12747,7 @@ void VulkanAsciiConsumer::Process_vkBindImageMemory2KHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkBindImageMemory2KHR(device, bindInfoCount, pBindInfos)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -12553,6 +12793,7 @@ void VulkanAsciiConsumer::Process_vkGetDescriptorSetLayoutSupportKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetDescriptorSetLayoutSupportKHR(device, pCreateInfo, pSupport)");
     fprintf(outputFile, " returns void:\n");
 
@@ -12610,6 +12851,7 @@ void VulkanAsciiConsumer::Process_vkCmdDrawIndirectCountKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdDrawIndirectCountKHR(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride)");
     fprintf(outputFile, " returns void:\n");
 
@@ -12676,6 +12918,7 @@ void VulkanAsciiConsumer::Process_vkCmdDrawIndexedIndirectCountKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdDrawIndexedIndirectCountKHR(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride)");
     fprintf(outputFile, " returns void:\n");
 
@@ -12740,6 +12983,7 @@ void VulkanAsciiConsumer::Process_vkGetSemaphoreCounterValueKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetSemaphoreCounterValueKHR(device, semaphore, pValue)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -12785,6 +13029,7 @@ void VulkanAsciiConsumer::Process_vkWaitSemaphoresKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkWaitSemaphoresKHR(device, pWaitInfo, timeout)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -12830,6 +13075,7 @@ void VulkanAsciiConsumer::Process_vkSignalSemaphoreKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkSignalSemaphoreKHR(device, pSignalInfo)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -12871,6 +13117,7 @@ void VulkanAsciiConsumer::Process_vkGetPipelineExecutablePropertiesKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPipelineExecutablePropertiesKHR(device, pPipelineInfo, pExecutableCount, pProperties)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -12941,6 +13188,7 @@ void VulkanAsciiConsumer::Process_vkGetPipelineExecutableStatisticsKHR(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPipelineExecutableStatisticsKHR(device, pExecutableInfo, pStatisticCount, pStatistics)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -13011,6 +13259,7 @@ void VulkanAsciiConsumer::Process_vkGetPipelineExecutableInternalRepresentations
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPipelineExecutableInternalRepresentationsKHR(device, pExecutableInfo, pInternalRepresentationCount, pInternalRepresentations)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -13082,6 +13331,7 @@ void VulkanAsciiConsumer::Process_vkCreateDebugReportCallbackEXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCreateDebugReportCallbackEXT(instance, pCreateInfo, pAllocator, pCallback)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -13151,6 +13401,7 @@ void VulkanAsciiConsumer::Process_vkDestroyDebugReportCallbackEXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkDestroyDebugReportCallbackEXT(instance, callback, pAllocator)");
     fprintf(outputFile, " returns void:\n");
 
@@ -13199,6 +13450,7 @@ void VulkanAsciiConsumer::Process_vkDebugReportMessageEXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkDebugReportMessageEXT(instance, flags, objectType, object, location, messageCode, pLayerPrefix, pMessage)");
     fprintf(outputFile, " returns void:\n");
 
@@ -13272,6 +13524,7 @@ void VulkanAsciiConsumer::Process_vkDebugMarkerSetObjectTagEXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkDebugMarkerSetObjectTagEXT(device, pTagInfo)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -13310,6 +13563,7 @@ void VulkanAsciiConsumer::Process_vkDebugMarkerSetObjectNameEXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkDebugMarkerSetObjectNameEXT(device, pNameInfo)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -13347,6 +13601,7 @@ void VulkanAsciiConsumer::Process_vkCmdDebugMarkerBeginEXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdDebugMarkerBeginEXT(commandBuffer, pMarkerInfo)");
     fprintf(outputFile, " returns void:\n");
 
@@ -13381,6 +13636,7 @@ void VulkanAsciiConsumer::Process_vkCmdDebugMarkerEndEXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdDebugMarkerEndEXT(commandBuffer)");
     fprintf(outputFile, " returns void:\n");
 
@@ -13400,6 +13656,7 @@ void VulkanAsciiConsumer::Process_vkCmdDebugMarkerInsertEXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdDebugMarkerInsertEXT(commandBuffer, pMarkerInfo)");
     fprintf(outputFile, " returns void:\n");
 
@@ -13440,6 +13697,7 @@ void VulkanAsciiConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdBindTransformFeedbackBuffersEXT(commandBuffer, firstBinding, bindingCount, pBuffers, pOffsets, pSizes)");
     fprintf(outputFile, " returns void:\n");
 
@@ -13524,6 +13782,7 @@ void VulkanAsciiConsumer::Process_vkCmdBeginTransformFeedbackEXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdBeginTransformFeedbackEXT(commandBuffer, firstCounterBuffer, counterBufferCount, pCounterBuffers, pCounterBufferOffsets)");
     fprintf(outputFile, " returns void:\n");
 
@@ -13592,6 +13851,7 @@ void VulkanAsciiConsumer::Process_vkCmdEndTransformFeedbackEXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdEndTransformFeedbackEXT(commandBuffer, firstCounterBuffer, counterBufferCount, pCounterBuffers, pCounterBufferOffsets)");
     fprintf(outputFile, " returns void:\n");
 
@@ -13660,6 +13920,7 @@ void VulkanAsciiConsumer::Process_vkCmdBeginQueryIndexedEXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdBeginQueryIndexedEXT(commandBuffer, queryPool, query, flags, index)");
     fprintf(outputFile, " returns void:\n");
 
@@ -13709,6 +13970,7 @@ void VulkanAsciiConsumer::Process_vkCmdEndQueryIndexedEXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdEndQueryIndexedEXT(commandBuffer, queryPool, query, index)");
     fprintf(outputFile, " returns void:\n");
 
@@ -13754,6 +14016,7 @@ void VulkanAsciiConsumer::Process_vkCmdDrawIndirectByteCountEXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdDrawIndirectByteCountEXT(commandBuffer, instanceCount, firstInstance, counterBuffer, counterBufferOffset, counterOffset, vertexStride)");
     fprintf(outputFile, " returns void:\n");
 
@@ -13817,6 +14080,7 @@ void VulkanAsciiConsumer::Process_vkGetImageViewHandleNVX(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetImageViewHandleNVX(device, pInfo)");
     fprintf(outputFile, " returns %u:\n", returnValue);
 
@@ -13858,6 +14122,7 @@ void VulkanAsciiConsumer::Process_vkCmdDrawIndirectCountAMD(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdDrawIndirectCountAMD(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride)");
     fprintf(outputFile, " returns void:\n");
 
@@ -13924,6 +14189,7 @@ void VulkanAsciiConsumer::Process_vkCmdDrawIndexedIndirectCountAMD(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdDrawIndexedIndirectCountAMD(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride)");
     fprintf(outputFile, " returns void:\n");
 
@@ -13991,6 +14257,7 @@ void VulkanAsciiConsumer::Process_vkGetShaderInfoAMD(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetShaderInfoAMD(device, pipeline, shaderStage, infoType, pInfoSize, pInfo)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -14074,6 +14341,7 @@ void VulkanAsciiConsumer::Process_vkCreateStreamDescriptorSurfaceGGP(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCreateStreamDescriptorSurfaceGGP(instance, pCreateInfo, pAllocator, pSurface)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -14150,6 +14418,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalImageFormatProperti
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPhysicalDeviceExternalImageFormatPropertiesNV(physicalDevice, format, type, tiling, usage, flags, externalHandleType, pExternalImageFormatProperties)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -14242,6 +14511,7 @@ void VulkanAsciiConsumer::Process_vkGetMemoryWin32HandleNV(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetMemoryWin32HandleNV(device, memory, handleType, pHandle)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -14296,6 +14566,7 @@ void VulkanAsciiConsumer::Process_vkCreateViSurfaceNN(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCreateViSurfaceNN(instance, pCreateInfo, pAllocator, pSurface)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -14365,6 +14636,7 @@ void VulkanAsciiConsumer::Process_vkCmdBeginConditionalRenderingEXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdBeginConditionalRenderingEXT(commandBuffer, pConditionalRenderingBegin)");
     fprintf(outputFile, " returns void:\n");
 
@@ -14399,6 +14671,7 @@ void VulkanAsciiConsumer::Process_vkCmdEndConditionalRenderingEXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdEndConditionalRenderingEXT(commandBuffer)");
     fprintf(outputFile, " returns void:\n");
 
@@ -14419,6 +14692,7 @@ void VulkanAsciiConsumer::Process_vkCmdProcessCommandsNVX(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdProcessCommandsNVX(commandBuffer, pProcessCommandsInfo)");
     fprintf(outputFile, " returns void:\n");
 
@@ -14454,6 +14728,7 @@ void VulkanAsciiConsumer::Process_vkCmdReserveSpaceForCommandsNVX(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdReserveSpaceForCommandsNVX(commandBuffer, pReserveSpaceInfo)");
     fprintf(outputFile, " returns void:\n");
 
@@ -14492,6 +14767,7 @@ void VulkanAsciiConsumer::Process_vkCreateIndirectCommandsLayoutNVX(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCreateIndirectCommandsLayoutNVX(device, pCreateInfo, pAllocator, pIndirectCommandsLayout)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -14561,6 +14837,7 @@ void VulkanAsciiConsumer::Process_vkDestroyIndirectCommandsLayoutNVX(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkDestroyIndirectCommandsLayoutNVX(device, indirectCommandsLayout, pAllocator)");
     fprintf(outputFile, " returns void:\n");
 
@@ -14606,6 +14883,7 @@ void VulkanAsciiConsumer::Process_vkCreateObjectTableNVX(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCreateObjectTableNVX(device, pCreateInfo, pAllocator, pObjectTable)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -14675,6 +14953,7 @@ void VulkanAsciiConsumer::Process_vkDestroyObjectTableNVX(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkDestroyObjectTableNVX(device, objectTable, pAllocator)");
     fprintf(outputFile, " returns void:\n");
 
@@ -14721,6 +15000,7 @@ void VulkanAsciiConsumer::Process_vkUnregisterObjectsNVX(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkUnregisterObjectsNVX(device, objectTable, objectCount, pObjectEntryTypes, pObjectIndices)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -14789,6 +15069,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceGeneratedCommandsProperties
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX(physicalDevice, pFeatures, pLimits)");
     fprintf(outputFile, " returns void:\n");
 
@@ -14843,6 +15124,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetViewportWScalingNV(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdSetViewportWScalingNV(commandBuffer, firstViewport, viewportCount, pViewportWScalings)");
     fprintf(outputFile, " returns void:\n");
 
@@ -14893,6 +15175,7 @@ void VulkanAsciiConsumer::Process_vkReleaseDisplayEXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkReleaseDisplayEXT(physicalDevice, display)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -14924,6 +15207,7 @@ void VulkanAsciiConsumer::Process_vkAcquireXlibDisplayEXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkAcquireXlibDisplayEXT(physicalDevice, dpy, display)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -14962,6 +15246,7 @@ void VulkanAsciiConsumer::Process_vkGetRandROutputDisplayEXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetRandROutputDisplayEXT(physicalDevice, dpy, rrOutput, pDisplay)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -15015,6 +15300,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2EXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPhysicalDeviceSurfaceCapabilities2EXT(physicalDevice, surface, pSurfaceCapabilities)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -15062,6 +15348,7 @@ void VulkanAsciiConsumer::Process_vkDisplayPowerControlEXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkDisplayPowerControlEXT(device, display, pDisplayPowerInfo)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -15109,6 +15396,7 @@ void VulkanAsciiConsumer::Process_vkRegisterDeviceEventEXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkRegisterDeviceEventEXT(device, pDeviceEventInfo, pAllocator, pFence)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -15181,6 +15469,7 @@ void VulkanAsciiConsumer::Process_vkRegisterDisplayEventEXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkRegisterDisplayEventEXT(device, display, pDisplayEventInfo, pAllocator, pFence)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -15259,6 +15548,7 @@ void VulkanAsciiConsumer::Process_vkGetSwapchainCounterEXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetSwapchainCounterEXT(device, swapchain, counter, pCounterValue)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -15315,6 +15605,7 @@ void VulkanAsciiConsumer::Process_vkGetRefreshCycleDurationGOOGLE(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetRefreshCycleDurationGOOGLE(device, swapchain, pDisplayTimingProperties)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -15362,6 +15653,7 @@ void VulkanAsciiConsumer::Process_vkGetPastPresentationTimingGOOGLE(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPastPresentationTimingGOOGLE(device, swapchain, pPresentationTimingCount, pPresentationTimings)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -15423,6 +15715,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetDiscardRectangleEXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdSetDiscardRectangleEXT(commandBuffer, firstDiscardRectangle, discardRectangleCount, pDiscardRectangles)");
     fprintf(outputFile, " returns void:\n");
 
@@ -15474,6 +15767,7 @@ void VulkanAsciiConsumer::Process_vkSetHdrMetadataEXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkSetHdrMetadataEXT(device, swapchainCount, pSwapchains, pMetadata)");
     fprintf(outputFile, " returns void:\n");
 
@@ -15535,6 +15829,7 @@ void VulkanAsciiConsumer::Process_vkCreateIOSSurfaceMVK(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCreateIOSSurfaceMVK(instance, pCreateInfo, pAllocator, pSurface)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -15607,6 +15902,7 @@ void VulkanAsciiConsumer::Process_vkCreateMacOSSurfaceMVK(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCreateMacOSSurfaceMVK(instance, pCreateInfo, pAllocator, pSurface)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -15677,6 +15973,7 @@ void VulkanAsciiConsumer::Process_vkSetDebugUtilsObjectNameEXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkSetDebugUtilsObjectNameEXT(device, pNameInfo)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -15715,6 +16012,7 @@ void VulkanAsciiConsumer::Process_vkSetDebugUtilsObjectTagEXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkSetDebugUtilsObjectTagEXT(device, pTagInfo)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -15752,6 +16050,7 @@ void VulkanAsciiConsumer::Process_vkQueueBeginDebugUtilsLabelEXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkQueueBeginDebugUtilsLabelEXT(queue, pLabelInfo)");
     fprintf(outputFile, " returns void:\n");
 
@@ -15786,6 +16085,7 @@ void VulkanAsciiConsumer::Process_vkQueueEndDebugUtilsLabelEXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkQueueEndDebugUtilsLabelEXT(queue)");
     fprintf(outputFile, " returns void:\n");
 
@@ -15805,6 +16105,7 @@ void VulkanAsciiConsumer::Process_vkQueueInsertDebugUtilsLabelEXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkQueueInsertDebugUtilsLabelEXT(queue, pLabelInfo)");
     fprintf(outputFile, " returns void:\n");
 
@@ -15840,6 +16141,7 @@ void VulkanAsciiConsumer::Process_vkCmdBeginDebugUtilsLabelEXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdBeginDebugUtilsLabelEXT(commandBuffer, pLabelInfo)");
     fprintf(outputFile, " returns void:\n");
 
@@ -15874,6 +16176,7 @@ void VulkanAsciiConsumer::Process_vkCmdEndDebugUtilsLabelEXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdEndDebugUtilsLabelEXT(commandBuffer)");
     fprintf(outputFile, " returns void:\n");
 
@@ -15893,6 +16196,7 @@ void VulkanAsciiConsumer::Process_vkCmdInsertDebugUtilsLabelEXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdInsertDebugUtilsLabelEXT(commandBuffer, pLabelInfo)");
     fprintf(outputFile, " returns void:\n");
 
@@ -15931,6 +16235,7 @@ void VulkanAsciiConsumer::Process_vkCreateDebugUtilsMessengerEXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCreateDebugUtilsMessengerEXT(instance, pCreateInfo, pAllocator, pMessenger)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -16000,6 +16305,7 @@ void VulkanAsciiConsumer::Process_vkDestroyDebugUtilsMessengerEXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkDestroyDebugUtilsMessengerEXT(instance, messenger, pAllocator)");
     fprintf(outputFile, " returns void:\n");
 
@@ -16044,6 +16350,7 @@ void VulkanAsciiConsumer::Process_vkSubmitDebugUtilsMessageEXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkSubmitDebugUtilsMessageEXT(instance, messageSeverity, messageTypes, pCallbackData)");
     fprintf(outputFile, " returns void:\n");
 
@@ -16099,6 +16406,7 @@ void VulkanAsciiConsumer::Process_vkGetAndroidHardwareBufferPropertiesANDROID(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetAndroidHardwareBufferPropertiesANDROID(device, buffer, pProperties)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -16152,6 +16460,7 @@ void VulkanAsciiConsumer::Process_vkGetMemoryAndroidHardwareBufferANDROID(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetMemoryAndroidHardwareBufferANDROID(device, pInfo, pBuffer)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -16205,6 +16514,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetSampleLocationsEXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdSetSampleLocationsEXT(commandBuffer, pSampleLocationsInfo)");
     fprintf(outputFile, " returns void:\n");
 
@@ -16241,6 +16551,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceMultisamplePropertiesEXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPhysicalDeviceMultisamplePropertiesEXT(physicalDevice, samples, pMultisampleProperties)");
     fprintf(outputFile, " returns void:\n");
 
@@ -16289,6 +16600,7 @@ void VulkanAsciiConsumer::Process_vkGetImageDrmFormatModifierPropertiesEXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetImageDrmFormatModifierPropertiesEXT(device, image, pProperties)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -16337,6 +16649,7 @@ void VulkanAsciiConsumer::Process_vkCreateValidationCacheEXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCreateValidationCacheEXT(device, pCreateInfo, pAllocator, pValidationCache)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -16406,6 +16719,7 @@ void VulkanAsciiConsumer::Process_vkDestroyValidationCacheEXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkDestroyValidationCacheEXT(device, validationCache, pAllocator)");
     fprintf(outputFile, " returns void:\n");
 
@@ -16451,6 +16765,7 @@ void VulkanAsciiConsumer::Process_vkMergeValidationCachesEXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkMergeValidationCachesEXT(device, dstCache, srcCacheCount, pSrcCaches)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -16505,6 +16820,7 @@ void VulkanAsciiConsumer::Process_vkGetValidationCacheDataEXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetValidationCacheDataEXT(device, validationCache, pDataSize, pData)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -16566,6 +16882,7 @@ void VulkanAsciiConsumer::Process_vkCmdBindShadingRateImageNV(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdBindShadingRateImageNV(commandBuffer, imageView, imageLayout)");
     fprintf(outputFile, " returns void:\n");
 
@@ -16604,6 +16921,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetViewportShadingRatePaletteNV(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdSetViewportShadingRatePaletteNV(commandBuffer, firstViewport, viewportCount, pShadingRatePalettes)");
     fprintf(outputFile, " returns void:\n");
 
@@ -16654,6 +16972,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetCoarseSampleOrderNV(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdSetCoarseSampleOrderNV(commandBuffer, sampleOrderType, customSampleOrderCount, pCustomSampleOrders)");
     fprintf(outputFile, " returns void:\n");
 
@@ -16709,6 +17028,7 @@ void VulkanAsciiConsumer::Process_vkCreateAccelerationStructureNV(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCreateAccelerationStructureNV(device, pCreateInfo, pAllocator, pAccelerationStructure)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -16778,6 +17098,7 @@ void VulkanAsciiConsumer::Process_vkDestroyAccelerationStructureNV(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkDestroyAccelerationStructureNV(device, accelerationStructure, pAllocator)");
     fprintf(outputFile, " returns void:\n");
 
@@ -16821,6 +17142,7 @@ void VulkanAsciiConsumer::Process_vkGetAccelerationStructureMemoryRequirementsNV
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetAccelerationStructureMemoryRequirementsNV(device, pInfo, pMemoryRequirements)");
     fprintf(outputFile, " returns void:\n");
 
@@ -16874,6 +17196,7 @@ void VulkanAsciiConsumer::Process_vkBindAccelerationStructureMemoryNV(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkBindAccelerationStructureMemoryNV(device, bindInfoCount, pBindInfos)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -16924,6 +17247,7 @@ void VulkanAsciiConsumer::Process_vkCmdBuildAccelerationStructureNV(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdBuildAccelerationStructureNV(commandBuffer, pInfo, instanceData, instanceOffset, update, dst, src, scratch, scratchOffset)");
     fprintf(outputFile, " returns void:\n");
 
@@ -17010,6 +17334,7 @@ void VulkanAsciiConsumer::Process_vkCmdCopyAccelerationStructureNV(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdCopyAccelerationStructureNV(commandBuffer, dst, src, mode)");
     fprintf(outputFile, " returns void:\n");
 
@@ -17066,6 +17391,7 @@ void VulkanAsciiConsumer::Process_vkCmdTraceRaysNV(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdTraceRaysNV(commandBuffer, raygenShaderBindingTableBuffer, raygenShaderBindingOffset, missShaderBindingTableBuffer, missShaderBindingOffset, missShaderBindingStride, hitShaderBindingTableBuffer, hitShaderBindingOffset, hitShaderBindingStride, callableShaderBindingTableBuffer, callableShaderBindingOffset, callableShaderBindingStride, width, height, depth)");
     fprintf(outputFile, " returns void:\n");
 
@@ -17188,6 +17514,7 @@ void VulkanAsciiConsumer::Process_vkCreateRayTracingPipelinesNV(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCreateRayTracingPipelinesNV(device, pipelineCache, createInfoCount, pCreateInfos, pAllocator, pPipelines)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -17275,6 +17602,7 @@ void VulkanAsciiConsumer::Process_vkGetRayTracingShaderGroupHandlesNV(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetRayTracingShaderGroupHandlesNV(device, pipeline, firstGroup, groupCount, dataSize, pData)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -17343,6 +17671,7 @@ void VulkanAsciiConsumer::Process_vkGetAccelerationStructureHandleNV(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetAccelerationStructureHandleNV(device, accelerationStructure, dataSize, pData)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -17398,6 +17727,7 @@ void VulkanAsciiConsumer::Process_vkCmdWriteAccelerationStructuresPropertiesNV(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdWriteAccelerationStructuresPropertiesNV(commandBuffer, accelerationStructureCount, pAccelerationStructures, queryType, queryPool, firstQuery)");
     fprintf(outputFile, " returns void:\n");
 
@@ -17466,6 +17796,7 @@ void VulkanAsciiConsumer::Process_vkCompileDeferredNV(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCompileDeferredNV(device, pipeline, shader)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -17505,6 +17836,7 @@ void VulkanAsciiConsumer::Process_vkGetMemoryHostPointerPropertiesEXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetMemoryHostPointerPropertiesEXT(device, handleType, pHostPointer, pMemoryHostPointerProperties)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -17570,6 +17902,7 @@ void VulkanAsciiConsumer::Process_vkCmdWriteBufferMarkerAMD(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdWriteBufferMarkerAMD(commandBuffer, pipelineStage, dstBuffer, dstOffset, marker)");
     fprintf(outputFile, " returns void:\n");
 
@@ -17623,6 +17956,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(physicalDevice, pTimeDomainCount, pTimeDomains)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -17679,6 +18013,7 @@ void VulkanAsciiConsumer::Process_vkGetCalibratedTimestampsEXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetCalibratedTimestampsEXT(device, timestampCount, pTimestampInfos, pTimestamps, pMaxDeviation)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -17755,6 +18090,7 @@ void VulkanAsciiConsumer::Process_vkCmdDrawMeshTasksNV(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdDrawMeshTasksNV(commandBuffer, taskCount, firstTask)");
     fprintf(outputFile, " returns void:\n");
 
@@ -17791,6 +18127,7 @@ void VulkanAsciiConsumer::Process_vkCmdDrawMeshTasksIndirectNV(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdDrawMeshTasksIndirectNV(commandBuffer, buffer, offset, drawCount, stride)");
     fprintf(outputFile, " returns void:\n");
 
@@ -17843,6 +18180,7 @@ void VulkanAsciiConsumer::Process_vkCmdDrawMeshTasksIndirectCountNV(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdDrawMeshTasksIndirectCountNV(commandBuffer, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride)");
     fprintf(outputFile, " returns void:\n");
 
@@ -17907,6 +18245,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetExclusiveScissorNV(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdSetExclusiveScissorNV(commandBuffer, firstExclusiveScissor, exclusiveScissorCount, pExclusiveScissors)");
     fprintf(outputFile, " returns void:\n");
 
@@ -17956,6 +18295,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetCheckpointNV(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdSetCheckpointNV(commandBuffer, pCheckpointMarker)");
     fprintf(outputFile, " returns void:\n");
 
@@ -17990,6 +18330,7 @@ void VulkanAsciiConsumer::Process_vkGetQueueCheckpointDataNV(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetQueueCheckpointDataNV(queue, pCheckpointDataCount, pCheckpointData)");
     fprintf(outputFile, " returns void:\n");
 
@@ -18041,6 +18382,7 @@ void VulkanAsciiConsumer::Process_vkInitializePerformanceApiINTEL(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkInitializePerformanceApiINTEL(device, pInitializeInfo)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -18077,6 +18419,7 @@ void VulkanAsciiConsumer::Process_vkUninitializePerformanceApiINTEL(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkUninitializePerformanceApiINTEL(device)");
     fprintf(outputFile, " returns void:\n");
 
@@ -18097,6 +18440,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetPerformanceMarkerINTEL(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdSetPerformanceMarkerINTEL(commandBuffer, pMarkerInfo)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -18135,6 +18479,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetPerformanceStreamMarkerINTEL(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdSetPerformanceStreamMarkerINTEL(commandBuffer, pMarkerInfo)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -18173,6 +18518,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetPerformanceOverrideINTEL(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdSetPerformanceOverrideINTEL(commandBuffer, pOverrideInfo)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -18212,6 +18558,7 @@ void VulkanAsciiConsumer::Process_vkAcquirePerformanceConfigurationINTEL(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkAcquirePerformanceConfigurationINTEL(device, pAcquireInfo, pConfiguration)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -18265,6 +18612,7 @@ void VulkanAsciiConsumer::Process_vkReleasePerformanceConfigurationINTEL(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkReleasePerformanceConfigurationINTEL(device, configuration)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -18294,6 +18642,7 @@ void VulkanAsciiConsumer::Process_vkQueueSetPerformanceConfigurationINTEL(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkQueueSetPerformanceConfigurationINTEL(queue, configuration)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -18324,6 +18673,7 @@ void VulkanAsciiConsumer::Process_vkGetPerformanceParameterINTEL(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPerformanceParameterINTEL(device, parameter, pValue)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -18373,6 +18723,7 @@ void VulkanAsciiConsumer::Process_vkSetLocalDimmingAMD(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkSetLocalDimmingAMD(device, swapChain, localDimmingEnable)");
     fprintf(outputFile, " returns void:\n");
 
@@ -18410,6 +18761,7 @@ void VulkanAsciiConsumer::Process_vkCreateImagePipeSurfaceFUCHSIA(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCreateImagePipeSurfaceFUCHSIA(instance, pCreateInfo, pAllocator, pSurface)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -18482,6 +18834,7 @@ void VulkanAsciiConsumer::Process_vkCreateMetalSurfaceEXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCreateMetalSurfaceEXT(instance, pCreateInfo, pAllocator, pSurface)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -18552,6 +18905,7 @@ void VulkanAsciiConsumer::Process_vkGetBufferDeviceAddressEXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetBufferDeviceAddressEXT(device, pInfo)");
     fprintf(outputFile, " returns 0x%" PRIx64 ":\n", returnValue);
 
@@ -18590,6 +18944,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceCooperativeMatrixProperties
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPhysicalDeviceCooperativeMatrixPropertiesNV(physicalDevice, pPropertyCount, pProperties)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -18644,6 +18999,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSupportedFramebufferMixedSa
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV(physicalDevice, pCombinationCount, pCombinations)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -18699,6 +19055,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfacePresentModes2EXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetPhysicalDeviceSurfacePresentModes2EXT(physicalDevice, pSurfaceInfo, pPresentModeCount, pPresentModes)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -18768,6 +19125,7 @@ void VulkanAsciiConsumer::Process_vkAcquireFullScreenExclusiveModeEXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkAcquireFullScreenExclusiveModeEXT(device, swapchain)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -18797,6 +19155,7 @@ void VulkanAsciiConsumer::Process_vkReleaseFullScreenExclusiveModeEXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkReleaseFullScreenExclusiveModeEXT(device, swapchain)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -18827,6 +19186,7 @@ void VulkanAsciiConsumer::Process_vkGetDeviceGroupSurfacePresentModes2EXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkGetDeviceGroupSurfacePresentModes2EXT(device, pSurfaceInfo, pModes)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -18883,6 +19243,7 @@ void VulkanAsciiConsumer::Process_vkCreateHeadlessSurfaceEXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCreateHeadlessSurfaceEXT(instance, pCreateInfo, pAllocator, pSurface)");
     fprintf(outputFile, " returns VkResult ");
     OutputEnumVkResult(outputFile, returnValue);
@@ -18953,6 +19314,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetLineStippleEXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkCmdSetLineStippleEXT(commandBuffer, lineStippleFactor, lineStipplePattern)");
     fprintf(outputFile, " returns void:\n");
 
@@ -18989,6 +19351,7 @@ void VulkanAsciiConsumer::Process_vkResetQueryPoolEXT(
 {
     uint32_t indent = 1;
     FILE* outputFile = GetFile();
+    fprintf(outputFile, "Thread %d, Frame %d:\n", 0, frameNumber); // FNB
     fprintf(outputFile, "vkResetQueryPoolEXT(device, queryPool, firstQuery, queryCount)");
     fprintf(outputFile, " returns void:\n");
 
