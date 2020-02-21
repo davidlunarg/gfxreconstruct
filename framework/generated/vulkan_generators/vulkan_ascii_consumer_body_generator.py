@@ -79,6 +79,10 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
         self.wc('GFXRECON_BEGIN_NAMESPACE(gfxrecon)')
         self.wc('GFXRECON_BEGIN_NAMESPACE(decode)')
 
+        # Declare frameNumber static var
+        self.newline()
+        self.wc('static uint32_t frameNumber = 0; // FNA')
+
     # Method override
     def endFile(self):
         self.wc('GFXRECON_END_NAMESPACE(decode)')
@@ -125,6 +129,7 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
         self.wc('{')
         self.wc('    uint32_t indent = 1;')
         self.wc('    FILE* outputFile = GetFile();')
+        self.wc('    fprintf(outputFile, "Thread %d, Frame %d:\\n", 0, frameNumber); // FNB')
         needcomma=0
         args = ''
         for value in values:
@@ -156,6 +161,13 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
         # Add an extra new line to the output at the end of a func
         self.newline()
         self.wc('    OutputString(outputFile, "\\n"); // HDS')
+
+        # Increment frameNumber at the end of vkQueuePresentKHR
+        if name == "vkQueuePresentKHR":
+            self.newline()
+            self.wc('    frameNumber++;')
+
+        # Closing brace for function
         self.wc('}')
 
     def getFormatString(self, type):
