@@ -60,6 +60,7 @@ class VulkanConsumerHeaderGenerator(BaseGenerator):
     def beginFile(self, genOpts):
         BaseGenerator.beginFile(self, genOpts)
 
+        write('#include "decode/api_decoder.h"', file=self.outFile)
         write('#include "decode/{}"'.format(genOpts.baseClassHeader), file=self.outFile)
         write('#include "util/defines.h"', file=self.outFile)
         self.newline()

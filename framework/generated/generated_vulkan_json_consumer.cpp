@@ -20,6 +20,7 @@
 **
 */
 
+#include "decode/api_decoder.h"
 #include "format/platform_types.h"
 #include "generated/generated_vulkan_enum_output_util.h"
 #include "generated/generated_vulkan_json_consumer.h"
@@ -42,6 +43,7 @@ static bool need_function_comma = false;
 
 void VulkanJsonConsumer::Process_vkCreateInstance(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     const StructPointerDecoder<Decoded_VkInstanceCreateInfo>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
     HandlePointerDecoder<VkInstance>*           pInstance)
@@ -61,7 +63,7 @@ void VulkanJsonConsumer::Process_vkCreateInstance(
     OutputStringJson(outputFile, "\"name\" : \"vkCreateInstance\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -161,6 +163,7 @@ void VulkanJsonConsumer::Process_vkCreateInstance(
 }
 
 void VulkanJsonConsumer::Process_vkDestroyInstance(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            instance,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
 {
@@ -179,7 +182,7 @@ void VulkanJsonConsumer::Process_vkDestroyInstance(
     OutputStringJson(outputFile, "\"name\" : \"vkDestroyInstance\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -238,6 +241,7 @@ void VulkanJsonConsumer::Process_vkDestroyInstance(
 
 void VulkanJsonConsumer::Process_vkEnumeratePhysicalDevices(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            instance,
     PointerDecoder<uint32_t>*                   pPhysicalDeviceCount,
     HandlePointerDecoder<VkPhysicalDevice>*     pPhysicalDevices)
@@ -257,7 +261,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDevices(
     OutputStringJson(outputFile, "\"name\" : \"vkEnumeratePhysicalDevices\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -347,6 +351,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDevices(
 }
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     StructPointerDecoder<Decoded_VkPhysicalDeviceFeatures>* pFeatures)
 {
@@ -365,7 +370,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures(
     OutputStringJson(outputFile, "\"name\" : \"vkGetPhysicalDeviceFeatures\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -423,6 +428,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures(
 }
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     VkFormat                                    format,
     StructPointerDecoder<Decoded_VkFormatProperties>* pFormatProperties)
@@ -442,7 +448,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties(
     OutputStringJson(outputFile, "\"name\" : \"vkGetPhysicalDeviceFormatProperties\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -516,6 +522,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties(
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     VkFormat                                    format,
     VkImageType                                 type,
@@ -539,7 +546,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
     OutputStringJson(outputFile, "\"name\" : \"vkGetPhysicalDeviceImageFormatProperties\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -676,6 +683,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
 }
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     StructPointerDecoder<Decoded_VkPhysicalDeviceProperties>* pProperties)
 {
@@ -694,7 +702,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties(
     OutputStringJson(outputFile, "\"name\" : \"vkGetPhysicalDeviceProperties\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -752,6 +760,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties(
 }
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     PointerDecoder<uint32_t>*                   pQueueFamilyPropertyCount,
     StructPointerDecoder<Decoded_VkQueueFamilyProperties>* pQueueFamilyProperties)
@@ -771,7 +780,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties(
     OutputStringJson(outputFile, "\"name\" : \"vkGetPhysicalDeviceQueueFamilyProperties\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -856,6 +865,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties(
 }
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     StructPointerDecoder<Decoded_VkPhysicalDeviceMemoryProperties>* pMemoryProperties)
 {
@@ -874,7 +884,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties(
     OutputStringJson(outputFile, "\"name\" : \"vkGetPhysicalDeviceMemoryProperties\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -933,6 +943,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties(
 
 void VulkanJsonConsumer::Process_vkCreateDevice(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     const StructPointerDecoder<Decoded_VkDeviceCreateInfo>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
@@ -953,7 +964,7 @@ void VulkanJsonConsumer::Process_vkCreateDevice(
     OutputStringJson(outputFile, "\"name\" : \"vkCreateDevice\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -1068,6 +1079,7 @@ void VulkanJsonConsumer::Process_vkCreateDevice(
 }
 
 void VulkanJsonConsumer::Process_vkDestroyDevice(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
 {
@@ -1086,7 +1098,7 @@ void VulkanJsonConsumer::Process_vkDestroyDevice(
     OutputStringJson(outputFile, "\"name\" : \"vkDestroyDevice\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -1144,6 +1156,7 @@ void VulkanJsonConsumer::Process_vkDestroyDevice(
 }
 
 void VulkanJsonConsumer::Process_vkGetDeviceQueue(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     uint32_t                                    queueFamilyIndex,
     uint32_t                                    queueIndex,
@@ -1164,7 +1177,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceQueue(
     OutputStringJson(outputFile, "\"name\" : \"vkGetDeviceQueue\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -1254,6 +1267,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceQueue(
 
 void VulkanJsonConsumer::Process_vkQueueSubmit(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            queue,
     uint32_t                                    submitCount,
     const StructPointerDecoder<Decoded_VkSubmitInfo>& pSubmits,
@@ -1274,7 +1288,7 @@ void VulkanJsonConsumer::Process_vkQueueSubmit(
     OutputStringJson(outputFile, "\"name\" : \"vkQueueSubmit\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -1367,6 +1381,7 @@ void VulkanJsonConsumer::Process_vkQueueSubmit(
 
 void VulkanJsonConsumer::Process_vkQueueWaitIdle(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            queue)
 {
     uint32_t indent = 5;
@@ -1384,7 +1399,7 @@ void VulkanJsonConsumer::Process_vkQueueWaitIdle(
     OutputStringJson(outputFile, "\"name\" : \"vkQueueWaitIdle\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -1421,6 +1436,7 @@ void VulkanJsonConsumer::Process_vkQueueWaitIdle(
 
 void VulkanJsonConsumer::Process_vkDeviceWaitIdle(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device)
 {
     uint32_t indent = 5;
@@ -1438,7 +1454,7 @@ void VulkanJsonConsumer::Process_vkDeviceWaitIdle(
     OutputStringJson(outputFile, "\"name\" : \"vkDeviceWaitIdle\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -1475,6 +1491,7 @@ void VulkanJsonConsumer::Process_vkDeviceWaitIdle(
 
 void VulkanJsonConsumer::Process_vkAllocateMemory(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkMemoryAllocateInfo>& pAllocateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
@@ -1495,7 +1512,7 @@ void VulkanJsonConsumer::Process_vkAllocateMemory(
     OutputStringJson(outputFile, "\"name\" : \"vkAllocateMemory\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -1610,6 +1627,7 @@ void VulkanJsonConsumer::Process_vkAllocateMemory(
 }
 
 void VulkanJsonConsumer::Process_vkFreeMemory(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            memory,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
@@ -1629,7 +1647,7 @@ void VulkanJsonConsumer::Process_vkFreeMemory(
     OutputStringJson(outputFile, "\"name\" : \"vkFreeMemory\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -1703,6 +1721,7 @@ void VulkanJsonConsumer::Process_vkFreeMemory(
 
 void VulkanJsonConsumer::Process_vkMapMemory(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            memory,
     VkDeviceSize                                offset,
@@ -1725,7 +1744,7 @@ void VulkanJsonConsumer::Process_vkMapMemory(
     OutputStringJson(outputFile, "\"name\" : \"vkMapMemory\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -1848,6 +1867,7 @@ void VulkanJsonConsumer::Process_vkMapMemory(
 }
 
 void VulkanJsonConsumer::Process_vkUnmapMemory(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            memory)
 {
@@ -1866,7 +1886,7 @@ void VulkanJsonConsumer::Process_vkUnmapMemory(
     OutputStringJson(outputFile, "\"name\" : \"vkUnmapMemory\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -1914,6 +1934,7 @@ void VulkanJsonConsumer::Process_vkUnmapMemory(
 
 void VulkanJsonConsumer::Process_vkFlushMappedMemoryRanges(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     uint32_t                                    memoryRangeCount,
     const StructPointerDecoder<Decoded_VkMappedMemoryRange>& pMemoryRanges)
@@ -1933,7 +1954,7 @@ void VulkanJsonConsumer::Process_vkFlushMappedMemoryRanges(
     OutputStringJson(outputFile, "\"name\" : \"vkFlushMappedMemoryRanges\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -2011,6 +2032,7 @@ void VulkanJsonConsumer::Process_vkFlushMappedMemoryRanges(
 
 void VulkanJsonConsumer::Process_vkInvalidateMappedMemoryRanges(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     uint32_t                                    memoryRangeCount,
     const StructPointerDecoder<Decoded_VkMappedMemoryRange>& pMemoryRanges)
@@ -2030,7 +2052,7 @@ void VulkanJsonConsumer::Process_vkInvalidateMappedMemoryRanges(
     OutputStringJson(outputFile, "\"name\" : \"vkInvalidateMappedMemoryRanges\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -2107,6 +2129,7 @@ void VulkanJsonConsumer::Process_vkInvalidateMappedMemoryRanges(
 }
 
 void VulkanJsonConsumer::Process_vkGetDeviceMemoryCommitment(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            memory,
     PointerDecoder<VkDeviceSize>*               pCommittedMemoryInBytes)
@@ -2126,7 +2149,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceMemoryCommitment(
     OutputStringJson(outputFile, "\"name\" : \"vkGetDeviceMemoryCommitment\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -2202,6 +2225,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceMemoryCommitment(
 
 void VulkanJsonConsumer::Process_vkBindBufferMemory(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            buffer,
     format::HandleId                            memory,
@@ -2222,7 +2246,7 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory(
     OutputStringJson(outputFile, "\"name\" : \"vkBindBufferMemory\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -2304,6 +2328,7 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory(
 
 void VulkanJsonConsumer::Process_vkBindImageMemory(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            image,
     format::HandleId                            memory,
@@ -2324,7 +2349,7 @@ void VulkanJsonConsumer::Process_vkBindImageMemory(
     OutputStringJson(outputFile, "\"name\" : \"vkBindImageMemory\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -2405,6 +2430,7 @@ void VulkanJsonConsumer::Process_vkBindImageMemory(
 }
 
 void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            buffer,
     StructPointerDecoder<Decoded_VkMemoryRequirements>* pMemoryRequirements)
@@ -2424,7 +2450,7 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements(
     OutputStringJson(outputFile, "\"name\" : \"vkGetBufferMemoryRequirements\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -2497,6 +2523,7 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements(
 }
 
 void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            image,
     StructPointerDecoder<Decoded_VkMemoryRequirements>* pMemoryRequirements)
@@ -2516,7 +2543,7 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements(
     OutputStringJson(outputFile, "\"name\" : \"vkGetImageMemoryRequirements\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -2589,6 +2616,7 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements(
 }
 
 void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            image,
     PointerDecoder<uint32_t>*                   pSparseMemoryRequirementCount,
@@ -2609,7 +2637,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements(
     OutputStringJson(outputFile, "\"name\" : \"vkGetImageSparseMemoryRequirements\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -2709,6 +2737,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements(
 }
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     VkFormat                                    format,
     VkImageType                                 type,
@@ -2733,7 +2762,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
     OutputStringJson(outputFile, "\"name\" : \"vkGetPhysicalDeviceSparseImageFormatProperties\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -2894,6 +2923,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
 
 void VulkanJsonConsumer::Process_vkQueueBindSparse(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            queue,
     uint32_t                                    bindInfoCount,
     const StructPointerDecoder<Decoded_VkBindSparseInfo>& pBindInfo,
@@ -2914,7 +2944,7 @@ void VulkanJsonConsumer::Process_vkQueueBindSparse(
     OutputStringJson(outputFile, "\"name\" : \"vkQueueBindSparse\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -3007,6 +3037,7 @@ void VulkanJsonConsumer::Process_vkQueueBindSparse(
 
 void VulkanJsonConsumer::Process_vkCreateFence(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkFenceCreateInfo>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
@@ -3027,7 +3058,7 @@ void VulkanJsonConsumer::Process_vkCreateFence(
     OutputStringJson(outputFile, "\"name\" : \"vkCreateFence\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -3142,6 +3173,7 @@ void VulkanJsonConsumer::Process_vkCreateFence(
 }
 
 void VulkanJsonConsumer::Process_vkDestroyFence(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            fence,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
@@ -3161,7 +3193,7 @@ void VulkanJsonConsumer::Process_vkDestroyFence(
     OutputStringJson(outputFile, "\"name\" : \"vkDestroyFence\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -3235,6 +3267,7 @@ void VulkanJsonConsumer::Process_vkDestroyFence(
 
 void VulkanJsonConsumer::Process_vkResetFences(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     uint32_t                                    fenceCount,
     const HandlePointerDecoder<VkFence>&        pFences)
@@ -3254,7 +3287,7 @@ void VulkanJsonConsumer::Process_vkResetFences(
     OutputStringJson(outputFile, "\"name\" : \"vkResetFences\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -3333,6 +3366,7 @@ void VulkanJsonConsumer::Process_vkResetFences(
 
 void VulkanJsonConsumer::Process_vkGetFenceStatus(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            fence)
 {
@@ -3351,7 +3385,7 @@ void VulkanJsonConsumer::Process_vkGetFenceStatus(
     OutputStringJson(outputFile, "\"name\" : \"vkGetFenceStatus\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -3403,6 +3437,7 @@ void VulkanJsonConsumer::Process_vkGetFenceStatus(
 
 void VulkanJsonConsumer::Process_vkWaitForFences(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     uint32_t                                    fenceCount,
     const HandlePointerDecoder<VkFence>&        pFences,
@@ -3424,7 +3459,7 @@ void VulkanJsonConsumer::Process_vkWaitForFences(
     OutputStringJson(outputFile, "\"name\" : \"vkWaitForFences\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -3533,6 +3568,7 @@ void VulkanJsonConsumer::Process_vkWaitForFences(
 
 void VulkanJsonConsumer::Process_vkCreateSemaphore(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkSemaphoreCreateInfo>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
@@ -3553,7 +3589,7 @@ void VulkanJsonConsumer::Process_vkCreateSemaphore(
     OutputStringJson(outputFile, "\"name\" : \"vkCreateSemaphore\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -3668,6 +3704,7 @@ void VulkanJsonConsumer::Process_vkCreateSemaphore(
 }
 
 void VulkanJsonConsumer::Process_vkDestroySemaphore(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            semaphore,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
@@ -3687,7 +3724,7 @@ void VulkanJsonConsumer::Process_vkDestroySemaphore(
     OutputStringJson(outputFile, "\"name\" : \"vkDestroySemaphore\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -3761,6 +3798,7 @@ void VulkanJsonConsumer::Process_vkDestroySemaphore(
 
 void VulkanJsonConsumer::Process_vkCreateEvent(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkEventCreateInfo>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
@@ -3781,7 +3819,7 @@ void VulkanJsonConsumer::Process_vkCreateEvent(
     OutputStringJson(outputFile, "\"name\" : \"vkCreateEvent\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -3896,6 +3934,7 @@ void VulkanJsonConsumer::Process_vkCreateEvent(
 }
 
 void VulkanJsonConsumer::Process_vkDestroyEvent(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            event,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
@@ -3915,7 +3954,7 @@ void VulkanJsonConsumer::Process_vkDestroyEvent(
     OutputStringJson(outputFile, "\"name\" : \"vkDestroyEvent\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -3989,6 +4028,7 @@ void VulkanJsonConsumer::Process_vkDestroyEvent(
 
 void VulkanJsonConsumer::Process_vkGetEventStatus(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            event)
 {
@@ -4007,7 +4047,7 @@ void VulkanJsonConsumer::Process_vkGetEventStatus(
     OutputStringJson(outputFile, "\"name\" : \"vkGetEventStatus\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -4059,6 +4099,7 @@ void VulkanJsonConsumer::Process_vkGetEventStatus(
 
 void VulkanJsonConsumer::Process_vkSetEvent(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            event)
 {
@@ -4077,7 +4118,7 @@ void VulkanJsonConsumer::Process_vkSetEvent(
     OutputStringJson(outputFile, "\"name\" : \"vkSetEvent\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -4129,6 +4170,7 @@ void VulkanJsonConsumer::Process_vkSetEvent(
 
 void VulkanJsonConsumer::Process_vkResetEvent(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            event)
 {
@@ -4147,7 +4189,7 @@ void VulkanJsonConsumer::Process_vkResetEvent(
     OutputStringJson(outputFile, "\"name\" : \"vkResetEvent\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -4199,6 +4241,7 @@ void VulkanJsonConsumer::Process_vkResetEvent(
 
 void VulkanJsonConsumer::Process_vkCreateQueryPool(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkQueryPoolCreateInfo>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
@@ -4219,7 +4262,7 @@ void VulkanJsonConsumer::Process_vkCreateQueryPool(
     OutputStringJson(outputFile, "\"name\" : \"vkCreateQueryPool\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -4334,6 +4377,7 @@ void VulkanJsonConsumer::Process_vkCreateQueryPool(
 }
 
 void VulkanJsonConsumer::Process_vkDestroyQueryPool(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            queryPool,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
@@ -4353,7 +4397,7 @@ void VulkanJsonConsumer::Process_vkDestroyQueryPool(
     OutputStringJson(outputFile, "\"name\" : \"vkDestroyQueryPool\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -4427,6 +4471,7 @@ void VulkanJsonConsumer::Process_vkDestroyQueryPool(
 
 void VulkanJsonConsumer::Process_vkGetQueryPoolResults(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            queryPool,
     uint32_t                                    firstQuery,
@@ -4451,7 +4496,7 @@ void VulkanJsonConsumer::Process_vkGetQueryPoolResults(
     OutputStringJson(outputFile, "\"name\" : \"vkGetQueryPoolResults\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -4605,6 +4650,7 @@ void VulkanJsonConsumer::Process_vkGetQueryPoolResults(
 
 void VulkanJsonConsumer::Process_vkCreateBuffer(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkBufferCreateInfo>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
@@ -4625,7 +4671,7 @@ void VulkanJsonConsumer::Process_vkCreateBuffer(
     OutputStringJson(outputFile, "\"name\" : \"vkCreateBuffer\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -4740,6 +4786,7 @@ void VulkanJsonConsumer::Process_vkCreateBuffer(
 }
 
 void VulkanJsonConsumer::Process_vkDestroyBuffer(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            buffer,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
@@ -4759,7 +4806,7 @@ void VulkanJsonConsumer::Process_vkDestroyBuffer(
     OutputStringJson(outputFile, "\"name\" : \"vkDestroyBuffer\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -4833,6 +4880,7 @@ void VulkanJsonConsumer::Process_vkDestroyBuffer(
 
 void VulkanJsonConsumer::Process_vkCreateBufferView(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkBufferViewCreateInfo>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
@@ -4853,7 +4901,7 @@ void VulkanJsonConsumer::Process_vkCreateBufferView(
     OutputStringJson(outputFile, "\"name\" : \"vkCreateBufferView\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -4968,6 +5016,7 @@ void VulkanJsonConsumer::Process_vkCreateBufferView(
 }
 
 void VulkanJsonConsumer::Process_vkDestroyBufferView(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            bufferView,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
@@ -4987,7 +5036,7 @@ void VulkanJsonConsumer::Process_vkDestroyBufferView(
     OutputStringJson(outputFile, "\"name\" : \"vkDestroyBufferView\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -5061,6 +5110,7 @@ void VulkanJsonConsumer::Process_vkDestroyBufferView(
 
 void VulkanJsonConsumer::Process_vkCreateImage(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkImageCreateInfo>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
@@ -5081,7 +5131,7 @@ void VulkanJsonConsumer::Process_vkCreateImage(
     OutputStringJson(outputFile, "\"name\" : \"vkCreateImage\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -5196,6 +5246,7 @@ void VulkanJsonConsumer::Process_vkCreateImage(
 }
 
 void VulkanJsonConsumer::Process_vkDestroyImage(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            image,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
@@ -5215,7 +5266,7 @@ void VulkanJsonConsumer::Process_vkDestroyImage(
     OutputStringJson(outputFile, "\"name\" : \"vkDestroyImage\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -5288,6 +5339,7 @@ void VulkanJsonConsumer::Process_vkDestroyImage(
 }
 
 void VulkanJsonConsumer::Process_vkGetImageSubresourceLayout(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            image,
     const StructPointerDecoder<Decoded_VkImageSubresource>& pSubresource,
@@ -5308,7 +5360,7 @@ void VulkanJsonConsumer::Process_vkGetImageSubresourceLayout(
     OutputStringJson(outputFile, "\"name\" : \"vkGetImageSubresourceLayout\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -5408,6 +5460,7 @@ void VulkanJsonConsumer::Process_vkGetImageSubresourceLayout(
 
 void VulkanJsonConsumer::Process_vkCreateImageView(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkImageViewCreateInfo>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
@@ -5428,7 +5481,7 @@ void VulkanJsonConsumer::Process_vkCreateImageView(
     OutputStringJson(outputFile, "\"name\" : \"vkCreateImageView\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -5543,6 +5596,7 @@ void VulkanJsonConsumer::Process_vkCreateImageView(
 }
 
 void VulkanJsonConsumer::Process_vkDestroyImageView(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            imageView,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
@@ -5562,7 +5616,7 @@ void VulkanJsonConsumer::Process_vkDestroyImageView(
     OutputStringJson(outputFile, "\"name\" : \"vkDestroyImageView\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -5636,6 +5690,7 @@ void VulkanJsonConsumer::Process_vkDestroyImageView(
 
 void VulkanJsonConsumer::Process_vkCreateShaderModule(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkShaderModuleCreateInfo>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
@@ -5656,7 +5711,7 @@ void VulkanJsonConsumer::Process_vkCreateShaderModule(
     OutputStringJson(outputFile, "\"name\" : \"vkCreateShaderModule\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -5771,6 +5826,7 @@ void VulkanJsonConsumer::Process_vkCreateShaderModule(
 }
 
 void VulkanJsonConsumer::Process_vkDestroyShaderModule(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            shaderModule,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
@@ -5790,7 +5846,7 @@ void VulkanJsonConsumer::Process_vkDestroyShaderModule(
     OutputStringJson(outputFile, "\"name\" : \"vkDestroyShaderModule\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -5864,6 +5920,7 @@ void VulkanJsonConsumer::Process_vkDestroyShaderModule(
 
 void VulkanJsonConsumer::Process_vkCreatePipelineCache(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkPipelineCacheCreateInfo>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
@@ -5884,7 +5941,7 @@ void VulkanJsonConsumer::Process_vkCreatePipelineCache(
     OutputStringJson(outputFile, "\"name\" : \"vkCreatePipelineCache\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -5999,6 +6056,7 @@ void VulkanJsonConsumer::Process_vkCreatePipelineCache(
 }
 
 void VulkanJsonConsumer::Process_vkDestroyPipelineCache(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            pipelineCache,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
@@ -6018,7 +6076,7 @@ void VulkanJsonConsumer::Process_vkDestroyPipelineCache(
     OutputStringJson(outputFile, "\"name\" : \"vkDestroyPipelineCache\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -6092,6 +6150,7 @@ void VulkanJsonConsumer::Process_vkDestroyPipelineCache(
 
 void VulkanJsonConsumer::Process_vkGetPipelineCacheData(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            pipelineCache,
     PointerDecoder<size_t>*                     pDataSize,
@@ -6112,7 +6171,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineCacheData(
     OutputStringJson(outputFile, "\"name\" : \"vkGetPipelineCacheData\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -6218,6 +6277,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineCacheData(
 
 void VulkanJsonConsumer::Process_vkMergePipelineCaches(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            dstCache,
     uint32_t                                    srcCacheCount,
@@ -6238,7 +6298,7 @@ void VulkanJsonConsumer::Process_vkMergePipelineCaches(
     OutputStringJson(outputFile, "\"name\" : \"vkMergePipelineCaches\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -6332,6 +6392,7 @@ void VulkanJsonConsumer::Process_vkMergePipelineCaches(
 
 void VulkanJsonConsumer::Process_vkCreateGraphicsPipelines(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            pipelineCache,
     uint32_t                                    createInfoCount,
@@ -6354,7 +6415,7 @@ void VulkanJsonConsumer::Process_vkCreateGraphicsPipelines(
     OutputStringJson(outputFile, "\"name\" : \"vkCreateGraphicsPipelines\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -6500,6 +6561,7 @@ void VulkanJsonConsumer::Process_vkCreateGraphicsPipelines(
 
 void VulkanJsonConsumer::Process_vkCreateComputePipelines(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            pipelineCache,
     uint32_t                                    createInfoCount,
@@ -6522,7 +6584,7 @@ void VulkanJsonConsumer::Process_vkCreateComputePipelines(
     OutputStringJson(outputFile, "\"name\" : \"vkCreateComputePipelines\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -6667,6 +6729,7 @@ void VulkanJsonConsumer::Process_vkCreateComputePipelines(
 }
 
 void VulkanJsonConsumer::Process_vkDestroyPipeline(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            pipeline,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
@@ -6686,7 +6749,7 @@ void VulkanJsonConsumer::Process_vkDestroyPipeline(
     OutputStringJson(outputFile, "\"name\" : \"vkDestroyPipeline\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -6760,6 +6823,7 @@ void VulkanJsonConsumer::Process_vkDestroyPipeline(
 
 void VulkanJsonConsumer::Process_vkCreatePipelineLayout(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkPipelineLayoutCreateInfo>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
@@ -6780,7 +6844,7 @@ void VulkanJsonConsumer::Process_vkCreatePipelineLayout(
     OutputStringJson(outputFile, "\"name\" : \"vkCreatePipelineLayout\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -6895,6 +6959,7 @@ void VulkanJsonConsumer::Process_vkCreatePipelineLayout(
 }
 
 void VulkanJsonConsumer::Process_vkDestroyPipelineLayout(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            pipelineLayout,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
@@ -6914,7 +6979,7 @@ void VulkanJsonConsumer::Process_vkDestroyPipelineLayout(
     OutputStringJson(outputFile, "\"name\" : \"vkDestroyPipelineLayout\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -6988,6 +7053,7 @@ void VulkanJsonConsumer::Process_vkDestroyPipelineLayout(
 
 void VulkanJsonConsumer::Process_vkCreateSampler(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkSamplerCreateInfo>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
@@ -7008,7 +7074,7 @@ void VulkanJsonConsumer::Process_vkCreateSampler(
     OutputStringJson(outputFile, "\"name\" : \"vkCreateSampler\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -7123,6 +7189,7 @@ void VulkanJsonConsumer::Process_vkCreateSampler(
 }
 
 void VulkanJsonConsumer::Process_vkDestroySampler(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            sampler,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
@@ -7142,7 +7209,7 @@ void VulkanJsonConsumer::Process_vkDestroySampler(
     OutputStringJson(outputFile, "\"name\" : \"vkDestroySampler\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -7216,6 +7283,7 @@ void VulkanJsonConsumer::Process_vkDestroySampler(
 
 void VulkanJsonConsumer::Process_vkCreateDescriptorSetLayout(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkDescriptorSetLayoutCreateInfo>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
@@ -7236,7 +7304,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorSetLayout(
     OutputStringJson(outputFile, "\"name\" : \"vkCreateDescriptorSetLayout\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -7351,6 +7419,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorSetLayout(
 }
 
 void VulkanJsonConsumer::Process_vkDestroyDescriptorSetLayout(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            descriptorSetLayout,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
@@ -7370,7 +7439,7 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorSetLayout(
     OutputStringJson(outputFile, "\"name\" : \"vkDestroyDescriptorSetLayout\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -7444,6 +7513,7 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorSetLayout(
 
 void VulkanJsonConsumer::Process_vkCreateDescriptorPool(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkDescriptorPoolCreateInfo>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
@@ -7464,7 +7534,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorPool(
     OutputStringJson(outputFile, "\"name\" : \"vkCreateDescriptorPool\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -7579,6 +7649,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorPool(
 }
 
 void VulkanJsonConsumer::Process_vkDestroyDescriptorPool(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            descriptorPool,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
@@ -7598,7 +7669,7 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorPool(
     OutputStringJson(outputFile, "\"name\" : \"vkDestroyDescriptorPool\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -7672,6 +7743,7 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorPool(
 
 void VulkanJsonConsumer::Process_vkResetDescriptorPool(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            descriptorPool,
     VkDescriptorPoolResetFlags                  flags)
@@ -7691,7 +7763,7 @@ void VulkanJsonConsumer::Process_vkResetDescriptorPool(
     OutputStringJson(outputFile, "\"name\" : \"vkResetDescriptorPool\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -7758,6 +7830,7 @@ void VulkanJsonConsumer::Process_vkResetDescriptorPool(
 
 void VulkanJsonConsumer::Process_vkAllocateDescriptorSets(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkDescriptorSetAllocateInfo>& pAllocateInfo,
     HandlePointerDecoder<VkDescriptorSet>*      pDescriptorSets)
@@ -7777,7 +7850,7 @@ void VulkanJsonConsumer::Process_vkAllocateDescriptorSets(
     OutputStringJson(outputFile, "\"name\" : \"vkAllocateDescriptorSets\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -7867,6 +7940,7 @@ void VulkanJsonConsumer::Process_vkAllocateDescriptorSets(
 
 void VulkanJsonConsumer::Process_vkFreeDescriptorSets(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            descriptorPool,
     uint32_t                                    descriptorSetCount,
@@ -7887,7 +7961,7 @@ void VulkanJsonConsumer::Process_vkFreeDescriptorSets(
     OutputStringJson(outputFile, "\"name\" : \"vkFreeDescriptorSets\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -7980,6 +8054,7 @@ void VulkanJsonConsumer::Process_vkFreeDescriptorSets(
 }
 
 void VulkanJsonConsumer::Process_vkUpdateDescriptorSets(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     uint32_t                                    descriptorWriteCount,
     const StructPointerDecoder<Decoded_VkWriteDescriptorSet>& pDescriptorWrites,
@@ -8001,7 +8076,7 @@ void VulkanJsonConsumer::Process_vkUpdateDescriptorSets(
     OutputStringJson(outputFile, "\"name\" : \"vkUpdateDescriptorSets\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -8116,6 +8191,7 @@ void VulkanJsonConsumer::Process_vkUpdateDescriptorSets(
 
 void VulkanJsonConsumer::Process_vkCreateFramebuffer(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkFramebufferCreateInfo>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
@@ -8136,7 +8212,7 @@ void VulkanJsonConsumer::Process_vkCreateFramebuffer(
     OutputStringJson(outputFile, "\"name\" : \"vkCreateFramebuffer\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -8251,6 +8327,7 @@ void VulkanJsonConsumer::Process_vkCreateFramebuffer(
 }
 
 void VulkanJsonConsumer::Process_vkDestroyFramebuffer(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            framebuffer,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
@@ -8270,7 +8347,7 @@ void VulkanJsonConsumer::Process_vkDestroyFramebuffer(
     OutputStringJson(outputFile, "\"name\" : \"vkDestroyFramebuffer\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -8344,6 +8421,7 @@ void VulkanJsonConsumer::Process_vkDestroyFramebuffer(
 
 void VulkanJsonConsumer::Process_vkCreateRenderPass(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkRenderPassCreateInfo>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
@@ -8364,7 +8442,7 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass(
     OutputStringJson(outputFile, "\"name\" : \"vkCreateRenderPass\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -8479,6 +8557,7 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass(
 }
 
 void VulkanJsonConsumer::Process_vkDestroyRenderPass(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            renderPass,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
@@ -8498,7 +8577,7 @@ void VulkanJsonConsumer::Process_vkDestroyRenderPass(
     OutputStringJson(outputFile, "\"name\" : \"vkDestroyRenderPass\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -8571,6 +8650,7 @@ void VulkanJsonConsumer::Process_vkDestroyRenderPass(
 }
 
 void VulkanJsonConsumer::Process_vkGetRenderAreaGranularity(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            renderPass,
     StructPointerDecoder<Decoded_VkExtent2D>*   pGranularity)
@@ -8590,7 +8670,7 @@ void VulkanJsonConsumer::Process_vkGetRenderAreaGranularity(
     OutputStringJson(outputFile, "\"name\" : \"vkGetRenderAreaGranularity\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -8664,6 +8744,7 @@ void VulkanJsonConsumer::Process_vkGetRenderAreaGranularity(
 
 void VulkanJsonConsumer::Process_vkCreateCommandPool(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkCommandPoolCreateInfo>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
@@ -8684,7 +8765,7 @@ void VulkanJsonConsumer::Process_vkCreateCommandPool(
     OutputStringJson(outputFile, "\"name\" : \"vkCreateCommandPool\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -8799,6 +8880,7 @@ void VulkanJsonConsumer::Process_vkCreateCommandPool(
 }
 
 void VulkanJsonConsumer::Process_vkDestroyCommandPool(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            commandPool,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
@@ -8818,7 +8900,7 @@ void VulkanJsonConsumer::Process_vkDestroyCommandPool(
     OutputStringJson(outputFile, "\"name\" : \"vkDestroyCommandPool\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -8892,6 +8974,7 @@ void VulkanJsonConsumer::Process_vkDestroyCommandPool(
 
 void VulkanJsonConsumer::Process_vkResetCommandPool(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            commandPool,
     VkCommandPoolResetFlags                     flags)
@@ -8911,7 +8994,7 @@ void VulkanJsonConsumer::Process_vkResetCommandPool(
     OutputStringJson(outputFile, "\"name\" : \"vkResetCommandPool\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -8978,6 +9061,7 @@ void VulkanJsonConsumer::Process_vkResetCommandPool(
 
 void VulkanJsonConsumer::Process_vkAllocateCommandBuffers(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkCommandBufferAllocateInfo>& pAllocateInfo,
     HandlePointerDecoder<VkCommandBuffer>*      pCommandBuffers)
@@ -8997,7 +9081,7 @@ void VulkanJsonConsumer::Process_vkAllocateCommandBuffers(
     OutputStringJson(outputFile, "\"name\" : \"vkAllocateCommandBuffers\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -9086,6 +9170,7 @@ void VulkanJsonConsumer::Process_vkAllocateCommandBuffers(
 }
 
 void VulkanJsonConsumer::Process_vkFreeCommandBuffers(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            commandPool,
     uint32_t                                    commandBufferCount,
@@ -9106,7 +9191,7 @@ void VulkanJsonConsumer::Process_vkFreeCommandBuffers(
     OutputStringJson(outputFile, "\"name\" : \"vkFreeCommandBuffers\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -9196,6 +9281,7 @@ void VulkanJsonConsumer::Process_vkFreeCommandBuffers(
 
 void VulkanJsonConsumer::Process_vkBeginCommandBuffer(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     const StructPointerDecoder<Decoded_VkCommandBufferBeginInfo>& pBeginInfo)
 {
@@ -9214,7 +9300,7 @@ void VulkanJsonConsumer::Process_vkBeginCommandBuffer(
     OutputStringJson(outputFile, "\"name\" : \"vkBeginCommandBuffer\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -9277,6 +9363,7 @@ void VulkanJsonConsumer::Process_vkBeginCommandBuffer(
 
 void VulkanJsonConsumer::Process_vkEndCommandBuffer(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer)
 {
     uint32_t indent = 5;
@@ -9294,7 +9381,7 @@ void VulkanJsonConsumer::Process_vkEndCommandBuffer(
     OutputStringJson(outputFile, "\"name\" : \"vkEndCommandBuffer\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -9331,6 +9418,7 @@ void VulkanJsonConsumer::Process_vkEndCommandBuffer(
 
 void VulkanJsonConsumer::Process_vkResetCommandBuffer(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     VkCommandBufferResetFlags                   flags)
 {
@@ -9349,7 +9437,7 @@ void VulkanJsonConsumer::Process_vkResetCommandBuffer(
     OutputStringJson(outputFile, "\"name\" : \"vkResetCommandBuffer\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -9400,6 +9488,7 @@ void VulkanJsonConsumer::Process_vkResetCommandBuffer(
 }
 
 void VulkanJsonConsumer::Process_vkCmdBindPipeline(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     VkPipelineBindPoint                         pipelineBindPoint,
     format::HandleId                            pipeline)
@@ -9419,7 +9508,7 @@ void VulkanJsonConsumer::Process_vkCmdBindPipeline(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdBindPipeline\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -9481,6 +9570,7 @@ void VulkanJsonConsumer::Process_vkCmdBindPipeline(
 }
 
 void VulkanJsonConsumer::Process_vkCmdSetViewport(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     uint32_t                                    firstViewport,
     uint32_t                                    viewportCount,
@@ -9501,7 +9591,7 @@ void VulkanJsonConsumer::Process_vkCmdSetViewport(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdSetViewport\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -9589,6 +9679,7 @@ void VulkanJsonConsumer::Process_vkCmdSetViewport(
 }
 
 void VulkanJsonConsumer::Process_vkCmdSetScissor(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     uint32_t                                    firstScissor,
     uint32_t                                    scissorCount,
@@ -9609,7 +9700,7 @@ void VulkanJsonConsumer::Process_vkCmdSetScissor(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdSetScissor\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -9697,6 +9788,7 @@ void VulkanJsonConsumer::Process_vkCmdSetScissor(
 }
 
 void VulkanJsonConsumer::Process_vkCmdSetLineWidth(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     float                                       lineWidth)
 {
@@ -9715,7 +9807,7 @@ void VulkanJsonConsumer::Process_vkCmdSetLineWidth(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdSetLineWidth\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -9762,6 +9854,7 @@ void VulkanJsonConsumer::Process_vkCmdSetLineWidth(
 }
 
 void VulkanJsonConsumer::Process_vkCmdSetDepthBias(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     float                                       depthBiasConstantFactor,
     float                                       depthBiasClamp,
@@ -9782,7 +9875,7 @@ void VulkanJsonConsumer::Process_vkCmdSetDepthBias(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdSetDepthBias\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -9859,6 +9952,7 @@ void VulkanJsonConsumer::Process_vkCmdSetDepthBias(
 }
 
 void VulkanJsonConsumer::Process_vkCmdSetBlendConstants(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     const PointerDecoder<float>&                blendConstants)
 {
@@ -9877,7 +9971,7 @@ void VulkanJsonConsumer::Process_vkCmdSetBlendConstants(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdSetBlendConstants\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -9931,6 +10025,7 @@ void VulkanJsonConsumer::Process_vkCmdSetBlendConstants(
 }
 
 void VulkanJsonConsumer::Process_vkCmdSetDepthBounds(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     float                                       minDepthBounds,
     float                                       maxDepthBounds)
@@ -9950,7 +10045,7 @@ void VulkanJsonConsumer::Process_vkCmdSetDepthBounds(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdSetDepthBounds\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -10012,6 +10107,7 @@ void VulkanJsonConsumer::Process_vkCmdSetDepthBounds(
 }
 
 void VulkanJsonConsumer::Process_vkCmdSetStencilCompareMask(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     VkStencilFaceFlags                          faceMask,
     uint32_t                                    compareMask)
@@ -10031,7 +10127,7 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilCompareMask(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdSetStencilCompareMask\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -10093,6 +10189,7 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilCompareMask(
 }
 
 void VulkanJsonConsumer::Process_vkCmdSetStencilWriteMask(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     VkStencilFaceFlags                          faceMask,
     uint32_t                                    writeMask)
@@ -10112,7 +10209,7 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilWriteMask(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdSetStencilWriteMask\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -10174,6 +10271,7 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilWriteMask(
 }
 
 void VulkanJsonConsumer::Process_vkCmdSetStencilReference(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     VkStencilFaceFlags                          faceMask,
     uint32_t                                    reference)
@@ -10193,7 +10291,7 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilReference(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdSetStencilReference\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -10255,6 +10353,7 @@ void VulkanJsonConsumer::Process_vkCmdSetStencilReference(
 }
 
 void VulkanJsonConsumer::Process_vkCmdBindDescriptorSets(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     VkPipelineBindPoint                         pipelineBindPoint,
     format::HandleId                            layout,
@@ -10279,7 +10378,7 @@ void VulkanJsonConsumer::Process_vkCmdBindDescriptorSets(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdBindDescriptorSets\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -10440,6 +10539,7 @@ void VulkanJsonConsumer::Process_vkCmdBindDescriptorSets(
 }
 
 void VulkanJsonConsumer::Process_vkCmdBindIndexBuffer(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            buffer,
     VkDeviceSize                                offset,
@@ -10460,7 +10560,7 @@ void VulkanJsonConsumer::Process_vkCmdBindIndexBuffer(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdBindIndexBuffer\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -10537,6 +10637,7 @@ void VulkanJsonConsumer::Process_vkCmdBindIndexBuffer(
 }
 
 void VulkanJsonConsumer::Process_vkCmdBindVertexBuffers(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     uint32_t                                    firstBinding,
     uint32_t                                    bindingCount,
@@ -10558,7 +10659,7 @@ void VulkanJsonConsumer::Process_vkCmdBindVertexBuffers(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdBindVertexBuffers\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -10674,6 +10775,7 @@ void VulkanJsonConsumer::Process_vkCmdBindVertexBuffers(
 }
 
 void VulkanJsonConsumer::Process_vkCmdDraw(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     uint32_t                                    vertexCount,
     uint32_t                                    instanceCount,
@@ -10695,7 +10797,7 @@ void VulkanJsonConsumer::Process_vkCmdDraw(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdDraw\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -10787,6 +10889,7 @@ void VulkanJsonConsumer::Process_vkCmdDraw(
 }
 
 void VulkanJsonConsumer::Process_vkCmdDrawIndexed(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     uint32_t                                    indexCount,
     uint32_t                                    instanceCount,
@@ -10809,7 +10912,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexed(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdDrawIndexed\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -10916,6 +11019,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexed(
 }
 
 void VulkanJsonConsumer::Process_vkCmdDrawIndirect(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            buffer,
     VkDeviceSize                                offset,
@@ -10937,7 +11041,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirect(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdDrawIndirect\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -11029,6 +11133,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirect(
 }
 
 void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirect(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            buffer,
     VkDeviceSize                                offset,
@@ -11050,7 +11155,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirect(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdDrawIndexedIndirect\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -11142,6 +11247,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirect(
 }
 
 void VulkanJsonConsumer::Process_vkCmdDispatch(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     uint32_t                                    groupCountX,
     uint32_t                                    groupCountY,
@@ -11162,7 +11268,7 @@ void VulkanJsonConsumer::Process_vkCmdDispatch(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdDispatch\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -11239,6 +11345,7 @@ void VulkanJsonConsumer::Process_vkCmdDispatch(
 }
 
 void VulkanJsonConsumer::Process_vkCmdDispatchIndirect(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            buffer,
     VkDeviceSize                                offset)
@@ -11258,7 +11365,7 @@ void VulkanJsonConsumer::Process_vkCmdDispatchIndirect(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdDispatchIndirect\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -11320,6 +11427,7 @@ void VulkanJsonConsumer::Process_vkCmdDispatchIndirect(
 }
 
 void VulkanJsonConsumer::Process_vkCmdCopyBuffer(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            srcBuffer,
     format::HandleId                            dstBuffer,
@@ -11341,7 +11449,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyBuffer(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdCopyBuffer\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -11444,6 +11552,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyBuffer(
 }
 
 void VulkanJsonConsumer::Process_vkCmdCopyImage(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            srcImage,
     VkImageLayout                               srcImageLayout,
@@ -11467,7 +11576,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyImage(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdCopyImage\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -11600,6 +11709,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyImage(
 }
 
 void VulkanJsonConsumer::Process_vkCmdBlitImage(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            srcImage,
     VkImageLayout                               srcImageLayout,
@@ -11624,7 +11734,7 @@ void VulkanJsonConsumer::Process_vkCmdBlitImage(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdBlitImage\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -11772,6 +11882,7 @@ void VulkanJsonConsumer::Process_vkCmdBlitImage(
 }
 
 void VulkanJsonConsumer::Process_vkCmdCopyBufferToImage(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            srcBuffer,
     format::HandleId                            dstImage,
@@ -11794,7 +11905,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyBufferToImage(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdCopyBufferToImage\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -11912,6 +12023,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyBufferToImage(
 }
 
 void VulkanJsonConsumer::Process_vkCmdCopyImageToBuffer(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            srcImage,
     VkImageLayout                               srcImageLayout,
@@ -11934,7 +12046,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyImageToBuffer(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdCopyImageToBuffer\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -12052,6 +12164,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyImageToBuffer(
 }
 
 void VulkanJsonConsumer::Process_vkCmdUpdateBuffer(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            dstBuffer,
     VkDeviceSize                                dstOffset,
@@ -12073,7 +12186,7 @@ void VulkanJsonConsumer::Process_vkCmdUpdateBuffer(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdUpdateBuffer\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -12173,6 +12286,7 @@ void VulkanJsonConsumer::Process_vkCmdUpdateBuffer(
 }
 
 void VulkanJsonConsumer::Process_vkCmdFillBuffer(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            dstBuffer,
     VkDeviceSize                                dstOffset,
@@ -12194,7 +12308,7 @@ void VulkanJsonConsumer::Process_vkCmdFillBuffer(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdFillBuffer\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -12286,6 +12400,7 @@ void VulkanJsonConsumer::Process_vkCmdFillBuffer(
 }
 
 void VulkanJsonConsumer::Process_vkCmdClearColorImage(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            image,
     VkImageLayout                               imageLayout,
@@ -12308,7 +12423,7 @@ void VulkanJsonConsumer::Process_vkCmdClearColorImage(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdClearColorImage\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -12437,6 +12552,7 @@ void VulkanJsonConsumer::Process_vkCmdClearColorImage(
 }
 
 void VulkanJsonConsumer::Process_vkCmdClearDepthStencilImage(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            image,
     VkImageLayout                               imageLayout,
@@ -12459,7 +12575,7 @@ void VulkanJsonConsumer::Process_vkCmdClearDepthStencilImage(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdClearDepthStencilImage\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -12588,6 +12704,7 @@ void VulkanJsonConsumer::Process_vkCmdClearDepthStencilImage(
 }
 
 void VulkanJsonConsumer::Process_vkCmdClearAttachments(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     uint32_t                                    attachmentCount,
     const StructPointerDecoder<Decoded_VkClearAttachment>& pAttachments,
@@ -12609,7 +12726,7 @@ void VulkanJsonConsumer::Process_vkCmdClearAttachments(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdClearAttachments\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -12723,6 +12840,7 @@ void VulkanJsonConsumer::Process_vkCmdClearAttachments(
 }
 
 void VulkanJsonConsumer::Process_vkCmdResolveImage(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            srcImage,
     VkImageLayout                               srcImageLayout,
@@ -12746,7 +12864,7 @@ void VulkanJsonConsumer::Process_vkCmdResolveImage(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdResolveImage\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -12879,6 +12997,7 @@ void VulkanJsonConsumer::Process_vkCmdResolveImage(
 }
 
 void VulkanJsonConsumer::Process_vkCmdSetEvent(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            event,
     VkPipelineStageFlags                        stageMask)
@@ -12898,7 +13017,7 @@ void VulkanJsonConsumer::Process_vkCmdSetEvent(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdSetEvent\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -12960,6 +13079,7 @@ void VulkanJsonConsumer::Process_vkCmdSetEvent(
 }
 
 void VulkanJsonConsumer::Process_vkCmdResetEvent(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            event,
     VkPipelineStageFlags                        stageMask)
@@ -12979,7 +13099,7 @@ void VulkanJsonConsumer::Process_vkCmdResetEvent(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdResetEvent\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -13041,6 +13161,7 @@ void VulkanJsonConsumer::Process_vkCmdResetEvent(
 }
 
 void VulkanJsonConsumer::Process_vkCmdWaitEvents(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     uint32_t                                    eventCount,
     const HandlePointerDecoder<VkEvent>&        pEvents,
@@ -13068,7 +13189,7 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdWaitEvents\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -13295,6 +13416,7 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
 }
 
 void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     VkPipelineStageFlags                        srcStageMask,
     VkPipelineStageFlags                        dstStageMask,
@@ -13321,7 +13443,7 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdPipelineBarrier\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -13521,6 +13643,7 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
 }
 
 void VulkanJsonConsumer::Process_vkCmdBeginQuery(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            queryPool,
     uint32_t                                    query,
@@ -13541,7 +13664,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginQuery(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdBeginQuery\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -13618,6 +13741,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginQuery(
 }
 
 void VulkanJsonConsumer::Process_vkCmdEndQuery(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            queryPool,
     uint32_t                                    query)
@@ -13637,7 +13761,7 @@ void VulkanJsonConsumer::Process_vkCmdEndQuery(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdEndQuery\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -13699,6 +13823,7 @@ void VulkanJsonConsumer::Process_vkCmdEndQuery(
 }
 
 void VulkanJsonConsumer::Process_vkCmdResetQueryPool(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            queryPool,
     uint32_t                                    firstQuery,
@@ -13719,7 +13844,7 @@ void VulkanJsonConsumer::Process_vkCmdResetQueryPool(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdResetQueryPool\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -13796,6 +13921,7 @@ void VulkanJsonConsumer::Process_vkCmdResetQueryPool(
 }
 
 void VulkanJsonConsumer::Process_vkCmdWriteTimestamp(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     VkPipelineStageFlagBits                     pipelineStage,
     format::HandleId                            queryPool,
@@ -13816,7 +13942,7 @@ void VulkanJsonConsumer::Process_vkCmdWriteTimestamp(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdWriteTimestamp\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -13893,6 +14019,7 @@ void VulkanJsonConsumer::Process_vkCmdWriteTimestamp(
 }
 
 void VulkanJsonConsumer::Process_vkCmdCopyQueryPoolResults(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            queryPool,
     uint32_t                                    firstQuery,
@@ -13917,7 +14044,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyQueryPoolResults(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdCopyQueryPoolResults\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -14054,6 +14181,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyQueryPoolResults(
 }
 
 void VulkanJsonConsumer::Process_vkCmdPushConstants(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            layout,
     VkShaderStageFlags                          stageFlags,
@@ -14076,7 +14204,7 @@ void VulkanJsonConsumer::Process_vkCmdPushConstants(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdPushConstants\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -14195,6 +14323,7 @@ void VulkanJsonConsumer::Process_vkCmdPushConstants(
 }
 
 void VulkanJsonConsumer::Process_vkCmdBeginRenderPass(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     const StructPointerDecoder<Decoded_VkRenderPassBeginInfo>& pRenderPassBegin,
     VkSubpassContents                           contents)
@@ -14214,7 +14343,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginRenderPass(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdBeginRenderPass\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -14287,6 +14416,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginRenderPass(
 }
 
 void VulkanJsonConsumer::Process_vkCmdNextSubpass(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     VkSubpassContents                           contents)
 {
@@ -14305,7 +14435,7 @@ void VulkanJsonConsumer::Process_vkCmdNextSubpass(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdNextSubpass\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -14352,6 +14482,7 @@ void VulkanJsonConsumer::Process_vkCmdNextSubpass(
 }
 
 void VulkanJsonConsumer::Process_vkCmdEndRenderPass(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer)
 {
     uint32_t indent = 5;
@@ -14369,7 +14500,7 @@ void VulkanJsonConsumer::Process_vkCmdEndRenderPass(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdEndRenderPass\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -14401,6 +14532,7 @@ void VulkanJsonConsumer::Process_vkCmdEndRenderPass(
 }
 
 void VulkanJsonConsumer::Process_vkCmdExecuteCommands(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     uint32_t                                    commandBufferCount,
     const HandlePointerDecoder<VkCommandBuffer>& pCommandBuffers)
@@ -14420,7 +14552,7 @@ void VulkanJsonConsumer::Process_vkCmdExecuteCommands(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdExecuteCommands\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -14496,6 +14628,7 @@ void VulkanJsonConsumer::Process_vkCmdExecuteCommands(
 
 void VulkanJsonConsumer::Process_vkBindBufferMemory2(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     uint32_t                                    bindInfoCount,
     const StructPointerDecoder<Decoded_VkBindBufferMemoryInfo>& pBindInfos)
@@ -14515,7 +14648,7 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory2(
     OutputStringJson(outputFile, "\"name\" : \"vkBindBufferMemory2\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -14593,6 +14726,7 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory2(
 
 void VulkanJsonConsumer::Process_vkBindImageMemory2(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     uint32_t                                    bindInfoCount,
     const StructPointerDecoder<Decoded_VkBindImageMemoryInfo>& pBindInfos)
@@ -14612,7 +14746,7 @@ void VulkanJsonConsumer::Process_vkBindImageMemory2(
     OutputStringJson(outputFile, "\"name\" : \"vkBindImageMemory2\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -14689,6 +14823,7 @@ void VulkanJsonConsumer::Process_vkBindImageMemory2(
 }
 
 void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeatures(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     uint32_t                                    heapIndex,
     uint32_t                                    localDeviceIndex,
@@ -14710,7 +14845,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeatures(
     OutputStringJson(outputFile, "\"name\" : \"vkGetDeviceGroupPeerMemoryFeatures\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -14815,6 +14950,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeatures(
 }
 
 void VulkanJsonConsumer::Process_vkCmdSetDeviceMask(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     uint32_t                                    deviceMask)
 {
@@ -14833,7 +14969,7 @@ void VulkanJsonConsumer::Process_vkCmdSetDeviceMask(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdSetDeviceMask\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -14880,6 +15016,7 @@ void VulkanJsonConsumer::Process_vkCmdSetDeviceMask(
 }
 
 void VulkanJsonConsumer::Process_vkCmdDispatchBase(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     uint32_t                                    baseGroupX,
     uint32_t                                    baseGroupY,
@@ -14903,7 +15040,7 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBase(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdDispatchBase\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -15026,6 +15163,7 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBase(
 
 void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroups(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            instance,
     PointerDecoder<uint32_t>*                   pPhysicalDeviceGroupCount,
     StructPointerDecoder<Decoded_VkPhysicalDeviceGroupProperties>* pPhysicalDeviceGroupProperties)
@@ -15045,7 +15183,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroups(
     OutputStringJson(outputFile, "\"name\" : \"vkEnumeratePhysicalDeviceGroups\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -15134,6 +15272,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroups(
 }
 
 void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements2(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkImageMemoryRequirementsInfo2>& pInfo,
     StructPointerDecoder<Decoded_VkMemoryRequirements2>* pMemoryRequirements)
@@ -15153,7 +15292,7 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements2(
     OutputStringJson(outputFile, "\"name\" : \"vkGetImageMemoryRequirements2\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -15237,6 +15376,7 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements2(
 }
 
 void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements2(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkBufferMemoryRequirementsInfo2>& pInfo,
     StructPointerDecoder<Decoded_VkMemoryRequirements2>* pMemoryRequirements)
@@ -15256,7 +15396,7 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements2(
     OutputStringJson(outputFile, "\"name\" : \"vkGetBufferMemoryRequirements2\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -15340,6 +15480,7 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements2(
 }
 
 void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkImageSparseMemoryRequirementsInfo2>& pInfo,
     PointerDecoder<uint32_t>*                   pSparseMemoryRequirementCount,
@@ -15360,7 +15501,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2(
     OutputStringJson(outputFile, "\"name\" : \"vkGetImageSparseMemoryRequirements2\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -15471,6 +15612,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2(
 }
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures2(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     StructPointerDecoder<Decoded_VkPhysicalDeviceFeatures2>* pFeatures)
 {
@@ -15489,7 +15631,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures2(
     OutputStringJson(outputFile, "\"name\" : \"vkGetPhysicalDeviceFeatures2\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -15547,6 +15689,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures2(
 }
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties2(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     StructPointerDecoder<Decoded_VkPhysicalDeviceProperties2>* pProperties)
 {
@@ -15565,7 +15708,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties2(
     OutputStringJson(outputFile, "\"name\" : \"vkGetPhysicalDeviceProperties2\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -15623,6 +15766,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties2(
 }
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties2(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     VkFormat                                    format,
     StructPointerDecoder<Decoded_VkFormatProperties2>* pFormatProperties)
@@ -15642,7 +15786,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties2(
     OutputStringJson(outputFile, "\"name\" : \"vkGetPhysicalDeviceFormatProperties2\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -15716,6 +15860,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties2(
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     const StructPointerDecoder<Decoded_VkPhysicalDeviceImageFormatInfo2>& pImageFormatInfo,
     StructPointerDecoder<Decoded_VkImageFormatProperties2>* pImageFormatProperties)
@@ -15735,7 +15880,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2(
     OutputStringJson(outputFile, "\"name\" : \"vkGetPhysicalDeviceImageFormatProperties2\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -15823,6 +15968,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2(
 }
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     PointerDecoder<uint32_t>*                   pQueueFamilyPropertyCount,
     StructPointerDecoder<Decoded_VkQueueFamilyProperties2>* pQueueFamilyProperties)
@@ -15842,7 +15988,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2(
     OutputStringJson(outputFile, "\"name\" : \"vkGetPhysicalDeviceQueueFamilyProperties2\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -15927,6 +16073,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2(
 }
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties2(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     StructPointerDecoder<Decoded_VkPhysicalDeviceMemoryProperties2>* pMemoryProperties)
 {
@@ -15945,7 +16092,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties2(
     OutputStringJson(outputFile, "\"name\" : \"vkGetPhysicalDeviceMemoryProperties2\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -16003,6 +16150,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties2(
 }
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     const StructPointerDecoder<Decoded_VkPhysicalDeviceSparseImageFormatInfo2>& pFormatInfo,
     PointerDecoder<uint32_t>*                   pPropertyCount,
@@ -16023,7 +16171,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     OutputStringJson(outputFile, "\"name\" : \"vkGetPhysicalDeviceSparseImageFormatProperties2\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -16134,6 +16282,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
 }
 
 void VulkanJsonConsumer::Process_vkTrimCommandPool(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            commandPool,
     VkCommandPoolTrimFlags                      flags)
@@ -16153,7 +16302,7 @@ void VulkanJsonConsumer::Process_vkTrimCommandPool(
     OutputStringJson(outputFile, "\"name\" : \"vkTrimCommandPool\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -16215,6 +16364,7 @@ void VulkanJsonConsumer::Process_vkTrimCommandPool(
 }
 
 void VulkanJsonConsumer::Process_vkGetDeviceQueue2(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkDeviceQueueInfo2>& pQueueInfo,
     HandlePointerDecoder<VkQueue>*              pQueue)
@@ -16234,7 +16384,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceQueue2(
     OutputStringJson(outputFile, "\"name\" : \"vkGetDeviceQueue2\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -16320,6 +16470,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceQueue2(
 
 void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversion(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkSamplerYcbcrConversionCreateInfo>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
@@ -16340,7 +16491,7 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversion(
     OutputStringJson(outputFile, "\"name\" : \"vkCreateSamplerYcbcrConversion\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -16455,6 +16606,7 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversion(
 }
 
 void VulkanJsonConsumer::Process_vkDestroySamplerYcbcrConversion(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            ycbcrConversion,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
@@ -16474,7 +16626,7 @@ void VulkanJsonConsumer::Process_vkDestroySamplerYcbcrConversion(
     OutputStringJson(outputFile, "\"name\" : \"vkDestroySamplerYcbcrConversion\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -16548,6 +16700,7 @@ void VulkanJsonConsumer::Process_vkDestroySamplerYcbcrConversion(
 
 void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplate(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkDescriptorUpdateTemplateCreateInfo>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
@@ -16568,7 +16721,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplate(
     OutputStringJson(outputFile, "\"name\" : \"vkCreateDescriptorUpdateTemplate\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -16683,6 +16836,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplate(
 }
 
 void VulkanJsonConsumer::Process_vkDestroyDescriptorUpdateTemplate(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            descriptorUpdateTemplate,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
@@ -16702,7 +16856,7 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorUpdateTemplate(
     OutputStringJson(outputFile, "\"name\" : \"vkDestroyDescriptorUpdateTemplate\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -16775,6 +16929,7 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorUpdateTemplate(
 }
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalBufferProperties(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     const StructPointerDecoder<Decoded_VkPhysicalDeviceExternalBufferInfo>& pExternalBufferInfo,
     StructPointerDecoder<Decoded_VkExternalBufferProperties>* pExternalBufferProperties)
@@ -16794,7 +16949,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalBufferProperties(
     OutputStringJson(outputFile, "\"name\" : \"vkGetPhysicalDeviceExternalBufferProperties\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -16878,6 +17033,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalBufferProperties(
 }
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalFenceProperties(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     const StructPointerDecoder<Decoded_VkPhysicalDeviceExternalFenceInfo>& pExternalFenceInfo,
     StructPointerDecoder<Decoded_VkExternalFenceProperties>* pExternalFenceProperties)
@@ -16897,7 +17053,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalFenceProperties(
     OutputStringJson(outputFile, "\"name\" : \"vkGetPhysicalDeviceExternalFenceProperties\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -16981,6 +17137,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalFenceProperties(
 }
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalSemaphoreProperties(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     const StructPointerDecoder<Decoded_VkPhysicalDeviceExternalSemaphoreInfo>& pExternalSemaphoreInfo,
     StructPointerDecoder<Decoded_VkExternalSemaphoreProperties>* pExternalSemaphoreProperties)
@@ -17000,7 +17157,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalSemaphoreProperties(
     OutputStringJson(outputFile, "\"name\" : \"vkGetPhysicalDeviceExternalSemaphoreProperties\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -17084,6 +17241,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalSemaphoreProperties(
 }
 
 void VulkanJsonConsumer::Process_vkGetDescriptorSetLayoutSupport(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkDescriptorSetLayoutCreateInfo>& pCreateInfo,
     StructPointerDecoder<Decoded_VkDescriptorSetLayoutSupport>* pSupport)
@@ -17103,7 +17261,7 @@ void VulkanJsonConsumer::Process_vkGetDescriptorSetLayoutSupport(
     OutputStringJson(outputFile, "\"name\" : \"vkGetDescriptorSetLayoutSupport\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -17188,6 +17346,7 @@ void VulkanJsonConsumer::Process_vkGetDescriptorSetLayoutSupport(
 
 
 void VulkanJsonConsumer::Process_vkDestroySurfaceKHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            instance,
     format::HandleId                            surface,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
@@ -17207,7 +17366,7 @@ void VulkanJsonConsumer::Process_vkDestroySurfaceKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkDestroySurfaceKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -17281,6 +17440,7 @@ void VulkanJsonConsumer::Process_vkDestroySurfaceKHR(
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceSupportKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     uint32_t                                    queueFamilyIndex,
     format::HandleId                            surface,
@@ -17301,7 +17461,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceSupportKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkGetPhysicalDeviceSurfaceSupportKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -17396,6 +17556,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceSupportKHR(
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilitiesKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     format::HandleId                            surface,
     StructPointerDecoder<Decoded_VkSurfaceCapabilitiesKHR>* pSurfaceCapabilities)
@@ -17415,7 +17576,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilitiesKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkGetPhysicalDeviceSurfaceCapabilitiesKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -17493,6 +17654,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilitiesKHR(
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormatsKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     format::HandleId                            surface,
     PointerDecoder<uint32_t>*                   pSurfaceFormatCount,
@@ -17513,7 +17675,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormatsKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkGetPhysicalDeviceSurfaceFormatsKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -17618,6 +17780,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormatsKHR(
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModesKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     format::HandleId                            surface,
     PointerDecoder<uint32_t>*                   pPresentModeCount,
@@ -17638,7 +17801,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModesKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkGetPhysicalDeviceSurfacePresentModesKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -17745,6 +17908,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModesKHR(
 
 void VulkanJsonConsumer::Process_vkCreateSwapchainKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkSwapchainCreateInfoKHR>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
@@ -17765,7 +17929,7 @@ void VulkanJsonConsumer::Process_vkCreateSwapchainKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkCreateSwapchainKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -17880,6 +18044,7 @@ void VulkanJsonConsumer::Process_vkCreateSwapchainKHR(
 }
 
 void VulkanJsonConsumer::Process_vkDestroySwapchainKHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            swapchain,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
@@ -17899,7 +18064,7 @@ void VulkanJsonConsumer::Process_vkDestroySwapchainKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkDestroySwapchainKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -17973,6 +18138,7 @@ void VulkanJsonConsumer::Process_vkDestroySwapchainKHR(
 
 void VulkanJsonConsumer::Process_vkGetSwapchainImagesKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            swapchain,
     PointerDecoder<uint32_t>*                   pSwapchainImageCount,
@@ -17993,7 +18159,7 @@ void VulkanJsonConsumer::Process_vkGetSwapchainImagesKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkGetSwapchainImagesKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -18099,6 +18265,7 @@ void VulkanJsonConsumer::Process_vkGetSwapchainImagesKHR(
 
 void VulkanJsonConsumer::Process_vkAcquireNextImageKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            swapchain,
     uint64_t                                    timeout,
@@ -18121,7 +18288,7 @@ void VulkanJsonConsumer::Process_vkAcquireNextImageKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkAcquireNextImageKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -18245,6 +18412,7 @@ void VulkanJsonConsumer::Process_vkAcquireNextImageKHR(
 
 void VulkanJsonConsumer::Process_vkQueuePresentKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            queue,
     const StructPointerDecoder<Decoded_VkPresentInfoKHR>& pPresentInfo)
 {
@@ -18263,7 +18431,7 @@ void VulkanJsonConsumer::Process_vkQueuePresentKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkQueuePresentKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -18342,6 +18510,7 @@ void VulkanJsonConsumer::Process_vkQueuePresentKHR(
 
 void VulkanJsonConsumer::Process_vkGetDeviceGroupPresentCapabilitiesKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkDeviceGroupPresentCapabilitiesKHR>* pDeviceGroupPresentCapabilities)
 {
@@ -18360,7 +18529,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPresentCapabilitiesKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkGetDeviceGroupPresentCapabilitiesKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -18423,6 +18592,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPresentCapabilitiesKHR(
 
 void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModesKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            surface,
     PointerDecoder<VkDeviceGroupPresentModeFlagsKHR>* pModes)
@@ -18442,7 +18612,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModesKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkGetDeviceGroupSurfacePresentModesKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -18522,6 +18692,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModesKHR(
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDevicePresentRectanglesKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     format::HandleId                            surface,
     PointerDecoder<uint32_t>*                   pRectCount,
@@ -18542,7 +18713,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDevicePresentRectanglesKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkGetPhysicalDevicePresentRectanglesKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -18647,6 +18818,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDevicePresentRectanglesKHR(
 
 void VulkanJsonConsumer::Process_vkAcquireNextImage2KHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkAcquireNextImageInfoKHR>& pAcquireInfo,
     PointerDecoder<uint32_t>*                   pImageIndex)
@@ -18666,7 +18838,7 @@ void VulkanJsonConsumer::Process_vkAcquireNextImage2KHR(
     OutputStringJson(outputFile, "\"name\" : \"vkAcquireNextImage2KHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -18757,6 +18929,7 @@ void VulkanJsonConsumer::Process_vkAcquireNextImage2KHR(
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPropertiesKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     PointerDecoder<uint32_t>*                   pPropertyCount,
     StructPointerDecoder<Decoded_VkDisplayPropertiesKHR>* pProperties)
@@ -18776,7 +18949,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPropertiesKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkGetPhysicalDeviceDisplayPropertiesKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -18866,6 +19039,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPropertiesKHR(
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     PointerDecoder<uint32_t>*                   pPropertyCount,
     StructPointerDecoder<Decoded_VkDisplayPlanePropertiesKHR>* pProperties)
@@ -18885,7 +19059,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkGetPhysicalDeviceDisplayPlanePropertiesKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -18975,6 +19149,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
 
 void VulkanJsonConsumer::Process_vkGetDisplayPlaneSupportedDisplaysKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     uint32_t                                    planeIndex,
     PointerDecoder<uint32_t>*                   pDisplayCount,
@@ -18995,7 +19170,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneSupportedDisplaysKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkGetDisplayPlaneSupportedDisplaysKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -19101,6 +19276,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneSupportedDisplaysKHR(
 
 void VulkanJsonConsumer::Process_vkGetDisplayModePropertiesKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     format::HandleId                            display,
     PointerDecoder<uint32_t>*                   pPropertyCount,
@@ -19121,7 +19297,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayModePropertiesKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkGetDisplayModePropertiesKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -19226,6 +19402,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayModePropertiesKHR(
 
 void VulkanJsonConsumer::Process_vkCreateDisplayModeKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     format::HandleId                            display,
     const StructPointerDecoder<Decoded_VkDisplayModeCreateInfoKHR>& pCreateInfo,
@@ -19247,7 +19424,7 @@ void VulkanJsonConsumer::Process_vkCreateDisplayModeKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkCreateDisplayModeKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -19378,6 +19555,7 @@ void VulkanJsonConsumer::Process_vkCreateDisplayModeKHR(
 
 void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilitiesKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     format::HandleId                            mode,
     uint32_t                                    planeIndex,
@@ -19398,7 +19576,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilitiesKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkGetDisplayPlaneCapabilitiesKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -19491,6 +19669,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilitiesKHR(
 
 void VulkanJsonConsumer::Process_vkCreateDisplayPlaneSurfaceKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            instance,
     const StructPointerDecoder<Decoded_VkDisplaySurfaceCreateInfoKHR>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
@@ -19511,7 +19690,7 @@ void VulkanJsonConsumer::Process_vkCreateDisplayPlaneSurfaceKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkCreateDisplayPlaneSurfaceKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -19628,6 +19807,7 @@ void VulkanJsonConsumer::Process_vkCreateDisplayPlaneSurfaceKHR(
 
 void VulkanJsonConsumer::Process_vkCreateSharedSwapchainsKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     uint32_t                                    swapchainCount,
     const StructPointerDecoder<Decoded_VkSwapchainCreateInfoKHR>& pCreateInfos,
@@ -19649,7 +19829,7 @@ void VulkanJsonConsumer::Process_vkCreateSharedSwapchainsKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkCreateSharedSwapchainsKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -19781,6 +19961,7 @@ void VulkanJsonConsumer::Process_vkCreateSharedSwapchainsKHR(
 
 void VulkanJsonConsumer::Process_vkCreateXlibSurfaceKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            instance,
     const StructPointerDecoder<Decoded_VkXlibSurfaceCreateInfoKHR>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
@@ -19801,7 +19982,7 @@ void VulkanJsonConsumer::Process_vkCreateXlibSurfaceKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkCreateXlibSurfaceKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -19917,6 +20098,7 @@ void VulkanJsonConsumer::Process_vkCreateXlibSurfaceKHR(
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceXlibPresentationSupportKHR(
     VkBool32                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     uint32_t                                    queueFamilyIndex,
     uint64_t                                    dpy,
@@ -19937,7 +20119,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceXlibPresentationSupportKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkGetPhysicalDeviceXlibPresentationSupportKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkBool32\",\n");
@@ -20022,6 +20204,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceXlibPresentationSupportKHR(
 
 void VulkanJsonConsumer::Process_vkCreateXcbSurfaceKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            instance,
     const StructPointerDecoder<Decoded_VkXcbSurfaceCreateInfoKHR>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
@@ -20042,7 +20225,7 @@ void VulkanJsonConsumer::Process_vkCreateXcbSurfaceKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkCreateXcbSurfaceKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -20158,6 +20341,7 @@ void VulkanJsonConsumer::Process_vkCreateXcbSurfaceKHR(
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceXcbPresentationSupportKHR(
     VkBool32                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     uint32_t                                    queueFamilyIndex,
     uint64_t                                    connection,
@@ -20178,7 +20362,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceXcbPresentationSupportKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkGetPhysicalDeviceXcbPresentationSupportKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkBool32\",\n");
@@ -20275,6 +20459,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceXcbPresentationSupportKHR(
 
 void VulkanJsonConsumer::Process_vkCreateWaylandSurfaceKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            instance,
     const StructPointerDecoder<Decoded_VkWaylandSurfaceCreateInfoKHR>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
@@ -20295,7 +20480,7 @@ void VulkanJsonConsumer::Process_vkCreateWaylandSurfaceKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkCreateWaylandSurfaceKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -20411,6 +20596,7 @@ void VulkanJsonConsumer::Process_vkCreateWaylandSurfaceKHR(
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceWaylandPresentationSupportKHR(
     VkBool32                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     uint32_t                                    queueFamilyIndex,
     uint64_t                                    display)
@@ -20430,7 +20616,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceWaylandPresentationSupportKH
     OutputStringJson(outputFile, "\"name\" : \"vkGetPhysicalDeviceWaylandPresentationSupportKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkBool32\",\n");
@@ -20512,6 +20698,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceWaylandPresentationSupportKH
 
 void VulkanJsonConsumer::Process_vkCreateAndroidSurfaceKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            instance,
     const StructPointerDecoder<Decoded_VkAndroidSurfaceCreateInfoKHR>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
@@ -20532,7 +20719,7 @@ void VulkanJsonConsumer::Process_vkCreateAndroidSurfaceKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkCreateAndroidSurfaceKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -20649,6 +20836,7 @@ void VulkanJsonConsumer::Process_vkCreateAndroidSurfaceKHR(
 
 void VulkanJsonConsumer::Process_vkCreateWin32SurfaceKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            instance,
     const StructPointerDecoder<Decoded_VkWin32SurfaceCreateInfoKHR>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
@@ -20669,7 +20857,7 @@ void VulkanJsonConsumer::Process_vkCreateWin32SurfaceKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkCreateWin32SurfaceKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -20785,6 +20973,7 @@ void VulkanJsonConsumer::Process_vkCreateWin32SurfaceKHR(
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceWin32PresentationSupportKHR(
     VkBool32                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     uint32_t                                    queueFamilyIndex)
 {
@@ -20803,7 +20992,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceWin32PresentationSupportKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkGetPhysicalDeviceWin32PresentationSupportKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkBool32\",\n");
@@ -20857,6 +21046,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceWin32PresentationSupportKHR(
 
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures2KHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     StructPointerDecoder<Decoded_VkPhysicalDeviceFeatures2>* pFeatures)
 {
@@ -20875,7 +21065,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures2KHR(
     OutputStringJson(outputFile, "\"name\" : \"vkGetPhysicalDeviceFeatures2KHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -20933,6 +21123,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFeatures2KHR(
 }
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties2KHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     StructPointerDecoder<Decoded_VkPhysicalDeviceProperties2>* pProperties)
 {
@@ -20951,7 +21142,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties2KHR(
     OutputStringJson(outputFile, "\"name\" : \"vkGetPhysicalDeviceProperties2KHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -21009,6 +21200,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceProperties2KHR(
 }
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties2KHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     VkFormat                                    format,
     StructPointerDecoder<Decoded_VkFormatProperties2>* pFormatProperties)
@@ -21028,7 +21220,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties2KHR(
     OutputStringJson(outputFile, "\"name\" : \"vkGetPhysicalDeviceFormatProperties2KHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -21102,6 +21294,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceFormatProperties2KHR(
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2KHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     const StructPointerDecoder<Decoded_VkPhysicalDeviceImageFormatInfo2>& pImageFormatInfo,
     StructPointerDecoder<Decoded_VkImageFormatProperties2>* pImageFormatProperties)
@@ -21121,7 +21314,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2KHR(
     OutputStringJson(outputFile, "\"name\" : \"vkGetPhysicalDeviceImageFormatProperties2KHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -21209,6 +21402,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2KHR(
 }
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2KHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     PointerDecoder<uint32_t>*                   pQueueFamilyPropertyCount,
     StructPointerDecoder<Decoded_VkQueueFamilyProperties2>* pQueueFamilyProperties)
@@ -21228,7 +21422,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2KHR(
     OutputStringJson(outputFile, "\"name\" : \"vkGetPhysicalDeviceQueueFamilyProperties2KHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -21313,6 +21507,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2KHR(
 }
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties2KHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     StructPointerDecoder<Decoded_VkPhysicalDeviceMemoryProperties2>* pMemoryProperties)
 {
@@ -21331,7 +21526,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties2KHR(
     OutputStringJson(outputFile, "\"name\" : \"vkGetPhysicalDeviceMemoryProperties2KHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -21389,6 +21584,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMemoryProperties2KHR(
 }
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2KHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     const StructPointerDecoder<Decoded_VkPhysicalDeviceSparseImageFormatInfo2>& pFormatInfo,
     PointerDecoder<uint32_t>*                   pPropertyCount,
@@ -21409,7 +21605,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
     OutputStringJson(outputFile, "\"name\" : \"vkGetPhysicalDeviceSparseImageFormatProperties2KHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -21521,6 +21717,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
 
 
 void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeaturesKHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     uint32_t                                    heapIndex,
     uint32_t                                    localDeviceIndex,
@@ -21542,7 +21739,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeaturesKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkGetDeviceGroupPeerMemoryFeaturesKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -21647,6 +21844,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupPeerMemoryFeaturesKHR(
 }
 
 void VulkanJsonConsumer::Process_vkCmdSetDeviceMaskKHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     uint32_t                                    deviceMask)
 {
@@ -21665,7 +21863,7 @@ void VulkanJsonConsumer::Process_vkCmdSetDeviceMaskKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdSetDeviceMaskKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -21712,6 +21910,7 @@ void VulkanJsonConsumer::Process_vkCmdSetDeviceMaskKHR(
 }
 
 void VulkanJsonConsumer::Process_vkCmdDispatchBaseKHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     uint32_t                                    baseGroupX,
     uint32_t                                    baseGroupY,
@@ -21735,7 +21934,7 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBaseKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdDispatchBaseKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -21858,6 +22057,7 @@ void VulkanJsonConsumer::Process_vkCmdDispatchBaseKHR(
 
 
 void VulkanJsonConsumer::Process_vkTrimCommandPoolKHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            commandPool,
     VkCommandPoolTrimFlags                      flags)
@@ -21877,7 +22077,7 @@ void VulkanJsonConsumer::Process_vkTrimCommandPoolKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkTrimCommandPoolKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -21941,6 +22141,7 @@ void VulkanJsonConsumer::Process_vkTrimCommandPoolKHR(
 
 void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroupsKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            instance,
     PointerDecoder<uint32_t>*                   pPhysicalDeviceGroupCount,
     StructPointerDecoder<Decoded_VkPhysicalDeviceGroupProperties>* pPhysicalDeviceGroupProperties)
@@ -21960,7 +22161,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroupsKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkEnumeratePhysicalDeviceGroupsKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -22050,6 +22251,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroupsKHR(
 
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalBufferPropertiesKHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     const StructPointerDecoder<Decoded_VkPhysicalDeviceExternalBufferInfo>& pExternalBufferInfo,
     StructPointerDecoder<Decoded_VkExternalBufferProperties>* pExternalBufferProperties)
@@ -22069,7 +22271,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalBufferPropertiesKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkGetPhysicalDeviceExternalBufferPropertiesKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -22155,6 +22357,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalBufferPropertiesKHR(
 
 void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkMemoryGetWin32HandleInfoKHR>& pGetWin32HandleInfo,
     PointerDecoder<uint64_t, void*>*            pHandle)
@@ -22174,7 +22377,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkGetMemoryWin32HandleKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -22265,6 +22468,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleKHR(
 
 void VulkanJsonConsumer::Process_vkGetMemoryWin32HandlePropertiesKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     VkExternalMemoryHandleTypeFlagBits          handleType,
     uint64_t                                    handle,
@@ -22285,7 +22489,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandlePropertiesKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkGetMemoryWin32HandlePropertiesKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -22391,6 +22595,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandlePropertiesKHR(
 
 void VulkanJsonConsumer::Process_vkGetMemoryFdKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkMemoryGetFdInfoKHR>& pGetFdInfo,
     PointerDecoder<int>*                        pFd)
@@ -22410,7 +22615,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkGetMemoryFdKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -22501,6 +22706,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdKHR(
 
 void VulkanJsonConsumer::Process_vkGetMemoryFdPropertiesKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     VkExternalMemoryHandleTypeFlagBits          handleType,
     int                                         fd,
@@ -22521,7 +22727,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdPropertiesKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkGetMemoryFdPropertiesKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -22614,6 +22820,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryFdPropertiesKHR(
 
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalSemaphorePropertiesKHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     const StructPointerDecoder<Decoded_VkPhysicalDeviceExternalSemaphoreInfo>& pExternalSemaphoreInfo,
     StructPointerDecoder<Decoded_VkExternalSemaphoreProperties>* pExternalSemaphoreProperties)
@@ -22633,7 +22840,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalSemaphorePropertiesK
     OutputStringJson(outputFile, "\"name\" : \"vkGetPhysicalDeviceExternalSemaphorePropertiesKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -22719,6 +22926,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalSemaphorePropertiesK
 
 void VulkanJsonConsumer::Process_vkImportSemaphoreWin32HandleKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkImportSemaphoreWin32HandleInfoKHR>& pImportSemaphoreWin32HandleInfo)
 {
@@ -22737,7 +22945,7 @@ void VulkanJsonConsumer::Process_vkImportSemaphoreWin32HandleKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkImportSemaphoreWin32HandleKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -22800,6 +23008,7 @@ void VulkanJsonConsumer::Process_vkImportSemaphoreWin32HandleKHR(
 
 void VulkanJsonConsumer::Process_vkGetSemaphoreWin32HandleKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkSemaphoreGetWin32HandleInfoKHR>& pGetWin32HandleInfo,
     PointerDecoder<uint64_t, void*>*            pHandle)
@@ -22819,7 +23028,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreWin32HandleKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkGetSemaphoreWin32HandleKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -22911,6 +23120,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreWin32HandleKHR(
 
 void VulkanJsonConsumer::Process_vkImportSemaphoreFdKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkImportSemaphoreFdInfoKHR>& pImportSemaphoreFdInfo)
 {
@@ -22929,7 +23139,7 @@ void VulkanJsonConsumer::Process_vkImportSemaphoreFdKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkImportSemaphoreFdKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -22992,6 +23202,7 @@ void VulkanJsonConsumer::Process_vkImportSemaphoreFdKHR(
 
 void VulkanJsonConsumer::Process_vkGetSemaphoreFdKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkSemaphoreGetFdInfoKHR>& pGetFdInfo,
     PointerDecoder<int>*                        pFd)
@@ -23011,7 +23222,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreFdKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkGetSemaphoreFdKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -23102,6 +23313,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreFdKHR(
 
 
 void VulkanJsonConsumer::Process_vkCmdPushDescriptorSetKHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     VkPipelineBindPoint                         pipelineBindPoint,
     format::HandleId                            layout,
@@ -23124,7 +23336,7 @@ void VulkanJsonConsumer::Process_vkCmdPushDescriptorSetKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdPushDescriptorSetKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -23244,6 +23456,7 @@ void VulkanJsonConsumer::Process_vkCmdPushDescriptorSetKHR(
 
 void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplateKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkDescriptorUpdateTemplateCreateInfo>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
@@ -23264,7 +23477,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplateKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkCreateDescriptorUpdateTemplateKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -23379,6 +23592,7 @@ void VulkanJsonConsumer::Process_vkCreateDescriptorUpdateTemplateKHR(
 }
 
 void VulkanJsonConsumer::Process_vkDestroyDescriptorUpdateTemplateKHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            descriptorUpdateTemplate,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
@@ -23398,7 +23612,7 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorUpdateTemplateKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkDestroyDescriptorUpdateTemplateKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -23473,6 +23687,7 @@ void VulkanJsonConsumer::Process_vkDestroyDescriptorUpdateTemplateKHR(
 
 void VulkanJsonConsumer::Process_vkCreateRenderPass2KHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkRenderPassCreateInfo2KHR>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
@@ -23493,7 +23708,7 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass2KHR(
     OutputStringJson(outputFile, "\"name\" : \"vkCreateRenderPass2KHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -23608,6 +23823,7 @@ void VulkanJsonConsumer::Process_vkCreateRenderPass2KHR(
 }
 
 void VulkanJsonConsumer::Process_vkCmdBeginRenderPass2KHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     const StructPointerDecoder<Decoded_VkRenderPassBeginInfo>& pRenderPassBegin,
     const StructPointerDecoder<Decoded_VkSubpassBeginInfoKHR>& pSubpassBeginInfo)
@@ -23627,7 +23843,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginRenderPass2KHR(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdBeginRenderPass2KHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -23711,6 +23927,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginRenderPass2KHR(
 }
 
 void VulkanJsonConsumer::Process_vkCmdNextSubpass2KHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     const StructPointerDecoder<Decoded_VkSubpassBeginInfoKHR>& pSubpassBeginInfo,
     const StructPointerDecoder<Decoded_VkSubpassEndInfoKHR>& pSubpassEndInfo)
@@ -23730,7 +23947,7 @@ void VulkanJsonConsumer::Process_vkCmdNextSubpass2KHR(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdNextSubpass2KHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -23814,6 +24031,7 @@ void VulkanJsonConsumer::Process_vkCmdNextSubpass2KHR(
 }
 
 void VulkanJsonConsumer::Process_vkCmdEndRenderPass2KHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     const StructPointerDecoder<Decoded_VkSubpassEndInfoKHR>& pSubpassEndInfo)
 {
@@ -23832,7 +24050,7 @@ void VulkanJsonConsumer::Process_vkCmdEndRenderPass2KHR(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdEndRenderPass2KHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -23892,6 +24110,7 @@ void VulkanJsonConsumer::Process_vkCmdEndRenderPass2KHR(
 
 void VulkanJsonConsumer::Process_vkGetSwapchainStatusKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            swapchain)
 {
@@ -23910,7 +24129,7 @@ void VulkanJsonConsumer::Process_vkGetSwapchainStatusKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkGetSwapchainStatusKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -23962,6 +24181,7 @@ void VulkanJsonConsumer::Process_vkGetSwapchainStatusKHR(
 
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalFencePropertiesKHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     const StructPointerDecoder<Decoded_VkPhysicalDeviceExternalFenceInfo>& pExternalFenceInfo,
     StructPointerDecoder<Decoded_VkExternalFenceProperties>* pExternalFenceProperties)
@@ -23981,7 +24201,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalFencePropertiesKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkGetPhysicalDeviceExternalFencePropertiesKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -24067,6 +24287,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalFencePropertiesKHR(
 
 void VulkanJsonConsumer::Process_vkImportFenceWin32HandleKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkImportFenceWin32HandleInfoKHR>& pImportFenceWin32HandleInfo)
 {
@@ -24085,7 +24306,7 @@ void VulkanJsonConsumer::Process_vkImportFenceWin32HandleKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkImportFenceWin32HandleKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -24148,6 +24369,7 @@ void VulkanJsonConsumer::Process_vkImportFenceWin32HandleKHR(
 
 void VulkanJsonConsumer::Process_vkGetFenceWin32HandleKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkFenceGetWin32HandleInfoKHR>& pGetWin32HandleInfo,
     PointerDecoder<uint64_t, void*>*            pHandle)
@@ -24167,7 +24389,7 @@ void VulkanJsonConsumer::Process_vkGetFenceWin32HandleKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkGetFenceWin32HandleKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -24259,6 +24481,7 @@ void VulkanJsonConsumer::Process_vkGetFenceWin32HandleKHR(
 
 void VulkanJsonConsumer::Process_vkImportFenceFdKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkImportFenceFdInfoKHR>& pImportFenceFdInfo)
 {
@@ -24277,7 +24500,7 @@ void VulkanJsonConsumer::Process_vkImportFenceFdKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkImportFenceFdKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -24340,6 +24563,7 @@ void VulkanJsonConsumer::Process_vkImportFenceFdKHR(
 
 void VulkanJsonConsumer::Process_vkGetFenceFdKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkFenceGetFdInfoKHR>& pGetFdInfo,
     PointerDecoder<int>*                        pFd)
@@ -24359,7 +24583,7 @@ void VulkanJsonConsumer::Process_vkGetFenceFdKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkGetFenceFdKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -24451,6 +24675,7 @@ void VulkanJsonConsumer::Process_vkGetFenceFdKHR(
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2KHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     const StructPointerDecoder<Decoded_VkPhysicalDeviceSurfaceInfo2KHR>& pSurfaceInfo,
     StructPointerDecoder<Decoded_VkSurfaceCapabilities2KHR>* pSurfaceCapabilities)
@@ -24470,7 +24695,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2KHR(
     OutputStringJson(outputFile, "\"name\" : \"vkGetPhysicalDeviceSurfaceCapabilities2KHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -24559,6 +24784,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2KHR(
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormats2KHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     const StructPointerDecoder<Decoded_VkPhysicalDeviceSurfaceInfo2KHR>& pSurfaceInfo,
     PointerDecoder<uint32_t>*                   pSurfaceFormatCount,
@@ -24579,7 +24805,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormats2KHR(
     OutputStringJson(outputFile, "\"name\" : \"vkGetPhysicalDeviceSurfaceFormats2KHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -24696,6 +24922,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormats2KHR(
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayProperties2KHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     PointerDecoder<uint32_t>*                   pPropertyCount,
     StructPointerDecoder<Decoded_VkDisplayProperties2KHR>* pProperties)
@@ -24715,7 +24942,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayProperties2KHR(
     OutputStringJson(outputFile, "\"name\" : \"vkGetPhysicalDeviceDisplayProperties2KHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -24805,6 +25032,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayProperties2KHR(
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlaneProperties2KHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     PointerDecoder<uint32_t>*                   pPropertyCount,
     StructPointerDecoder<Decoded_VkDisplayPlaneProperties2KHR>* pProperties)
@@ -24824,7 +25052,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlaneProperties2KHR(
     OutputStringJson(outputFile, "\"name\" : \"vkGetPhysicalDeviceDisplayPlaneProperties2KHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -24914,6 +25142,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlaneProperties2KHR(
 
 void VulkanJsonConsumer::Process_vkGetDisplayModeProperties2KHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     format::HandleId                            display,
     PointerDecoder<uint32_t>*                   pPropertyCount,
@@ -24934,7 +25163,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayModeProperties2KHR(
     OutputStringJson(outputFile, "\"name\" : \"vkGetDisplayModeProperties2KHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -25039,6 +25268,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayModeProperties2KHR(
 
 void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilities2KHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     const StructPointerDecoder<Decoded_VkDisplayPlaneInfo2KHR>& pDisplayPlaneInfo,
     StructPointerDecoder<Decoded_VkDisplayPlaneCapabilities2KHR>* pCapabilities)
@@ -25058,7 +25288,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilities2KHR(
     OutputStringJson(outputFile, "\"name\" : \"vkGetDisplayPlaneCapabilities2KHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -25147,6 +25377,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayPlaneCapabilities2KHR(
 
 
 void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements2KHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkImageMemoryRequirementsInfo2>& pInfo,
     StructPointerDecoder<Decoded_VkMemoryRequirements2>* pMemoryRequirements)
@@ -25166,7 +25397,7 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements2KHR(
     OutputStringJson(outputFile, "\"name\" : \"vkGetImageMemoryRequirements2KHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -25250,6 +25481,7 @@ void VulkanJsonConsumer::Process_vkGetImageMemoryRequirements2KHR(
 }
 
 void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements2KHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkBufferMemoryRequirementsInfo2>& pInfo,
     StructPointerDecoder<Decoded_VkMemoryRequirements2>* pMemoryRequirements)
@@ -25269,7 +25501,7 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements2KHR(
     OutputStringJson(outputFile, "\"name\" : \"vkGetBufferMemoryRequirements2KHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -25353,6 +25585,7 @@ void VulkanJsonConsumer::Process_vkGetBufferMemoryRequirements2KHR(
 }
 
 void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2KHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkImageSparseMemoryRequirementsInfo2>& pInfo,
     PointerDecoder<uint32_t>*                   pSparseMemoryRequirementCount,
@@ -25373,7 +25606,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2KHR(
     OutputStringJson(outputFile, "\"name\" : \"vkGetImageSparseMemoryRequirements2KHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -25486,6 +25719,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2KHR(
 
 void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversionKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkSamplerYcbcrConversionCreateInfo>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
@@ -25506,7 +25740,7 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversionKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkCreateSamplerYcbcrConversionKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -25621,6 +25855,7 @@ void VulkanJsonConsumer::Process_vkCreateSamplerYcbcrConversionKHR(
 }
 
 void VulkanJsonConsumer::Process_vkDestroySamplerYcbcrConversionKHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            ycbcrConversion,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
@@ -25640,7 +25875,7 @@ void VulkanJsonConsumer::Process_vkDestroySamplerYcbcrConversionKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkDestroySamplerYcbcrConversionKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -25715,6 +25950,7 @@ void VulkanJsonConsumer::Process_vkDestroySamplerYcbcrConversionKHR(
 
 void VulkanJsonConsumer::Process_vkBindBufferMemory2KHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     uint32_t                                    bindInfoCount,
     const StructPointerDecoder<Decoded_VkBindBufferMemoryInfo>& pBindInfos)
@@ -25734,7 +25970,7 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory2KHR(
     OutputStringJson(outputFile, "\"name\" : \"vkBindBufferMemory2KHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -25812,6 +26048,7 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory2KHR(
 
 void VulkanJsonConsumer::Process_vkBindImageMemory2KHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     uint32_t                                    bindInfoCount,
     const StructPointerDecoder<Decoded_VkBindImageMemoryInfo>& pBindInfos)
@@ -25831,7 +26068,7 @@ void VulkanJsonConsumer::Process_vkBindImageMemory2KHR(
     OutputStringJson(outputFile, "\"name\" : \"vkBindImageMemory2KHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -25909,6 +26146,7 @@ void VulkanJsonConsumer::Process_vkBindImageMemory2KHR(
 
 
 void VulkanJsonConsumer::Process_vkGetDescriptorSetLayoutSupportKHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkDescriptorSetLayoutCreateInfo>& pCreateInfo,
     StructPointerDecoder<Decoded_VkDescriptorSetLayoutSupport>* pSupport)
@@ -25928,7 +26166,7 @@ void VulkanJsonConsumer::Process_vkGetDescriptorSetLayoutSupportKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkGetDescriptorSetLayoutSupportKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -26013,6 +26251,7 @@ void VulkanJsonConsumer::Process_vkGetDescriptorSetLayoutSupportKHR(
 
 
 void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountKHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            buffer,
     VkDeviceSize                                offset,
@@ -26036,7 +26275,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdDrawIndirectCountKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -26158,6 +26397,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountKHR(
 }
 
 void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountKHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            buffer,
     VkDeviceSize                                offset,
@@ -26181,7 +26421,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdDrawIndexedIndirectCountKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -26305,6 +26545,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountKHR(
 
 void VulkanJsonConsumer::Process_vkGetSemaphoreCounterValueKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            semaphore,
     PointerDecoder<uint64_t>*                   pValue)
@@ -26324,7 +26565,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreCounterValueKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkGetSemaphoreCounterValueKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -26403,6 +26644,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreCounterValueKHR(
 
 void VulkanJsonConsumer::Process_vkWaitSemaphoresKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkSemaphoreWaitInfoKHR>& pWaitInfo,
     uint64_t                                    timeout)
@@ -26422,7 +26664,7 @@ void VulkanJsonConsumer::Process_vkWaitSemaphoresKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkWaitSemaphoresKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -26500,6 +26742,7 @@ void VulkanJsonConsumer::Process_vkWaitSemaphoresKHR(
 
 void VulkanJsonConsumer::Process_vkSignalSemaphoreKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkSemaphoreSignalInfoKHR>& pSignalInfo)
 {
@@ -26518,7 +26761,7 @@ void VulkanJsonConsumer::Process_vkSignalSemaphoreKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkSignalSemaphoreKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -26582,6 +26825,7 @@ void VulkanJsonConsumer::Process_vkSignalSemaphoreKHR(
 
 void VulkanJsonConsumer::Process_vkGetPipelineExecutablePropertiesKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkPipelineInfoKHR>& pPipelineInfo,
     PointerDecoder<uint32_t>*                   pExecutableCount,
@@ -26602,7 +26846,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutablePropertiesKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkGetPipelineExecutablePropertiesKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -26718,6 +26962,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutablePropertiesKHR(
 
 void VulkanJsonConsumer::Process_vkGetPipelineExecutableStatisticsKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkPipelineExecutableInfoKHR>& pExecutableInfo,
     PointerDecoder<uint32_t>*                   pStatisticCount,
@@ -26738,7 +26983,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableStatisticsKHR(
     OutputStringJson(outputFile, "\"name\" : \"vkGetPipelineExecutableStatisticsKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -26854,6 +27099,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableStatisticsKHR(
 
 void VulkanJsonConsumer::Process_vkGetPipelineExecutableInternalRepresentationsKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkPipelineExecutableInfoKHR>& pExecutableInfo,
     PointerDecoder<uint32_t>*                   pInternalRepresentationCount,
@@ -26874,7 +27120,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableInternalRepresentationsK
     OutputStringJson(outputFile, "\"name\" : \"vkGetPipelineExecutableInternalRepresentationsKHR\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -26991,6 +27237,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableInternalRepresentationsK
 
 void VulkanJsonConsumer::Process_vkCreateDebugReportCallbackEXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            instance,
     const StructPointerDecoder<Decoded_VkDebugReportCallbackCreateInfoEXT>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
@@ -27011,7 +27258,7 @@ void VulkanJsonConsumer::Process_vkCreateDebugReportCallbackEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkCreateDebugReportCallbackEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -27126,6 +27373,7 @@ void VulkanJsonConsumer::Process_vkCreateDebugReportCallbackEXT(
 }
 
 void VulkanJsonConsumer::Process_vkDestroyDebugReportCallbackEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            instance,
     format::HandleId                            callback,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
@@ -27145,7 +27393,7 @@ void VulkanJsonConsumer::Process_vkDestroyDebugReportCallbackEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkDestroyDebugReportCallbackEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -27218,6 +27466,7 @@ void VulkanJsonConsumer::Process_vkDestroyDebugReportCallbackEXT(
 }
 
 void VulkanJsonConsumer::Process_vkDebugReportMessageEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            instance,
     VkDebugReportFlagsEXT                       flags,
     VkDebugReportObjectTypeEXT                  objectType,
@@ -27242,7 +27491,7 @@ void VulkanJsonConsumer::Process_vkDebugReportMessageEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkDebugReportMessageEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -27405,6 +27654,7 @@ void VulkanJsonConsumer::Process_vkDebugReportMessageEXT(
 
 void VulkanJsonConsumer::Process_vkDebugMarkerSetObjectTagEXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkDebugMarkerObjectTagInfoEXT>& pTagInfo)
 {
@@ -27423,7 +27673,7 @@ void VulkanJsonConsumer::Process_vkDebugMarkerSetObjectTagEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkDebugMarkerSetObjectTagEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -27486,6 +27736,7 @@ void VulkanJsonConsumer::Process_vkDebugMarkerSetObjectTagEXT(
 
 void VulkanJsonConsumer::Process_vkDebugMarkerSetObjectNameEXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkDebugMarkerObjectNameInfoEXT>& pNameInfo)
 {
@@ -27504,7 +27755,7 @@ void VulkanJsonConsumer::Process_vkDebugMarkerSetObjectNameEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkDebugMarkerSetObjectNameEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -27566,6 +27817,7 @@ void VulkanJsonConsumer::Process_vkDebugMarkerSetObjectNameEXT(
 }
 
 void VulkanJsonConsumer::Process_vkCmdDebugMarkerBeginEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     const StructPointerDecoder<Decoded_VkDebugMarkerMarkerInfoEXT>& pMarkerInfo)
 {
@@ -27584,7 +27836,7 @@ void VulkanJsonConsumer::Process_vkCmdDebugMarkerBeginEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdDebugMarkerBeginEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -27642,6 +27894,7 @@ void VulkanJsonConsumer::Process_vkCmdDebugMarkerBeginEXT(
 }
 
 void VulkanJsonConsumer::Process_vkCmdDebugMarkerEndEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer)
 {
     uint32_t indent = 5;
@@ -27659,7 +27912,7 @@ void VulkanJsonConsumer::Process_vkCmdDebugMarkerEndEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdDebugMarkerEndEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -27691,6 +27944,7 @@ void VulkanJsonConsumer::Process_vkCmdDebugMarkerEndEXT(
 }
 
 void VulkanJsonConsumer::Process_vkCmdDebugMarkerInsertEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     const StructPointerDecoder<Decoded_VkDebugMarkerMarkerInfoEXT>& pMarkerInfo)
 {
@@ -27709,7 +27963,7 @@ void VulkanJsonConsumer::Process_vkCmdDebugMarkerInsertEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdDebugMarkerInsertEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -27768,6 +28022,7 @@ void VulkanJsonConsumer::Process_vkCmdDebugMarkerInsertEXT(
 
 
 void VulkanJsonConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     uint32_t                                    firstBinding,
     uint32_t                                    bindingCount,
@@ -27790,7 +28045,7 @@ void VulkanJsonConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdBindTransformFeedbackBuffersEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -27933,6 +28188,7 @@ void VulkanJsonConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
 }
 
 void VulkanJsonConsumer::Process_vkCmdBeginTransformFeedbackEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     uint32_t                                    firstCounterBuffer,
     uint32_t                                    counterBufferCount,
@@ -27954,7 +28210,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginTransformFeedbackEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdBeginTransformFeedbackEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -28070,6 +28326,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginTransformFeedbackEXT(
 }
 
 void VulkanJsonConsumer::Process_vkCmdEndTransformFeedbackEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     uint32_t                                    firstCounterBuffer,
     uint32_t                                    counterBufferCount,
@@ -28091,7 +28348,7 @@ void VulkanJsonConsumer::Process_vkCmdEndTransformFeedbackEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdEndTransformFeedbackEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -28207,6 +28464,7 @@ void VulkanJsonConsumer::Process_vkCmdEndTransformFeedbackEXT(
 }
 
 void VulkanJsonConsumer::Process_vkCmdBeginQueryIndexedEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            queryPool,
     uint32_t                                    query,
@@ -28228,7 +28486,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginQueryIndexedEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdBeginQueryIndexedEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -28320,6 +28578,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginQueryIndexedEXT(
 }
 
 void VulkanJsonConsumer::Process_vkCmdEndQueryIndexedEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            queryPool,
     uint32_t                                    query,
@@ -28340,7 +28599,7 @@ void VulkanJsonConsumer::Process_vkCmdEndQueryIndexedEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdEndQueryIndexedEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -28417,6 +28676,7 @@ void VulkanJsonConsumer::Process_vkCmdEndQueryIndexedEXT(
 }
 
 void VulkanJsonConsumer::Process_vkCmdDrawIndirectByteCountEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     uint32_t                                    instanceCount,
     uint32_t                                    firstInstance,
@@ -28440,7 +28700,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectByteCountEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdDrawIndirectByteCountEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -28564,6 +28824,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectByteCountEXT(
 
 void VulkanJsonConsumer::Process_vkGetImageViewHandleNVX(
     uint32_t                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkImageViewHandleInfoNVX>& pInfo)
 {
@@ -28582,7 +28843,7 @@ void VulkanJsonConsumer::Process_vkGetImageViewHandleNVX(
     OutputStringJson(outputFile, "\"name\" : \"vkGetImageViewHandleNVX\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"uint32_t\",\n");
@@ -28647,6 +28908,7 @@ void VulkanJsonConsumer::Process_vkGetImageViewHandleNVX(
 
 
 void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountAMD(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            buffer,
     VkDeviceSize                                offset,
@@ -28670,7 +28932,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountAMD(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdDrawIndirectCountAMD\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -28792,6 +29054,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndirectCountAMD(
 }
 
 void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountAMD(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            buffer,
     VkDeviceSize                                offset,
@@ -28815,7 +29078,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountAMD(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdDrawIndexedIndirectCountAMD\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -28939,6 +29202,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawIndexedIndirectCountAMD(
 
 void VulkanJsonConsumer::Process_vkGetShaderInfoAMD(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            pipeline,
     VkShaderStageFlagBits                       shaderStage,
@@ -28961,7 +29225,7 @@ void VulkanJsonConsumer::Process_vkGetShaderInfoAMD(
     OutputStringJson(outputFile, "\"name\" : \"vkGetShaderInfoAMD\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -29098,6 +29362,7 @@ void VulkanJsonConsumer::Process_vkGetShaderInfoAMD(
 
 void VulkanJsonConsumer::Process_vkCreateStreamDescriptorSurfaceGGP(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            instance,
     const StructPointerDecoder<Decoded_VkStreamDescriptorSurfaceCreateInfoGGP>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
@@ -29118,7 +29383,7 @@ void VulkanJsonConsumer::Process_vkCreateStreamDescriptorSurfaceGGP(
     OutputStringJson(outputFile, "\"name\" : \"vkCreateStreamDescriptorSurfaceGGP\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -29235,6 +29500,7 @@ void VulkanJsonConsumer::Process_vkCreateStreamDescriptorSurfaceGGP(
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalImageFormatPropertiesNV(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     VkFormat                                    format,
     VkImageType                                 type,
@@ -29259,7 +29525,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalImageFormatPropertie
     OutputStringJson(outputFile, "\"name\" : \"vkGetPhysicalDeviceExternalImageFormatPropertiesNV\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -29413,6 +29679,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceExternalImageFormatPropertie
 
 void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleNV(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            memory,
     VkExternalMemoryHandleTypeFlagsNV           handleType,
@@ -29433,7 +29700,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleNV(
     OutputStringJson(outputFile, "\"name\" : \"vkGetMemoryWin32HandleNV\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -29529,6 +29796,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleNV(
 
 void VulkanJsonConsumer::Process_vkCreateViSurfaceNN(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            instance,
     const StructPointerDecoder<Decoded_VkViSurfaceCreateInfoNN>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
@@ -29549,7 +29817,7 @@ void VulkanJsonConsumer::Process_vkCreateViSurfaceNN(
     OutputStringJson(outputFile, "\"name\" : \"vkCreateViSurfaceNN\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -29665,6 +29933,7 @@ void VulkanJsonConsumer::Process_vkCreateViSurfaceNN(
 
 
 void VulkanJsonConsumer::Process_vkCmdBeginConditionalRenderingEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     const StructPointerDecoder<Decoded_VkConditionalRenderingBeginInfoEXT>& pConditionalRenderingBegin)
 {
@@ -29683,7 +29952,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginConditionalRenderingEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdBeginConditionalRenderingEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -29741,6 +30010,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginConditionalRenderingEXT(
 }
 
 void VulkanJsonConsumer::Process_vkCmdEndConditionalRenderingEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer)
 {
     uint32_t indent = 5;
@@ -29758,7 +30028,7 @@ void VulkanJsonConsumer::Process_vkCmdEndConditionalRenderingEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdEndConditionalRenderingEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -29791,6 +30061,7 @@ void VulkanJsonConsumer::Process_vkCmdEndConditionalRenderingEXT(
 
 
 void VulkanJsonConsumer::Process_vkCmdProcessCommandsNVX(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     const StructPointerDecoder<Decoded_VkCmdProcessCommandsInfoNVX>& pProcessCommandsInfo)
 {
@@ -29809,7 +30080,7 @@ void VulkanJsonConsumer::Process_vkCmdProcessCommandsNVX(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdProcessCommandsNVX\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -29867,6 +30138,7 @@ void VulkanJsonConsumer::Process_vkCmdProcessCommandsNVX(
 }
 
 void VulkanJsonConsumer::Process_vkCmdReserveSpaceForCommandsNVX(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     const StructPointerDecoder<Decoded_VkCmdReserveSpaceForCommandsInfoNVX>& pReserveSpaceInfo)
 {
@@ -29885,7 +30157,7 @@ void VulkanJsonConsumer::Process_vkCmdReserveSpaceForCommandsNVX(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdReserveSpaceForCommandsNVX\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -29944,6 +30216,7 @@ void VulkanJsonConsumer::Process_vkCmdReserveSpaceForCommandsNVX(
 
 void VulkanJsonConsumer::Process_vkCreateIndirectCommandsLayoutNVX(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkIndirectCommandsLayoutCreateInfoNVX>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
@@ -29964,7 +30237,7 @@ void VulkanJsonConsumer::Process_vkCreateIndirectCommandsLayoutNVX(
     OutputStringJson(outputFile, "\"name\" : \"vkCreateIndirectCommandsLayoutNVX\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -30079,6 +30352,7 @@ void VulkanJsonConsumer::Process_vkCreateIndirectCommandsLayoutNVX(
 }
 
 void VulkanJsonConsumer::Process_vkDestroyIndirectCommandsLayoutNVX(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            indirectCommandsLayout,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
@@ -30098,7 +30372,7 @@ void VulkanJsonConsumer::Process_vkDestroyIndirectCommandsLayoutNVX(
     OutputStringJson(outputFile, "\"name\" : \"vkDestroyIndirectCommandsLayoutNVX\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -30172,6 +30446,7 @@ void VulkanJsonConsumer::Process_vkDestroyIndirectCommandsLayoutNVX(
 
 void VulkanJsonConsumer::Process_vkCreateObjectTableNVX(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkObjectTableCreateInfoNVX>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
@@ -30192,7 +30467,7 @@ void VulkanJsonConsumer::Process_vkCreateObjectTableNVX(
     OutputStringJson(outputFile, "\"name\" : \"vkCreateObjectTableNVX\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -30307,6 +30582,7 @@ void VulkanJsonConsumer::Process_vkCreateObjectTableNVX(
 }
 
 void VulkanJsonConsumer::Process_vkDestroyObjectTableNVX(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            objectTable,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
@@ -30326,7 +30602,7 @@ void VulkanJsonConsumer::Process_vkDestroyObjectTableNVX(
     OutputStringJson(outputFile, "\"name\" : \"vkDestroyObjectTableNVX\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -30400,6 +30676,7 @@ void VulkanJsonConsumer::Process_vkDestroyObjectTableNVX(
 
 void VulkanJsonConsumer::Process_vkUnregisterObjectsNVX(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            objectTable,
     uint32_t                                    objectCount,
@@ -30421,7 +30698,7 @@ void VulkanJsonConsumer::Process_vkUnregisterObjectsNVX(
     OutputStringJson(outputFile, "\"name\" : \"vkUnregisterObjectsNVX\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -30541,6 +30818,7 @@ void VulkanJsonConsumer::Process_vkUnregisterObjectsNVX(
 }
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     StructPointerDecoder<Decoded_VkDeviceGeneratedCommandsFeaturesNVX>* pFeatures,
     StructPointerDecoder<Decoded_VkDeviceGeneratedCommandsLimitsNVX>* pLimits)
@@ -30560,7 +30838,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceGeneratedCommandsPropertiesN
     OutputStringJson(outputFile, "\"name\" : \"vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -30645,6 +30923,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceGeneratedCommandsPropertiesN
 
 
 void VulkanJsonConsumer::Process_vkCmdSetViewportWScalingNV(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     uint32_t                                    firstViewport,
     uint32_t                                    viewportCount,
@@ -30665,7 +30944,7 @@ void VulkanJsonConsumer::Process_vkCmdSetViewportWScalingNV(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdSetViewportWScalingNV\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -30755,6 +31034,7 @@ void VulkanJsonConsumer::Process_vkCmdSetViewportWScalingNV(
 
 void VulkanJsonConsumer::Process_vkReleaseDisplayEXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     format::HandleId                            display)
 {
@@ -30773,7 +31053,7 @@ void VulkanJsonConsumer::Process_vkReleaseDisplayEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkReleaseDisplayEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -30826,6 +31106,7 @@ void VulkanJsonConsumer::Process_vkReleaseDisplayEXT(
 
 void VulkanJsonConsumer::Process_vkAcquireXlibDisplayEXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     uint64_t                                    dpy,
     format::HandleId                            display)
@@ -30845,7 +31126,7 @@ void VulkanJsonConsumer::Process_vkAcquireXlibDisplayEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkAcquireXlibDisplayEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -30912,6 +31193,7 @@ void VulkanJsonConsumer::Process_vkAcquireXlibDisplayEXT(
 
 void VulkanJsonConsumer::Process_vkGetRandROutputDisplayEXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     uint64_t                                    dpy,
     size_t                                      rrOutput,
@@ -30932,7 +31214,7 @@ void VulkanJsonConsumer::Process_vkGetRandROutputDisplayEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkGetRandROutputDisplayEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -31027,6 +31309,7 @@ void VulkanJsonConsumer::Process_vkGetRandROutputDisplayEXT(
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2EXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     format::HandleId                            surface,
     StructPointerDecoder<Decoded_VkSurfaceCapabilities2EXT>* pSurfaceCapabilities)
@@ -31046,7 +31329,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2EXT(
     OutputStringJson(outputFile, "\"name\" : \"vkGetPhysicalDeviceSurfaceCapabilities2EXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -31125,6 +31408,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2EXT(
 
 void VulkanJsonConsumer::Process_vkDisplayPowerControlEXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            display,
     const StructPointerDecoder<Decoded_VkDisplayPowerInfoEXT>& pDisplayPowerInfo)
@@ -31144,7 +31428,7 @@ void VulkanJsonConsumer::Process_vkDisplayPowerControlEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkDisplayPowerControlEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -31222,6 +31506,7 @@ void VulkanJsonConsumer::Process_vkDisplayPowerControlEXT(
 
 void VulkanJsonConsumer::Process_vkRegisterDeviceEventEXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkDeviceEventInfoEXT>& pDeviceEventInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
@@ -31242,7 +31527,7 @@ void VulkanJsonConsumer::Process_vkRegisterDeviceEventEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkRegisterDeviceEventEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -31358,6 +31643,7 @@ void VulkanJsonConsumer::Process_vkRegisterDeviceEventEXT(
 
 void VulkanJsonConsumer::Process_vkRegisterDisplayEventEXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            display,
     const StructPointerDecoder<Decoded_VkDisplayEventInfoEXT>& pDisplayEventInfo,
@@ -31379,7 +31665,7 @@ void VulkanJsonConsumer::Process_vkRegisterDisplayEventEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkRegisterDisplayEventEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -31510,6 +31796,7 @@ void VulkanJsonConsumer::Process_vkRegisterDisplayEventEXT(
 
 void VulkanJsonConsumer::Process_vkGetSwapchainCounterEXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            swapchain,
     VkSurfaceCounterFlagBitsEXT                 counter,
@@ -31530,7 +31817,7 @@ void VulkanJsonConsumer::Process_vkGetSwapchainCounterEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkGetSwapchainCounterEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -31625,6 +31912,7 @@ void VulkanJsonConsumer::Process_vkGetSwapchainCounterEXT(
 
 void VulkanJsonConsumer::Process_vkGetRefreshCycleDurationGOOGLE(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            swapchain,
     StructPointerDecoder<Decoded_VkRefreshCycleDurationGOOGLE>* pDisplayTimingProperties)
@@ -31644,7 +31932,7 @@ void VulkanJsonConsumer::Process_vkGetRefreshCycleDurationGOOGLE(
     OutputStringJson(outputFile, "\"name\" : \"vkGetRefreshCycleDurationGOOGLE\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -31722,6 +32010,7 @@ void VulkanJsonConsumer::Process_vkGetRefreshCycleDurationGOOGLE(
 
 void VulkanJsonConsumer::Process_vkGetPastPresentationTimingGOOGLE(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            swapchain,
     PointerDecoder<uint32_t>*                   pPresentationTimingCount,
@@ -31742,7 +32031,7 @@ void VulkanJsonConsumer::Process_vkGetPastPresentationTimingGOOGLE(
     OutputStringJson(outputFile, "\"name\" : \"vkGetPastPresentationTimingGOOGLE\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -31847,6 +32136,7 @@ void VulkanJsonConsumer::Process_vkGetPastPresentationTimingGOOGLE(
 
 
 void VulkanJsonConsumer::Process_vkCmdSetDiscardRectangleEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     uint32_t                                    firstDiscardRectangle,
     uint32_t                                    discardRectangleCount,
@@ -31867,7 +32157,7 @@ void VulkanJsonConsumer::Process_vkCmdSetDiscardRectangleEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdSetDiscardRectangleEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -31956,6 +32246,7 @@ void VulkanJsonConsumer::Process_vkCmdSetDiscardRectangleEXT(
 
 
 void VulkanJsonConsumer::Process_vkSetHdrMetadataEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     uint32_t                                    swapchainCount,
     const HandlePointerDecoder<VkSwapchainKHR>& pSwapchains,
@@ -31976,7 +32267,7 @@ void VulkanJsonConsumer::Process_vkSetHdrMetadataEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkSetHdrMetadataEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -32078,6 +32369,7 @@ void VulkanJsonConsumer::Process_vkSetHdrMetadataEXT(
 
 void VulkanJsonConsumer::Process_vkCreateIOSSurfaceMVK(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            instance,
     const StructPointerDecoder<Decoded_VkIOSSurfaceCreateInfoMVK>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
@@ -32098,7 +32390,7 @@ void VulkanJsonConsumer::Process_vkCreateIOSSurfaceMVK(
     OutputStringJson(outputFile, "\"name\" : \"vkCreateIOSSurfaceMVK\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -32215,6 +32507,7 @@ void VulkanJsonConsumer::Process_vkCreateIOSSurfaceMVK(
 
 void VulkanJsonConsumer::Process_vkCreateMacOSSurfaceMVK(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            instance,
     const StructPointerDecoder<Decoded_VkMacOSSurfaceCreateInfoMVK>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
@@ -32235,7 +32528,7 @@ void VulkanJsonConsumer::Process_vkCreateMacOSSurfaceMVK(
     OutputStringJson(outputFile, "\"name\" : \"vkCreateMacOSSurfaceMVK\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -32352,6 +32645,7 @@ void VulkanJsonConsumer::Process_vkCreateMacOSSurfaceMVK(
 
 void VulkanJsonConsumer::Process_vkSetDebugUtilsObjectNameEXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkDebugUtilsObjectNameInfoEXT>& pNameInfo)
 {
@@ -32370,7 +32664,7 @@ void VulkanJsonConsumer::Process_vkSetDebugUtilsObjectNameEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkSetDebugUtilsObjectNameEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -32433,6 +32727,7 @@ void VulkanJsonConsumer::Process_vkSetDebugUtilsObjectNameEXT(
 
 void VulkanJsonConsumer::Process_vkSetDebugUtilsObjectTagEXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkDebugUtilsObjectTagInfoEXT>& pTagInfo)
 {
@@ -32451,7 +32746,7 @@ void VulkanJsonConsumer::Process_vkSetDebugUtilsObjectTagEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkSetDebugUtilsObjectTagEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -32513,6 +32808,7 @@ void VulkanJsonConsumer::Process_vkSetDebugUtilsObjectTagEXT(
 }
 
 void VulkanJsonConsumer::Process_vkQueueBeginDebugUtilsLabelEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            queue,
     const StructPointerDecoder<Decoded_VkDebugUtilsLabelEXT>& pLabelInfo)
 {
@@ -32531,7 +32827,7 @@ void VulkanJsonConsumer::Process_vkQueueBeginDebugUtilsLabelEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkQueueBeginDebugUtilsLabelEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -32589,6 +32885,7 @@ void VulkanJsonConsumer::Process_vkQueueBeginDebugUtilsLabelEXT(
 }
 
 void VulkanJsonConsumer::Process_vkQueueEndDebugUtilsLabelEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            queue)
 {
     uint32_t indent = 5;
@@ -32606,7 +32903,7 @@ void VulkanJsonConsumer::Process_vkQueueEndDebugUtilsLabelEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkQueueEndDebugUtilsLabelEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -32638,6 +32935,7 @@ void VulkanJsonConsumer::Process_vkQueueEndDebugUtilsLabelEXT(
 }
 
 void VulkanJsonConsumer::Process_vkQueueInsertDebugUtilsLabelEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            queue,
     const StructPointerDecoder<Decoded_VkDebugUtilsLabelEXT>& pLabelInfo)
 {
@@ -32656,7 +32954,7 @@ void VulkanJsonConsumer::Process_vkQueueInsertDebugUtilsLabelEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkQueueInsertDebugUtilsLabelEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -32714,6 +33012,7 @@ void VulkanJsonConsumer::Process_vkQueueInsertDebugUtilsLabelEXT(
 }
 
 void VulkanJsonConsumer::Process_vkCmdBeginDebugUtilsLabelEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     const StructPointerDecoder<Decoded_VkDebugUtilsLabelEXT>& pLabelInfo)
 {
@@ -32732,7 +33031,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginDebugUtilsLabelEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdBeginDebugUtilsLabelEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -32790,6 +33089,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginDebugUtilsLabelEXT(
 }
 
 void VulkanJsonConsumer::Process_vkCmdEndDebugUtilsLabelEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer)
 {
     uint32_t indent = 5;
@@ -32807,7 +33107,7 @@ void VulkanJsonConsumer::Process_vkCmdEndDebugUtilsLabelEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdEndDebugUtilsLabelEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -32839,6 +33139,7 @@ void VulkanJsonConsumer::Process_vkCmdEndDebugUtilsLabelEXT(
 }
 
 void VulkanJsonConsumer::Process_vkCmdInsertDebugUtilsLabelEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     const StructPointerDecoder<Decoded_VkDebugUtilsLabelEXT>& pLabelInfo)
 {
@@ -32857,7 +33158,7 @@ void VulkanJsonConsumer::Process_vkCmdInsertDebugUtilsLabelEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdInsertDebugUtilsLabelEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -32916,6 +33217,7 @@ void VulkanJsonConsumer::Process_vkCmdInsertDebugUtilsLabelEXT(
 
 void VulkanJsonConsumer::Process_vkCreateDebugUtilsMessengerEXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            instance,
     const StructPointerDecoder<Decoded_VkDebugUtilsMessengerCreateInfoEXT>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
@@ -32936,7 +33238,7 @@ void VulkanJsonConsumer::Process_vkCreateDebugUtilsMessengerEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkCreateDebugUtilsMessengerEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -33051,6 +33353,7 @@ void VulkanJsonConsumer::Process_vkCreateDebugUtilsMessengerEXT(
 }
 
 void VulkanJsonConsumer::Process_vkDestroyDebugUtilsMessengerEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            instance,
     format::HandleId                            messenger,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
@@ -33070,7 +33373,7 @@ void VulkanJsonConsumer::Process_vkDestroyDebugUtilsMessengerEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkDestroyDebugUtilsMessengerEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -33143,6 +33446,7 @@ void VulkanJsonConsumer::Process_vkDestroyDebugUtilsMessengerEXT(
 }
 
 void VulkanJsonConsumer::Process_vkSubmitDebugUtilsMessageEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            instance,
     VkDebugUtilsMessageSeverityFlagBitsEXT      messageSeverity,
     VkDebugUtilsMessageTypeFlagsEXT             messageTypes,
@@ -33163,7 +33467,7 @@ void VulkanJsonConsumer::Process_vkSubmitDebugUtilsMessageEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkSubmitDebugUtilsMessageEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -33253,6 +33557,7 @@ void VulkanJsonConsumer::Process_vkSubmitDebugUtilsMessageEXT(
 
 void VulkanJsonConsumer::Process_vkGetAndroidHardwareBufferPropertiesANDROID(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     uint64_t                                    buffer,
     StructPointerDecoder<Decoded_VkAndroidHardwareBufferPropertiesANDROID>* pProperties)
@@ -33272,7 +33577,7 @@ void VulkanJsonConsumer::Process_vkGetAndroidHardwareBufferPropertiesANDROID(
     OutputStringJson(outputFile, "\"name\" : \"vkGetAndroidHardwareBufferPropertiesANDROID\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -33362,6 +33667,7 @@ void VulkanJsonConsumer::Process_vkGetAndroidHardwareBufferPropertiesANDROID(
 
 void VulkanJsonConsumer::Process_vkGetMemoryAndroidHardwareBufferANDROID(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkMemoryGetAndroidHardwareBufferInfoANDROID>& pInfo,
     PointerDecoder<uint64_t, void*>*            pBuffer)
@@ -33381,7 +33687,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryAndroidHardwareBufferANDROID(
     OutputStringJson(outputFile, "\"name\" : \"vkGetMemoryAndroidHardwareBufferANDROID\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -33472,6 +33778,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryAndroidHardwareBufferANDROID(
 
 
 void VulkanJsonConsumer::Process_vkCmdSetSampleLocationsEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     const StructPointerDecoder<Decoded_VkSampleLocationsInfoEXT>& pSampleLocationsInfo)
 {
@@ -33490,7 +33797,7 @@ void VulkanJsonConsumer::Process_vkCmdSetSampleLocationsEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdSetSampleLocationsEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -33548,6 +33855,7 @@ void VulkanJsonConsumer::Process_vkCmdSetSampleLocationsEXT(
 }
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMultisamplePropertiesEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     VkSampleCountFlagBits                       samples,
     StructPointerDecoder<Decoded_VkMultisamplePropertiesEXT>* pMultisampleProperties)
@@ -33567,7 +33875,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMultisamplePropertiesEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkGetPhysicalDeviceMultisamplePropertiesEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -33642,6 +33950,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceMultisamplePropertiesEXT(
 
 void VulkanJsonConsumer::Process_vkGetImageDrmFormatModifierPropertiesEXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            image,
     StructPointerDecoder<Decoded_VkImageDrmFormatModifierPropertiesEXT>* pProperties)
@@ -33661,7 +33970,7 @@ void VulkanJsonConsumer::Process_vkGetImageDrmFormatModifierPropertiesEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkGetImageDrmFormatModifierPropertiesEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -33740,6 +34049,7 @@ void VulkanJsonConsumer::Process_vkGetImageDrmFormatModifierPropertiesEXT(
 
 void VulkanJsonConsumer::Process_vkCreateValidationCacheEXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkValidationCacheCreateInfoEXT>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
@@ -33760,7 +34070,7 @@ void VulkanJsonConsumer::Process_vkCreateValidationCacheEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkCreateValidationCacheEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -33875,6 +34185,7 @@ void VulkanJsonConsumer::Process_vkCreateValidationCacheEXT(
 }
 
 void VulkanJsonConsumer::Process_vkDestroyValidationCacheEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            validationCache,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
@@ -33894,7 +34205,7 @@ void VulkanJsonConsumer::Process_vkDestroyValidationCacheEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkDestroyValidationCacheEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -33968,6 +34279,7 @@ void VulkanJsonConsumer::Process_vkDestroyValidationCacheEXT(
 
 void VulkanJsonConsumer::Process_vkMergeValidationCachesEXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            dstCache,
     uint32_t                                    srcCacheCount,
@@ -33988,7 +34300,7 @@ void VulkanJsonConsumer::Process_vkMergeValidationCachesEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkMergeValidationCachesEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -34082,6 +34394,7 @@ void VulkanJsonConsumer::Process_vkMergeValidationCachesEXT(
 
 void VulkanJsonConsumer::Process_vkGetValidationCacheDataEXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            validationCache,
     PointerDecoder<size_t>*                     pDataSize,
@@ -34102,7 +34415,7 @@ void VulkanJsonConsumer::Process_vkGetValidationCacheDataEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkGetValidationCacheDataEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -34208,6 +34521,7 @@ void VulkanJsonConsumer::Process_vkGetValidationCacheDataEXT(
 
 
 void VulkanJsonConsumer::Process_vkCmdBindShadingRateImageNV(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            imageView,
     VkImageLayout                               imageLayout)
@@ -34227,7 +34541,7 @@ void VulkanJsonConsumer::Process_vkCmdBindShadingRateImageNV(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdBindShadingRateImageNV\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -34289,6 +34603,7 @@ void VulkanJsonConsumer::Process_vkCmdBindShadingRateImageNV(
 }
 
 void VulkanJsonConsumer::Process_vkCmdSetViewportShadingRatePaletteNV(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     uint32_t                                    firstViewport,
     uint32_t                                    viewportCount,
@@ -34309,7 +34624,7 @@ void VulkanJsonConsumer::Process_vkCmdSetViewportShadingRatePaletteNV(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdSetViewportShadingRatePaletteNV\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -34397,6 +34712,7 @@ void VulkanJsonConsumer::Process_vkCmdSetViewportShadingRatePaletteNV(
 }
 
 void VulkanJsonConsumer::Process_vkCmdSetCoarseSampleOrderNV(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     VkCoarseSampleOrderTypeNV                   sampleOrderType,
     uint32_t                                    customSampleOrderCount,
@@ -34417,7 +34733,7 @@ void VulkanJsonConsumer::Process_vkCmdSetCoarseSampleOrderNV(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdSetCoarseSampleOrderNV\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -34507,6 +34823,7 @@ void VulkanJsonConsumer::Process_vkCmdSetCoarseSampleOrderNV(
 
 void VulkanJsonConsumer::Process_vkCreateAccelerationStructureNV(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkAccelerationStructureCreateInfoNV>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
@@ -34527,7 +34844,7 @@ void VulkanJsonConsumer::Process_vkCreateAccelerationStructureNV(
     OutputStringJson(outputFile, "\"name\" : \"vkCreateAccelerationStructureNV\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -34642,6 +34959,7 @@ void VulkanJsonConsumer::Process_vkCreateAccelerationStructureNV(
 }
 
 void VulkanJsonConsumer::Process_vkDestroyAccelerationStructureNV(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            accelerationStructure,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator)
@@ -34661,7 +34979,7 @@ void VulkanJsonConsumer::Process_vkDestroyAccelerationStructureNV(
     OutputStringJson(outputFile, "\"name\" : \"vkDestroyAccelerationStructureNV\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -34734,6 +35052,7 @@ void VulkanJsonConsumer::Process_vkDestroyAccelerationStructureNV(
 }
 
 void VulkanJsonConsumer::Process_vkGetAccelerationStructureMemoryRequirementsNV(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkAccelerationStructureMemoryRequirementsInfoNV>& pInfo,
     StructPointerDecoder<Decoded_VkMemoryRequirements2KHR>* pMemoryRequirements)
@@ -34753,7 +35072,7 @@ void VulkanJsonConsumer::Process_vkGetAccelerationStructureMemoryRequirementsNV(
     OutputStringJson(outputFile, "\"name\" : \"vkGetAccelerationStructureMemoryRequirementsNV\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -34838,6 +35157,7 @@ void VulkanJsonConsumer::Process_vkGetAccelerationStructureMemoryRequirementsNV(
 
 void VulkanJsonConsumer::Process_vkBindAccelerationStructureMemoryNV(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     uint32_t                                    bindInfoCount,
     const StructPointerDecoder<Decoded_VkBindAccelerationStructureMemoryInfoNV>& pBindInfos)
@@ -34857,7 +35177,7 @@ void VulkanJsonConsumer::Process_vkBindAccelerationStructureMemoryNV(
     OutputStringJson(outputFile, "\"name\" : \"vkBindAccelerationStructureMemoryNV\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -34934,6 +35254,7 @@ void VulkanJsonConsumer::Process_vkBindAccelerationStructureMemoryNV(
 }
 
 void VulkanJsonConsumer::Process_vkCmdBuildAccelerationStructureNV(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     const StructPointerDecoder<Decoded_VkAccelerationStructureInfoNV>& pInfo,
     format::HandleId                            instanceData,
@@ -34959,7 +35280,7 @@ void VulkanJsonConsumer::Process_vkCmdBuildAccelerationStructureNV(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdBuildAccelerationStructureNV\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -35122,6 +35443,7 @@ void VulkanJsonConsumer::Process_vkCmdBuildAccelerationStructureNV(
 }
 
 void VulkanJsonConsumer::Process_vkCmdCopyAccelerationStructureNV(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            dst,
     format::HandleId                            src,
@@ -35142,7 +35464,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyAccelerationStructureNV(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdCopyAccelerationStructureNV\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -35219,6 +35541,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyAccelerationStructureNV(
 }
 
 void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            raygenShaderBindingTableBuffer,
     VkDeviceSize                                raygenShaderBindingOffset,
@@ -35250,7 +35573,7 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdTraceRaysNV\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -35493,6 +35816,7 @@ void VulkanJsonConsumer::Process_vkCmdTraceRaysNV(
 
 void VulkanJsonConsumer::Process_vkCreateRayTracingPipelinesNV(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            pipelineCache,
     uint32_t                                    createInfoCount,
@@ -35515,7 +35839,7 @@ void VulkanJsonConsumer::Process_vkCreateRayTracingPipelinesNV(
     OutputStringJson(outputFile, "\"name\" : \"vkCreateRayTracingPipelinesNV\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -35661,6 +35985,7 @@ void VulkanJsonConsumer::Process_vkCreateRayTracingPipelinesNV(
 
 void VulkanJsonConsumer::Process_vkGetRayTracingShaderGroupHandlesNV(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            pipeline,
     uint32_t                                    firstGroup,
@@ -35683,7 +36008,7 @@ void VulkanJsonConsumer::Process_vkGetRayTracingShaderGroupHandlesNV(
     OutputStringJson(outputFile, "\"name\" : \"vkGetRayTracingShaderGroupHandlesNV\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -35807,6 +36132,7 @@ void VulkanJsonConsumer::Process_vkGetRayTracingShaderGroupHandlesNV(
 
 void VulkanJsonConsumer::Process_vkGetAccelerationStructureHandleNV(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            accelerationStructure,
     size_t                                      dataSize,
@@ -35827,7 +36153,7 @@ void VulkanJsonConsumer::Process_vkGetAccelerationStructureHandleNV(
     OutputStringJson(outputFile, "\"name\" : \"vkGetAccelerationStructureHandleNV\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -35920,6 +36246,7 @@ void VulkanJsonConsumer::Process_vkGetAccelerationStructureHandleNV(
 }
 
 void VulkanJsonConsumer::Process_vkCmdWriteAccelerationStructuresPropertiesNV(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     uint32_t                                    accelerationStructureCount,
     const HandlePointerDecoder<VkAccelerationStructureNV>& pAccelerationStructures,
@@ -35942,7 +36269,7 @@ void VulkanJsonConsumer::Process_vkCmdWriteAccelerationStructuresPropertiesNV(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdWriteAccelerationStructuresPropertiesNV\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -36062,6 +36389,7 @@ void VulkanJsonConsumer::Process_vkCmdWriteAccelerationStructuresPropertiesNV(
 
 void VulkanJsonConsumer::Process_vkCompileDeferredNV(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            pipeline,
     uint32_t                                    shader)
@@ -36081,7 +36409,7 @@ void VulkanJsonConsumer::Process_vkCompileDeferredNV(
     OutputStringJson(outputFile, "\"name\" : \"vkCompileDeferredNV\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -36149,6 +36477,7 @@ void VulkanJsonConsumer::Process_vkCompileDeferredNV(
 
 void VulkanJsonConsumer::Process_vkGetMemoryHostPointerPropertiesEXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     VkExternalMemoryHandleTypeFlagBits          handleType,
     uint64_t                                    pHostPointer,
@@ -36169,7 +36498,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryHostPointerPropertiesEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkGetMemoryHostPointerPropertiesEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -36274,6 +36603,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryHostPointerPropertiesEXT(
 
 
 void VulkanJsonConsumer::Process_vkCmdWriteBufferMarkerAMD(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     VkPipelineStageFlagBits                     pipelineStage,
     format::HandleId                            dstBuffer,
@@ -36295,7 +36625,7 @@ void VulkanJsonConsumer::Process_vkCmdWriteBufferMarkerAMD(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdWriteBufferMarkerAMD\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -36389,6 +36719,7 @@ void VulkanJsonConsumer::Process_vkCmdWriteBufferMarkerAMD(
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     PointerDecoder<uint32_t>*                   pTimeDomainCount,
     PointerDecoder<VkTimeDomainEXT>*            pTimeDomains)
@@ -36408,7 +36739,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkGetPhysicalDeviceCalibrateableTimeDomainsEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -36499,6 +36830,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(
 
 void VulkanJsonConsumer::Process_vkGetCalibratedTimestampsEXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     uint32_t                                    timestampCount,
     const StructPointerDecoder<Decoded_VkCalibratedTimestampInfoEXT>& pTimestampInfos,
@@ -36520,7 +36852,7 @@ void VulkanJsonConsumer::Process_vkGetCalibratedTimestampsEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkGetCalibratedTimestampsEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -36652,6 +36984,7 @@ void VulkanJsonConsumer::Process_vkGetCalibratedTimestampsEXT(
 
 
 void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksNV(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     uint32_t                                    taskCount,
     uint32_t                                    firstTask)
@@ -36671,7 +37004,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksNV(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdDrawMeshTasksNV\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -36733,6 +37066,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksNV(
 }
 
 void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectNV(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            buffer,
     VkDeviceSize                                offset,
@@ -36754,7 +37088,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectNV(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdDrawMeshTasksIndirectNV\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -36846,6 +37180,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectNV(
 }
 
 void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectCountNV(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            buffer,
     VkDeviceSize                                offset,
@@ -36869,7 +37204,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectCountNV(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdDrawMeshTasksIndirectCountNV\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -36992,6 +37327,7 @@ void VulkanJsonConsumer::Process_vkCmdDrawMeshTasksIndirectCountNV(
 
 
 void VulkanJsonConsumer::Process_vkCmdSetExclusiveScissorNV(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     uint32_t                                    firstExclusiveScissor,
     uint32_t                                    exclusiveScissorCount,
@@ -37012,7 +37348,7 @@ void VulkanJsonConsumer::Process_vkCmdSetExclusiveScissorNV(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdSetExclusiveScissorNV\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -37101,6 +37437,7 @@ void VulkanJsonConsumer::Process_vkCmdSetExclusiveScissorNV(
 
 
 void VulkanJsonConsumer::Process_vkCmdSetCheckpointNV(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     uint64_t                                    pCheckpointMarker)
 {
@@ -37119,7 +37456,7 @@ void VulkanJsonConsumer::Process_vkCmdSetCheckpointNV(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdSetCheckpointNV\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -37178,6 +37515,7 @@ void VulkanJsonConsumer::Process_vkCmdSetCheckpointNV(
 }
 
 void VulkanJsonConsumer::Process_vkGetQueueCheckpointDataNV(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            queue,
     PointerDecoder<uint32_t>*                   pCheckpointDataCount,
     StructPointerDecoder<Decoded_VkCheckpointDataNV>* pCheckpointData)
@@ -37197,7 +37535,7 @@ void VulkanJsonConsumer::Process_vkGetQueueCheckpointDataNV(
     OutputStringJson(outputFile, "\"name\" : \"vkGetQueueCheckpointDataNV\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -37284,6 +37622,7 @@ void VulkanJsonConsumer::Process_vkGetQueueCheckpointDataNV(
 
 void VulkanJsonConsumer::Process_vkInitializePerformanceApiINTEL(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkInitializePerformanceApiInfoINTEL>& pInitializeInfo)
 {
@@ -37302,7 +37641,7 @@ void VulkanJsonConsumer::Process_vkInitializePerformanceApiINTEL(
     OutputStringJson(outputFile, "\"name\" : \"vkInitializePerformanceApiINTEL\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -37364,6 +37703,7 @@ void VulkanJsonConsumer::Process_vkInitializePerformanceApiINTEL(
 }
 
 void VulkanJsonConsumer::Process_vkUninitializePerformanceApiINTEL(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device)
 {
     uint32_t indent = 5;
@@ -37381,7 +37721,7 @@ void VulkanJsonConsumer::Process_vkUninitializePerformanceApiINTEL(
     OutputStringJson(outputFile, "\"name\" : \"vkUninitializePerformanceApiINTEL\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -37414,6 +37754,7 @@ void VulkanJsonConsumer::Process_vkUninitializePerformanceApiINTEL(
 
 void VulkanJsonConsumer::Process_vkCmdSetPerformanceMarkerINTEL(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     const StructPointerDecoder<Decoded_VkPerformanceMarkerInfoINTEL>& pMarkerInfo)
 {
@@ -37432,7 +37773,7 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceMarkerINTEL(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdSetPerformanceMarkerINTEL\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -37495,6 +37836,7 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceMarkerINTEL(
 
 void VulkanJsonConsumer::Process_vkCmdSetPerformanceStreamMarkerINTEL(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     const StructPointerDecoder<Decoded_VkPerformanceStreamMarkerInfoINTEL>& pMarkerInfo)
 {
@@ -37513,7 +37855,7 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceStreamMarkerINTEL(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdSetPerformanceStreamMarkerINTEL\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -37576,6 +37918,7 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceStreamMarkerINTEL(
 
 void VulkanJsonConsumer::Process_vkCmdSetPerformanceOverrideINTEL(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     const StructPointerDecoder<Decoded_VkPerformanceOverrideInfoINTEL>& pOverrideInfo)
 {
@@ -37594,7 +37937,7 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceOverrideINTEL(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdSetPerformanceOverrideINTEL\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -37657,6 +38000,7 @@ void VulkanJsonConsumer::Process_vkCmdSetPerformanceOverrideINTEL(
 
 void VulkanJsonConsumer::Process_vkAcquirePerformanceConfigurationINTEL(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkPerformanceConfigurationAcquireInfoINTEL>& pAcquireInfo,
     HandlePointerDecoder<VkPerformanceConfigurationINTEL>* pConfiguration)
@@ -37676,7 +38020,7 @@ void VulkanJsonConsumer::Process_vkAcquirePerformanceConfigurationINTEL(
     OutputStringJson(outputFile, "\"name\" : \"vkAcquirePerformanceConfigurationINTEL\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -37766,6 +38110,7 @@ void VulkanJsonConsumer::Process_vkAcquirePerformanceConfigurationINTEL(
 
 void VulkanJsonConsumer::Process_vkReleasePerformanceConfigurationINTEL(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            configuration)
 {
@@ -37784,7 +38129,7 @@ void VulkanJsonConsumer::Process_vkReleasePerformanceConfigurationINTEL(
     OutputStringJson(outputFile, "\"name\" : \"vkReleasePerformanceConfigurationINTEL\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -37836,6 +38181,7 @@ void VulkanJsonConsumer::Process_vkReleasePerformanceConfigurationINTEL(
 
 void VulkanJsonConsumer::Process_vkQueueSetPerformanceConfigurationINTEL(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            queue,
     format::HandleId                            configuration)
 {
@@ -37854,7 +38200,7 @@ void VulkanJsonConsumer::Process_vkQueueSetPerformanceConfigurationINTEL(
     OutputStringJson(outputFile, "\"name\" : \"vkQueueSetPerformanceConfigurationINTEL\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -37906,6 +38252,7 @@ void VulkanJsonConsumer::Process_vkQueueSetPerformanceConfigurationINTEL(
 
 void VulkanJsonConsumer::Process_vkGetPerformanceParameterINTEL(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     VkPerformanceParameterTypeINTEL             parameter,
     StructPointerDecoder<Decoded_VkPerformanceValueINTEL>* pValue)
@@ -37925,7 +38272,7 @@ void VulkanJsonConsumer::Process_vkGetPerformanceParameterINTEL(
     OutputStringJson(outputFile, "\"name\" : \"vkGetPerformanceParameterINTEL\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -38003,6 +38350,7 @@ void VulkanJsonConsumer::Process_vkGetPerformanceParameterINTEL(
 
 
 void VulkanJsonConsumer::Process_vkSetLocalDimmingAMD(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            swapChain,
     VkBool32                                    localDimmingEnable)
@@ -38022,7 +38370,7 @@ void VulkanJsonConsumer::Process_vkSetLocalDimmingAMD(
     OutputStringJson(outputFile, "\"name\" : \"vkSetLocalDimmingAMD\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -38086,6 +38434,7 @@ void VulkanJsonConsumer::Process_vkSetLocalDimmingAMD(
 
 void VulkanJsonConsumer::Process_vkCreateImagePipeSurfaceFUCHSIA(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            instance,
     const StructPointerDecoder<Decoded_VkImagePipeSurfaceCreateInfoFUCHSIA>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
@@ -38106,7 +38455,7 @@ void VulkanJsonConsumer::Process_vkCreateImagePipeSurfaceFUCHSIA(
     OutputStringJson(outputFile, "\"name\" : \"vkCreateImagePipeSurfaceFUCHSIA\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -38223,6 +38572,7 @@ void VulkanJsonConsumer::Process_vkCreateImagePipeSurfaceFUCHSIA(
 
 void VulkanJsonConsumer::Process_vkCreateMetalSurfaceEXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            instance,
     const StructPointerDecoder<Decoded_VkMetalSurfaceCreateInfoEXT>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
@@ -38243,7 +38593,7 @@ void VulkanJsonConsumer::Process_vkCreateMetalSurfaceEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkCreateMetalSurfaceEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -38360,6 +38710,7 @@ void VulkanJsonConsumer::Process_vkCreateMetalSurfaceEXT(
 
 void VulkanJsonConsumer::Process_vkGetBufferDeviceAddressEXT(
     VkDeviceAddress                             returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkBufferDeviceAddressInfoEXT>& pInfo)
 {
@@ -38378,7 +38729,7 @@ void VulkanJsonConsumer::Process_vkGetBufferDeviceAddressEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkGetBufferDeviceAddressEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkDeviceAddress\",\n");
@@ -38444,6 +38795,7 @@ void VulkanJsonConsumer::Process_vkGetBufferDeviceAddressEXT(
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     PointerDecoder<uint32_t>*                   pPropertyCount,
     StructPointerDecoder<Decoded_VkCooperativeMatrixPropertiesNV>* pProperties)
@@ -38463,7 +38815,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCooperativeMatrixPropertiesN
     OutputStringJson(outputFile, "\"name\" : \"vkGetPhysicalDeviceCooperativeMatrixPropertiesNV\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -38554,6 +38906,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCooperativeMatrixPropertiesN
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     PointerDecoder<uint32_t>*                   pCombinationCount,
     StructPointerDecoder<Decoded_VkFramebufferMixedSamplesCombinationNV>* pCombinations)
@@ -38573,7 +38926,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSupportedFramebufferMixedSam
     OutputStringJson(outputFile, "\"name\" : \"vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -38664,6 +39017,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSupportedFramebufferMixedSam
 
 void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModes2EXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     const StructPointerDecoder<Decoded_VkPhysicalDeviceSurfaceInfo2KHR>& pSurfaceInfo,
     PointerDecoder<uint32_t>*                   pPresentModeCount,
@@ -38684,7 +39038,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModes2EXT(
     OutputStringJson(outputFile, "\"name\" : \"vkGetPhysicalDeviceSurfacePresentModes2EXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -38801,6 +39155,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModes2EXT(
 
 void VulkanJsonConsumer::Process_vkAcquireFullScreenExclusiveModeEXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            swapchain)
 {
@@ -38819,7 +39174,7 @@ void VulkanJsonConsumer::Process_vkAcquireFullScreenExclusiveModeEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkAcquireFullScreenExclusiveModeEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -38871,6 +39226,7 @@ void VulkanJsonConsumer::Process_vkAcquireFullScreenExclusiveModeEXT(
 
 void VulkanJsonConsumer::Process_vkReleaseFullScreenExclusiveModeEXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            swapchain)
 {
@@ -38889,7 +39245,7 @@ void VulkanJsonConsumer::Process_vkReleaseFullScreenExclusiveModeEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkReleaseFullScreenExclusiveModeEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -38941,6 +39297,7 @@ void VulkanJsonConsumer::Process_vkReleaseFullScreenExclusiveModeEXT(
 
 void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModes2EXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     const StructPointerDecoder<Decoded_VkPhysicalDeviceSurfaceInfo2KHR>& pSurfaceInfo,
     PointerDecoder<VkDeviceGroupPresentModeFlagsKHR>* pModes)
@@ -38960,7 +39317,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModes2EXT(
     OutputStringJson(outputFile, "\"name\" : \"vkGetDeviceGroupSurfacePresentModes2EXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -39052,6 +39409,7 @@ void VulkanJsonConsumer::Process_vkGetDeviceGroupSurfacePresentModes2EXT(
 
 void VulkanJsonConsumer::Process_vkCreateHeadlessSurfaceEXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            instance,
     const StructPointerDecoder<Decoded_VkHeadlessSurfaceCreateInfoEXT>& pCreateInfo,
     const StructPointerDecoder<Decoded_VkAllocationCallbacks>& pAllocator,
@@ -39072,7 +39430,7 @@ void VulkanJsonConsumer::Process_vkCreateHeadlessSurfaceEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkCreateHeadlessSurfaceEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"VkResult\",\n");
@@ -39188,6 +39546,7 @@ void VulkanJsonConsumer::Process_vkCreateHeadlessSurfaceEXT(
 
 
 void VulkanJsonConsumer::Process_vkCmdSetLineStippleEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     uint32_t                                    lineStippleFactor,
     uint16_t                                    lineStipplePattern)
@@ -39207,7 +39566,7 @@ void VulkanJsonConsumer::Process_vkCmdSetLineStippleEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkCmdSetLineStippleEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");
@@ -39270,6 +39629,7 @@ void VulkanJsonConsumer::Process_vkCmdSetLineStippleEXT(
 
 
 void VulkanJsonConsumer::Process_vkResetQueryPoolEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            queryPool,
     uint32_t                                    firstQuery,
@@ -39290,7 +39650,7 @@ void VulkanJsonConsumer::Process_vkResetQueryPoolEXT(
     OutputStringJson(outputFile, "\"name\" : \"vkResetQueryPoolEXT\",\n"); // FCN
     OutputIndentJson(outputFile, 3); // TNP
     OutputStringJson(outputFile, "\"thread\" : \"Thread ");
-    OutputSignedDecimalJson(outputFile, 0);
+    OutputSignedDecimalJson(outputFile, call_info.thread_id);
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, 3); // TLP
     OutputStringJson(outputFile, "\"returnType\" : \"void\",\n");

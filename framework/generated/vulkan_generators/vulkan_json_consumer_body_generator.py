@@ -16,7 +16,6 @@
 # limitations under the License.
 #
 # TODO:
-#   Display thread information
 #   Rename executable to gfxrecon-convert
 
 import os,re,sys
@@ -65,6 +64,7 @@ class VulkanJsonConsumerBodyGenerator(BaseGenerator):
     # Method override
     def beginFile(self, genOpts):
         BaseGenerator.beginFile(self, genOpts)
+        self.wc('#include "decode/api_decoder.h"')
         self.wc('#include "format/platform_types.h"')
         self.wc('#include "generated/generated_vulkan_enum_output_util.h"')
         self.wc('#include "generated/generated_vulkan_json_consumer.h"')
@@ -144,7 +144,7 @@ class VulkanJsonConsumerBodyGenerator(BaseGenerator):
         self.wc('    OutputStringJson(outputFile, "\\"name\\" : \\"' + name + '\\",\\n"); // FCN')
         self.wc('    OutputIndentJson(outputFile, 3); // TNP')
         self.wc('    OutputStringJson(outputFile, "\\"thread\\" : \\"Thread ");');
-        self.wc('    OutputSignedDecimalJson(outputFile, 0);')  # TODO: get thread id
+        self.wc('    OutputSignedDecimalJson(outputFile, call_info.thread_id);')
         self.wc('    OutputStringJson(outputFile, "\\",\\n");');
         self.wc('    OutputIndentJson(outputFile, 3); // TLP')
         self.wc('    OutputStringJson(outputFile, "\\"returnType\\" : \\"' + returnType + '\\",\\n");')

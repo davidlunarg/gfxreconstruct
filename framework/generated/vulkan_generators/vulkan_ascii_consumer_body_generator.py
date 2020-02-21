@@ -16,7 +16,6 @@
 # limitations under the License.
 #
 # TODO:
-#    Display thread information
 #    Rename executable to gfxrecon-convert
 
 import os,re,sys
@@ -65,6 +64,7 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
     # Method override
     def beginFile(self, genOpts):
         BaseGenerator.beginFile(self, genOpts)
+        self.wc('#include "decode/api_decoder.h"')
         self.wc('#include "format/platform_types.h"')
         self.wc('#include "generated/generated_vulkan_ascii_consumer.h"')
         self.wc('#include "generated/generated_vulkan_ascii_struct_util.h"')
@@ -129,7 +129,7 @@ class VulkanAsciiConsumerBodyGenerator(BaseGenerator):
         self.wc('{')
         self.wc('    uint32_t indent = 1;')
         self.wc('    FILE* outputFile = GetFile();')
-        self.wc('    fprintf(outputFile, "Thread %d, Frame %d:\\n", 0, frameNumber); // FNB')
+        self.wc('    fprintf(outputFile, "Thread %" PRIu64 ", Frame %" PRIu32 ":\\n", call_info.thread_id, frameNumber); // FNB')
         needcomma=0
         args = ''
         for value in values:
