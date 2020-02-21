@@ -101,7 +101,7 @@ class VulkanDecoderBodyGenerator(BaseGenerator):
             values = info[2]
 
             cmddef = '' if first else '\n'
-            cmddef += 'size_t VulkanDecoder::Decode_{}(const uint8_t* parameter_buffer, size_t buffer_size)\n'.format(cmd)
+            cmddef += 'size_t VulkanDecoder::Decode_{}(const ApiCallInfo& call_info, const uint8_t* parameter_buffer, size_t buffer_size)\n'.format(cmd)
             cmddef += '{\n'
             cmddef += '    size_t bytes_read = 0;\n'
             cmddef += '\n'
@@ -148,7 +148,9 @@ class VulkanDecoderBodyGenerator(BaseGenerator):
         # Make the argument list for the API call
         arglist = ', '.join([argName for argName in argNames])
         if returnType and returnType != 'void':
-            arglist = ', '.join(['return_value', arglist])
+            arglist = ', '.join(['return_value, call_info', arglist])
+        else:
+            arglist = ', '.join(['call_info', arglist])
 
         body += '    for (auto consumer : GetConsumers())\n'
         body += '    {\n'
@@ -221,7 +223,7 @@ class VulkanDecoderBodyGenerator(BaseGenerator):
 
         for cmd in self.cmdNames:
             cmddef = '    case format::ApiCallId::ApiCall_{}:\n'.format(cmd)
-            cmddef += '        Decode_{}(parameter_buffer, buffer_size);\n'.format(cmd)
+            cmddef += '        Decode_{}(call_info, parameter_buffer, buffer_size);\n'.format(cmd)
             cmddef += '        break;'
             write(cmddef, file=self.outFile)
 
