@@ -195,15 +195,6 @@ void StringToQuotedStringJson(FILE* outputFile, const char* s)
     OutputStringJson(outputFile, out);
 }
 
-void PadStringJson(std::string* s, size_t len)
-{
-    assert(s != nullptr);
-    if (s->length() < len)
-    {
-        s->insert(s->end(), len - s->length(), ' ');
-    }
-}
-
 void WideStringToQuotedStringJson(FILE* outputFile, const wchar_t* s)
 {
     assert(outputFile != nullptr);
