@@ -852,7 +852,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkQueueFamilyProperties>(outputFile, indent, "VkQueueFamilyProperties", pQueueFamilyProperties->GetMetaStructPointer(), "pQueueFamilyProperties", *pQueueFamilyPropertyCount->GetPointer(), false, pQueueFamilyProperties->GetAddress(), sizeof(VkQueueFamilyProperties)); // CRO
+        OutputArrayOfStructsJson(outputFile, indent, "VkQueueFamilyProperties", pQueueFamilyProperties->GetMetaStructPointer(), "pQueueFamilyProperties", *pQueueFamilyPropertyCount->GetPointer(), false, pQueueFamilyProperties->GetAddress(), sizeof(VkQueueFamilyProperties)); // CRO
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -1352,7 +1352,7 @@ void VulkanJsonConsumer::Process_vkQueueSubmit(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkSubmitInfo>(outputFile, indent, "VkSubmitInfo", pSubmits.GetMetaStructPointer(), "pSubmits", submitCount, false, pSubmits.GetAddress(), sizeof(VkSubmitInfo)); // CRP
+        OutputArrayOfStructsJson(outputFile, indent, "VkSubmitInfo", pSubmits.GetMetaStructPointer(), "pSubmits", submitCount, false, pSubmits.GetAddress(), sizeof(VkSubmitInfo)); // CRP
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -2018,7 +2018,7 @@ void VulkanJsonConsumer::Process_vkFlushMappedMemoryRanges(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkMappedMemoryRange>(outputFile, indent, "VkMappedMemoryRange", pMemoryRanges.GetMetaStructPointer(), "pMemoryRanges", memoryRangeCount, false, pMemoryRanges.GetAddress(), sizeof(VkMappedMemoryRange)); // CRP
+        OutputArrayOfStructsJson(outputFile, indent, "VkMappedMemoryRange", pMemoryRanges.GetMetaStructPointer(), "pMemoryRanges", memoryRangeCount, false, pMemoryRanges.GetAddress(), sizeof(VkMappedMemoryRange)); // CRP
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -2116,7 +2116,7 @@ void VulkanJsonConsumer::Process_vkInvalidateMappedMemoryRanges(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkMappedMemoryRange>(outputFile, indent, "VkMappedMemoryRange", pMemoryRanges.GetMetaStructPointer(), "pMemoryRanges", memoryRangeCount, false, pMemoryRanges.GetAddress(), sizeof(VkMappedMemoryRange)); // CRP
+        OutputArrayOfStructsJson(outputFile, indent, "VkMappedMemoryRange", pMemoryRanges.GetMetaStructPointer(), "pMemoryRanges", memoryRangeCount, false, pMemoryRanges.GetAddress(), sizeof(VkMappedMemoryRange)); // CRP
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -2724,7 +2724,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkSparseImageMemoryRequirements>(outputFile, indent, "VkSparseImageMemoryRequirements", pSparseMemoryRequirements->GetMetaStructPointer(), "pSparseMemoryRequirements", *pSparseMemoryRequirementCount->GetPointer(), false, pSparseMemoryRequirements->GetAddress(), sizeof(VkSparseImageMemoryRequirements)); // CRO
+        OutputArrayOfStructsJson(outputFile, indent, "VkSparseImageMemoryRequirements", pSparseMemoryRequirements->GetMetaStructPointer(), "pSparseMemoryRequirements", *pSparseMemoryRequirementCount->GetPointer(), false, pSparseMemoryRequirements->GetAddress(), sizeof(VkSparseImageMemoryRequirements)); // CRO
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -2909,7 +2909,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkSparseImageFormatProperties>(outputFile, indent, "VkSparseImageFormatProperties", pProperties->GetMetaStructPointer(), "pProperties", *pPropertyCount->GetPointer(), false, pProperties->GetAddress(), sizeof(VkSparseImageFormatProperties)); // CRO
+        OutputArrayOfStructsJson(outputFile, indent, "VkSparseImageFormatProperties", pProperties->GetMetaStructPointer(), "pProperties", *pPropertyCount->GetPointer(), false, pProperties->GetAddress(), sizeof(VkSparseImageFormatProperties)); // CRO
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -3008,7 +3008,7 @@ void VulkanJsonConsumer::Process_vkQueueBindSparse(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkBindSparseInfo>(outputFile, indent, "VkBindSparseInfo", pBindInfo.GetMetaStructPointer(), "pBindInfo", bindInfoCount, false, pBindInfo.GetAddress(), sizeof(VkBindSparseInfo)); // CRP
+        OutputArrayOfStructsJson(outputFile, indent, "VkBindSparseInfo", pBindInfo.GetMetaStructPointer(), "pBindInfo", bindInfoCount, false, pBindInfo.GetAddress(), sizeof(VkBindSparseInfo)); // CRP
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -6494,7 +6494,7 @@ void VulkanJsonConsumer::Process_vkCreateGraphicsPipelines(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkGraphicsPipelineCreateInfo>(outputFile, indent, "VkGraphicsPipelineCreateInfo", pCreateInfos.GetMetaStructPointer(), "pCreateInfos", createInfoCount, false, pCreateInfos.GetAddress(), sizeof(VkGraphicsPipelineCreateInfo)); // CRP
+        OutputArrayOfStructsJson(outputFile, indent, "VkGraphicsPipelineCreateInfo", pCreateInfos.GetMetaStructPointer(), "pCreateInfos", createInfoCount, false, pCreateInfos.GetAddress(), sizeof(VkGraphicsPipelineCreateInfo)); // CRP
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -6663,7 +6663,7 @@ void VulkanJsonConsumer::Process_vkCreateComputePipelines(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkComputePipelineCreateInfo>(outputFile, indent, "VkComputePipelineCreateInfo", pCreateInfos.GetMetaStructPointer(), "pCreateInfos", createInfoCount, false, pCreateInfos.GetAddress(), sizeof(VkComputePipelineCreateInfo)); // CRP
+        OutputArrayOfStructsJson(outputFile, indent, "VkComputePipelineCreateInfo", pCreateInfos.GetMetaStructPointer(), "pCreateInfos", createInfoCount, false, pCreateInfos.GetAddress(), sizeof(VkComputePipelineCreateInfo)); // CRP
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -8136,7 +8136,7 @@ void VulkanJsonConsumer::Process_vkUpdateDescriptorSets(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkWriteDescriptorSet>(outputFile, indent, "VkWriteDescriptorSet", pDescriptorWrites.GetMetaStructPointer(), "pDescriptorWrites", descriptorWriteCount, false, pDescriptorWrites.GetAddress(), sizeof(VkWriteDescriptorSet)); // CRP
+        OutputArrayOfStructsJson(outputFile, indent, "VkWriteDescriptorSet", pDescriptorWrites.GetMetaStructPointer(), "pDescriptorWrites", descriptorWriteCount, false, pDescriptorWrites.GetAddress(), sizeof(VkWriteDescriptorSet)); // CRP
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -8177,7 +8177,7 @@ void VulkanJsonConsumer::Process_vkUpdateDescriptorSets(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkCopyDescriptorSet>(outputFile, indent, "VkCopyDescriptorSet", pDescriptorCopies.GetMetaStructPointer(), "pDescriptorCopies", descriptorCopyCount, false, pDescriptorCopies.GetAddress(), sizeof(VkCopyDescriptorSet)); // CRP
+        OutputArrayOfStructsJson(outputFile, indent, "VkCopyDescriptorSet", pDescriptorCopies.GetMetaStructPointer(), "pDescriptorCopies", descriptorCopyCount, false, pDescriptorCopies.GetAddress(), sizeof(VkCopyDescriptorSet)); // CRP
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -9666,7 +9666,7 @@ void VulkanJsonConsumer::Process_vkCmdSetViewport(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkViewport>(outputFile, indent, "VkViewport", pViewports.GetMetaStructPointer(), "pViewports", viewportCount, false, pViewports.GetAddress(), sizeof(VkViewport)); // CRP
+        OutputArrayOfStructsJson(outputFile, indent, "VkViewport", pViewports.GetMetaStructPointer(), "pViewports", viewportCount, false, pViewports.GetAddress(), sizeof(VkViewport)); // CRP
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -9775,7 +9775,7 @@ void VulkanJsonConsumer::Process_vkCmdSetScissor(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkRect2D>(outputFile, indent, "VkRect2D", pScissors.GetMetaStructPointer(), "pScissors", scissorCount, false, pScissors.GetAddress(), sizeof(VkRect2D)); // CRP
+        OutputArrayOfStructsJson(outputFile, indent, "VkRect2D", pScissors.GetMetaStructPointer(), "pScissors", scissorCount, false, pScissors.GetAddress(), sizeof(VkRect2D)); // CRP
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -11539,7 +11539,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyBuffer(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkBufferCopy>(outputFile, indent, "VkBufferCopy", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress(), sizeof(VkBufferCopy)); // CRP
+        OutputArrayOfStructsJson(outputFile, indent, "VkBufferCopy", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress(), sizeof(VkBufferCopy)); // CRP
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -11696,7 +11696,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyImage(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkImageCopy>(outputFile, indent, "VkImageCopy", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress(), sizeof(VkImageCopy)); // CRP
+        OutputArrayOfStructsJson(outputFile, indent, "VkImageCopy", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress(), sizeof(VkImageCopy)); // CRP
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -11854,7 +11854,7 @@ void VulkanJsonConsumer::Process_vkCmdBlitImage(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkImageBlit>(outputFile, indent, "VkImageBlit", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress(), sizeof(VkImageBlit)); // CRP
+        OutputArrayOfStructsJson(outputFile, indent, "VkImageBlit", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress(), sizeof(VkImageBlit)); // CRP
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -12010,7 +12010,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyBufferToImage(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkBufferImageCopy>(outputFile, indent, "VkBufferImageCopy", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress(), sizeof(VkBufferImageCopy)); // CRP
+        OutputArrayOfStructsJson(outputFile, indent, "VkBufferImageCopy", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress(), sizeof(VkBufferImageCopy)); // CRP
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -12151,7 +12151,7 @@ void VulkanJsonConsumer::Process_vkCmdCopyImageToBuffer(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkBufferImageCopy>(outputFile, indent, "VkBufferImageCopy", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress(), sizeof(VkBufferImageCopy)); // CRP
+        OutputArrayOfStructsJson(outputFile, indent, "VkBufferImageCopy", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress(), sizeof(VkBufferImageCopy)); // CRP
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -12539,7 +12539,7 @@ void VulkanJsonConsumer::Process_vkCmdClearColorImage(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkImageSubresourceRange>(outputFile, indent, "VkImageSubresourceRange", pRanges.GetMetaStructPointer(), "pRanges", rangeCount, false, pRanges.GetAddress(), sizeof(VkImageSubresourceRange)); // CRP
+        OutputArrayOfStructsJson(outputFile, indent, "VkImageSubresourceRange", pRanges.GetMetaStructPointer(), "pRanges", rangeCount, false, pRanges.GetAddress(), sizeof(VkImageSubresourceRange)); // CRP
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -12691,7 +12691,7 @@ void VulkanJsonConsumer::Process_vkCmdClearDepthStencilImage(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkImageSubresourceRange>(outputFile, indent, "VkImageSubresourceRange", pRanges.GetMetaStructPointer(), "pRanges", rangeCount, false, pRanges.GetAddress(), sizeof(VkImageSubresourceRange)); // CRP
+        OutputArrayOfStructsJson(outputFile, indent, "VkImageSubresourceRange", pRanges.GetMetaStructPointer(), "pRanges", rangeCount, false, pRanges.GetAddress(), sizeof(VkImageSubresourceRange)); // CRP
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -12786,7 +12786,7 @@ void VulkanJsonConsumer::Process_vkCmdClearAttachments(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkClearAttachment>(outputFile, indent, "VkClearAttachment", pAttachments.GetMetaStructPointer(), "pAttachments", attachmentCount, false, pAttachments.GetAddress(), sizeof(VkClearAttachment)); // CRP
+        OutputArrayOfStructsJson(outputFile, indent, "VkClearAttachment", pAttachments.GetMetaStructPointer(), "pAttachments", attachmentCount, false, pAttachments.GetAddress(), sizeof(VkClearAttachment)); // CRP
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -12827,7 +12827,7 @@ void VulkanJsonConsumer::Process_vkCmdClearAttachments(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkClearRect>(outputFile, indent, "VkClearRect", pRects.GetMetaStructPointer(), "pRects", rectCount, false, pRects.GetAddress(), sizeof(VkClearRect)); // CRP
+        OutputArrayOfStructsJson(outputFile, indent, "VkClearRect", pRects.GetMetaStructPointer(), "pRects", rectCount, false, pRects.GetAddress(), sizeof(VkClearRect)); // CRP
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -12984,7 +12984,7 @@ void VulkanJsonConsumer::Process_vkCmdResolveImage(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkImageResolve>(outputFile, indent, "VkImageResolve", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress(), sizeof(VkImageResolve)); // CRP
+        OutputArrayOfStructsJson(outputFile, indent, "VkImageResolve", pRegions.GetMetaStructPointer(), "pRegions", regionCount, false, pRegions.GetAddress(), sizeof(VkImageResolve)); // CRP
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -13321,7 +13321,7 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkMemoryBarrier>(outputFile, indent, "VkMemoryBarrier", pMemoryBarriers.GetMetaStructPointer(), "pMemoryBarriers", memoryBarrierCount, false, pMemoryBarriers.GetAddress(), sizeof(VkMemoryBarrier)); // CRP
+        OutputArrayOfStructsJson(outputFile, indent, "VkMemoryBarrier", pMemoryBarriers.GetMetaStructPointer(), "pMemoryBarriers", memoryBarrierCount, false, pMemoryBarriers.GetAddress(), sizeof(VkMemoryBarrier)); // CRP
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -13362,7 +13362,7 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkBufferMemoryBarrier>(outputFile, indent, "VkBufferMemoryBarrier", pBufferMemoryBarriers.GetMetaStructPointer(), "pBufferMemoryBarriers", bufferMemoryBarrierCount, false, pBufferMemoryBarriers.GetAddress(), sizeof(VkBufferMemoryBarrier)); // CRP
+        OutputArrayOfStructsJson(outputFile, indent, "VkBufferMemoryBarrier", pBufferMemoryBarriers.GetMetaStructPointer(), "pBufferMemoryBarriers", bufferMemoryBarrierCount, false, pBufferMemoryBarriers.GetAddress(), sizeof(VkBufferMemoryBarrier)); // CRP
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -13403,7 +13403,7 @@ void VulkanJsonConsumer::Process_vkCmdWaitEvents(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkImageMemoryBarrier>(outputFile, indent, "VkImageMemoryBarrier", pImageMemoryBarriers.GetMetaStructPointer(), "pImageMemoryBarriers", imageMemoryBarrierCount, false, pImageMemoryBarriers.GetAddress(), sizeof(VkImageMemoryBarrier)); // CRP
+        OutputArrayOfStructsJson(outputFile, indent, "VkImageMemoryBarrier", pImageMemoryBarriers.GetMetaStructPointer(), "pImageMemoryBarriers", imageMemoryBarrierCount, false, pImageMemoryBarriers.GetAddress(), sizeof(VkImageMemoryBarrier)); // CRP
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -13548,7 +13548,7 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkMemoryBarrier>(outputFile, indent, "VkMemoryBarrier", pMemoryBarriers.GetMetaStructPointer(), "pMemoryBarriers", memoryBarrierCount, false, pMemoryBarriers.GetAddress(), sizeof(VkMemoryBarrier)); // CRP
+        OutputArrayOfStructsJson(outputFile, indent, "VkMemoryBarrier", pMemoryBarriers.GetMetaStructPointer(), "pMemoryBarriers", memoryBarrierCount, false, pMemoryBarriers.GetAddress(), sizeof(VkMemoryBarrier)); // CRP
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -13589,7 +13589,7 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkBufferMemoryBarrier>(outputFile, indent, "VkBufferMemoryBarrier", pBufferMemoryBarriers.GetMetaStructPointer(), "pBufferMemoryBarriers", bufferMemoryBarrierCount, false, pBufferMemoryBarriers.GetAddress(), sizeof(VkBufferMemoryBarrier)); // CRP
+        OutputArrayOfStructsJson(outputFile, indent, "VkBufferMemoryBarrier", pBufferMemoryBarriers.GetMetaStructPointer(), "pBufferMemoryBarriers", bufferMemoryBarrierCount, false, pBufferMemoryBarriers.GetAddress(), sizeof(VkBufferMemoryBarrier)); // CRP
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -13630,7 +13630,7 @@ void VulkanJsonConsumer::Process_vkCmdPipelineBarrier(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkImageMemoryBarrier>(outputFile, indent, "VkImageMemoryBarrier", pImageMemoryBarriers.GetMetaStructPointer(), "pImageMemoryBarriers", imageMemoryBarrierCount, false, pImageMemoryBarriers.GetAddress(), sizeof(VkImageMemoryBarrier)); // CRP
+        OutputArrayOfStructsJson(outputFile, indent, "VkImageMemoryBarrier", pImageMemoryBarriers.GetMetaStructPointer(), "pImageMemoryBarriers", imageMemoryBarrierCount, false, pImageMemoryBarriers.GetAddress(), sizeof(VkImageMemoryBarrier)); // CRP
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -14712,7 +14712,7 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory2(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkBindBufferMemoryInfo>(outputFile, indent, "VkBindBufferMemoryInfo", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress(), sizeof(VkBindBufferMemoryInfo)); // CRP
+        OutputArrayOfStructsJson(outputFile, indent, "VkBindBufferMemoryInfo", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress(), sizeof(VkBindBufferMemoryInfo)); // CRP
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -14810,7 +14810,7 @@ void VulkanJsonConsumer::Process_vkBindImageMemory2(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkBindImageMemoryInfo>(outputFile, indent, "VkBindImageMemoryInfo", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress(), sizeof(VkBindImageMemoryInfo)); // CRP
+        OutputArrayOfStructsJson(outputFile, indent, "VkBindImageMemoryInfo", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress(), sizeof(VkBindImageMemoryInfo)); // CRP
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -15259,7 +15259,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroups(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkPhysicalDeviceGroupProperties>(outputFile, indent, "VkPhysicalDeviceGroupProperties", pPhysicalDeviceGroupProperties->GetMetaStructPointer(), "pPhysicalDeviceGroupProperties", *pPhysicalDeviceGroupCount->GetPointer(), false, pPhysicalDeviceGroupProperties->GetAddress(), sizeof(VkPhysicalDeviceGroupProperties)); // CRO
+        OutputArrayOfStructsJson(outputFile, indent, "VkPhysicalDeviceGroupProperties", pPhysicalDeviceGroupProperties->GetMetaStructPointer(), "pPhysicalDeviceGroupProperties", *pPhysicalDeviceGroupCount->GetPointer(), false, pPhysicalDeviceGroupProperties->GetAddress(), sizeof(VkPhysicalDeviceGroupProperties)); // CRO
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -15599,7 +15599,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkSparseImageMemoryRequirements2>(outputFile, indent, "VkSparseImageMemoryRequirements2", pSparseMemoryRequirements->GetMetaStructPointer(), "pSparseMemoryRequirements", *pSparseMemoryRequirementCount->GetPointer(), false, pSparseMemoryRequirements->GetAddress(), sizeof(VkSparseImageMemoryRequirements2)); // CRO
+        OutputArrayOfStructsJson(outputFile, indent, "VkSparseImageMemoryRequirements2", pSparseMemoryRequirements->GetMetaStructPointer(), "pSparseMemoryRequirements", *pSparseMemoryRequirementCount->GetPointer(), false, pSparseMemoryRequirements->GetAddress(), sizeof(VkSparseImageMemoryRequirements2)); // CRO
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -16060,7 +16060,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkQueueFamilyProperties2>(outputFile, indent, "VkQueueFamilyProperties2", pQueueFamilyProperties->GetMetaStructPointer(), "pQueueFamilyProperties", *pQueueFamilyPropertyCount->GetPointer(), false, pQueueFamilyProperties->GetAddress(), sizeof(VkQueueFamilyProperties2)); // CRO
+        OutputArrayOfStructsJson(outputFile, indent, "VkQueueFamilyProperties2", pQueueFamilyProperties->GetMetaStructPointer(), "pQueueFamilyProperties", *pQueueFamilyPropertyCount->GetPointer(), false, pQueueFamilyProperties->GetAddress(), sizeof(VkQueueFamilyProperties2)); // CRO
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -16269,7 +16269,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkSparseImageFormatProperties2>(outputFile, indent, "VkSparseImageFormatProperties2", pProperties->GetMetaStructPointer(), "pProperties", *pPropertyCount->GetPointer(), false, pProperties->GetAddress(), sizeof(VkSparseImageFormatProperties2)); // CRO
+        OutputArrayOfStructsJson(outputFile, indent, "VkSparseImageFormatProperties2", pProperties->GetMetaStructPointer(), "pProperties", *pPropertyCount->GetPointer(), false, pProperties->GetAddress(), sizeof(VkSparseImageFormatProperties2)); // CRO
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -17766,7 +17766,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormatsKHR(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkSurfaceFormatKHR>(outputFile, indent, "VkSurfaceFormatKHR", pSurfaceFormats->GetMetaStructPointer(), "pSurfaceFormats", *pSurfaceFormatCount->GetPointer(), false, pSurfaceFormats->GetAddress(), sizeof(VkSurfaceFormatKHR)); // CRO
+        OutputArrayOfStructsJson(outputFile, indent, "VkSurfaceFormatKHR", pSurfaceFormats->GetMetaStructPointer(), "pSurfaceFormats", *pSurfaceFormatCount->GetPointer(), false, pSurfaceFormats->GetAddress(), sizeof(VkSurfaceFormatKHR)); // CRO
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -18804,7 +18804,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDevicePresentRectanglesKHR(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkRect2D>(outputFile, indent, "VkRect2D", pRects->GetMetaStructPointer(), "pRects", *pRectCount->GetPointer(), false, pRects->GetAddress(), sizeof(VkRect2D)); // CRO
+        OutputArrayOfStructsJson(outputFile, indent, "VkRect2D", pRects->GetMetaStructPointer(), "pRects", *pRectCount->GetPointer(), false, pRects->GetAddress(), sizeof(VkRect2D)); // CRO
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -19025,7 +19025,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPropertiesKHR(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkDisplayPropertiesKHR>(outputFile, indent, "VkDisplayPropertiesKHR", pProperties->GetMetaStructPointer(), "pProperties", *pPropertyCount->GetPointer(), false, pProperties->GetAddress(), sizeof(VkDisplayPropertiesKHR)); // CRO
+        OutputArrayOfStructsJson(outputFile, indent, "VkDisplayPropertiesKHR", pProperties->GetMetaStructPointer(), "pProperties", *pPropertyCount->GetPointer(), false, pProperties->GetAddress(), sizeof(VkDisplayPropertiesKHR)); // CRO
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -19135,7 +19135,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkDisplayPlanePropertiesKHR>(outputFile, indent, "VkDisplayPlanePropertiesKHR", pProperties->GetMetaStructPointer(), "pProperties", *pPropertyCount->GetPointer(), false, pProperties->GetAddress(), sizeof(VkDisplayPlanePropertiesKHR)); // CRO
+        OutputArrayOfStructsJson(outputFile, indent, "VkDisplayPlanePropertiesKHR", pProperties->GetMetaStructPointer(), "pProperties", *pPropertyCount->GetPointer(), false, pProperties->GetAddress(), sizeof(VkDisplayPlanePropertiesKHR)); // CRO
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -19388,7 +19388,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayModePropertiesKHR(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkDisplayModePropertiesKHR>(outputFile, indent, "VkDisplayModePropertiesKHR", pProperties->GetMetaStructPointer(), "pProperties", *pPropertyCount->GetPointer(), false, pProperties->GetAddress(), sizeof(VkDisplayModePropertiesKHR)); // CRO
+        OutputArrayOfStructsJson(outputFile, indent, "VkDisplayModePropertiesKHR", pProperties->GetMetaStructPointer(), "pProperties", *pPropertyCount->GetPointer(), false, pProperties->GetAddress(), sizeof(VkDisplayModePropertiesKHR)); // CRO
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -19893,7 +19893,7 @@ void VulkanJsonConsumer::Process_vkCreateSharedSwapchainsKHR(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkSwapchainCreateInfoKHR>(outputFile, indent, "VkSwapchainCreateInfoKHR", pCreateInfos.GetMetaStructPointer(), "pCreateInfos", swapchainCount, false, pCreateInfos.GetAddress(), sizeof(VkSwapchainCreateInfoKHR)); // CRP
+        OutputArrayOfStructsJson(outputFile, indent, "VkSwapchainCreateInfoKHR", pCreateInfos.GetMetaStructPointer(), "pCreateInfos", swapchainCount, false, pCreateInfos.GetAddress(), sizeof(VkSwapchainCreateInfoKHR)); // CRP
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -21494,7 +21494,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2KHR(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkQueueFamilyProperties2>(outputFile, indent, "VkQueueFamilyProperties2", pQueueFamilyProperties->GetMetaStructPointer(), "pQueueFamilyProperties", *pQueueFamilyPropertyCount->GetPointer(), false, pQueueFamilyProperties->GetAddress(), sizeof(VkQueueFamilyProperties2)); // CRO
+        OutputArrayOfStructsJson(outputFile, indent, "VkQueueFamilyProperties2", pQueueFamilyProperties->GetMetaStructPointer(), "pQueueFamilyProperties", *pQueueFamilyPropertyCount->GetPointer(), false, pQueueFamilyProperties->GetAddress(), sizeof(VkQueueFamilyProperties2)); // CRO
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -21703,7 +21703,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkSparseImageFormatProperties2>(outputFile, indent, "VkSparseImageFormatProperties2", pProperties->GetMetaStructPointer(), "pProperties", *pPropertyCount->GetPointer(), false, pProperties->GetAddress(), sizeof(VkSparseImageFormatProperties2)); // CRO
+        OutputArrayOfStructsJson(outputFile, indent, "VkSparseImageFormatProperties2", pProperties->GetMetaStructPointer(), "pProperties", *pPropertyCount->GetPointer(), false, pProperties->GetAddress(), sizeof(VkSparseImageFormatProperties2)); // CRO
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -22237,7 +22237,7 @@ void VulkanJsonConsumer::Process_vkEnumeratePhysicalDeviceGroupsKHR(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkPhysicalDeviceGroupProperties>(outputFile, indent, "VkPhysicalDeviceGroupProperties", pPhysicalDeviceGroupProperties->GetMetaStructPointer(), "pPhysicalDeviceGroupProperties", *pPhysicalDeviceGroupCount->GetPointer(), false, pPhysicalDeviceGroupProperties->GetAddress(), sizeof(VkPhysicalDeviceGroupProperties)); // CRO
+        OutputArrayOfStructsJson(outputFile, indent, "VkPhysicalDeviceGroupProperties", pPhysicalDeviceGroupProperties->GetMetaStructPointer(), "pPhysicalDeviceGroupProperties", *pPhysicalDeviceGroupCount->GetPointer(), false, pPhysicalDeviceGroupProperties->GetAddress(), sizeof(VkPhysicalDeviceGroupProperties)); // CRO
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -23441,7 +23441,7 @@ void VulkanJsonConsumer::Process_vkCmdPushDescriptorSetKHR(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkWriteDescriptorSet>(outputFile, indent, "VkWriteDescriptorSet", pDescriptorWrites.GetMetaStructPointer(), "pDescriptorWrites", descriptorWriteCount, false, pDescriptorWrites.GetAddress(), sizeof(VkWriteDescriptorSet)); // CRP
+        OutputArrayOfStructsJson(outputFile, indent, "VkWriteDescriptorSet", pDescriptorWrites.GetMetaStructPointer(), "pDescriptorWrites", descriptorWriteCount, false, pDescriptorWrites.GetAddress(), sizeof(VkWriteDescriptorSet)); // CRP
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -24907,7 +24907,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfaceFormats2KHR(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkSurfaceFormat2KHR>(outputFile, indent, "VkSurfaceFormat2KHR", pSurfaceFormats->GetMetaStructPointer(), "pSurfaceFormats", *pSurfaceFormatCount->GetPointer(), false, pSurfaceFormats->GetAddress(), sizeof(VkSurfaceFormat2KHR)); // CRO
+        OutputArrayOfStructsJson(outputFile, indent, "VkSurfaceFormat2KHR", pSurfaceFormats->GetMetaStructPointer(), "pSurfaceFormats", *pSurfaceFormatCount->GetPointer(), false, pSurfaceFormats->GetAddress(), sizeof(VkSurfaceFormat2KHR)); // CRO
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -25018,7 +25018,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayProperties2KHR(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkDisplayProperties2KHR>(outputFile, indent, "VkDisplayProperties2KHR", pProperties->GetMetaStructPointer(), "pProperties", *pPropertyCount->GetPointer(), false, pProperties->GetAddress(), sizeof(VkDisplayProperties2KHR)); // CRO
+        OutputArrayOfStructsJson(outputFile, indent, "VkDisplayProperties2KHR", pProperties->GetMetaStructPointer(), "pProperties", *pPropertyCount->GetPointer(), false, pProperties->GetAddress(), sizeof(VkDisplayProperties2KHR)); // CRO
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -25128,7 +25128,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceDisplayPlaneProperties2KHR(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkDisplayPlaneProperties2KHR>(outputFile, indent, "VkDisplayPlaneProperties2KHR", pProperties->GetMetaStructPointer(), "pProperties", *pPropertyCount->GetPointer(), false, pProperties->GetAddress(), sizeof(VkDisplayPlaneProperties2KHR)); // CRO
+        OutputArrayOfStructsJson(outputFile, indent, "VkDisplayPlaneProperties2KHR", pProperties->GetMetaStructPointer(), "pProperties", *pPropertyCount->GetPointer(), false, pProperties->GetAddress(), sizeof(VkDisplayPlaneProperties2KHR)); // CRO
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -25254,7 +25254,7 @@ void VulkanJsonConsumer::Process_vkGetDisplayModeProperties2KHR(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkDisplayModeProperties2KHR>(outputFile, indent, "VkDisplayModeProperties2KHR", pProperties->GetMetaStructPointer(), "pProperties", *pPropertyCount->GetPointer(), false, pProperties->GetAddress(), sizeof(VkDisplayModeProperties2KHR)); // CRO
+        OutputArrayOfStructsJson(outputFile, indent, "VkDisplayModeProperties2KHR", pProperties->GetMetaStructPointer(), "pProperties", *pPropertyCount->GetPointer(), false, pProperties->GetAddress(), sizeof(VkDisplayModeProperties2KHR)); // CRO
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -25704,7 +25704,7 @@ void VulkanJsonConsumer::Process_vkGetImageSparseMemoryRequirements2KHR(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkSparseImageMemoryRequirements2>(outputFile, indent, "VkSparseImageMemoryRequirements2", pSparseMemoryRequirements->GetMetaStructPointer(), "pSparseMemoryRequirements", *pSparseMemoryRequirementCount->GetPointer(), false, pSparseMemoryRequirements->GetAddress(), sizeof(VkSparseImageMemoryRequirements2)); // CRO
+        OutputArrayOfStructsJson(outputFile, indent, "VkSparseImageMemoryRequirements2", pSparseMemoryRequirements->GetMetaStructPointer(), "pSparseMemoryRequirements", *pSparseMemoryRequirementCount->GetPointer(), false, pSparseMemoryRequirements->GetAddress(), sizeof(VkSparseImageMemoryRequirements2)); // CRO
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -26034,7 +26034,7 @@ void VulkanJsonConsumer::Process_vkBindBufferMemory2KHR(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkBindBufferMemoryInfo>(outputFile, indent, "VkBindBufferMemoryInfo", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress(), sizeof(VkBindBufferMemoryInfo)); // CRP
+        OutputArrayOfStructsJson(outputFile, indent, "VkBindBufferMemoryInfo", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress(), sizeof(VkBindBufferMemoryInfo)); // CRP
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -26132,7 +26132,7 @@ void VulkanJsonConsumer::Process_vkBindImageMemory2KHR(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkBindImageMemoryInfo>(outputFile, indent, "VkBindImageMemoryInfo", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress(), sizeof(VkBindImageMemoryInfo)); // CRP
+        OutputArrayOfStructsJson(outputFile, indent, "VkBindImageMemoryInfo", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress(), sizeof(VkBindImageMemoryInfo)); // CRP
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -26948,7 +26948,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutablePropertiesKHR(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkPipelineExecutablePropertiesKHR>(outputFile, indent, "VkPipelineExecutablePropertiesKHR", pProperties->GetMetaStructPointer(), "pProperties", *pExecutableCount->GetPointer(), false, pProperties->GetAddress(), sizeof(VkPipelineExecutablePropertiesKHR)); // CRO
+        OutputArrayOfStructsJson(outputFile, indent, "VkPipelineExecutablePropertiesKHR", pProperties->GetMetaStructPointer(), "pProperties", *pExecutableCount->GetPointer(), false, pProperties->GetAddress(), sizeof(VkPipelineExecutablePropertiesKHR)); // CRO
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -27085,7 +27085,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableStatisticsKHR(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkPipelineExecutableStatisticKHR>(outputFile, indent, "VkPipelineExecutableStatisticKHR", pStatistics->GetMetaStructPointer(), "pStatistics", *pStatisticCount->GetPointer(), false, pStatistics->GetAddress(), sizeof(VkPipelineExecutableStatisticKHR)); // CRO
+        OutputArrayOfStructsJson(outputFile, indent, "VkPipelineExecutableStatisticKHR", pStatistics->GetMetaStructPointer(), "pStatistics", *pStatisticCount->GetPointer(), false, pStatistics->GetAddress(), sizeof(VkPipelineExecutableStatisticKHR)); // CRO
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -27222,7 +27222,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineExecutableInternalRepresentationsK
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkPipelineExecutableInternalRepresentationKHR>(outputFile, indent, "VkPipelineExecutableInternalRepresentationKHR", pInternalRepresentations->GetMetaStructPointer(), "pInternalRepresentations", *pInternalRepresentationCount->GetPointer(), false, pInternalRepresentations->GetAddress(), sizeof(VkPipelineExecutableInternalRepresentationKHR)); // CRO
+        OutputArrayOfStructsJson(outputFile, indent, "VkPipelineExecutableInternalRepresentationKHR", pInternalRepresentations->GetMetaStructPointer(), "pInternalRepresentations", *pInternalRepresentationCount->GetPointer(), false, pInternalRepresentations->GetAddress(), sizeof(VkPipelineExecutableInternalRepresentationKHR)); // CRO
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -31019,7 +31019,7 @@ void VulkanJsonConsumer::Process_vkCmdSetViewportWScalingNV(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkViewportWScalingNV>(outputFile, indent, "VkViewportWScalingNV", pViewportWScalings.GetMetaStructPointer(), "pViewportWScalings", viewportCount, false, pViewportWScalings.GetAddress(), sizeof(VkViewportWScalingNV)); // CRP
+        OutputArrayOfStructsJson(outputFile, indent, "VkViewportWScalingNV", pViewportWScalings.GetMetaStructPointer(), "pViewportWScalings", viewportCount, false, pViewportWScalings.GetAddress(), sizeof(VkViewportWScalingNV)); // CRP
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -32122,7 +32122,7 @@ void VulkanJsonConsumer::Process_vkGetPastPresentationTimingGOOGLE(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkPastPresentationTimingGOOGLE>(outputFile, indent, "VkPastPresentationTimingGOOGLE", pPresentationTimings->GetMetaStructPointer(), "pPresentationTimings", *pPresentationTimingCount->GetPointer(), false, pPresentationTimings->GetAddress(), sizeof(VkPastPresentationTimingGOOGLE)); // CRO
+        OutputArrayOfStructsJson(outputFile, indent, "VkPastPresentationTimingGOOGLE", pPresentationTimings->GetMetaStructPointer(), "pPresentationTimings", *pPresentationTimingCount->GetPointer(), false, pPresentationTimings->GetAddress(), sizeof(VkPastPresentationTimingGOOGLE)); // CRO
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -32232,7 +32232,7 @@ void VulkanJsonConsumer::Process_vkCmdSetDiscardRectangleEXT(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkRect2D>(outputFile, indent, "VkRect2D", pDiscardRectangles.GetMetaStructPointer(), "pDiscardRectangles", discardRectangleCount, false, pDiscardRectangles.GetAddress(), sizeof(VkRect2D)); // CRP
+        OutputArrayOfStructsJson(outputFile, indent, "VkRect2D", pDiscardRectangles.GetMetaStructPointer(), "pDiscardRectangles", discardRectangleCount, false, pDiscardRectangles.GetAddress(), sizeof(VkRect2D)); // CRP
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -32354,7 +32354,7 @@ void VulkanJsonConsumer::Process_vkSetHdrMetadataEXT(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkHdrMetadataEXT>(outputFile, indent, "VkHdrMetadataEXT", pMetadata.GetMetaStructPointer(), "pMetadata", swapchainCount, false, pMetadata.GetAddress(), sizeof(VkHdrMetadataEXT)); // CRP
+        OutputArrayOfStructsJson(outputFile, indent, "VkHdrMetadataEXT", pMetadata.GetMetaStructPointer(), "pMetadata", swapchainCount, false, pMetadata.GetAddress(), sizeof(VkHdrMetadataEXT)); // CRP
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -34699,7 +34699,7 @@ void VulkanJsonConsumer::Process_vkCmdSetViewportShadingRatePaletteNV(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkShadingRatePaletteNV>(outputFile, indent, "VkShadingRatePaletteNV", pShadingRatePalettes.GetMetaStructPointer(), "pShadingRatePalettes", viewportCount, false, pShadingRatePalettes.GetAddress(), sizeof(VkShadingRatePaletteNV)); // CRP
+        OutputArrayOfStructsJson(outputFile, indent, "VkShadingRatePaletteNV", pShadingRatePalettes.GetMetaStructPointer(), "pShadingRatePalettes", viewportCount, false, pShadingRatePalettes.GetAddress(), sizeof(VkShadingRatePaletteNV)); // CRP
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -34808,7 +34808,7 @@ void VulkanJsonConsumer::Process_vkCmdSetCoarseSampleOrderNV(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkCoarseSampleOrderCustomNV>(outputFile, indent, "VkCoarseSampleOrderCustomNV", pCustomSampleOrders.GetMetaStructPointer(), "pCustomSampleOrders", customSampleOrderCount, false, pCustomSampleOrders.GetAddress(), sizeof(VkCoarseSampleOrderCustomNV)); // CRP
+        OutputArrayOfStructsJson(outputFile, indent, "VkCoarseSampleOrderCustomNV", pCustomSampleOrders.GetMetaStructPointer(), "pCustomSampleOrders", customSampleOrderCount, false, pCustomSampleOrders.GetAddress(), sizeof(VkCoarseSampleOrderCustomNV)); // CRP
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -35241,7 +35241,7 @@ void VulkanJsonConsumer::Process_vkBindAccelerationStructureMemoryNV(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkBindAccelerationStructureMemoryInfoNV>(outputFile, indent, "VkBindAccelerationStructureMemoryInfoNV", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress(), sizeof(VkBindAccelerationStructureMemoryInfoNV)); // CRP
+        OutputArrayOfStructsJson(outputFile, indent, "VkBindAccelerationStructureMemoryInfoNV", pBindInfos.GetMetaStructPointer(), "pBindInfos", bindInfoCount, false, pBindInfos.GetAddress(), sizeof(VkBindAccelerationStructureMemoryInfoNV)); // CRP
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -35918,7 +35918,7 @@ void VulkanJsonConsumer::Process_vkCreateRayTracingPipelinesNV(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkRayTracingPipelineCreateInfoNV>(outputFile, indent, "VkRayTracingPipelineCreateInfoNV", pCreateInfos.GetMetaStructPointer(), "pCreateInfos", createInfoCount, false, pCreateInfos.GetAddress(), sizeof(VkRayTracingPipelineCreateInfoNV)); // CRP
+        OutputArrayOfStructsJson(outputFile, indent, "VkRayTracingPipelineCreateInfoNV", pCreateInfos.GetMetaStructPointer(), "pCreateInfos", createInfoCount, false, pCreateInfos.GetAddress(), sizeof(VkRayTracingPipelineCreateInfoNV)); // CRP
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -36916,7 +36916,7 @@ void VulkanJsonConsumer::Process_vkGetCalibratedTimestampsEXT(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkCalibratedTimestampInfoEXT>(outputFile, indent, "VkCalibratedTimestampInfoEXT", pTimestampInfos.GetMetaStructPointer(), "pTimestampInfos", timestampCount, false, pTimestampInfos.GetAddress(), sizeof(VkCalibratedTimestampInfoEXT)); // CRP
+        OutputArrayOfStructsJson(outputFile, indent, "VkCalibratedTimestampInfoEXT", pTimestampInfos.GetMetaStructPointer(), "pTimestampInfos", timestampCount, false, pTimestampInfos.GetAddress(), sizeof(VkCalibratedTimestampInfoEXT)); // CRP
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "},\n");
@@ -37423,7 +37423,7 @@ void VulkanJsonConsumer::Process_vkCmdSetExclusiveScissorNV(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkRect2D>(outputFile, indent, "VkRect2D", pExclusiveScissors.GetMetaStructPointer(), "pExclusiveScissors", exclusiveScissorCount, false, pExclusiveScissors.GetAddress(), sizeof(VkRect2D)); // CRP
+        OutputArrayOfStructsJson(outputFile, indent, "VkRect2D", pExclusiveScissors.GetMetaStructPointer(), "pExclusiveScissors", exclusiveScissorCount, false, pExclusiveScissors.GetAddress(), sizeof(VkRect2D)); // CRP
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -37607,7 +37607,7 @@ void VulkanJsonConsumer::Process_vkGetQueueCheckpointDataNV(
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkCheckpointDataNV>(outputFile, indent, "VkCheckpointDataNV", pCheckpointData->GetMetaStructPointer(), "pCheckpointData", *pCheckpointDataCount->GetPointer(), false, pCheckpointData->GetAddress(), sizeof(VkCheckpointDataNV)); // CRO
+        OutputArrayOfStructsJson(outputFile, indent, "VkCheckpointDataNV", pCheckpointData->GetMetaStructPointer(), "pCheckpointData", *pCheckpointDataCount->GetPointer(), false, pCheckpointData->GetAddress(), sizeof(VkCheckpointDataNV)); // CRO
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -38891,7 +38891,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCooperativeMatrixPropertiesN
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkCooperativeMatrixPropertiesNV>(outputFile, indent, "VkCooperativeMatrixPropertiesNV", pProperties->GetMetaStructPointer(), "pProperties", *pPropertyCount->GetPointer(), false, pProperties->GetAddress(), sizeof(VkCooperativeMatrixPropertiesNV)); // CRO
+        OutputArrayOfStructsJson(outputFile, indent, "VkCooperativeMatrixPropertiesNV", pProperties->GetMetaStructPointer(), "pProperties", *pPropertyCount->GetPointer(), false, pProperties->GetAddress(), sizeof(VkCooperativeMatrixPropertiesNV)); // CRO
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");
@@ -39002,7 +39002,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSupportedFramebufferMixedSam
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson<Decoded_VkFramebufferMixedSamplesCombinationNV>(outputFile, indent, "VkFramebufferMixedSamplesCombinationNV", pCombinations->GetMetaStructPointer(), "pCombinations", *pCombinationCount->GetPointer(), false, pCombinations->GetAddress(), sizeof(VkFramebufferMixedSamplesCombinationNV)); // CRO
+        OutputArrayOfStructsJson(outputFile, indent, "VkFramebufferMixedSamplesCombinationNV", pCombinations->GetMetaStructPointer(), "pCombinations", *pCombinationCount->GetPointer(), false, pCombinations->GetAddress(), sizeof(VkFramebufferMixedSamplesCombinationNV)); // CRO
     } // HWR
     OutputIndentJson(outputFile, 4);
     OutputStringJson(outputFile, "}\n");

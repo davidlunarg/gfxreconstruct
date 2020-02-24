@@ -1,7 +1,7 @@
 #!/usr/bin/python3 -i
 #
-# Copyright (c) 2019 Valve Corporation
-# Copyright (c) 2019 LunarG, Inc.
+# Copyright (c) 2019-2020 Valve Corporation
+# Copyright (c) 2019-2020 LunarG, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -118,7 +118,7 @@ class OutputValue(BaseGenerator):
                         aLength = 'pstruct->' + value.arrayLength
                 if value.baseType != 'void':
                     if value.name == 'pCode':
-                        aLength = aLength + ' / 4';    # codeSize in struct VkShaderModuleCreateInfo is not the number of elements, but in bytes
+                        aLength = aLength + ' / 4';    # codeSize in struct VkShaderModuleCreateInfo is number of bytes
                         self.wc('        OutputAddrAscii(outputFile, ' + pstruct_in +  value.name + '.GetAddress()); // WUX')
                         self.wc('        if (kPrintShaderCode)')
                         self.wc('        {')
@@ -137,15 +137,15 @@ class OutputValue(BaseGenerator):
                                 self.wc('        OutputAddrAscii(outputFile, ' + pstruct_in +  value.name + '->GetAddress()); // WUT')
                             if isFuncArg:
                                 if self.isOutputParameter(value):
-                                    self.wc('        OutputArrayOfStructsAscii<Decoded_' + value.baseType + '>(outputFile, indent+1, "' + value.baseType +
+                                    self.wc('        OutputArrayOfStructsAscii(outputFile, indent+1, "' + value.baseType +
                                           '", ' + value.name + '->GetMetaStructPointer(), "' + value.name +
                                           '", ' + aLength + ', ' + str(self.isUnion(value.baseType)).lower() + ', ' + value.name + '->GetAddress(), sizeof(' + value.baseType + '));  // CCN')
                                 else:
-                                    self.wc('        OutputArrayOfStructsAscii<Decoded_' + value.baseType + '>(outputFile, indent+1, "' + value.baseType +
+                                    self.wc('        OutputArrayOfStructsAscii(outputFile, indent+1, "' + value.baseType +
                                           '", ' + value.name + '.GetMetaStructPointer(), "' + value.name +
                                           '", ' + aLength + ', ' + str(self.isUnion(value.baseType)).lower() + ', ' + value.name + '.GetAddress(), sizeof(' + value.baseType + '));  // CCO')
                             else:
-                                self.wc('        OutputArrayOfStructsAscii<Decoded_' + value.baseType + '>(outputFile, indent+1, "' + value.baseType +
+                                self.wc('        OutputArrayOfStructsAscii(outputFile, indent+1, "' + value.baseType +
                                       '", ' + pstruct_in + value.name + '->GetMetaStructPointer(), "' + value.name +
                                       '", ' + aLength + ', ' + str(self.isUnion(value.baseType)).lower() + ', ' + pstruct_in + value.name + '->GetAddress(), sizeof(' + value.baseType + '));  // CCP')
                         else:
@@ -203,7 +203,7 @@ class OutputValue(BaseGenerator):
                     if specialPtr or not isFuncArg:
                         self.wc('        OutputAddrAscii(outputFile, ' + pstruct_in + value.name + '); // PWR')
                     else:
-                        self.wc('        OutputAddrAscii(outputFile, *(static_cast<uint64_t*>(' + value.name + '->GetPointer()))); // PWA')
+                        self.wc('        OutputAddrAscii(outputFile, *(' + value.name + '->GetPointer())); // PWA')
                 else:
                     self.wc('        OutputScalarValueStructInfo vinfo_' + value.name + ' = ' + OutputValue.setVinfo(self, value) + ';')
                     if isFuncArg:
@@ -217,7 +217,7 @@ class OutputValue(BaseGenerator):
                             self.wc('        OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_' + value.name +');')
                             self.wc('        if (pNext_base_addr)')
                             self.wc('        {')
-                            self.wc('            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX')
+                            self.wc('            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX')
                             self.wc('        }')
                         else:
                             self.wc('        OutputScalarValueAscii(outputFile, ' + pstruct_in + value.name + '->GetPointer(), vinfo_' + value.name +'); // PWT')
@@ -228,20 +228,20 @@ class OutputValue(BaseGenerator):
             else:
                 alength = value.arrayLength
             if (value.baseType in self.structDict):
-                self.wc('    OutputArrayOfStructsAscii<Decoded_' + value.baseType + '>(outputFile, indent+1, "' + value.baseType +
+                self.wc('    OutputArrayOfStructsAscii(outputFile, indent+1, "' + value.baseType +
                       '", ' + pstruct_in + value.name + '->GetMetaStructPointer(), "' + value.name +
                       '", ' + alength + ' , ' + str(self.isUnion(value.baseType)).lower() + ', ' + pstruct_in + value.name + '->GetAddress(), sizeof(' + value.baseType + ')); // EPB')
             else:
                 self.wc('    OutputScalarValueStructInfo vinfo_' + value.name + ' = ' + OutputValue.setVinfo(self, value) + ';')
                 if isFuncArg:
-                    self.wc('    OutputArrayOfScalarsAscii<' + value.baseType + '>(outputFile, indent, "' + value.fullType +
+                    self.wc('    OutputArrayOfScalarsAscii(outputFile, indent, "' + value.fullType +
                             '", ' + value.name + '.GetPointer(), "' + value.name + '", ' + alength + ', vinfo_' + value.name + '); // JPA')
                 else:
                     if value.fullType == "char":
-                        self.wc('    OutputArrayOfScalarsAscii<char>(outputFile, indent, "' + value.fullType +
+                        self.wc('    OutputArrayOfScalarsAscii(outputFile, indent, "' + value.fullType +
                                 '", pstruct_in.' + value.name + '.GetPointer(), "' + value.name + '", ' + alength + ', vinfo_' + value.name + '); // JPB')
                     elif self.isUnion(structName):
-                        self.wc('    OutputArrayOfScalarsAscii<' + value.fullType + '>(outputFile, indent, "' + value.fullType +
+                        self.wc('    OutputArrayOfScalarsAscii(outputFile, indent, "' + value.fullType +
                                     '", pstruct_in.decoded_value->' + value.name + ', "' + value.name + '", ' + alength + ', vinfo_' + value.name + '); // JPC')
                     else:
                         self.wc('    OutputArrayAscii(outputFile, indent, "' + value.fullType +'" , ' + array_to_string_ampersand +
