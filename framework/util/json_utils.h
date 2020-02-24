@@ -42,11 +42,12 @@ GFXRECON_BEGIN_NAMESPACE(decode)
 
 typedef std::function<void(FILE*, uint32_t)> OutputEnumFuncPtr;
 
-typedef struct OutputScalarValueStructInfo {
-   bool is_handle_or_addr;
-   bool is_enum;
-   bool is_flags;
-   OutputEnumFuncPtr enum_to_string_func;
+typedef struct OutputScalarValueStructInfo
+{
+    bool              is_handle_or_addr;
+    bool              is_enum;
+    bool              is_flags;
+    OutputEnumFuncPtr enum_to_string_func;
 } OutputScalarValueStructInfo;
 
 // Function to write a std::string to the output file
@@ -128,7 +129,7 @@ template <typename T>
 void OutputScalarValueJson(FILE* outputFile, const T* value, const OutputScalarValueStructInfo& vinfo)
 {
     assert(outputFile != nullptr);
-    assert((vinfo.is_handle_or_addr + vinfo.is_enum  + vinfo.is_flags) <= 1);
+    assert((vinfo.is_handle_or_addr + vinfo.is_enum + vinfo.is_flags) <= 1);
     assert(vinfo.is_enum ? vinfo.enum_to_string_func != nullptr : true);
     assert(vinfo.is_flags ? vinfo.enum_to_string_func != nullptr : true);
     if (vinfo.is_handle_or_addr)
@@ -204,7 +205,7 @@ void PadStringJson(std::string* s, size_t len)
 }
 
 void WideStringToQuotedStringJson(FILE* outputFile, const wchar_t* s)
- {
+{
     assert(outputFile != nullptr);
     if (s != nullptr)
     {
@@ -218,7 +219,6 @@ void WideStringToQuotedStringJson(FILE* outputFile, const wchar_t* s)
     }
 }
 
-
 template <typename T>
 void OutputArrayJson(FILE*                              outputFile,
                      int                                indent,
@@ -229,7 +229,7 @@ void OutputArrayJson(FILE*                              outputFile,
                      const OutputScalarValueStructInfo& vinfo)
 {
     assert(outputFile != nullptr);
-    assert((vinfo.is_handle_or_addr + vinfo.is_enum  + vinfo.is_flags) <= 1);
+    assert((vinfo.is_handle_or_addr + vinfo.is_enum + vinfo.is_flags) <= 1);
     assert(vinfo.is_enum ? vinfo.enum_to_string_func != nullptr : true);
     assert(vinfo.is_flags ? vinfo.enum_to_string_func != nullptr : true);
     if (array_length == 0 || array == nullptr)
@@ -245,7 +245,7 @@ void OutputArrayJson(FILE*                              outputFile,
     }
     else
     {
-        uint64_t base_addr = reinterpret_cast<uint64_t>(array->GetPointer());
+        uint64_t    base_addr          = reinterpret_cast<uint64_t>(array->GetPointer());
         std::string full_type_name_str = full_type_name;
         if (*full_type_name_str.rbegin() == '*')
         {
@@ -271,8 +271,10 @@ void OutputArrayJson(FILE*                              outputFile,
             OutputStringJson(outputFile, "]\",\n");
             OutputIndentJson(outputFile, indent);
             OutputStringJson(outputFile, "\"address\" : \"");
-            // The address of the current element is the address of the start of the array plus the offset of the current item
-            OutputAddrJson(outputFile, array->GetAddress() + reinterpret_cast<uint64_t>(array->GetPointer() + j) - base_addr);
+            // The address of the current element is the address of the start of the array plus the offset of the
+            // current item
+            OutputAddrJson(outputFile,
+                           array->GetAddress() + reinterpret_cast<uint64_t>(array->GetPointer() + j) - base_addr);
             OutputStringJson(outputFile, "\",\n");
             OutputIndentJson(outputFile, indent);
             OutputStringJson(outputFile, "\"value\" : ");
@@ -363,8 +365,7 @@ void OutputArrayOfScalarsJson(FILE*                              outputFile,
         {
             StringToQuotedStringJson(
                 outputFile,
-                ((reinterpret_cast<const BasicStringArrayDecoder<char, format::PointerAttributes::kIsString>*>(
-                      array))
+                ((reinterpret_cast<const BasicStringArrayDecoder<char, format::PointerAttributes::kIsString>*>(array))
                      ->GetPointer())[j]);
         }
         else
