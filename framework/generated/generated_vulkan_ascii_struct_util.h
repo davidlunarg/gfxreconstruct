@@ -1221,7 +1221,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkApplicationInfo &pst
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -1296,7 +1296,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkInstanceCreateInfo &
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -2811,7 +2811,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceProper
     OutputString(outputFile, "deviceName:                     "); // HRW
     OutputString(outputFile, "char = "); // TEQ
     OutputScalarValueStructInfo vinfo_deviceName = {false, false, false, nullptr};
-    OutputArrayOfScalarsAscii<char>(outputFile, indent, "char", pstruct_in.deviceName.GetPointer(), "deviceName", VK_MAX_PHYSICAL_DEVICE_NAME_SIZE, vinfo_deviceName); // JPB
+    OutputArrayOfScalarsAscii(outputFile, indent, "char", pstruct_in.deviceName.GetPointer(), "deviceName", VK_MAX_PHYSICAL_DEVICE_NAME_SIZE, vinfo_deviceName); // JPB
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: uint8_t pipelineCacheUUID
@@ -2951,7 +2951,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceMemory
     OutputUnsignedDecimalAscii(outputFile, pstruct->memoryTypeCount); // DFW
     OutputString(outputFile, "] = ");
     OutputAddrAscii(outputFile, base_addr + offsetof(VkPhysicalDeviceMemoryProperties, memoryTypes)); // IYY
-    OutputArrayOfStructsAscii<Decoded_VkMemoryType>(outputFile, indent+1, "VkMemoryType", pstruct_in.memoryTypes->GetMetaStructPointer(), "memoryTypes", pstruct->memoryTypeCount , false, pstruct_in.memoryTypes->GetAddress(), sizeof(VkMemoryType)); // EPB
+    OutputArrayOfStructsAscii(outputFile, indent+1, "VkMemoryType", pstruct_in.memoryTypes->GetMetaStructPointer(), "memoryTypes", pstruct->memoryTypeCount , false, pstruct_in.memoryTypes->GetAddress(), sizeof(VkMemoryType)); // EPB
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: uint32_t memoryHeapCount
@@ -2969,7 +2969,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceMemory
     OutputUnsignedDecimalAscii(outputFile, pstruct->memoryHeapCount); // DFW
     OutputString(outputFile, "] = ");
     OutputAddrAscii(outputFile, base_addr + offsetof(VkPhysicalDeviceMemoryProperties, memoryHeaps)); // IYY
-    OutputArrayOfStructsAscii<Decoded_VkMemoryHeap>(outputFile, indent+1, "VkMemoryHeap", pstruct_in.memoryHeaps->GetMetaStructPointer(), "memoryHeaps", pstruct->memoryHeapCount , false, pstruct_in.memoryHeaps->GetAddress(), sizeof(VkMemoryHeap)); // EPB
+    OutputArrayOfStructsAscii(outputFile, indent+1, "VkMemoryHeap", pstruct_in.memoryHeaps->GetMetaStructPointer(), "memoryHeaps", pstruct->memoryHeapCount , false, pstruct_in.memoryHeaps->GetAddress(), sizeof(VkMemoryHeap)); // EPB
 }
 
 void OutputStructureAscii(FILE* outputFile, const Decoded_VkDeviceQueueCreateInfo &pstruct_in, int indent, uint64_t base_addr)
@@ -3007,7 +3007,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDeviceQueueCreateInf
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -3084,7 +3084,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDeviceCreateInfo &ps
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -3114,7 +3114,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDeviceCreateInfo &ps
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pQueueCreateInfos->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkDeviceQueueCreateInfo>(outputFile, indent+1, "VkDeviceQueueCreateInfo", pstruct_in.pQueueCreateInfos->GetMetaStructPointer(), "pQueueCreateInfos", pstruct->queueCreateInfoCount, false, pstruct_in.pQueueCreateInfos->GetAddress(), sizeof(VkDeviceQueueCreateInfo));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkDeviceQueueCreateInfo", pstruct_in.pQueueCreateInfos->GetMetaStructPointer(), "pQueueCreateInfos", pstruct->queueCreateInfoCount, false, pstruct_in.pQueueCreateInfos->GetAddress(), sizeof(VkDeviceQueueCreateInfo));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -3195,7 +3195,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkExtensionProperties 
     OutputString(outputFile, "extensionName:                  "); // HRW
     OutputString(outputFile, "char = "); // TEQ
     OutputScalarValueStructInfo vinfo_extensionName = {false, false, false, nullptr};
-    OutputArrayOfScalarsAscii<char>(outputFile, indent, "char", pstruct_in.extensionName.GetPointer(), "extensionName", VK_MAX_EXTENSION_NAME_SIZE, vinfo_extensionName); // JPB
+    OutputArrayOfScalarsAscii(outputFile, indent, "char", pstruct_in.extensionName.GetPointer(), "extensionName", VK_MAX_EXTENSION_NAME_SIZE, vinfo_extensionName); // JPB
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: uint32_t specVersion
@@ -3220,7 +3220,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkLayerProperties &pst
     OutputString(outputFile, "layerName:                      "); // HRW
     OutputString(outputFile, "char = "); // TEQ
     OutputScalarValueStructInfo vinfo_layerName = {false, false, false, nullptr};
-    OutputArrayOfScalarsAscii<char>(outputFile, indent, "char", pstruct_in.layerName.GetPointer(), "layerName", VK_MAX_EXTENSION_NAME_SIZE, vinfo_layerName); // JPB
+    OutputArrayOfScalarsAscii(outputFile, indent, "char", pstruct_in.layerName.GetPointer(), "layerName", VK_MAX_EXTENSION_NAME_SIZE, vinfo_layerName); // JPB
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: uint32_t specVersion
@@ -3242,7 +3242,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkLayerProperties &pst
     OutputString(outputFile, "description:                    "); // HRW
     OutputString(outputFile, "char = "); // TEQ
     OutputScalarValueStructInfo vinfo_description = {false, false, false, nullptr};
-    OutputArrayOfScalarsAscii<char>(outputFile, indent, "char", pstruct_in.description.GetPointer(), "description", VK_MAX_DESCRIPTION_SIZE, vinfo_description); // JPB
+    OutputArrayOfScalarsAscii(outputFile, indent, "char", pstruct_in.description.GetPointer(), "description", VK_MAX_DESCRIPTION_SIZE, vinfo_description); // JPB
 }
 
 void OutputStructureAscii(FILE* outputFile, const Decoded_VkSubmitInfo &pstruct_in, int indent, uint64_t base_addr)
@@ -3280,7 +3280,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSubmitInfo &pstruct_
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -3405,7 +3405,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkMemoryAllocateInfo &
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -3459,7 +3459,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkMappedMemoryRange &p
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -3672,7 +3672,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSparseBufferMemoryBi
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pBinds->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkSparseMemoryBind>(outputFile, indent+1, "VkSparseMemoryBind", pstruct_in.pBinds->GetMetaStructPointer(), "pBinds", pstruct->bindCount, false, pstruct_in.pBinds->GetAddress(), sizeof(VkSparseMemoryBind));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkSparseMemoryBind", pstruct_in.pBinds->GetMetaStructPointer(), "pBinds", pstruct->bindCount, false, pstruct_in.pBinds->GetAddress(), sizeof(VkSparseMemoryBind));  // CCP
     }
 }
 
@@ -3711,7 +3711,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSparseImageOpaqueMem
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pBinds->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkSparseMemoryBind>(outputFile, indent+1, "VkSparseMemoryBind", pstruct_in.pBinds->GetMetaStructPointer(), "pBinds", pstruct->bindCount, false, pstruct_in.pBinds->GetAddress(), sizeof(VkSparseMemoryBind));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkSparseMemoryBind", pstruct_in.pBinds->GetMetaStructPointer(), "pBinds", pstruct->bindCount, false, pstruct_in.pBinds->GetAddress(), sizeof(VkSparseMemoryBind));  // CCP
     }
 }
 
@@ -3864,7 +3864,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSparseImageMemoryBin
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pBinds->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkSparseImageMemoryBind>(outputFile, indent+1, "VkSparseImageMemoryBind", pstruct_in.pBinds->GetMetaStructPointer(), "pBinds", pstruct->bindCount, false, pstruct_in.pBinds->GetAddress(), sizeof(VkSparseImageMemoryBind));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkSparseImageMemoryBind", pstruct_in.pBinds->GetMetaStructPointer(), "pBinds", pstruct->bindCount, false, pstruct_in.pBinds->GetAddress(), sizeof(VkSparseImageMemoryBind));  // CCP
     }
 }
 
@@ -3903,7 +3903,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkBindSparseInfo &pstr
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -3949,7 +3949,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkBindSparseInfo &pstr
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pBufferBinds->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkSparseBufferMemoryBindInfo>(outputFile, indent+1, "VkSparseBufferMemoryBindInfo", pstruct_in.pBufferBinds->GetMetaStructPointer(), "pBufferBinds", pstruct->bufferBindCount, false, pstruct_in.pBufferBinds->GetAddress(), sizeof(VkSparseBufferMemoryBindInfo));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkSparseBufferMemoryBindInfo", pstruct_in.pBufferBinds->GetMetaStructPointer(), "pBufferBinds", pstruct->bufferBindCount, false, pstruct_in.pBufferBinds->GetAddress(), sizeof(VkSparseBufferMemoryBindInfo));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -3971,7 +3971,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkBindSparseInfo &pstr
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pImageOpaqueBinds->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkSparseImageOpaqueMemoryBindInfo>(outputFile, indent+1, "VkSparseImageOpaqueMemoryBindInfo", pstruct_in.pImageOpaqueBinds->GetMetaStructPointer(), "pImageOpaqueBinds", pstruct->imageOpaqueBindCount, false, pstruct_in.pImageOpaqueBinds->GetAddress(), sizeof(VkSparseImageOpaqueMemoryBindInfo));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkSparseImageOpaqueMemoryBindInfo", pstruct_in.pImageOpaqueBinds->GetMetaStructPointer(), "pImageOpaqueBinds", pstruct->imageOpaqueBindCount, false, pstruct_in.pImageOpaqueBinds->GetAddress(), sizeof(VkSparseImageOpaqueMemoryBindInfo));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -3993,7 +3993,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkBindSparseInfo &pstr
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pImageBinds->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkSparseImageMemoryBindInfo>(outputFile, indent+1, "VkSparseImageMemoryBindInfo", pstruct_in.pImageBinds->GetMetaStructPointer(), "pImageBinds", pstruct->imageBindCount, false, pstruct_in.pImageBinds->GetAddress(), sizeof(VkSparseImageMemoryBindInfo));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkSparseImageMemoryBindInfo", pstruct_in.pImageBinds->GetMetaStructPointer(), "pImageBinds", pstruct->imageBindCount, false, pstruct_in.pImageBinds->GetAddress(), sizeof(VkSparseImageMemoryBindInfo));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -4055,7 +4055,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkFenceCreateInfo &pst
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -4102,7 +4102,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSemaphoreCreateInfo 
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -4149,7 +4149,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkEventCreateInfo &pst
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -4196,7 +4196,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkQueryPoolCreateInfo 
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -4267,7 +4267,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkBufferCreateInfo &ps
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -4361,7 +4361,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkBufferViewCreateInfo
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -4439,7 +4439,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkImageCreateInfo &pst
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -4737,7 +4737,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkImageViewCreateInfo 
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -4825,7 +4825,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkShaderModuleCreateIn
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -4898,7 +4898,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineCacheCreateI
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -4992,7 +4992,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSpecializationInfo &
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pMapEntries->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkSpecializationMapEntry>(outputFile, indent+1, "VkSpecializationMapEntry", pstruct_in.pMapEntries->GetMetaStructPointer(), "pMapEntries", pstruct->mapEntryCount, false, pstruct_in.pMapEntries->GetAddress(), sizeof(VkSpecializationMapEntry));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkSpecializationMapEntry", pstruct_in.pMapEntries->GetMetaStructPointer(), "pMapEntries", pstruct->mapEntryCount, false, pstruct_in.pMapEntries->GetAddress(), sizeof(VkSpecializationMapEntry));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -5054,7 +5054,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineShaderStageC
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -5216,7 +5216,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineVertexInputS
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -5246,7 +5246,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineVertexInputS
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pVertexBindingDescriptions->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkVertexInputBindingDescription>(outputFile, indent+1, "VkVertexInputBindingDescription", pstruct_in.pVertexBindingDescriptions->GetMetaStructPointer(), "pVertexBindingDescriptions", pstruct->vertexBindingDescriptionCount, false, pstruct_in.pVertexBindingDescriptions->GetAddress(), sizeof(VkVertexInputBindingDescription));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkVertexInputBindingDescription", pstruct_in.pVertexBindingDescriptions->GetMetaStructPointer(), "pVertexBindingDescriptions", pstruct->vertexBindingDescriptionCount, false, pstruct_in.pVertexBindingDescriptions->GetAddress(), sizeof(VkVertexInputBindingDescription));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -5268,7 +5268,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineVertexInputS
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pVertexAttributeDescriptions->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkVertexInputAttributeDescription>(outputFile, indent+1, "VkVertexInputAttributeDescription", pstruct_in.pVertexAttributeDescriptions->GetMetaStructPointer(), "pVertexAttributeDescriptions", pstruct->vertexAttributeDescriptionCount, false, pstruct_in.pVertexAttributeDescriptions->GetAddress(), sizeof(VkVertexInputAttributeDescription));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkVertexInputAttributeDescription", pstruct_in.pVertexAttributeDescriptions->GetMetaStructPointer(), "pVertexAttributeDescriptions", pstruct->vertexAttributeDescriptionCount, false, pstruct_in.pVertexAttributeDescriptions->GetAddress(), sizeof(VkVertexInputAttributeDescription));  // CCP
     }
 }
 
@@ -5307,7 +5307,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineInputAssembl
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -5371,7 +5371,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineTessellation
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -5549,7 +5549,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineViewportStat
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -5579,7 +5579,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineViewportStat
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pViewports->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkViewport>(outputFile, indent+1, "VkViewport", pstruct_in.pViewports->GetMetaStructPointer(), "pViewports", pstruct->viewportCount, false, pstruct_in.pViewports->GetAddress(), sizeof(VkViewport));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkViewport", pstruct_in.pViewports->GetMetaStructPointer(), "pViewports", pstruct->viewportCount, false, pstruct_in.pViewports->GetAddress(), sizeof(VkViewport));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -5601,7 +5601,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineViewportStat
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pScissors->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkRect2D>(outputFile, indent+1, "VkRect2D", pstruct_in.pScissors->GetMetaStructPointer(), "pScissors", pstruct->scissorCount, false, pstruct_in.pScissors->GetAddress(), sizeof(VkRect2D));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkRect2D", pstruct_in.pScissors->GetMetaStructPointer(), "pScissors", pstruct->scissorCount, false, pstruct_in.pScissors->GetAddress(), sizeof(VkRect2D));  // CCP
     }
 }
 
@@ -5640,7 +5640,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineRasterizatio
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -5763,7 +5763,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineMultisampleS
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -5935,7 +5935,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineDepthStencil
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -6132,7 +6132,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineColorBlendSt
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -6179,7 +6179,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineColorBlendSt
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pAttachments->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkPipelineColorBlendAttachmentState>(outputFile, indent+1, "VkPipelineColorBlendAttachmentState", pstruct_in.pAttachments->GetMetaStructPointer(), "pAttachments", pstruct->attachmentCount, false, pstruct_in.pAttachments->GetAddress(), sizeof(VkPipelineColorBlendAttachmentState));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkPipelineColorBlendAttachmentState", pstruct_in.pAttachments->GetMetaStructPointer(), "pAttachments", pstruct->attachmentCount, false, pstruct_in.pAttachments->GetAddress(), sizeof(VkPipelineColorBlendAttachmentState));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -6230,7 +6230,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineDynamicState
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -6300,7 +6300,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkGraphicsPipelineCrea
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -6330,7 +6330,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkGraphicsPipelineCrea
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pStages->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkPipelineShaderStageCreateInfo>(outputFile, indent+1, "VkPipelineShaderStageCreateInfo", pstruct_in.pStages->GetMetaStructPointer(), "pStages", pstruct->stageCount, false, pstruct_in.pStages->GetAddress(), sizeof(VkPipelineShaderStageCreateInfo));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkPipelineShaderStageCreateInfo", pstruct_in.pStages->GetMetaStructPointer(), "pStages", pstruct->stageCount, false, pstruct_in.pStages->GetAddress(), sizeof(VkPipelineShaderStageCreateInfo));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -6548,7 +6548,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkComputePipelineCreat
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -6654,7 +6654,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineLayoutCreate
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -6707,7 +6707,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineLayoutCreate
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pPushConstantRanges->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkPushConstantRange>(outputFile, indent+1, "VkPushConstantRange", pstruct_in.pPushConstantRanges->GetMetaStructPointer(), "pPushConstantRanges", pstruct->pushConstantRangeCount, false, pstruct_in.pPushConstantRanges->GetAddress(), sizeof(VkPushConstantRange));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkPushConstantRange", pstruct_in.pPushConstantRanges->GetMetaStructPointer(), "pPushConstantRanges", pstruct->pushConstantRangeCount, false, pstruct_in.pPushConstantRanges->GetAddress(), sizeof(VkPushConstantRange));  // CCP
     }
 }
 
@@ -6746,7 +6746,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSamplerCreateInfo &p
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -6979,7 +6979,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDescriptorSetLayoutC
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -7009,7 +7009,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDescriptorSetLayoutC
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pBindings->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkDescriptorSetLayoutBinding>(outputFile, indent+1, "VkDescriptorSetLayoutBinding", pstruct_in.pBindings->GetMetaStructPointer(), "pBindings", pstruct->bindingCount, false, pstruct_in.pBindings->GetAddress(), sizeof(VkDescriptorSetLayoutBinding));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkDescriptorSetLayoutBinding", pstruct_in.pBindings->GetMetaStructPointer(), "pBindings", pstruct->bindingCount, false, pstruct_in.pBindings->GetAddress(), sizeof(VkDescriptorSetLayoutBinding));  // CCP
     }
 }
 
@@ -7075,7 +7075,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDescriptorPoolCreate
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -7112,7 +7112,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDescriptorPoolCreate
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pPoolSizes->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkDescriptorPoolSize>(outputFile, indent+1, "VkDescriptorPoolSize", pstruct_in.pPoolSizes->GetMetaStructPointer(), "pPoolSizes", pstruct->poolSizeCount, false, pstruct_in.pPoolSizes->GetAddress(), sizeof(VkDescriptorPoolSize));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkDescriptorPoolSize", pstruct_in.pPoolSizes->GetMetaStructPointer(), "pPoolSizes", pstruct->poolSizeCount, false, pstruct_in.pPoolSizes->GetAddress(), sizeof(VkDescriptorPoolSize));  // CCP
     }
 }
 
@@ -7151,7 +7151,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDescriptorSetAllocat
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -7286,7 +7286,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkWriteDescriptorSet &
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -7340,7 +7340,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkWriteDescriptorSet &
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pImageInfo->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkDescriptorImageInfo>(outputFile, indent+1, "VkDescriptorImageInfo", pstruct_in.pImageInfo->GetMetaStructPointer(), "pImageInfo", pstruct->descriptorCount, false, pstruct_in.pImageInfo->GetAddress(), sizeof(VkDescriptorImageInfo));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkDescriptorImageInfo", pstruct_in.pImageInfo->GetMetaStructPointer(), "pImageInfo", pstruct->descriptorCount, false, pstruct_in.pImageInfo->GetAddress(), sizeof(VkDescriptorImageInfo));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -7355,7 +7355,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkWriteDescriptorSet &
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pBufferInfo->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkDescriptorBufferInfo>(outputFile, indent+1, "VkDescriptorBufferInfo", pstruct_in.pBufferInfo->GetMetaStructPointer(), "pBufferInfo", pstruct->descriptorCount, false, pstruct_in.pBufferInfo->GetAddress(), sizeof(VkDescriptorBufferInfo));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkDescriptorBufferInfo", pstruct_in.pBufferInfo->GetMetaStructPointer(), "pBufferInfo", pstruct->descriptorCount, false, pstruct_in.pBufferInfo->GetAddress(), sizeof(VkDescriptorBufferInfo));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -7410,7 +7410,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkCopyDescriptorSet &p
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -7499,7 +7499,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkFramebufferCreateInf
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -7731,7 +7731,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSubpassDescription &
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pInputAttachments->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkAttachmentReference>(outputFile, indent+1, "VkAttachmentReference", pstruct_in.pInputAttachments->GetMetaStructPointer(), "pInputAttachments", pstruct->inputAttachmentCount, false, pstruct_in.pInputAttachments->GetAddress(), sizeof(VkAttachmentReference));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkAttachmentReference", pstruct_in.pInputAttachments->GetMetaStructPointer(), "pInputAttachments", pstruct->inputAttachmentCount, false, pstruct_in.pInputAttachments->GetAddress(), sizeof(VkAttachmentReference));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -7753,7 +7753,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSubpassDescription &
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pColorAttachments->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkAttachmentReference>(outputFile, indent+1, "VkAttachmentReference", pstruct_in.pColorAttachments->GetMetaStructPointer(), "pColorAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pColorAttachments->GetAddress(), sizeof(VkAttachmentReference));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkAttachmentReference", pstruct_in.pColorAttachments->GetMetaStructPointer(), "pColorAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pColorAttachments->GetAddress(), sizeof(VkAttachmentReference));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -7768,7 +7768,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSubpassDescription &
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pResolveAttachments->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkAttachmentReference>(outputFile, indent+1, "VkAttachmentReference", pstruct_in.pResolveAttachments->GetMetaStructPointer(), "pResolveAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pResolveAttachments->GetAddress(), sizeof(VkAttachmentReference));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkAttachmentReference", pstruct_in.pResolveAttachments->GetMetaStructPointer(), "pResolveAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pResolveAttachments->GetAddress(), sizeof(VkAttachmentReference));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -7905,7 +7905,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkRenderPassCreateInfo
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -7935,7 +7935,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkRenderPassCreateInfo
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pAttachments->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkAttachmentDescription>(outputFile, indent+1, "VkAttachmentDescription", pstruct_in.pAttachments->GetMetaStructPointer(), "pAttachments", pstruct->attachmentCount, false, pstruct_in.pAttachments->GetAddress(), sizeof(VkAttachmentDescription));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkAttachmentDescription", pstruct_in.pAttachments->GetMetaStructPointer(), "pAttachments", pstruct->attachmentCount, false, pstruct_in.pAttachments->GetAddress(), sizeof(VkAttachmentDescription));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -7957,7 +7957,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkRenderPassCreateInfo
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pSubpasses->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkSubpassDescription>(outputFile, indent+1, "VkSubpassDescription", pstruct_in.pSubpasses->GetMetaStructPointer(), "pSubpasses", pstruct->subpassCount, false, pstruct_in.pSubpasses->GetAddress(), sizeof(VkSubpassDescription));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkSubpassDescription", pstruct_in.pSubpasses->GetMetaStructPointer(), "pSubpasses", pstruct->subpassCount, false, pstruct_in.pSubpasses->GetAddress(), sizeof(VkSubpassDescription));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -7979,7 +7979,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkRenderPassCreateInfo
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pDependencies->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkSubpassDependency>(outputFile, indent+1, "VkSubpassDependency", pstruct_in.pDependencies->GetMetaStructPointer(), "pDependencies", pstruct->dependencyCount, false, pstruct_in.pDependencies->GetAddress(), sizeof(VkSubpassDependency));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkSubpassDependency", pstruct_in.pDependencies->GetMetaStructPointer(), "pDependencies", pstruct->dependencyCount, false, pstruct_in.pDependencies->GetAddress(), sizeof(VkSubpassDependency));  // CCP
     }
 }
 
@@ -8018,7 +8018,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkCommandPoolCreateInf
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -8072,7 +8072,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkCommandBufferAllocat
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -8136,7 +8136,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkCommandBufferInherit
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -8218,7 +8218,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkCommandBufferBeginIn
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -8385,7 +8385,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkImageBlit &pstruct_i
     OutputString(outputFile, "2"); // DFX
     OutputString(outputFile, "] = ");
     OutputAddrAscii(outputFile, base_addr + offsetof(VkImageBlit, srcOffsets)); // IYY
-    OutputArrayOfStructsAscii<Decoded_VkOffset3D>(outputFile, indent+1, "VkOffset3D", pstruct_in.srcOffsets->GetMetaStructPointer(), "srcOffsets", 2 , false, pstruct_in.srcOffsets->GetAddress(), sizeof(VkOffset3D)); // EPB
+    OutputArrayOfStructsAscii(outputFile, indent+1, "VkOffset3D", pstruct_in.srcOffsets->GetMetaStructPointer(), "srcOffsets", 2 , false, pstruct_in.srcOffsets->GetAddress(), sizeof(VkOffset3D)); // EPB
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: VkImageSubresourceLayers dstSubresource
@@ -8403,7 +8403,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkImageBlit &pstruct_i
     OutputString(outputFile, "2"); // DFX
     OutputString(outputFile, "] = ");
     OutputAddrAscii(outputFile, base_addr + offsetof(VkImageBlit, dstOffsets)); // IYY
-    OutputArrayOfStructsAscii<Decoded_VkOffset3D>(outputFile, indent+1, "VkOffset3D", pstruct_in.dstOffsets->GetMetaStructPointer(), "dstOffsets", 2 , false, pstruct_in.dstOffsets->GetAddress(), sizeof(VkOffset3D)); // EPB
+    OutputArrayOfStructsAscii(outputFile, indent+1, "VkOffset3D", pstruct_in.dstOffsets->GetMetaStructPointer(), "dstOffsets", 2 , false, pstruct_in.dstOffsets->GetAddress(), sizeof(VkOffset3D)); // EPB
 }
 
 void OutputStructureAscii(FILE* outputFile, const Decoded_VkBufferImageCopy &pstruct_in, int indent, uint64_t base_addr)
@@ -8477,7 +8477,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkClearColorValue &pst
     OutputString(outputFile, "] = ");
     OutputAddrAscii(outputFile, base_addr + offsetof(VkClearColorValue, float32)); // IYY
     OutputScalarValueStructInfo vinfo_float32 = {false, false, false, nullptr};
-    OutputArrayOfScalarsAscii<float>(outputFile, indent, "float", pstruct_in.decoded_value->float32, "float32", 4, vinfo_float32); // JPC
+    OutputArrayOfScalarsAscii(outputFile, indent, "float", pstruct_in.decoded_value->float32, "float32", 4, vinfo_float32); // JPC
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: int32_t int32
@@ -8489,7 +8489,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkClearColorValue &pst
     OutputString(outputFile, "] = ");
     OutputAddrAscii(outputFile, base_addr + offsetof(VkClearColorValue, int32)); // IYY
     OutputScalarValueStructInfo vinfo_int32 = {false, false, false, nullptr};
-    OutputArrayOfScalarsAscii<int32_t>(outputFile, indent, "int32_t", pstruct_in.decoded_value->int32, "int32", 4, vinfo_int32); // JPC
+    OutputArrayOfScalarsAscii(outputFile, indent, "int32_t", pstruct_in.decoded_value->int32, "int32", 4, vinfo_int32); // JPC
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: uint32_t uint32
@@ -8501,7 +8501,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkClearColorValue &pst
     OutputString(outputFile, "] = ");
     OutputAddrAscii(outputFile, base_addr + offsetof(VkClearColorValue, uint32)); // IYY
     OutputScalarValueStructInfo vinfo_uint32 = {false, false, false, nullptr};
-    OutputArrayOfScalarsAscii<uint32_t>(outputFile, indent, "uint32_t", pstruct_in.decoded_value->uint32, "uint32", 4, vinfo_uint32); // JPC
+    OutputArrayOfScalarsAscii(outputFile, indent, "uint32_t", pstruct_in.decoded_value->uint32, "uint32", 4, vinfo_uint32); // JPC
 }
 
 void OutputStructureAscii(FILE* outputFile, const Decoded_VkClearDepthStencilValue &pstruct_in, int indent, uint64_t base_addr)
@@ -8696,7 +8696,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkMemoryBarrier &pstru
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -8750,7 +8750,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkBufferMemoryBarrier 
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -8839,7 +8839,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkImageMemoryBarrier &
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -8941,7 +8941,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkRenderPassBeginInfo 
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -8985,7 +8985,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkRenderPassBeginInfo 
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pClearValues->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkClearValue>(outputFile, indent+1, "VkClearValue", pstruct_in.pClearValues->GetMetaStructPointer(), "pClearValues", pstruct->clearValueCount, true, pstruct_in.pClearValues->GetAddress(), sizeof(VkClearValue));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkClearValue", pstruct_in.pClearValues->GetMetaStructPointer(), "pClearValues", pstruct->clearValueCount, true, pstruct_in.pClearValues->GetAddress(), sizeof(VkClearValue));  // CCP
     }
 }
 
@@ -9138,7 +9138,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceSubgro
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -9206,7 +9206,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkBindBufferMemoryInfo
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -9267,7 +9267,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkBindImageMemoryInfo 
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -9328,7 +9328,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDevice16BitS
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -9396,7 +9396,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkMemoryDedicatedRequi
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -9450,7 +9450,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkMemoryDedicatedAlloc
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -9504,7 +9504,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkMemoryAllocateFlagsI
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -9558,7 +9558,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDeviceGroupRenderPas
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -9588,7 +9588,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDeviceGroupRenderPas
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pDeviceRenderAreas->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkRect2D>(outputFile, indent+1, "VkRect2D", pstruct_in.pDeviceRenderAreas->GetMetaStructPointer(), "pDeviceRenderAreas", pstruct->deviceRenderAreaCount, false, pstruct_in.pDeviceRenderAreas->GetAddress(), sizeof(VkRect2D));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkRect2D", pstruct_in.pDeviceRenderAreas->GetMetaStructPointer(), "pDeviceRenderAreas", pstruct->deviceRenderAreaCount, false, pstruct_in.pDeviceRenderAreas->GetAddress(), sizeof(VkRect2D));  // CCP
     }
 }
 
@@ -9627,7 +9627,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDeviceGroupCommandBu
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -9674,7 +9674,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDeviceGroupSubmitInf
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -9783,7 +9783,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDeviceGroupBindSpars
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -9837,7 +9837,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkBindBufferMemoryDevi
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -9900,7 +9900,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkBindImageMemoryDevic
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -9946,7 +9946,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkBindImageMemoryDevic
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pSplitInstanceBindRegions->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkRect2D>(outputFile, indent+1, "VkRect2D", pstruct_in.pSplitInstanceBindRegions->GetMetaStructPointer(), "pSplitInstanceBindRegions", pstruct->splitInstanceBindRegionCount, false, pstruct_in.pSplitInstanceBindRegions->GetAddress(), sizeof(VkRect2D));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkRect2D", pstruct_in.pSplitInstanceBindRegions->GetMetaStructPointer(), "pSplitInstanceBindRegions", pstruct->splitInstanceBindRegionCount, false, pstruct_in.pSplitInstanceBindRegions->GetAddress(), sizeof(VkRect2D));  // CCP
     }
 }
 
@@ -9985,7 +9985,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceGroupP
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -10051,7 +10051,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDeviceGroupDeviceCre
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -10114,7 +10114,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkBufferMemoryRequirem
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -10161,7 +10161,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkImageMemoryRequireme
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -10208,7 +10208,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkImageSparseMemoryReq
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -10255,7 +10255,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkMemoryRequirements2 
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -10302,7 +10302,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSparseImageMemoryReq
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -10349,7 +10349,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceFeatur
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -10396,7 +10396,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceProper
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -10443,7 +10443,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkFormatProperties2 &p
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -10490,7 +10490,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkImageFormatPropertie
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -10537,7 +10537,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceImageF
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -10621,7 +10621,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkQueueFamilyPropertie
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -10668,7 +10668,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceMemory
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -10715,7 +10715,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSparseImageFormatPro
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -10762,7 +10762,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceSparse
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -10849,7 +10849,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDevicePointC
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -10930,7 +10930,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkRenderPassInputAttac
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -10953,7 +10953,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkRenderPassInputAttac
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pAspectReferences->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkInputAttachmentAspectReference>(outputFile, indent+1, "VkInputAttachmentAspectReference", pstruct_in.pAspectReferences->GetMetaStructPointer(), "pAspectReferences", pstruct->aspectReferenceCount, false, pstruct_in.pAspectReferences->GetAddress(), sizeof(VkInputAttachmentAspectReference));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkInputAttachmentAspectReference", pstruct_in.pAspectReferences->GetMetaStructPointer(), "pAspectReferences", pstruct->aspectReferenceCount, false, pstruct_in.pAspectReferences->GetAddress(), sizeof(VkInputAttachmentAspectReference));  // CCP
     }
 }
 
@@ -10992,7 +10992,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkImageViewUsageCreate
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -11039,7 +11039,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineTessellation
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -11089,7 +11089,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkRenderPassMultiviewC
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -11198,7 +11198,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceMultiv
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -11259,7 +11259,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceMultiv
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -11313,7 +11313,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceVariab
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -11367,7 +11367,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceProtec
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -11414,7 +11414,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceProtec
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -11461,7 +11461,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDeviceQueueInfo2 &ps
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -11522,7 +11522,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkProtectedSubmitInfo 
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -11569,7 +11569,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSamplerYcbcrConversi
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -11683,7 +11683,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSamplerYcbcrConversi
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -11730,7 +11730,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkBindImagePlaneMemory
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -11780,7 +11780,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkImagePlaneMemoryRequ
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -11830,7 +11830,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceSample
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -11877,7 +11877,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSamplerYcbcrConversi
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -11979,7 +11979,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDescriptorUpdateTemp
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -12009,7 +12009,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDescriptorUpdateTemp
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pDescriptorUpdateEntries->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkDescriptorUpdateTemplateEntry>(outputFile, indent+1, "VkDescriptorUpdateTemplateEntry", pstruct_in.pDescriptorUpdateEntries->GetMetaStructPointer(), "pDescriptorUpdateEntries", pstruct->descriptorUpdateEntryCount, false, pstruct_in.pDescriptorUpdateEntries->GetAddress(), sizeof(VkDescriptorUpdateTemplateEntry));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkDescriptorUpdateTemplateEntry", pstruct_in.pDescriptorUpdateEntries->GetMetaStructPointer(), "pDescriptorUpdateEntries", pstruct->descriptorUpdateEntryCount, false, pstruct_in.pDescriptorUpdateEntries->GetAddress(), sizeof(VkDescriptorUpdateTemplateEntry));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -12120,7 +12120,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceExtern
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -12170,7 +12170,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkExternalImageFormatP
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -12217,7 +12217,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceExtern
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -12281,7 +12281,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkExternalBufferProper
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -12328,7 +12328,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceIDProp
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -12418,7 +12418,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkExternalMemoryImageC
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -12465,7 +12465,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkExternalMemoryBuffer
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -12512,7 +12512,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkExportMemoryAllocate
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -12559,7 +12559,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceExtern
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -12609,7 +12609,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkExternalFencePropert
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -12670,7 +12670,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkExportFenceCreateInf
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -12717,7 +12717,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkExportSemaphoreCreat
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -12764,7 +12764,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceExtern
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -12814,7 +12814,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkExternalSemaphorePro
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -12875,7 +12875,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceMainte
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -12929,7 +12929,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDescriptorSetLayoutS
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -12976,7 +12976,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceShader
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -13136,7 +13136,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSwapchainCreateInfoK
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -13315,7 +13315,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPresentInfoKHR &pstr
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -13433,7 +13433,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkImageSwapchainCreate
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -13480,7 +13480,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkBindImageMemorySwapc
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -13534,7 +13534,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkAcquireNextImageInfo
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -13609,7 +13609,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDeviceGroupPresentCa
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -13668,7 +13668,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDeviceGroupPresentIn
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -13741,7 +13741,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDeviceGroupSwapchain
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -13895,7 +13895,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDisplayModeCreateInf
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -14046,7 +14046,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDisplaySurfaceCreate
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -14148,7 +14148,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDisplayPresentInfoKH
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -14209,7 +14209,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkXlibSurfaceCreateInf
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -14270,7 +14270,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkXcbSurfaceCreateInfo
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -14338,7 +14338,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkWaylandSurfaceCreate
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -14413,7 +14413,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkAndroidSurfaceCreate
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -14474,7 +14474,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkWin32SurfaceCreateIn
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -14549,7 +14549,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkImportMemoryWin32Han
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -14627,7 +14627,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkExportMemoryWin32Han
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -14703,7 +14703,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkMemoryWin32HandlePro
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -14750,7 +14750,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkMemoryGetWin32Handle
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -14807,7 +14807,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkImportMemoryFdInfoKH
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -14864,7 +14864,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkMemoryFdPropertiesKH
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -14911,7 +14911,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkMemoryGetFdInfoKHR &
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -14968,7 +14968,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcqui
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -15102,7 +15102,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkImportSemaphoreWin32
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -15194,7 +15194,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkExportSemaphoreWin32
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -15270,7 +15270,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkD3D12FenceSubmitInfo
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -15356,7 +15356,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSemaphoreGetWin32Han
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -15413,7 +15413,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkImportSemaphoreFdInf
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -15484,7 +15484,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSemaphoreGetFdInfoKH
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -15541,7 +15541,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDevicePushDe
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -15588,7 +15588,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceShader
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -15666,7 +15666,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPresentRegionKHR &ps
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pRectangles->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkRectLayerKHR>(outputFile, indent+1, "VkRectLayerKHR", pstruct_in.pRectangles->GetMetaStructPointer(), "pRectangles", pstruct->rectangleCount, false, pstruct_in.pRectangles->GetAddress(), sizeof(VkRectLayerKHR));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkRectLayerKHR", pstruct_in.pRectangles->GetMetaStructPointer(), "pRectangles", pstruct->rectangleCount, false, pstruct_in.pRectangles->GetAddress(), sizeof(VkRectLayerKHR));  // CCP
     }
 }
 
@@ -15705,7 +15705,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPresentRegionsKHR &p
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -15728,7 +15728,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPresentRegionsKHR &p
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pRegions->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkPresentRegionKHR>(outputFile, indent+1, "VkPresentRegionKHR", pstruct_in.pRegions->GetMetaStructPointer(), "pRegions", pstruct->swapchainCount, false, pstruct_in.pRegions->GetAddress(), sizeof(VkPresentRegionKHR));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkPresentRegionKHR", pstruct_in.pRegions->GetMetaStructPointer(), "pRegions", pstruct->swapchainCount, false, pstruct_in.pRegions->GetAddress(), sizeof(VkPresentRegionKHR));  // CCP
     }
 }
 
@@ -15767,7 +15767,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceImagel
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -15814,7 +15814,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkFramebufferAttachmen
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -15912,7 +15912,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkFramebufferAttachmen
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -15935,7 +15935,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkFramebufferAttachmen
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pAttachmentImageInfos->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkFramebufferAttachmentImageInfoKHR>(outputFile, indent+1, "VkFramebufferAttachmentImageInfoKHR", pstruct_in.pAttachmentImageInfos->GetMetaStructPointer(), "pAttachmentImageInfos", pstruct->attachmentImageInfoCount, false, pstruct_in.pAttachmentImageInfos->GetAddress(), sizeof(VkFramebufferAttachmentImageInfoKHR));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkFramebufferAttachmentImageInfoKHR", pstruct_in.pAttachmentImageInfos->GetMetaStructPointer(), "pAttachmentImageInfos", pstruct->attachmentImageInfoCount, false, pstruct_in.pAttachmentImageInfos->GetAddress(), sizeof(VkFramebufferAttachmentImageInfoKHR));  // CCP
     }
 }
 
@@ -15974,7 +15974,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkRenderPassAttachment
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -16037,7 +16037,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkAttachmentDescriptio
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -16164,7 +16164,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkAttachmentReference2
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -16228,7 +16228,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSubpassDescription2K
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -16275,7 +16275,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSubpassDescription2K
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pInputAttachments->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkAttachmentReference2KHR>(outputFile, indent+1, "VkAttachmentReference2KHR", pstruct_in.pInputAttachments->GetMetaStructPointer(), "pInputAttachments", pstruct->inputAttachmentCount, false, pstruct_in.pInputAttachments->GetAddress(), sizeof(VkAttachmentReference2KHR));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkAttachmentReference2KHR", pstruct_in.pInputAttachments->GetMetaStructPointer(), "pInputAttachments", pstruct->inputAttachmentCount, false, pstruct_in.pInputAttachments->GetAddress(), sizeof(VkAttachmentReference2KHR));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -16297,7 +16297,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSubpassDescription2K
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pColorAttachments->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkAttachmentReference2KHR>(outputFile, indent+1, "VkAttachmentReference2KHR", pstruct_in.pColorAttachments->GetMetaStructPointer(), "pColorAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pColorAttachments->GetAddress(), sizeof(VkAttachmentReference2KHR));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkAttachmentReference2KHR", pstruct_in.pColorAttachments->GetMetaStructPointer(), "pColorAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pColorAttachments->GetAddress(), sizeof(VkAttachmentReference2KHR));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -16312,7 +16312,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSubpassDescription2K
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pResolveAttachments->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkAttachmentReference2KHR>(outputFile, indent+1, "VkAttachmentReference2KHR", pstruct_in.pResolveAttachments->GetMetaStructPointer(), "pResolveAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pResolveAttachments->GetAddress(), sizeof(VkAttachmentReference2KHR));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkAttachmentReference2KHR", pstruct_in.pResolveAttachments->GetMetaStructPointer(), "pResolveAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pResolveAttachments->GetAddress(), sizeof(VkAttachmentReference2KHR));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -16390,7 +16390,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSubpassDependency2KH
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -16486,7 +16486,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkRenderPassCreateInfo
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -16516,7 +16516,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkRenderPassCreateInfo
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pAttachments->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkAttachmentDescription2KHR>(outputFile, indent+1, "VkAttachmentDescription2KHR", pstruct_in.pAttachments->GetMetaStructPointer(), "pAttachments", pstruct->attachmentCount, false, pstruct_in.pAttachments->GetAddress(), sizeof(VkAttachmentDescription2KHR));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkAttachmentDescription2KHR", pstruct_in.pAttachments->GetMetaStructPointer(), "pAttachments", pstruct->attachmentCount, false, pstruct_in.pAttachments->GetAddress(), sizeof(VkAttachmentDescription2KHR));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -16538,7 +16538,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkRenderPassCreateInfo
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pSubpasses->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkSubpassDescription2KHR>(outputFile, indent+1, "VkSubpassDescription2KHR", pstruct_in.pSubpasses->GetMetaStructPointer(), "pSubpasses", pstruct->subpassCount, false, pstruct_in.pSubpasses->GetAddress(), sizeof(VkSubpassDescription2KHR));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkSubpassDescription2KHR", pstruct_in.pSubpasses->GetMetaStructPointer(), "pSubpasses", pstruct->subpassCount, false, pstruct_in.pSubpasses->GetAddress(), sizeof(VkSubpassDescription2KHR));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -16560,7 +16560,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkRenderPassCreateInfo
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pDependencies->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkSubpassDependency2KHR>(outputFile, indent+1, "VkSubpassDependency2KHR", pstruct_in.pDependencies->GetMetaStructPointer(), "pDependencies", pstruct->dependencyCount, false, pstruct_in.pDependencies->GetAddress(), sizeof(VkSubpassDependency2KHR));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkSubpassDependency2KHR", pstruct_in.pDependencies->GetMetaStructPointer(), "pDependencies", pstruct->dependencyCount, false, pstruct_in.pDependencies->GetAddress(), sizeof(VkSubpassDependency2KHR));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -16622,7 +16622,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSubpassBeginInfoKHR 
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -16672,7 +16672,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSubpassEndInfoKHR &p
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
 }
@@ -16712,7 +16712,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSharedPresentSurface
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -16759,7 +16759,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkImportFenceWin32Hand
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -16851,7 +16851,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkExportFenceWin32Hand
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -16927,7 +16927,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkFenceGetWin32HandleI
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -16984,7 +16984,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkImportFenceFdInfoKHR
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -17055,7 +17055,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkFenceGetFdInfoKHR &p
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -17112,7 +17112,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceSurfac
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -17159,7 +17159,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSurfaceCapabilities2
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -17206,7 +17206,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSurfaceFormat2KHR &p
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -17253,7 +17253,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDisplayProperties2KH
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -17300,7 +17300,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDisplayPlaneProperti
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -17347,7 +17347,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDisplayModePropertie
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -17394,7 +17394,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDisplayPlaneInfo2KHR
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -17448,7 +17448,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDisplayPlaneCapabili
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -17495,7 +17495,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkImageFormatListCreat
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -17558,7 +17558,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceShader
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -17605,7 +17605,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDevice8BitSt
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -17666,7 +17666,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceShader
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -17720,7 +17720,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceShader
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -17812,7 +17812,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceDriver
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -17832,7 +17832,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceDriver
     OutputString(outputFile, "driverName:                     "); // HRW
     OutputString(outputFile, "char = "); // TEQ
     OutputScalarValueStructInfo vinfo_driverName = {false, false, false, nullptr};
-    OutputArrayOfScalarsAscii<char>(outputFile, indent, "char", pstruct_in.driverName.GetPointer(), "driverName", VK_MAX_DRIVER_NAME_SIZE_KHR, vinfo_driverName); // JPB
+    OutputArrayOfScalarsAscii(outputFile, indent, "char", pstruct_in.driverName.GetPointer(), "driverName", VK_MAX_DRIVER_NAME_SIZE_KHR, vinfo_driverName); // JPB
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: char driverInfo
@@ -17840,7 +17840,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceDriver
     OutputString(outputFile, "driverInfo:                     "); // HRW
     OutputString(outputFile, "char = "); // TEQ
     OutputScalarValueStructInfo vinfo_driverInfo = {false, false, false, nullptr};
-    OutputArrayOfScalarsAscii<char>(outputFile, indent, "char", pstruct_in.driverInfo.GetPointer(), "driverInfo", VK_MAX_DRIVER_INFO_SIZE_KHR, vinfo_driverInfo); // JPB
+    OutputArrayOfScalarsAscii(outputFile, indent, "char", pstruct_in.driverInfo.GetPointer(), "driverInfo", VK_MAX_DRIVER_INFO_SIZE_KHR, vinfo_driverInfo); // JPB
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: VkConformanceVersionKHR conformanceVersion
@@ -17885,7 +17885,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceFloatC
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -18050,7 +18050,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSubpassDescriptionDe
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -18126,7 +18126,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceDepthS
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -18194,7 +18194,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceTimeli
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -18241,7 +18241,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceTimeli
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -18288,7 +18288,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSemaphoreTypeCreateI
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -18345,7 +18345,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkTimelineSemaphoreSub
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -18431,7 +18431,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSemaphoreWaitInfoKHR
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -18517,7 +18517,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSemaphoreSignalInfoK
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -18571,7 +18571,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceVulkan
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -18632,7 +18632,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSurfaceProtectedCapa
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -18679,7 +18679,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceUnifor
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -18726,7 +18726,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDevicePipeli
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -18773,7 +18773,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineInfoKHR &pst
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -18820,7 +18820,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineExecutablePr
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -18837,7 +18837,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineExecutablePr
     OutputString(outputFile, "name:                           "); // HRW
     OutputString(outputFile, "char = "); // TEQ
     OutputScalarValueStructInfo vinfo_name = {false, false, false, nullptr};
-    OutputArrayOfScalarsAscii<char>(outputFile, indent, "char", pstruct_in.name.GetPointer(), "name", VK_MAX_DESCRIPTION_SIZE, vinfo_name); // JPB
+    OutputArrayOfScalarsAscii(outputFile, indent, "char", pstruct_in.name.GetPointer(), "name", VK_MAX_DESCRIPTION_SIZE, vinfo_name); // JPB
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: char description
@@ -18845,7 +18845,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineExecutablePr
     OutputString(outputFile, "description:                    "); // HRW
     OutputString(outputFile, "char = "); // TEQ
     OutputScalarValueStructInfo vinfo_description = {false, false, false, nullptr};
-    OutputArrayOfScalarsAscii<char>(outputFile, indent, "char", pstruct_in.description.GetPointer(), "description", VK_MAX_DESCRIPTION_SIZE, vinfo_description); // JPB
+    OutputArrayOfScalarsAscii(outputFile, indent, "char", pstruct_in.description.GetPointer(), "description", VK_MAX_DESCRIPTION_SIZE, vinfo_description); // JPB
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: uint32_t subgroupSize
@@ -18890,7 +18890,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineExecutableIn
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -18982,7 +18982,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineExecutableSt
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -18992,7 +18992,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineExecutableSt
     OutputString(outputFile, "name:                           "); // HRW
     OutputString(outputFile, "char = "); // TEQ
     OutputScalarValueStructInfo vinfo_name = {false, false, false, nullptr};
-    OutputArrayOfScalarsAscii<char>(outputFile, indent, "char", pstruct_in.name.GetPointer(), "name", VK_MAX_DESCRIPTION_SIZE, vinfo_name); // JPB
+    OutputArrayOfScalarsAscii(outputFile, indent, "char", pstruct_in.name.GetPointer(), "name", VK_MAX_DESCRIPTION_SIZE, vinfo_name); // JPB
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: char description
@@ -19000,7 +19000,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineExecutableSt
     OutputString(outputFile, "description:                    "); // HRW
     OutputString(outputFile, "char = "); // TEQ
     OutputScalarValueStructInfo vinfo_description = {false, false, false, nullptr};
-    OutputArrayOfScalarsAscii<char>(outputFile, indent, "char", pstruct_in.description.GetPointer(), "description", VK_MAX_DESCRIPTION_SIZE, vinfo_description); // JPB
+    OutputArrayOfScalarsAscii(outputFile, indent, "char", pstruct_in.description.GetPointer(), "description", VK_MAX_DESCRIPTION_SIZE, vinfo_description); // JPB
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: VkPipelineExecutableStatisticFormatKHR format
@@ -19056,7 +19056,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineExecutableIn
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -19066,7 +19066,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineExecutableIn
     OutputString(outputFile, "name:                           "); // HRW
     OutputString(outputFile, "char = "); // TEQ
     OutputScalarValueStructInfo vinfo_name = {false, false, false, nullptr};
-    OutputArrayOfScalarsAscii<char>(outputFile, indent, "char", pstruct_in.name.GetPointer(), "name", VK_MAX_DESCRIPTION_SIZE, vinfo_name); // JPB
+    OutputArrayOfScalarsAscii(outputFile, indent, "char", pstruct_in.name.GetPointer(), "name", VK_MAX_DESCRIPTION_SIZE, vinfo_name); // JPB
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: char description
@@ -19074,7 +19074,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineExecutableIn
     OutputString(outputFile, "description:                    "); // HRW
     OutputString(outputFile, "char = "); // TEQ
     OutputScalarValueStructInfo vinfo_description = {false, false, false, nullptr};
-    OutputArrayOfScalarsAscii<char>(outputFile, indent, "char", pstruct_in.description.GetPointer(), "description", VK_MAX_DESCRIPTION_SIZE, vinfo_description); // JPB
+    OutputArrayOfScalarsAscii(outputFile, indent, "char", pstruct_in.description.GetPointer(), "description", VK_MAX_DESCRIPTION_SIZE, vinfo_description); // JPB
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: VkBool32 isText
@@ -19142,7 +19142,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDebugReportCallbackC
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -19210,7 +19210,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineRasterizatio
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -19260,7 +19260,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDebugMarkerObjectNam
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -19324,7 +19324,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDebugMarkerObjectTag
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -19411,7 +19411,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDebugMarkerMarkerInf
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -19470,7 +19470,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDedicatedAllocationI
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -19517,7 +19517,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDedicatedAllocationB
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -19564,7 +19564,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDedicatedAllocationM
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -19618,7 +19618,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceTransf
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -19672,7 +19672,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceTransf
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -19782,7 +19782,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineRasterizatio
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -19836,7 +19836,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkImageViewHandleInfoN
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -19900,7 +19900,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkTextureLODGatherForm
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -20056,7 +20056,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkStreamDescriptorSurf
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -20110,7 +20110,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceCorner
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -20195,7 +20195,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkExternalMemoryImageC
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -20242,7 +20242,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkExportMemoryAllocate
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -20289,7 +20289,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkImportMemoryWin32Han
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -20350,7 +20350,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkExportMemoryWin32Han
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -20412,7 +20412,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcqui
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -20546,7 +20546,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkValidationFlagsEXT &
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -20609,7 +20609,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkViSurfaceCreateInfoN
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -20670,7 +20670,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceTextur
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -20717,7 +20717,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkImageViewASTCDecodeM
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -20767,7 +20767,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceASTCDe
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -20814,7 +20814,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkConditionalRendering
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -20875,7 +20875,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceCondit
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -20929,7 +20929,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkCommandBufferInherit
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -20976,7 +20976,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDeviceGeneratedComma
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -21023,7 +21023,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDeviceGeneratedComma
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -21173,7 +21173,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkIndirectCommandsLayo
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -21213,7 +21213,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkIndirectCommandsLayo
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pTokens->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkIndirectCommandsLayoutTokenNVX>(outputFile, indent+1, "VkIndirectCommandsLayoutTokenNVX", pstruct_in.pTokens->GetMetaStructPointer(), "pTokens", pstruct->tokenCount, false, pstruct_in.pTokens->GetAddress(), sizeof(VkIndirectCommandsLayoutTokenNVX));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkIndirectCommandsLayoutTokenNVX", pstruct_in.pTokens->GetMetaStructPointer(), "pTokens", pstruct->tokenCount, false, pstruct_in.pTokens->GetAddress(), sizeof(VkIndirectCommandsLayoutTokenNVX));  // CCP
     }
 }
 
@@ -21252,7 +21252,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkCmdProcessCommandsIn
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -21289,7 +21289,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkCmdProcessCommandsIn
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pIndirectCommandsTokens->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkIndirectCommandsTokenNVX>(outputFile, indent+1, "VkIndirectCommandsTokenNVX", pstruct_in.pIndirectCommandsTokens->GetMetaStructPointer(), "pIndirectCommandsTokens", pstruct->indirectCommandsTokenCount, false, pstruct_in.pIndirectCommandsTokens->GetAddress(), sizeof(VkIndirectCommandsTokenNVX));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkIndirectCommandsTokenNVX", pstruct_in.pIndirectCommandsTokens->GetMetaStructPointer(), "pIndirectCommandsTokens", pstruct->indirectCommandsTokenCount, false, pstruct_in.pIndirectCommandsTokens->GetAddress(), sizeof(VkIndirectCommandsTokenNVX));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -21370,7 +21370,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkCmdReserveSpaceForCo
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -21431,7 +21431,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkObjectTableCreateInf
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -21806,7 +21806,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineViewportWSca
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -21836,7 +21836,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineViewportWSca
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pViewportWScalings->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkViewportWScalingNV>(outputFile, indent+1, "VkViewportWScalingNV", pstruct_in.pViewportWScalings->GetMetaStructPointer(), "pViewportWScalings", pstruct->viewportCount, false, pstruct_in.pViewportWScalings->GetAddress(), sizeof(VkViewportWScalingNV));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkViewportWScalingNV", pstruct_in.pViewportWScalings->GetMetaStructPointer(), "pViewportWScalings", pstruct->viewportCount, false, pstruct_in.pViewportWScalings->GetAddress(), sizeof(VkViewportWScalingNV));  // CCP
     }
 }
 
@@ -21875,7 +21875,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSurfaceCapabilities2
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -21995,7 +21995,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDisplayPowerInfoEXT 
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -22045,7 +22045,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDeviceEventInfoEXT &
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -22095,7 +22095,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDisplayEventInfoEXT 
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -22145,7 +22145,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSwapchainCounterCrea
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -22278,7 +22278,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPresentTimesInfoGOOG
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -22301,7 +22301,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPresentTimesInfoGOOG
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pTimes->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkPresentTimeGOOGLE>(outputFile, indent+1, "VkPresentTimeGOOGLE", pstruct_in.pTimes->GetMetaStructPointer(), "pTimes", pstruct->swapchainCount, false, pstruct_in.pTimes->GetAddress(), sizeof(VkPresentTimeGOOGLE));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkPresentTimeGOOGLE", pstruct_in.pTimes->GetMetaStructPointer(), "pTimes", pstruct->swapchainCount, false, pstruct_in.pTimes->GetAddress(), sizeof(VkPresentTimeGOOGLE));  // CCP
     }
 }
 
@@ -22340,7 +22340,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceMultiv
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -22437,7 +22437,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineViewportSwiz
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -22467,7 +22467,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineViewportSwiz
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pViewportSwizzles->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkViewportSwizzleNV>(outputFile, indent+1, "VkViewportSwizzleNV", pstruct_in.pViewportSwizzles->GetMetaStructPointer(), "pViewportSwizzles", pstruct->viewportCount, false, pstruct_in.pViewportSwizzles->GetAddress(), sizeof(VkViewportSwizzleNV));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkViewportSwizzleNV", pstruct_in.pViewportSwizzles->GetMetaStructPointer(), "pViewportSwizzles", pstruct->viewportCount, false, pstruct_in.pViewportSwizzles->GetAddress(), sizeof(VkViewportSwizzleNV));  // CCP
     }
 }
 
@@ -22506,7 +22506,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceDiscar
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -22553,7 +22553,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineDiscardRecta
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -22593,7 +22593,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineDiscardRecta
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pDiscardRectangles->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkRect2D>(outputFile, indent+1, "VkRect2D", pstruct_in.pDiscardRectangles->GetMetaStructPointer(), "pDiscardRectangles", pstruct->discardRectangleCount, false, pstruct_in.pDiscardRectangles->GetAddress(), sizeof(VkRect2D));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkRect2D", pstruct_in.pDiscardRectangles->GetMetaStructPointer(), "pDiscardRectangles", pstruct->discardRectangleCount, false, pstruct_in.pDiscardRectangles->GetAddress(), sizeof(VkRect2D));  // CCP
     }
 }
 
@@ -22632,7 +22632,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceConser
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -22735,7 +22735,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineRasterizatio
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -22799,7 +22799,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceDepthC
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -22846,7 +22846,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineRasterizatio
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -22924,7 +22924,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkHdrMetadataEXT &pstr
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -23020,7 +23020,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkIOSSurfaceCreateInfo
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -23081,7 +23081,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkMacOSSurfaceCreateIn
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -23142,7 +23142,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDebugUtilsObjectName
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -23206,7 +23206,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDebugUtilsObjectTagI
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -23293,7 +23293,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDebugUtilsLabelEXT &
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -23352,7 +23352,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDebugUtilsMessengerC
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -23403,7 +23403,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDebugUtilsMessengerC
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pQueueLabels->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkDebugUtilsLabelEXT>(outputFile, indent+1, "VkDebugUtilsLabelEXT", pstruct_in.pQueueLabels->GetMetaStructPointer(), "pQueueLabels", pstruct->queueLabelCount, false, pstruct_in.pQueueLabels->GetAddress(), sizeof(VkDebugUtilsLabelEXT));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkDebugUtilsLabelEXT", pstruct_in.pQueueLabels->GetMetaStructPointer(), "pQueueLabels", pstruct->queueLabelCount, false, pstruct_in.pQueueLabels->GetAddress(), sizeof(VkDebugUtilsLabelEXT));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -23425,7 +23425,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDebugUtilsMessengerC
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pCmdBufLabels->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkDebugUtilsLabelEXT>(outputFile, indent+1, "VkDebugUtilsLabelEXT", pstruct_in.pCmdBufLabels->GetMetaStructPointer(), "pCmdBufLabels", pstruct->cmdBufLabelCount, false, pstruct_in.pCmdBufLabels->GetAddress(), sizeof(VkDebugUtilsLabelEXT));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkDebugUtilsLabelEXT", pstruct_in.pCmdBufLabels->GetMetaStructPointer(), "pCmdBufLabels", pstruct->cmdBufLabelCount, false, pstruct_in.pCmdBufLabels->GetAddress(), sizeof(VkDebugUtilsLabelEXT));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -23447,7 +23447,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDebugUtilsMessengerC
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pObjects->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkDebugUtilsObjectNameInfoEXT>(outputFile, indent+1, "VkDebugUtilsObjectNameInfoEXT", pstruct_in.pObjects->GetMetaStructPointer(), "pObjects", pstruct->objectCount, false, pstruct_in.pObjects->GetAddress(), sizeof(VkDebugUtilsObjectNameInfoEXT));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkDebugUtilsObjectNameInfoEXT", pstruct_in.pObjects->GetMetaStructPointer(), "pObjects", pstruct->objectCount, false, pstruct_in.pObjects->GetAddress(), sizeof(VkDebugUtilsObjectNameInfoEXT));  // CCP
     }
 }
 
@@ -23486,7 +23486,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDebugUtilsMessengerC
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -23568,7 +23568,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkAndroidHardwareBuffe
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -23615,7 +23615,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkAndroidHardwareBuffe
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -23669,7 +23669,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkAndroidHardwareBuffe
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -23780,7 +23780,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkImportAndroidHardwar
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -23834,7 +23834,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkMemoryGetAndroidHard
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -23881,7 +23881,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkExternalFormatANDROI
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -23928,7 +23928,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSamplerReductionMode
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -23978,7 +23978,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceSample
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -24032,7 +24032,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceInline
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -24086,7 +24086,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceInline
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -24161,7 +24161,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkWriteDescriptorSetIn
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -24224,7 +24224,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDescriptorPoolInline
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -24295,7 +24295,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSampleLocationsInfoE
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -24335,7 +24335,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSampleLocationsInfoE
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pSampleLocations->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkSampleLocationEXT>(outputFile, indent+1, "VkSampleLocationEXT", pstruct_in.pSampleLocations->GetMetaStructPointer(), "pSampleLocations", pstruct->sampleLocationsCount, false, pstruct_in.pSampleLocations->GetAddress(), sizeof(VkSampleLocationEXT));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkSampleLocationEXT", pstruct_in.pSampleLocations->GetMetaStructPointer(), "pSampleLocations", pstruct->sampleLocationsCount, false, pstruct_in.pSampleLocations->GetAddress(), sizeof(VkSampleLocationEXT));  // CCP
     }
 }
 
@@ -24422,7 +24422,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkRenderPassSampleLoca
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -24445,7 +24445,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkRenderPassSampleLoca
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pAttachmentInitialSampleLocations->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkAttachmentSampleLocationsEXT>(outputFile, indent+1, "VkAttachmentSampleLocationsEXT", pstruct_in.pAttachmentInitialSampleLocations->GetMetaStructPointer(), "pAttachmentInitialSampleLocations", pstruct->attachmentInitialSampleLocationsCount, false, pstruct_in.pAttachmentInitialSampleLocations->GetAddress(), sizeof(VkAttachmentSampleLocationsEXT));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkAttachmentSampleLocationsEXT", pstruct_in.pAttachmentInitialSampleLocations->GetMetaStructPointer(), "pAttachmentInitialSampleLocations", pstruct->attachmentInitialSampleLocationsCount, false, pstruct_in.pAttachmentInitialSampleLocations->GetAddress(), sizeof(VkAttachmentSampleLocationsEXT));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -24467,7 +24467,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkRenderPassSampleLoca
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pPostSubpassSampleLocations->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkSubpassSampleLocationsEXT>(outputFile, indent+1, "VkSubpassSampleLocationsEXT", pstruct_in.pPostSubpassSampleLocations->GetMetaStructPointer(), "pPostSubpassSampleLocations", pstruct->postSubpassSampleLocationsCount, false, pstruct_in.pPostSubpassSampleLocations->GetAddress(), sizeof(VkSubpassSampleLocationsEXT));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkSubpassSampleLocationsEXT", pstruct_in.pPostSubpassSampleLocations->GetMetaStructPointer(), "pPostSubpassSampleLocations", pstruct->postSubpassSampleLocationsCount, false, pstruct_in.pPostSubpassSampleLocations->GetAddress(), sizeof(VkSubpassSampleLocationsEXT));  // CCP
     }
 }
 
@@ -24506,7 +24506,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineSampleLocati
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -24560,7 +24560,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceSample
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -24640,7 +24640,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkMultisamplePropertie
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -24687,7 +24687,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceBlendO
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -24734,7 +24734,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceBlendO
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -24816,7 +24816,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineColorBlendAd
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -24880,7 +24880,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineCoverageToCo
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -24941,7 +24941,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineCoverageModu
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -25028,7 +25028,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceShader
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -25082,7 +25082,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceShader
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -25160,7 +25160,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDrmFormatModifierPro
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -25183,7 +25183,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDrmFormatModifierPro
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pDrmFormatModifierProperties->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkDrmFormatModifierPropertiesEXT>(outputFile, indent+1, "VkDrmFormatModifierPropertiesEXT", pstruct_in.pDrmFormatModifierProperties->GetMetaStructPointer(), "pDrmFormatModifierProperties", pstruct->drmFormatModifierCount, false, pstruct_in.pDrmFormatModifierProperties->GetAddress(), sizeof(VkDrmFormatModifierPropertiesEXT));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkDrmFormatModifierPropertiesEXT", pstruct_in.pDrmFormatModifierProperties->GetMetaStructPointer(), "pDrmFormatModifierProperties", pstruct->drmFormatModifierCount, false, pstruct_in.pDrmFormatModifierProperties->GetAddress(), sizeof(VkDrmFormatModifierPropertiesEXT));  // CCP
     }
 }
 
@@ -25222,7 +25222,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceImageD
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -25302,7 +25302,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkImageDrmFormatModifi
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -25365,7 +25365,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkImageDrmFormatModifi
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -25395,7 +25395,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkImageDrmFormatModifi
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pPlaneLayouts->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkSubresourceLayout>(outputFile, indent+1, "VkSubresourceLayout", pstruct_in.pPlaneLayouts->GetMetaStructPointer(), "pPlaneLayouts", pstruct->drmFormatModifierPlaneCount, false, pstruct_in.pPlaneLayouts->GetAddress(), sizeof(VkSubresourceLayout));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkSubresourceLayout", pstruct_in.pPlaneLayouts->GetMetaStructPointer(), "pPlaneLayouts", pstruct->drmFormatModifierPlaneCount, false, pstruct_in.pPlaneLayouts->GetAddress(), sizeof(VkSubresourceLayout));  // CCP
     }
 }
 
@@ -25434,7 +25434,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkImageDrmFormatModifi
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -25481,7 +25481,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkValidationCacheCreat
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -25551,7 +25551,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkShaderModuleValidati
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -25598,7 +25598,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDescriptorSetLayoutB
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -25661,7 +25661,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceDescri
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -25841,7 +25841,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceDescri
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -26042,7 +26042,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDescriptorSetVariabl
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -26105,7 +26105,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDescriptorSetVariabl
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -26185,7 +26185,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineViewportShad
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -26215,7 +26215,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineViewportShad
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pShadingRatePalettes->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkShadingRatePaletteNV>(outputFile, indent+1, "VkShadingRatePaletteNV", pstruct_in.pShadingRatePalettes->GetMetaStructPointer(), "pShadingRatePalettes", pstruct->viewportCount, false, pstruct_in.pShadingRatePalettes->GetAddress(), sizeof(VkShadingRatePaletteNV));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkShadingRatePaletteNV", pstruct_in.pShadingRatePalettes->GetMetaStructPointer(), "pShadingRatePalettes", pstruct->viewportCount, false, pstruct_in.pShadingRatePalettes->GetAddress(), sizeof(VkShadingRatePaletteNV));  // CCP
     }
 }
 
@@ -26254,7 +26254,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceShadin
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -26308,7 +26308,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceShadin
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -26410,7 +26410,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkCoarseSampleOrderCus
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pSampleLocations->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkCoarseSampleLocationNV>(outputFile, indent+1, "VkCoarseSampleLocationNV", pstruct_in.pSampleLocations->GetMetaStructPointer(), "pSampleLocations", pstruct->sampleLocationCount, false, pstruct_in.pSampleLocations->GetAddress(), sizeof(VkCoarseSampleLocationNV));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkCoarseSampleLocationNV", pstruct_in.pSampleLocations->GetMetaStructPointer(), "pSampleLocations", pstruct->sampleLocationCount, false, pstruct_in.pSampleLocations->GetAddress(), sizeof(VkCoarseSampleLocationNV));  // CCP
     }
 }
 
@@ -26449,7 +26449,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineViewportCoar
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -26482,7 +26482,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineViewportCoar
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pCustomSampleOrders->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkCoarseSampleOrderCustomNV>(outputFile, indent+1, "VkCoarseSampleOrderCustomNV", pstruct_in.pCustomSampleOrders->GetMetaStructPointer(), "pCustomSampleOrders", pstruct->customSampleOrderCount, false, pstruct_in.pCustomSampleOrders->GetAddress(), sizeof(VkCoarseSampleOrderCustomNV));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkCoarseSampleOrderCustomNV", pstruct_in.pCustomSampleOrders->GetMetaStructPointer(), "pCustomSampleOrders", pstruct->customSampleOrderCount, false, pstruct_in.pCustomSampleOrders->GetAddress(), sizeof(VkCoarseSampleOrderCustomNV));  // CCP
     }
 }
 
@@ -26521,7 +26521,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkRayTracingShaderGrou
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -26599,7 +26599,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkRayTracingPipelineCr
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -26629,7 +26629,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkRayTracingPipelineCr
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pStages->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkPipelineShaderStageCreateInfo>(outputFile, indent+1, "VkPipelineShaderStageCreateInfo", pstruct_in.pStages->GetMetaStructPointer(), "pStages", pstruct->stageCount, false, pstruct_in.pStages->GetAddress(), sizeof(VkPipelineShaderStageCreateInfo));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkPipelineShaderStageCreateInfo", pstruct_in.pStages->GetMetaStructPointer(), "pStages", pstruct->stageCount, false, pstruct_in.pStages->GetAddress(), sizeof(VkPipelineShaderStageCreateInfo));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -26651,7 +26651,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkRayTracingPipelineCr
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pGroups->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkRayTracingShaderGroupCreateInfoNV>(outputFile, indent+1, "VkRayTracingShaderGroupCreateInfoNV", pstruct_in.pGroups->GetMetaStructPointer(), "pGroups", pstruct->groupCount, false, pstruct_in.pGroups->GetAddress(), sizeof(VkRayTracingShaderGroupCreateInfoNV));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkRayTracingShaderGroupCreateInfoNV", pstruct_in.pGroups->GetMetaStructPointer(), "pGroups", pstruct->groupCount, false, pstruct_in.pGroups->GetAddress(), sizeof(VkRayTracingShaderGroupCreateInfoNV));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -26718,7 +26718,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkGeometryTrianglesNV 
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -26841,7 +26841,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkGeometryAABBNV &pstr
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -26933,7 +26933,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkGeometryNV &pstruct_
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -26997,7 +26997,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkAccelerationStructur
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -27044,7 +27044,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkAccelerationStructur
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pGeometries->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkGeometryNV>(outputFile, indent+1, "VkGeometryNV", pstruct_in.pGeometries->GetMetaStructPointer(), "pGeometries", pstruct->geometryCount, false, pstruct_in.pGeometries->GetAddress(), sizeof(VkGeometryNV));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkGeometryNV", pstruct_in.pGeometries->GetMetaStructPointer(), "pGeometries", pstruct->geometryCount, false, pstruct_in.pGeometries->GetAddress(), sizeof(VkGeometryNV));  // CCP
     }
 }
 
@@ -27083,7 +27083,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkAccelerationStructur
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -27137,7 +27137,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkBindAccelerationStru
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -27221,7 +27221,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkWriteDescriptorSetAc
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -27284,7 +27284,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkAccelerationStructur
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -27341,7 +27341,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceRayTra
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -27437,7 +27437,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceRepres
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -27484,7 +27484,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineRepresentati
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -27531,7 +27531,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceImageV
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -27581,7 +27581,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkFilterCubicImageView
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -27635,7 +27635,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDeviceQueueGlobalPri
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -27685,7 +27685,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkImportMemoryHostPoin
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -27749,7 +27749,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkMemoryHostPointerPro
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -27796,7 +27796,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceExtern
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -27843,7 +27843,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineCompilerCont
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -27890,7 +27890,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkCalibratedTimestampI
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -27940,7 +27940,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceShader
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -28078,7 +28078,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDeviceMemoryOverallo
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -28128,7 +28128,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceVertex
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -28199,7 +28199,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineVertexInputD
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -28222,7 +28222,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineVertexInputD
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pVertexBindingDivisors->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkVertexInputBindingDivisorDescriptionEXT>(outputFile, indent+1, "VkVertexInputBindingDivisorDescriptionEXT", pstruct_in.pVertexBindingDivisors->GetMetaStructPointer(), "pVertexBindingDivisors", pstruct->vertexBindingDivisorCount, false, pstruct_in.pVertexBindingDivisors->GetAddress(), sizeof(VkVertexInputBindingDivisorDescriptionEXT));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkVertexInputBindingDivisorDescriptionEXT", pstruct_in.pVertexBindingDivisors->GetMetaStructPointer(), "pVertexBindingDivisors", pstruct->vertexBindingDivisorCount, false, pstruct_in.pVertexBindingDivisors->GetAddress(), sizeof(VkVertexInputBindingDivisorDescriptionEXT));  // CCP
     }
 }
 
@@ -28261,7 +28261,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceVertex
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -28315,7 +28315,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPresentFrameTokenGGP
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -28386,7 +28386,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineCreationFeed
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -28425,7 +28425,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineCreationFeed
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pPipelineStageCreationFeedbacks->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkPipelineCreationFeedbackEXT>(outputFile, indent+1, "VkPipelineCreationFeedbackEXT", pstruct_in.pPipelineStageCreationFeedbacks->GetMetaStructPointer(), "pPipelineStageCreationFeedbacks", pstruct->pipelineStageCreationFeedbackCount, false, pstruct_in.pPipelineStageCreationFeedbacks->GetAddress(), sizeof(VkPipelineCreationFeedbackEXT));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkPipelineCreationFeedbackEXT", pstruct_in.pPipelineStageCreationFeedbacks->GetMetaStructPointer(), "pPipelineStageCreationFeedbacks", pstruct->pipelineStageCreationFeedbackCount, false, pstruct_in.pPipelineStageCreationFeedbacks->GetAddress(), sizeof(VkPipelineCreationFeedbackEXT));  // CCP
     }
 }
 
@@ -28464,7 +28464,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceComput
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -28518,7 +28518,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceMeshSh
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -28572,7 +28572,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceMeshSh
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -28737,7 +28737,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceFragme
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -28784,7 +28784,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceShader
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -28831,7 +28831,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineViewportExcl
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -28854,7 +28854,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineViewportExcl
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pExclusiveScissors->GetAddress()); // WUT
-        OutputArrayOfStructsAscii<Decoded_VkRect2D>(outputFile, indent+1, "VkRect2D", pstruct_in.pExclusiveScissors->GetMetaStructPointer(), "pExclusiveScissors", pstruct->exclusiveScissorCount, false, pstruct_in.pExclusiveScissors->GetAddress(), sizeof(VkRect2D));  // CCP
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkRect2D", pstruct_in.pExclusiveScissors->GetMetaStructPointer(), "pExclusiveScissors", pstruct->exclusiveScissorCount, false, pstruct_in.pExclusiveScissors->GetAddress(), sizeof(VkRect2D));  // CCP
     }
 }
 
@@ -28893,7 +28893,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceExclus
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -28940,7 +28940,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkQueueFamilyCheckpoin
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -28987,7 +28987,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkCheckpointDataNV &ps
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -29051,7 +29051,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceShader
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -29171,7 +29171,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkInitializePerformanc
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -29225,7 +29225,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkQueryPoolCreateInfoI
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -29275,7 +29275,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPerformanceMarkerInf
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -29322,7 +29322,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPerformanceStreamMar
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -29369,7 +29369,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPerformanceOverrideI
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -29433,7 +29433,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPerformanceConfigura
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -29483,7 +29483,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDevicePCIBus
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -29551,7 +29551,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDisplayNativeHdrSurf
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -29598,7 +29598,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSwapchainDisplayNati
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -29645,7 +29645,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkImagePipeSurfaceCrea
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -29699,7 +29699,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkMetalSurfaceCreateIn
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -29760,7 +29760,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceFragme
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -29821,7 +29821,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceFragme
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -29882,7 +29882,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkRenderPassFragmentDe
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -29929,7 +29929,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceScalar
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -29976,7 +29976,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceSubgro
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -30030,7 +30030,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceSubgro
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -30098,7 +30098,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineShaderStageR
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -30145,7 +30145,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceShader
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -30199,7 +30199,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceCohere
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -30246,7 +30246,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceMemory
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -30310,7 +30310,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceMemory
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -30357,7 +30357,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkMemoryPriorityAlloca
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -30404,7 +30404,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceDedica
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -30451,7 +30451,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceBuffer
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -30512,7 +30512,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkBufferDeviceAddressI
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -30559,7 +30559,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkBufferDeviceAddressC
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -30606,7 +30606,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkImageStencilUsageCre
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -30653,7 +30653,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkValidationFeaturesEX
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -30739,7 +30739,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkCooperativeMatrixPro
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -30850,7 +30850,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceCooper
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -30904,7 +30904,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceCooper
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -30951,7 +30951,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceCovera
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -30998,7 +30998,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineCoverageRedu
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -31055,7 +31055,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkFramebufferMixedSamp
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -31129,7 +31129,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceFragme
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -31190,7 +31190,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceYcbcrI
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -31237,7 +31237,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSurfaceFullScreenExc
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -31287,7 +31287,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSurfaceCapabilitiesF
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -31334,7 +31334,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSurfaceFullScreenExc
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -31388,7 +31388,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkHeadlessSurfaceCreat
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -31435,7 +31435,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceLineRa
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -31517,7 +31517,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceLineRa
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -31564,7 +31564,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineRasterizatio
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -31635,7 +31635,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceHostQu
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -31682,7 +31682,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceIndexT
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -31729,7 +31729,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceShader
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -31776,7 +31776,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceTexelB
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
@@ -31823,7 +31823,7 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceTexelB
         OutputScalarValueAscii(outputFile, &pNext_base_addr, vinfo_pNext);
         if (pNext_base_addr)
         {
-            OutputPnextStructAscii(outputFile, indent+1, reinterpret_cast<void*>(pstruct_in.pNext->GetMetaStructPointer()), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
+            OutputPnextStructAscii(outputFile, indent+1, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // POX
         }
     }
     OutputString(outputFile, "\n"); // GDS
