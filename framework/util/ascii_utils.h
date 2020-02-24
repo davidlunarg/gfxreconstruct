@@ -42,16 +42,16 @@ GFXRECON_BEGIN_NAMESPACE(decode)
 
 typedef std::function<void(FILE*, uint32_t)> OutputEnumFuncPtr;
 
-typedef struct OutputScalarValueStructInfo {
-   bool is_handle_or_addr;
-   bool is_enum;
-   bool is_flags;
-   OutputEnumFuncPtr enum_to_string_func;
+typedef struct OutputScalarValueStructInfo
+{
+    bool              is_handle_or_addr;
+    bool              is_enum;
+    bool              is_flags;
+    OutputEnumFuncPtr enum_to_string_func;
 } OutputScalarValueStructInfo;
 
-
 // Function to write a std::string to the output file
-void OutputString(FILE* outputFile, const std::string &s)
+void OutputString(FILE* outputFile, const std::string& s)
 {
     assert(outputFile != nullptr);
     fprintf(outputFile, "%s", s.c_str());
@@ -126,10 +126,10 @@ void OutputFlagsAscii(FILE* outputFile, VkFlags flags, OutputEnumFuncPtr enum_to
 }
 
 template <typename T>
-void OutputScalarValueAscii(FILE* outputFile, const T* value, const OutputScalarValueStructInfo &vinfo)
+void OutputScalarValueAscii(FILE* outputFile, const T* value, const OutputScalarValueStructInfo& vinfo)
 {
     assert(outputFile != nullptr);
-    assert((vinfo.is_handle_or_addr + vinfo.is_enum  + vinfo.is_flags) <= 1);
+    assert((vinfo.is_handle_or_addr + vinfo.is_enum + vinfo.is_flags) <= 1);
     assert(vinfo.is_enum ? vinfo.enum_to_string_func != nullptr : true);
     assert(vinfo.is_flags ? vinfo.enum_to_string_func != nullptr : true);
     if (vinfo.is_handle_or_addr)
@@ -220,16 +220,16 @@ void WideStringToQuotedString(FILE* outputFile, const wchar_t* s)
 }
 
 template <typename T>
-void OutputArrayAscii(FILE*                           outputFile,
-                   int                                indent,
-                   const char*                        full_type_name,
-                   const T*                           array,
-                   const char*                        array_name,
-                   const size_t                       array_length,
-                   const OutputScalarValueStructInfo& vinfo)
+void OutputArrayAscii(FILE*                              outputFile,
+                      int                                indent,
+                      const char*                        full_type_name,
+                      const T*                           array,
+                      const char*                        array_name,
+                      const size_t                       array_length,
+                      const OutputScalarValueStructInfo& vinfo)
 {
     assert(outputFile != nullptr);
-    assert((vinfo.is_handle_or_addr + vinfo.is_enum  + vinfo.is_flags) <= 1);
+    assert((vinfo.is_handle_or_addr + vinfo.is_enum + vinfo.is_flags) <= 1);
     assert(vinfo.is_enum ? vinfo.enum_to_string_func != nullptr : true);
     assert(vinfo.is_flags ? vinfo.enum_to_string_func != nullptr : true);
     if (array_length == 0 || array == nullptr)
@@ -267,7 +267,7 @@ void OutputArrayAscii(FILE*                           outputFile,
                           array))
                          ->GetPointer())[j]);
             }
-			else
+            else
             {
                 OutputScalarValueAscii(outputFile, array->GetPointer() + j, vinfo);
             }

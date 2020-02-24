@@ -42,8 +42,8 @@ bool VulkanJsonConsumerBase::Initialize(const std::string& filename)
         {
             success    = true;
             m_filename = filename;
-            fprintf(m_file, "[\n");   // Start program
-            fprintf(m_file, "{\n");   // Start frame
+            fprintf(m_file, "[\n"); // Start program
+            fprintf(m_file, "{\n"); // Start frame
             fprintf(m_file, "%*s\"frameNumber\" : \"0\",\n", kIndentSize, "");
             fprintf(m_file, "%*s\"apiCalls\" :\n", kIndentSize, "");
             fprintf(m_file, "%*s[\n", kIndentSize, "");
@@ -57,9 +57,9 @@ void VulkanJsonConsumerBase::Destroy()
 {
     if (m_file != nullptr)
     {
-        fprintf(m_file, "\n%*s]\n", kIndentSize, "");  // Close program
-        fprintf(m_file, "}\n");  // Close frame - previous item should be an api call, and it should have been closed already
-        fprintf(m_file, "]\n");  // Close program
+        fprintf(m_file, "\n%*s]\n", kIndentSize, ""); // Close list of api calls in last frame
+        fprintf(m_file, "}\n");                       // Close last frame
+        fprintf(m_file, "]\n");                       // Close program
         util::platform::FileClose(m_file);
     }
 }
