@@ -1254,6 +1254,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkApplicationInfo &pstr
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -1426,6 +1428,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkInstanceCreateInfo &p
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -5363,6 +5367,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDeviceQueueCreateInfo
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -5506,6 +5512,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDeviceCreateInfo &pst
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -5909,6 +5917,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSubmitInfo &pstruct_i
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -6139,6 +6149,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkMemoryAllocateInfo &p
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -6236,6 +6248,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkMappedMemoryRange &ps
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -7167,6 +7181,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkBindSparseInfo &pstru
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -7457,6 +7473,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkFenceCreateInfo &pstr
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -7537,6 +7555,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSemaphoreCreateInfo &
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -7617,6 +7637,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkEventCreateInfo &pstr
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -7697,6 +7719,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkQueryPoolCreateInfo &
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -7828,6 +7852,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkBufferCreateInfo &pst
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -8005,6 +8031,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkBufferViewCreateInfo 
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -8153,6 +8181,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageCreateInfo &pstr
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -8734,6 +8764,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageViewCreateInfo &
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -8897,6 +8929,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkShaderModuleCreateInf
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -9026,6 +9060,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineCacheCreateIn
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -9326,6 +9362,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineShaderStageCr
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -9648,6 +9686,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineVertexInputSt
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -9818,6 +9858,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineInputAssembly
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -9932,6 +9974,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineTessellationS
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -10295,6 +10339,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineViewportState
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -10465,6 +10511,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineRasterization
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -10715,6 +10763,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineMultisampleSt
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -11044,6 +11094,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineDepthStencilS
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -11427,6 +11479,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineColorBlendSta
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -11610,6 +11664,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineDynamicStateC
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -11736,6 +11792,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkGraphicsPipelineCreat
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -12198,6 +12256,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkComputePipelineCreate
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -12412,6 +12472,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineLayoutCreateI
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -12583,6 +12645,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSamplerCreateInfo &ps
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -13031,6 +13095,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDescriptorSetLayoutCr
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -13206,6 +13272,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDescriptorPoolCreateI
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -13348,6 +13416,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDescriptorSetAllocate
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -13608,6 +13678,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkWriteDescriptorSet &p
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -13841,6 +13913,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkCopyDescriptorSet &ps
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -14023,6 +14097,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkFramebufferCreateInfo
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -14813,6 +14889,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkRenderPassCreateInfo 
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -15028,6 +15106,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkCommandPoolCreateInfo
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -15125,6 +15205,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkCommandBufferAllocate
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -15239,6 +15321,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkCommandBufferInherita
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -15404,6 +15488,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkCommandBufferBeginInf
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -16382,6 +16468,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkMemoryBarrier &pstruc
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -16479,6 +16567,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkBufferMemoryBarrier &
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -16661,6 +16751,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageMemoryBarrier &p
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -16859,6 +16951,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkRenderPassBeginInfo &
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -17269,6 +17363,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceSubgrou
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -17400,6 +17496,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkBindBufferMemoryInfo 
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -17514,6 +17612,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkBindImageMemoryInfo &
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -17628,6 +17728,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDevice16BitSt
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -17759,6 +17861,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkMemoryDedicatedRequir
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -17856,6 +17960,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkMemoryDedicatedAlloca
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -17953,6 +18059,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkMemoryAllocateFlagsIn
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -18050,6 +18158,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDeviceGroupRenderPass
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -18175,6 +18285,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDeviceGroupCommandBuf
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -18255,6 +18367,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDeviceGroupSubmitInfo
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -18456,6 +18570,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDeviceGroupBindSparse
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -18553,6 +18669,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkBindBufferMemoryDevic
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -18662,6 +18780,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkBindImageMemoryDevice
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -18816,6 +18936,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceGroupPr
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -18937,6 +19059,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDeviceGroupDeviceCrea
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -19046,6 +19170,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkBufferMemoryRequireme
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -19126,6 +19252,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageMemoryRequiremen
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -19206,6 +19334,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageSparseMemoryRequ
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -19286,6 +19416,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkMemoryRequirements2 &
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -19365,6 +19497,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSparseImageMemoryRequ
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -19444,6 +19578,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceFeature
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -19523,6 +19659,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDevicePropert
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -19602,6 +19740,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkFormatProperties2 &ps
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -19681,6 +19821,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageFormatProperties
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -19760,6 +19902,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceImageFo
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -19908,6 +20052,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkQueueFamilyProperties
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -19987,6 +20133,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMemoryP
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -20066,6 +20214,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSparseImageFormatProp
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -20145,6 +20295,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceSparseI
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -20293,6 +20445,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDevicePointCl
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -20440,6 +20594,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkRenderPassInputAttach
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -20548,6 +20704,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageViewUsageCreateI
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -20628,6 +20786,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineTessellationD
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -20708,6 +20868,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkRenderPassMultiviewCr
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -20909,6 +21071,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMultivi
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -21023,6 +21187,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMultivi
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -21120,6 +21286,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceVariabl
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -21217,6 +21385,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceProtect
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -21297,6 +21467,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceProtect
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -21377,6 +21549,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDeviceQueueInfo2 &pst
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -21491,6 +21665,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkProtectedSubmitInfo &
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -21571,6 +21747,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSamplerYcbcrConversio
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -21769,6 +21947,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSamplerYcbcrConversio
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -21849,6 +22029,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkBindImagePlaneMemoryI
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -21929,6 +22111,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImagePlaneMemoryRequi
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -22009,6 +22193,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceSampler
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -22089,6 +22275,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSamplerYcbcrConversio
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -22287,6 +22475,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDescriptorUpdateTempl
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -22564,6 +22754,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceExterna
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -22644,6 +22836,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkExternalImageFormatPr
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -22723,6 +22917,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceExterna
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -22837,6 +23033,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkExternalBufferPropert
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -22916,6 +23114,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceIDPrope
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -23085,6 +23285,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkExternalMemoryImageCr
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -23165,6 +23367,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkExternalMemoryBufferC
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -23245,6 +23449,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkExportMemoryAllocateI
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -23325,6 +23531,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceExterna
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -23405,6 +23613,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkExternalFenceProperti
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -23519,6 +23729,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkExportFenceCreateInfo
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -23599,6 +23811,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkExportSemaphoreCreate
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -23679,6 +23893,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceExterna
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -23759,6 +23975,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkExternalSemaphoreProp
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -23873,6 +24091,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMainten
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -23970,6 +24190,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDescriptorSetLayoutSu
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -24050,6 +24272,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderD
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -24363,6 +24587,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSwapchainCreateInfoKH
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -24709,6 +24935,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPresentInfoKHR &pstru
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -24922,6 +25150,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageSwapchainCreateI
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -25002,6 +25232,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkBindImageMemorySwapch
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -25099,6 +25331,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkAcquireNextImageInfoK
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -25247,6 +25481,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDeviceGroupPresentCap
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -25351,6 +25587,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDeviceGroupPresentInf
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -25477,6 +25715,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDeviceGroupSwapchainC
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -25800,6 +26040,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDisplayModeCreateInfo
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -26107,6 +26349,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDisplaySurfaceCreateI
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -26305,6 +26549,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDisplayPresentInfoKHR
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -26417,6 +26663,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkXlibSurfaceCreateInfo
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -26531,6 +26779,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkXcbSurfaceCreateInfoK
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -26657,6 +26907,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkWaylandSurfaceCreateI
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -26795,6 +27047,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkAndroidSurfaceCreateI
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -26904,6 +27158,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkWin32SurfaceCreateInf
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -27042,6 +27298,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImportMemoryWin32Hand
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -27180,6 +27438,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkExportMemoryWin32Hand
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -27319,6 +27579,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkMemoryWin32HandleProp
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -27399,6 +27661,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkMemoryGetWin32HandleI
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -27496,6 +27760,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImportMemoryFdInfoKHR
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -27593,6 +27859,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkMemoryFdPropertiesKHR
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -27673,6 +27941,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkMemoryGetFdInfoKHR &p
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -27770,6 +28040,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcquir
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -28012,6 +28284,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImportSemaphoreWin32H
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -28184,6 +28458,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkExportSemaphoreWin32H
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -28323,6 +28599,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkD3D12FenceSubmitInfoK
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -28478,6 +28756,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSemaphoreGetWin32Hand
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -28575,6 +28855,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImportSemaphoreFdInfo
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -28706,6 +28988,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSemaphoreGetFdInfoKHR
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -28803,6 +29087,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDevicePushDes
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -28883,6 +29169,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderF
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -29106,6 +29394,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPresentRegionsKHR &ps
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -29214,6 +29504,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceImagele
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -29294,6 +29586,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkFramebufferAttachment
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -29488,6 +29782,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkFramebufferAttachment
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -29596,6 +29892,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkRenderPassAttachmentB
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -29705,6 +30003,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkAttachmentDescription
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -29921,6 +30221,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkAttachmentReference2K
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -30035,6 +30337,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSubpassDescription2KH
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -30341,6 +30645,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSubpassDependency2KHR
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -30540,6 +30846,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkRenderPassCreateInfo2
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -30801,6 +31109,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSubpassBeginInfoKHR &
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -30881,6 +31191,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSubpassEndInfoKHR &ps
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -30944,6 +31256,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSharedPresentSurfaceC
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -31024,6 +31338,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImportFenceWin32Handl
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -31196,6 +31512,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkExportFenceWin32Handl
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -31335,6 +31653,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkFenceGetWin32HandleIn
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -31432,6 +31752,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImportFenceFdInfoKHR 
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -31563,6 +31885,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkFenceGetFdInfoKHR &ps
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -31660,6 +31984,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceSurface
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -31740,6 +32066,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSurfaceCapabilities2K
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -31819,6 +32147,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSurfaceFormat2KHR &ps
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -31898,6 +32228,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDisplayProperties2KHR
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -31977,6 +32309,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDisplayPlanePropertie
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -32056,6 +32390,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDisplayModeProperties
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -32135,6 +32471,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDisplayPlaneInfo2KHR 
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -32232,6 +32570,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDisplayPlaneCapabilit
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -32311,6 +32651,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageFormatListCreate
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -32420,6 +32762,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderS
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -32500,6 +32844,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDevice8BitSto
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -32614,6 +32960,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderA
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -32711,6 +33059,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderC
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -32892,6 +33242,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceDriverP
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -33038,6 +33390,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceFloatCo
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -33390,6 +33744,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSubpassDescriptionDep
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -33515,6 +33871,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceDepthSt
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -33646,6 +34004,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceTimelin
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -33726,6 +34086,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceTimelin
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -33806,6 +34168,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSemaphoreTypeCreateIn
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -33903,6 +34267,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkTimelineSemaphoreSubm
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -34058,6 +34424,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSemaphoreWaitInfoKHR 
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -34213,6 +34581,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSemaphoreSignalInfoKH
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -34310,6 +34680,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceVulkanM
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -34424,6 +34796,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSurfaceProtectedCapab
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -34504,6 +34878,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceUniform
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -34584,6 +34960,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDevicePipelin
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -34664,6 +35042,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineInfoKHR &pstr
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -34744,6 +35124,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineExecutablePro
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -34891,6 +35273,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineExecutableInf
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -35072,6 +35456,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineExecutableSta
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -35218,6 +35604,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineExecutableInt
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -35394,6 +35782,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDebugReportCallbackCr
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -35520,6 +35910,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineRasterization
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -35600,6 +35992,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDebugMarkerObjectName
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -35726,6 +36120,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDebugMarkerObjectTagI
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -35886,6 +36282,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDebugMarkerMarkerInfo
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -36002,6 +36400,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDedicatedAllocationIm
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -36082,6 +36482,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDedicatedAllocationBu
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -36162,6 +36564,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDedicatedAllocationMe
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -36259,6 +36663,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceTransfo
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -36356,6 +36762,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceTransfo
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -36589,6 +36997,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineRasterization
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -36686,6 +37096,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageViewHandleInfoNV
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -36800,6 +37212,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkTextureLODGatherForma
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -37122,6 +37536,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkStreamDescriptorSurfa
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -37219,6 +37635,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceCornerS
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -37382,6 +37800,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkExternalMemoryImageCr
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -37462,6 +37882,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkExportMemoryAllocateI
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -37542,6 +37964,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImportMemoryWin32Hand
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -37651,6 +38075,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkExportMemoryWin32Hand
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -37761,6 +38187,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcquir
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -38003,6 +38431,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkValidationFlagsEXT &p
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -38112,6 +38542,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkViSurfaceCreateInfoNN
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -38221,6 +38653,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceTexture
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -38301,6 +38735,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageViewASTCDecodeMo
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -38381,6 +38817,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceASTCDec
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -38461,6 +38899,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkConditionalRenderingB
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -38575,6 +39015,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceConditi
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -38672,6 +39114,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkCommandBufferInherita
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -38752,6 +39196,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDeviceGeneratedComman
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -38832,6 +39278,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDeviceGeneratedComman
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -39131,6 +39579,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkIndirectCommandsLayou
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -39273,6 +39723,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkCmdProcessCommandsInf
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -39517,6 +39969,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkCmdReserveSpaceForCom
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -39631,6 +40085,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkObjectTableCreateInfo
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -40369,6 +40825,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineViewportWScal
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -40494,6 +40952,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSurfaceCapabilities2E
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -40741,6 +41201,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDisplayPowerInfoEXT &
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -40821,6 +41283,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDeviceEventInfoEXT &p
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -40901,6 +41365,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDisplayEventInfoEXT &
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -40981,6 +41447,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSwapchainCounterCreat
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -41245,6 +41713,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPresentTimesInfoGOOGL
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -41353,6 +41823,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMultivi
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -41517,6 +41989,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineViewportSwizz
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -41642,6 +42116,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceDiscard
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -41722,6 +42198,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineDiscardRectan
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -41864,6 +42342,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceConserv
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -42080,6 +42560,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineRasterization
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -42194,6 +42676,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceDepthCl
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -42274,6 +42758,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineRasterization
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -42421,6 +42907,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkHdrMetadataEXT &pstru
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -42616,6 +43104,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkIOSSurfaceCreateInfoM
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -42725,6 +43215,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkMacOSSurfaceCreateInf
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -42834,6 +43326,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDebugUtilsObjectNameI
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -42960,6 +43454,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDebugUtilsObjectTagIn
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -43120,6 +43616,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDebugUtilsLabelEXT &p
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -43236,6 +43734,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDebugUtilsMessengerCa
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -43526,6 +44026,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDebugUtilsMessengerCr
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -43686,6 +44188,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkAndroidHardwareBuffer
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -43766,6 +44270,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkAndroidHardwareBuffer
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -43863,6 +44369,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkAndroidHardwareBuffer
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -44061,6 +44569,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImportAndroidHardware
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -44153,6 +44663,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkMemoryGetAndroidHardw
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -44233,6 +44745,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkExternalFormatANDROID
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -44313,6 +44827,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSamplerReductionModeC
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -44393,6 +44909,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceSampler
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -44490,6 +45008,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceInlineU
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -44587,6 +45107,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceInlineU
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -44735,6 +45257,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkWriteDescriptorSetInl
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -44844,6 +45368,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDescriptorPoolInlineU
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -44974,6 +45500,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSampleLocationsInfoEX
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -45213,6 +45741,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkRenderPassSampleLocat
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -45366,6 +45896,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineSampleLocatio
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -45462,6 +45994,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceSampleL
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -45616,6 +46150,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkMultisampleProperties
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -45695,6 +46231,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceBlendOp
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -45775,6 +46313,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceBlendOp
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -45940,6 +46480,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineColorBlendAdv
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -46054,6 +46596,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineCoverageToCol
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -46168,6 +46712,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineCoverageModul
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -46328,6 +46874,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderS
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -46425,6 +46973,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderS
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -46572,6 +47122,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDrmFormatModifierProp
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -46680,6 +47232,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceImageDr
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -46823,6 +47377,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageDrmFormatModifie
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -46932,6 +47488,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageDrmFormatModifie
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -47057,6 +47615,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageDrmFormatModifie
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -47137,6 +47697,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkValidationCacheCreate
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -47263,6 +47825,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkShaderModuleValidatio
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -47343,6 +47907,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDescriptorSetLayoutBi
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -47452,6 +48018,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceDescrip
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -47855,6 +48423,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceDescrip
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -48309,6 +48879,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDescriptorSetVariable
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -48418,6 +48990,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDescriptorSetVariable
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -48560,6 +49134,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineViewportShadi
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -48685,6 +49261,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShading
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -48782,6 +49360,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShading
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -49057,6 +49637,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineViewportCoars
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -49182,6 +49764,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkRayTracingShaderGroup
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -49330,6 +49914,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkRayTracingPipelineCre
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -49568,6 +50154,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkGeometryTrianglesNV &
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -49818,6 +50406,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkGeometryAABBNV &pstru
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -49997,6 +50587,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkGeometryNV &pstruct_i
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -50110,6 +50702,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkAccelerationStructure
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -50269,6 +50863,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkAccelerationStructure
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -50365,6 +50961,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkBindAccelerationStruc
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -50525,6 +51123,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkWriteDescriptorSetAcc
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -50634,6 +51234,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkAccelerationStructure
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -50731,6 +51333,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceRayTrac
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -50930,6 +51534,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceReprese
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -51010,6 +51616,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineRepresentativ
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -51090,6 +51698,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceImageVi
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -51170,6 +51780,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkFilterCubicImageViewI
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -51267,6 +51879,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDeviceQueueGlobalPrio
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -51347,6 +51961,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImportMemoryHostPoint
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -51456,6 +52072,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkMemoryHostPointerProp
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -51536,6 +52154,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceExterna
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -51616,6 +52236,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineCompilerContr
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -51696,6 +52318,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkCalibratedTimestampIn
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -51776,6 +52400,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderC
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -52077,6 +52703,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDeviceMemoryOveralloc
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -52157,6 +52785,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceVertexA
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -52287,6 +52917,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineVertexInputDi
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -52395,6 +53027,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceVertexA
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -52492,6 +53126,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPresentFrameTokenGGP 
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -52622,6 +53258,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineCreationFeedb
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -52758,6 +53396,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceCompute
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -52855,6 +53495,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMeshSha
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -52952,6 +53594,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMeshSha
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -53300,6 +53944,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceFragmen
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -53380,6 +54026,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderI
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -53460,6 +54108,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineViewportExclu
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -53568,6 +54218,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceExclusi
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -53648,6 +54300,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkQueueFamilyCheckpoint
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -53728,6 +54382,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkCheckpointDataNV &pst
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -53837,6 +54493,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderI
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -54079,6 +54737,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkInitializePerformance
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -54171,6 +54831,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkQueryPoolCreateInfoIN
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -54251,6 +54913,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPerformanceMarkerInfo
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -54331,6 +54995,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPerformanceStreamMark
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -54411,6 +55077,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPerformanceOverrideIn
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -54525,6 +55193,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPerformanceConfigurat
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -54605,6 +55275,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDevicePCIBusI
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -54736,6 +55408,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDisplayNativeHdrSurfa
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -54816,6 +55490,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSwapchainDisplayNativ
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -54896,6 +55572,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImagePipeSurfaceCreat
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -54993,6 +55671,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkMetalSurfaceCreateInf
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -55102,6 +55782,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceFragmen
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -55216,6 +55898,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceFragmen
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -55328,6 +56012,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkRenderPassFragmentDen
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -55407,6 +56093,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceScalarB
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -55487,6 +56175,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceSubgrou
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -55584,6 +56274,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceSubgrou
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -55715,6 +56407,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineShaderStageRe
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -55795,6 +56489,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderC
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -55892,6 +56588,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceCoheren
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -55972,6 +56670,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMemoryB
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -56083,6 +56783,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMemoryP
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -56163,6 +56865,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkMemoryPriorityAllocat
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -56243,6 +56947,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceDedicat
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -56323,6 +57029,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceBufferD
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -56437,6 +57145,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkBufferDeviceAddressIn
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -56517,6 +57227,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkBufferDeviceAddressCr
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -56597,6 +57309,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageStencilUsageCrea
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -56677,6 +57391,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkValidationFeaturesEXT
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -56832,6 +57548,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkCooperativeMatrixProp
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -57031,6 +57749,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceCoopera
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -57128,6 +57848,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceCoopera
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -57208,6 +57930,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceCoverag
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -57288,6 +58012,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineCoverageReduc
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -57385,6 +58111,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkFramebufferMixedSampl
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -57516,6 +58244,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceFragmen
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -57630,6 +58360,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceYcbcrIm
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -57710,6 +58442,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSurfaceFullScreenExcl
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -57790,6 +58524,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSurfaceCapabilitiesFu
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -57870,6 +58606,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSurfaceFullScreenExcl
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -57962,6 +58700,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkHeadlessSurfaceCreate
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -58042,6 +58782,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceLineRas
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -58207,6 +58949,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceLineRas
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -58287,6 +59031,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineRasterization
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -58418,6 +59164,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceHostQue
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -58498,6 +59246,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceIndexTy
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -58578,6 +59328,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderD
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -58658,6 +59410,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceTexelBu
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR
@@ -58738,6 +59492,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceTexelBu
         void *pNext_base_addr = reinterpret_cast<void *>(pstruct_in.pNext->GetAddress()); // PVX
         if (pNext_base_addr)
         {
+            OutputIndentJson(outputFile, indent);
+            OutputStringJson(outputFile, "\"members\" :\n");
             OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX
         }
     } // HWR

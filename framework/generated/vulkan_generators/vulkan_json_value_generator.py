@@ -46,7 +46,7 @@ class OutputValue(BaseGenerator):
     # code to display function arguments, and from vulkan_json_consumer_struct_generator.py to generate
     # code to display members of structures.
     def outputValue(self, value, funcName, structName):
-        #{  For vi % cmd
+        # {  For vi % cmd
 
         if structName != '':
             pstruct = 'pstruct->'
@@ -285,6 +285,8 @@ class OutputValue(BaseGenerator):
                 self.wc(leadSpaces + 'void *pNext_base_addr = reinterpret_cast<void *>(' + pstruct_in + value.name + '->GetAddress()); // PVX')
                 self.wc(leadSpaces + 'if (pNext_base_addr)')
                 self.wc(leadSpaces + '{')
+                self.wc(leadSpaces + '    OutputIndentJson(outputFile, indent);')
+                self.wc(leadSpaces + '    OutputStringJson(outputFile, "\\"members\\" :\\n");')
                 self.wc(leadSpaces + '    OutputPnextStructJson(outputFile, indent, pstruct_in.pNext->GetMetaStructPointer(), reinterpret_cast<uint64_t>(pNext_base_addr)); // PPX')
                 self.wc(leadSpaces + '}')
             else:
@@ -371,4 +373,4 @@ class OutputValue(BaseGenerator):
             # Close off not nullptr block
             self.wc('    } // HWR')
 
-        #}  For vi % cmd
+        # }  For vi % cmd
