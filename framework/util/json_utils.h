@@ -187,12 +187,8 @@ void StringToQuotedStringJson(FILE* outputFile, const char* s)
         out += "\"";
         out += s;
         out += "\"";
+        OutputStringJson(outputFile, out);
     }
-    else
-    {
-        out += "NULL";
-    }
-    OutputStringJson(outputFile, out);
 }
 
 void WideStringToQuotedStringJson(FILE* outputFile, const wchar_t* s)
@@ -203,10 +199,6 @@ void WideStringToQuotedStringJson(FILE* outputFile, const wchar_t* s)
         OutputStringJson(outputFile, "\"");
         fprintf(outputFile, "%ls", s);
         OutputStringJson(outputFile, "\"");
-    }
-    else
-    {
-        OutputStringJson(outputFile, "NULL");
     }
 }
 

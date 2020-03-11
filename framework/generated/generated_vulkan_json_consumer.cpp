@@ -4604,7 +4604,7 @@ void VulkanJsonConsumer::Process_vkGetQueryPoolResults(
         OutputAddrJson(outputFile, pData->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"elements\" : ");
+        OutputStringJson(outputFile, "\"elements\" :");
         OutputScalarValueStructInfo vinfo_pData = {false, false, false, nullptr};
         OutputArrayJson(outputFile, indent, "void*", pData, "pData", dataSize, vinfo_pData); // AUA
     } // HWR
@@ -6261,7 +6261,7 @@ void VulkanJsonConsumer::Process_vkGetPipelineCacheData(
         OutputAddrJson(outputFile, pData->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"elements\" : ");
+        OutputStringJson(outputFile, "\"elements\" :");
         OutputScalarValueStructInfo vinfo_pData = {false, false, false, nullptr};
         OutputArrayJson(outputFile, indent, "void*", pData, "pData", *pDataSize->GetPointer(), vinfo_pData); // AUA
     } // HWR
@@ -10001,7 +10001,7 @@ void VulkanJsonConsumer::Process_vkCmdSetBlendConstants(
     OutputIndentJson(outputFile, indent); // ESP
     OutputStringJson(outputFile, "\"type\" : \"const float"); // NUN
     OutputStringJson(outputFile, "[");
-    OutputUnsignedDecimalJson(outputFile, 4); // IAV
+    OutputStringJson(outputFile, "4"); // IAV
     OutputStringJson(outputFile, "]");
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
@@ -10011,7 +10011,7 @@ void VulkanJsonConsumer::Process_vkCmdSetBlendConstants(
     OutputAddrJson(outputFile, blendConstants.GetAddress() /* UYA */ );
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"elements\" : ");
+    OutputStringJson(outputFile, "\"elements\" :");
     OutputScalarValueStructInfo vinfo_blendConstants = {false, false, false, nullptr};
     OutputArrayJson(outputFile, indent, "const float", &blendConstants, "blendConstants", 4, vinfo_blendConstants); // AUA
     OutputIndentJson(outputFile, 4);
@@ -10524,7 +10524,7 @@ void VulkanJsonConsumer::Process_vkCmdBindDescriptorSets(
         OutputAddrJson(outputFile, pDynamicOffsets.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"elements\" : ");
+        OutputStringJson(outputFile, "\"elements\" :");
         OutputScalarValueStructInfo vinfo_pDynamicOffsets = {false, false, false, nullptr};
         OutputArrayJson(outputFile, indent, "const uint32_t*", &pDynamicOffsets, "pDynamicOffsets", dynamicOffsetCount, vinfo_pDynamicOffsets); // AUA
     } // HWR
@@ -10760,7 +10760,7 @@ void VulkanJsonConsumer::Process_vkCmdBindVertexBuffers(
         OutputAddrJson(outputFile, pOffsets.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"elements\" : ");
+        OutputStringJson(outputFile, "\"elements\" :");
         OutputScalarValueStructInfo vinfo_pOffsets = {false, false, false, nullptr};
         OutputArrayJson(outputFile, indent, "const VkDeviceSize*", &pOffsets, "pOffsets", bindingCount, vinfo_pOffsets); // AUA
     } // HWR
@@ -14308,7 +14308,7 @@ void VulkanJsonConsumer::Process_vkCmdPushConstants(
         OutputAddrJson(outputFile, pValues.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"elements\" : ");
+        OutputStringJson(outputFile, "\"elements\" :");
         OutputScalarValueStructInfo vinfo_pValues = {false, false, false, nullptr};
         OutputArrayJson(outputFile, indent, "const void*", &pValues, "pValues", size, vinfo_pValues); // AUA
     } // HWR
@@ -17891,7 +17891,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModesKHR(
         OutputAddrJson(outputFile, pPresentModes->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"elements\" : ");
+        OutputStringJson(outputFile, "\"elements\" :");
         OutputScalarValueStructInfo vinfo_pPresentModes = {false, true, false, OutputEnumVkPresentModeKHR};
         OutputArrayJson(outputFile, indent, "VkPresentModeKHR*", pPresentModes, "pPresentModes", *pPresentModeCount->GetPointer(), vinfo_pPresentModes); // AUA
     } // HWR
@@ -27601,14 +27601,10 @@ void VulkanJsonConsumer::Process_vkDebugReportMessageEXT(
     if (pLayerPrefix.GetPointer() == nullptr) // WWU
     {
         OutputIndentJson(outputFile, indent); // RGV
-        OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
+        OutputStringJson(outputFile, "\"value\" : \"\"\n");
     }
     else
     { // JHD
-        OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        OutputAddrJson(outputFile, pLayerPrefix.GetAddress() /* RQB */ );
-        OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : ");
         StringToQuotedStringJson(outputFile, pLayerPrefix.GetPointer()); // TUJ
@@ -27628,14 +27624,10 @@ void VulkanJsonConsumer::Process_vkDebugReportMessageEXT(
     if (pMessage.GetPointer() == nullptr) // WWU
     {
         OutputIndentJson(outputFile, indent); // RGV
-        OutputStringJson(outputFile, "\"address\" : \"NULL\"\n");
+        OutputStringJson(outputFile, "\"value\" : \"\"\n");
     }
     else
     { // JHD
-        OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"address\" : \""); // EAC
-        OutputAddrJson(outputFile, pMessage.GetAddress() /* RQB */ );
-        OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : ");
         StringToQuotedStringJson(outputFile, pMessage.GetPointer()); // TUJ
@@ -28146,7 +28138,7 @@ void VulkanJsonConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
         OutputAddrJson(outputFile, pOffsets.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"elements\" : ");
+        OutputStringJson(outputFile, "\"elements\" :");
         OutputScalarValueStructInfo vinfo_pOffsets = {false, false, false, nullptr};
         OutputArrayJson(outputFile, indent, "const VkDeviceSize*", &pOffsets, "pOffsets", bindingCount, vinfo_pOffsets); // AUA
     } // HWR
@@ -28173,7 +28165,7 @@ void VulkanJsonConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
         OutputAddrJson(outputFile, pSizes.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"elements\" : ");
+        OutputStringJson(outputFile, "\"elements\" :");
         OutputScalarValueStructInfo vinfo_pSizes = {false, false, false, nullptr};
         OutputArrayJson(outputFile, indent, "const VkDeviceSize*", &pSizes, "pSizes", bindingCount, vinfo_pSizes); // AUA
     } // HWR
@@ -28311,7 +28303,7 @@ void VulkanJsonConsumer::Process_vkCmdBeginTransformFeedbackEXT(
         OutputAddrJson(outputFile, pCounterBufferOffsets.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"elements\" : ");
+        OutputStringJson(outputFile, "\"elements\" :");
         OutputScalarValueStructInfo vinfo_pCounterBufferOffsets = {false, false, false, nullptr};
         OutputArrayJson(outputFile, indent, "const VkDeviceSize*", &pCounterBufferOffsets, "pCounterBufferOffsets", counterBufferCount, vinfo_pCounterBufferOffsets); // AUA
     } // HWR
@@ -28449,7 +28441,7 @@ void VulkanJsonConsumer::Process_vkCmdEndTransformFeedbackEXT(
         OutputAddrJson(outputFile, pCounterBufferOffsets.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"elements\" : ");
+        OutputStringJson(outputFile, "\"elements\" :");
         OutputScalarValueStructInfo vinfo_pCounterBufferOffsets = {false, false, false, nullptr};
         OutputArrayJson(outputFile, indent, "const VkDeviceSize*", &pCounterBufferOffsets, "pCounterBufferOffsets", counterBufferCount, vinfo_pCounterBufferOffsets); // AUA
     } // HWR
@@ -29345,7 +29337,7 @@ void VulkanJsonConsumer::Process_vkGetShaderInfoAMD(
         OutputAddrJson(outputFile, pInfo->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"elements\" : ");
+        OutputStringJson(outputFile, "\"elements\" :");
         OutputScalarValueStructInfo vinfo_pInfo = {false, false, false, nullptr};
         OutputArrayJson(outputFile, indent, "void*", pInfo, "pInfo", *pInfoSize->GetPointer(), vinfo_pInfo); // AUA
     } // HWR
@@ -30776,7 +30768,7 @@ void VulkanJsonConsumer::Process_vkUnregisterObjectsNVX(
         OutputAddrJson(outputFile, pObjectEntryTypes.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"elements\" : ");
+        OutputStringJson(outputFile, "\"elements\" :");
         OutputScalarValueStructInfo vinfo_pObjectEntryTypes = {false, true, false, OutputEnumVkObjectEntryTypeNVX};
         OutputArrayJson(outputFile, indent, "const VkObjectEntryTypeNVX*", &pObjectEntryTypes, "pObjectEntryTypes", objectCount, vinfo_pObjectEntryTypes); // AUA
     } // HWR
@@ -30803,7 +30795,7 @@ void VulkanJsonConsumer::Process_vkUnregisterObjectsNVX(
         OutputAddrJson(outputFile, pObjectIndices.GetAddress() /* RQB */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"elements\" : ");
+        OutputStringJson(outputFile, "\"elements\" :");
         OutputScalarValueStructInfo vinfo_pObjectIndices = {false, false, false, nullptr};
         OutputArrayJson(outputFile, indent, "const uint32_t*", &pObjectIndices, "pObjectIndices", objectCount, vinfo_pObjectIndices); // AUA
     } // HWR
@@ -34505,7 +34497,7 @@ void VulkanJsonConsumer::Process_vkGetValidationCacheDataEXT(
         OutputAddrJson(outputFile, pData->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"elements\" : ");
+        OutputStringJson(outputFile, "\"elements\" :");
         OutputScalarValueStructInfo vinfo_pData = {false, false, false, nullptr};
         OutputArrayJson(outputFile, indent, "void*", pData, "pData", *pDataSize->GetPointer(), vinfo_pData); // AUA
     } // HWR
@@ -36116,7 +36108,7 @@ void VulkanJsonConsumer::Process_vkGetRayTracingShaderGroupHandlesNV(
         OutputAddrJson(outputFile, pData->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"elements\" : ");
+        OutputStringJson(outputFile, "\"elements\" :");
         OutputScalarValueStructInfo vinfo_pData = {false, false, false, nullptr};
         OutputArrayJson(outputFile, indent, "void*", pData, "pData", dataSize, vinfo_pData); // AUA
     } // HWR
@@ -36231,7 +36223,7 @@ void VulkanJsonConsumer::Process_vkGetAccelerationStructureHandleNV(
         OutputAddrJson(outputFile, pData->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"elements\" : ");
+        OutputStringJson(outputFile, "\"elements\" :");
         OutputScalarValueStructInfo vinfo_pData = {false, false, false, nullptr};
         OutputArrayJson(outputFile, indent, "void*", pData, "pData", dataSize, vinfo_pData); // AUA
     } // HWR
@@ -36814,7 +36806,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(
         OutputAddrJson(outputFile, pTimeDomains->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"elements\" : ");
+        OutputStringJson(outputFile, "\"elements\" :");
         OutputScalarValueStructInfo vinfo_pTimeDomains = {false, true, false, OutputEnumVkTimeDomainEXT};
         OutputArrayJson(outputFile, indent, "VkTimeDomainEXT*", pTimeDomains, "pTimeDomains", *pTimeDomainCount->GetPointer(), vinfo_pTimeDomains); // AUA
     } // HWR
@@ -36941,7 +36933,7 @@ void VulkanJsonConsumer::Process_vkGetCalibratedTimestampsEXT(
         OutputAddrJson(outputFile, pTimestamps->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"elements\" : ");
+        OutputStringJson(outputFile, "\"elements\" :");
         OutputScalarValueStructInfo vinfo_pTimestamps = {false, false, false, nullptr};
         OutputArrayJson(outputFile, indent, "uint64_t*", pTimestamps, "pTimestamps", timestampCount, vinfo_pTimestamps); // AUA
     } // HWR
@@ -39139,7 +39131,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceSurfacePresentModes2EXT(
         OutputAddrJson(outputFile, pPresentModes->GetAddress() /* RQA */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"elements\" : ");
+        OutputStringJson(outputFile, "\"elements\" :");
         OutputScalarValueStructInfo vinfo_pPresentModes = {false, true, false, OutputEnumVkPresentModeKHR};
         OutputArrayJson(outputFile, indent, "VkPresentModeKHR*", pPresentModes, "pPresentModes", *pPresentModeCount->GetPointer(), vinfo_pPresentModes); // AUA
     } // HWR

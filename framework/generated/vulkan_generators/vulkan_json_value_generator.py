@@ -80,7 +80,7 @@ class OutputValue(BaseGenerator):
             self.wc('    OutputStringJson(outputFile, "]");')
         elif value.isArray and not value.isPointer:
             self.wc('    OutputStringJson(outputFile, "[");')
-            self.wc('    OutputUnsignedDecimalJson(outputFile, ' + value.arrayLength + '); // IAV')
+            self.wc('    OutputStringJson(outputFile, "' + value.arrayLength + '"); // IAV')
             self.wc('    OutputStringJson(outputFile, "]");')
         self.wc('    OutputStringJson(outputFile, "\\",\\n");')
         self.wc('    OutputIndentJson(outputFile, indent);')
@@ -110,7 +110,11 @@ class OutputValue(BaseGenerator):
                 self.wc('    if (' + pstruct + value.name + ' == nullptr) // WWZ')
             self.wc('    {')
             self.wc('        OutputIndentJson(outputFile, indent); // RGV')
-            self.wc('        OutputStringJson(outputFile, "\\"address\\" : \\"NULL\\"\\n");')
+            if value.fullType == "const char*":
+                # A null ptr to a string is output as an empty string value
+                self.wc('        OutputStringJson(outputFile, "\\"value\\" : \\"\\"\\n");')
+            else:
+                self.wc('        OutputStringJson(outputFile, "\\"address\\" : \\"NULL\\"\\n");')
             self.wc('    }')
             self.wc('    else')
             self.wc('    { // JHD')
@@ -128,7 +132,8 @@ class OutputValue(BaseGenerator):
                     addrExpression = pstruct_in + value.name + ' /* ACF */'
                 else:
                     addrExpression = pstruct_in + value.name + '.GetAddress() /* QZR */'
-        if addrExpression is not None:
+        if addrExpression is not None and value.fullType != "const char*" and not (value.isArray and value.fullType == "char"):
+            # We don't print the address of char* and char[] arrays
             self.wc(leadSpaces + 'OutputIndentJson(outputFile, indent);')
             self.wc(leadSpaces + 'OutputStringJson(outputFile, "\\"address\\" : \\""); // EAC')
             self.wc(leadSpaces + 'OutputAddrJson(outputFile, ' + addrExpression + ' );')
@@ -217,7 +222,7 @@ class OutputValue(BaseGenerator):
                     self.wc(leadSpaces + 'if (kPrintShaderCode)')
                     self.wc(leadSpaces + '{')
                     self.wc(leadSpaces + '    OutputIndentJson(outputFile, indent);')
-                    self.wc(leadSpaces + '    OutputStringJson(outputFile, "\\"elements\\" : ");')
+                    self.wc(leadSpaces + '    OutputStringJson(outputFile, "\\"elements\\" :");')
                     self.wc(leadSpaces + '    OutputScalarValueStructInfo vinfo_' + value.name + ' = ' + OutputValue.setVinfo(self, value) + ';')
                     self.wc(leadSpaces + '    OutputArrayJson(outputFile, indent, "' + value.fullType + '", &' +
                                          pstruct_in + value.name + ', "' + value.name + '", ' + aLength + ', vinfo_' + value.name + '); // AUX')
@@ -226,7 +231,7 @@ class OutputValue(BaseGenerator):
                     if funcName != "vkCmdUpdateBuffer":
                         # We don't print the pData buffer for vmCmdUpdateBuffer because it is likely to be large.
                         self.wc(leadSpaces + 'OutputIndentJson(outputFile, indent);')
-                        self.wc(leadSpaces + 'OutputStringJson(outputFile, "\\"elements\\" : ");')
+                        self.wc(leadSpaces + 'OutputStringJson(outputFile, "\\"elements\\" :");')
                         self.wc(leadSpaces + 'OutputScalarValueStructInfo vinfo_' + value.name + ' = ' + OutputValue.setVinfo(self, value) + ';')
                         self.wc(leadSpaces + 'OutputArrayJson(outputFile, indent, "' + value.fullType + '", ' + array_to_string_ampersand +
                                              pstruct_in + value.name + ', "' + value.name + '", ' + aLength + ', vinfo_' + value.name + '); // AUA')
