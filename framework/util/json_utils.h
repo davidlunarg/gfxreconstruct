@@ -236,7 +236,6 @@ void OutputArrayJson(FILE*                              outputFile,
     }
     else
     {
-        uint64_t    base_addr          = reinterpret_cast<uint64_t>(array->GetPointer());
         std::string full_type_name_str = full_type_name;
         if (*full_type_name_str.rbegin() == '*')
         {
@@ -260,13 +259,6 @@ void OutputArrayJson(FILE*                              outputFile,
             OutputStringJson(outputFile, "\"name\" : \"[");
             OutputUnsignedDecimalJson(outputFile, j);
             OutputStringJson(outputFile, "]\",\n");
-            OutputIndentJson(outputFile, indent);
-            OutputStringJson(outputFile, "\"address\" : \"");
-            // The address of the current element is the address of the start of the array plus the offset of the
-            // current item
-            OutputAddrJson(outputFile,
-                           array->GetAddress() + reinterpret_cast<uint64_t>(array->GetPointer() + j) - base_addr);
-            OutputStringJson(outputFile, "\",\n");
             OutputIndentJson(outputFile, indent);
             OutputStringJson(outputFile, "\"value\" : ");
             if (strstr(full_type_name, "char"))
