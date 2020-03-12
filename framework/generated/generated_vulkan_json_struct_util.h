@@ -5460,7 +5460,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMemoryP
     OutputIndentJson(outputFile, indent); // ESP
     OutputStringJson(outputFile, "\"type\" : \"VkMemoryType"); // NUN
     OutputStringJson(outputFile, "[");
-    OutputUnsignedDecimalJson(outputFile, pstruct->memoryTypeCount); // IAC
+    OutputStringJson(outputFile, "VK_MAX_MEMORY_TYPES"); // IAV
     OutputStringJson(outputFile, "]");
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
@@ -5500,7 +5500,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMemoryP
     OutputIndentJson(outputFile, indent); // ESP
     OutputStringJson(outputFile, "\"type\" : \"VkMemoryHeap"); // NUN
     OutputStringJson(outputFile, "[");
-    OutputUnsignedDecimalJson(outputFile, pstruct->memoryHeapCount); // IAC
+    OutputStringJson(outputFile, "VK_MAX_MEMORY_HEAPS"); // IAV
     OutputStringJson(outputFile, "]");
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
@@ -19453,7 +19453,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceGroupPr
     OutputIndentJson(outputFile, indent); // ESP
     OutputStringJson(outputFile, "\"type\" : \"VkPhysicalDevice"); // NUN
     OutputStringJson(outputFile, "[");
-    OutputUnsignedDecimalJson(outputFile, pstruct->physicalDeviceCount); // IAC
+    OutputStringJson(outputFile, "VK_MAX_DEVICE_GROUP_SIZE"); // IAV
     OutputStringJson(outputFile, "]");
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);

@@ -82,13 +82,14 @@ class OutputValue(BaseGenerator):
                 self.wc('    }')
             else:
                 self.wc('    OutputStringJson(outputFile, "\\"type\\" : \\"' + value.fullType + '"); // NUN')
-        if (value.isArray and not value.isPointer and ('Count' in value.arrayLength)):
+        if value.isArray and not value.isPointer:
             self.wc('    OutputStringJson(outputFile, "[");')
-            self.wc('    OutputUnsignedDecimalJson(outputFile, ' + pstruct + value.arrayLength + '); // IAC')
-            self.wc('    OutputStringJson(outputFile, "]");')
-        elif value.isArray and not value.isPointer:
-            self.wc('    OutputStringJson(outputFile, "[");')
-            self.wc('    OutputStringJson(outputFile, "' + value.arrayLength + '"); // IAV')
+            if 'Count' in value.arrayLength and value.arrayCapacity == None:
+                self.wc('    OutputUnsignedDecimalJson(outputFile, ' + pstruct + value.arrayLength + '); // IAC')
+            elif value.arrayCapacity != None:
+                self.wc('    OutputStringJson(outputFile, "' + value.arrayCapacity + '"); // IAV')
+            else:
+                self.wc('    OutputStringJson(outputFile, "' + value.arrayLength + '"); // IAD')
             self.wc('    OutputStringJson(outputFile, "]");')
         self.wc('    OutputStringJson(outputFile, "\\",\\n");')
         self.wc('    OutputIndentJson(outputFile, indent);')
