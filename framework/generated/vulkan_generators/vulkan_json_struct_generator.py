@@ -70,6 +70,7 @@ class VulkanJsonStructGenerator(BaseGenerator):
         self.wc('#include "vulkan/vulkan.h"')
         self.wc('#include <inttypes.h>')
         self.wc('#include <string>')
+        self.wc('#include <unordered_map>')
         self.newline()
         self.wc('GFXRECON_BEGIN_NAMESPACE(gfxrecon)')
         self.wc('GFXRECON_BEGIN_NAMESPACE(decode)')
@@ -168,6 +169,14 @@ class VulkanJsonStructGenerator(BaseGenerator):
         self.wc('    OutputIndentJson(outputFile, indent);')
         self.wc('    OutputStringJson(outputFile, "]\\n");')
         self.wc('}')
+        self.newline()
+
+        # Generate mapping of sType to struct name of pNext structures
+        self.wc('std::unordered_map<VkStructureType, std::string> sTypeToStructName = {    // WTG')
+        for structName in self.pNextStructs:
+            self.wc('   {' + self.pNextStructs[structName] + ', "' + structName + '"},')
+        self.wc('};    // WTE')
+        self.newline()
 
         # Generate OutputPnextStructJson function
         # OutputPnextStructJson will accept a pNext structure, examine the sType, and call the appropriate OutputStructureJson function
@@ -177,9 +186,9 @@ class VulkanJsonStructGenerator(BaseGenerator):
         self.wc('    switch (static_cast<Decoded_VkApplicationInfo*>(pNext_struct)->decoded_value->sType)')
         self.wc('    {')
         for structName in self.pNextStructs:
-                self.wc('        case ' + self.pNextStructs[structName] + ':')
-                self.wc('            OutputStructureJson(outputFile, *(reinterpret_cast<const Decoded_' + structName + '*>(pNext_struct)) , indent, base_addr);');
-                self.wc('            break;')
+            self.wc('        case ' + self.pNextStructs[structName] + ':')
+            self.wc('            OutputStructureJson(outputFile, *(reinterpret_cast<const Decoded_' + structName + '*>(pNext_struct)) , indent, base_addr);');
+            self.wc('            break;')
         self.wc('        default:')
         self.wc('            OutputStringJson(outputFile, "\\\"Unknown pNext structure\\\"");')
         self.wc('            break;')

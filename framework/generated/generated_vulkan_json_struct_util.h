@@ -30,6 +30,7 @@
 #include "vulkan/vulkan.h"
 #include <inttypes.h>
 #include <string>
+#include <unordered_map>
 
 GFXRECON_BEGIN_NAMESPACE(gfxrecon)
 GFXRECON_BEGIN_NAMESPACE(decode)
@@ -573,6 +574,216 @@ void OutputArrayOfStructsJson(FILE*    outputFile,
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "]\n");
 }
+
+std::unordered_map<VkStructureType, std::string> sTypeToStructName = {    // WTG
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBGROUP_PROPERTIES, "VkPhysicalDeviceSubgroupProperties"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_16BIT_STORAGE_FEATURES, "VkPhysicalDevice16BitStorageFeatures"},
+   {VK_STRUCTURE_TYPE_MEMORY_DEDICATED_REQUIREMENTS, "VkMemoryDedicatedRequirements"},
+   {VK_STRUCTURE_TYPE_MEMORY_DEDICATED_ALLOCATE_INFO, "VkMemoryDedicatedAllocateInfo"},
+   {VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_FLAGS_INFO, "VkMemoryAllocateFlagsInfo"},
+   {VK_STRUCTURE_TYPE_DEVICE_GROUP_RENDER_PASS_BEGIN_INFO, "VkDeviceGroupRenderPassBeginInfo"},
+   {VK_STRUCTURE_TYPE_DEVICE_GROUP_COMMAND_BUFFER_BEGIN_INFO, "VkDeviceGroupCommandBufferBeginInfo"},
+   {VK_STRUCTURE_TYPE_DEVICE_GROUP_SUBMIT_INFO, "VkDeviceGroupSubmitInfo"},
+   {VK_STRUCTURE_TYPE_DEVICE_GROUP_BIND_SPARSE_INFO, "VkDeviceGroupBindSparseInfo"},
+   {VK_STRUCTURE_TYPE_BIND_BUFFER_MEMORY_DEVICE_GROUP_INFO, "VkBindBufferMemoryDeviceGroupInfo"},
+   {VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_DEVICE_GROUP_INFO, "VkBindImageMemoryDeviceGroupInfo"},
+   {VK_STRUCTURE_TYPE_DEVICE_GROUP_DEVICE_CREATE_INFO, "VkDeviceGroupDeviceCreateInfo"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FEATURES_2, "VkPhysicalDeviceFeatures2"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_POINT_CLIPPING_PROPERTIES, "VkPhysicalDevicePointClippingProperties"},
+   {VK_STRUCTURE_TYPE_RENDER_PASS_INPUT_ATTACHMENT_ASPECT_CREATE_INFO, "VkRenderPassInputAttachmentAspectCreateInfo"},
+   {VK_STRUCTURE_TYPE_IMAGE_VIEW_USAGE_CREATE_INFO, "VkImageViewUsageCreateInfo"},
+   {VK_STRUCTURE_TYPE_PIPELINE_TESSELLATION_DOMAIN_ORIGIN_STATE_CREATE_INFO, "VkPipelineTessellationDomainOriginStateCreateInfo"},
+   {VK_STRUCTURE_TYPE_RENDER_PASS_MULTIVIEW_CREATE_INFO, "VkRenderPassMultiviewCreateInfo"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_FEATURES, "VkPhysicalDeviceMultiviewFeatures"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PROPERTIES, "VkPhysicalDeviceMultiviewProperties"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VARIABLE_POINTERS_FEATURES, "VkPhysicalDeviceVariablePointersFeatures"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROTECTED_MEMORY_FEATURES, "VkPhysicalDeviceProtectedMemoryFeatures"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROTECTED_MEMORY_PROPERTIES, "VkPhysicalDeviceProtectedMemoryProperties"},
+   {VK_STRUCTURE_TYPE_PROTECTED_SUBMIT_INFO, "VkProtectedSubmitInfo"},
+   {VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_INFO, "VkSamplerYcbcrConversionInfo"},
+   {VK_STRUCTURE_TYPE_BIND_IMAGE_PLANE_MEMORY_INFO, "VkBindImagePlaneMemoryInfo"},
+   {VK_STRUCTURE_TYPE_IMAGE_PLANE_MEMORY_REQUIREMENTS_INFO, "VkImagePlaneMemoryRequirementsInfo"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLER_YCBCR_CONVERSION_FEATURES, "VkPhysicalDeviceSamplerYcbcrConversionFeatures"},
+   {VK_STRUCTURE_TYPE_SAMPLER_YCBCR_CONVERSION_IMAGE_FORMAT_PROPERTIES, "VkSamplerYcbcrConversionImageFormatProperties"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_IMAGE_FORMAT_INFO, "VkPhysicalDeviceExternalImageFormatInfo"},
+   {VK_STRUCTURE_TYPE_EXTERNAL_IMAGE_FORMAT_PROPERTIES, "VkExternalImageFormatProperties"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ID_PROPERTIES, "VkPhysicalDeviceIDProperties"},
+   {VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_IMAGE_CREATE_INFO, "VkExternalMemoryImageCreateInfo"},
+   {VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_BUFFER_CREATE_INFO, "VkExternalMemoryBufferCreateInfo"},
+   {VK_STRUCTURE_TYPE_EXPORT_MEMORY_ALLOCATE_INFO, "VkExportMemoryAllocateInfo"},
+   {VK_STRUCTURE_TYPE_EXPORT_FENCE_CREATE_INFO, "VkExportFenceCreateInfo"},
+   {VK_STRUCTURE_TYPE_EXPORT_SEMAPHORE_CREATE_INFO, "VkExportSemaphoreCreateInfo"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MAINTENANCE_3_PROPERTIES, "VkPhysicalDeviceMaintenance3Properties"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DRAW_PARAMETERS_FEATURES, "VkPhysicalDeviceShaderDrawParametersFeatures"},
+   {VK_STRUCTURE_TYPE_IMAGE_SWAPCHAIN_CREATE_INFO_KHR, "VkImageSwapchainCreateInfoKHR"},
+   {VK_STRUCTURE_TYPE_BIND_IMAGE_MEMORY_SWAPCHAIN_INFO_KHR, "VkBindImageMemorySwapchainInfoKHR"},
+   {VK_STRUCTURE_TYPE_DEVICE_GROUP_PRESENT_INFO_KHR, "VkDeviceGroupPresentInfoKHR"},
+   {VK_STRUCTURE_TYPE_DEVICE_GROUP_SWAPCHAIN_CREATE_INFO_KHR, "VkDeviceGroupSwapchainCreateInfoKHR"},
+   {VK_STRUCTURE_TYPE_DISPLAY_PRESENT_INFO_KHR, "VkDisplayPresentInfoKHR"},
+   {VK_STRUCTURE_TYPE_IMPORT_MEMORY_WIN32_HANDLE_INFO_KHR, "VkImportMemoryWin32HandleInfoKHR"},
+   {VK_STRUCTURE_TYPE_EXPORT_MEMORY_WIN32_HANDLE_INFO_KHR, "VkExportMemoryWin32HandleInfoKHR"},
+   {VK_STRUCTURE_TYPE_IMPORT_MEMORY_FD_INFO_KHR, "VkImportMemoryFdInfoKHR"},
+   {VK_STRUCTURE_TYPE_WIN32_KEYED_MUTEX_ACQUIRE_RELEASE_INFO_KHR, "VkWin32KeyedMutexAcquireReleaseInfoKHR"},
+   {VK_STRUCTURE_TYPE_EXPORT_SEMAPHORE_WIN32_HANDLE_INFO_KHR, "VkExportSemaphoreWin32HandleInfoKHR"},
+   {VK_STRUCTURE_TYPE_D3D12_FENCE_SUBMIT_INFO_KHR, "VkD3D12FenceSubmitInfoKHR"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PUSH_DESCRIPTOR_PROPERTIES_KHR, "VkPhysicalDevicePushDescriptorPropertiesKHR"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_FLOAT16_INT8_FEATURES_KHR, "VkPhysicalDeviceShaderFloat16Int8FeaturesKHR"},
+   {VK_STRUCTURE_TYPE_PRESENT_REGIONS_KHR, "VkPresentRegionsKHR"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGELESS_FRAMEBUFFER_FEATURES_KHR, "VkPhysicalDeviceImagelessFramebufferFeaturesKHR"},
+   {VK_STRUCTURE_TYPE_FRAMEBUFFER_ATTACHMENTS_CREATE_INFO_KHR, "VkFramebufferAttachmentsCreateInfoKHR"},
+   {VK_STRUCTURE_TYPE_RENDER_PASS_ATTACHMENT_BEGIN_INFO_KHR, "VkRenderPassAttachmentBeginInfoKHR"},
+   {VK_STRUCTURE_TYPE_SHARED_PRESENT_SURFACE_CAPABILITIES_KHR, "VkSharedPresentSurfaceCapabilitiesKHR"},
+   {VK_STRUCTURE_TYPE_EXPORT_FENCE_WIN32_HANDLE_INFO_KHR, "VkExportFenceWin32HandleInfoKHR"},
+   {VK_STRUCTURE_TYPE_IMAGE_FORMAT_LIST_CREATE_INFO_KHR, "VkImageFormatListCreateInfoKHR"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SUBGROUP_EXTENDED_TYPES_FEATURES_KHR, "VkPhysicalDeviceShaderSubgroupExtendedTypesFeaturesKHR"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_8BIT_STORAGE_FEATURES_KHR, "VkPhysicalDevice8BitStorageFeaturesKHR"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_ATOMIC_INT64_FEATURES_KHR, "VkPhysicalDeviceShaderAtomicInt64FeaturesKHR"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CLOCK_FEATURES_KHR, "VkPhysicalDeviceShaderClockFeaturesKHR"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DRIVER_PROPERTIES_KHR, "VkPhysicalDeviceDriverPropertiesKHR"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FLOAT_CONTROLS_PROPERTIES_KHR, "VkPhysicalDeviceFloatControlsPropertiesKHR"},
+   {VK_STRUCTURE_TYPE_SUBPASS_DESCRIPTION_DEPTH_STENCIL_RESOLVE_KHR, "VkSubpassDescriptionDepthStencilResolveKHR"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_STENCIL_RESOLVE_PROPERTIES_KHR, "VkPhysicalDeviceDepthStencilResolvePropertiesKHR"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TIMELINE_SEMAPHORE_FEATURES_KHR, "VkPhysicalDeviceTimelineSemaphoreFeaturesKHR"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TIMELINE_SEMAPHORE_PROPERTIES_KHR, "VkPhysicalDeviceTimelineSemaphorePropertiesKHR"},
+   {VK_STRUCTURE_TYPE_SEMAPHORE_TYPE_CREATE_INFO_KHR, "VkSemaphoreTypeCreateInfoKHR"},
+   {VK_STRUCTURE_TYPE_TIMELINE_SEMAPHORE_SUBMIT_INFO_KHR, "VkTimelineSemaphoreSubmitInfoKHR"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_MEMORY_MODEL_FEATURES_KHR, "VkPhysicalDeviceVulkanMemoryModelFeaturesKHR"},
+   {VK_STRUCTURE_TYPE_SURFACE_PROTECTED_CAPABILITIES_KHR, "VkSurfaceProtectedCapabilitiesKHR"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_UNIFORM_BUFFER_STANDARD_LAYOUT_FEATURES_KHR, "VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PIPELINE_EXECUTABLE_PROPERTIES_FEATURES_KHR, "VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR"},
+   {VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT, "VkDebugReportCallbackCreateInfoEXT"},
+   {VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_RASTERIZATION_ORDER_AMD, "VkPipelineRasterizationStateRasterizationOrderAMD"},
+   {VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_IMAGE_CREATE_INFO_NV, "VkDedicatedAllocationImageCreateInfoNV"},
+   {VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_BUFFER_CREATE_INFO_NV, "VkDedicatedAllocationBufferCreateInfoNV"},
+   {VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_MEMORY_ALLOCATE_INFO_NV, "VkDedicatedAllocationMemoryAllocateInfoNV"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TRANSFORM_FEEDBACK_FEATURES_EXT, "VkPhysicalDeviceTransformFeedbackFeaturesEXT"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TRANSFORM_FEEDBACK_PROPERTIES_EXT, "VkPhysicalDeviceTransformFeedbackPropertiesEXT"},
+   {VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_STREAM_CREATE_INFO_EXT, "VkPipelineRasterizationStateStreamCreateInfoEXT"},
+   {VK_STRUCTURE_TYPE_TEXTURE_LOD_GATHER_FORMAT_PROPERTIES_AMD, "VkTextureLODGatherFormatPropertiesAMD"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CORNER_SAMPLED_IMAGE_FEATURES_NV, "VkPhysicalDeviceCornerSampledImageFeaturesNV"},
+   {VK_STRUCTURE_TYPE_EXTERNAL_MEMORY_IMAGE_CREATE_INFO_NV, "VkExternalMemoryImageCreateInfoNV"},
+   {VK_STRUCTURE_TYPE_EXPORT_MEMORY_ALLOCATE_INFO_NV, "VkExportMemoryAllocateInfoNV"},
+   {VK_STRUCTURE_TYPE_IMPORT_MEMORY_WIN32_HANDLE_INFO_NV, "VkImportMemoryWin32HandleInfoNV"},
+   {VK_STRUCTURE_TYPE_EXPORT_MEMORY_WIN32_HANDLE_INFO_NV, "VkExportMemoryWin32HandleInfoNV"},
+   {VK_STRUCTURE_TYPE_WIN32_KEYED_MUTEX_ACQUIRE_RELEASE_INFO_NV, "VkWin32KeyedMutexAcquireReleaseInfoNV"},
+   {VK_STRUCTURE_TYPE_VALIDATION_FLAGS_EXT, "VkValidationFlagsEXT"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TEXTURE_COMPRESSION_ASTC_HDR_FEATURES_EXT, "VkPhysicalDeviceTextureCompressionASTCHDRFeaturesEXT"},
+   {VK_STRUCTURE_TYPE_IMAGE_VIEW_ASTC_DECODE_MODE_EXT, "VkImageViewASTCDecodeModeEXT"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_ASTC_DECODE_FEATURES_EXT, "VkPhysicalDeviceASTCDecodeFeaturesEXT"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CONDITIONAL_RENDERING_FEATURES_EXT, "VkPhysicalDeviceConditionalRenderingFeaturesEXT"},
+   {VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_CONDITIONAL_RENDERING_INFO_EXT, "VkCommandBufferInheritanceConditionalRenderingInfoEXT"},
+   {VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_W_SCALING_STATE_CREATE_INFO_NV, "VkPipelineViewportWScalingStateCreateInfoNV"},
+   {VK_STRUCTURE_TYPE_SWAPCHAIN_COUNTER_CREATE_INFO_EXT, "VkSwapchainCounterCreateInfoEXT"},
+   {VK_STRUCTURE_TYPE_PRESENT_TIMES_INFO_GOOGLE, "VkPresentTimesInfoGOOGLE"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MULTIVIEW_PER_VIEW_ATTRIBUTES_PROPERTIES_NVX, "VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX"},
+   {VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_SWIZZLE_STATE_CREATE_INFO_NV, "VkPipelineViewportSwizzleStateCreateInfoNV"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DISCARD_RECTANGLE_PROPERTIES_EXT, "VkPhysicalDeviceDiscardRectanglePropertiesEXT"},
+   {VK_STRUCTURE_TYPE_PIPELINE_DISCARD_RECTANGLE_STATE_CREATE_INFO_EXT, "VkPipelineDiscardRectangleStateCreateInfoEXT"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CONSERVATIVE_RASTERIZATION_PROPERTIES_EXT, "VkPhysicalDeviceConservativeRasterizationPropertiesEXT"},
+   {VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_CONSERVATIVE_STATE_CREATE_INFO_EXT, "VkPipelineRasterizationConservativeStateCreateInfoEXT"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEPTH_CLIP_ENABLE_FEATURES_EXT, "VkPhysicalDeviceDepthClipEnableFeaturesEXT"},
+   {VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_DEPTH_CLIP_STATE_CREATE_INFO_EXT, "VkPipelineRasterizationDepthClipStateCreateInfoEXT"},
+   {VK_STRUCTURE_TYPE_DEBUG_UTILS_MESSENGER_CREATE_INFO_EXT, "VkDebugUtilsMessengerCreateInfoEXT"},
+   {VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_USAGE_ANDROID, "VkAndroidHardwareBufferUsageANDROID"},
+   {VK_STRUCTURE_TYPE_ANDROID_HARDWARE_BUFFER_FORMAT_PROPERTIES_ANDROID, "VkAndroidHardwareBufferFormatPropertiesANDROID"},
+   {VK_STRUCTURE_TYPE_IMPORT_ANDROID_HARDWARE_BUFFER_INFO_ANDROID, "VkImportAndroidHardwareBufferInfoANDROID"},
+   {VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_ANDROID, "VkExternalFormatANDROID"},
+   {VK_STRUCTURE_TYPE_SAMPLER_REDUCTION_MODE_CREATE_INFO_EXT, "VkSamplerReductionModeCreateInfoEXT"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLER_FILTER_MINMAX_PROPERTIES_EXT, "VkPhysicalDeviceSamplerFilterMinmaxPropertiesEXT"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INLINE_UNIFORM_BLOCK_FEATURES_EXT, "VkPhysicalDeviceInlineUniformBlockFeaturesEXT"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INLINE_UNIFORM_BLOCK_PROPERTIES_EXT, "VkPhysicalDeviceInlineUniformBlockPropertiesEXT"},
+   {VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_INLINE_UNIFORM_BLOCK_EXT, "VkWriteDescriptorSetInlineUniformBlockEXT"},
+   {VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_INLINE_UNIFORM_BLOCK_CREATE_INFO_EXT, "VkDescriptorPoolInlineUniformBlockCreateInfoEXT"},
+   {VK_STRUCTURE_TYPE_SAMPLE_LOCATIONS_INFO_EXT, "VkSampleLocationsInfoEXT"},
+   {VK_STRUCTURE_TYPE_RENDER_PASS_SAMPLE_LOCATIONS_BEGIN_INFO_EXT, "VkRenderPassSampleLocationsBeginInfoEXT"},
+   {VK_STRUCTURE_TYPE_PIPELINE_SAMPLE_LOCATIONS_STATE_CREATE_INFO_EXT, "VkPipelineSampleLocationsStateCreateInfoEXT"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SAMPLE_LOCATIONS_PROPERTIES_EXT, "VkPhysicalDeviceSampleLocationsPropertiesEXT"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BLEND_OPERATION_ADVANCED_FEATURES_EXT, "VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BLEND_OPERATION_ADVANCED_PROPERTIES_EXT, "VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT"},
+   {VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_ADVANCED_STATE_CREATE_INFO_EXT, "VkPipelineColorBlendAdvancedStateCreateInfoEXT"},
+   {VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_TO_COLOR_STATE_CREATE_INFO_NV, "VkPipelineCoverageToColorStateCreateInfoNV"},
+   {VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_MODULATION_STATE_CREATE_INFO_NV, "VkPipelineCoverageModulationStateCreateInfoNV"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SM_BUILTINS_PROPERTIES_NV, "VkPhysicalDeviceShaderSMBuiltinsPropertiesNV"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_SM_BUILTINS_FEATURES_NV, "VkPhysicalDeviceShaderSMBuiltinsFeaturesNV"},
+   {VK_STRUCTURE_TYPE_DRM_FORMAT_MODIFIER_PROPERTIES_LIST_EXT, "VkDrmFormatModifierPropertiesListEXT"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_DRM_FORMAT_MODIFIER_INFO_EXT, "VkPhysicalDeviceImageDrmFormatModifierInfoEXT"},
+   {VK_STRUCTURE_TYPE_IMAGE_DRM_FORMAT_MODIFIER_LIST_CREATE_INFO_EXT, "VkImageDrmFormatModifierListCreateInfoEXT"},
+   {VK_STRUCTURE_TYPE_IMAGE_DRM_FORMAT_MODIFIER_EXPLICIT_CREATE_INFO_EXT, "VkImageDrmFormatModifierExplicitCreateInfoEXT"},
+   {VK_STRUCTURE_TYPE_SHADER_MODULE_VALIDATION_CACHE_CREATE_INFO_EXT, "VkShaderModuleValidationCacheCreateInfoEXT"},
+   {VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_BINDING_FLAGS_CREATE_INFO_EXT, "VkDescriptorSetLayoutBindingFlagsCreateInfoEXT"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_FEATURES_EXT, "VkPhysicalDeviceDescriptorIndexingFeaturesEXT"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DESCRIPTOR_INDEXING_PROPERTIES_EXT, "VkPhysicalDeviceDescriptorIndexingPropertiesEXT"},
+   {VK_STRUCTURE_TYPE_DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_ALLOCATE_INFO_EXT, "VkDescriptorSetVariableDescriptorCountAllocateInfoEXT"},
+   {VK_STRUCTURE_TYPE_DESCRIPTOR_SET_VARIABLE_DESCRIPTOR_COUNT_LAYOUT_SUPPORT_EXT, "VkDescriptorSetVariableDescriptorCountLayoutSupportEXT"},
+   {VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_SHADING_RATE_IMAGE_STATE_CREATE_INFO_NV, "VkPipelineViewportShadingRateImageStateCreateInfoNV"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADING_RATE_IMAGE_FEATURES_NV, "VkPhysicalDeviceShadingRateImageFeaturesNV"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADING_RATE_IMAGE_PROPERTIES_NV, "VkPhysicalDeviceShadingRateImagePropertiesNV"},
+   {VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_COARSE_SAMPLE_ORDER_STATE_CREATE_INFO_NV, "VkPipelineViewportCoarseSampleOrderStateCreateInfoNV"},
+   {VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET_ACCELERATION_STRUCTURE_NV, "VkWriteDescriptorSetAccelerationStructureNV"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_RAY_TRACING_PROPERTIES_NV, "VkPhysicalDeviceRayTracingPropertiesNV"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_REPRESENTATIVE_FRAGMENT_TEST_FEATURES_NV, "VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV"},
+   {VK_STRUCTURE_TYPE_PIPELINE_REPRESENTATIVE_FRAGMENT_TEST_STATE_CREATE_INFO_NV, "VkPipelineRepresentativeFragmentTestStateCreateInfoNV"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_IMAGE_VIEW_IMAGE_FORMAT_INFO_EXT, "VkPhysicalDeviceImageViewImageFormatInfoEXT"},
+   {VK_STRUCTURE_TYPE_FILTER_CUBIC_IMAGE_VIEW_IMAGE_FORMAT_PROPERTIES_EXT, "VkFilterCubicImageViewImageFormatPropertiesEXT"},
+   {VK_STRUCTURE_TYPE_DEVICE_QUEUE_GLOBAL_PRIORITY_CREATE_INFO_EXT, "VkDeviceQueueGlobalPriorityCreateInfoEXT"},
+   {VK_STRUCTURE_TYPE_IMPORT_MEMORY_HOST_POINTER_INFO_EXT, "VkImportMemoryHostPointerInfoEXT"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXTERNAL_MEMORY_HOST_PROPERTIES_EXT, "VkPhysicalDeviceExternalMemoryHostPropertiesEXT"},
+   {VK_STRUCTURE_TYPE_PIPELINE_COMPILER_CONTROL_CREATE_INFO_AMD, "VkPipelineCompilerControlCreateInfoAMD"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_AMD, "VkPhysicalDeviceShaderCorePropertiesAMD"},
+   {VK_STRUCTURE_TYPE_DEVICE_MEMORY_OVERALLOCATION_CREATE_INFO_AMD, "VkDeviceMemoryOverallocationCreateInfoAMD"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_PROPERTIES_EXT, "VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT"},
+   {VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_DIVISOR_STATE_CREATE_INFO_EXT, "VkPipelineVertexInputDivisorStateCreateInfoEXT"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VERTEX_ATTRIBUTE_DIVISOR_FEATURES_EXT, "VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT"},
+   {VK_STRUCTURE_TYPE_PRESENT_FRAME_TOKEN_GGP, "VkPresentFrameTokenGGP"},
+   {VK_STRUCTURE_TYPE_PIPELINE_CREATION_FEEDBACK_CREATE_INFO_EXT, "VkPipelineCreationFeedbackCreateInfoEXT"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COMPUTE_SHADER_DERIVATIVES_FEATURES_NV, "VkPhysicalDeviceComputeShaderDerivativesFeaturesNV"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_FEATURES_NV, "VkPhysicalDeviceMeshShaderFeaturesNV"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MESH_SHADER_PROPERTIES_NV, "VkPhysicalDeviceMeshShaderPropertiesNV"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADER_BARYCENTRIC_FEATURES_NV, "VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_IMAGE_FOOTPRINT_FEATURES_NV, "VkPhysicalDeviceShaderImageFootprintFeaturesNV"},
+   {VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_EXCLUSIVE_SCISSOR_STATE_CREATE_INFO_NV, "VkPipelineViewportExclusiveScissorStateCreateInfoNV"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_EXCLUSIVE_SCISSOR_FEATURES_NV, "VkPhysicalDeviceExclusiveScissorFeaturesNV"},
+   {VK_STRUCTURE_TYPE_QUEUE_FAMILY_CHECKPOINT_PROPERTIES_NV, "VkQueueFamilyCheckpointPropertiesNV"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_INTEGER_FUNCTIONS_2_FEATURES_INTEL, "VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PCI_BUS_INFO_PROPERTIES_EXT, "VkPhysicalDevicePCIBusInfoPropertiesEXT"},
+   {VK_STRUCTURE_TYPE_DISPLAY_NATIVE_HDR_SURFACE_CAPABILITIES_AMD, "VkDisplayNativeHdrSurfaceCapabilitiesAMD"},
+   {VK_STRUCTURE_TYPE_SWAPCHAIN_DISPLAY_NATIVE_HDR_CREATE_INFO_AMD, "VkSwapchainDisplayNativeHdrCreateInfoAMD"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_FEATURES_EXT, "VkPhysicalDeviceFragmentDensityMapFeaturesEXT"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_DENSITY_MAP_PROPERTIES_EXT, "VkPhysicalDeviceFragmentDensityMapPropertiesEXT"},
+   {VK_STRUCTURE_TYPE_RENDER_PASS_FRAGMENT_DENSITY_MAP_CREATE_INFO_EXT, "VkRenderPassFragmentDensityMapCreateInfoEXT"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SCALAR_BLOCK_LAYOUT_FEATURES_EXT, "VkPhysicalDeviceScalarBlockLayoutFeaturesEXT"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBGROUP_SIZE_CONTROL_FEATURES_EXT, "VkPhysicalDeviceSubgroupSizeControlFeaturesEXT"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBGROUP_SIZE_CONTROL_PROPERTIES_EXT, "VkPhysicalDeviceSubgroupSizeControlPropertiesEXT"},
+   {VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_REQUIRED_SUBGROUP_SIZE_CREATE_INFO_EXT, "VkPipelineShaderStageRequiredSubgroupSizeCreateInfoEXT"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_CORE_PROPERTIES_2_AMD, "VkPhysicalDeviceShaderCoreProperties2AMD"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COHERENT_MEMORY_FEATURES_AMD, "VkPhysicalDeviceCoherentMemoryFeaturesAMD"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_BUDGET_PROPERTIES_EXT, "VkPhysicalDeviceMemoryBudgetPropertiesEXT"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_PRIORITY_FEATURES_EXT, "VkPhysicalDeviceMemoryPriorityFeaturesEXT"},
+   {VK_STRUCTURE_TYPE_MEMORY_PRIORITY_ALLOCATE_INFO_EXT, "VkMemoryPriorityAllocateInfoEXT"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_DEDICATED_ALLOCATION_IMAGE_ALIASING_FEATURES_NV, "VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BUFFER_DEVICE_ADDRESS_FEATURES_EXT, "VkPhysicalDeviceBufferDeviceAddressFeaturesEXT"},
+   {VK_STRUCTURE_TYPE_BUFFER_DEVICE_ADDRESS_CREATE_INFO_EXT, "VkBufferDeviceAddressCreateInfoEXT"},
+   {VK_STRUCTURE_TYPE_IMAGE_STENCIL_USAGE_CREATE_INFO_EXT, "VkImageStencilUsageCreateInfoEXT"},
+   {VK_STRUCTURE_TYPE_VALIDATION_FEATURES_EXT, "VkValidationFeaturesEXT"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_FEATURES_NV, "VkPhysicalDeviceCooperativeMatrixFeaturesNV"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COOPERATIVE_MATRIX_PROPERTIES_NV, "VkPhysicalDeviceCooperativeMatrixPropertiesNV"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_COVERAGE_REDUCTION_MODE_FEATURES_NV, "VkPhysicalDeviceCoverageReductionModeFeaturesNV"},
+   {VK_STRUCTURE_TYPE_PIPELINE_COVERAGE_REDUCTION_STATE_CREATE_INFO_NV, "VkPipelineCoverageReductionStateCreateInfoNV"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADER_INTERLOCK_FEATURES_EXT, "VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_YCBCR_IMAGE_ARRAYS_FEATURES_EXT, "VkPhysicalDeviceYcbcrImageArraysFeaturesEXT"},
+   {VK_STRUCTURE_TYPE_SURFACE_FULL_SCREEN_EXCLUSIVE_INFO_EXT, "VkSurfaceFullScreenExclusiveInfoEXT"},
+   {VK_STRUCTURE_TYPE_SURFACE_CAPABILITIES_FULL_SCREEN_EXCLUSIVE_EXT, "VkSurfaceCapabilitiesFullScreenExclusiveEXT"},
+   {VK_STRUCTURE_TYPE_SURFACE_FULL_SCREEN_EXCLUSIVE_WIN32_INFO_EXT, "VkSurfaceFullScreenExclusiveWin32InfoEXT"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LINE_RASTERIZATION_FEATURES_EXT, "VkPhysicalDeviceLineRasterizationFeaturesEXT"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_LINE_RASTERIZATION_PROPERTIES_EXT, "VkPhysicalDeviceLineRasterizationPropertiesEXT"},
+   {VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_LINE_STATE_CREATE_INFO_EXT, "VkPipelineRasterizationLineStateCreateInfoEXT"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_HOST_QUERY_RESET_FEATURES_EXT, "VkPhysicalDeviceHostQueryResetFeaturesEXT"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_INDEX_TYPE_UINT8_FEATURES_EXT, "VkPhysicalDeviceIndexTypeUint8FeaturesEXT"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SHADER_DEMOTE_TO_HELPER_INVOCATION_FEATURES_EXT, "VkPhysicalDeviceShaderDemoteToHelperInvocationFeaturesEXT"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TEXEL_BUFFER_ALIGNMENT_FEATURES_EXT, "VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT"},
+   {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TEXEL_BUFFER_ALIGNMENT_PROPERTIES_EXT, "VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT"},
+};    // WTE
+
 void OutputPnextStructJson(FILE* outputFile, int indent, void* pNext_struct, uint64_t base_addr)
 {
     assert(outputFile != nullptr);
@@ -1236,7 +1447,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkApplicationInfo &pstr
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -1402,7 +1618,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkInstanceCreateInfo &p
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -5337,7 +5558,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDeviceQueueCreateInfo
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -5482,7 +5708,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDeviceCreateInfo &pst
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -5875,7 +6106,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSubmitInfo &pstruct_i
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -6107,7 +6343,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkMemoryAllocateInfo &p
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -6206,7 +6447,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkMappedMemoryRange &ps
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -7139,7 +7385,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkBindSparseInfo &pstru
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -7431,7 +7682,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkFenceCreateInfo &pstr
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -7513,7 +7769,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSemaphoreCreateInfo &
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -7595,7 +7856,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkEventCreateInfo &pstr
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -7677,7 +7943,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkQueryPoolCreateInfo &
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -7810,7 +8081,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkBufferCreateInfo &pst
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -7989,7 +8265,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkBufferViewCreateInfo 
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -8139,7 +8420,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageCreateInfo &pstr
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -8722,7 +9008,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageViewCreateInfo &
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -8887,7 +9178,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkShaderModuleCreateInf
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -9018,7 +9314,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineCacheCreateIn
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -9320,7 +9621,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineShaderStageCr
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -9640,7 +9946,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineVertexInputSt
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -9812,7 +10123,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineInputAssembly
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -9928,7 +10244,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineTessellationS
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -10293,7 +10614,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineViewportState
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -10465,7 +10791,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineRasterization
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -10717,7 +11048,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineMultisampleSt
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -11048,7 +11384,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineDepthStencilS
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -11433,7 +11774,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineColorBlendSta
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -11618,7 +11964,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineDynamicStateC
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -11746,7 +12097,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkGraphicsPipelineCreat
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -12210,7 +12566,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkComputePipelineCreate
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -12426,7 +12787,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineLayoutCreateI
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -12599,7 +12965,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSamplerCreateInfo &ps
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -13049,7 +13420,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDescriptorSetLayoutCr
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -13226,7 +13602,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDescriptorPoolCreateI
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -13370,7 +13751,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDescriptorSetAllocate
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -13632,7 +14018,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkWriteDescriptorSet &p
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -13867,7 +14258,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkCopyDescriptorSet &ps
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -14051,7 +14447,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkFramebufferCreateInfo
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -14843,7 +15244,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkRenderPassCreateInfo 
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -15060,7 +15466,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkCommandPoolCreateInfo
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -15159,7 +15570,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkCommandBufferAllocate
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -15275,7 +15691,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkCommandBufferInherita
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -15442,7 +15863,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkCommandBufferBeginInf
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -16422,7 +16848,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkMemoryBarrier &pstruc
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -16521,7 +16952,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkBufferMemoryBarrier &
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -16705,7 +17141,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageMemoryBarrier &p
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -16905,7 +17346,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkRenderPassBeginInfo &
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -17317,7 +17763,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceSubgrou
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -17450,7 +17901,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkBindBufferMemoryInfo 
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -17566,7 +18022,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkBindImageMemoryInfo &
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -17682,7 +18143,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDevice16BitSt
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -17815,7 +18281,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkMemoryDedicatedRequir
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -17914,7 +18385,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkMemoryDedicatedAlloca
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -18013,7 +18489,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkMemoryAllocateFlagsIn
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -18112,7 +18593,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDeviceGroupRenderPass
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -18239,7 +18725,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDeviceGroupCommandBuf
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -18321,7 +18812,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDeviceGroupSubmitInfo
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -18524,7 +19020,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDeviceGroupBindSparse
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -18623,7 +19124,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkBindBufferMemoryDevic
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -18734,7 +19240,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkBindImageMemoryDevice
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -18890,7 +19401,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceGroupPr
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -19013,7 +19529,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDeviceGroupDeviceCrea
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -19124,7 +19645,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkBufferMemoryRequireme
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -19206,7 +19732,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageMemoryRequiremen
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -19288,7 +19819,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageSparseMemoryRequ
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -19370,7 +19906,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkMemoryRequirements2 &
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -19451,7 +19992,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSparseImageMemoryRequ
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -19532,7 +20078,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceFeature
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -19613,7 +20164,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDevicePropert
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -19694,7 +20250,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkFormatProperties2 &ps
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -19775,7 +20336,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageFormatProperties
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -19856,7 +20422,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceImageFo
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -20006,7 +20577,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkQueueFamilyProperties
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -20087,7 +20663,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMemoryP
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -20168,7 +20749,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSparseImageFormatProp
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -20249,7 +20835,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceSparseI
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -20399,7 +20990,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDevicePointCl
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -20548,7 +21144,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkRenderPassInputAttach
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -20658,7 +21259,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageViewUsageCreateI
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -20740,7 +21346,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineTessellationD
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -20822,7 +21433,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkRenderPassMultiviewCr
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -21025,7 +21641,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMultivi
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -21141,7 +21762,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMultivi
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -21240,7 +21866,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceVariabl
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -21339,7 +21970,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceProtect
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -21421,7 +22057,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceProtect
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -21503,7 +22144,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDeviceQueueInfo2 &pst
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -21619,7 +22265,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkProtectedSubmitInfo &
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -21701,7 +22352,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSamplerYcbcrConversio
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -21901,7 +22557,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSamplerYcbcrConversio
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -21983,7 +22644,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkBindImagePlaneMemoryI
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -22065,7 +22731,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImagePlaneMemoryRequi
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -22147,7 +22818,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceSampler
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -22229,7 +22905,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSamplerYcbcrConversio
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -22429,7 +23110,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDescriptorUpdateTempl
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -22708,7 +23394,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceExterna
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -22790,7 +23481,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkExternalImageFormatPr
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -22871,7 +23567,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceExterna
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -22987,7 +23688,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkExternalBufferPropert
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -23068,7 +23774,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceIDPrope
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -23239,7 +23950,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkExternalMemoryImageCr
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -23321,7 +24037,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkExternalMemoryBufferC
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -23403,7 +24124,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkExportMemoryAllocateI
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -23485,7 +24211,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceExterna
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -23567,7 +24298,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkExternalFenceProperti
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -23683,7 +24419,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkExportFenceCreateInfo
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -23765,7 +24506,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkExportSemaphoreCreate
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -23847,7 +24593,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceExterna
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -23929,7 +24680,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkExternalSemaphoreProp
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -24045,7 +24801,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMainten
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -24144,7 +24905,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDescriptorSetLayoutSu
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -24226,7 +24992,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderD
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -24541,7 +25312,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSwapchainCreateInfoKH
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -24889,7 +25665,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPresentInfoKHR &pstru
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -25104,7 +25885,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageSwapchainCreateI
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -25186,7 +25972,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkBindImageMemorySwapch
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -25285,7 +26076,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkAcquireNextImageInfoK
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -25435,7 +26231,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDeviceGroupPresentCap
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -25541,7 +26342,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDeviceGroupPresentInf
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -25669,7 +26475,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDeviceGroupSwapchainC
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -25990,7 +26801,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDisplayModeCreateInfo
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -26299,7 +27115,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDisplaySurfaceCreateI
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -26499,7 +27320,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDisplayPresentInfoKHR
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -26613,7 +27439,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkXlibSurfaceCreateInfo
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -26729,7 +27560,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkXcbSurfaceCreateInfoK
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -26857,7 +27693,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkWaylandSurfaceCreateI
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -26997,7 +27838,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkAndroidSurfaceCreateI
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -27108,7 +27954,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkWin32SurfaceCreateInf
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -27248,7 +28099,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImportMemoryWin32Hand
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -27388,7 +28244,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkExportMemoryWin32Hand
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -27529,7 +28390,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkMemoryWin32HandleProp
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -27611,7 +28477,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkMemoryGetWin32HandleI
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -27710,7 +28581,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImportMemoryFdInfoKHR
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -27809,7 +28685,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkMemoryFdPropertiesKHR
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -27891,7 +28772,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkMemoryGetFdInfoKHR &p
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -27990,7 +28876,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcquir
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -28234,7 +29125,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImportSemaphoreWin32H
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -28408,7 +29304,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkExportSemaphoreWin32H
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -28549,7 +29450,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkD3D12FenceSubmitInfoK
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -28706,7 +29612,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSemaphoreGetWin32Hand
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -28805,7 +29716,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImportSemaphoreFdInfo
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -28938,7 +29854,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSemaphoreGetFdInfoKHR
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -29037,7 +29958,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDevicePushDes
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -29119,7 +30045,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderF
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -29344,7 +30275,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPresentRegionsKHR &ps
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -29454,7 +30390,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceImagele
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -29536,7 +30477,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkFramebufferAttachment
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -29732,7 +30678,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkFramebufferAttachment
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -29842,7 +30793,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkRenderPassAttachmentB
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -29953,7 +30909,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkAttachmentDescription
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -30171,7 +31132,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkAttachmentReference2K
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -30287,7 +31253,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSubpassDescription2KH
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -30595,7 +31566,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSubpassDependency2KHR
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -30796,7 +31772,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkRenderPassCreateInfo2
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -31059,7 +32040,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSubpassBeginInfoKHR &
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -31141,7 +32127,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSubpassEndInfoKHR &ps
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -31206,7 +32197,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSharedPresentSurfaceC
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -31288,7 +32284,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImportFenceWin32Handl
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -31462,7 +32463,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkExportFenceWin32Handl
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -31603,7 +32609,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkFenceGetWin32HandleIn
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -31702,7 +32713,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImportFenceFdInfoKHR 
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -31835,7 +32851,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkFenceGetFdInfoKHR &ps
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -31934,7 +32955,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceSurface
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -32016,7 +33042,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSurfaceCapabilities2K
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -32097,7 +33128,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSurfaceFormat2KHR &ps
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -32178,7 +33214,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDisplayProperties2KHR
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -32259,7 +33300,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDisplayPlanePropertie
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -32340,7 +33386,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDisplayModeProperties
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -32421,7 +33472,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDisplayPlaneInfo2KHR 
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -32520,7 +33576,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDisplayPlaneCapabilit
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -32601,7 +33662,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageFormatListCreate
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -32712,7 +33778,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderS
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -32794,7 +33865,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDevice8BitSto
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -32910,7 +33986,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderA
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -33009,7 +34090,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderC
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -33192,7 +34278,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceDriverP
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -33332,7 +34423,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceFloatCo
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -33686,7 +34782,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSubpassDescriptionDep
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -33813,7 +34914,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceDepthSt
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -33946,7 +35052,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceTimelin
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -34028,7 +35139,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceTimelin
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -34110,7 +35226,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSemaphoreTypeCreateIn
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -34209,7 +35330,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkTimelineSemaphoreSubm
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -34366,7 +35492,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSemaphoreWaitInfoKHR 
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -34523,7 +35654,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSemaphoreSignalInfoKH
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -34622,7 +35758,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceVulkanM
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -34738,7 +35879,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSurfaceProtectedCapab
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -34820,7 +35966,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceUniform
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -34902,7 +36053,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDevicePipelin
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -34984,7 +36140,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineInfoKHR &pstr
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -35066,7 +36227,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineExecutablePro
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -35207,7 +36373,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineExecutableInf
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -35390,7 +36561,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineExecutableSta
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -35530,7 +36706,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineExecutableInt
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -35700,7 +36881,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDebugReportCallbackCr
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -35828,7 +37014,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineRasterization
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -35910,7 +37101,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDebugMarkerObjectName
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -36034,7 +37230,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDebugMarkerObjectTagI
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -36196,7 +37397,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDebugMarkerMarkerInfo
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -36310,7 +37516,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDedicatedAllocationIm
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -36392,7 +37603,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDedicatedAllocationBu
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -36474,7 +37690,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDedicatedAllocationMe
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -36573,7 +37794,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceTransfo
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -36672,7 +37898,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceTransfo
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -36907,7 +38138,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineRasterization
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -37006,7 +38242,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageViewHandleInfoNV
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -37122,7 +38363,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkTextureLODGatherForma
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -37446,7 +38692,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkStreamDescriptorSurfa
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -37545,7 +38796,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceCornerS
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -37710,7 +38966,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkExternalMemoryImageCr
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -37792,7 +39053,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkExportMemoryAllocateI
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -37874,7 +39140,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImportMemoryWin32Hand
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -37985,7 +39256,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkExportMemoryWin32Hand
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -38097,7 +39373,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkWin32KeyedMutexAcquir
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -38341,7 +39622,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkValidationFlagsEXT &p
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -38452,7 +39738,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkViSurfaceCreateInfoNN
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -38563,7 +39854,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceTexture
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -38645,7 +39941,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageViewASTCDecodeMo
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -38727,7 +40028,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceASTCDec
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -38809,7 +40115,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkConditionalRenderingB
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -38925,7 +40236,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceConditi
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -39024,7 +40340,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkCommandBufferInherita
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -39106,7 +40427,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDeviceGeneratedComman
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -39188,7 +40514,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDeviceGeneratedComman
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -39489,7 +40820,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkIndirectCommandsLayou
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -39633,7 +40969,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkCmdProcessCommandsInf
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -39879,7 +41220,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkCmdReserveSpaceForCom
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -39995,7 +41341,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkObjectTableCreateInfo
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -40735,7 +42086,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineViewportWScal
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -40862,7 +42218,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSurfaceCapabilities2E
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -41111,7 +42472,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDisplayPowerInfoEXT &
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -41193,7 +42559,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDeviceEventInfoEXT &p
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -41275,7 +42646,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDisplayEventInfoEXT &
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -41357,7 +42733,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSwapchainCounterCreat
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -41623,7 +43004,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPresentTimesInfoGOOGL
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -41733,7 +43119,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMultivi
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -41899,7 +43290,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineViewportSwizz
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -42026,7 +43422,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceDiscard
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -42108,7 +43509,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineDiscardRectan
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -42252,7 +43658,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceConserv
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -42470,7 +43881,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineRasterization
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -42586,7 +44002,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceDepthCl
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -42668,7 +44089,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineRasterization
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -42817,7 +44243,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkHdrMetadataEXT &pstru
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -43014,7 +44445,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkIOSSurfaceCreateInfoM
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -43125,7 +44561,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkMacOSSurfaceCreateInf
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -43236,7 +44677,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDebugUtilsObjectNameI
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -43360,7 +44806,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDebugUtilsObjectTagIn
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -43522,7 +44973,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDebugUtilsLabelEXT &p
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -43636,7 +45092,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDebugUtilsMessengerCa
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -43920,7 +45381,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDebugUtilsMessengerCr
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -44082,7 +45548,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkAndroidHardwareBuffer
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -44164,7 +45635,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkAndroidHardwareBuffer
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -44263,7 +45739,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkAndroidHardwareBuffer
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -44463,7 +45944,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImportAndroidHardware
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -44557,7 +46043,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkMemoryGetAndroidHardw
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -44639,7 +46130,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkExternalFormatANDROID
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -44721,7 +46217,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSamplerReductionModeC
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -44803,7 +46304,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceSampler
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -44902,7 +46408,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceInlineU
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -45001,7 +46512,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceInlineU
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -45151,7 +46667,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkWriteDescriptorSetInl
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -45262,7 +46783,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDescriptorPoolInlineU
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -45394,7 +46920,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSampleLocationsInfoEX
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -45635,7 +47166,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkRenderPassSampleLocat
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -45790,7 +47326,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineSampleLocatio
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -45888,7 +47429,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceSampleL
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -46044,7 +47590,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkMultisampleProperties
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -46125,7 +47676,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceBlendOp
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -46207,7 +47763,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceBlendOp
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -46374,7 +47935,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineColorBlendAdv
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -46490,7 +48056,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineCoverageToCol
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -46606,7 +48177,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineCoverageModul
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -46768,7 +48344,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderS
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -46867,7 +48448,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderS
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -47016,7 +48602,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDrmFormatModifierProp
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -47126,7 +48717,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceImageDr
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -47271,7 +48867,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageDrmFormatModifie
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -47382,7 +48983,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageDrmFormatModifie
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -47509,7 +49115,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageDrmFormatModifie
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -47591,7 +49202,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkValidationCacheCreate
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -47719,7 +49335,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkShaderModuleValidatio
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -47801,7 +49422,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDescriptorSetLayoutBi
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -47912,7 +49538,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceDescrip
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -48317,7 +49948,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceDescrip
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -48773,7 +50409,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDescriptorSetVariable
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -48884,7 +50525,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDescriptorSetVariable
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -49028,7 +50674,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineViewportShadi
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -49155,7 +50806,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShading
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -49254,7 +50910,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShading
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -49531,7 +51192,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineViewportCoars
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -49658,7 +51324,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkRayTracingShaderGroup
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -49808,7 +51479,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkRayTracingPipelineCre
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -50048,7 +51724,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkGeometryTrianglesNV &
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -50300,7 +51981,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkGeometryAABBNV &pstru
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -50481,7 +52167,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkGeometryNV &pstruct_i
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -50596,7 +52287,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkAccelerationStructure
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -50757,7 +52453,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkAccelerationStructure
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -50855,7 +52556,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkBindAccelerationStruc
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -51017,7 +52723,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkWriteDescriptorSetAcc
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -51128,7 +52839,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkAccelerationStructure
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -51227,7 +52943,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceRayTrac
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -51428,7 +53149,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceReprese
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -51510,7 +53236,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineRepresentativ
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -51592,7 +53323,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceImageVi
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -51674,7 +53410,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkFilterCubicImageViewI
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -51773,7 +53514,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDeviceQueueGlobalPrio
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -51855,7 +53601,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImportMemoryHostPoint
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -51966,7 +53717,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkMemoryHostPointerProp
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -52048,7 +53804,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceExterna
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -52130,7 +53891,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineCompilerContr
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -52212,7 +53978,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkCalibratedTimestampIn
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -52294,7 +54065,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderC
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -52597,7 +54373,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDeviceMemoryOveralloc
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -52679,7 +54460,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceVertexA
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -52811,7 +54597,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineVertexInputDi
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -52921,7 +54712,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceVertexA
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -53020,7 +54816,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPresentFrameTokenGGP 
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -53152,7 +54953,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineCreationFeedb
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -53290,7 +55096,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceCompute
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -53389,7 +55200,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMeshSha
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -53488,7 +55304,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMeshSha
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -53838,7 +55659,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceFragmen
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -53920,7 +55746,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderI
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -54002,7 +55833,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineViewportExclu
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -54112,7 +55948,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceExclusi
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -54194,7 +56035,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkQueueFamilyCheckpoint
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -54276,7 +56122,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkCheckpointDataNV &pst
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -54387,7 +56238,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderI
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -54627,7 +56483,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkInitializePerformance
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -54721,7 +56582,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkQueryPoolCreateInfoIN
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -54803,7 +56669,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPerformanceMarkerInfo
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -54885,7 +56756,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPerformanceStreamMark
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -54967,7 +56843,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPerformanceOverrideIn
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -55083,7 +56964,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPerformanceConfigurat
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -55165,7 +57051,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDevicePCIBusI
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -55298,7 +57189,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDisplayNativeHdrSurfa
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -55380,7 +57276,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSwapchainDisplayNativ
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -55462,7 +57363,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImagePipeSurfaceCreat
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -55561,7 +57467,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkMetalSurfaceCreateInf
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -55672,7 +57583,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceFragmen
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -55788,7 +57704,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceFragmen
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -55902,7 +57823,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkRenderPassFragmentDen
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -55983,7 +57909,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceScalarB
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -56065,7 +57996,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceSubgrou
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -56164,7 +58100,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceSubgrou
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -56297,7 +58238,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineShaderStageRe
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -56379,7 +58325,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderC
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -56478,7 +58429,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceCoheren
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -56560,7 +58516,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMemoryB
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -56673,7 +58634,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMemoryP
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -56755,7 +58721,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkMemoryPriorityAllocat
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -56837,7 +58808,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceDedicat
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -56919,7 +58895,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceBufferD
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -57035,7 +59016,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkBufferDeviceAddressIn
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -57117,7 +59103,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkBufferDeviceAddressCr
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -57199,7 +59190,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageStencilUsageCrea
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -57281,7 +59277,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkValidationFeaturesEXT
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -57438,7 +59439,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkCooperativeMatrixProp
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -57639,7 +59645,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceCoopera
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -57738,7 +59749,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceCoopera
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -57820,7 +59836,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceCoverag
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -57902,7 +59923,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineCoverageReduc
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -58001,7 +60027,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkFramebufferMixedSampl
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -58134,7 +60165,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceFragmen
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -58250,7 +60286,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceYcbcrIm
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -58332,7 +60373,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSurfaceFullScreenExcl
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -58414,7 +60460,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSurfaceCapabilitiesFu
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -58496,7 +60547,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSurfaceFullScreenExcl
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -58590,7 +60646,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkHeadlessSurfaceCreate
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -58672,7 +60733,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceLineRas
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -58839,7 +60905,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceLineRas
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -58921,7 +60992,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineRasterization
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "const void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -59054,7 +61130,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceHostQue
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -59136,7 +61217,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceIndexTy
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -59218,7 +61304,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShaderD
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -59300,7 +61391,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceTexelBu
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");
@@ -59382,7 +61478,12 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceTexelBu
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \""); // NUX
+    if (pstruct->pNext) { // NUM
+        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");
+    } else {
+        OutputStringJson(outputFile, "void*");
+    }
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pNext\",\n");

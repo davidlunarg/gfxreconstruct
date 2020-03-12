@@ -73,7 +73,15 @@ class OutputValue(BaseGenerator):
         if self.isUnion(value.fullType):
             self.wc('    OutputStringJson(outputFile, "\\"type\\" : \\"' + value.fullType + ' (Union)"); // UNN')
         else:
-            self.wc('    OutputStringJson(outputFile, "\\"type\\" : \\"' + value.fullType + '"); // NUN')
+            if value.name == 'pNext':
+                self.wc('    OutputStringJson(outputFile, "\\"type\\" : \\""); // NUX')
+                self.wc('    if (pstruct->pNext) { // NUM')
+                self.wc('        OutputStringJson(outputFile, sTypeToStructName[static_cast<Decoded_VkApplicationInfo*>(pstruct_in.pNext->GetMetaStructPointer())->decoded_value->sType] + "*");')
+                self.wc('    } else {')
+                self.wc('        OutputStringJson(outputFile, "' + value.fullType + '");')
+                self.wc('    }')
+            else:
+                self.wc('    OutputStringJson(outputFile, "\\"type\\" : \\"' + value.fullType + '"); // NUN')
         if (value.isArray and not value.isPointer and ('Count' in value.arrayLength)):
             self.wc('    OutputStringJson(outputFile, "[");')
             self.wc('    OutputUnsignedDecimalJson(outputFile, ' + pstruct + value.arrayLength + '); // IAC')
