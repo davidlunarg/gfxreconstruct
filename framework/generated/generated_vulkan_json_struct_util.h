@@ -555,12 +555,8 @@ void OutputArrayOfStructsJson(FILE*    outputFile,
         OutputStringJson(outputFile, idx_str);
         OutputStringJson(outputFile, "]\",\n");
         OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"address\" : \"");
-        OutputAddrJson(outputFile, base_addr + j * struct_size);
-        OutputStringJson(outputFile, "\",\n");
-        OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"members\" :\n");
-        OutputStructureJson(outputFile, array[j], indent, base_addr + j * sizeof(T)); // YGS
+        OutputStructureJson(outputFile, array[j], indent, base_addr + j * struct_size); // YGS
         indent--;
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "}");
