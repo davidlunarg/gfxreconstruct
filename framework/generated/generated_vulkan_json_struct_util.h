@@ -1492,7 +1492,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkApplicationInfo &pstr
     else
     { // JHD
         OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"value\" : ");
+        OutputStringJson(outputFile, "\"value\" : "); // HFW
         StringToQuotedStringJson(outputFile, pstruct->pApplicationName); // TLK
         OutputStringJson(outputFile, "\n");
     } // HWR
@@ -1534,7 +1534,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkApplicationInfo &pstr
     else
     { // JHD
         OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"value\" : ");
+        OutputStringJson(outputFile, "\"value\" : "); // HFW
         StringToQuotedStringJson(outputFile, pstruct->pEngineName); // TLK
         OutputStringJson(outputFile, "\n");
     } // HWR
@@ -1684,8 +1684,14 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkInstanceCreateInfo &p
         OutputAddrJson(outputFile, pstruct_in.pApplicationInfo->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"members\" :\n");
-        OutputStructureJson(outputFile, *pstruct_in.pApplicationInfo->GetMetaStructPointer(), indent,  base_addr + offsetof(VkInstanceCreateInfo, pApplicationInfo)); // GLY
+        if (pstruct_in.pApplicationInfo->HasData()) { // RXP
+            OutputStringJson(outputFile, "\n");
+            OutputStructureJson(outputFile, *pstruct_in.pApplicationInfo->GetMetaStructPointer(), indent,  base_addr + offsetof(VkInstanceCreateInfo, pApplicationInfo)); // GLY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA");
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -1821,8 +1827,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkAllocationCallbacks &
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
+        OutputStringJson(outputFile, "\"value\" : \"");
         OutputAddrJson(outputFile, pstruct_in.pUserData); // PXR
-        OutputStringJson(outputFile, "\"\n");
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -3024,7 +3030,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageFormatProperties
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"maxExtent\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.maxExtent, indent,  base_addr + offsetof(VkImageFormatProperties, maxExtent)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -5215,7 +5221,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDevicePropert
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"limits\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.limits, indent,  base_addr + offsetof(VkPhysicalDeviceProperties, limits)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -5231,7 +5237,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDevicePropert
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"sparseProperties\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.sparseProperties, indent,  base_addr + offsetof(VkPhysicalDeviceProperties, sparseProperties)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -5314,7 +5320,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkQueueFamilyProperties
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"minImageTransferGranularity\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.minImageTransferGranularity, indent,  base_addr + offsetof(VkQueueFamilyProperties, minImageTransferGranularity)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -5471,7 +5477,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMemoryP
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-    OutputArrayOfStructsJson(outputFile, indent, "VkMemoryType", pstruct_in.memoryTypes->GetMetaStructPointer(), "memoryTypes", pstruct->memoryTypeCount, false, pstruct_in.memoryTypes->GetAddress(), sizeof(VkMemoryType)); // CCY
+    if (pstruct_in.memoryTypes->HasData()) { // TGW
+        OutputArrayOfStructsJson(outputFile, indent, "VkMemoryType", pstruct_in.memoryTypes->GetMetaStructPointer(), "memoryTypes", pstruct->memoryTypeCount, false, pstruct_in.memoryTypes->GetAddress(), sizeof(VkMemoryType)); // CCY
+    } else {
+        OutputStringJson(outputFile, " ");
+        StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+        OutputStringJson(outputFile, "\n");
+    }
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
     OutputStringJson(outputFile, "},\n"); // UXT
@@ -5511,7 +5523,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMemoryP
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-    OutputArrayOfStructsJson(outputFile, indent, "VkMemoryHeap", pstruct_in.memoryHeaps->GetMetaStructPointer(), "memoryHeaps", pstruct->memoryHeapCount, false, pstruct_in.memoryHeaps->GetAddress(), sizeof(VkMemoryHeap)); // CCY
+    if (pstruct_in.memoryHeaps->HasData()) { // TGW
+        OutputArrayOfStructsJson(outputFile, indent, "VkMemoryHeap", pstruct_in.memoryHeaps->GetMetaStructPointer(), "memoryHeaps", pstruct->memoryHeapCount, false, pstruct_in.memoryHeaps->GetAddress(), sizeof(VkMemoryHeap)); // CCY
+    } else {
+        OutputStringJson(outputFile, " ");
+        StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+        OutputStringJson(outputFile, "\n");
+    }
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
     OutputStringJson(outputFile, "}\n"); // UXS
@@ -5792,7 +5810,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDeviceCreateInfo &pst
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkDeviceQueueCreateInfo", pstruct_in.pQueueCreateInfos->GetMetaStructPointer(), "pQueueCreateInfos", pstruct->queueCreateInfoCount, false, pstruct_in.pQueueCreateInfos->GetAddress(), sizeof(VkDeviceQueueCreateInfo)); // CCY
+        if (pstruct_in.pQueueCreateInfos->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkDeviceQueueCreateInfo", pstruct_in.pQueueCreateInfos->GetMetaStructPointer(), "pQueueCreateInfos", pstruct->queueCreateInfoCount, false, pstruct_in.pQueueCreateInfos->GetAddress(), sizeof(VkDeviceQueueCreateInfo)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -5911,8 +5935,14 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDeviceCreateInfo &pst
         OutputAddrJson(outputFile, pstruct_in.pEnabledFeatures->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"members\" :\n");
-        OutputStructureJson(outputFile, *pstruct_in.pEnabledFeatures->GetMetaStructPointer(), indent,  base_addr + offsetof(VkDeviceCreateInfo, pEnabledFeatures)); // GLY
+        if (pstruct_in.pEnabledFeatures->HasData()) { // RXP
+            OutputStringJson(outputFile, "\n");
+            OutputStructureJson(outputFile, *pstruct_in.pEnabledFeatures->GetMetaStructPointer(), indent,  base_addr + offsetof(VkDeviceCreateInfo, pEnabledFeatures)); // GLY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA");
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -6636,7 +6666,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSparseImageFormatProp
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"imageGranularity\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.imageGranularity, indent,  base_addr + offsetof(VkSparseImageFormatProperties, imageGranularity)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -6685,7 +6715,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSparseImageMemoryRequ
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"formatProperties\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.formatProperties, indent,  base_addr + offsetof(VkSparseImageMemoryRequirements, formatProperties)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -6932,7 +6962,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSparseBufferMemoryBin
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkSparseMemoryBind", pstruct_in.pBinds->GetMetaStructPointer(), "pBinds", pstruct->bindCount, false, pstruct_in.pBinds->GetAddress(), sizeof(VkSparseMemoryBind)); // CCY
+        if (pstruct_in.pBinds->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkSparseMemoryBind", pstruct_in.pBinds->GetMetaStructPointer(), "pBinds", pstruct->bindCount, false, pstruct_in.pBinds->GetAddress(), sizeof(VkSparseMemoryBind)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -7010,7 +7046,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSparseImageOpaqueMemo
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkSparseMemoryBind", pstruct_in.pBinds->GetMetaStructPointer(), "pBinds", pstruct->bindCount, false, pstruct_in.pBinds->GetAddress(), sizeof(VkSparseMemoryBind)); // CCY
+        if (pstruct_in.pBinds->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkSparseMemoryBind", pstruct_in.pBinds->GetMetaStructPointer(), "pBinds", pstruct->bindCount, false, pstruct_in.pBinds->GetAddress(), sizeof(VkSparseMemoryBind)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -7176,7 +7218,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSparseImageMemoryBind
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"subresource\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.subresource, indent,  base_addr + offsetof(VkSparseImageMemoryBind, subresource)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -7192,7 +7234,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSparseImageMemoryBind
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"offset\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.offset, indent,  base_addr + offsetof(VkSparseImageMemoryBind, offset)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -7208,7 +7250,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSparseImageMemoryBind
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"extent\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.extent, indent,  base_addr + offsetof(VkSparseImageMemoryBind, extent)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -7337,7 +7379,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSparseImageMemoryBind
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkSparseImageMemoryBind", pstruct_in.pBinds->GetMetaStructPointer(), "pBinds", pstruct->bindCount, false, pstruct_in.pBinds->GetAddress(), sizeof(VkSparseImageMemoryBind)); // CCY
+        if (pstruct_in.pBinds->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkSparseImageMemoryBind", pstruct_in.pBinds->GetMetaStructPointer(), "pBinds", pstruct->bindCount, false, pstruct_in.pBinds->GetAddress(), sizeof(VkSparseImageMemoryBind)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -7498,7 +7546,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkBindSparseInfo &pstru
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkSparseBufferMemoryBindInfo", pstruct_in.pBufferBinds->GetMetaStructPointer(), "pBufferBinds", pstruct->bufferBindCount, false, pstruct_in.pBufferBinds->GetAddress(), sizeof(VkSparseBufferMemoryBindInfo)); // CCY
+        if (pstruct_in.pBufferBinds->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkSparseBufferMemoryBindInfo", pstruct_in.pBufferBinds->GetMetaStructPointer(), "pBufferBinds", pstruct->bufferBindCount, false, pstruct_in.pBufferBinds->GetAddress(), sizeof(VkSparseBufferMemoryBindInfo)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -7543,7 +7597,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkBindSparseInfo &pstru
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkSparseImageOpaqueMemoryBindInfo", pstruct_in.pImageOpaqueBinds->GetMetaStructPointer(), "pImageOpaqueBinds", pstruct->imageOpaqueBindCount, false, pstruct_in.pImageOpaqueBinds->GetAddress(), sizeof(VkSparseImageOpaqueMemoryBindInfo)); // CCY
+        if (pstruct_in.pImageOpaqueBinds->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkSparseImageOpaqueMemoryBindInfo", pstruct_in.pImageOpaqueBinds->GetMetaStructPointer(), "pImageOpaqueBinds", pstruct->imageOpaqueBindCount, false, pstruct_in.pImageOpaqueBinds->GetAddress(), sizeof(VkSparseImageOpaqueMemoryBindInfo)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -7588,7 +7648,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkBindSparseInfo &pstru
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkSparseImageMemoryBindInfo", pstruct_in.pImageBinds->GetMetaStructPointer(), "pImageBinds", pstruct->imageBindCount, false, pstruct_in.pImageBinds->GetAddress(), sizeof(VkSparseImageMemoryBindInfo)); // CCY
+        if (pstruct_in.pImageBinds->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkSparseImageMemoryBindInfo", pstruct_in.pImageBinds->GetMetaStructPointer(), "pImageBinds", pstruct->imageBindCount, false, pstruct_in.pImageBinds->GetAddress(), sizeof(VkSparseImageMemoryBindInfo)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -8509,7 +8575,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageCreateInfo &pstr
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"extent\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.extent, indent,  base_addr + offsetof(VkImageCreateInfo, extent)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -9114,7 +9180,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageViewCreateInfo &
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"components\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.components, indent,  base_addr + offsetof(VkImageViewCreateInfo, components)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -9130,7 +9196,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageViewCreateInfo &
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"subresourceRange\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.subresourceRange, indent,  base_addr + offsetof(VkImageViewCreateInfo, subresourceRange)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -9527,7 +9593,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSpecializationInfo &p
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkSpecializationMapEntry", pstruct_in.pMapEntries->GetMetaStructPointer(), "pMapEntries", pstruct->mapEntryCount, false, pstruct_in.pMapEntries->GetAddress(), sizeof(VkSpecializationMapEntry)); // CCY
+        if (pstruct_in.pMapEntries->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkSpecializationMapEntry", pstruct_in.pMapEntries->GetMetaStructPointer(), "pMapEntries", pstruct->mapEntryCount, false, pstruct_in.pMapEntries->GetAddress(), sizeof(VkSpecializationMapEntry)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -9717,7 +9789,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineShaderStageCr
     else
     { // JHD
         OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"value\" : ");
+        OutputStringJson(outputFile, "\"value\" : "); // HFW
         StringToQuotedStringJson(outputFile, pstruct->pName); // TLK
         OutputStringJson(outputFile, "\n");
     } // HWR
@@ -9746,8 +9818,14 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineShaderStageCr
         OutputAddrJson(outputFile, pstruct_in.pSpecializationInfo->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"members\" :\n");
-        OutputStructureJson(outputFile, *pstruct_in.pSpecializationInfo->GetMetaStructPointer(), indent,  base_addr + offsetof(VkPipelineShaderStageCreateInfo, pSpecializationInfo)); // GLY
+        if (pstruct_in.pSpecializationInfo->HasData()) { // RXP
+            OutputStringJson(outputFile, "\n");
+            OutputStructureJson(outputFile, *pstruct_in.pSpecializationInfo->GetMetaStructPointer(), indent,  base_addr + offsetof(VkPipelineShaderStageCreateInfo, pSpecializationInfo)); // GLY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA");
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -10030,7 +10108,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineVertexInputSt
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkVertexInputBindingDescription", pstruct_in.pVertexBindingDescriptions->GetMetaStructPointer(), "pVertexBindingDescriptions", pstruct->vertexBindingDescriptionCount, false, pstruct_in.pVertexBindingDescriptions->GetAddress(), sizeof(VkVertexInputBindingDescription)); // CCY
+        if (pstruct_in.pVertexBindingDescriptions->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkVertexInputBindingDescription", pstruct_in.pVertexBindingDescriptions->GetMetaStructPointer(), "pVertexBindingDescriptions", pstruct->vertexBindingDescriptionCount, false, pstruct_in.pVertexBindingDescriptions->GetAddress(), sizeof(VkVertexInputBindingDescription)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -10075,7 +10159,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineVertexInputSt
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkVertexInputAttributeDescription", pstruct_in.pVertexAttributeDescriptions->GetMetaStructPointer(), "pVertexAttributeDescriptions", pstruct->vertexAttributeDescriptionCount, false, pstruct_in.pVertexAttributeDescriptions->GetAddress(), sizeof(VkVertexInputAttributeDescription)); // CCY
+        if (pstruct_in.pVertexAttributeDescriptions->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkVertexInputAttributeDescription", pstruct_in.pVertexAttributeDescriptions->GetMetaStructPointer(), "pVertexAttributeDescriptions", pstruct->vertexAttributeDescriptionCount, false, pstruct_in.pVertexAttributeDescriptions->GetAddress(), sizeof(VkVertexInputAttributeDescription)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -10550,7 +10640,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkRect2D &pstruct_in, i
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"offset\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.offset, indent,  base_addr + offsetof(VkRect2D, offset)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -10566,7 +10656,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkRect2D &pstruct_in, i
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"extent\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.extent, indent,  base_addr + offsetof(VkRect2D, extent)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -10698,7 +10788,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineViewportState
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkViewport", pstruct_in.pViewports->GetMetaStructPointer(), "pViewports", pstruct->viewportCount, false, pstruct_in.pViewports->GetAddress(), sizeof(VkViewport)); // CCY
+        if (pstruct_in.pViewports->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkViewport", pstruct_in.pViewports->GetMetaStructPointer(), "pViewports", pstruct->viewportCount, false, pstruct_in.pViewports->GetAddress(), sizeof(VkViewport)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -10743,7 +10839,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineViewportState
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkRect2D", pstruct_in.pScissors->GetMetaStructPointer(), "pScissors", pstruct->scissorCount, false, pstruct_in.pScissors->GetAddress(), sizeof(VkRect2D)); // CCY
+        if (pstruct_in.pScissors->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkRect2D", pstruct_in.pScissors->GetMetaStructPointer(), "pScissors", pstruct->scissorCount, false, pstruct_in.pScissors->GetAddress(), sizeof(VkRect2D)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -11524,7 +11626,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineDepthStencilS
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"front\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.front, indent,  base_addr + offsetof(VkPipelineDepthStencilStateCreateInfo, front)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -11540,7 +11642,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineDepthStencilS
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"back\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.back, indent,  base_addr + offsetof(VkPipelineDepthStencilStateCreateInfo, back)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -11892,7 +11994,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineColorBlendSta
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkPipelineColorBlendAttachmentState", pstruct_in.pAttachments->GetMetaStructPointer(), "pAttachments", pstruct->attachmentCount, false, pstruct_in.pAttachments->GetAddress(), sizeof(VkPipelineColorBlendAttachmentState)); // CCY
+        if (pstruct_in.pAttachments->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkPipelineColorBlendAttachmentState", pstruct_in.pAttachments->GetMetaStructPointer(), "pAttachments", pstruct->attachmentCount, false, pstruct_in.pAttachments->GetAddress(), sizeof(VkPipelineColorBlendAttachmentState)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -12181,7 +12289,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkGraphicsPipelineCreat
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkPipelineShaderStageCreateInfo", pstruct_in.pStages->GetMetaStructPointer(), "pStages", pstruct->stageCount, false, pstruct_in.pStages->GetAddress(), sizeof(VkPipelineShaderStageCreateInfo)); // CCY
+        if (pstruct_in.pStages->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkPipelineShaderStageCreateInfo", pstruct_in.pStages->GetMetaStructPointer(), "pStages", pstruct->stageCount, false, pstruct_in.pStages->GetAddress(), sizeof(VkPipelineShaderStageCreateInfo)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -12208,8 +12322,14 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkGraphicsPipelineCreat
         OutputAddrJson(outputFile, pstruct_in.pVertexInputState->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"members\" :\n");
-        OutputStructureJson(outputFile, *pstruct_in.pVertexInputState->GetMetaStructPointer(), indent,  base_addr + offsetof(VkGraphicsPipelineCreateInfo, pVertexInputState)); // GLY
+        if (pstruct_in.pVertexInputState->HasData()) { // RXP
+            OutputStringJson(outputFile, "\n");
+            OutputStructureJson(outputFile, *pstruct_in.pVertexInputState->GetMetaStructPointer(), indent,  base_addr + offsetof(VkGraphicsPipelineCreateInfo, pVertexInputState)); // GLY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA");
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -12236,8 +12356,14 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkGraphicsPipelineCreat
         OutputAddrJson(outputFile, pstruct_in.pInputAssemblyState->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"members\" :\n");
-        OutputStructureJson(outputFile, *pstruct_in.pInputAssemblyState->GetMetaStructPointer(), indent,  base_addr + offsetof(VkGraphicsPipelineCreateInfo, pInputAssemblyState)); // GLY
+        if (pstruct_in.pInputAssemblyState->HasData()) { // RXP
+            OutputStringJson(outputFile, "\n");
+            OutputStructureJson(outputFile, *pstruct_in.pInputAssemblyState->GetMetaStructPointer(), indent,  base_addr + offsetof(VkGraphicsPipelineCreateInfo, pInputAssemblyState)); // GLY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA");
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -12264,8 +12390,14 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkGraphicsPipelineCreat
         OutputAddrJson(outputFile, pstruct_in.pTessellationState->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"members\" :\n");
-        OutputStructureJson(outputFile, *pstruct_in.pTessellationState->GetMetaStructPointer(), indent,  base_addr + offsetof(VkGraphicsPipelineCreateInfo, pTessellationState)); // GLY
+        if (pstruct_in.pTessellationState->HasData()) { // RXP
+            OutputStringJson(outputFile, "\n");
+            OutputStructureJson(outputFile, *pstruct_in.pTessellationState->GetMetaStructPointer(), indent,  base_addr + offsetof(VkGraphicsPipelineCreateInfo, pTessellationState)); // GLY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA");
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -12292,8 +12424,14 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkGraphicsPipelineCreat
         OutputAddrJson(outputFile, pstruct_in.pViewportState->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"members\" :\n");
-        OutputStructureJson(outputFile, *pstruct_in.pViewportState->GetMetaStructPointer(), indent,  base_addr + offsetof(VkGraphicsPipelineCreateInfo, pViewportState)); // GLY
+        if (pstruct_in.pViewportState->HasData()) { // RXP
+            OutputStringJson(outputFile, "\n");
+            OutputStructureJson(outputFile, *pstruct_in.pViewportState->GetMetaStructPointer(), indent,  base_addr + offsetof(VkGraphicsPipelineCreateInfo, pViewportState)); // GLY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA");
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -12320,8 +12458,14 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkGraphicsPipelineCreat
         OutputAddrJson(outputFile, pstruct_in.pRasterizationState->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"members\" :\n");
-        OutputStructureJson(outputFile, *pstruct_in.pRasterizationState->GetMetaStructPointer(), indent,  base_addr + offsetof(VkGraphicsPipelineCreateInfo, pRasterizationState)); // GLY
+        if (pstruct_in.pRasterizationState->HasData()) { // RXP
+            OutputStringJson(outputFile, "\n");
+            OutputStructureJson(outputFile, *pstruct_in.pRasterizationState->GetMetaStructPointer(), indent,  base_addr + offsetof(VkGraphicsPipelineCreateInfo, pRasterizationState)); // GLY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA");
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -12348,8 +12492,14 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkGraphicsPipelineCreat
         OutputAddrJson(outputFile, pstruct_in.pMultisampleState->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"members\" :\n");
-        OutputStructureJson(outputFile, *pstruct_in.pMultisampleState->GetMetaStructPointer(), indent,  base_addr + offsetof(VkGraphicsPipelineCreateInfo, pMultisampleState)); // GLY
+        if (pstruct_in.pMultisampleState->HasData()) { // RXP
+            OutputStringJson(outputFile, "\n");
+            OutputStructureJson(outputFile, *pstruct_in.pMultisampleState->GetMetaStructPointer(), indent,  base_addr + offsetof(VkGraphicsPipelineCreateInfo, pMultisampleState)); // GLY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA");
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -12376,8 +12526,14 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkGraphicsPipelineCreat
         OutputAddrJson(outputFile, pstruct_in.pDepthStencilState->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"members\" :\n");
-        OutputStructureJson(outputFile, *pstruct_in.pDepthStencilState->GetMetaStructPointer(), indent,  base_addr + offsetof(VkGraphicsPipelineCreateInfo, pDepthStencilState)); // GLY
+        if (pstruct_in.pDepthStencilState->HasData()) { // RXP
+            OutputStringJson(outputFile, "\n");
+            OutputStructureJson(outputFile, *pstruct_in.pDepthStencilState->GetMetaStructPointer(), indent,  base_addr + offsetof(VkGraphicsPipelineCreateInfo, pDepthStencilState)); // GLY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA");
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -12404,8 +12560,14 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkGraphicsPipelineCreat
         OutputAddrJson(outputFile, pstruct_in.pColorBlendState->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"members\" :\n");
-        OutputStructureJson(outputFile, *pstruct_in.pColorBlendState->GetMetaStructPointer(), indent,  base_addr + offsetof(VkGraphicsPipelineCreateInfo, pColorBlendState)); // GLY
+        if (pstruct_in.pColorBlendState->HasData()) { // RXP
+            OutputStringJson(outputFile, "\n");
+            OutputStructureJson(outputFile, *pstruct_in.pColorBlendState->GetMetaStructPointer(), indent,  base_addr + offsetof(VkGraphicsPipelineCreateInfo, pColorBlendState)); // GLY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA");
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -12432,8 +12594,14 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkGraphicsPipelineCreat
         OutputAddrJson(outputFile, pstruct_in.pDynamicState->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"members\" :\n");
-        OutputStructureJson(outputFile, *pstruct_in.pDynamicState->GetMetaStructPointer(), indent,  base_addr + offsetof(VkGraphicsPipelineCreateInfo, pDynamicState)); // GLY
+        if (pstruct_in.pDynamicState->HasData()) { // RXP
+            OutputStringJson(outputFile, "\n");
+            OutputStructureJson(outputFile, *pstruct_in.pDynamicState->GetMetaStructPointer(), indent,  base_addr + offsetof(VkGraphicsPipelineCreateInfo, pDynamicState)); // GLY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA");
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -12621,7 +12789,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkComputePipelineCreate
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"stage\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.stage, indent,  base_addr + offsetof(VkComputePipelineCreateInfo, stage)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -12917,7 +13085,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineLayoutCreateI
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkPushConstantRange", pstruct_in.pPushConstantRanges->GetMetaStructPointer(), "pPushConstantRanges", pstruct->pushConstantRangeCount, false, pstruct_in.pPushConstantRanges->GetAddress(), sizeof(VkPushConstantRange)); // CCY
+        if (pstruct_in.pPushConstantRanges->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkPushConstantRange", pstruct_in.pPushConstantRanges->GetMetaStructPointer(), "pPushConstantRanges", pstruct->pushConstantRangeCount, false, pstruct_in.pPushConstantRanges->GetAddress(), sizeof(VkPushConstantRange)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -13504,7 +13678,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDescriptorSetLayoutCr
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkDescriptorSetLayoutBinding", pstruct_in.pBindings->GetMetaStructPointer(), "pBindings", pstruct->bindingCount, false, pstruct_in.pBindings->GetAddress(), sizeof(VkDescriptorSetLayoutBinding)); // CCY
+        if (pstruct_in.pBindings->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkDescriptorSetLayoutBinding", pstruct_in.pBindings->GetMetaStructPointer(), "pBindings", pstruct->bindingCount, false, pstruct_in.pBindings->GetAddress(), sizeof(VkDescriptorSetLayoutBinding)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -13703,7 +13883,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDescriptorPoolCreateI
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkDescriptorPoolSize", pstruct_in.pPoolSizes->GetMetaStructPointer(), "pPoolSizes", pstruct->poolSizeCount, false, pstruct_in.pPoolSizes->GetAddress(), sizeof(VkDescriptorPoolSize)); // CCY
+        if (pstruct_in.pPoolSizes->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkDescriptorPoolSize", pstruct_in.pPoolSizes->GetMetaStructPointer(), "pPoolSizes", pstruct->poolSizeCount, false, pstruct_in.pPoolSizes->GetAddress(), sizeof(VkDescriptorPoolSize)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -14153,7 +14339,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkWriteDescriptorSet &p
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkDescriptorImageInfo", pstruct_in.pImageInfo->GetMetaStructPointer(), "pImageInfo", pstruct->descriptorCount, false, pstruct_in.pImageInfo->GetAddress(), sizeof(VkDescriptorImageInfo)); // CCY
+        if (pstruct_in.pImageInfo->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkDescriptorImageInfo", pstruct_in.pImageInfo->GetMetaStructPointer(), "pImageInfo", pstruct->descriptorCount, false, pstruct_in.pImageInfo->GetAddress(), sizeof(VkDescriptorImageInfo)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -14181,7 +14373,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkWriteDescriptorSet &p
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkDescriptorBufferInfo", pstruct_in.pBufferInfo->GetMetaStructPointer(), "pBufferInfo", pstruct->descriptorCount, false, pstruct_in.pBufferInfo->GetAddress(), sizeof(VkDescriptorBufferInfo)); // CCY
+        if (pstruct_in.pBufferInfo->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkDescriptorBufferInfo", pstruct_in.pBufferInfo->GetMetaStructPointer(), "pBufferInfo", pstruct->descriptorCount, false, pstruct_in.pBufferInfo->GetAddress(), sizeof(VkDescriptorBufferInfo)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -14914,7 +15112,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSubpassDescription &p
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkAttachmentReference", pstruct_in.pInputAttachments->GetMetaStructPointer(), "pInputAttachments", pstruct->inputAttachmentCount, false, pstruct_in.pInputAttachments->GetAddress(), sizeof(VkAttachmentReference)); // CCY
+        if (pstruct_in.pInputAttachments->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkAttachmentReference", pstruct_in.pInputAttachments->GetMetaStructPointer(), "pInputAttachments", pstruct->inputAttachmentCount, false, pstruct_in.pInputAttachments->GetAddress(), sizeof(VkAttachmentReference)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -14959,7 +15163,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSubpassDescription &p
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkAttachmentReference", pstruct_in.pColorAttachments->GetMetaStructPointer(), "pColorAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pColorAttachments->GetAddress(), sizeof(VkAttachmentReference)); // CCY
+        if (pstruct_in.pColorAttachments->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkAttachmentReference", pstruct_in.pColorAttachments->GetMetaStructPointer(), "pColorAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pColorAttachments->GetAddress(), sizeof(VkAttachmentReference)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -14987,7 +15197,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSubpassDescription &p
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkAttachmentReference", pstruct_in.pResolveAttachments->GetMetaStructPointer(), "pResolveAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pResolveAttachments->GetAddress(), sizeof(VkAttachmentReference)); // CCY
+        if (pstruct_in.pResolveAttachments->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkAttachmentReference", pstruct_in.pResolveAttachments->GetMetaStructPointer(), "pResolveAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pResolveAttachments->GetAddress(), sizeof(VkAttachmentReference)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -15014,8 +15230,14 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSubpassDescription &p
         OutputAddrJson(outputFile, pstruct_in.pDepthStencilAttachment->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"members\" :\n");
-        OutputStructureJson(outputFile, *pstruct_in.pDepthStencilAttachment->GetMetaStructPointer(), indent,  base_addr + offsetof(VkSubpassDescription, pDepthStencilAttachment)); // GLY
+        if (pstruct_in.pDepthStencilAttachment->HasData()) { // RXP
+            OutputStringJson(outputFile, "\n");
+            OutputStructureJson(outputFile, *pstruct_in.pDepthStencilAttachment->GetMetaStructPointer(), indent,  base_addr + offsetof(VkSubpassDescription, pDepthStencilAttachment)); // GLY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA");
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -15328,7 +15550,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkRenderPassCreateInfo 
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkAttachmentDescription", pstruct_in.pAttachments->GetMetaStructPointer(), "pAttachments", pstruct->attachmentCount, false, pstruct_in.pAttachments->GetAddress(), sizeof(VkAttachmentDescription)); // CCY
+        if (pstruct_in.pAttachments->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkAttachmentDescription", pstruct_in.pAttachments->GetMetaStructPointer(), "pAttachments", pstruct->attachmentCount, false, pstruct_in.pAttachments->GetAddress(), sizeof(VkAttachmentDescription)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -15373,7 +15601,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkRenderPassCreateInfo 
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkSubpassDescription", pstruct_in.pSubpasses->GetMetaStructPointer(), "pSubpasses", pstruct->subpassCount, false, pstruct_in.pSubpasses->GetAddress(), sizeof(VkSubpassDescription)); // CCY
+        if (pstruct_in.pSubpasses->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkSubpassDescription", pstruct_in.pSubpasses->GetMetaStructPointer(), "pSubpasses", pstruct->subpassCount, false, pstruct_in.pSubpasses->GetAddress(), sizeof(VkSubpassDescription)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -15418,7 +15652,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkRenderPassCreateInfo 
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkSubpassDependency", pstruct_in.pDependencies->GetMetaStructPointer(), "pDependencies", pstruct->dependencyCount, false, pstruct_in.pDependencies->GetAddress(), sizeof(VkSubpassDependency)); // CCY
+        if (pstruct_in.pDependencies->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkSubpassDependency", pstruct_in.pDependencies->GetMetaStructPointer(), "pDependencies", pstruct->dependencyCount, false, pstruct_in.pDependencies->GetAddress(), sizeof(VkSubpassDependency)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -15929,8 +16169,14 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkCommandBufferBeginInf
         OutputAddrJson(outputFile, pstruct_in.pInheritanceInfo->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"members\" :\n");
-        OutputStructureJson(outputFile, *pstruct_in.pInheritanceInfo->GetMetaStructPointer(), indent,  base_addr + offsetof(VkCommandBufferBeginInfo, pInheritanceInfo)); // GLY
+        if (pstruct_in.pInheritanceInfo->HasData()) { // RXP
+            OutputStringJson(outputFile, "\n");
+            OutputStructureJson(outputFile, *pstruct_in.pInheritanceInfo->GetMetaStructPointer(), indent,  base_addr + offsetof(VkCommandBufferBeginInfo, pInheritanceInfo)); // GLY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA");
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -16113,7 +16359,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageCopy &pstruct_in
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"srcSubresource\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.srcSubresource, indent,  base_addr + offsetof(VkImageCopy, srcSubresource)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -16129,7 +16375,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageCopy &pstruct_in
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"srcOffset\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.srcOffset, indent,  base_addr + offsetof(VkImageCopy, srcOffset)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -16145,7 +16391,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageCopy &pstruct_in
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"dstSubresource\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.dstSubresource, indent,  base_addr + offsetof(VkImageCopy, dstSubresource)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -16161,7 +16407,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageCopy &pstruct_in
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"dstOffset\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.dstOffset, indent,  base_addr + offsetof(VkImageCopy, dstOffset)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -16177,7 +16423,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageCopy &pstruct_in
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"extent\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.extent, indent,  base_addr + offsetof(VkImageCopy, extent)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -16209,7 +16455,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageBlit &pstruct_in
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"srcSubresource\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.srcSubresource, indent,  base_addr + offsetof(VkImageBlit, srcSubresource)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -16233,7 +16479,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageBlit &pstruct_in
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-    OutputArrayOfStructsJson(outputFile, indent, "VkOffset3D", pstruct_in.srcOffsets->GetMetaStructPointer(), "srcOffsets", 2, false, pstruct_in.srcOffsets->GetAddress(), sizeof(VkOffset3D)); // CCY
+    if (pstruct_in.srcOffsets->HasData()) { // TGW
+        OutputArrayOfStructsJson(outputFile, indent, "VkOffset3D", pstruct_in.srcOffsets->GetMetaStructPointer(), "srcOffsets", 2, false, pstruct_in.srcOffsets->GetAddress(), sizeof(VkOffset3D)); // CCY
+    } else {
+        OutputStringJson(outputFile, " ");
+        StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+        OutputStringJson(outputFile, "\n");
+    }
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
     OutputStringJson(outputFile, "},\n"); // UXT
@@ -16248,7 +16500,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageBlit &pstruct_in
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"dstSubresource\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.dstSubresource, indent,  base_addr + offsetof(VkImageBlit, dstSubresource)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -16272,7 +16524,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageBlit &pstruct_in
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-    OutputArrayOfStructsJson(outputFile, indent, "VkOffset3D", pstruct_in.dstOffsets->GetMetaStructPointer(), "dstOffsets", 2, false, pstruct_in.dstOffsets->GetAddress(), sizeof(VkOffset3D)); // CCY
+    if (pstruct_in.dstOffsets->HasData()) { // TGW
+        OutputArrayOfStructsJson(outputFile, indent, "VkOffset3D", pstruct_in.dstOffsets->GetMetaStructPointer(), "dstOffsets", 2, false, pstruct_in.dstOffsets->GetAddress(), sizeof(VkOffset3D)); // CCY
+    } else {
+        OutputStringJson(outputFile, " ");
+        StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+        OutputStringJson(outputFile, "\n");
+    }
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
     OutputStringJson(outputFile, "}\n"); // UXS
@@ -16354,7 +16612,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkBufferImageCopy &pstr
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"imageSubresource\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.imageSubresource, indent,  base_addr + offsetof(VkBufferImageCopy, imageSubresource)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -16370,7 +16628,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkBufferImageCopy &pstr
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"imageOffset\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.imageOffset, indent,  base_addr + offsetof(VkBufferImageCopy, imageOffset)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -16386,7 +16644,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkBufferImageCopy &pstr
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"imageExtent\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.imageExtent, indent,  base_addr + offsetof(VkBufferImageCopy, imageExtent)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -16556,7 +16814,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkClearValue &pstruct_i
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"color\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, reinterpret_cast<const Decoded_VkClearColorValue&>(pstruct_in), indent,  base_addr + offsetof(VkClearValue, color)); // RQN
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -16572,7 +16830,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkClearValue &pstruct_i
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"depthStencil\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, reinterpret_cast<const Decoded_VkClearDepthStencilValue&>(pstruct_in), indent,  base_addr + offsetof(VkClearValue, depthStencil)); // RQN
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -16638,7 +16896,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkClearAttachment &pstr
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"clearValue\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.clearValue, indent,  base_addr + offsetof(VkClearAttachment, clearValue)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -16670,7 +16928,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkClearRect &pstruct_in
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"rect\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.rect, indent,  base_addr + offsetof(VkClearRect, rect)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -16736,7 +16994,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageResolve &pstruct
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"srcSubresource\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.srcSubresource, indent,  base_addr + offsetof(VkImageResolve, srcSubresource)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -16752,7 +17010,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageResolve &pstruct
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"srcOffset\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.srcOffset, indent,  base_addr + offsetof(VkImageResolve, srcOffset)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -16768,7 +17026,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageResolve &pstruct
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"dstSubresource\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.dstSubresource, indent,  base_addr + offsetof(VkImageResolve, dstSubresource)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -16784,7 +17042,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageResolve &pstruct
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"dstOffset\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.dstOffset, indent,  base_addr + offsetof(VkImageResolve, dstOffset)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -16800,7 +17058,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageResolve &pstruct
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"extent\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.extent, indent,  base_addr + offsetof(VkImageResolve, extent)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -17298,7 +17556,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageMemoryBarrier &p
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"subresourceRange\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.subresourceRange, indent,  base_addr + offsetof(VkImageMemoryBarrier, subresourceRange)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -17418,7 +17676,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkRenderPassBeginInfo &
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"renderArea\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.renderArea, indent,  base_addr + offsetof(VkRenderPassBeginInfo, renderArea)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -17463,7 +17721,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkRenderPassBeginInfo &
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkClearValue", pstruct_in.pClearValues->GetMetaStructPointer(), "pClearValues", pstruct->clearValueCount, true, pstruct_in.pClearValues->GetAddress(), sizeof(VkClearValue)); // CCY
+        if (pstruct_in.pClearValues->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkClearValue", pstruct_in.pClearValues->GetMetaStructPointer(), "pClearValues", pstruct->clearValueCount, true, pstruct_in.pClearValues->GetAddress(), sizeof(VkClearValue)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -18677,7 +18941,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDeviceGroupRenderPass
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkRect2D", pstruct_in.pDeviceRenderAreas->GetMetaStructPointer(), "pDeviceRenderAreas", pstruct->deviceRenderAreaCount, false, pstruct_in.pDeviceRenderAreas->GetAddress(), sizeof(VkRect2D)); // CCY
+        if (pstruct_in.pDeviceRenderAreas->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkRect2D", pstruct_in.pDeviceRenderAreas->GetMetaStructPointer(), "pDeviceRenderAreas", pstruct->deviceRenderAreaCount, false, pstruct_in.pDeviceRenderAreas->GetAddress(), sizeof(VkRect2D)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -19353,7 +19623,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkBindImageMemoryDevice
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkRect2D", pstruct_in.pSplitInstanceBindRegions->GetMetaStructPointer(), "pSplitInstanceBindRegions", pstruct->splitInstanceBindRegionCount, false, pstruct_in.pSplitInstanceBindRegions->GetAddress(), sizeof(VkRect2D)); // CCY
+        if (pstruct_in.pSplitInstanceBindRegions->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkRect2D", pstruct_in.pSplitInstanceBindRegions->GetMetaStructPointer(), "pSplitInstanceBindRegions", pstruct->splitInstanceBindRegionCount, false, pstruct_in.pSplitInstanceBindRegions->GetAddress(), sizeof(VkRect2D)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -19944,7 +20220,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkMemoryRequirements2 &
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"memoryRequirements\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.memoryRequirements, indent,  base_addr + offsetof(VkMemoryRequirements2, memoryRequirements)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -20030,7 +20306,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSparseImageMemoryRequ
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"memoryRequirements\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.memoryRequirements, indent,  base_addr + offsetof(VkSparseImageMemoryRequirements2, memoryRequirements)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -20116,7 +20392,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceFeature
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"features\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.features, indent,  base_addr + offsetof(VkPhysicalDeviceFeatures2, features)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -20202,7 +20478,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDevicePropert
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"properties\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.properties, indent,  base_addr + offsetof(VkPhysicalDeviceProperties2, properties)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -20288,7 +20564,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkFormatProperties2 &ps
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"formatProperties\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.formatProperties, indent,  base_addr + offsetof(VkFormatProperties2, formatProperties)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -20374,7 +20650,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageFormatProperties
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"imageFormatProperties\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.imageFormatProperties, indent,  base_addr + offsetof(VkImageFormatProperties2, imageFormatProperties)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -20615,7 +20891,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkQueueFamilyProperties
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"queueFamilyProperties\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.queueFamilyProperties, indent,  base_addr + offsetof(VkQueueFamilyProperties2, queueFamilyProperties)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -20701,7 +20977,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMemoryP
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"memoryProperties\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.memoryProperties, indent,  base_addr + offsetof(VkPhysicalDeviceMemoryProperties2, memoryProperties)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -20787,7 +21063,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSparseImageFormatProp
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"properties\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.properties, indent,  base_addr + offsetof(VkSparseImageFormatProperties2, properties)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -21211,7 +21487,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkRenderPassInputAttach
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkInputAttachmentAspectReference", pstruct_in.pAspectReferences->GetMetaStructPointer(), "pAspectReferences", pstruct->aspectReferenceCount, false, pstruct_in.pAspectReferences->GetAddress(), sizeof(VkInputAttachmentAspectReference)); // CCY
+        if (pstruct_in.pAspectReferences->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkInputAttachmentAspectReference", pstruct_in.pAspectReferences->GetMetaStructPointer(), "pAspectReferences", pstruct->aspectReferenceCount, false, pstruct_in.pAspectReferences->GetAddress(), sizeof(VkInputAttachmentAspectReference)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -22441,7 +22723,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSamplerYcbcrConversio
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"components\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.components, indent,  base_addr + offsetof(VkSamplerYcbcrConversionCreateInfo, components)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -23194,7 +23476,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDescriptorUpdateTempl
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkDescriptorUpdateTemplateEntry", pstruct_in.pDescriptorUpdateEntries->GetMetaStructPointer(), "pDescriptorUpdateEntries", pstruct->descriptorUpdateEntryCount, false, pstruct_in.pDescriptorUpdateEntries->GetAddress(), sizeof(VkDescriptorUpdateTemplateEntry)); // CCY
+        if (pstruct_in.pDescriptorUpdateEntries->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkDescriptorUpdateTemplateEntry", pstruct_in.pDescriptorUpdateEntries->GetMetaStructPointer(), "pDescriptorUpdateEntries", pstruct->descriptorUpdateEntryCount, false, pstruct_in.pDescriptorUpdateEntries->GetAddress(), sizeof(VkDescriptorUpdateTemplateEntry)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -23519,7 +23807,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkExternalImageFormatPr
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"externalMemoryProperties\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.externalMemoryProperties, indent,  base_addr + offsetof(VkExternalImageFormatProperties, externalMemoryProperties)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -23726,7 +24014,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkExternalBufferPropert
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"externalMemoryProperties\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.externalMemoryProperties, indent,  base_addr + offsetof(VkExternalBufferProperties, externalMemoryProperties)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -25097,7 +25385,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSurfaceCapabilitiesKH
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"currentExtent\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.currentExtent, indent,  base_addr + offsetof(VkSurfaceCapabilitiesKHR, currentExtent)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -25113,7 +25401,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSurfaceCapabilitiesKH
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"minImageExtent\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.minImageExtent, indent,  base_addr + offsetof(VkSurfaceCapabilitiesKHR, minImageExtent)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -25129,7 +25417,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSurfaceCapabilitiesKH
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"maxImageExtent\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.maxImageExtent, indent,  base_addr + offsetof(VkSurfaceCapabilitiesKHR, maxImageExtent)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -25435,7 +25723,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSwapchainCreateInfoKH
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"imageExtent\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.imageExtent, indent,  base_addr + offsetof(VkSwapchainCreateInfoKHR, imageExtent)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -26570,7 +26858,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDisplayPropertiesKHR 
     else
     { // JHD
         OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"value\" : ");
+        OutputStringJson(outputFile, "\"value\" : "); // HFW
         StringToQuotedStringJson(outputFile, pstruct->displayName); // TLK
         OutputStringJson(outputFile, "\n");
     } // HWR
@@ -26588,7 +26876,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDisplayPropertiesKHR 
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalDimensions\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.physicalDimensions, indent,  base_addr + offsetof(VkDisplayPropertiesKHR, physicalDimensions)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -26604,7 +26892,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDisplayPropertiesKHR 
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"physicalResolution\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.physicalResolution, indent,  base_addr + offsetof(VkDisplayPropertiesKHR, physicalResolution)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -26687,7 +26975,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDisplayModeParameters
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"visibleRegion\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.visibleRegion, indent,  base_addr + offsetof(VkDisplayModeParametersKHR, visibleRegion)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -26753,7 +27041,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDisplayModeProperties
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"parameters\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.parameters, indent,  base_addr + offsetof(VkDisplayModePropertiesKHR, parameters)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -26856,7 +27144,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDisplayModeCreateInfo
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"parameters\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.parameters, indent,  base_addr + offsetof(VkDisplayModeCreateInfoKHR, parameters)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -26905,7 +27193,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDisplayPlaneCapabilit
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"minSrcPosition\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.minSrcPosition, indent,  base_addr + offsetof(VkDisplayPlaneCapabilitiesKHR, minSrcPosition)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -26921,7 +27209,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDisplayPlaneCapabilit
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"maxSrcPosition\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.maxSrcPosition, indent,  base_addr + offsetof(VkDisplayPlaneCapabilitiesKHR, maxSrcPosition)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -26937,7 +27225,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDisplayPlaneCapabilit
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"minSrcExtent\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.minSrcExtent, indent,  base_addr + offsetof(VkDisplayPlaneCapabilitiesKHR, minSrcExtent)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -26953,7 +27241,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDisplayPlaneCapabilit
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"maxSrcExtent\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.maxSrcExtent, indent,  base_addr + offsetof(VkDisplayPlaneCapabilitiesKHR, maxSrcExtent)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -26969,7 +27257,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDisplayPlaneCapabilit
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"minDstPosition\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.minDstPosition, indent,  base_addr + offsetof(VkDisplayPlaneCapabilitiesKHR, minDstPosition)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -26985,7 +27273,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDisplayPlaneCapabilit
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"maxDstPosition\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.maxDstPosition, indent,  base_addr + offsetof(VkDisplayPlaneCapabilitiesKHR, maxDstPosition)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -27001,7 +27289,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDisplayPlaneCapabilit
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"minDstExtent\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.minDstExtent, indent,  base_addr + offsetof(VkDisplayPlaneCapabilitiesKHR, minDstExtent)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -27017,7 +27305,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDisplayPlaneCapabilit
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"maxDstExtent\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.maxDstExtent, indent,  base_addr + offsetof(VkDisplayPlaneCapabilitiesKHR, maxDstExtent)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -27272,7 +27560,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDisplaySurfaceCreateI
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"imageExtent\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.imageExtent, indent,  base_addr + offsetof(VkDisplaySurfaceCreateInfoKHR, imageExtent)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -27358,7 +27646,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDisplayPresentInfoKHR
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"srcRect\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.srcRect, indent,  base_addr + offsetof(VkDisplayPresentInfoKHR, srcRect)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -27374,7 +27662,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDisplayPresentInfoKHR
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"dstRect\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.dstRect, indent,  base_addr + offsetof(VkDisplayPresentInfoKHR, dstRect)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -27627,8 +27915,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkXcbSurfaceCreateInfoK
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
+        OutputStringJson(outputFile, "\"value\" : \"");
         OutputAddrJson(outputFile, pstruct_in.connection); // PXR
-        OutputStringJson(outputFile, "\"\n");
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -27760,8 +28048,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkWaylandSurfaceCreateI
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
+        OutputStringJson(outputFile, "\"value\" : \"");
         OutputAddrJson(outputFile, pstruct_in.display); // PXR
-        OutputStringJson(outputFile, "\"\n");
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -27789,8 +28077,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkWaylandSurfaceCreateI
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
+        OutputStringJson(outputFile, "\"value\" : \"");
         OutputAddrJson(outputFile, pstruct_in.surface); // PXR
-        OutputStringJson(outputFile, "\"\n");
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -27905,8 +28193,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkAndroidSurfaceCreateI
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
+        OutputStringJson(outputFile, "\"value\" : \"");
         OutputAddrJson(outputFile, pstruct_in.window); // PXR
-        OutputStringJson(outputFile, "\"\n");
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -28021,8 +28309,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkWin32SurfaceCreateInf
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
+        OutputStringJson(outputFile, "\"value\" : \"");
         OutputAddrJson(outputFile, pstruct_in.hinstance); // PXR
-        OutputStringJson(outputFile, "\"\n");
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -28050,8 +28338,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkWin32SurfaceCreateInf
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
+        OutputStringJson(outputFile, "\"value\" : \"");
         OutputAddrJson(outputFile, pstruct_in.hwnd); // PXR
-        OutputStringJson(outputFile, "\"\n");
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -28166,8 +28454,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImportMemoryWin32Hand
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
+        OutputStringJson(outputFile, "\"value\" : \"");
         OutputAddrJson(outputFile, pstruct_in.handle); // PXR
-        OutputStringJson(outputFile, "\"\n");
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -28293,8 +28581,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkExportMemoryWin32Hand
         OutputAddrJson(outputFile, pstruct_in.pAttributes->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"value\" : \"");
         OutputScalarValueStructInfo vinfo_pAttributes = {false, false, false, nullptr};
+        OutputStringJson(outputFile, "\"value\" : ");
         OutputScalarValueJson(outputFile, pstruct_in.pAttributes->GetPointer(), vinfo_pAttributes); // PXT
         OutputStringJson(outputFile, "\"\n");
     } // HWR
@@ -29226,8 +29514,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImportSemaphoreWin32H
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
+        OutputStringJson(outputFile, "\"value\" : \"");
         OutputAddrJson(outputFile, pstruct_in.handle); // PXR
-        OutputStringJson(outputFile, "\"\n");
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -29353,8 +29641,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkExportSemaphoreWin32H
         OutputAddrJson(outputFile, pstruct_in.pAttributes->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"value\" : \"");
         OutputScalarValueStructInfo vinfo_pAttributes = {false, false, false, nullptr};
+        OutputStringJson(outputFile, "\"value\" : ");
         OutputScalarValueJson(outputFile, pstruct_in.pAttributes->GetPointer(), vinfo_pAttributes); // PXT
         OutputStringJson(outputFile, "\"\n");
     } // HWR
@@ -30133,7 +30421,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkRectLayerKHR &pstruct
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"offset\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.offset, indent,  base_addr + offsetof(VkRectLayerKHR, offset)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -30149,7 +30437,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkRectLayerKHR &pstruct
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"extent\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.extent, indent,  base_addr + offsetof(VkRectLayerKHR, extent)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -30227,7 +30515,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPresentRegionKHR &pst
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkRectLayerKHR", pstruct_in.pRectangles->GetMetaStructPointer(), "pRectangles", pstruct->rectangleCount, false, pstruct_in.pRectangles->GetAddress(), sizeof(VkRectLayerKHR)); // CCY
+        if (pstruct_in.pRectangles->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkRectLayerKHR", pstruct_in.pRectangles->GetMetaStructPointer(), "pRectangles", pstruct->rectangleCount, false, pstruct_in.pRectangles->GetAddress(), sizeof(VkRectLayerKHR)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -30342,7 +30636,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPresentRegionsKHR &ps
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkPresentRegionKHR", pstruct_in.pRegions->GetMetaStructPointer(), "pRegions", pstruct->swapchainCount, false, pstruct_in.pRegions->GetAddress(), sizeof(VkPresentRegionKHR)); // CCY
+        if (pstruct_in.pRegions->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkPresentRegionKHR", pstruct_in.pRegions->GetMetaStructPointer(), "pRegions", pstruct->swapchainCount, false, pstruct_in.pRegions->GetAddress(), sizeof(VkPresentRegionKHR)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -30745,7 +31045,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkFramebufferAttachment
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkFramebufferAttachmentImageInfoKHR", pstruct_in.pAttachmentImageInfos->GetMetaStructPointer(), "pAttachmentImageInfos", pstruct->attachmentImageInfoCount, false, pstruct_in.pAttachmentImageInfos->GetAddress(), sizeof(VkFramebufferAttachmentImageInfoKHR)); // CCY
+        if (pstruct_in.pAttachmentImageInfos->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkFramebufferAttachmentImageInfoKHR", pstruct_in.pAttachmentImageInfos->GetMetaStructPointer(), "pAttachmentImageInfos", pstruct->attachmentImageInfoCount, false, pstruct_in.pAttachmentImageInfos->GetAddress(), sizeof(VkFramebufferAttachmentImageInfoKHR)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -31371,7 +31677,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSubpassDescription2KH
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkAttachmentReference2KHR", pstruct_in.pInputAttachments->GetMetaStructPointer(), "pInputAttachments", pstruct->inputAttachmentCount, false, pstruct_in.pInputAttachments->GetAddress(), sizeof(VkAttachmentReference2KHR)); // CCY
+        if (pstruct_in.pInputAttachments->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkAttachmentReference2KHR", pstruct_in.pInputAttachments->GetMetaStructPointer(), "pInputAttachments", pstruct->inputAttachmentCount, false, pstruct_in.pInputAttachments->GetAddress(), sizeof(VkAttachmentReference2KHR)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -31416,7 +31728,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSubpassDescription2KH
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkAttachmentReference2KHR", pstruct_in.pColorAttachments->GetMetaStructPointer(), "pColorAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pColorAttachments->GetAddress(), sizeof(VkAttachmentReference2KHR)); // CCY
+        if (pstruct_in.pColorAttachments->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkAttachmentReference2KHR", pstruct_in.pColorAttachments->GetMetaStructPointer(), "pColorAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pColorAttachments->GetAddress(), sizeof(VkAttachmentReference2KHR)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -31444,7 +31762,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSubpassDescription2KH
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkAttachmentReference2KHR", pstruct_in.pResolveAttachments->GetMetaStructPointer(), "pResolveAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pResolveAttachments->GetAddress(), sizeof(VkAttachmentReference2KHR)); // CCY
+        if (pstruct_in.pResolveAttachments->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkAttachmentReference2KHR", pstruct_in.pResolveAttachments->GetMetaStructPointer(), "pResolveAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pResolveAttachments->GetAddress(), sizeof(VkAttachmentReference2KHR)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -31471,8 +31795,14 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSubpassDescription2KH
         OutputAddrJson(outputFile, pstruct_in.pDepthStencilAttachment->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"members\" :\n");
-        OutputStructureJson(outputFile, *pstruct_in.pDepthStencilAttachment->GetMetaStructPointer(), indent,  base_addr + offsetof(VkSubpassDescription2KHR, pDepthStencilAttachment)); // GLY
+        if (pstruct_in.pDepthStencilAttachment->HasData()) { // RXP
+            OutputStringJson(outputFile, "\n");
+            OutputStructureJson(outputFile, *pstruct_in.pDepthStencilAttachment->GetMetaStructPointer(), indent,  base_addr + offsetof(VkSubpassDescription2KHR, pDepthStencilAttachment)); // GLY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA");
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -31856,7 +32186,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkRenderPassCreateInfo2
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkAttachmentDescription2KHR", pstruct_in.pAttachments->GetMetaStructPointer(), "pAttachments", pstruct->attachmentCount, false, pstruct_in.pAttachments->GetAddress(), sizeof(VkAttachmentDescription2KHR)); // CCY
+        if (pstruct_in.pAttachments->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkAttachmentDescription2KHR", pstruct_in.pAttachments->GetMetaStructPointer(), "pAttachments", pstruct->attachmentCount, false, pstruct_in.pAttachments->GetAddress(), sizeof(VkAttachmentDescription2KHR)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -31901,7 +32237,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkRenderPassCreateInfo2
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkSubpassDescription2KHR", pstruct_in.pSubpasses->GetMetaStructPointer(), "pSubpasses", pstruct->subpassCount, false, pstruct_in.pSubpasses->GetAddress(), sizeof(VkSubpassDescription2KHR)); // CCY
+        if (pstruct_in.pSubpasses->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkSubpassDescription2KHR", pstruct_in.pSubpasses->GetMetaStructPointer(), "pSubpasses", pstruct->subpassCount, false, pstruct_in.pSubpasses->GetAddress(), sizeof(VkSubpassDescription2KHR)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -31946,7 +32288,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkRenderPassCreateInfo2
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkSubpassDependency2KHR", pstruct_in.pDependencies->GetMetaStructPointer(), "pDependencies", pstruct->dependencyCount, false, pstruct_in.pDependencies->GetAddress(), sizeof(VkSubpassDependency2KHR)); // CCY
+        if (pstruct_in.pDependencies->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkSubpassDependency2KHR", pstruct_in.pDependencies->GetMetaStructPointer(), "pDependencies", pstruct->dependencyCount, false, pstruct_in.pDependencies->GetAddress(), sizeof(VkSubpassDependency2KHR)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -32385,8 +32733,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImportFenceWin32Handl
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
+        OutputStringJson(outputFile, "\"value\" : \"");
         OutputAddrJson(outputFile, pstruct_in.handle); // PXR
-        OutputStringJson(outputFile, "\"\n");
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -32512,8 +32860,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkExportFenceWin32Handl
         OutputAddrJson(outputFile, pstruct_in.pAttributes->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"value\" : \"");
         OutputScalarValueStructInfo vinfo_pAttributes = {false, false, false, nullptr};
+        OutputStringJson(outputFile, "\"value\" : ");
         OutputScalarValueJson(outputFile, pstruct_in.pAttributes->GetPointer(), vinfo_pAttributes); // PXT
         OutputStringJson(outputFile, "\"\n");
     } // HWR
@@ -33080,7 +33428,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSurfaceCapabilities2K
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"surfaceCapabilities\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.surfaceCapabilities, indent,  base_addr + offsetof(VkSurfaceCapabilities2KHR, surfaceCapabilities)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -33166,7 +33514,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSurfaceFormat2KHR &ps
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"surfaceFormat\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.surfaceFormat, indent,  base_addr + offsetof(VkSurfaceFormat2KHR, surfaceFormat)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -33252,7 +33600,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDisplayProperties2KHR
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"displayProperties\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.displayProperties, indent,  base_addr + offsetof(VkDisplayProperties2KHR, displayProperties)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -33338,7 +33686,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDisplayPlanePropertie
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"displayPlaneProperties\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.displayPlaneProperties, indent,  base_addr + offsetof(VkDisplayPlaneProperties2KHR, displayPlaneProperties)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -33424,7 +33772,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDisplayModeProperties
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"displayModeProperties\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.displayModeProperties, indent,  base_addr + offsetof(VkDisplayModeProperties2KHR, displayModeProperties)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -33614,7 +33962,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDisplayPlaneCapabilit
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"capabilities\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.capabilities, indent,  base_addr + offsetof(VkDisplayPlaneCapabilities2KHR, capabilities)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -34375,7 +34723,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceDriverP
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"conformanceVersion\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.conformanceVersion, indent,  base_addr + offsetof(VkPhysicalDeviceDriverPropertiesKHR, conformanceVersion)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -34865,8 +35213,14 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSubpassDescriptionDep
         OutputAddrJson(outputFile, pstruct_in.pDepthStencilResolveAttachment->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"members\" :\n");
-        OutputStructureJson(outputFile, *pstruct_in.pDepthStencilResolveAttachment->GetMetaStructPointer(), indent,  base_addr + offsetof(VkSubpassDescriptionDepthStencilResolveKHR, pDepthStencilResolveAttachment)); // GLY
+        if (pstruct_in.pDepthStencilResolveAttachment->HasData()) { // RXP
+            OutputStringJson(outputFile, "\n");
+            OutputStructureJson(outputFile, *pstruct_in.pDepthStencilResolveAttachment->GetMetaStructPointer(), indent,  base_addr + offsetof(VkSubpassDescriptionDepthStencilResolveKHR, pDepthStencilResolveAttachment)); // GLY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA");
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -36658,7 +37012,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineExecutableSta
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"value\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.value, indent,  base_addr + offsetof(VkPipelineExecutableStatisticKHR, value)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -36965,8 +37319,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDebugReportCallbackCr
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
+        OutputStringJson(outputFile, "\"value\" : \"");
         OutputAddrJson(outputFile, pstruct_in.pUserData); // PXR
-        OutputStringJson(outputFile, "\"\n");
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -37180,7 +37534,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDebugMarkerObjectName
     else
     { // JHD
         OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"value\" : ");
+        OutputStringJson(outputFile, "\"value\" : "); // HFW
         StringToQuotedStringJson(outputFile, pstruct->pObjectName); // TLK
         OutputStringJson(outputFile, "\n");
     } // HWR
@@ -37442,7 +37796,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDebugMarkerMarkerInfo
     else
     { // JHD
         OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"value\" : ");
+        OutputStringJson(outputFile, "\"value\" : "); // HFW
         StringToQuotedStringJson(outputFile, pstruct->pMarkerName); // TLK
         OutputStringJson(outputFile, "\n");
     } // HWR
@@ -38552,7 +38906,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkShaderStatisticsInfoA
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"resourceUsage\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.resourceUsage, indent,  base_addr + offsetof(VkShaderStatisticsInfoAMD, resourceUsage)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -38867,7 +39221,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkExternalImageFormatPr
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"imageFormatProperties\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.imageFormatProperties, indent,  base_addr + offsetof(VkExternalImageFormatPropertiesNV, imageFormatProperties)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -39207,8 +39561,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImportMemoryWin32Hand
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
+        OutputStringJson(outputFile, "\"value\" : \"");
         OutputAddrJson(outputFile, pstruct_in.handle); // PXR
-        OutputStringJson(outputFile, "\"\n");
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -39305,8 +39659,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkExportMemoryWin32Hand
         OutputAddrJson(outputFile, pstruct_in.pAttributes->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"value\" : \"");
         OutputScalarValueStructInfo vinfo_pAttributes = {false, false, false, nullptr};
+        OutputStringJson(outputFile, "\"value\" : ");
         OutputScalarValueJson(outputFile, pstruct_in.pAttributes->GetPointer(), vinfo_pAttributes); // PXT
         OutputStringJson(outputFile, "\"\n");
     } // HWR
@@ -39805,8 +40159,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkViSurfaceCreateInfoNN
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
+        OutputStringJson(outputFile, "\"value\" : \"");
         OutputAddrJson(outputFile, pstruct_in.window); // PXR
-        OutputStringJson(outputFile, "\"\n");
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -40921,7 +41275,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkIndirectCommandsLayou
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkIndirectCommandsLayoutTokenNVX", pstruct_in.pTokens->GetMetaStructPointer(), "pTokens", pstruct->tokenCount, false, pstruct_in.pTokens->GetAddress(), sizeof(VkIndirectCommandsLayoutTokenNVX)); // CCY
+        if (pstruct_in.pTokens->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkIndirectCommandsLayoutTokenNVX", pstruct_in.pTokens->GetMetaStructPointer(), "pTokens", pstruct->tokenCount, false, pstruct_in.pTokens->GetAddress(), sizeof(VkIndirectCommandsLayoutTokenNVX)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -41070,7 +41430,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkCmdProcessCommandsInf
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkIndirectCommandsTokenNVX", pstruct_in.pIndirectCommandsTokens->GetMetaStructPointer(), "pIndirectCommandsTokens", pstruct->indirectCommandsTokenCount, false, pstruct_in.pIndirectCommandsTokens->GetAddress(), sizeof(VkIndirectCommandsTokenNVX)); // CCY
+        if (pstruct_in.pIndirectCommandsTokens->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkIndirectCommandsTokenNVX", pstruct_in.pIndirectCommandsTokens->GetMetaStructPointer(), "pIndirectCommandsTokens", pstruct->indirectCommandsTokenCount, false, pstruct_in.pIndirectCommandsTokens->GetAddress(), sizeof(VkIndirectCommandsTokenNVX)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -42170,7 +42536,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineViewportWScal
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkViewportWScalingNV", pstruct_in.pViewportWScalings->GetMetaStructPointer(), "pViewportWScalings", pstruct->viewportCount, false, pstruct_in.pViewportWScalings->GetAddress(), sizeof(VkViewportWScalingNV)); // CCY
+        if (pstruct_in.pViewportWScalings->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkViewportWScalingNV", pstruct_in.pViewportWScalings->GetMetaStructPointer(), "pViewportWScalings", pstruct->viewportCount, false, pstruct_in.pViewportWScalings->GetAddress(), sizeof(VkViewportWScalingNV)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -42290,7 +42662,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSurfaceCapabilities2E
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"currentExtent\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.currentExtent, indent,  base_addr + offsetof(VkSurfaceCapabilities2EXT, currentExtent)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -42306,7 +42678,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSurfaceCapabilities2E
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"minImageExtent\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.minImageExtent, indent,  base_addr + offsetof(VkSurfaceCapabilities2EXT, minImageExtent)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -42322,7 +42694,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSurfaceCapabilities2E
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"maxImageExtent\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.maxImageExtent, indent,  base_addr + offsetof(VkSurfaceCapabilities2EXT, maxImageExtent)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -43071,7 +43443,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPresentTimesInfoGOOGL
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkPresentTimeGOOGLE", pstruct_in.pTimes->GetMetaStructPointer(), "pTimes", pstruct->swapchainCount, false, pstruct_in.pTimes->GetAddress(), sizeof(VkPresentTimeGOOGLE)); // CCY
+        if (pstruct_in.pTimes->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkPresentTimeGOOGLE", pstruct_in.pTimes->GetMetaStructPointer(), "pTimes", pstruct->swapchainCount, false, pstruct_in.pTimes->GetAddress(), sizeof(VkPresentTimeGOOGLE)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -43374,7 +43752,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineViewportSwizz
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkViewportSwizzleNV", pstruct_in.pViewportSwizzles->GetMetaStructPointer(), "pViewportSwizzles", pstruct->viewportCount, false, pstruct_in.pViewportSwizzles->GetAddress(), sizeof(VkViewportSwizzleNV)); // CCY
+        if (pstruct_in.pViewportSwizzles->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkViewportSwizzleNV", pstruct_in.pViewportSwizzles->GetMetaStructPointer(), "pViewportSwizzles", pstruct->viewportCount, false, pstruct_in.pViewportSwizzles->GetAddress(), sizeof(VkViewportSwizzleNV)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -43610,7 +43994,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineDiscardRectan
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkRect2D", pstruct_in.pDiscardRectangles->GetMetaStructPointer(), "pDiscardRectangles", pstruct->discardRectangleCount, false, pstruct_in.pDiscardRectangles->GetAddress(), sizeof(VkRect2D)); // CCY
+        if (pstruct_in.pDiscardRectangles->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkRect2D", pstruct_in.pDiscardRectangles->GetMetaStructPointer(), "pDiscardRectangles", pstruct->discardRectangleCount, false, pstruct_in.pDiscardRectangles->GetAddress(), sizeof(VkRect2D)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -44281,7 +44671,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkHdrMetadataEXT &pstru
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"displayPrimaryRed\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.displayPrimaryRed, indent,  base_addr + offsetof(VkHdrMetadataEXT, displayPrimaryRed)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -44297,7 +44687,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkHdrMetadataEXT &pstru
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"displayPrimaryGreen\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.displayPrimaryGreen, indent,  base_addr + offsetof(VkHdrMetadataEXT, displayPrimaryGreen)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -44313,7 +44703,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkHdrMetadataEXT &pstru
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"displayPrimaryBlue\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.displayPrimaryBlue, indent,  base_addr + offsetof(VkHdrMetadataEXT, displayPrimaryBlue)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -44329,7 +44719,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkHdrMetadataEXT &pstru
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"whitePoint\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.whitePoint, indent,  base_addr + offsetof(VkHdrMetadataEXT, whitePoint)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -44512,8 +44902,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkIOSSurfaceCreateInfoM
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
+        OutputStringJson(outputFile, "\"value\" : \"");
         OutputAddrJson(outputFile, pstruct_in.pView); // PXR
-        OutputStringJson(outputFile, "\"\n");
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -44628,8 +45018,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkMacOSSurfaceCreateInf
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
+        OutputStringJson(outputFile, "\"value\" : \"");
         OutputAddrJson(outputFile, pstruct_in.pView); // PXR
-        OutputStringJson(outputFile, "\"\n");
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -44756,7 +45146,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDebugUtilsObjectNameI
     else
     { // JHD
         OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"value\" : ");
+        OutputStringJson(outputFile, "\"value\" : "); // HFW
         StringToQuotedStringJson(outputFile, pstruct->pObjectName); // TLK
         OutputStringJson(outputFile, "\n");
     } // HWR
@@ -45018,7 +45408,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDebugUtilsLabelEXT &p
     else
     { // JHD
         OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"value\" : ");
+        OutputStringJson(outputFile, "\"value\" : "); // HFW
         StringToQuotedStringJson(outputFile, pstruct->pLabelName); // TLK
         OutputStringJson(outputFile, "\n");
     } // HWR
@@ -45154,7 +45544,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDebugUtilsMessengerCa
     else
     { // JHD
         OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"value\" : ");
+        OutputStringJson(outputFile, "\"value\" : "); // HFW
         StringToQuotedStringJson(outputFile, pstruct->pMessageIdName); // TLK
         OutputStringJson(outputFile, "\n");
     } // HWR
@@ -45196,7 +45586,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDebugUtilsMessengerCa
     else
     { // JHD
         OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"value\" : ");
+        OutputStringJson(outputFile, "\"value\" : "); // HFW
         StringToQuotedStringJson(outputFile, pstruct->pMessage); // TLK
         OutputStringJson(outputFile, "\n");
     } // HWR
@@ -45243,7 +45633,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDebugUtilsMessengerCa
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkDebugUtilsLabelEXT", pstruct_in.pQueueLabels->GetMetaStructPointer(), "pQueueLabels", pstruct->queueLabelCount, false, pstruct_in.pQueueLabels->GetAddress(), sizeof(VkDebugUtilsLabelEXT)); // CCY
+        if (pstruct_in.pQueueLabels->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkDebugUtilsLabelEXT", pstruct_in.pQueueLabels->GetMetaStructPointer(), "pQueueLabels", pstruct->queueLabelCount, false, pstruct_in.pQueueLabels->GetAddress(), sizeof(VkDebugUtilsLabelEXT)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -45288,7 +45684,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDebugUtilsMessengerCa
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkDebugUtilsLabelEXT", pstruct_in.pCmdBufLabels->GetMetaStructPointer(), "pCmdBufLabels", pstruct->cmdBufLabelCount, false, pstruct_in.pCmdBufLabels->GetAddress(), sizeof(VkDebugUtilsLabelEXT)); // CCY
+        if (pstruct_in.pCmdBufLabels->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkDebugUtilsLabelEXT", pstruct_in.pCmdBufLabels->GetMetaStructPointer(), "pCmdBufLabels", pstruct->cmdBufLabelCount, false, pstruct_in.pCmdBufLabels->GetAddress(), sizeof(VkDebugUtilsLabelEXT)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -45333,7 +45735,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDebugUtilsMessengerCa
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkDebugUtilsObjectNameInfoEXT", pstruct_in.pObjects->GetMetaStructPointer(), "pObjects", pstruct->objectCount, false, pstruct_in.pObjects->GetAddress(), sizeof(VkDebugUtilsObjectNameInfoEXT)); // CCY
+        if (pstruct_in.pObjects->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkDebugUtilsObjectNameInfoEXT", pstruct_in.pObjects->GetMetaStructPointer(), "pObjects", pstruct->objectCount, false, pstruct_in.pObjects->GetAddress(), sizeof(VkDebugUtilsObjectNameInfoEXT)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -45499,8 +45907,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDebugUtilsMessengerCr
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
+        OutputStringJson(outputFile, "\"value\" : \"");
         OutputAddrJson(outputFile, pstruct_in.pUserData); // PXR
-        OutputStringJson(outputFile, "\"\n");
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -45828,7 +46236,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkAndroidHardwareBuffer
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"samplerYcbcrConversionComponents\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.samplerYcbcrConversionComponents, indent,  base_addr + offsetof(VkAndroidHardwareBufferFormatPropertiesANDROID, samplerYcbcrConversionComponents)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -45994,8 +46402,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImportAndroidHardware
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
+        OutputStringJson(outputFile, "\"value\" : \"");
         OutputAddrJson(outputFile, pstruct_in.buffer); // PXR
-        OutputStringJson(outputFile, "\"\n");
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -46975,7 +47383,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSampleLocationsInfoEX
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"sampleLocationGridSize\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.sampleLocationGridSize, indent,  base_addr + offsetof(VkSampleLocationsInfoEXT, sampleLocationGridSize)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -47020,7 +47428,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSampleLocationsInfoEX
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkSampleLocationEXT", pstruct_in.pSampleLocations->GetMetaStructPointer(), "pSampleLocations", pstruct->sampleLocationsCount, false, pstruct_in.pSampleLocations->GetAddress(), sizeof(VkSampleLocationEXT)); // CCY
+        if (pstruct_in.pSampleLocations->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkSampleLocationEXT", pstruct_in.pSampleLocations->GetMetaStructPointer(), "pSampleLocations", pstruct->sampleLocationsCount, false, pstruct_in.pSampleLocations->GetAddress(), sizeof(VkSampleLocationEXT)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -47069,7 +47483,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkAttachmentSampleLocat
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"sampleLocationsInfo\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.sampleLocationsInfo, indent,  base_addr + offsetof(VkAttachmentSampleLocationsEXT, sampleLocationsInfo)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -47118,7 +47532,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSubpassSampleLocation
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"sampleLocationsInfo\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.sampleLocationsInfo, indent,  base_addr + offsetof(VkSubpassSampleLocationsEXT, sampleLocationsInfo)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -47233,7 +47647,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkRenderPassSampleLocat
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkAttachmentSampleLocationsEXT", pstruct_in.pAttachmentInitialSampleLocations->GetMetaStructPointer(), "pAttachmentInitialSampleLocations", pstruct->attachmentInitialSampleLocationsCount, false, pstruct_in.pAttachmentInitialSampleLocations->GetAddress(), sizeof(VkAttachmentSampleLocationsEXT)); // CCY
+        if (pstruct_in.pAttachmentInitialSampleLocations->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkAttachmentSampleLocationsEXT", pstruct_in.pAttachmentInitialSampleLocations->GetMetaStructPointer(), "pAttachmentInitialSampleLocations", pstruct->attachmentInitialSampleLocationsCount, false, pstruct_in.pAttachmentInitialSampleLocations->GetAddress(), sizeof(VkAttachmentSampleLocationsEXT)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -47278,7 +47698,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkRenderPassSampleLocat
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkSubpassSampleLocationsEXT", pstruct_in.pPostSubpassSampleLocations->GetMetaStructPointer(), "pPostSubpassSampleLocations", pstruct->postSubpassSampleLocationsCount, false, pstruct_in.pPostSubpassSampleLocations->GetAddress(), sizeof(VkSubpassSampleLocationsEXT)); // CCY
+        if (pstruct_in.pPostSubpassSampleLocations->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkSubpassSampleLocationsEXT", pstruct_in.pPostSubpassSampleLocations->GetMetaStructPointer(), "pPostSubpassSampleLocations", pstruct->postSubpassSampleLocationsCount, false, pstruct_in.pPostSubpassSampleLocations->GetAddress(), sizeof(VkSubpassSampleLocationsEXT)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -47381,7 +47807,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineSampleLocatio
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"sampleLocationsInfo\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.sampleLocationsInfo, indent,  base_addr + offsetof(VkPipelineSampleLocationsStateCreateInfoEXT, sampleLocationsInfo)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -47484,7 +47910,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceSampleL
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"maxSampleLocationGridSize\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.maxSampleLocationGridSize, indent,  base_addr + offsetof(VkPhysicalDeviceSampleLocationsPropertiesEXT, maxSampleLocationGridSize)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -47628,7 +48054,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkMultisampleProperties
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"maxSampleLocationGridSize\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.maxSampleLocationGridSize, indent,  base_addr + offsetof(VkMultisamplePropertiesEXT, maxSampleLocationGridSize)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -48669,7 +49095,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDrmFormatModifierProp
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkDrmFormatModifierPropertiesEXT", pstruct_in.pDrmFormatModifierProperties->GetMetaStructPointer(), "pDrmFormatModifierProperties", pstruct->drmFormatModifierCount, false, pstruct_in.pDrmFormatModifierProperties->GetAddress(), sizeof(VkDrmFormatModifierPropertiesEXT)); // CCY
+        if (pstruct_in.pDrmFormatModifierProperties->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkDrmFormatModifierPropertiesEXT", pstruct_in.pDrmFormatModifierProperties->GetMetaStructPointer(), "pDrmFormatModifierProperties", pstruct->drmFormatModifierCount, false, pstruct_in.pDrmFormatModifierProperties->GetAddress(), sizeof(VkDrmFormatModifierPropertiesEXT)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -49067,7 +49499,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageDrmFormatModifie
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkSubresourceLayout", pstruct_in.pPlaneLayouts->GetMetaStructPointer(), "pPlaneLayouts", pstruct->drmFormatModifierPlaneCount, false, pstruct_in.pPlaneLayouts->GetAddress(), sizeof(VkSubresourceLayout)); // CCY
+        if (pstruct_in.pPlaneLayouts->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkSubresourceLayout", pstruct_in.pPlaneLayouts->GetMetaStructPointer(), "pPlaneLayouts", pstruct->drmFormatModifierPlaneCount, false, pstruct_in.pPlaneLayouts->GetAddress(), sizeof(VkSubresourceLayout)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -50758,7 +51196,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineViewportShadi
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkShadingRatePaletteNV", pstruct_in.pShadingRatePalettes->GetMetaStructPointer(), "pShadingRatePalettes", pstruct->viewportCount, false, pstruct_in.pShadingRatePalettes->GetAddress(), sizeof(VkShadingRatePaletteNV)); // CCY
+        if (pstruct_in.pShadingRatePalettes->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkShadingRatePaletteNV", pstruct_in.pShadingRatePalettes->GetMetaStructPointer(), "pShadingRatePalettes", pstruct->viewportCount, false, pstruct_in.pShadingRatePalettes->GetAddress(), sizeof(VkShadingRatePaletteNV)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -50948,7 +51392,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceShading
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"shadingRateTexelSize\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.shadingRateTexelSize, indent,  base_addr + offsetof(VkPhysicalDeviceShadingRateImagePropertiesNV, shadingRateTexelSize)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -51144,7 +51588,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkCoarseSampleOrderCust
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkCoarseSampleLocationNV", pstruct_in.pSampleLocations->GetMetaStructPointer(), "pSampleLocations", pstruct->sampleLocationCount, false, pstruct_in.pSampleLocations->GetAddress(), sizeof(VkCoarseSampleLocationNV)); // CCY
+        if (pstruct_in.pSampleLocations->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkCoarseSampleLocationNV", pstruct_in.pSampleLocations->GetMetaStructPointer(), "pSampleLocations", pstruct->sampleLocationCount, false, pstruct_in.pSampleLocations->GetAddress(), sizeof(VkCoarseSampleLocationNV)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -51276,7 +51726,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineViewportCoars
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkCoarseSampleOrderCustomNV", pstruct_in.pCustomSampleOrders->GetMetaStructPointer(), "pCustomSampleOrders", pstruct->customSampleOrderCount, false, pstruct_in.pCustomSampleOrders->GetAddress(), sizeof(VkCoarseSampleOrderCustomNV)); // CCY
+        if (pstruct_in.pCustomSampleOrders->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkCoarseSampleOrderCustomNV", pstruct_in.pCustomSampleOrders->GetMetaStructPointer(), "pCustomSampleOrders", pstruct->customSampleOrderCount, false, pstruct_in.pCustomSampleOrders->GetAddress(), sizeof(VkCoarseSampleOrderCustomNV)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -51563,7 +52019,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkRayTracingPipelineCre
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkPipelineShaderStageCreateInfo", pstruct_in.pStages->GetMetaStructPointer(), "pStages", pstruct->stageCount, false, pstruct_in.pStages->GetAddress(), sizeof(VkPipelineShaderStageCreateInfo)); // CCY
+        if (pstruct_in.pStages->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkPipelineShaderStageCreateInfo", pstruct_in.pStages->GetMetaStructPointer(), "pStages", pstruct->stageCount, false, pstruct_in.pStages->GetAddress(), sizeof(VkPipelineShaderStageCreateInfo)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -51608,7 +52070,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkRayTracingPipelineCre
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkRayTracingShaderGroupCreateInfoNV", pstruct_in.pGroups->GetMetaStructPointer(), "pGroups", pstruct->groupCount, false, pstruct_in.pGroups->GetAddress(), sizeof(VkRayTracingShaderGroupCreateInfoNV)); // CCY
+        if (pstruct_in.pGroups->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkRayTracingShaderGroupCreateInfoNV", pstruct_in.pGroups->GetMetaStructPointer(), "pGroups", pstruct->groupCount, false, pstruct_in.pGroups->GetAddress(), sizeof(VkRayTracingShaderGroupCreateInfoNV)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -52103,7 +52571,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkGeometryDataNV &pstru
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"triangles\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.triangles, indent,  base_addr + offsetof(VkGeometryDataNV, triangles)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -52119,7 +52587,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkGeometryDataNV &pstru
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"aabbs\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.aabbs, indent,  base_addr + offsetof(VkGeometryDataNV, aabbs)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -52222,7 +52690,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkGeometryNV &pstruct_i
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"geometry\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.geometry, indent,  base_addr + offsetof(VkGeometryNV, geometry)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -52405,7 +52873,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkAccelerationStructure
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkGeometryNV", pstruct_in.pGeometries->GetMetaStructPointer(), "pGeometries", pstruct->geometryCount, false, pstruct_in.pGeometries->GetAddress(), sizeof(VkGeometryNV)); // CCY
+        if (pstruct_in.pGeometries->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkGeometryNV", pstruct_in.pGeometries->GetMetaStructPointer(), "pGeometries", pstruct->geometryCount, false, pstruct_in.pGeometries->GetAddress(), sizeof(VkGeometryNV)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -52508,7 +52982,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkAccelerationStructure
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"info\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.info, indent,  base_addr + offsetof(VkAccelerationStructureCreateInfoNV, info)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -53668,8 +54142,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImportMemoryHostPoint
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
+        OutputStringJson(outputFile, "\"value\" : \"");
         OutputAddrJson(outputFile, pstruct_in.pHostPointer); // PXR
-        OutputStringJson(outputFile, "\"\n");
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -54664,7 +55138,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineVertexInputDi
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkVertexInputBindingDivisorDescriptionEXT", pstruct_in.pVertexBindingDivisors->GetMetaStructPointer(), "pVertexBindingDivisors", pstruct->vertexBindingDivisorCount, false, pstruct_in.pVertexBindingDivisors->GetAddress(), sizeof(VkVertexInputBindingDivisorDescriptionEXT)); // CCY
+        if (pstruct_in.pVertexBindingDivisors->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkVertexInputBindingDivisorDescriptionEXT", pstruct_in.pVertexBindingDivisors->GetMetaStructPointer(), "pVertexBindingDivisors", pstruct->vertexBindingDivisorCount, false, pstruct_in.pVertexBindingDivisors->GetAddress(), sizeof(VkVertexInputBindingDivisorDescriptionEXT)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -55002,8 +55482,14 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineCreationFeedb
         OutputAddrJson(outputFile, pstruct_in.pPipelineCreationFeedback->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"members\" :\n");
-        OutputStructureJson(outputFile, *pstruct_in.pPipelineCreationFeedback->GetMetaStructPointer(), indent,  base_addr + offsetof(VkPipelineCreationFeedbackCreateInfoEXT, pPipelineCreationFeedback)); // GLY
+        if (pstruct_in.pPipelineCreationFeedback->HasData()) { // RXP
+            OutputStringJson(outputFile, "\n");
+            OutputStructureJson(outputFile, *pstruct_in.pPipelineCreationFeedback->GetMetaStructPointer(), indent,  base_addr + offsetof(VkPipelineCreationFeedbackCreateInfoEXT, pPipelineCreationFeedback)); // GLY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA");
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -55048,7 +55534,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineCreationFeedb
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkPipelineCreationFeedbackEXT", pstruct_in.pPipelineStageCreationFeedbacks->GetMetaStructPointer(), "pPipelineStageCreationFeedbacks", pstruct->pipelineStageCreationFeedbackCount, false, pstruct_in.pPipelineStageCreationFeedbacks->GetAddress(), sizeof(VkPipelineCreationFeedbackEXT)); // CCY
+        if (pstruct_in.pPipelineStageCreationFeedbacks->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkPipelineCreationFeedbackEXT", pstruct_in.pPipelineStageCreationFeedbacks->GetMetaStructPointer(), "pPipelineStageCreationFeedbacks", pstruct->pipelineStageCreationFeedbackCount, false, pstruct_in.pPipelineStageCreationFeedbacks->GetAddress(), sizeof(VkPipelineCreationFeedbackEXT)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -55900,7 +56392,13 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineViewportExclu
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        OutputArrayOfStructsJson(outputFile, indent, "VkRect2D", pstruct_in.pExclusiveScissors->GetMetaStructPointer(), "pExclusiveScissors", pstruct->exclusiveScissorCount, false, pstruct_in.pExclusiveScissors->GetAddress(), sizeof(VkRect2D)); // CCY
+        if (pstruct_in.pExclusiveScissors->HasData()) { // TGW
+            OutputArrayOfStructsJson(outputFile, indent, "VkRect2D", pstruct_in.pExclusiveScissors->GetMetaStructPointer(), "pExclusiveScissors", pstruct->exclusiveScissorCount, false, pstruct_in.pExclusiveScissors->GetAddress(), sizeof(VkRect2D)); // CCY
+        } else {
+            OutputStringJson(outputFile, " ");
+            StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
+            OutputStringJson(outputFile, "\n");
+        }
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -56189,8 +56687,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkCheckpointDataNV &pst
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
+        OutputStringJson(outputFile, "\"value\" : \"");
         OutputAddrJson(outputFile, pstruct_in.pCheckpointMarker); // PXR
-        OutputStringJson(outputFile, "\"\n");
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -56384,7 +56882,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPerformanceValueDataI
     else
     { // JHD
         OutputIndentJson(outputFile, indent);
-        OutputStringJson(outputFile, "\"value\" : ");
+        OutputStringJson(outputFile, "\"value\" : "); // HFW
         StringToQuotedStringJson(outputFile, pstruct->valueString); // TLK
         OutputStringJson(outputFile, "\n");
     } // HWR
@@ -56435,7 +56933,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPerformanceValueINTEL
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"data\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.data, indent,  base_addr + offsetof(VkPerformanceValueINTEL, data)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -56533,8 +57031,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkInitializePerformance
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
+        OutputStringJson(outputFile, "\"value\" : \"");
         OutputAddrJson(outputFile, pstruct_in.pUserData); // PXR
-        OutputStringJson(outputFile, "\"\n");
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -57534,8 +58032,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkMetalSurfaceCreateInf
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
+        OutputStringJson(outputFile, "\"value\" : \"");
         OutputAddrJson(outputFile, pstruct_in.pLayer); // PXR
-        OutputStringJson(outputFile, "\"\n");
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -57742,7 +58240,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceFragmen
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"minFragmentDensityTexelSize\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.minFragmentDensityTexelSize, indent,  base_addr + offsetof(VkPhysicalDeviceFragmentDensityMapPropertiesEXT, minFragmentDensityTexelSize)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -57758,7 +58256,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceFragmen
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"maxFragmentDensityTexelSize\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.maxFragmentDensityTexelSize, indent,  base_addr + offsetof(VkPhysicalDeviceFragmentDensityMapPropertiesEXT, maxFragmentDensityTexelSize)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -57861,7 +58359,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkRenderPassFragmentDen
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"fragmentDensityMapAttachment\",\n");
     OutputIndentJson(outputFile, indent);
-    OutputStringJson(outputFile, "\"members\" :\n");
+    OutputStringJson(outputFile, "\"members\" :\n"); // HHZ
     OutputStructureJson(outputFile, *pstruct_in.fragmentDensityMapAttachment, indent,  base_addr + offsetof(VkRenderPassFragmentDensityMapCreateInfoEXT, fragmentDensityMapAttachment)); // APJ
     indent--;
     OutputIndentJson(outputFile, indent); // UEW
@@ -60597,8 +61095,8 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSurfaceFullScreenExcl
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"value\" : \"");
+        OutputStringJson(outputFile, "\"value\" : \"");
         OutputAddrJson(outputFile, pstruct_in.hmonitor); // PXR
-        OutputStringJson(outputFile, "\"\n");
     } // HWR
     indent--;
     OutputIndentJson(outputFile, indent); // UEW

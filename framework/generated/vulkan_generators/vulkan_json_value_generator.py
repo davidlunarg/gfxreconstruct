@@ -30,7 +30,7 @@ class OutputValue(BaseGenerator):
         if self.isEnum(member.baseType) or self.isFlags(member.baseType):
             rval +='OutputEnum' + member.baseType.replace('Flags', 'FlagBits')
         else:
-            rval +='nullptr';
+            rval +='nullptr'
         rval += '}'
         return rval
 
@@ -112,9 +112,9 @@ class OutputValue(BaseGenerator):
                 self.wc('    if (' + pstruct + value.name + ' == nullptr) // WWX')
             elif isFuncArg:
                 if self.isOutputParameter(value):
-                    self.wc('    if (' + value.name + '->GetPointer() == nullptr) // WWY')
+                    self.wc('    if (' + value.name + '->IsNull()) // WWY')
                 else:
-                    self.wc('    if (' + value.name + '.GetPointer() == nullptr) // WWU')
+                    self.wc('    if (' + value.name + '.IsNull()) // WWU')
             else:
                 self.wc('    if (' + pstruct + value.name + ' == nullptr) // WWZ')
             self.wc('    {')
@@ -184,17 +184,25 @@ class OutputValue(BaseGenerator):
                 self.wc(leadSpaces + 'OutputStringJson(outputFile, "\\"elements\\" :"); // TRZ')
                 if isFuncArg:
                     if self.isOutputParameter(value):
-                        self.wc(leadSpaces + 'OutputArrayOfStructsJson(outputFile, indent, "' + value.baseType +
-                              '", ' + value.name + '->GetMetaStructPointer(), "' + value.name +
-                              '", ' + aLength + ', ' + str(self.isUnion(value.baseType)).lower() + ', ' + value.name + '->GetAddress(), sizeof(' + value.baseType + ')); // CRO')
+                        self.wc(leadSpaces + 'if (' + value.name + '->HasData()) { // YUW')
+                        self.wc(leadSpaces + '    OutputArrayOfStructsJson(outputFile, indent, "' + value.baseType +
+                                  '", ' + value.name + '->GetMetaStructPointer(), "' + value.name +
+                                  '", ' + aLength + ', ' + str(self.isUnion(value.baseType)).lower() + ', ' + value.name + '->GetAddress(), sizeof(' + value.baseType + ')); // CRO')
                     else:
-                        self.wc(leadSpaces + 'OutputArrayOfStructsJson(outputFile, indent, "' + value.baseType +
-                              '", ' + value.name + '.GetMetaStructPointer(), "' + value.name +
-                              '", ' + aLength + ', ' + str(self.isUnion(value.baseType)).lower() + ', ' + value.name + '.GetAddress(), sizeof(' + value.baseType + ')); // CRP')
+                        self.wc(leadSpaces + 'if (' + value.name + '.HasData()) { // YUP')
+                        self.wc(leadSpaces + '    OutputArrayOfStructsJson(outputFile, indent, "' + value.baseType +
+                                  '", ' + value.name + '.GetMetaStructPointer(), "' + value.name +
+                                  '", ' + aLength + ', ' + str(self.isUnion(value.baseType)).lower() + ', ' + value.name + '.GetAddress(), sizeof(' + value.baseType + ')); // CRP')
                 else:
-                    self.wc(leadSpaces + 'OutputArrayOfStructsJson(outputFile, indent, "' + value.baseType +
-                          '", ' + pstruct_in + value.name + '->GetMetaStructPointer(), "' + value.name +
-                          '", ' + aLength + ', ' + str(self.isUnion(value.baseType)).lower() + ', ' + pstruct_in + value.name + '->GetAddress(), sizeof(' + value.baseType + ')); // CCY')
+                    self.wc(leadSpaces + 'if (' + pstruct_in + value.name + '->HasData()) { // TGW')
+                    self.wc(leadSpaces + '    OutputArrayOfStructsJson(outputFile, indent, "' + value.baseType +
+                              '", ' + pstruct_in + value.name + '->GetMetaStructPointer(), "' + value.name +
+                              '", ' + aLength + ', ' + str(self.isUnion(value.baseType)).lower() + ', ' + pstruct_in + value.name + '->GetAddress(), sizeof(' + value.baseType + ')); // CCY')
+                self.wc(leadSpaces + '} else {')
+                self.wc(leadSpaces + '    OutputStringJson(outputFile, " ");')
+                self.wc(leadSpaces + '    StringToQuotedStringJson(outputFile, "NO DATA"); // NDV')
+                self.wc(leadSpaces + '    OutputStringJson(outputFile, "\\n");')
+                self.wc(leadSpaces + '}')
             elif value.fullType == "const char* const*":
                 # Array of strings
                 self.wc(leadSpaces + 'OutputIndentJson(outputFile, indent);')
@@ -208,7 +216,7 @@ class OutputValue(BaseGenerator):
                 self.wc(leadSpaces + 'OutputStringJson(outputFile, "\\"value\\" : "); // TRH')
                 self.wc(leadSpaces + 'OutputScalarValueStructInfo vinfo_' + value.name + ' = ' + OutputValue.setVinfo(self, value) + ';')
                 self.wc(leadSpaces + 'OutputArrayOfScalarsJson(outputFile, indent, "' + value.fullType +
-                            '", ' + pstruct_in + value.name + '.GetPointer(), "' + value.name + '", ' + aLength + ', vinfo_' + value.name + '); // TRJ')
+                                '", ' + pstruct_in + value.name + '.GetPointer(), "' + value.name + '", ' + aLength + ', vinfo_' + value.name + '); // TRJ')
                 self.wc(leadSpaces + 'OutputStringJson(outputFile, "\\n"); // TRX')
             elif self.isHandle(value.baseType) or value.name == 'dpy':
                 self.wc(leadSpaces + 'OutputIndentJson(outputFile, indent);')
@@ -248,19 +256,31 @@ class OutputValue(BaseGenerator):
         ###### Output structures
         elif self.isStruct(value.baseType) and (value.baseType in self.structDict):
             self.wc(leadSpaces + 'OutputIndentJson(outputFile, indent);')
-            self.wc(leadSpaces + 'OutputStringJson(outputFile, "\\"members\\" :\\n");')
             if value.isPointer and value.name != "dpy":
                 if isFuncArg:
+                    self.wc(leadSpaces + 'OutputStringJson(outputFile, "\\"members\\" :"); // HHW')
                     if self.isOutputParameter(value):
-                        self.wc(leadSpaces + 'OutputStructureJson(outputFile, *' + value.name + '->GetMetaStructPointer(), indent, ' +
-                                             value.name + '->GetAddress()); // GLX')
+                        self.wc(leadSpaces + 'if (' + value.name + '->HasData()) { // PXP')
+                        self.wc(leadSpaces + '    OutputStringJson(outputFile, "\\n");')
+                        self.wc(leadSpaces + '    OutputStructureJson(outputFile, *' + value.name + '->GetMetaStructPointer(), indent, ' +
+                                                     value.name + '->GetAddress()); // GLX')
                     else:
-                        self.wc(leadSpaces + 'OutputStructureJson(outputFile, *' + value.name + '.GetMetaStructPointer(), indent, ' +
-                                             value.name + '.GetAddress()); // GLW')
+                        self.wc(leadSpaces + 'if (' + value.name + '.HasData()) { // TXP')
+                        self.wc(leadSpaces + '    OutputStringJson(outputFile, "\\n");')
+                        self.wc(leadSpaces + '    OutputStructureJson(outputFile, *' + value.name + '.GetMetaStructPointer(), indent, ' +
+                                                 value.name + '.GetAddress()); // GLW')
                 else:
-                    self.wc(leadSpaces + 'OutputStructureJson(outputFile, *' + pstruct_in + value.name + '->GetMetaStructPointer(), indent, ' +
+                    self.wc(leadSpaces + 'if (' + pstruct_in + value.name + '->HasData()) { // RXP')
+                    self.wc(leadSpaces + '    OutputStringJson(outputFile, "\\n");')
+                    self.wc(leadSpaces + '    OutputStructureJson(outputFile, *' + pstruct_in + value.name + '->GetMetaStructPointer(), indent, ' +
                                          ' base_addr + offsetof(' + structName + ', ' + value.name + ')); // GLY')
+                self.wc(leadSpaces + '} else {')
+                self.wc(leadSpaces + '    OutputStringJson(outputFile, " ");')
+                self.wc(leadSpaces + '    StringToQuotedStringJson(outputFile, "NO DATA");')
+                self.wc(leadSpaces + '    OutputStringJson(outputFile, "\\n");')
+                self.wc(leadSpaces + '}')
             else:
+                self.wc(leadSpaces + 'OutputStringJson(outputFile, "\\"members\\" :\\n"); // HHZ')
                 if self.isUnion(structName):
                     self.wc('    OutputStructureJson(outputFile, reinterpret_cast<const Decoded_' + value.fullType + '&>(pstruct_in), indent, ' +
                                      ' base_addr + offsetof(' + structName + ', ' + value.name + ')); // RQN')
@@ -273,28 +293,51 @@ class OutputValue(BaseGenerator):
             if value.fullType == 'const char*':
                 # Treat pointer to char as a string
                 self.wc(leadSpaces + 'OutputIndentJson(outputFile, indent);')
-                self.wc(leadSpaces + 'OutputStringJson(outputFile, "\\"value\\" : ");')
+                self.wc(leadSpaces + 'OutputStringJson(outputFile, "\\"value\\" : "); // HFW')
                 if isFuncArg:
-                    self.wc(leadSpaces + 'StringToQuotedStringJson(outputFile, ' + pstruct + value.name + '.GetPointer()); // TUJ')
+                    self.wc(leadSpaces + 'if (' + pstruct + value.name + '.HasData()) { // RXO')
+                    self.wc(leadSpaces + '    StringToQuotedStringJson(outputFile, ' + pstruct + value.name + '.GetPointer()); // TUJ')
+                    self.wc(leadSpaces + '} else {')
+                    self.wc(leadSpaces + '    StringToQuotedStringJson(outputFile, "NO DATA");')
+                    self.wc(leadSpaces + '    OutputStringJson(outputFile, "\\n");')
+                    self.wc(leadSpaces + '}')
                 else:
                     self.wc(leadSpaces + 'StringToQuotedStringJson(outputFile, ' + pstruct + value.name + '); // TLK')
                 self.wc(leadSpaces + 'OutputStringJson(outputFile, "\\n");')
             elif value.baseType in ['uint', 'uint32_t', 'uint64_t', 'size_t']:
                 self.wc(leadSpaces + 'OutputIndentJson(outputFile, indent); // UHA')
-                self.wc(leadSpaces + 'OutputStringJson(outputFile, "\\"value\\" : \\"");')
+                self.wc(leadSpaces + 'OutputStringJson(outputFile, "\\"value\\" : ");')
                 if isFuncArg and self.isOutputParameter(value):
-                    self.wc(leadSpaces + 'OutputUnsignedDecimalJson(outputFile, *' + value.name + '->GetPointer()); //WRT')
+                    self.wc(leadSpaces + 'if (' + pstruct + value.name + '->HasData()) { // GGI')
+                    self.wc(leadSpaces + '    OutputStringJson(outputFile, " \\"");')
+                    self.wc(leadSpaces + '    OutputUnsignedDecimalJson(outputFile, *' + value.name + '->GetPointer()); //WRT')
+                    self.wc(leadSpaces + '    OutputStringJson(outputFile, "\\"\\n");')
                 else:
-                    self.wc(leadSpaces + 'OutputUnsignedDecimalJson(outputFile, *' + value.name + '.GetPointer()); //WRU')
-                self.wc(leadSpaces + 'OutputStringJson(outputFile, "\\"\\n");')
+                    self.wc(leadSpaces + 'if (' + pstruct + value.name + '.HasData()) { // HGW')
+                    self.wc(leadSpaces + '    OutputStringJson(outputFile, " \\"");')
+                    self.wc(leadSpaces + '    OutputUnsignedDecimalJson(outputFile, *' + value.name + '.GetPointer()); //WRU')
+                    self.wc(leadSpaces + '    OutputStringJson(outputFile, "\\"\\n");')
+                self.wc(leadSpaces + '} else {')
+                self.wc(leadSpaces + '    StringToQuotedStringJson(outputFile, "NO DATA"); // NDF')
+                self.wc(leadSpaces + '    OutputStringJson(outputFile, "\\n");')
+                self.wc(leadSpaces + '}')
             elif self.isHandle(value.baseType):
                 self.wc(leadSpaces + 'OutputIndentJson(outputFile, indent);')
-                self.wc(leadSpaces + 'OutputStringJson(outputFile, "\\"value\\" : \\"");')
+                self.wc(leadSpaces + 'OutputStringJson(outputFile, "\\"value\\" : ");')
                 if self.isOutputParameter(value):
-                    self.wc(leadSpaces + 'OutputAddrJson(outputFile, *' + pstruct + value.name + '->GetPointer()); // URY')
+                    self.wc(leadSpaces + 'if (' + pstruct + value.name + '->HasData()) { // GGI')
+                    self.wc(leadSpaces + '    OutputStringJson(outputFile, "\\"");')
+                    self.wc(leadSpaces + '    OutputAddrJson(outputFile, *' + pstruct + value.name + '->GetPointer()); // SRY')
+                    self.wc(leadSpaces + '    OutputStringJson(outputFile, "\\"\\n");')
                 else:
-                    self.wc(leadSpaces + 'OutputAddrJson(outputFile, *' + pstruct + value.name + '.GetPointer()); // URZ')
-                self.wc(leadSpaces + 'OutputStringJson(outputFile, "\\"\\n");')
+                    self.wc(leadSpaces + 'if (' + pstruct + value.name + '.HasData()) { // HGW')
+                    self.wc(leadSpaces + '    OutputStringJson(outputFile, "\\"");')
+                    self.wc(leadSpaces + '    OutputAddrJson(outputFile, *' + pstruct + value.name + '.GetPointer()); // UUZ')
+                    self.wc(leadSpaces + '    OutputStringJson(outputFile, "\\"\\n");')
+                self.wc(leadSpaces + '} else {')
+                self.wc(leadSpaces + '    StringToQuotedStringJson(outputFile, "NO DATA");')
+                self.wc(leadSpaces + '    OutputStringJson(outputFile, "\\n");')
+                self.wc(leadSpaces + '}')
             elif value.name == 'pNext':
                 self.wc(leadSpaces + 'void *pNext_base_addr = reinterpret_cast<void *>(' + pstruct_in + value.name + '->GetAddress()); // PVX')
                 self.wc(leadSpaces + 'if (pNext_base_addr)')
@@ -313,22 +356,42 @@ class OutputValue(BaseGenerator):
                     self.wc(leadSpaces + 'OutputIndentJson(outputFile, indent);')
                     self.wc(leadSpaces + 'OutputStringJson(outputFile, "\\"value\\" : \\"");')
                     if specialPtr or not isFuncArg:
+                        self.wc(leadSpaces + 'OutputStringJson(outputFile, "\\"value\\" : \\"");')
                         self.wc(leadSpaces + 'OutputAddrJson(outputFile, ' + pstruct_in + value.name + '); // PXR')
                     else:
+                        self.wc(leadSpaces + 'OutputStringJson(outputFile, "\\"value\\" : ");')
                         if self.isOutputParameter(value):
-                            self.wc(leadSpaces + 'OutputAddrJson(outputFile, *(static_cast<uint64_t*>(' + value.name + '->GetPointer()))); // PXA')
+                            self.wc(leadSpaces + 'if (' + pstruct + value.name + '->HasData()) { // HKW')
+                            self.wc(leadSpaces + '    OutputStringJson(outputFile, "\\"");')
+                            self.wc(leadSpaces + '    OutputAddrJson(outputFile, *(static_cast<uint64_t*>(' + value.name + '->GetPointer()))); // PXA')
+                            self.wc(leadSpaces + '    OutputStringJson(outputFile, "\\"\\n");')
                         else:
-                            self.wc(leadSpaces + 'OutputAddrJson(outputFile, *(static_cast<uint64_t*>(' + value.name + '.GetPointer()))); // PXB')
-                    self.wc(leadSpaces + 'OutputStringJson(outputFile, "\\"\\n");')
+                            self.wc(leadSpaces + 'if (' + pstruct + value.name + '.HasData())  {// HGP')
+                            self.wc(leadSpaces + '    OutputStringJson(outputFile, "\\"");')
+                            self.wc(leadSpaces + '    OutputAddrJson(outputFile, *(static_cast<uint64_t*>(' + value.name + '.GetPointer()))); // PXB')
+                            self.wc(leadSpaces + '    OutputStringJson(outputFile, "\\"\\n");')
+                        self.wc(leadSpaces + '} else {')
+                        self.wc(leadSpaces + '    StringToQuotedStringJson(outputFile, "NO DATA");')
+                        self.wc(leadSpaces + '    OutputStringJson(outputFile, "\\n");')
+                        self.wc(leadSpaces + '}')
                 else:
                     self.wc(leadSpaces + 'OutputIndentJson(outputFile, indent);')
-                    self.wc(leadSpaces + 'OutputStringJson(outputFile, "\\"value\\" : \\"");')
                     self.wc(leadSpaces + 'OutputScalarValueStructInfo vinfo_' + value.name + ' = ' + OutputValue.setVinfo(self, value) + ';')
+                    self.wc(leadSpaces + 'OutputStringJson(outputFile, "\\"value\\" : ");')
                     if (isFuncArg):
                         if self.isOutputParameter(value):
-                            self.wc(leadSpaces + 'OutputScalarValueJson(outputFile, ' + value.name + '->GetPointer(), vinfo_' + value.name +'); // PXR')
+                            self.wc(leadSpaces + 'if (' + pstruct + value.name + '->HasData()) { // HQP')
+                            self.wc(leadSpaces + '    OutputStringJson(outputFile, "\\"");')
+                            self.wc(leadSpaces + '    OutputScalarValueJson(outputFile, ' + value.name + '->GetPointer(), vinfo_' + value.name +'); // PXR')
                         else:
-                            self.wc(leadSpaces + 'OutputScalarValueJson(outputFile, ' + value.name + '.GetPointer(), vinfo_' + value.name +'); // PXS')
+                            self.wc(leadSpaces + '    OutputStringJson(outputFile, "\\"");')
+                            self.wc(leadSpaces + 'if (' + pstruct + value.name + '.HasData()) { // HGA')
+                            self.wc(leadSpaces + '    OutputStringJson(outputFile, "\\"");')
+                            self.wc(leadSpaces + '    OutputScalarValueJson(outputFile, ' + value.name + '.GetPointer(), vinfo_' + value.name +'); // PXS')
+                        self.wc(leadSpaces + '} else {')
+                        self.wc(leadSpaces + '    StringToQuotedStringJson(outputFile, "NO DATA");')
+                        self.wc(leadSpaces + '    OutputStringJson(outputFile, "\\n");')
+                        self.wc(leadSpaces + '}')
                     else:
                         self.wc(leadSpaces + 'OutputScalarValueJson(outputFile, ' + pstruct_in + value.name + '->GetPointer(), vinfo_' + value.name +'); // PXT')
                     self.wc(leadSpaces + 'OutputStringJson(outputFile, "\\"\\n");')
