@@ -81,7 +81,10 @@ class OutputValue(BaseGenerator):
                 self.wc('        OutputStringJson(outputFile, "' + value.fullType + '");')
                 self.wc('    }')
             else:
-                self.wc('    OutputStringJson(outputFile, "\\"type\\" : \\"' + value.fullType + '"); // NUN')
+                if value.platformFullType != None:
+                    self.wc('    OutputStringJson(outputFile, "\\"type\\" : \\"' + value.platformFullType + '"); // NYN')
+                else:
+                    self.wc('    OutputStringJson(outputFile, "\\"type\\" : \\"' + value.fullType + '"); // NUN')
         if value.isArray and not value.isPointer:
             self.wc('    OutputStringJson(outputFile, "[");')
             if 'Count' in value.arrayLength and value.arrayCapacity == None:

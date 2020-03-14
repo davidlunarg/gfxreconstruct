@@ -27777,7 +27777,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkXlibSurfaceCreateInfo
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \"Display*"); // NYN
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"dpy\",\n");
@@ -27794,7 +27794,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkXlibSurfaceCreateInfo
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"size_t"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \"Window"); // NYN
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"window\",\n");
@@ -27898,7 +27898,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkXcbSurfaceCreateInfoK
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \"xcb_connection_t*"); // NYN
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"connection\",\n");
@@ -27927,7 +27927,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkXcbSurfaceCreateInfoK
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \"xcb_window_t"); // NYN
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"window\",\n");
@@ -28031,7 +28031,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkWaylandSurfaceCreateI
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"struct void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \"struct wl_display*"); // NYN
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"display\",\n");
@@ -28060,7 +28060,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkWaylandSurfaceCreateI
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"struct void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \"struct wl_surface*"); // NYN
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"surface\",\n");
@@ -28176,7 +28176,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkAndroidSurfaceCreateI
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"struct void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \"struct ANativeWindow*"); // NYN
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"window\",\n");
@@ -28292,7 +28292,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkWin32SurfaceCreateInf
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \"HINSTANCE"); // NYN
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"hinstance\",\n");
@@ -28321,7 +28321,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkWin32SurfaceCreateInf
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \"HWND"); // NYN
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"hwnd\",\n");
@@ -28437,7 +28437,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImportMemoryWin32Hand
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \"HANDLE"); // NYN
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"handle\",\n");
@@ -28466,7 +28466,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImportMemoryWin32Hand
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const wchar_t*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \"LPCWSTR"); // NYN
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"name\",\n");
@@ -28595,7 +28595,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkExportMemoryWin32Hand
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \"DWORD"); // NYN
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"dwAccess\",\n");
@@ -28612,7 +28612,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkExportMemoryWin32Hand
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const wchar_t*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \"LPCWSTR"); // NYN
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"name\",\n");
@@ -29497,7 +29497,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImportSemaphoreWin32H
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \"HANDLE"); // NYN
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"handle\",\n");
@@ -29526,7 +29526,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImportSemaphoreWin32H
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const wchar_t*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \"LPCWSTR"); // NYN
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"name\",\n");
@@ -29655,7 +29655,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkExportSemaphoreWin32H
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \"DWORD"); // NYN
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"dwAccess\",\n");
@@ -29672,7 +29672,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkExportSemaphoreWin32H
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const wchar_t*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \"LPCWSTR"); // NYN
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"name\",\n");
@@ -32716,7 +32716,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImportFenceWin32Handl
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \"HANDLE"); // NYN
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"handle\",\n");
@@ -32745,7 +32745,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImportFenceWin32Handl
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const wchar_t*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \"LPCWSTR"); // NYN
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"name\",\n");
@@ -32874,7 +32874,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkExportFenceWin32Handl
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \"DWORD"); // NYN
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"dwAccess\",\n");
@@ -32891,7 +32891,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkExportFenceWin32Handl
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const wchar_t*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \"LPCWSTR"); // NYN
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"name\",\n");
@@ -39096,7 +39096,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkStreamDescriptorSurfa
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint64_t"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \"GgpStreamDescriptor"); // NYN
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"streamDescriptor\",\n");
@@ -39544,7 +39544,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImportMemoryWin32Hand
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \"HANDLE"); // NYN
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"handle\",\n");
@@ -39673,7 +39673,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkExportMemoryWin32Hand
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \"DWORD"); // NYN
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"dwAccess\",\n");
@@ -46385,7 +46385,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImportAndroidHardware
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"struct void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \"struct AHardwareBuffer*"); // NYN
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"buffer\",\n");
@@ -55329,7 +55329,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPresentFrameTokenGGP 
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint64_t"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \"GgpFrameToken"); // NYN
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"frameToken\",\n");
@@ -57911,7 +57911,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImagePipeSurfaceCreat
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \"zx_handle_t"); // NYN
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"imagePipeHandle\",\n");
@@ -58015,7 +58015,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkMetalSurfaceCreateInf
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \"const CAMetalLayer*"); // NYN
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pLayer\",\n");
@@ -61078,7 +61078,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSurfaceFullScreenExcl
     OutputStringJson(outputFile, "{\n"); // UXR
     indent++;
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \"HMONITOR"); // NYN
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"hmonitor\",\n");

@@ -21581,7 +21581,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceXlibPresentationSupportKHR(
     OutputIndentJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \"Display*"); // NYN
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"dpy\",\n");
@@ -21596,7 +21596,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceXlibPresentationSupportKHR(
     OutputIndentJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"size_t"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \"VisualID"); // NYN
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"visualID\",\n");
@@ -21844,7 +21844,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceXcbPresentationSupportKHR(
     OutputIndentJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \"xcb_connection_t*"); // NYN
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"connection\",\n");
@@ -21871,7 +21871,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceXcbPresentationSupportKHR(
     OutputIndentJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"uint32_t"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \"xcb_visualid_t"); // NYN
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"visual_id\",\n");
@@ -22118,7 +22118,7 @@ void VulkanJsonConsumer::Process_vkGetPhysicalDeviceWaylandPresentationSupportKH
     OutputIndentJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"struct void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \"struct wl_display*"); // NYN
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"display\",\n");
@@ -24040,7 +24040,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleKHR(
     OutputIndentJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void**"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \"HANDLE*"); // NYN
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pHandle\",\n");
@@ -24147,7 +24147,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandlePropertiesKHR(
     OutputIndentJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \"HANDLE"); // NYN
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"handle\",\n");
@@ -24752,7 +24752,7 @@ void VulkanJsonConsumer::Process_vkGetSemaphoreWin32HandleKHR(
     OutputIndentJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void**"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \"HANDLE*"); // NYN
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pHandle\",\n");
@@ -26255,7 +26255,7 @@ void VulkanJsonConsumer::Process_vkGetFenceWin32HandleKHR(
     OutputIndentJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void**"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \"HANDLE*"); // NYN
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pHandle\",\n");
@@ -31953,7 +31953,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryWin32HandleNV(
     OutputIndentJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void**"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \"HANDLE*"); // NYN
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pHandle\",\n");
@@ -33470,7 +33470,7 @@ void VulkanJsonConsumer::Process_vkAcquireXlibDisplayEXT(
     OutputIndentJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \"Display*"); // NYN
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"dpy\",\n");
@@ -33558,7 +33558,7 @@ void VulkanJsonConsumer::Process_vkGetRandROutputDisplayEXT(
     OutputIndentJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \"Display*"); // NYN
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"dpy\",\n");
@@ -33573,7 +33573,7 @@ void VulkanJsonConsumer::Process_vkGetRandROutputDisplayEXT(
     OutputIndentJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"size_t"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \"RROutput"); // NYN
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"rrOutput\",\n");
@@ -36134,7 +36134,7 @@ void VulkanJsonConsumer::Process_vkGetAndroidHardwareBufferPropertiesANDROID(
     OutputIndentJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"const struct void*"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \"const struct AHardwareBuffer*"); // NYN
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"buffer\",\n");
@@ -36284,7 +36284,7 @@ void VulkanJsonConsumer::Process_vkGetMemoryAndroidHardwareBufferANDROID(
     OutputIndentJson(outputFile, 4); // UWP
     OutputStringJson(outputFile, "{\n");
     OutputIndentJson(outputFile, indent); // ESP
-    OutputStringJson(outputFile, "\"type\" : \"struct void**"); // NUN
+    OutputStringJson(outputFile, "\"type\" : \"struct AHardwareBuffer**"); // NYN
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"name\" : \"pBuffer\",\n");
