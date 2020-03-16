@@ -1320,7 +1320,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkInstanceCreateInfo &
     {
         OutputAddrAscii(outputFile, pstruct_in.pApplicationInfo->GetAddress()); // JHJ
         OutputString(outputFile, ":");
-        OutputStructureAscii(outputFile, *pstruct_in.pApplicationInfo->GetMetaStructPointer(), indent+1, base_addr + offsetof(VkInstanceCreateInfo, pApplicationInfo)); // GLN
+        if (pstruct_in.pApplicationInfo->HasData() && pstruct_in.pApplicationInfo->HasAddress())
+            OutputStructureAscii(outputFile, *pstruct_in.pApplicationInfo->GetMetaStructPointer(), indent+1, base_addr + offsetof(VkInstanceCreateInfo, pApplicationInfo)); // GLN
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -2811,7 +2812,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceProper
     OutputString(outputFile, "deviceName:                     "); // HRW
     OutputString(outputFile, "char = "); // TEQ
     OutputScalarValueStructInfo vinfo_deviceName = {false, false, false, nullptr};
-    OutputArrayOfScalarsAscii(outputFile, indent, "char", pstruct_in.deviceName.GetPointer(), "deviceName", VK_MAX_PHYSICAL_DEVICE_NAME_SIZE, vinfo_deviceName); // JPB
+    if (pstruct_in.deviceName.HasData() && pstruct_in.deviceName.HasAddress())
+        OutputArrayOfScalarsAscii(outputFile, indent, "char", pstruct_in.deviceName.GetPointer(), "deviceName", VK_MAX_PHYSICAL_DEVICE_NAME_SIZE, vinfo_deviceName); // JPB
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: uint8_t pipelineCacheUUID
@@ -2951,7 +2953,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceMemory
     OutputUnsignedDecimalAscii(outputFile, pstruct->memoryTypeCount); // DFW
     OutputString(outputFile, "] = ");
     OutputAddrAscii(outputFile, base_addr + offsetof(VkPhysicalDeviceMemoryProperties, memoryTypes)); // IYY
-    OutputArrayOfStructsAscii(outputFile, indent+1, "VkMemoryType", pstruct_in.memoryTypes->GetMetaStructPointer(), "memoryTypes", pstruct->memoryTypeCount , false, pstruct_in.memoryTypes->GetAddress(), sizeof(VkMemoryType)); // EPB
+    if (pstruct_in.memoryTypes->HasData() && pstruct_in.memoryTypes->HasAddress())
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkMemoryType", pstruct_in.memoryTypes->GetMetaStructPointer(), "memoryTypes", pstruct->memoryTypeCount , false, pstruct_in.memoryTypes->GetAddress(), sizeof(VkMemoryType)); // EPB
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: uint32_t memoryHeapCount
@@ -2969,7 +2972,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceMemory
     OutputUnsignedDecimalAscii(outputFile, pstruct->memoryHeapCount); // DFW
     OutputString(outputFile, "] = ");
     OutputAddrAscii(outputFile, base_addr + offsetof(VkPhysicalDeviceMemoryProperties, memoryHeaps)); // IYY
-    OutputArrayOfStructsAscii(outputFile, indent+1, "VkMemoryHeap", pstruct_in.memoryHeaps->GetMetaStructPointer(), "memoryHeaps", pstruct->memoryHeapCount , false, pstruct_in.memoryHeaps->GetAddress(), sizeof(VkMemoryHeap)); // EPB
+    if (pstruct_in.memoryHeaps->HasData() && pstruct_in.memoryHeaps->HasAddress())
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkMemoryHeap", pstruct_in.memoryHeaps->GetMetaStructPointer(), "memoryHeaps", pstruct->memoryHeapCount , false, pstruct_in.memoryHeaps->GetAddress(), sizeof(VkMemoryHeap)); // EPB
 }
 
 void OutputStructureAscii(FILE* outputFile, const Decoded_VkDeviceQueueCreateInfo &pstruct_in, int indent, uint64_t base_addr)
@@ -3114,7 +3118,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDeviceCreateInfo &ps
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pQueueCreateInfos->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkDeviceQueueCreateInfo", pstruct_in.pQueueCreateInfos->GetMetaStructPointer(), "pQueueCreateInfos", pstruct->queueCreateInfoCount, false, pstruct_in.pQueueCreateInfos->GetAddress(), sizeof(VkDeviceQueueCreateInfo));  // CCP
+        if (pstruct_in.pQueueCreateInfos->HasData() && pstruct_in.pQueueCreateInfos->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkDeviceQueueCreateInfo", pstruct_in.pQueueCreateInfos->GetMetaStructPointer(), "pQueueCreateInfos", pstruct->queueCreateInfoCount, false, pstruct_in.pQueueCreateInfos->GetAddress(), sizeof(VkDeviceQueueCreateInfo));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -3176,7 +3181,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDeviceCreateInfo &ps
     {
         OutputAddrAscii(outputFile, pstruct_in.pEnabledFeatures->GetAddress()); // JHJ
         OutputString(outputFile, ":");
-        OutputStructureAscii(outputFile, *pstruct_in.pEnabledFeatures->GetMetaStructPointer(), indent+1, base_addr + offsetof(VkDeviceCreateInfo, pEnabledFeatures)); // GLN
+        if (pstruct_in.pEnabledFeatures->HasData() && pstruct_in.pEnabledFeatures->HasAddress())
+            OutputStructureAscii(outputFile, *pstruct_in.pEnabledFeatures->GetMetaStructPointer(), indent+1, base_addr + offsetof(VkDeviceCreateInfo, pEnabledFeatures)); // GLN
     }
 }
 
@@ -3195,7 +3201,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkExtensionProperties 
     OutputString(outputFile, "extensionName:                  "); // HRW
     OutputString(outputFile, "char = "); // TEQ
     OutputScalarValueStructInfo vinfo_extensionName = {false, false, false, nullptr};
-    OutputArrayOfScalarsAscii(outputFile, indent, "char", pstruct_in.extensionName.GetPointer(), "extensionName", VK_MAX_EXTENSION_NAME_SIZE, vinfo_extensionName); // JPB
+    if (pstruct_in.extensionName.HasData() && pstruct_in.extensionName.HasAddress())
+        OutputArrayOfScalarsAscii(outputFile, indent, "char", pstruct_in.extensionName.GetPointer(), "extensionName", VK_MAX_EXTENSION_NAME_SIZE, vinfo_extensionName); // JPB
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: uint32_t specVersion
@@ -3220,7 +3227,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkLayerProperties &pst
     OutputString(outputFile, "layerName:                      "); // HRW
     OutputString(outputFile, "char = "); // TEQ
     OutputScalarValueStructInfo vinfo_layerName = {false, false, false, nullptr};
-    OutputArrayOfScalarsAscii(outputFile, indent, "char", pstruct_in.layerName.GetPointer(), "layerName", VK_MAX_EXTENSION_NAME_SIZE, vinfo_layerName); // JPB
+    if (pstruct_in.layerName.HasData() && pstruct_in.layerName.HasAddress())
+        OutputArrayOfScalarsAscii(outputFile, indent, "char", pstruct_in.layerName.GetPointer(), "layerName", VK_MAX_EXTENSION_NAME_SIZE, vinfo_layerName); // JPB
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: uint32_t specVersion
@@ -3242,7 +3250,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkLayerProperties &pst
     OutputString(outputFile, "description:                    "); // HRW
     OutputString(outputFile, "char = "); // TEQ
     OutputScalarValueStructInfo vinfo_description = {false, false, false, nullptr};
-    OutputArrayOfScalarsAscii(outputFile, indent, "char", pstruct_in.description.GetPointer(), "description", VK_MAX_DESCRIPTION_SIZE, vinfo_description); // JPB
+    if (pstruct_in.description.HasData() && pstruct_in.description.HasAddress())
+        OutputArrayOfScalarsAscii(outputFile, indent, "char", pstruct_in.description.GetPointer(), "description", VK_MAX_DESCRIPTION_SIZE, vinfo_description); // JPB
 }
 
 void OutputStructureAscii(FILE* outputFile, const Decoded_VkSubmitInfo &pstruct_in, int indent, uint64_t base_addr)
@@ -3672,7 +3681,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSparseBufferMemoryBi
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pBinds->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkSparseMemoryBind", pstruct_in.pBinds->GetMetaStructPointer(), "pBinds", pstruct->bindCount, false, pstruct_in.pBinds->GetAddress(), sizeof(VkSparseMemoryBind));  // CCP
+        if (pstruct_in.pBinds->HasData() && pstruct_in.pBinds->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkSparseMemoryBind", pstruct_in.pBinds->GetMetaStructPointer(), "pBinds", pstruct->bindCount, false, pstruct_in.pBinds->GetAddress(), sizeof(VkSparseMemoryBind));  // CCP
     }
 }
 
@@ -3711,7 +3721,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSparseImageOpaqueMem
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pBinds->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkSparseMemoryBind", pstruct_in.pBinds->GetMetaStructPointer(), "pBinds", pstruct->bindCount, false, pstruct_in.pBinds->GetAddress(), sizeof(VkSparseMemoryBind));  // CCP
+        if (pstruct_in.pBinds->HasData() && pstruct_in.pBinds->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkSparseMemoryBind", pstruct_in.pBinds->GetMetaStructPointer(), "pBinds", pstruct->bindCount, false, pstruct_in.pBinds->GetAddress(), sizeof(VkSparseMemoryBind));  // CCP
     }
 }
 
@@ -3864,7 +3875,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSparseImageMemoryBin
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pBinds->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkSparseImageMemoryBind", pstruct_in.pBinds->GetMetaStructPointer(), "pBinds", pstruct->bindCount, false, pstruct_in.pBinds->GetAddress(), sizeof(VkSparseImageMemoryBind));  // CCP
+        if (pstruct_in.pBinds->HasData() && pstruct_in.pBinds->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkSparseImageMemoryBind", pstruct_in.pBinds->GetMetaStructPointer(), "pBinds", pstruct->bindCount, false, pstruct_in.pBinds->GetAddress(), sizeof(VkSparseImageMemoryBind));  // CCP
     }
 }
 
@@ -3949,7 +3961,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkBindSparseInfo &pstr
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pBufferBinds->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkSparseBufferMemoryBindInfo", pstruct_in.pBufferBinds->GetMetaStructPointer(), "pBufferBinds", pstruct->bufferBindCount, false, pstruct_in.pBufferBinds->GetAddress(), sizeof(VkSparseBufferMemoryBindInfo));  // CCP
+        if (pstruct_in.pBufferBinds->HasData() && pstruct_in.pBufferBinds->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkSparseBufferMemoryBindInfo", pstruct_in.pBufferBinds->GetMetaStructPointer(), "pBufferBinds", pstruct->bufferBindCount, false, pstruct_in.pBufferBinds->GetAddress(), sizeof(VkSparseBufferMemoryBindInfo));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -3971,7 +3984,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkBindSparseInfo &pstr
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pImageOpaqueBinds->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkSparseImageOpaqueMemoryBindInfo", pstruct_in.pImageOpaqueBinds->GetMetaStructPointer(), "pImageOpaqueBinds", pstruct->imageOpaqueBindCount, false, pstruct_in.pImageOpaqueBinds->GetAddress(), sizeof(VkSparseImageOpaqueMemoryBindInfo));  // CCP
+        if (pstruct_in.pImageOpaqueBinds->HasData() && pstruct_in.pImageOpaqueBinds->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkSparseImageOpaqueMemoryBindInfo", pstruct_in.pImageOpaqueBinds->GetMetaStructPointer(), "pImageOpaqueBinds", pstruct->imageOpaqueBindCount, false, pstruct_in.pImageOpaqueBinds->GetAddress(), sizeof(VkSparseImageOpaqueMemoryBindInfo));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -3993,7 +4007,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkBindSparseInfo &pstr
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pImageBinds->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkSparseImageMemoryBindInfo", pstruct_in.pImageBinds->GetMetaStructPointer(), "pImageBinds", pstruct->imageBindCount, false, pstruct_in.pImageBinds->GetAddress(), sizeof(VkSparseImageMemoryBindInfo));  // CCP
+        if (pstruct_in.pImageBinds->HasData() && pstruct_in.pImageBinds->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkSparseImageMemoryBindInfo", pstruct_in.pImageBinds->GetMetaStructPointer(), "pImageBinds", pstruct->imageBindCount, false, pstruct_in.pImageBinds->GetAddress(), sizeof(VkSparseImageMemoryBindInfo));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -4992,7 +5007,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSpecializationInfo &
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pMapEntries->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkSpecializationMapEntry", pstruct_in.pMapEntries->GetMetaStructPointer(), "pMapEntries", pstruct->mapEntryCount, false, pstruct_in.pMapEntries->GetAddress(), sizeof(VkSpecializationMapEntry));  // CCP
+        if (pstruct_in.pMapEntries->HasData() && pstruct_in.pMapEntries->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkSpecializationMapEntry", pstruct_in.pMapEntries->GetMetaStructPointer(), "pMapEntries", pstruct->mapEntryCount, false, pstruct_in.pMapEntries->GetAddress(), sizeof(VkSpecializationMapEntry));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -5102,7 +5118,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineShaderStageC
     {
         OutputAddrAscii(outputFile, pstruct_in.pSpecializationInfo->GetAddress()); // JHJ
         OutputString(outputFile, ":");
-        OutputStructureAscii(outputFile, *pstruct_in.pSpecializationInfo->GetMetaStructPointer(), indent+1, base_addr + offsetof(VkPipelineShaderStageCreateInfo, pSpecializationInfo)); // GLN
+        if (pstruct_in.pSpecializationInfo->HasData() && pstruct_in.pSpecializationInfo->HasAddress())
+            OutputStructureAscii(outputFile, *pstruct_in.pSpecializationInfo->GetMetaStructPointer(), indent+1, base_addr + offsetof(VkPipelineShaderStageCreateInfo, pSpecializationInfo)); // GLN
     }
 }
 
@@ -5246,7 +5263,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineVertexInputS
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pVertexBindingDescriptions->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkVertexInputBindingDescription", pstruct_in.pVertexBindingDescriptions->GetMetaStructPointer(), "pVertexBindingDescriptions", pstruct->vertexBindingDescriptionCount, false, pstruct_in.pVertexBindingDescriptions->GetAddress(), sizeof(VkVertexInputBindingDescription));  // CCP
+        if (pstruct_in.pVertexBindingDescriptions->HasData() && pstruct_in.pVertexBindingDescriptions->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkVertexInputBindingDescription", pstruct_in.pVertexBindingDescriptions->GetMetaStructPointer(), "pVertexBindingDescriptions", pstruct->vertexBindingDescriptionCount, false, pstruct_in.pVertexBindingDescriptions->GetAddress(), sizeof(VkVertexInputBindingDescription));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -5268,7 +5286,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineVertexInputS
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pVertexAttributeDescriptions->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkVertexInputAttributeDescription", pstruct_in.pVertexAttributeDescriptions->GetMetaStructPointer(), "pVertexAttributeDescriptions", pstruct->vertexAttributeDescriptionCount, false, pstruct_in.pVertexAttributeDescriptions->GetAddress(), sizeof(VkVertexInputAttributeDescription));  // CCP
+        if (pstruct_in.pVertexAttributeDescriptions->HasData() && pstruct_in.pVertexAttributeDescriptions->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkVertexInputAttributeDescription", pstruct_in.pVertexAttributeDescriptions->GetMetaStructPointer(), "pVertexAttributeDescriptions", pstruct->vertexAttributeDescriptionCount, false, pstruct_in.pVertexAttributeDescriptions->GetAddress(), sizeof(VkVertexInputAttributeDescription));  // CCP
     }
 }
 
@@ -5579,7 +5598,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineViewportStat
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pViewports->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkViewport", pstruct_in.pViewports->GetMetaStructPointer(), "pViewports", pstruct->viewportCount, false, pstruct_in.pViewports->GetAddress(), sizeof(VkViewport));  // CCP
+        if (pstruct_in.pViewports->HasData() && pstruct_in.pViewports->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkViewport", pstruct_in.pViewports->GetMetaStructPointer(), "pViewports", pstruct->viewportCount, false, pstruct_in.pViewports->GetAddress(), sizeof(VkViewport));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -5601,7 +5621,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineViewportStat
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pScissors->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkRect2D", pstruct_in.pScissors->GetMetaStructPointer(), "pScissors", pstruct->scissorCount, false, pstruct_in.pScissors->GetAddress(), sizeof(VkRect2D));  // CCP
+        if (pstruct_in.pScissors->HasData() && pstruct_in.pScissors->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkRect2D", pstruct_in.pScissors->GetMetaStructPointer(), "pScissors", pstruct->scissorCount, false, pstruct_in.pScissors->GetAddress(), sizeof(VkRect2D));  // CCP
     }
 }
 
@@ -6179,7 +6200,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineColorBlendSt
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pAttachments->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkPipelineColorBlendAttachmentState", pstruct_in.pAttachments->GetMetaStructPointer(), "pAttachments", pstruct->attachmentCount, false, pstruct_in.pAttachments->GetAddress(), sizeof(VkPipelineColorBlendAttachmentState));  // CCP
+        if (pstruct_in.pAttachments->HasData() && pstruct_in.pAttachments->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkPipelineColorBlendAttachmentState", pstruct_in.pAttachments->GetMetaStructPointer(), "pAttachments", pstruct->attachmentCount, false, pstruct_in.pAttachments->GetAddress(), sizeof(VkPipelineColorBlendAttachmentState));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -6330,7 +6352,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkGraphicsPipelineCrea
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pStages->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkPipelineShaderStageCreateInfo", pstruct_in.pStages->GetMetaStructPointer(), "pStages", pstruct->stageCount, false, pstruct_in.pStages->GetAddress(), sizeof(VkPipelineShaderStageCreateInfo));  // CCP
+        if (pstruct_in.pStages->HasData() && pstruct_in.pStages->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkPipelineShaderStageCreateInfo", pstruct_in.pStages->GetMetaStructPointer(), "pStages", pstruct->stageCount, false, pstruct_in.pStages->GetAddress(), sizeof(VkPipelineShaderStageCreateInfo));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -6346,7 +6369,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkGraphicsPipelineCrea
     {
         OutputAddrAscii(outputFile, pstruct_in.pVertexInputState->GetAddress()); // JHJ
         OutputString(outputFile, ":");
-        OutputStructureAscii(outputFile, *pstruct_in.pVertexInputState->GetMetaStructPointer(), indent+1, base_addr + offsetof(VkGraphicsPipelineCreateInfo, pVertexInputState)); // GLN
+        if (pstruct_in.pVertexInputState->HasData() && pstruct_in.pVertexInputState->HasAddress())
+            OutputStructureAscii(outputFile, *pstruct_in.pVertexInputState->GetMetaStructPointer(), indent+1, base_addr + offsetof(VkGraphicsPipelineCreateInfo, pVertexInputState)); // GLN
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -6362,7 +6386,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkGraphicsPipelineCrea
     {
         OutputAddrAscii(outputFile, pstruct_in.pInputAssemblyState->GetAddress()); // JHJ
         OutputString(outputFile, ":");
-        OutputStructureAscii(outputFile, *pstruct_in.pInputAssemblyState->GetMetaStructPointer(), indent+1, base_addr + offsetof(VkGraphicsPipelineCreateInfo, pInputAssemblyState)); // GLN
+        if (pstruct_in.pInputAssemblyState->HasData() && pstruct_in.pInputAssemblyState->HasAddress())
+            OutputStructureAscii(outputFile, *pstruct_in.pInputAssemblyState->GetMetaStructPointer(), indent+1, base_addr + offsetof(VkGraphicsPipelineCreateInfo, pInputAssemblyState)); // GLN
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -6378,7 +6403,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkGraphicsPipelineCrea
     {
         OutputAddrAscii(outputFile, pstruct_in.pTessellationState->GetAddress()); // JHJ
         OutputString(outputFile, ":");
-        OutputStructureAscii(outputFile, *pstruct_in.pTessellationState->GetMetaStructPointer(), indent+1, base_addr + offsetof(VkGraphicsPipelineCreateInfo, pTessellationState)); // GLN
+        if (pstruct_in.pTessellationState->HasData() && pstruct_in.pTessellationState->HasAddress())
+            OutputStructureAscii(outputFile, *pstruct_in.pTessellationState->GetMetaStructPointer(), indent+1, base_addr + offsetof(VkGraphicsPipelineCreateInfo, pTessellationState)); // GLN
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -6394,7 +6420,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkGraphicsPipelineCrea
     {
         OutputAddrAscii(outputFile, pstruct_in.pViewportState->GetAddress()); // JHJ
         OutputString(outputFile, ":");
-        OutputStructureAscii(outputFile, *pstruct_in.pViewportState->GetMetaStructPointer(), indent+1, base_addr + offsetof(VkGraphicsPipelineCreateInfo, pViewportState)); // GLN
+        if (pstruct_in.pViewportState->HasData() && pstruct_in.pViewportState->HasAddress())
+            OutputStructureAscii(outputFile, *pstruct_in.pViewportState->GetMetaStructPointer(), indent+1, base_addr + offsetof(VkGraphicsPipelineCreateInfo, pViewportState)); // GLN
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -6410,7 +6437,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkGraphicsPipelineCrea
     {
         OutputAddrAscii(outputFile, pstruct_in.pRasterizationState->GetAddress()); // JHJ
         OutputString(outputFile, ":");
-        OutputStructureAscii(outputFile, *pstruct_in.pRasterizationState->GetMetaStructPointer(), indent+1, base_addr + offsetof(VkGraphicsPipelineCreateInfo, pRasterizationState)); // GLN
+        if (pstruct_in.pRasterizationState->HasData() && pstruct_in.pRasterizationState->HasAddress())
+            OutputStructureAscii(outputFile, *pstruct_in.pRasterizationState->GetMetaStructPointer(), indent+1, base_addr + offsetof(VkGraphicsPipelineCreateInfo, pRasterizationState)); // GLN
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -6426,7 +6454,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkGraphicsPipelineCrea
     {
         OutputAddrAscii(outputFile, pstruct_in.pMultisampleState->GetAddress()); // JHJ
         OutputString(outputFile, ":");
-        OutputStructureAscii(outputFile, *pstruct_in.pMultisampleState->GetMetaStructPointer(), indent+1, base_addr + offsetof(VkGraphicsPipelineCreateInfo, pMultisampleState)); // GLN
+        if (pstruct_in.pMultisampleState->HasData() && pstruct_in.pMultisampleState->HasAddress())
+            OutputStructureAscii(outputFile, *pstruct_in.pMultisampleState->GetMetaStructPointer(), indent+1, base_addr + offsetof(VkGraphicsPipelineCreateInfo, pMultisampleState)); // GLN
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -6442,7 +6471,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkGraphicsPipelineCrea
     {
         OutputAddrAscii(outputFile, pstruct_in.pDepthStencilState->GetAddress()); // JHJ
         OutputString(outputFile, ":");
-        OutputStructureAscii(outputFile, *pstruct_in.pDepthStencilState->GetMetaStructPointer(), indent+1, base_addr + offsetof(VkGraphicsPipelineCreateInfo, pDepthStencilState)); // GLN
+        if (pstruct_in.pDepthStencilState->HasData() && pstruct_in.pDepthStencilState->HasAddress())
+            OutputStructureAscii(outputFile, *pstruct_in.pDepthStencilState->GetMetaStructPointer(), indent+1, base_addr + offsetof(VkGraphicsPipelineCreateInfo, pDepthStencilState)); // GLN
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -6458,7 +6488,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkGraphicsPipelineCrea
     {
         OutputAddrAscii(outputFile, pstruct_in.pColorBlendState->GetAddress()); // JHJ
         OutputString(outputFile, ":");
-        OutputStructureAscii(outputFile, *pstruct_in.pColorBlendState->GetMetaStructPointer(), indent+1, base_addr + offsetof(VkGraphicsPipelineCreateInfo, pColorBlendState)); // GLN
+        if (pstruct_in.pColorBlendState->HasData() && pstruct_in.pColorBlendState->HasAddress())
+            OutputStructureAscii(outputFile, *pstruct_in.pColorBlendState->GetMetaStructPointer(), indent+1, base_addr + offsetof(VkGraphicsPipelineCreateInfo, pColorBlendState)); // GLN
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -6474,7 +6505,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkGraphicsPipelineCrea
     {
         OutputAddrAscii(outputFile, pstruct_in.pDynamicState->GetAddress()); // JHJ
         OutputString(outputFile, ":");
-        OutputStructureAscii(outputFile, *pstruct_in.pDynamicState->GetMetaStructPointer(), indent+1, base_addr + offsetof(VkGraphicsPipelineCreateInfo, pDynamicState)); // GLN
+        if (pstruct_in.pDynamicState->HasData() && pstruct_in.pDynamicState->HasAddress())
+            OutputStructureAscii(outputFile, *pstruct_in.pDynamicState->GetMetaStructPointer(), indent+1, base_addr + offsetof(VkGraphicsPipelineCreateInfo, pDynamicState)); // GLN
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -6707,7 +6739,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineLayoutCreate
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pPushConstantRanges->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkPushConstantRange", pstruct_in.pPushConstantRanges->GetMetaStructPointer(), "pPushConstantRanges", pstruct->pushConstantRangeCount, false, pstruct_in.pPushConstantRanges->GetAddress(), sizeof(VkPushConstantRange));  // CCP
+        if (pstruct_in.pPushConstantRanges->HasData() && pstruct_in.pPushConstantRanges->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkPushConstantRange", pstruct_in.pPushConstantRanges->GetMetaStructPointer(), "pPushConstantRanges", pstruct->pushConstantRangeCount, false, pstruct_in.pPushConstantRanges->GetAddress(), sizeof(VkPushConstantRange));  // CCP
     }
 }
 
@@ -7009,7 +7042,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDescriptorSetLayoutC
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pBindings->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkDescriptorSetLayoutBinding", pstruct_in.pBindings->GetMetaStructPointer(), "pBindings", pstruct->bindingCount, false, pstruct_in.pBindings->GetAddress(), sizeof(VkDescriptorSetLayoutBinding));  // CCP
+        if (pstruct_in.pBindings->HasData() && pstruct_in.pBindings->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkDescriptorSetLayoutBinding", pstruct_in.pBindings->GetMetaStructPointer(), "pBindings", pstruct->bindingCount, false, pstruct_in.pBindings->GetAddress(), sizeof(VkDescriptorSetLayoutBinding));  // CCP
     }
 }
 
@@ -7112,7 +7146,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDescriptorPoolCreate
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pPoolSizes->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkDescriptorPoolSize", pstruct_in.pPoolSizes->GetMetaStructPointer(), "pPoolSizes", pstruct->poolSizeCount, false, pstruct_in.pPoolSizes->GetAddress(), sizeof(VkDescriptorPoolSize));  // CCP
+        if (pstruct_in.pPoolSizes->HasData() && pstruct_in.pPoolSizes->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkDescriptorPoolSize", pstruct_in.pPoolSizes->GetMetaStructPointer(), "pPoolSizes", pstruct->poolSizeCount, false, pstruct_in.pPoolSizes->GetAddress(), sizeof(VkDescriptorPoolSize));  // CCP
     }
 }
 
@@ -7340,7 +7375,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkWriteDescriptorSet &
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pImageInfo->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkDescriptorImageInfo", pstruct_in.pImageInfo->GetMetaStructPointer(), "pImageInfo", pstruct->descriptorCount, false, pstruct_in.pImageInfo->GetAddress(), sizeof(VkDescriptorImageInfo));  // CCP
+        if (pstruct_in.pImageInfo->HasData() && pstruct_in.pImageInfo->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkDescriptorImageInfo", pstruct_in.pImageInfo->GetMetaStructPointer(), "pImageInfo", pstruct->descriptorCount, false, pstruct_in.pImageInfo->GetAddress(), sizeof(VkDescriptorImageInfo));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -7355,7 +7391,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkWriteDescriptorSet &
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pBufferInfo->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkDescriptorBufferInfo", pstruct_in.pBufferInfo->GetMetaStructPointer(), "pBufferInfo", pstruct->descriptorCount, false, pstruct_in.pBufferInfo->GetAddress(), sizeof(VkDescriptorBufferInfo));  // CCP
+        if (pstruct_in.pBufferInfo->HasData() && pstruct_in.pBufferInfo->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkDescriptorBufferInfo", pstruct_in.pBufferInfo->GetMetaStructPointer(), "pBufferInfo", pstruct->descriptorCount, false, pstruct_in.pBufferInfo->GetAddress(), sizeof(VkDescriptorBufferInfo));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -7731,7 +7768,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSubpassDescription &
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pInputAttachments->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkAttachmentReference", pstruct_in.pInputAttachments->GetMetaStructPointer(), "pInputAttachments", pstruct->inputAttachmentCount, false, pstruct_in.pInputAttachments->GetAddress(), sizeof(VkAttachmentReference));  // CCP
+        if (pstruct_in.pInputAttachments->HasData() && pstruct_in.pInputAttachments->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkAttachmentReference", pstruct_in.pInputAttachments->GetMetaStructPointer(), "pInputAttachments", pstruct->inputAttachmentCount, false, pstruct_in.pInputAttachments->GetAddress(), sizeof(VkAttachmentReference));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -7753,7 +7791,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSubpassDescription &
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pColorAttachments->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkAttachmentReference", pstruct_in.pColorAttachments->GetMetaStructPointer(), "pColorAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pColorAttachments->GetAddress(), sizeof(VkAttachmentReference));  // CCP
+        if (pstruct_in.pColorAttachments->HasData() && pstruct_in.pColorAttachments->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkAttachmentReference", pstruct_in.pColorAttachments->GetMetaStructPointer(), "pColorAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pColorAttachments->GetAddress(), sizeof(VkAttachmentReference));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -7768,7 +7807,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSubpassDescription &
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pResolveAttachments->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkAttachmentReference", pstruct_in.pResolveAttachments->GetMetaStructPointer(), "pResolveAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pResolveAttachments->GetAddress(), sizeof(VkAttachmentReference));  // CCP
+        if (pstruct_in.pResolveAttachments->HasData() && pstruct_in.pResolveAttachments->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkAttachmentReference", pstruct_in.pResolveAttachments->GetMetaStructPointer(), "pResolveAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pResolveAttachments->GetAddress(), sizeof(VkAttachmentReference));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -7784,7 +7824,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSubpassDescription &
     {
         OutputAddrAscii(outputFile, pstruct_in.pDepthStencilAttachment->GetAddress()); // JHJ
         OutputString(outputFile, ":");
-        OutputStructureAscii(outputFile, *pstruct_in.pDepthStencilAttachment->GetMetaStructPointer(), indent+1, base_addr + offsetof(VkSubpassDescription, pDepthStencilAttachment)); // GLN
+        if (pstruct_in.pDepthStencilAttachment->HasData() && pstruct_in.pDepthStencilAttachment->HasAddress())
+            OutputStructureAscii(outputFile, *pstruct_in.pDepthStencilAttachment->GetMetaStructPointer(), indent+1, base_addr + offsetof(VkSubpassDescription, pDepthStencilAttachment)); // GLN
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -7935,7 +7976,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkRenderPassCreateInfo
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pAttachments->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkAttachmentDescription", pstruct_in.pAttachments->GetMetaStructPointer(), "pAttachments", pstruct->attachmentCount, false, pstruct_in.pAttachments->GetAddress(), sizeof(VkAttachmentDescription));  // CCP
+        if (pstruct_in.pAttachments->HasData() && pstruct_in.pAttachments->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkAttachmentDescription", pstruct_in.pAttachments->GetMetaStructPointer(), "pAttachments", pstruct->attachmentCount, false, pstruct_in.pAttachments->GetAddress(), sizeof(VkAttachmentDescription));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -7957,7 +7999,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkRenderPassCreateInfo
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pSubpasses->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkSubpassDescription", pstruct_in.pSubpasses->GetMetaStructPointer(), "pSubpasses", pstruct->subpassCount, false, pstruct_in.pSubpasses->GetAddress(), sizeof(VkSubpassDescription));  // CCP
+        if (pstruct_in.pSubpasses->HasData() && pstruct_in.pSubpasses->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkSubpassDescription", pstruct_in.pSubpasses->GetMetaStructPointer(), "pSubpasses", pstruct->subpassCount, false, pstruct_in.pSubpasses->GetAddress(), sizeof(VkSubpassDescription));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -7979,7 +8022,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkRenderPassCreateInfo
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pDependencies->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkSubpassDependency", pstruct_in.pDependencies->GetMetaStructPointer(), "pDependencies", pstruct->dependencyCount, false, pstruct_in.pDependencies->GetAddress(), sizeof(VkSubpassDependency));  // CCP
+        if (pstruct_in.pDependencies->HasData() && pstruct_in.pDependencies->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkSubpassDependency", pstruct_in.pDependencies->GetMetaStructPointer(), "pDependencies", pstruct->dependencyCount, false, pstruct_in.pDependencies->GetAddress(), sizeof(VkSubpassDependency));  // CCP
     }
 }
 
@@ -8242,7 +8286,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkCommandBufferBeginIn
     {
         OutputAddrAscii(outputFile, pstruct_in.pInheritanceInfo->GetAddress()); // JHJ
         OutputString(outputFile, ":");
-        OutputStructureAscii(outputFile, *pstruct_in.pInheritanceInfo->GetMetaStructPointer(), indent+1, base_addr + offsetof(VkCommandBufferBeginInfo, pInheritanceInfo)); // GLN
+        if (pstruct_in.pInheritanceInfo->HasData() && pstruct_in.pInheritanceInfo->HasAddress())
+            OutputStructureAscii(outputFile, *pstruct_in.pInheritanceInfo->GetMetaStructPointer(), indent+1, base_addr + offsetof(VkCommandBufferBeginInfo, pInheritanceInfo)); // GLN
     }
 }
 
@@ -8385,7 +8430,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkImageBlit &pstruct_i
     OutputString(outputFile, "2"); // DFX
     OutputString(outputFile, "] = ");
     OutputAddrAscii(outputFile, base_addr + offsetof(VkImageBlit, srcOffsets)); // IYY
-    OutputArrayOfStructsAscii(outputFile, indent+1, "VkOffset3D", pstruct_in.srcOffsets->GetMetaStructPointer(), "srcOffsets", 2 , false, pstruct_in.srcOffsets->GetAddress(), sizeof(VkOffset3D)); // EPB
+    if (pstruct_in.srcOffsets->HasData() && pstruct_in.srcOffsets->HasAddress())
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkOffset3D", pstruct_in.srcOffsets->GetMetaStructPointer(), "srcOffsets", 2 , false, pstruct_in.srcOffsets->GetAddress(), sizeof(VkOffset3D)); // EPB
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: VkImageSubresourceLayers dstSubresource
@@ -8403,7 +8449,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkImageBlit &pstruct_i
     OutputString(outputFile, "2"); // DFX
     OutputString(outputFile, "] = ");
     OutputAddrAscii(outputFile, base_addr + offsetof(VkImageBlit, dstOffsets)); // IYY
-    OutputArrayOfStructsAscii(outputFile, indent+1, "VkOffset3D", pstruct_in.dstOffsets->GetMetaStructPointer(), "dstOffsets", 2 , false, pstruct_in.dstOffsets->GetAddress(), sizeof(VkOffset3D)); // EPB
+    if (pstruct_in.dstOffsets->HasData() && pstruct_in.dstOffsets->HasAddress())
+        OutputArrayOfStructsAscii(outputFile, indent+1, "VkOffset3D", pstruct_in.dstOffsets->GetMetaStructPointer(), "dstOffsets", 2 , false, pstruct_in.dstOffsets->GetAddress(), sizeof(VkOffset3D)); // EPB
 }
 
 void OutputStructureAscii(FILE* outputFile, const Decoded_VkBufferImageCopy &pstruct_in, int indent, uint64_t base_addr)
@@ -8985,7 +9032,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkRenderPassBeginInfo 
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pClearValues->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkClearValue", pstruct_in.pClearValues->GetMetaStructPointer(), "pClearValues", pstruct->clearValueCount, true, pstruct_in.pClearValues->GetAddress(), sizeof(VkClearValue));  // CCP
+        if (pstruct_in.pClearValues->HasData() && pstruct_in.pClearValues->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkClearValue", pstruct_in.pClearValues->GetMetaStructPointer(), "pClearValues", pstruct->clearValueCount, true, pstruct_in.pClearValues->GetAddress(), sizeof(VkClearValue));  // CCP
     }
 }
 
@@ -9588,7 +9636,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDeviceGroupRenderPas
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pDeviceRenderAreas->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkRect2D", pstruct_in.pDeviceRenderAreas->GetMetaStructPointer(), "pDeviceRenderAreas", pstruct->deviceRenderAreaCount, false, pstruct_in.pDeviceRenderAreas->GetAddress(), sizeof(VkRect2D));  // CCP
+        if (pstruct_in.pDeviceRenderAreas->HasData() && pstruct_in.pDeviceRenderAreas->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkRect2D", pstruct_in.pDeviceRenderAreas->GetMetaStructPointer(), "pDeviceRenderAreas", pstruct->deviceRenderAreaCount, false, pstruct_in.pDeviceRenderAreas->GetAddress(), sizeof(VkRect2D));  // CCP
     }
 }
 
@@ -9946,7 +9995,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkBindImageMemoryDevic
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pSplitInstanceBindRegions->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkRect2D", pstruct_in.pSplitInstanceBindRegions->GetMetaStructPointer(), "pSplitInstanceBindRegions", pstruct->splitInstanceBindRegionCount, false, pstruct_in.pSplitInstanceBindRegions->GetAddress(), sizeof(VkRect2D));  // CCP
+        if (pstruct_in.pSplitInstanceBindRegions->HasData() && pstruct_in.pSplitInstanceBindRegions->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkRect2D", pstruct_in.pSplitInstanceBindRegions->GetMetaStructPointer(), "pSplitInstanceBindRegions", pstruct->splitInstanceBindRegionCount, false, pstruct_in.pSplitInstanceBindRegions->GetAddress(), sizeof(VkRect2D));  // CCP
     }
 }
 
@@ -10953,7 +11003,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkRenderPassInputAttac
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pAspectReferences->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkInputAttachmentAspectReference", pstruct_in.pAspectReferences->GetMetaStructPointer(), "pAspectReferences", pstruct->aspectReferenceCount, false, pstruct_in.pAspectReferences->GetAddress(), sizeof(VkInputAttachmentAspectReference));  // CCP
+        if (pstruct_in.pAspectReferences->HasData() && pstruct_in.pAspectReferences->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkInputAttachmentAspectReference", pstruct_in.pAspectReferences->GetMetaStructPointer(), "pAspectReferences", pstruct->aspectReferenceCount, false, pstruct_in.pAspectReferences->GetAddress(), sizeof(VkInputAttachmentAspectReference));  // CCP
     }
 }
 
@@ -12009,7 +12060,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDescriptorUpdateTemp
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pDescriptorUpdateEntries->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkDescriptorUpdateTemplateEntry", pstruct_in.pDescriptorUpdateEntries->GetMetaStructPointer(), "pDescriptorUpdateEntries", pstruct->descriptorUpdateEntryCount, false, pstruct_in.pDescriptorUpdateEntries->GetAddress(), sizeof(VkDescriptorUpdateTemplateEntry));  // CCP
+        if (pstruct_in.pDescriptorUpdateEntries->HasData() && pstruct_in.pDescriptorUpdateEntries->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkDescriptorUpdateTemplateEntry", pstruct_in.pDescriptorUpdateEntries->GetMetaStructPointer(), "pDescriptorUpdateEntries", pstruct->descriptorUpdateEntryCount, false, pstruct_in.pDescriptorUpdateEntries->GetAddress(), sizeof(VkDescriptorUpdateTemplateEntry));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -14643,7 +14695,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkExportMemoryWin32Han
     else
     {
         OutputScalarValueStructInfo vinfo_pAttributes = {false, false, false, nullptr};
-        OutputScalarValueAscii(outputFile, pstruct_in.pAttributes->GetPointer(), vinfo_pAttributes); // PWT
+        if (pstruct_in.pAttributes->HasData() && pstruct_in.pAttributes->HasAddress())
+            OutputScalarValueAscii(outputFile, pstruct_in.pAttributes->GetPointer(), vinfo_pAttributes); // PWT
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -15210,7 +15263,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkExportSemaphoreWin32
     else
     {
         OutputScalarValueStructInfo vinfo_pAttributes = {false, false, false, nullptr};
-        OutputScalarValueAscii(outputFile, pstruct_in.pAttributes->GetPointer(), vinfo_pAttributes); // PWT
+        if (pstruct_in.pAttributes->HasData() && pstruct_in.pAttributes->HasAddress())
+            OutputScalarValueAscii(outputFile, pstruct_in.pAttributes->GetPointer(), vinfo_pAttributes); // PWT
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -15666,7 +15720,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPresentRegionKHR &ps
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pRectangles->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkRectLayerKHR", pstruct_in.pRectangles->GetMetaStructPointer(), "pRectangles", pstruct->rectangleCount, false, pstruct_in.pRectangles->GetAddress(), sizeof(VkRectLayerKHR));  // CCP
+        if (pstruct_in.pRectangles->HasData() && pstruct_in.pRectangles->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkRectLayerKHR", pstruct_in.pRectangles->GetMetaStructPointer(), "pRectangles", pstruct->rectangleCount, false, pstruct_in.pRectangles->GetAddress(), sizeof(VkRectLayerKHR));  // CCP
     }
 }
 
@@ -15728,7 +15783,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPresentRegionsKHR &p
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pRegions->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkPresentRegionKHR", pstruct_in.pRegions->GetMetaStructPointer(), "pRegions", pstruct->swapchainCount, false, pstruct_in.pRegions->GetAddress(), sizeof(VkPresentRegionKHR));  // CCP
+        if (pstruct_in.pRegions->HasData() && pstruct_in.pRegions->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkPresentRegionKHR", pstruct_in.pRegions->GetMetaStructPointer(), "pRegions", pstruct->swapchainCount, false, pstruct_in.pRegions->GetAddress(), sizeof(VkPresentRegionKHR));  // CCP
     }
 }
 
@@ -15935,7 +15991,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkFramebufferAttachmen
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pAttachmentImageInfos->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkFramebufferAttachmentImageInfoKHR", pstruct_in.pAttachmentImageInfos->GetMetaStructPointer(), "pAttachmentImageInfos", pstruct->attachmentImageInfoCount, false, pstruct_in.pAttachmentImageInfos->GetAddress(), sizeof(VkFramebufferAttachmentImageInfoKHR));  // CCP
+        if (pstruct_in.pAttachmentImageInfos->HasData() && pstruct_in.pAttachmentImageInfos->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkFramebufferAttachmentImageInfoKHR", pstruct_in.pAttachmentImageInfos->GetMetaStructPointer(), "pAttachmentImageInfos", pstruct->attachmentImageInfoCount, false, pstruct_in.pAttachmentImageInfos->GetAddress(), sizeof(VkFramebufferAttachmentImageInfoKHR));  // CCP
     }
 }
 
@@ -16275,7 +16332,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSubpassDescription2K
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pInputAttachments->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkAttachmentReference2KHR", pstruct_in.pInputAttachments->GetMetaStructPointer(), "pInputAttachments", pstruct->inputAttachmentCount, false, pstruct_in.pInputAttachments->GetAddress(), sizeof(VkAttachmentReference2KHR));  // CCP
+        if (pstruct_in.pInputAttachments->HasData() && pstruct_in.pInputAttachments->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkAttachmentReference2KHR", pstruct_in.pInputAttachments->GetMetaStructPointer(), "pInputAttachments", pstruct->inputAttachmentCount, false, pstruct_in.pInputAttachments->GetAddress(), sizeof(VkAttachmentReference2KHR));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -16297,7 +16355,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSubpassDescription2K
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pColorAttachments->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkAttachmentReference2KHR", pstruct_in.pColorAttachments->GetMetaStructPointer(), "pColorAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pColorAttachments->GetAddress(), sizeof(VkAttachmentReference2KHR));  // CCP
+        if (pstruct_in.pColorAttachments->HasData() && pstruct_in.pColorAttachments->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkAttachmentReference2KHR", pstruct_in.pColorAttachments->GetMetaStructPointer(), "pColorAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pColorAttachments->GetAddress(), sizeof(VkAttachmentReference2KHR));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -16312,7 +16371,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSubpassDescription2K
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pResolveAttachments->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkAttachmentReference2KHR", pstruct_in.pResolveAttachments->GetMetaStructPointer(), "pResolveAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pResolveAttachments->GetAddress(), sizeof(VkAttachmentReference2KHR));  // CCP
+        if (pstruct_in.pResolveAttachments->HasData() && pstruct_in.pResolveAttachments->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkAttachmentReference2KHR", pstruct_in.pResolveAttachments->GetMetaStructPointer(), "pResolveAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pResolveAttachments->GetAddress(), sizeof(VkAttachmentReference2KHR));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -16328,7 +16388,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSubpassDescription2K
     {
         OutputAddrAscii(outputFile, pstruct_in.pDepthStencilAttachment->GetAddress()); // JHJ
         OutputString(outputFile, ":");
-        OutputStructureAscii(outputFile, *pstruct_in.pDepthStencilAttachment->GetMetaStructPointer(), indent+1, base_addr + offsetof(VkSubpassDescription2KHR, pDepthStencilAttachment)); // GLN
+        if (pstruct_in.pDepthStencilAttachment->HasData() && pstruct_in.pDepthStencilAttachment->HasAddress())
+            OutputStructureAscii(outputFile, *pstruct_in.pDepthStencilAttachment->GetMetaStructPointer(), indent+1, base_addr + offsetof(VkSubpassDescription2KHR, pDepthStencilAttachment)); // GLN
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -16516,7 +16577,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkRenderPassCreateInfo
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pAttachments->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkAttachmentDescription2KHR", pstruct_in.pAttachments->GetMetaStructPointer(), "pAttachments", pstruct->attachmentCount, false, pstruct_in.pAttachments->GetAddress(), sizeof(VkAttachmentDescription2KHR));  // CCP
+        if (pstruct_in.pAttachments->HasData() && pstruct_in.pAttachments->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkAttachmentDescription2KHR", pstruct_in.pAttachments->GetMetaStructPointer(), "pAttachments", pstruct->attachmentCount, false, pstruct_in.pAttachments->GetAddress(), sizeof(VkAttachmentDescription2KHR));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -16538,7 +16600,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkRenderPassCreateInfo
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pSubpasses->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkSubpassDescription2KHR", pstruct_in.pSubpasses->GetMetaStructPointer(), "pSubpasses", pstruct->subpassCount, false, pstruct_in.pSubpasses->GetAddress(), sizeof(VkSubpassDescription2KHR));  // CCP
+        if (pstruct_in.pSubpasses->HasData() && pstruct_in.pSubpasses->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkSubpassDescription2KHR", pstruct_in.pSubpasses->GetMetaStructPointer(), "pSubpasses", pstruct->subpassCount, false, pstruct_in.pSubpasses->GetAddress(), sizeof(VkSubpassDescription2KHR));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -16560,7 +16623,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkRenderPassCreateInfo
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pDependencies->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkSubpassDependency2KHR", pstruct_in.pDependencies->GetMetaStructPointer(), "pDependencies", pstruct->dependencyCount, false, pstruct_in.pDependencies->GetAddress(), sizeof(VkSubpassDependency2KHR));  // CCP
+        if (pstruct_in.pDependencies->HasData() && pstruct_in.pDependencies->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkSubpassDependency2KHR", pstruct_in.pDependencies->GetMetaStructPointer(), "pDependencies", pstruct->dependencyCount, false, pstruct_in.pDependencies->GetAddress(), sizeof(VkSubpassDependency2KHR));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -16867,7 +16931,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkExportFenceWin32Hand
     else
     {
         OutputScalarValueStructInfo vinfo_pAttributes = {false, false, false, nullptr};
-        OutputScalarValueAscii(outputFile, pstruct_in.pAttributes->GetPointer(), vinfo_pAttributes); // PWT
+        if (pstruct_in.pAttributes->HasData() && pstruct_in.pAttributes->HasAddress())
+            OutputScalarValueAscii(outputFile, pstruct_in.pAttributes->GetPointer(), vinfo_pAttributes); // PWT
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -17832,7 +17897,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceDriver
     OutputString(outputFile, "driverName:                     "); // HRW
     OutputString(outputFile, "char = "); // TEQ
     OutputScalarValueStructInfo vinfo_driverName = {false, false, false, nullptr};
-    OutputArrayOfScalarsAscii(outputFile, indent, "char", pstruct_in.driverName.GetPointer(), "driverName", VK_MAX_DRIVER_NAME_SIZE_KHR, vinfo_driverName); // JPB
+    if (pstruct_in.driverName.HasData() && pstruct_in.driverName.HasAddress())
+        OutputArrayOfScalarsAscii(outputFile, indent, "char", pstruct_in.driverName.GetPointer(), "driverName", VK_MAX_DRIVER_NAME_SIZE_KHR, vinfo_driverName); // JPB
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: char driverInfo
@@ -17840,7 +17906,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPhysicalDeviceDriver
     OutputString(outputFile, "driverInfo:                     "); // HRW
     OutputString(outputFile, "char = "); // TEQ
     OutputScalarValueStructInfo vinfo_driverInfo = {false, false, false, nullptr};
-    OutputArrayOfScalarsAscii(outputFile, indent, "char", pstruct_in.driverInfo.GetPointer(), "driverInfo", VK_MAX_DRIVER_INFO_SIZE_KHR, vinfo_driverInfo); // JPB
+    if (pstruct_in.driverInfo.HasData() && pstruct_in.driverInfo.HasAddress())
+        OutputArrayOfScalarsAscii(outputFile, indent, "char", pstruct_in.driverInfo.GetPointer(), "driverInfo", VK_MAX_DRIVER_INFO_SIZE_KHR, vinfo_driverInfo); // JPB
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: VkConformanceVersionKHR conformanceVersion
@@ -18087,7 +18154,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSubpassDescriptionDe
     {
         OutputAddrAscii(outputFile, pstruct_in.pDepthStencilResolveAttachment->GetAddress()); // JHJ
         OutputString(outputFile, ":");
-        OutputStructureAscii(outputFile, *pstruct_in.pDepthStencilResolveAttachment->GetMetaStructPointer(), indent+1, base_addr + offsetof(VkSubpassDescriptionDepthStencilResolveKHR, pDepthStencilResolveAttachment)); // GLN
+        if (pstruct_in.pDepthStencilResolveAttachment->HasData() && pstruct_in.pDepthStencilResolveAttachment->HasAddress())
+            OutputStructureAscii(outputFile, *pstruct_in.pDepthStencilResolveAttachment->GetMetaStructPointer(), indent+1, base_addr + offsetof(VkSubpassDescriptionDepthStencilResolveKHR, pDepthStencilResolveAttachment)); // GLN
     }
 }
 
@@ -18837,7 +18905,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineExecutablePr
     OutputString(outputFile, "name:                           "); // HRW
     OutputString(outputFile, "char = "); // TEQ
     OutputScalarValueStructInfo vinfo_name = {false, false, false, nullptr};
-    OutputArrayOfScalarsAscii(outputFile, indent, "char", pstruct_in.name.GetPointer(), "name", VK_MAX_DESCRIPTION_SIZE, vinfo_name); // JPB
+    if (pstruct_in.name.HasData() && pstruct_in.name.HasAddress())
+        OutputArrayOfScalarsAscii(outputFile, indent, "char", pstruct_in.name.GetPointer(), "name", VK_MAX_DESCRIPTION_SIZE, vinfo_name); // JPB
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: char description
@@ -18845,7 +18914,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineExecutablePr
     OutputString(outputFile, "description:                    "); // HRW
     OutputString(outputFile, "char = "); // TEQ
     OutputScalarValueStructInfo vinfo_description = {false, false, false, nullptr};
-    OutputArrayOfScalarsAscii(outputFile, indent, "char", pstruct_in.description.GetPointer(), "description", VK_MAX_DESCRIPTION_SIZE, vinfo_description); // JPB
+    if (pstruct_in.description.HasData() && pstruct_in.description.HasAddress())
+        OutputArrayOfScalarsAscii(outputFile, indent, "char", pstruct_in.description.GetPointer(), "description", VK_MAX_DESCRIPTION_SIZE, vinfo_description); // JPB
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: uint32_t subgroupSize
@@ -18992,7 +19062,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineExecutableSt
     OutputString(outputFile, "name:                           "); // HRW
     OutputString(outputFile, "char = "); // TEQ
     OutputScalarValueStructInfo vinfo_name = {false, false, false, nullptr};
-    OutputArrayOfScalarsAscii(outputFile, indent, "char", pstruct_in.name.GetPointer(), "name", VK_MAX_DESCRIPTION_SIZE, vinfo_name); // JPB
+    if (pstruct_in.name.HasData() && pstruct_in.name.HasAddress())
+        OutputArrayOfScalarsAscii(outputFile, indent, "char", pstruct_in.name.GetPointer(), "name", VK_MAX_DESCRIPTION_SIZE, vinfo_name); // JPB
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: char description
@@ -19000,7 +19071,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineExecutableSt
     OutputString(outputFile, "description:                    "); // HRW
     OutputString(outputFile, "char = "); // TEQ
     OutputScalarValueStructInfo vinfo_description = {false, false, false, nullptr};
-    OutputArrayOfScalarsAscii(outputFile, indent, "char", pstruct_in.description.GetPointer(), "description", VK_MAX_DESCRIPTION_SIZE, vinfo_description); // JPB
+    if (pstruct_in.description.HasData() && pstruct_in.description.HasAddress())
+        OutputArrayOfScalarsAscii(outputFile, indent, "char", pstruct_in.description.GetPointer(), "description", VK_MAX_DESCRIPTION_SIZE, vinfo_description); // JPB
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: VkPipelineExecutableStatisticFormatKHR format
@@ -19066,7 +19138,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineExecutableIn
     OutputString(outputFile, "name:                           "); // HRW
     OutputString(outputFile, "char = "); // TEQ
     OutputScalarValueStructInfo vinfo_name = {false, false, false, nullptr};
-    OutputArrayOfScalarsAscii(outputFile, indent, "char", pstruct_in.name.GetPointer(), "name", VK_MAX_DESCRIPTION_SIZE, vinfo_name); // JPB
+    if (pstruct_in.name.HasData() && pstruct_in.name.HasAddress())
+        OutputArrayOfScalarsAscii(outputFile, indent, "char", pstruct_in.name.GetPointer(), "name", VK_MAX_DESCRIPTION_SIZE, vinfo_name); // JPB
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: char description
@@ -19074,7 +19147,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineExecutableIn
     OutputString(outputFile, "description:                    "); // HRW
     OutputString(outputFile, "char = "); // TEQ
     OutputScalarValueStructInfo vinfo_description = {false, false, false, nullptr};
-    OutputArrayOfScalarsAscii(outputFile, indent, "char", pstruct_in.description.GetPointer(), "description", VK_MAX_DESCRIPTION_SIZE, vinfo_description); // JPB
+    if (pstruct_in.description.HasData() && pstruct_in.description.HasAddress())
+        OutputArrayOfScalarsAscii(outputFile, indent, "char", pstruct_in.description.GetPointer(), "description", VK_MAX_DESCRIPTION_SIZE, vinfo_description); // JPB
     OutputString(outputFile, "\n"); // GDS
 
     // struct member: VkBool32 isText
@@ -20366,7 +20440,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkExportMemoryWin32Han
     else
     {
         OutputScalarValueStructInfo vinfo_pAttributes = {false, false, false, nullptr};
-        OutputScalarValueAscii(outputFile, pstruct_in.pAttributes->GetPointer(), vinfo_pAttributes); // PWT
+        if (pstruct_in.pAttributes->HasData() && pstruct_in.pAttributes->HasAddress())
+            OutputScalarValueAscii(outputFile, pstruct_in.pAttributes->GetPointer(), vinfo_pAttributes); // PWT
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -21213,7 +21288,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkIndirectCommandsLayo
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pTokens->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkIndirectCommandsLayoutTokenNVX", pstruct_in.pTokens->GetMetaStructPointer(), "pTokens", pstruct->tokenCount, false, pstruct_in.pTokens->GetAddress(), sizeof(VkIndirectCommandsLayoutTokenNVX));  // CCP
+        if (pstruct_in.pTokens->HasData() && pstruct_in.pTokens->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkIndirectCommandsLayoutTokenNVX", pstruct_in.pTokens->GetMetaStructPointer(), "pTokens", pstruct->tokenCount, false, pstruct_in.pTokens->GetAddress(), sizeof(VkIndirectCommandsLayoutTokenNVX));  // CCP
     }
 }
 
@@ -21289,7 +21365,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkCmdProcessCommandsIn
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pIndirectCommandsTokens->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkIndirectCommandsTokenNVX", pstruct_in.pIndirectCommandsTokens->GetMetaStructPointer(), "pIndirectCommandsTokens", pstruct->indirectCommandsTokenCount, false, pstruct_in.pIndirectCommandsTokens->GetAddress(), sizeof(VkIndirectCommandsTokenNVX));  // CCP
+        if (pstruct_in.pIndirectCommandsTokens->HasData() && pstruct_in.pIndirectCommandsTokens->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkIndirectCommandsTokenNVX", pstruct_in.pIndirectCommandsTokens->GetMetaStructPointer(), "pIndirectCommandsTokens", pstruct->indirectCommandsTokenCount, false, pstruct_in.pIndirectCommandsTokens->GetAddress(), sizeof(VkIndirectCommandsTokenNVX));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -21836,7 +21913,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineViewportWSca
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pViewportWScalings->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkViewportWScalingNV", pstruct_in.pViewportWScalings->GetMetaStructPointer(), "pViewportWScalings", pstruct->viewportCount, false, pstruct_in.pViewportWScalings->GetAddress(), sizeof(VkViewportWScalingNV));  // CCP
+        if (pstruct_in.pViewportWScalings->HasData() && pstruct_in.pViewportWScalings->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkViewportWScalingNV", pstruct_in.pViewportWScalings->GetMetaStructPointer(), "pViewportWScalings", pstruct->viewportCount, false, pstruct_in.pViewportWScalings->GetAddress(), sizeof(VkViewportWScalingNV));  // CCP
     }
 }
 
@@ -22301,7 +22379,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPresentTimesInfoGOOG
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pTimes->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkPresentTimeGOOGLE", pstruct_in.pTimes->GetMetaStructPointer(), "pTimes", pstruct->swapchainCount, false, pstruct_in.pTimes->GetAddress(), sizeof(VkPresentTimeGOOGLE));  // CCP
+        if (pstruct_in.pTimes->HasData() && pstruct_in.pTimes->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkPresentTimeGOOGLE", pstruct_in.pTimes->GetMetaStructPointer(), "pTimes", pstruct->swapchainCount, false, pstruct_in.pTimes->GetAddress(), sizeof(VkPresentTimeGOOGLE));  // CCP
     }
 }
 
@@ -22467,7 +22546,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineViewportSwiz
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pViewportSwizzles->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkViewportSwizzleNV", pstruct_in.pViewportSwizzles->GetMetaStructPointer(), "pViewportSwizzles", pstruct->viewportCount, false, pstruct_in.pViewportSwizzles->GetAddress(), sizeof(VkViewportSwizzleNV));  // CCP
+        if (pstruct_in.pViewportSwizzles->HasData() && pstruct_in.pViewportSwizzles->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkViewportSwizzleNV", pstruct_in.pViewportSwizzles->GetMetaStructPointer(), "pViewportSwizzles", pstruct->viewportCount, false, pstruct_in.pViewportSwizzles->GetAddress(), sizeof(VkViewportSwizzleNV));  // CCP
     }
 }
 
@@ -22593,7 +22673,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineDiscardRecta
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pDiscardRectangles->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkRect2D", pstruct_in.pDiscardRectangles->GetMetaStructPointer(), "pDiscardRectangles", pstruct->discardRectangleCount, false, pstruct_in.pDiscardRectangles->GetAddress(), sizeof(VkRect2D));  // CCP
+        if (pstruct_in.pDiscardRectangles->HasData() && pstruct_in.pDiscardRectangles->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkRect2D", pstruct_in.pDiscardRectangles->GetMetaStructPointer(), "pDiscardRectangles", pstruct->discardRectangleCount, false, pstruct_in.pDiscardRectangles->GetAddress(), sizeof(VkRect2D));  // CCP
     }
 }
 
@@ -23403,7 +23484,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDebugUtilsMessengerC
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pQueueLabels->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkDebugUtilsLabelEXT", pstruct_in.pQueueLabels->GetMetaStructPointer(), "pQueueLabels", pstruct->queueLabelCount, false, pstruct_in.pQueueLabels->GetAddress(), sizeof(VkDebugUtilsLabelEXT));  // CCP
+        if (pstruct_in.pQueueLabels->HasData() && pstruct_in.pQueueLabels->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkDebugUtilsLabelEXT", pstruct_in.pQueueLabels->GetMetaStructPointer(), "pQueueLabels", pstruct->queueLabelCount, false, pstruct_in.pQueueLabels->GetAddress(), sizeof(VkDebugUtilsLabelEXT));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -23425,7 +23507,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDebugUtilsMessengerC
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pCmdBufLabels->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkDebugUtilsLabelEXT", pstruct_in.pCmdBufLabels->GetMetaStructPointer(), "pCmdBufLabels", pstruct->cmdBufLabelCount, false, pstruct_in.pCmdBufLabels->GetAddress(), sizeof(VkDebugUtilsLabelEXT));  // CCP
+        if (pstruct_in.pCmdBufLabels->HasData() && pstruct_in.pCmdBufLabels->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkDebugUtilsLabelEXT", pstruct_in.pCmdBufLabels->GetMetaStructPointer(), "pCmdBufLabels", pstruct->cmdBufLabelCount, false, pstruct_in.pCmdBufLabels->GetAddress(), sizeof(VkDebugUtilsLabelEXT));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -23447,7 +23530,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDebugUtilsMessengerC
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pObjects->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkDebugUtilsObjectNameInfoEXT", pstruct_in.pObjects->GetMetaStructPointer(), "pObjects", pstruct->objectCount, false, pstruct_in.pObjects->GetAddress(), sizeof(VkDebugUtilsObjectNameInfoEXT));  // CCP
+        if (pstruct_in.pObjects->HasData() && pstruct_in.pObjects->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkDebugUtilsObjectNameInfoEXT", pstruct_in.pObjects->GetMetaStructPointer(), "pObjects", pstruct->objectCount, false, pstruct_in.pObjects->GetAddress(), sizeof(VkDebugUtilsObjectNameInfoEXT));  // CCP
     }
 }
 
@@ -24335,7 +24419,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkSampleLocationsInfoE
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pSampleLocations->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkSampleLocationEXT", pstruct_in.pSampleLocations->GetMetaStructPointer(), "pSampleLocations", pstruct->sampleLocationsCount, false, pstruct_in.pSampleLocations->GetAddress(), sizeof(VkSampleLocationEXT));  // CCP
+        if (pstruct_in.pSampleLocations->HasData() && pstruct_in.pSampleLocations->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkSampleLocationEXT", pstruct_in.pSampleLocations->GetMetaStructPointer(), "pSampleLocations", pstruct->sampleLocationsCount, false, pstruct_in.pSampleLocations->GetAddress(), sizeof(VkSampleLocationEXT));  // CCP
     }
 }
 
@@ -24445,7 +24530,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkRenderPassSampleLoca
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pAttachmentInitialSampleLocations->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkAttachmentSampleLocationsEXT", pstruct_in.pAttachmentInitialSampleLocations->GetMetaStructPointer(), "pAttachmentInitialSampleLocations", pstruct->attachmentInitialSampleLocationsCount, false, pstruct_in.pAttachmentInitialSampleLocations->GetAddress(), sizeof(VkAttachmentSampleLocationsEXT));  // CCP
+        if (pstruct_in.pAttachmentInitialSampleLocations->HasData() && pstruct_in.pAttachmentInitialSampleLocations->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkAttachmentSampleLocationsEXT", pstruct_in.pAttachmentInitialSampleLocations->GetMetaStructPointer(), "pAttachmentInitialSampleLocations", pstruct->attachmentInitialSampleLocationsCount, false, pstruct_in.pAttachmentInitialSampleLocations->GetAddress(), sizeof(VkAttachmentSampleLocationsEXT));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -24467,7 +24553,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkRenderPassSampleLoca
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pPostSubpassSampleLocations->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkSubpassSampleLocationsEXT", pstruct_in.pPostSubpassSampleLocations->GetMetaStructPointer(), "pPostSubpassSampleLocations", pstruct->postSubpassSampleLocationsCount, false, pstruct_in.pPostSubpassSampleLocations->GetAddress(), sizeof(VkSubpassSampleLocationsEXT));  // CCP
+        if (pstruct_in.pPostSubpassSampleLocations->HasData() && pstruct_in.pPostSubpassSampleLocations->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkSubpassSampleLocationsEXT", pstruct_in.pPostSubpassSampleLocations->GetMetaStructPointer(), "pPostSubpassSampleLocations", pstruct->postSubpassSampleLocationsCount, false, pstruct_in.pPostSubpassSampleLocations->GetAddress(), sizeof(VkSubpassSampleLocationsEXT));  // CCP
     }
 }
 
@@ -25183,7 +25270,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkDrmFormatModifierPro
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pDrmFormatModifierProperties->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkDrmFormatModifierPropertiesEXT", pstruct_in.pDrmFormatModifierProperties->GetMetaStructPointer(), "pDrmFormatModifierProperties", pstruct->drmFormatModifierCount, false, pstruct_in.pDrmFormatModifierProperties->GetAddress(), sizeof(VkDrmFormatModifierPropertiesEXT));  // CCP
+        if (pstruct_in.pDrmFormatModifierProperties->HasData() && pstruct_in.pDrmFormatModifierProperties->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkDrmFormatModifierPropertiesEXT", pstruct_in.pDrmFormatModifierProperties->GetMetaStructPointer(), "pDrmFormatModifierProperties", pstruct->drmFormatModifierCount, false, pstruct_in.pDrmFormatModifierProperties->GetAddress(), sizeof(VkDrmFormatModifierPropertiesEXT));  // CCP
     }
 }
 
@@ -25395,7 +25483,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkImageDrmFormatModifi
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pPlaneLayouts->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkSubresourceLayout", pstruct_in.pPlaneLayouts->GetMetaStructPointer(), "pPlaneLayouts", pstruct->drmFormatModifierPlaneCount, false, pstruct_in.pPlaneLayouts->GetAddress(), sizeof(VkSubresourceLayout));  // CCP
+        if (pstruct_in.pPlaneLayouts->HasData() && pstruct_in.pPlaneLayouts->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkSubresourceLayout", pstruct_in.pPlaneLayouts->GetMetaStructPointer(), "pPlaneLayouts", pstruct->drmFormatModifierPlaneCount, false, pstruct_in.pPlaneLayouts->GetAddress(), sizeof(VkSubresourceLayout));  // CCP
     }
 }
 
@@ -26215,7 +26304,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineViewportShad
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pShadingRatePalettes->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkShadingRatePaletteNV", pstruct_in.pShadingRatePalettes->GetMetaStructPointer(), "pShadingRatePalettes", pstruct->viewportCount, false, pstruct_in.pShadingRatePalettes->GetAddress(), sizeof(VkShadingRatePaletteNV));  // CCP
+        if (pstruct_in.pShadingRatePalettes->HasData() && pstruct_in.pShadingRatePalettes->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkShadingRatePaletteNV", pstruct_in.pShadingRatePalettes->GetMetaStructPointer(), "pShadingRatePalettes", pstruct->viewportCount, false, pstruct_in.pShadingRatePalettes->GetAddress(), sizeof(VkShadingRatePaletteNV));  // CCP
     }
 }
 
@@ -26410,7 +26500,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkCoarseSampleOrderCus
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pSampleLocations->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkCoarseSampleLocationNV", pstruct_in.pSampleLocations->GetMetaStructPointer(), "pSampleLocations", pstruct->sampleLocationCount, false, pstruct_in.pSampleLocations->GetAddress(), sizeof(VkCoarseSampleLocationNV));  // CCP
+        if (pstruct_in.pSampleLocations->HasData() && pstruct_in.pSampleLocations->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkCoarseSampleLocationNV", pstruct_in.pSampleLocations->GetMetaStructPointer(), "pSampleLocations", pstruct->sampleLocationCount, false, pstruct_in.pSampleLocations->GetAddress(), sizeof(VkCoarseSampleLocationNV));  // CCP
     }
 }
 
@@ -26482,7 +26573,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineViewportCoar
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pCustomSampleOrders->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkCoarseSampleOrderCustomNV", pstruct_in.pCustomSampleOrders->GetMetaStructPointer(), "pCustomSampleOrders", pstruct->customSampleOrderCount, false, pstruct_in.pCustomSampleOrders->GetAddress(), sizeof(VkCoarseSampleOrderCustomNV));  // CCP
+        if (pstruct_in.pCustomSampleOrders->HasData() && pstruct_in.pCustomSampleOrders->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkCoarseSampleOrderCustomNV", pstruct_in.pCustomSampleOrders->GetMetaStructPointer(), "pCustomSampleOrders", pstruct->customSampleOrderCount, false, pstruct_in.pCustomSampleOrders->GetAddress(), sizeof(VkCoarseSampleOrderCustomNV));  // CCP
     }
 }
 
@@ -26629,7 +26721,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkRayTracingPipelineCr
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pStages->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkPipelineShaderStageCreateInfo", pstruct_in.pStages->GetMetaStructPointer(), "pStages", pstruct->stageCount, false, pstruct_in.pStages->GetAddress(), sizeof(VkPipelineShaderStageCreateInfo));  // CCP
+        if (pstruct_in.pStages->HasData() && pstruct_in.pStages->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkPipelineShaderStageCreateInfo", pstruct_in.pStages->GetMetaStructPointer(), "pStages", pstruct->stageCount, false, pstruct_in.pStages->GetAddress(), sizeof(VkPipelineShaderStageCreateInfo));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -26651,7 +26744,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkRayTracingPipelineCr
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pGroups->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkRayTracingShaderGroupCreateInfoNV", pstruct_in.pGroups->GetMetaStructPointer(), "pGroups", pstruct->groupCount, false, pstruct_in.pGroups->GetAddress(), sizeof(VkRayTracingShaderGroupCreateInfoNV));  // CCP
+        if (pstruct_in.pGroups->HasData() && pstruct_in.pGroups->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkRayTracingShaderGroupCreateInfoNV", pstruct_in.pGroups->GetMetaStructPointer(), "pGroups", pstruct->groupCount, false, pstruct_in.pGroups->GetAddress(), sizeof(VkRayTracingShaderGroupCreateInfoNV));  // CCP
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -27044,7 +27138,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkAccelerationStructur
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pGeometries->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkGeometryNV", pstruct_in.pGeometries->GetMetaStructPointer(), "pGeometries", pstruct->geometryCount, false, pstruct_in.pGeometries->GetAddress(), sizeof(VkGeometryNV));  // CCP
+        if (pstruct_in.pGeometries->HasData() && pstruct_in.pGeometries->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkGeometryNV", pstruct_in.pGeometries->GetMetaStructPointer(), "pGeometries", pstruct->geometryCount, false, pstruct_in.pGeometries->GetAddress(), sizeof(VkGeometryNV));  // CCP
     }
 }
 
@@ -28222,7 +28317,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineVertexInputD
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pVertexBindingDivisors->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkVertexInputBindingDivisorDescriptionEXT", pstruct_in.pVertexBindingDivisors->GetMetaStructPointer(), "pVertexBindingDivisors", pstruct->vertexBindingDivisorCount, false, pstruct_in.pVertexBindingDivisors->GetAddress(), sizeof(VkVertexInputBindingDivisorDescriptionEXT));  // CCP
+        if (pstruct_in.pVertexBindingDivisors->HasData() && pstruct_in.pVertexBindingDivisors->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkVertexInputBindingDivisorDescriptionEXT", pstruct_in.pVertexBindingDivisors->GetMetaStructPointer(), "pVertexBindingDivisors", pstruct->vertexBindingDivisorCount, false, pstruct_in.pVertexBindingDivisors->GetAddress(), sizeof(VkVertexInputBindingDivisorDescriptionEXT));  // CCP
     }
 }
 
@@ -28403,7 +28499,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineCreationFeed
     {
         OutputAddrAscii(outputFile, pstruct_in.pPipelineCreationFeedback->GetAddress()); // JHJ
         OutputString(outputFile, ":");
-        OutputStructureAscii(outputFile, *pstruct_in.pPipelineCreationFeedback->GetMetaStructPointer(), indent+1, base_addr + offsetof(VkPipelineCreationFeedbackCreateInfoEXT, pPipelineCreationFeedback)); // GLN
+        if (pstruct_in.pPipelineCreationFeedback->HasData() && pstruct_in.pPipelineCreationFeedback->HasAddress())
+            OutputStructureAscii(outputFile, *pstruct_in.pPipelineCreationFeedback->GetMetaStructPointer(), indent+1, base_addr + offsetof(VkPipelineCreationFeedbackCreateInfoEXT, pPipelineCreationFeedback)); // GLN
     }
     OutputString(outputFile, "\n"); // GDS
 
@@ -28425,7 +28522,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineCreationFeed
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pPipelineStageCreationFeedbacks->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkPipelineCreationFeedbackEXT", pstruct_in.pPipelineStageCreationFeedbacks->GetMetaStructPointer(), "pPipelineStageCreationFeedbacks", pstruct->pipelineStageCreationFeedbackCount, false, pstruct_in.pPipelineStageCreationFeedbacks->GetAddress(), sizeof(VkPipelineCreationFeedbackEXT));  // CCP
+        if (pstruct_in.pPipelineStageCreationFeedbacks->HasData() && pstruct_in.pPipelineStageCreationFeedbacks->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkPipelineCreationFeedbackEXT", pstruct_in.pPipelineStageCreationFeedbacks->GetMetaStructPointer(), "pPipelineStageCreationFeedbacks", pstruct->pipelineStageCreationFeedbackCount, false, pstruct_in.pPipelineStageCreationFeedbacks->GetAddress(), sizeof(VkPipelineCreationFeedbackEXT));  // CCP
     }
 }
 
@@ -28854,7 +28952,8 @@ void OutputStructureAscii(FILE* outputFile, const Decoded_VkPipelineViewportExcl
     else
     {
         OutputAddrAscii(outputFile, pstruct_in.pExclusiveScissors->GetAddress()); // WUT
-        OutputArrayOfStructsAscii(outputFile, indent+1, "VkRect2D", pstruct_in.pExclusiveScissors->GetMetaStructPointer(), "pExclusiveScissors", pstruct->exclusiveScissorCount, false, pstruct_in.pExclusiveScissors->GetAddress(), sizeof(VkRect2D));  // CCP
+        if (pstruct_in.pExclusiveScissors->HasData() && pstruct_in.pExclusiveScissors->HasAddress())
+            OutputArrayOfStructsAscii(outputFile, indent+1, "VkRect2D", pstruct_in.pExclusiveScissors->GetMetaStructPointer(), "pExclusiveScissors", pstruct->exclusiveScissorCount, false, pstruct_in.pExclusiveScissors->GetAddress(), sizeof(VkRect2D));  // CCP
     }
 }
 
