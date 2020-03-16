@@ -1684,6 +1684,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkInstanceCreateInfo &p
         OutputAddrJson(outputFile, pstruct_in.pApplicationInfo->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
+        OutputStringJson(outputFile, "\"members\" :"); // JKW
         if (pstruct_in.pApplicationInfo->HasData() && pstruct_in.pApplicationInfo->HasAddress()) { // RXP
             OutputStringJson(outputFile, "\n");
             OutputStructureJson(outputFile, *pstruct_in.pApplicationInfo->GetMetaStructPointer(), indent,  base_addr + offsetof(VkInstanceCreateInfo, pApplicationInfo)); // GLY
@@ -5935,6 +5936,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDeviceCreateInfo &pst
         OutputAddrJson(outputFile, pstruct_in.pEnabledFeatures->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
+        OutputStringJson(outputFile, "\"members\" :"); // JKW
         if (pstruct_in.pEnabledFeatures->HasData() && pstruct_in.pEnabledFeatures->HasAddress()) { // RXP
             OutputStringJson(outputFile, "\n");
             OutputStructureJson(outputFile, *pstruct_in.pEnabledFeatures->GetMetaStructPointer(), indent,  base_addr + offsetof(VkDeviceCreateInfo, pEnabledFeatures)); // GLY
@@ -9818,6 +9820,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineShaderStageCr
         OutputAddrJson(outputFile, pstruct_in.pSpecializationInfo->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
+        OutputStringJson(outputFile, "\"members\" :"); // JKW
         if (pstruct_in.pSpecializationInfo->HasData() && pstruct_in.pSpecializationInfo->HasAddress()) { // RXP
             OutputStringJson(outputFile, "\n");
             OutputStructureJson(outputFile, *pstruct_in.pSpecializationInfo->GetMetaStructPointer(), indent,  base_addr + offsetof(VkPipelineShaderStageCreateInfo, pSpecializationInfo)); // GLY
@@ -12322,6 +12325,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkGraphicsPipelineCreat
         OutputAddrJson(outputFile, pstruct_in.pVertexInputState->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
+        OutputStringJson(outputFile, "\"members\" :"); // JKW
         if (pstruct_in.pVertexInputState->HasData() && pstruct_in.pVertexInputState->HasAddress()) { // RXP
             OutputStringJson(outputFile, "\n");
             OutputStructureJson(outputFile, *pstruct_in.pVertexInputState->GetMetaStructPointer(), indent,  base_addr + offsetof(VkGraphicsPipelineCreateInfo, pVertexInputState)); // GLY
@@ -12356,6 +12360,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkGraphicsPipelineCreat
         OutputAddrJson(outputFile, pstruct_in.pInputAssemblyState->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
+        OutputStringJson(outputFile, "\"members\" :"); // JKW
         if (pstruct_in.pInputAssemblyState->HasData() && pstruct_in.pInputAssemblyState->HasAddress()) { // RXP
             OutputStringJson(outputFile, "\n");
             OutputStructureJson(outputFile, *pstruct_in.pInputAssemblyState->GetMetaStructPointer(), indent,  base_addr + offsetof(VkGraphicsPipelineCreateInfo, pInputAssemblyState)); // GLY
@@ -12390,6 +12395,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkGraphicsPipelineCreat
         OutputAddrJson(outputFile, pstruct_in.pTessellationState->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
+        OutputStringJson(outputFile, "\"members\" :"); // JKW
         if (pstruct_in.pTessellationState->HasData() && pstruct_in.pTessellationState->HasAddress()) { // RXP
             OutputStringJson(outputFile, "\n");
             OutputStructureJson(outputFile, *pstruct_in.pTessellationState->GetMetaStructPointer(), indent,  base_addr + offsetof(VkGraphicsPipelineCreateInfo, pTessellationState)); // GLY
@@ -12424,6 +12430,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkGraphicsPipelineCreat
         OutputAddrJson(outputFile, pstruct_in.pViewportState->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
+        OutputStringJson(outputFile, "\"members\" :"); // JKW
         if (pstruct_in.pViewportState->HasData() && pstruct_in.pViewportState->HasAddress()) { // RXP
             OutputStringJson(outputFile, "\n");
             OutputStructureJson(outputFile, *pstruct_in.pViewportState->GetMetaStructPointer(), indent,  base_addr + offsetof(VkGraphicsPipelineCreateInfo, pViewportState)); // GLY
@@ -12458,6 +12465,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkGraphicsPipelineCreat
         OutputAddrJson(outputFile, pstruct_in.pRasterizationState->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
+        OutputStringJson(outputFile, "\"members\" :"); // JKW
         if (pstruct_in.pRasterizationState->HasData() && pstruct_in.pRasterizationState->HasAddress()) { // RXP
             OutputStringJson(outputFile, "\n");
             OutputStructureJson(outputFile, *pstruct_in.pRasterizationState->GetMetaStructPointer(), indent,  base_addr + offsetof(VkGraphicsPipelineCreateInfo, pRasterizationState)); // GLY
@@ -12492,6 +12500,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkGraphicsPipelineCreat
         OutputAddrJson(outputFile, pstruct_in.pMultisampleState->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
+        OutputStringJson(outputFile, "\"members\" :"); // JKW
         if (pstruct_in.pMultisampleState->HasData() && pstruct_in.pMultisampleState->HasAddress()) { // RXP
             OutputStringJson(outputFile, "\n");
             OutputStructureJson(outputFile, *pstruct_in.pMultisampleState->GetMetaStructPointer(), indent,  base_addr + offsetof(VkGraphicsPipelineCreateInfo, pMultisampleState)); // GLY
@@ -12526,6 +12535,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkGraphicsPipelineCreat
         OutputAddrJson(outputFile, pstruct_in.pDepthStencilState->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
+        OutputStringJson(outputFile, "\"members\" :"); // JKW
         if (pstruct_in.pDepthStencilState->HasData() && pstruct_in.pDepthStencilState->HasAddress()) { // RXP
             OutputStringJson(outputFile, "\n");
             OutputStructureJson(outputFile, *pstruct_in.pDepthStencilState->GetMetaStructPointer(), indent,  base_addr + offsetof(VkGraphicsPipelineCreateInfo, pDepthStencilState)); // GLY
@@ -12560,6 +12570,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkGraphicsPipelineCreat
         OutputAddrJson(outputFile, pstruct_in.pColorBlendState->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
+        OutputStringJson(outputFile, "\"members\" :"); // JKW
         if (pstruct_in.pColorBlendState->HasData() && pstruct_in.pColorBlendState->HasAddress()) { // RXP
             OutputStringJson(outputFile, "\n");
             OutputStructureJson(outputFile, *pstruct_in.pColorBlendState->GetMetaStructPointer(), indent,  base_addr + offsetof(VkGraphicsPipelineCreateInfo, pColorBlendState)); // GLY
@@ -12594,6 +12605,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkGraphicsPipelineCreat
         OutputAddrJson(outputFile, pstruct_in.pDynamicState->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
+        OutputStringJson(outputFile, "\"members\" :"); // JKW
         if (pstruct_in.pDynamicState->HasData() && pstruct_in.pDynamicState->HasAddress()) { // RXP
             OutputStringJson(outputFile, "\n");
             OutputStructureJson(outputFile, *pstruct_in.pDynamicState->GetMetaStructPointer(), indent,  base_addr + offsetof(VkGraphicsPipelineCreateInfo, pDynamicState)); // GLY
@@ -15230,6 +15242,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSubpassDescription &p
         OutputAddrJson(outputFile, pstruct_in.pDepthStencilAttachment->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
+        OutputStringJson(outputFile, "\"members\" :"); // JKW
         if (pstruct_in.pDepthStencilAttachment->HasData() && pstruct_in.pDepthStencilAttachment->HasAddress()) { // RXP
             OutputStringJson(outputFile, "\n");
             OutputStructureJson(outputFile, *pstruct_in.pDepthStencilAttachment->GetMetaStructPointer(), indent,  base_addr + offsetof(VkSubpassDescription, pDepthStencilAttachment)); // GLY
@@ -16169,6 +16182,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkCommandBufferBeginInf
         OutputAddrJson(outputFile, pstruct_in.pInheritanceInfo->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
+        OutputStringJson(outputFile, "\"members\" :"); // JKW
         if (pstruct_in.pInheritanceInfo->HasData() && pstruct_in.pInheritanceInfo->HasAddress()) { // RXP
             OutputStringJson(outputFile, "\n");
             OutputStructureJson(outputFile, *pstruct_in.pInheritanceInfo->GetMetaStructPointer(), indent,  base_addr + offsetof(VkCommandBufferBeginInfo, pInheritanceInfo)); // GLY
@@ -31795,6 +31809,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSubpassDescription2KH
         OutputAddrJson(outputFile, pstruct_in.pDepthStencilAttachment->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
+        OutputStringJson(outputFile, "\"members\" :"); // JKW
         if (pstruct_in.pDepthStencilAttachment->HasData() && pstruct_in.pDepthStencilAttachment->HasAddress()) { // RXP
             OutputStringJson(outputFile, "\n");
             OutputStructureJson(outputFile, *pstruct_in.pDepthStencilAttachment->GetMetaStructPointer(), indent,  base_addr + offsetof(VkSubpassDescription2KHR, pDepthStencilAttachment)); // GLY
@@ -35213,6 +35228,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSubpassDescriptionDep
         OutputAddrJson(outputFile, pstruct_in.pDepthStencilResolveAttachment->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
+        OutputStringJson(outputFile, "\"members\" :"); // JKW
         if (pstruct_in.pDepthStencilResolveAttachment->HasData() && pstruct_in.pDepthStencilResolveAttachment->HasAddress()) { // RXP
             OutputStringJson(outputFile, "\n");
             OutputStructureJson(outputFile, *pstruct_in.pDepthStencilResolveAttachment->GetMetaStructPointer(), indent,  base_addr + offsetof(VkSubpassDescriptionDepthStencilResolveKHR, pDepthStencilResolveAttachment)); // GLY
@@ -55482,6 +55498,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineCreationFeedb
         OutputAddrJson(outputFile, pstruct_in.pPipelineCreationFeedback->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
+        OutputStringJson(outputFile, "\"members\" :"); // JKW
         if (pstruct_in.pPipelineCreationFeedback->HasData() && pstruct_in.pPipelineCreationFeedback->HasAddress()) { // RXP
             OutputStringJson(outputFile, "\n");
             OutputStructureJson(outputFile, *pstruct_in.pPipelineCreationFeedback->GetMetaStructPointer(), indent,  base_addr + offsetof(VkPipelineCreationFeedbackCreateInfoEXT, pPipelineCreationFeedback)); // GLY

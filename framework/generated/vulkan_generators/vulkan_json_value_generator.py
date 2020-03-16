@@ -277,6 +277,7 @@ class OutputValue(BaseGenerator):
                         self.wc(leadSpaces + '    OutputStructureJson(outputFile, *' + value.name + '.GetMetaStructPointer(), indent, ' +
                                                  value.name + '.GetAddress()); // GLW')
                 else:
+                    self.wc(leadSpaces + 'OutputStringJson(outputFile, "\\"members\\" :"); // JKW')
                     self.wc(leadSpaces + 'if (' + pstruct_in + value.name + '->HasData() && ' + pstruct_in + value.name + '->HasAddress()) { // RXP')
                     self.wc(leadSpaces + '    OutputStringJson(outputFile, "\\n");')
                     self.wc(leadSpaces + '    OutputStructureJson(outputFile, *' + pstruct_in + value.name + '->GetMetaStructPointer(), indent, ' +
