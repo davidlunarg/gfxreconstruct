@@ -1684,7 +1684,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkInstanceCreateInfo &p
         OutputAddrJson(outputFile, pstruct_in.pApplicationInfo->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        if (pstruct_in.pApplicationInfo->HasData()) { // RXP
+        if (pstruct_in.pApplicationInfo->HasData() && pstruct_in.pApplicationInfo->HasAddress()) { // RXP
             OutputStringJson(outputFile, "\n");
             OutputStructureJson(outputFile, *pstruct_in.pApplicationInfo->GetMetaStructPointer(), indent,  base_addr + offsetof(VkInstanceCreateInfo, pApplicationInfo)); // GLY
         } else {
@@ -5477,9 +5477,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMemoryP
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-    if (pstruct_in.memoryTypes->HasData()) { // TGW
+    if (pstruct_in.memoryTypes->HasData() && pstruct_in.memoryTypes->HasAddress()) // TGW
         OutputArrayOfStructsJson(outputFile, indent, "VkMemoryType", pstruct_in.memoryTypes->GetMetaStructPointer(), "memoryTypes", pstruct->memoryTypeCount, false, pstruct_in.memoryTypes->GetAddress(), sizeof(VkMemoryType)); // CCY
-    } else {
+    else {
         OutputStringJson(outputFile, " ");
         StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
         OutputStringJson(outputFile, "\n");
@@ -5523,9 +5523,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPhysicalDeviceMemoryP
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-    if (pstruct_in.memoryHeaps->HasData()) { // TGW
+    if (pstruct_in.memoryHeaps->HasData() && pstruct_in.memoryHeaps->HasAddress()) // TGW
         OutputArrayOfStructsJson(outputFile, indent, "VkMemoryHeap", pstruct_in.memoryHeaps->GetMetaStructPointer(), "memoryHeaps", pstruct->memoryHeapCount, false, pstruct_in.memoryHeaps->GetAddress(), sizeof(VkMemoryHeap)); // CCY
-    } else {
+    else {
         OutputStringJson(outputFile, " ");
         StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
         OutputStringJson(outputFile, "\n");
@@ -5810,9 +5810,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDeviceCreateInfo &pst
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pQueueCreateInfos->HasData()) { // TGW
+        if (pstruct_in.pQueueCreateInfos->HasData() && pstruct_in.pQueueCreateInfos->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkDeviceQueueCreateInfo", pstruct_in.pQueueCreateInfos->GetMetaStructPointer(), "pQueueCreateInfos", pstruct->queueCreateInfoCount, false, pstruct_in.pQueueCreateInfos->GetAddress(), sizeof(VkDeviceQueueCreateInfo)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -5935,7 +5935,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDeviceCreateInfo &pst
         OutputAddrJson(outputFile, pstruct_in.pEnabledFeatures->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        if (pstruct_in.pEnabledFeatures->HasData()) { // RXP
+        if (pstruct_in.pEnabledFeatures->HasData() && pstruct_in.pEnabledFeatures->HasAddress()) { // RXP
             OutputStringJson(outputFile, "\n");
             OutputStructureJson(outputFile, *pstruct_in.pEnabledFeatures->GetMetaStructPointer(), indent,  base_addr + offsetof(VkDeviceCreateInfo, pEnabledFeatures)); // GLY
         } else {
@@ -6962,9 +6962,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSparseBufferMemoryBin
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pBinds->HasData()) { // TGW
+        if (pstruct_in.pBinds->HasData() && pstruct_in.pBinds->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkSparseMemoryBind", pstruct_in.pBinds->GetMetaStructPointer(), "pBinds", pstruct->bindCount, false, pstruct_in.pBinds->GetAddress(), sizeof(VkSparseMemoryBind)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -7046,9 +7046,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSparseImageOpaqueMemo
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pBinds->HasData()) { // TGW
+        if (pstruct_in.pBinds->HasData() && pstruct_in.pBinds->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkSparseMemoryBind", pstruct_in.pBinds->GetMetaStructPointer(), "pBinds", pstruct->bindCount, false, pstruct_in.pBinds->GetAddress(), sizeof(VkSparseMemoryBind)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -7379,9 +7379,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSparseImageMemoryBind
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pBinds->HasData()) { // TGW
+        if (pstruct_in.pBinds->HasData() && pstruct_in.pBinds->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkSparseImageMemoryBind", pstruct_in.pBinds->GetMetaStructPointer(), "pBinds", pstruct->bindCount, false, pstruct_in.pBinds->GetAddress(), sizeof(VkSparseImageMemoryBind)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -7546,9 +7546,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkBindSparseInfo &pstru
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pBufferBinds->HasData()) { // TGW
+        if (pstruct_in.pBufferBinds->HasData() && pstruct_in.pBufferBinds->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkSparseBufferMemoryBindInfo", pstruct_in.pBufferBinds->GetMetaStructPointer(), "pBufferBinds", pstruct->bufferBindCount, false, pstruct_in.pBufferBinds->GetAddress(), sizeof(VkSparseBufferMemoryBindInfo)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -7597,9 +7597,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkBindSparseInfo &pstru
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pImageOpaqueBinds->HasData()) { // TGW
+        if (pstruct_in.pImageOpaqueBinds->HasData() && pstruct_in.pImageOpaqueBinds->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkSparseImageOpaqueMemoryBindInfo", pstruct_in.pImageOpaqueBinds->GetMetaStructPointer(), "pImageOpaqueBinds", pstruct->imageOpaqueBindCount, false, pstruct_in.pImageOpaqueBinds->GetAddress(), sizeof(VkSparseImageOpaqueMemoryBindInfo)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -7648,9 +7648,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkBindSparseInfo &pstru
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pImageBinds->HasData()) { // TGW
+        if (pstruct_in.pImageBinds->HasData() && pstruct_in.pImageBinds->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkSparseImageMemoryBindInfo", pstruct_in.pImageBinds->GetMetaStructPointer(), "pImageBinds", pstruct->imageBindCount, false, pstruct_in.pImageBinds->GetAddress(), sizeof(VkSparseImageMemoryBindInfo)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -9593,9 +9593,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSpecializationInfo &p
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pMapEntries->HasData()) { // TGW
+        if (pstruct_in.pMapEntries->HasData() && pstruct_in.pMapEntries->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkSpecializationMapEntry", pstruct_in.pMapEntries->GetMetaStructPointer(), "pMapEntries", pstruct->mapEntryCount, false, pstruct_in.pMapEntries->GetAddress(), sizeof(VkSpecializationMapEntry)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -9818,7 +9818,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineShaderStageCr
         OutputAddrJson(outputFile, pstruct_in.pSpecializationInfo->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        if (pstruct_in.pSpecializationInfo->HasData()) { // RXP
+        if (pstruct_in.pSpecializationInfo->HasData() && pstruct_in.pSpecializationInfo->HasAddress()) { // RXP
             OutputStringJson(outputFile, "\n");
             OutputStructureJson(outputFile, *pstruct_in.pSpecializationInfo->GetMetaStructPointer(), indent,  base_addr + offsetof(VkPipelineShaderStageCreateInfo, pSpecializationInfo)); // GLY
         } else {
@@ -10108,9 +10108,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineVertexInputSt
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pVertexBindingDescriptions->HasData()) { // TGW
+        if (pstruct_in.pVertexBindingDescriptions->HasData() && pstruct_in.pVertexBindingDescriptions->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkVertexInputBindingDescription", pstruct_in.pVertexBindingDescriptions->GetMetaStructPointer(), "pVertexBindingDescriptions", pstruct->vertexBindingDescriptionCount, false, pstruct_in.pVertexBindingDescriptions->GetAddress(), sizeof(VkVertexInputBindingDescription)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -10159,9 +10159,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineVertexInputSt
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pVertexAttributeDescriptions->HasData()) { // TGW
+        if (pstruct_in.pVertexAttributeDescriptions->HasData() && pstruct_in.pVertexAttributeDescriptions->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkVertexInputAttributeDescription", pstruct_in.pVertexAttributeDescriptions->GetMetaStructPointer(), "pVertexAttributeDescriptions", pstruct->vertexAttributeDescriptionCount, false, pstruct_in.pVertexAttributeDescriptions->GetAddress(), sizeof(VkVertexInputAttributeDescription)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -10788,9 +10788,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineViewportState
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pViewports->HasData()) { // TGW
+        if (pstruct_in.pViewports->HasData() && pstruct_in.pViewports->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkViewport", pstruct_in.pViewports->GetMetaStructPointer(), "pViewports", pstruct->viewportCount, false, pstruct_in.pViewports->GetAddress(), sizeof(VkViewport)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -10839,9 +10839,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineViewportState
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pScissors->HasData()) { // TGW
+        if (pstruct_in.pScissors->HasData() && pstruct_in.pScissors->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkRect2D", pstruct_in.pScissors->GetMetaStructPointer(), "pScissors", pstruct->scissorCount, false, pstruct_in.pScissors->GetAddress(), sizeof(VkRect2D)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -11994,9 +11994,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineColorBlendSta
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pAttachments->HasData()) { // TGW
+        if (pstruct_in.pAttachments->HasData() && pstruct_in.pAttachments->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkPipelineColorBlendAttachmentState", pstruct_in.pAttachments->GetMetaStructPointer(), "pAttachments", pstruct->attachmentCount, false, pstruct_in.pAttachments->GetAddress(), sizeof(VkPipelineColorBlendAttachmentState)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -12289,9 +12289,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkGraphicsPipelineCreat
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pStages->HasData()) { // TGW
+        if (pstruct_in.pStages->HasData() && pstruct_in.pStages->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkPipelineShaderStageCreateInfo", pstruct_in.pStages->GetMetaStructPointer(), "pStages", pstruct->stageCount, false, pstruct_in.pStages->GetAddress(), sizeof(VkPipelineShaderStageCreateInfo)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -12322,7 +12322,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkGraphicsPipelineCreat
         OutputAddrJson(outputFile, pstruct_in.pVertexInputState->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        if (pstruct_in.pVertexInputState->HasData()) { // RXP
+        if (pstruct_in.pVertexInputState->HasData() && pstruct_in.pVertexInputState->HasAddress()) { // RXP
             OutputStringJson(outputFile, "\n");
             OutputStructureJson(outputFile, *pstruct_in.pVertexInputState->GetMetaStructPointer(), indent,  base_addr + offsetof(VkGraphicsPipelineCreateInfo, pVertexInputState)); // GLY
         } else {
@@ -12356,7 +12356,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkGraphicsPipelineCreat
         OutputAddrJson(outputFile, pstruct_in.pInputAssemblyState->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        if (pstruct_in.pInputAssemblyState->HasData()) { // RXP
+        if (pstruct_in.pInputAssemblyState->HasData() && pstruct_in.pInputAssemblyState->HasAddress()) { // RXP
             OutputStringJson(outputFile, "\n");
             OutputStructureJson(outputFile, *pstruct_in.pInputAssemblyState->GetMetaStructPointer(), indent,  base_addr + offsetof(VkGraphicsPipelineCreateInfo, pInputAssemblyState)); // GLY
         } else {
@@ -12390,7 +12390,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkGraphicsPipelineCreat
         OutputAddrJson(outputFile, pstruct_in.pTessellationState->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        if (pstruct_in.pTessellationState->HasData()) { // RXP
+        if (pstruct_in.pTessellationState->HasData() && pstruct_in.pTessellationState->HasAddress()) { // RXP
             OutputStringJson(outputFile, "\n");
             OutputStructureJson(outputFile, *pstruct_in.pTessellationState->GetMetaStructPointer(), indent,  base_addr + offsetof(VkGraphicsPipelineCreateInfo, pTessellationState)); // GLY
         } else {
@@ -12424,7 +12424,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkGraphicsPipelineCreat
         OutputAddrJson(outputFile, pstruct_in.pViewportState->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        if (pstruct_in.pViewportState->HasData()) { // RXP
+        if (pstruct_in.pViewportState->HasData() && pstruct_in.pViewportState->HasAddress()) { // RXP
             OutputStringJson(outputFile, "\n");
             OutputStructureJson(outputFile, *pstruct_in.pViewportState->GetMetaStructPointer(), indent,  base_addr + offsetof(VkGraphicsPipelineCreateInfo, pViewportState)); // GLY
         } else {
@@ -12458,7 +12458,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkGraphicsPipelineCreat
         OutputAddrJson(outputFile, pstruct_in.pRasterizationState->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        if (pstruct_in.pRasterizationState->HasData()) { // RXP
+        if (pstruct_in.pRasterizationState->HasData() && pstruct_in.pRasterizationState->HasAddress()) { // RXP
             OutputStringJson(outputFile, "\n");
             OutputStructureJson(outputFile, *pstruct_in.pRasterizationState->GetMetaStructPointer(), indent,  base_addr + offsetof(VkGraphicsPipelineCreateInfo, pRasterizationState)); // GLY
         } else {
@@ -12492,7 +12492,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkGraphicsPipelineCreat
         OutputAddrJson(outputFile, pstruct_in.pMultisampleState->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        if (pstruct_in.pMultisampleState->HasData()) { // RXP
+        if (pstruct_in.pMultisampleState->HasData() && pstruct_in.pMultisampleState->HasAddress()) { // RXP
             OutputStringJson(outputFile, "\n");
             OutputStructureJson(outputFile, *pstruct_in.pMultisampleState->GetMetaStructPointer(), indent,  base_addr + offsetof(VkGraphicsPipelineCreateInfo, pMultisampleState)); // GLY
         } else {
@@ -12526,7 +12526,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkGraphicsPipelineCreat
         OutputAddrJson(outputFile, pstruct_in.pDepthStencilState->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        if (pstruct_in.pDepthStencilState->HasData()) { // RXP
+        if (pstruct_in.pDepthStencilState->HasData() && pstruct_in.pDepthStencilState->HasAddress()) { // RXP
             OutputStringJson(outputFile, "\n");
             OutputStructureJson(outputFile, *pstruct_in.pDepthStencilState->GetMetaStructPointer(), indent,  base_addr + offsetof(VkGraphicsPipelineCreateInfo, pDepthStencilState)); // GLY
         } else {
@@ -12560,7 +12560,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkGraphicsPipelineCreat
         OutputAddrJson(outputFile, pstruct_in.pColorBlendState->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        if (pstruct_in.pColorBlendState->HasData()) { // RXP
+        if (pstruct_in.pColorBlendState->HasData() && pstruct_in.pColorBlendState->HasAddress()) { // RXP
             OutputStringJson(outputFile, "\n");
             OutputStructureJson(outputFile, *pstruct_in.pColorBlendState->GetMetaStructPointer(), indent,  base_addr + offsetof(VkGraphicsPipelineCreateInfo, pColorBlendState)); // GLY
         } else {
@@ -12594,7 +12594,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkGraphicsPipelineCreat
         OutputAddrJson(outputFile, pstruct_in.pDynamicState->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        if (pstruct_in.pDynamicState->HasData()) { // RXP
+        if (pstruct_in.pDynamicState->HasData() && pstruct_in.pDynamicState->HasAddress()) { // RXP
             OutputStringJson(outputFile, "\n");
             OutputStructureJson(outputFile, *pstruct_in.pDynamicState->GetMetaStructPointer(), indent,  base_addr + offsetof(VkGraphicsPipelineCreateInfo, pDynamicState)); // GLY
         } else {
@@ -13085,9 +13085,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineLayoutCreateI
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pPushConstantRanges->HasData()) { // TGW
+        if (pstruct_in.pPushConstantRanges->HasData() && pstruct_in.pPushConstantRanges->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkPushConstantRange", pstruct_in.pPushConstantRanges->GetMetaStructPointer(), "pPushConstantRanges", pstruct->pushConstantRangeCount, false, pstruct_in.pPushConstantRanges->GetAddress(), sizeof(VkPushConstantRange)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -13678,9 +13678,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDescriptorSetLayoutCr
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pBindings->HasData()) { // TGW
+        if (pstruct_in.pBindings->HasData() && pstruct_in.pBindings->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkDescriptorSetLayoutBinding", pstruct_in.pBindings->GetMetaStructPointer(), "pBindings", pstruct->bindingCount, false, pstruct_in.pBindings->GetAddress(), sizeof(VkDescriptorSetLayoutBinding)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -13883,9 +13883,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDescriptorPoolCreateI
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pPoolSizes->HasData()) { // TGW
+        if (pstruct_in.pPoolSizes->HasData() && pstruct_in.pPoolSizes->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkDescriptorPoolSize", pstruct_in.pPoolSizes->GetMetaStructPointer(), "pPoolSizes", pstruct->poolSizeCount, false, pstruct_in.pPoolSizes->GetAddress(), sizeof(VkDescriptorPoolSize)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -14339,9 +14339,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkWriteDescriptorSet &p
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pImageInfo->HasData()) { // TGW
+        if (pstruct_in.pImageInfo->HasData() && pstruct_in.pImageInfo->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkDescriptorImageInfo", pstruct_in.pImageInfo->GetMetaStructPointer(), "pImageInfo", pstruct->descriptorCount, false, pstruct_in.pImageInfo->GetAddress(), sizeof(VkDescriptorImageInfo)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -14373,9 +14373,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkWriteDescriptorSet &p
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pBufferInfo->HasData()) { // TGW
+        if (pstruct_in.pBufferInfo->HasData() && pstruct_in.pBufferInfo->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkDescriptorBufferInfo", pstruct_in.pBufferInfo->GetMetaStructPointer(), "pBufferInfo", pstruct->descriptorCount, false, pstruct_in.pBufferInfo->GetAddress(), sizeof(VkDescriptorBufferInfo)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -15112,9 +15112,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSubpassDescription &p
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pInputAttachments->HasData()) { // TGW
+        if (pstruct_in.pInputAttachments->HasData() && pstruct_in.pInputAttachments->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkAttachmentReference", pstruct_in.pInputAttachments->GetMetaStructPointer(), "pInputAttachments", pstruct->inputAttachmentCount, false, pstruct_in.pInputAttachments->GetAddress(), sizeof(VkAttachmentReference)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -15163,9 +15163,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSubpassDescription &p
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pColorAttachments->HasData()) { // TGW
+        if (pstruct_in.pColorAttachments->HasData() && pstruct_in.pColorAttachments->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkAttachmentReference", pstruct_in.pColorAttachments->GetMetaStructPointer(), "pColorAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pColorAttachments->GetAddress(), sizeof(VkAttachmentReference)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -15197,9 +15197,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSubpassDescription &p
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pResolveAttachments->HasData()) { // TGW
+        if (pstruct_in.pResolveAttachments->HasData() && pstruct_in.pResolveAttachments->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkAttachmentReference", pstruct_in.pResolveAttachments->GetMetaStructPointer(), "pResolveAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pResolveAttachments->GetAddress(), sizeof(VkAttachmentReference)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -15230,7 +15230,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSubpassDescription &p
         OutputAddrJson(outputFile, pstruct_in.pDepthStencilAttachment->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        if (pstruct_in.pDepthStencilAttachment->HasData()) { // RXP
+        if (pstruct_in.pDepthStencilAttachment->HasData() && pstruct_in.pDepthStencilAttachment->HasAddress()) { // RXP
             OutputStringJson(outputFile, "\n");
             OutputStructureJson(outputFile, *pstruct_in.pDepthStencilAttachment->GetMetaStructPointer(), indent,  base_addr + offsetof(VkSubpassDescription, pDepthStencilAttachment)); // GLY
         } else {
@@ -15550,9 +15550,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkRenderPassCreateInfo 
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pAttachments->HasData()) { // TGW
+        if (pstruct_in.pAttachments->HasData() && pstruct_in.pAttachments->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkAttachmentDescription", pstruct_in.pAttachments->GetMetaStructPointer(), "pAttachments", pstruct->attachmentCount, false, pstruct_in.pAttachments->GetAddress(), sizeof(VkAttachmentDescription)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -15601,9 +15601,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkRenderPassCreateInfo 
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pSubpasses->HasData()) { // TGW
+        if (pstruct_in.pSubpasses->HasData() && pstruct_in.pSubpasses->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkSubpassDescription", pstruct_in.pSubpasses->GetMetaStructPointer(), "pSubpasses", pstruct->subpassCount, false, pstruct_in.pSubpasses->GetAddress(), sizeof(VkSubpassDescription)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -15652,9 +15652,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkRenderPassCreateInfo 
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pDependencies->HasData()) { // TGW
+        if (pstruct_in.pDependencies->HasData() && pstruct_in.pDependencies->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkSubpassDependency", pstruct_in.pDependencies->GetMetaStructPointer(), "pDependencies", pstruct->dependencyCount, false, pstruct_in.pDependencies->GetAddress(), sizeof(VkSubpassDependency)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -16169,7 +16169,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkCommandBufferBeginInf
         OutputAddrJson(outputFile, pstruct_in.pInheritanceInfo->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        if (pstruct_in.pInheritanceInfo->HasData()) { // RXP
+        if (pstruct_in.pInheritanceInfo->HasData() && pstruct_in.pInheritanceInfo->HasAddress()) { // RXP
             OutputStringJson(outputFile, "\n");
             OutputStructureJson(outputFile, *pstruct_in.pInheritanceInfo->GetMetaStructPointer(), indent,  base_addr + offsetof(VkCommandBufferBeginInfo, pInheritanceInfo)); // GLY
         } else {
@@ -16479,9 +16479,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageBlit &pstruct_in
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-    if (pstruct_in.srcOffsets->HasData()) { // TGW
+    if (pstruct_in.srcOffsets->HasData() && pstruct_in.srcOffsets->HasAddress()) // TGW
         OutputArrayOfStructsJson(outputFile, indent, "VkOffset3D", pstruct_in.srcOffsets->GetMetaStructPointer(), "srcOffsets", 2, false, pstruct_in.srcOffsets->GetAddress(), sizeof(VkOffset3D)); // CCY
-    } else {
+    else {
         OutputStringJson(outputFile, " ");
         StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
         OutputStringJson(outputFile, "\n");
@@ -16524,9 +16524,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageBlit &pstruct_in
     OutputStringJson(outputFile, "\",\n");
     OutputIndentJson(outputFile, indent);
     OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-    if (pstruct_in.dstOffsets->HasData()) { // TGW
+    if (pstruct_in.dstOffsets->HasData() && pstruct_in.dstOffsets->HasAddress()) // TGW
         OutputArrayOfStructsJson(outputFile, indent, "VkOffset3D", pstruct_in.dstOffsets->GetMetaStructPointer(), "dstOffsets", 2, false, pstruct_in.dstOffsets->GetAddress(), sizeof(VkOffset3D)); // CCY
-    } else {
+    else {
         OutputStringJson(outputFile, " ");
         StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
         OutputStringJson(outputFile, "\n");
@@ -17721,9 +17721,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkRenderPassBeginInfo &
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pClearValues->HasData()) { // TGW
+        if (pstruct_in.pClearValues->HasData() && pstruct_in.pClearValues->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkClearValue", pstruct_in.pClearValues->GetMetaStructPointer(), "pClearValues", pstruct->clearValueCount, true, pstruct_in.pClearValues->GetAddress(), sizeof(VkClearValue)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -18941,9 +18941,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDeviceGroupRenderPass
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pDeviceRenderAreas->HasData()) { // TGW
+        if (pstruct_in.pDeviceRenderAreas->HasData() && pstruct_in.pDeviceRenderAreas->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkRect2D", pstruct_in.pDeviceRenderAreas->GetMetaStructPointer(), "pDeviceRenderAreas", pstruct->deviceRenderAreaCount, false, pstruct_in.pDeviceRenderAreas->GetAddress(), sizeof(VkRect2D)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -19623,9 +19623,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkBindImageMemoryDevice
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pSplitInstanceBindRegions->HasData()) { // TGW
+        if (pstruct_in.pSplitInstanceBindRegions->HasData() && pstruct_in.pSplitInstanceBindRegions->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkRect2D", pstruct_in.pSplitInstanceBindRegions->GetMetaStructPointer(), "pSplitInstanceBindRegions", pstruct->splitInstanceBindRegionCount, false, pstruct_in.pSplitInstanceBindRegions->GetAddress(), sizeof(VkRect2D)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -21487,9 +21487,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkRenderPassInputAttach
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pAspectReferences->HasData()) { // TGW
+        if (pstruct_in.pAspectReferences->HasData() && pstruct_in.pAspectReferences->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkInputAttachmentAspectReference", pstruct_in.pAspectReferences->GetMetaStructPointer(), "pAspectReferences", pstruct->aspectReferenceCount, false, pstruct_in.pAspectReferences->GetAddress(), sizeof(VkInputAttachmentAspectReference)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -23476,9 +23476,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDescriptorUpdateTempl
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pDescriptorUpdateEntries->HasData()) { // TGW
+        if (pstruct_in.pDescriptorUpdateEntries->HasData() && pstruct_in.pDescriptorUpdateEntries->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkDescriptorUpdateTemplateEntry", pstruct_in.pDescriptorUpdateEntries->GetMetaStructPointer(), "pDescriptorUpdateEntries", pstruct->descriptorUpdateEntryCount, false, pstruct_in.pDescriptorUpdateEntries->GetAddress(), sizeof(VkDescriptorUpdateTemplateEntry)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -30515,9 +30515,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPresentRegionKHR &pst
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pRectangles->HasData()) { // TGW
+        if (pstruct_in.pRectangles->HasData() && pstruct_in.pRectangles->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkRectLayerKHR", pstruct_in.pRectangles->GetMetaStructPointer(), "pRectangles", pstruct->rectangleCount, false, pstruct_in.pRectangles->GetAddress(), sizeof(VkRectLayerKHR)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -30636,9 +30636,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPresentRegionsKHR &ps
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pRegions->HasData()) { // TGW
+        if (pstruct_in.pRegions->HasData() && pstruct_in.pRegions->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkPresentRegionKHR", pstruct_in.pRegions->GetMetaStructPointer(), "pRegions", pstruct->swapchainCount, false, pstruct_in.pRegions->GetAddress(), sizeof(VkPresentRegionKHR)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -31045,9 +31045,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkFramebufferAttachment
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pAttachmentImageInfos->HasData()) { // TGW
+        if (pstruct_in.pAttachmentImageInfos->HasData() && pstruct_in.pAttachmentImageInfos->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkFramebufferAttachmentImageInfoKHR", pstruct_in.pAttachmentImageInfos->GetMetaStructPointer(), "pAttachmentImageInfos", pstruct->attachmentImageInfoCount, false, pstruct_in.pAttachmentImageInfos->GetAddress(), sizeof(VkFramebufferAttachmentImageInfoKHR)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -31677,9 +31677,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSubpassDescription2KH
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pInputAttachments->HasData()) { // TGW
+        if (pstruct_in.pInputAttachments->HasData() && pstruct_in.pInputAttachments->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkAttachmentReference2KHR", pstruct_in.pInputAttachments->GetMetaStructPointer(), "pInputAttachments", pstruct->inputAttachmentCount, false, pstruct_in.pInputAttachments->GetAddress(), sizeof(VkAttachmentReference2KHR)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -31728,9 +31728,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSubpassDescription2KH
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pColorAttachments->HasData()) { // TGW
+        if (pstruct_in.pColorAttachments->HasData() && pstruct_in.pColorAttachments->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkAttachmentReference2KHR", pstruct_in.pColorAttachments->GetMetaStructPointer(), "pColorAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pColorAttachments->GetAddress(), sizeof(VkAttachmentReference2KHR)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -31762,9 +31762,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSubpassDescription2KH
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pResolveAttachments->HasData()) { // TGW
+        if (pstruct_in.pResolveAttachments->HasData() && pstruct_in.pResolveAttachments->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkAttachmentReference2KHR", pstruct_in.pResolveAttachments->GetMetaStructPointer(), "pResolveAttachments", pstruct->colorAttachmentCount, false, pstruct_in.pResolveAttachments->GetAddress(), sizeof(VkAttachmentReference2KHR)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -31795,7 +31795,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSubpassDescription2KH
         OutputAddrJson(outputFile, pstruct_in.pDepthStencilAttachment->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        if (pstruct_in.pDepthStencilAttachment->HasData()) { // RXP
+        if (pstruct_in.pDepthStencilAttachment->HasData() && pstruct_in.pDepthStencilAttachment->HasAddress()) { // RXP
             OutputStringJson(outputFile, "\n");
             OutputStructureJson(outputFile, *pstruct_in.pDepthStencilAttachment->GetMetaStructPointer(), indent,  base_addr + offsetof(VkSubpassDescription2KHR, pDepthStencilAttachment)); // GLY
         } else {
@@ -32186,9 +32186,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkRenderPassCreateInfo2
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pAttachments->HasData()) { // TGW
+        if (pstruct_in.pAttachments->HasData() && pstruct_in.pAttachments->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkAttachmentDescription2KHR", pstruct_in.pAttachments->GetMetaStructPointer(), "pAttachments", pstruct->attachmentCount, false, pstruct_in.pAttachments->GetAddress(), sizeof(VkAttachmentDescription2KHR)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -32237,9 +32237,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkRenderPassCreateInfo2
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pSubpasses->HasData()) { // TGW
+        if (pstruct_in.pSubpasses->HasData() && pstruct_in.pSubpasses->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkSubpassDescription2KHR", pstruct_in.pSubpasses->GetMetaStructPointer(), "pSubpasses", pstruct->subpassCount, false, pstruct_in.pSubpasses->GetAddress(), sizeof(VkSubpassDescription2KHR)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -32288,9 +32288,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkRenderPassCreateInfo2
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pDependencies->HasData()) { // TGW
+        if (pstruct_in.pDependencies->HasData() && pstruct_in.pDependencies->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkSubpassDependency2KHR", pstruct_in.pDependencies->GetMetaStructPointer(), "pDependencies", pstruct->dependencyCount, false, pstruct_in.pDependencies->GetAddress(), sizeof(VkSubpassDependency2KHR)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -35213,7 +35213,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSubpassDescriptionDep
         OutputAddrJson(outputFile, pstruct_in.pDepthStencilResolveAttachment->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        if (pstruct_in.pDepthStencilResolveAttachment->HasData()) { // RXP
+        if (pstruct_in.pDepthStencilResolveAttachment->HasData() && pstruct_in.pDepthStencilResolveAttachment->HasAddress()) { // RXP
             OutputStringJson(outputFile, "\n");
             OutputStructureJson(outputFile, *pstruct_in.pDepthStencilResolveAttachment->GetMetaStructPointer(), indent,  base_addr + offsetof(VkSubpassDescriptionDepthStencilResolveKHR, pDepthStencilResolveAttachment)); // GLY
         } else {
@@ -41275,9 +41275,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkIndirectCommandsLayou
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pTokens->HasData()) { // TGW
+        if (pstruct_in.pTokens->HasData() && pstruct_in.pTokens->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkIndirectCommandsLayoutTokenNVX", pstruct_in.pTokens->GetMetaStructPointer(), "pTokens", pstruct->tokenCount, false, pstruct_in.pTokens->GetAddress(), sizeof(VkIndirectCommandsLayoutTokenNVX)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -41430,9 +41430,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkCmdProcessCommandsInf
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pIndirectCommandsTokens->HasData()) { // TGW
+        if (pstruct_in.pIndirectCommandsTokens->HasData() && pstruct_in.pIndirectCommandsTokens->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkIndirectCommandsTokenNVX", pstruct_in.pIndirectCommandsTokens->GetMetaStructPointer(), "pIndirectCommandsTokens", pstruct->indirectCommandsTokenCount, false, pstruct_in.pIndirectCommandsTokens->GetAddress(), sizeof(VkIndirectCommandsTokenNVX)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -42536,9 +42536,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineViewportWScal
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pViewportWScalings->HasData()) { // TGW
+        if (pstruct_in.pViewportWScalings->HasData() && pstruct_in.pViewportWScalings->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkViewportWScalingNV", pstruct_in.pViewportWScalings->GetMetaStructPointer(), "pViewportWScalings", pstruct->viewportCount, false, pstruct_in.pViewportWScalings->GetAddress(), sizeof(VkViewportWScalingNV)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -43443,9 +43443,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPresentTimesInfoGOOGL
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pTimes->HasData()) { // TGW
+        if (pstruct_in.pTimes->HasData() && pstruct_in.pTimes->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkPresentTimeGOOGLE", pstruct_in.pTimes->GetMetaStructPointer(), "pTimes", pstruct->swapchainCount, false, pstruct_in.pTimes->GetAddress(), sizeof(VkPresentTimeGOOGLE)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -43752,9 +43752,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineViewportSwizz
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pViewportSwizzles->HasData()) { // TGW
+        if (pstruct_in.pViewportSwizzles->HasData() && pstruct_in.pViewportSwizzles->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkViewportSwizzleNV", pstruct_in.pViewportSwizzles->GetMetaStructPointer(), "pViewportSwizzles", pstruct->viewportCount, false, pstruct_in.pViewportSwizzles->GetAddress(), sizeof(VkViewportSwizzleNV)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -43994,9 +43994,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineDiscardRectan
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pDiscardRectangles->HasData()) { // TGW
+        if (pstruct_in.pDiscardRectangles->HasData() && pstruct_in.pDiscardRectangles->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkRect2D", pstruct_in.pDiscardRectangles->GetMetaStructPointer(), "pDiscardRectangles", pstruct->discardRectangleCount, false, pstruct_in.pDiscardRectangles->GetAddress(), sizeof(VkRect2D)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -45633,9 +45633,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDebugUtilsMessengerCa
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pQueueLabels->HasData()) { // TGW
+        if (pstruct_in.pQueueLabels->HasData() && pstruct_in.pQueueLabels->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkDebugUtilsLabelEXT", pstruct_in.pQueueLabels->GetMetaStructPointer(), "pQueueLabels", pstruct->queueLabelCount, false, pstruct_in.pQueueLabels->GetAddress(), sizeof(VkDebugUtilsLabelEXT)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -45684,9 +45684,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDebugUtilsMessengerCa
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pCmdBufLabels->HasData()) { // TGW
+        if (pstruct_in.pCmdBufLabels->HasData() && pstruct_in.pCmdBufLabels->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkDebugUtilsLabelEXT", pstruct_in.pCmdBufLabels->GetMetaStructPointer(), "pCmdBufLabels", pstruct->cmdBufLabelCount, false, pstruct_in.pCmdBufLabels->GetAddress(), sizeof(VkDebugUtilsLabelEXT)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -45735,9 +45735,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDebugUtilsMessengerCa
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pObjects->HasData()) { // TGW
+        if (pstruct_in.pObjects->HasData() && pstruct_in.pObjects->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkDebugUtilsObjectNameInfoEXT", pstruct_in.pObjects->GetMetaStructPointer(), "pObjects", pstruct->objectCount, false, pstruct_in.pObjects->GetAddress(), sizeof(VkDebugUtilsObjectNameInfoEXT)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -47428,9 +47428,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkSampleLocationsInfoEX
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pSampleLocations->HasData()) { // TGW
+        if (pstruct_in.pSampleLocations->HasData() && pstruct_in.pSampleLocations->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkSampleLocationEXT", pstruct_in.pSampleLocations->GetMetaStructPointer(), "pSampleLocations", pstruct->sampleLocationsCount, false, pstruct_in.pSampleLocations->GetAddress(), sizeof(VkSampleLocationEXT)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -47647,9 +47647,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkRenderPassSampleLocat
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pAttachmentInitialSampleLocations->HasData()) { // TGW
+        if (pstruct_in.pAttachmentInitialSampleLocations->HasData() && pstruct_in.pAttachmentInitialSampleLocations->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkAttachmentSampleLocationsEXT", pstruct_in.pAttachmentInitialSampleLocations->GetMetaStructPointer(), "pAttachmentInitialSampleLocations", pstruct->attachmentInitialSampleLocationsCount, false, pstruct_in.pAttachmentInitialSampleLocations->GetAddress(), sizeof(VkAttachmentSampleLocationsEXT)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -47698,9 +47698,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkRenderPassSampleLocat
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pPostSubpassSampleLocations->HasData()) { // TGW
+        if (pstruct_in.pPostSubpassSampleLocations->HasData() && pstruct_in.pPostSubpassSampleLocations->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkSubpassSampleLocationsEXT", pstruct_in.pPostSubpassSampleLocations->GetMetaStructPointer(), "pPostSubpassSampleLocations", pstruct->postSubpassSampleLocationsCount, false, pstruct_in.pPostSubpassSampleLocations->GetAddress(), sizeof(VkSubpassSampleLocationsEXT)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -49095,9 +49095,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkDrmFormatModifierProp
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pDrmFormatModifierProperties->HasData()) { // TGW
+        if (pstruct_in.pDrmFormatModifierProperties->HasData() && pstruct_in.pDrmFormatModifierProperties->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkDrmFormatModifierPropertiesEXT", pstruct_in.pDrmFormatModifierProperties->GetMetaStructPointer(), "pDrmFormatModifierProperties", pstruct->drmFormatModifierCount, false, pstruct_in.pDrmFormatModifierProperties->GetAddress(), sizeof(VkDrmFormatModifierPropertiesEXT)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -49499,9 +49499,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkImageDrmFormatModifie
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pPlaneLayouts->HasData()) { // TGW
+        if (pstruct_in.pPlaneLayouts->HasData() && pstruct_in.pPlaneLayouts->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkSubresourceLayout", pstruct_in.pPlaneLayouts->GetMetaStructPointer(), "pPlaneLayouts", pstruct->drmFormatModifierPlaneCount, false, pstruct_in.pPlaneLayouts->GetAddress(), sizeof(VkSubresourceLayout)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -51196,9 +51196,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineViewportShadi
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pShadingRatePalettes->HasData()) { // TGW
+        if (pstruct_in.pShadingRatePalettes->HasData() && pstruct_in.pShadingRatePalettes->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkShadingRatePaletteNV", pstruct_in.pShadingRatePalettes->GetMetaStructPointer(), "pShadingRatePalettes", pstruct->viewportCount, false, pstruct_in.pShadingRatePalettes->GetAddress(), sizeof(VkShadingRatePaletteNV)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -51588,9 +51588,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkCoarseSampleOrderCust
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pSampleLocations->HasData()) { // TGW
+        if (pstruct_in.pSampleLocations->HasData() && pstruct_in.pSampleLocations->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkCoarseSampleLocationNV", pstruct_in.pSampleLocations->GetMetaStructPointer(), "pSampleLocations", pstruct->sampleLocationCount, false, pstruct_in.pSampleLocations->GetAddress(), sizeof(VkCoarseSampleLocationNV)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -51726,9 +51726,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineViewportCoars
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pCustomSampleOrders->HasData()) { // TGW
+        if (pstruct_in.pCustomSampleOrders->HasData() && pstruct_in.pCustomSampleOrders->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkCoarseSampleOrderCustomNV", pstruct_in.pCustomSampleOrders->GetMetaStructPointer(), "pCustomSampleOrders", pstruct->customSampleOrderCount, false, pstruct_in.pCustomSampleOrders->GetAddress(), sizeof(VkCoarseSampleOrderCustomNV)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -52019,9 +52019,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkRayTracingPipelineCre
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pStages->HasData()) { // TGW
+        if (pstruct_in.pStages->HasData() && pstruct_in.pStages->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkPipelineShaderStageCreateInfo", pstruct_in.pStages->GetMetaStructPointer(), "pStages", pstruct->stageCount, false, pstruct_in.pStages->GetAddress(), sizeof(VkPipelineShaderStageCreateInfo)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -52070,9 +52070,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkRayTracingPipelineCre
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pGroups->HasData()) { // TGW
+        if (pstruct_in.pGroups->HasData() && pstruct_in.pGroups->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkRayTracingShaderGroupCreateInfoNV", pstruct_in.pGroups->GetMetaStructPointer(), "pGroups", pstruct->groupCount, false, pstruct_in.pGroups->GetAddress(), sizeof(VkRayTracingShaderGroupCreateInfoNV)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -52873,9 +52873,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkAccelerationStructure
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pGeometries->HasData()) { // TGW
+        if (pstruct_in.pGeometries->HasData() && pstruct_in.pGeometries->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkGeometryNV", pstruct_in.pGeometries->GetMetaStructPointer(), "pGeometries", pstruct->geometryCount, false, pstruct_in.pGeometries->GetAddress(), sizeof(VkGeometryNV)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -55138,9 +55138,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineVertexInputDi
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pVertexBindingDivisors->HasData()) { // TGW
+        if (pstruct_in.pVertexBindingDivisors->HasData() && pstruct_in.pVertexBindingDivisors->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkVertexInputBindingDivisorDescriptionEXT", pstruct_in.pVertexBindingDivisors->GetMetaStructPointer(), "pVertexBindingDivisors", pstruct->vertexBindingDivisorCount, false, pstruct_in.pVertexBindingDivisors->GetAddress(), sizeof(VkVertexInputBindingDivisorDescriptionEXT)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -55482,7 +55482,7 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineCreationFeedb
         OutputAddrJson(outputFile, pstruct_in.pPipelineCreationFeedback->GetAddress() /* KWO */ );
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
-        if (pstruct_in.pPipelineCreationFeedback->HasData()) { // RXP
+        if (pstruct_in.pPipelineCreationFeedback->HasData() && pstruct_in.pPipelineCreationFeedback->HasAddress()) { // RXP
             OutputStringJson(outputFile, "\n");
             OutputStructureJson(outputFile, *pstruct_in.pPipelineCreationFeedback->GetMetaStructPointer(), indent,  base_addr + offsetof(VkPipelineCreationFeedbackCreateInfoEXT, pPipelineCreationFeedback)); // GLY
         } else {
@@ -55534,9 +55534,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineCreationFeedb
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pPipelineStageCreationFeedbacks->HasData()) { // TGW
+        if (pstruct_in.pPipelineStageCreationFeedbacks->HasData() && pstruct_in.pPipelineStageCreationFeedbacks->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkPipelineCreationFeedbackEXT", pstruct_in.pPipelineStageCreationFeedbacks->GetMetaStructPointer(), "pPipelineStageCreationFeedbacks", pstruct->pipelineStageCreationFeedbackCount, false, pstruct_in.pPipelineStageCreationFeedbacks->GetAddress(), sizeof(VkPipelineCreationFeedbackEXT)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
@@ -56392,9 +56392,9 @@ void OutputStructureJson(FILE* outputFile, const Decoded_VkPipelineViewportExclu
         OutputStringJson(outputFile, "\",\n");
         OutputIndentJson(outputFile, indent);
         OutputStringJson(outputFile, "\"elements\" :"); // TRZ
-        if (pstruct_in.pExclusiveScissors->HasData()) { // TGW
+        if (pstruct_in.pExclusiveScissors->HasData() && pstruct_in.pExclusiveScissors->HasAddress()) // TGW
             OutputArrayOfStructsJson(outputFile, indent, "VkRect2D", pstruct_in.pExclusiveScissors->GetMetaStructPointer(), "pExclusiveScissors", pstruct->exclusiveScissorCount, false, pstruct_in.pExclusiveScissors->GetAddress(), sizeof(VkRect2D)); // CCY
-        } else {
+        else {
             OutputStringJson(outputFile, " ");
             StringToQuotedStringJson(outputFile, "NO DATA"); // NDV
             OutputStringJson(outputFile, "\n");
