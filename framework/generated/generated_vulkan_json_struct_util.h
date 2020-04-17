@@ -30,7 +30,7 @@
 #include "vulkan/vulkan.h"
 #include <inttypes.h>
 #include <string>
-#include <unordered_map>
+#include <map>
 
 GFXRECON_BEGIN_NAMESPACE(gfxrecon)
 GFXRECON_BEGIN_NAMESPACE(decode)
@@ -571,7 +571,7 @@ void OutputArrayOfStructsJson(FILE*    outputFile,
     OutputStringJson(outputFile, "]\n");
 }
 
-std::unordered_map<VkStructureType, std::string> sTypeToStructName = {    // WTG
+std::map<VkStructureType, std::string> sTypeToStructName = {    // WTG
    {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBGROUP_PROPERTIES, "VkPhysicalDeviceSubgroupProperties"},
    {VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_16BIT_STORAGE_FEATURES, "VkPhysicalDevice16BitStorageFeatures"},
    {VK_STRUCTURE_TYPE_MEMORY_DEDICATED_REQUIREMENTS, "VkMemoryDedicatedRequirements"},

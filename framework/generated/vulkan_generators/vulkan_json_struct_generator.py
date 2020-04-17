@@ -70,7 +70,7 @@ class VulkanJsonStructGenerator(BaseGenerator):
         self.wc('#include "vulkan/vulkan.h"')
         self.wc('#include <inttypes.h>')
         self.wc('#include <string>')
-        self.wc('#include <unordered_map>')
+        self.wc('#include <map>')
         self.newline()
         self.wc('GFXRECON_BEGIN_NAMESPACE(gfxrecon)')
         self.wc('GFXRECON_BEGIN_NAMESPACE(decode)')
@@ -168,7 +168,7 @@ class VulkanJsonStructGenerator(BaseGenerator):
         self.newline()
 
         # Generate mapping of sType to struct name of pNext structures
-        self.wc('std::unordered_map<VkStructureType, std::string> sTypeToStructName = {    // WTG')
+        self.wc('std::map<VkStructureType, std::string> sTypeToStructName = {    // WTG')
         for structName in self.pNextStructs:
             self.wc('   {' + self.pNextStructs[structName] + ', "' + structName + '"},')
         self.wc('};    // WTE')
