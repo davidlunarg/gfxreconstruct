@@ -31,6 +31,7 @@ GFXRECON_BEGIN_NAMESPACE(decode)
 
 void VulkanAsciiConsumer::Process_vkCreateInstance(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     StructPointerDecoder<Decoded_VkInstanceCreateInfo>* pCreateInfo,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkInstance>*           pInstance)
@@ -39,6 +40,7 @@ void VulkanAsciiConsumer::Process_vkCreateInstance(
 }
 
 void VulkanAsciiConsumer::Process_vkDestroyInstance(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            instance,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
 {
@@ -47,6 +49,7 @@ void VulkanAsciiConsumer::Process_vkDestroyInstance(
 
 void VulkanAsciiConsumer::Process_vkEnumeratePhysicalDevices(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            instance,
     PointerDecoder<uint32_t>*                   pPhysicalDeviceCount,
     HandlePointerDecoder<VkPhysicalDevice>*     pPhysicalDevices)
@@ -55,6 +58,7 @@ void VulkanAsciiConsumer::Process_vkEnumeratePhysicalDevices(
 }
 
 void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceFeatures(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     StructPointerDecoder<Decoded_VkPhysicalDeviceFeatures>* pFeatures)
 {
@@ -62,6 +66,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceFeatures(
 }
 
 void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceFormatProperties(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     VkFormat                                    format,
     StructPointerDecoder<Decoded_VkFormatProperties>* pFormatProperties)
@@ -71,6 +76,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceFormatProperties(
 
 void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     VkFormat                                    format,
     VkImageType                                 type,
@@ -83,6 +89,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceImageFormatProperties(
 }
 
 void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceProperties(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     StructPointerDecoder<Decoded_VkPhysicalDeviceProperties>* pProperties)
 {
@@ -90,6 +97,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceProperties(
 }
 
 void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     PointerDecoder<uint32_t>*                   pQueueFamilyPropertyCount,
     StructPointerDecoder<Decoded_VkQueueFamilyProperties>* pQueueFamilyProperties)
@@ -98,6 +106,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties(
 }
 
 void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceMemoryProperties(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     StructPointerDecoder<Decoded_VkPhysicalDeviceMemoryProperties>* pMemoryProperties)
 {
@@ -106,6 +115,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceMemoryProperties(
 
 void VulkanAsciiConsumer::Process_vkCreateDevice(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     StructPointerDecoder<Decoded_VkDeviceCreateInfo>* pCreateInfo,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
@@ -115,6 +125,7 @@ void VulkanAsciiConsumer::Process_vkCreateDevice(
 }
 
 void VulkanAsciiConsumer::Process_vkDestroyDevice(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
 {
@@ -122,6 +133,7 @@ void VulkanAsciiConsumer::Process_vkDestroyDevice(
 }
 
 void VulkanAsciiConsumer::Process_vkGetDeviceQueue(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     uint32_t                                    queueFamilyIndex,
     uint32_t                                    queueIndex,
@@ -132,6 +144,7 @@ void VulkanAsciiConsumer::Process_vkGetDeviceQueue(
 
 void VulkanAsciiConsumer::Process_vkQueueSubmit(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            queue,
     uint32_t                                    submitCount,
     StructPointerDecoder<Decoded_VkSubmitInfo>* pSubmits,
@@ -142,6 +155,7 @@ void VulkanAsciiConsumer::Process_vkQueueSubmit(
 
 void VulkanAsciiConsumer::Process_vkQueueWaitIdle(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            queue)
 {
     fprintf(GetFile(), "%s\n", "vkQueueWaitIdle");
@@ -149,6 +163,7 @@ void VulkanAsciiConsumer::Process_vkQueueWaitIdle(
 
 void VulkanAsciiConsumer::Process_vkDeviceWaitIdle(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device)
 {
     fprintf(GetFile(), "%s\n", "vkDeviceWaitIdle");
@@ -156,6 +171,7 @@ void VulkanAsciiConsumer::Process_vkDeviceWaitIdle(
 
 void VulkanAsciiConsumer::Process_vkAllocateMemory(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkMemoryAllocateInfo>* pAllocateInfo,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
@@ -165,6 +181,7 @@ void VulkanAsciiConsumer::Process_vkAllocateMemory(
 }
 
 void VulkanAsciiConsumer::Process_vkFreeMemory(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            memory,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
@@ -174,6 +191,7 @@ void VulkanAsciiConsumer::Process_vkFreeMemory(
 
 void VulkanAsciiConsumer::Process_vkMapMemory(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            memory,
     VkDeviceSize                                offset,
@@ -185,6 +203,7 @@ void VulkanAsciiConsumer::Process_vkMapMemory(
 }
 
 void VulkanAsciiConsumer::Process_vkUnmapMemory(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            memory)
 {
@@ -193,6 +212,7 @@ void VulkanAsciiConsumer::Process_vkUnmapMemory(
 
 void VulkanAsciiConsumer::Process_vkFlushMappedMemoryRanges(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     uint32_t                                    memoryRangeCount,
     StructPointerDecoder<Decoded_VkMappedMemoryRange>* pMemoryRanges)
@@ -202,6 +222,7 @@ void VulkanAsciiConsumer::Process_vkFlushMappedMemoryRanges(
 
 void VulkanAsciiConsumer::Process_vkInvalidateMappedMemoryRanges(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     uint32_t                                    memoryRangeCount,
     StructPointerDecoder<Decoded_VkMappedMemoryRange>* pMemoryRanges)
@@ -210,6 +231,7 @@ void VulkanAsciiConsumer::Process_vkInvalidateMappedMemoryRanges(
 }
 
 void VulkanAsciiConsumer::Process_vkGetDeviceMemoryCommitment(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            memory,
     PointerDecoder<VkDeviceSize>*               pCommittedMemoryInBytes)
@@ -219,6 +241,7 @@ void VulkanAsciiConsumer::Process_vkGetDeviceMemoryCommitment(
 
 void VulkanAsciiConsumer::Process_vkBindBufferMemory(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            buffer,
     format::HandleId                            memory,
@@ -229,6 +252,7 @@ void VulkanAsciiConsumer::Process_vkBindBufferMemory(
 
 void VulkanAsciiConsumer::Process_vkBindImageMemory(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            image,
     format::HandleId                            memory,
@@ -238,6 +262,7 @@ void VulkanAsciiConsumer::Process_vkBindImageMemory(
 }
 
 void VulkanAsciiConsumer::Process_vkGetBufferMemoryRequirements(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            buffer,
     StructPointerDecoder<Decoded_VkMemoryRequirements>* pMemoryRequirements)
@@ -246,6 +271,7 @@ void VulkanAsciiConsumer::Process_vkGetBufferMemoryRequirements(
 }
 
 void VulkanAsciiConsumer::Process_vkGetImageMemoryRequirements(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            image,
     StructPointerDecoder<Decoded_VkMemoryRequirements>* pMemoryRequirements)
@@ -254,6 +280,7 @@ void VulkanAsciiConsumer::Process_vkGetImageMemoryRequirements(
 }
 
 void VulkanAsciiConsumer::Process_vkGetImageSparseMemoryRequirements(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            image,
     PointerDecoder<uint32_t>*                   pSparseMemoryRequirementCount,
@@ -263,6 +290,7 @@ void VulkanAsciiConsumer::Process_vkGetImageSparseMemoryRequirements(
 }
 
 void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     VkFormat                                    format,
     VkImageType                                 type,
@@ -277,6 +305,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties
 
 void VulkanAsciiConsumer::Process_vkQueueBindSparse(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            queue,
     uint32_t                                    bindInfoCount,
     StructPointerDecoder<Decoded_VkBindSparseInfo>* pBindInfo,
@@ -287,6 +316,7 @@ void VulkanAsciiConsumer::Process_vkQueueBindSparse(
 
 void VulkanAsciiConsumer::Process_vkCreateFence(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkFenceCreateInfo>* pCreateInfo,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
@@ -296,6 +326,7 @@ void VulkanAsciiConsumer::Process_vkCreateFence(
 }
 
 void VulkanAsciiConsumer::Process_vkDestroyFence(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            fence,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
@@ -305,6 +336,7 @@ void VulkanAsciiConsumer::Process_vkDestroyFence(
 
 void VulkanAsciiConsumer::Process_vkResetFences(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     uint32_t                                    fenceCount,
     HandlePointerDecoder<VkFence>*              pFences)
@@ -314,6 +346,7 @@ void VulkanAsciiConsumer::Process_vkResetFences(
 
 void VulkanAsciiConsumer::Process_vkGetFenceStatus(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            fence)
 {
@@ -322,6 +355,7 @@ void VulkanAsciiConsumer::Process_vkGetFenceStatus(
 
 void VulkanAsciiConsumer::Process_vkWaitForFences(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     uint32_t                                    fenceCount,
     HandlePointerDecoder<VkFence>*              pFences,
@@ -333,6 +367,7 @@ void VulkanAsciiConsumer::Process_vkWaitForFences(
 
 void VulkanAsciiConsumer::Process_vkCreateSemaphore(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkSemaphoreCreateInfo>* pCreateInfo,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
@@ -342,6 +377,7 @@ void VulkanAsciiConsumer::Process_vkCreateSemaphore(
 }
 
 void VulkanAsciiConsumer::Process_vkDestroySemaphore(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            semaphore,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
@@ -351,6 +387,7 @@ void VulkanAsciiConsumer::Process_vkDestroySemaphore(
 
 void VulkanAsciiConsumer::Process_vkCreateEvent(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkEventCreateInfo>* pCreateInfo,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
@@ -360,6 +397,7 @@ void VulkanAsciiConsumer::Process_vkCreateEvent(
 }
 
 void VulkanAsciiConsumer::Process_vkDestroyEvent(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            event,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
@@ -369,6 +407,7 @@ void VulkanAsciiConsumer::Process_vkDestroyEvent(
 
 void VulkanAsciiConsumer::Process_vkGetEventStatus(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            event)
 {
@@ -377,6 +416,7 @@ void VulkanAsciiConsumer::Process_vkGetEventStatus(
 
 void VulkanAsciiConsumer::Process_vkSetEvent(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            event)
 {
@@ -385,6 +425,7 @@ void VulkanAsciiConsumer::Process_vkSetEvent(
 
 void VulkanAsciiConsumer::Process_vkResetEvent(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            event)
 {
@@ -393,6 +434,7 @@ void VulkanAsciiConsumer::Process_vkResetEvent(
 
 void VulkanAsciiConsumer::Process_vkCreateQueryPool(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkQueryPoolCreateInfo>* pCreateInfo,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
@@ -402,6 +444,7 @@ void VulkanAsciiConsumer::Process_vkCreateQueryPool(
 }
 
 void VulkanAsciiConsumer::Process_vkDestroyQueryPool(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            queryPool,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
@@ -411,6 +454,7 @@ void VulkanAsciiConsumer::Process_vkDestroyQueryPool(
 
 void VulkanAsciiConsumer::Process_vkGetQueryPoolResults(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            queryPool,
     uint32_t                                    firstQuery,
@@ -425,6 +469,7 @@ void VulkanAsciiConsumer::Process_vkGetQueryPoolResults(
 
 void VulkanAsciiConsumer::Process_vkCreateBuffer(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkBufferCreateInfo>* pCreateInfo,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
@@ -434,6 +479,7 @@ void VulkanAsciiConsumer::Process_vkCreateBuffer(
 }
 
 void VulkanAsciiConsumer::Process_vkDestroyBuffer(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            buffer,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
@@ -443,6 +489,7 @@ void VulkanAsciiConsumer::Process_vkDestroyBuffer(
 
 void VulkanAsciiConsumer::Process_vkCreateBufferView(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkBufferViewCreateInfo>* pCreateInfo,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
@@ -452,6 +499,7 @@ void VulkanAsciiConsumer::Process_vkCreateBufferView(
 }
 
 void VulkanAsciiConsumer::Process_vkDestroyBufferView(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            bufferView,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
@@ -461,6 +509,7 @@ void VulkanAsciiConsumer::Process_vkDestroyBufferView(
 
 void VulkanAsciiConsumer::Process_vkCreateImage(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkImageCreateInfo>* pCreateInfo,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
@@ -470,6 +519,7 @@ void VulkanAsciiConsumer::Process_vkCreateImage(
 }
 
 void VulkanAsciiConsumer::Process_vkDestroyImage(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            image,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
@@ -478,6 +528,7 @@ void VulkanAsciiConsumer::Process_vkDestroyImage(
 }
 
 void VulkanAsciiConsumer::Process_vkGetImageSubresourceLayout(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            image,
     StructPointerDecoder<Decoded_VkImageSubresource>* pSubresource,
@@ -488,6 +539,7 @@ void VulkanAsciiConsumer::Process_vkGetImageSubresourceLayout(
 
 void VulkanAsciiConsumer::Process_vkCreateImageView(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkImageViewCreateInfo>* pCreateInfo,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
@@ -497,6 +549,7 @@ void VulkanAsciiConsumer::Process_vkCreateImageView(
 }
 
 void VulkanAsciiConsumer::Process_vkDestroyImageView(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            imageView,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
@@ -506,6 +559,7 @@ void VulkanAsciiConsumer::Process_vkDestroyImageView(
 
 void VulkanAsciiConsumer::Process_vkCreateShaderModule(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkShaderModuleCreateInfo>* pCreateInfo,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
@@ -515,6 +569,7 @@ void VulkanAsciiConsumer::Process_vkCreateShaderModule(
 }
 
 void VulkanAsciiConsumer::Process_vkDestroyShaderModule(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            shaderModule,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
@@ -524,6 +579,7 @@ void VulkanAsciiConsumer::Process_vkDestroyShaderModule(
 
 void VulkanAsciiConsumer::Process_vkCreatePipelineCache(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkPipelineCacheCreateInfo>* pCreateInfo,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
@@ -533,6 +589,7 @@ void VulkanAsciiConsumer::Process_vkCreatePipelineCache(
 }
 
 void VulkanAsciiConsumer::Process_vkDestroyPipelineCache(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            pipelineCache,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
@@ -542,6 +599,7 @@ void VulkanAsciiConsumer::Process_vkDestroyPipelineCache(
 
 void VulkanAsciiConsumer::Process_vkGetPipelineCacheData(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            pipelineCache,
     PointerDecoder<size_t>*                     pDataSize,
@@ -552,6 +610,7 @@ void VulkanAsciiConsumer::Process_vkGetPipelineCacheData(
 
 void VulkanAsciiConsumer::Process_vkMergePipelineCaches(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            dstCache,
     uint32_t                                    srcCacheCount,
@@ -562,6 +621,7 @@ void VulkanAsciiConsumer::Process_vkMergePipelineCaches(
 
 void VulkanAsciiConsumer::Process_vkCreateGraphicsPipelines(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            pipelineCache,
     uint32_t                                    createInfoCount,
@@ -574,6 +634,7 @@ void VulkanAsciiConsumer::Process_vkCreateGraphicsPipelines(
 
 void VulkanAsciiConsumer::Process_vkCreateComputePipelines(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            pipelineCache,
     uint32_t                                    createInfoCount,
@@ -585,6 +646,7 @@ void VulkanAsciiConsumer::Process_vkCreateComputePipelines(
 }
 
 void VulkanAsciiConsumer::Process_vkDestroyPipeline(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            pipeline,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
@@ -594,6 +656,7 @@ void VulkanAsciiConsumer::Process_vkDestroyPipeline(
 
 void VulkanAsciiConsumer::Process_vkCreatePipelineLayout(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkPipelineLayoutCreateInfo>* pCreateInfo,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
@@ -603,6 +666,7 @@ void VulkanAsciiConsumer::Process_vkCreatePipelineLayout(
 }
 
 void VulkanAsciiConsumer::Process_vkDestroyPipelineLayout(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            pipelineLayout,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
@@ -612,6 +676,7 @@ void VulkanAsciiConsumer::Process_vkDestroyPipelineLayout(
 
 void VulkanAsciiConsumer::Process_vkCreateSampler(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkSamplerCreateInfo>* pCreateInfo,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
@@ -621,6 +686,7 @@ void VulkanAsciiConsumer::Process_vkCreateSampler(
 }
 
 void VulkanAsciiConsumer::Process_vkDestroySampler(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            sampler,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
@@ -630,6 +696,7 @@ void VulkanAsciiConsumer::Process_vkDestroySampler(
 
 void VulkanAsciiConsumer::Process_vkCreateDescriptorSetLayout(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkDescriptorSetLayoutCreateInfo>* pCreateInfo,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
@@ -639,6 +706,7 @@ void VulkanAsciiConsumer::Process_vkCreateDescriptorSetLayout(
 }
 
 void VulkanAsciiConsumer::Process_vkDestroyDescriptorSetLayout(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            descriptorSetLayout,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
@@ -648,6 +716,7 @@ void VulkanAsciiConsumer::Process_vkDestroyDescriptorSetLayout(
 
 void VulkanAsciiConsumer::Process_vkCreateDescriptorPool(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkDescriptorPoolCreateInfo>* pCreateInfo,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
@@ -657,6 +726,7 @@ void VulkanAsciiConsumer::Process_vkCreateDescriptorPool(
 }
 
 void VulkanAsciiConsumer::Process_vkDestroyDescriptorPool(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            descriptorPool,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
@@ -666,6 +736,7 @@ void VulkanAsciiConsumer::Process_vkDestroyDescriptorPool(
 
 void VulkanAsciiConsumer::Process_vkResetDescriptorPool(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            descriptorPool,
     VkDescriptorPoolResetFlags                  flags)
@@ -675,6 +746,7 @@ void VulkanAsciiConsumer::Process_vkResetDescriptorPool(
 
 void VulkanAsciiConsumer::Process_vkAllocateDescriptorSets(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkDescriptorSetAllocateInfo>* pAllocateInfo,
     HandlePointerDecoder<VkDescriptorSet>*      pDescriptorSets)
@@ -684,6 +756,7 @@ void VulkanAsciiConsumer::Process_vkAllocateDescriptorSets(
 
 void VulkanAsciiConsumer::Process_vkFreeDescriptorSets(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            descriptorPool,
     uint32_t                                    descriptorSetCount,
@@ -693,6 +766,7 @@ void VulkanAsciiConsumer::Process_vkFreeDescriptorSets(
 }
 
 void VulkanAsciiConsumer::Process_vkUpdateDescriptorSets(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     uint32_t                                    descriptorWriteCount,
     StructPointerDecoder<Decoded_VkWriteDescriptorSet>* pDescriptorWrites,
@@ -704,6 +778,7 @@ void VulkanAsciiConsumer::Process_vkUpdateDescriptorSets(
 
 void VulkanAsciiConsumer::Process_vkCreateFramebuffer(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkFramebufferCreateInfo>* pCreateInfo,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
@@ -713,6 +788,7 @@ void VulkanAsciiConsumer::Process_vkCreateFramebuffer(
 }
 
 void VulkanAsciiConsumer::Process_vkDestroyFramebuffer(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            framebuffer,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
@@ -722,6 +798,7 @@ void VulkanAsciiConsumer::Process_vkDestroyFramebuffer(
 
 void VulkanAsciiConsumer::Process_vkCreateRenderPass(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkRenderPassCreateInfo>* pCreateInfo,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
@@ -731,6 +808,7 @@ void VulkanAsciiConsumer::Process_vkCreateRenderPass(
 }
 
 void VulkanAsciiConsumer::Process_vkDestroyRenderPass(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            renderPass,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
@@ -739,6 +817,7 @@ void VulkanAsciiConsumer::Process_vkDestroyRenderPass(
 }
 
 void VulkanAsciiConsumer::Process_vkGetRenderAreaGranularity(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            renderPass,
     StructPointerDecoder<Decoded_VkExtent2D>*   pGranularity)
@@ -748,6 +827,7 @@ void VulkanAsciiConsumer::Process_vkGetRenderAreaGranularity(
 
 void VulkanAsciiConsumer::Process_vkCreateCommandPool(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkCommandPoolCreateInfo>* pCreateInfo,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
@@ -757,6 +837,7 @@ void VulkanAsciiConsumer::Process_vkCreateCommandPool(
 }
 
 void VulkanAsciiConsumer::Process_vkDestroyCommandPool(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            commandPool,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
@@ -766,6 +847,7 @@ void VulkanAsciiConsumer::Process_vkDestroyCommandPool(
 
 void VulkanAsciiConsumer::Process_vkResetCommandPool(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            commandPool,
     VkCommandPoolResetFlags                     flags)
@@ -775,6 +857,7 @@ void VulkanAsciiConsumer::Process_vkResetCommandPool(
 
 void VulkanAsciiConsumer::Process_vkAllocateCommandBuffers(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkCommandBufferAllocateInfo>* pAllocateInfo,
     HandlePointerDecoder<VkCommandBuffer>*      pCommandBuffers)
@@ -783,6 +866,7 @@ void VulkanAsciiConsumer::Process_vkAllocateCommandBuffers(
 }
 
 void VulkanAsciiConsumer::Process_vkFreeCommandBuffers(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            commandPool,
     uint32_t                                    commandBufferCount,
@@ -793,6 +877,7 @@ void VulkanAsciiConsumer::Process_vkFreeCommandBuffers(
 
 void VulkanAsciiConsumer::Process_vkBeginCommandBuffer(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     StructPointerDecoder<Decoded_VkCommandBufferBeginInfo>* pBeginInfo)
 {
@@ -801,6 +886,7 @@ void VulkanAsciiConsumer::Process_vkBeginCommandBuffer(
 
 void VulkanAsciiConsumer::Process_vkEndCommandBuffer(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer)
 {
     fprintf(GetFile(), "%s\n", "vkEndCommandBuffer");
@@ -808,6 +894,7 @@ void VulkanAsciiConsumer::Process_vkEndCommandBuffer(
 
 void VulkanAsciiConsumer::Process_vkResetCommandBuffer(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     VkCommandBufferResetFlags                   flags)
 {
@@ -815,6 +902,7 @@ void VulkanAsciiConsumer::Process_vkResetCommandBuffer(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdBindPipeline(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     VkPipelineBindPoint                         pipelineBindPoint,
     format::HandleId                            pipeline)
@@ -823,6 +911,7 @@ void VulkanAsciiConsumer::Process_vkCmdBindPipeline(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdSetViewport(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     uint32_t                                    firstViewport,
     uint32_t                                    viewportCount,
@@ -832,6 +921,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetViewport(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdSetScissor(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     uint32_t                                    firstScissor,
     uint32_t                                    scissorCount,
@@ -841,6 +931,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetScissor(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdSetLineWidth(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     float                                       lineWidth)
 {
@@ -848,6 +939,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetLineWidth(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdSetDepthBias(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     float                                       depthBiasConstantFactor,
     float                                       depthBiasClamp,
@@ -857,6 +949,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetDepthBias(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdSetBlendConstants(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     PointerDecoder<float>*                      blendConstants)
 {
@@ -864,6 +957,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetBlendConstants(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdSetDepthBounds(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     float                                       minDepthBounds,
     float                                       maxDepthBounds)
@@ -872,6 +966,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetDepthBounds(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdSetStencilCompareMask(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     VkStencilFaceFlags                          faceMask,
     uint32_t                                    compareMask)
@@ -880,6 +975,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetStencilCompareMask(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdSetStencilWriteMask(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     VkStencilFaceFlags                          faceMask,
     uint32_t                                    writeMask)
@@ -888,6 +984,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetStencilWriteMask(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdSetStencilReference(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     VkStencilFaceFlags                          faceMask,
     uint32_t                                    reference)
@@ -896,6 +993,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetStencilReference(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdBindDescriptorSets(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     VkPipelineBindPoint                         pipelineBindPoint,
     format::HandleId                            layout,
@@ -909,6 +1007,7 @@ void VulkanAsciiConsumer::Process_vkCmdBindDescriptorSets(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdBindIndexBuffer(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            buffer,
     VkDeviceSize                                offset,
@@ -918,6 +1017,7 @@ void VulkanAsciiConsumer::Process_vkCmdBindIndexBuffer(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdBindVertexBuffers(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     uint32_t                                    firstBinding,
     uint32_t                                    bindingCount,
@@ -928,6 +1028,7 @@ void VulkanAsciiConsumer::Process_vkCmdBindVertexBuffers(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdDraw(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     uint32_t                                    vertexCount,
     uint32_t                                    instanceCount,
@@ -938,6 +1039,7 @@ void VulkanAsciiConsumer::Process_vkCmdDraw(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdDrawIndexed(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     uint32_t                                    indexCount,
     uint32_t                                    instanceCount,
@@ -949,6 +1051,7 @@ void VulkanAsciiConsumer::Process_vkCmdDrawIndexed(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdDrawIndirect(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            buffer,
     VkDeviceSize                                offset,
@@ -959,6 +1062,7 @@ void VulkanAsciiConsumer::Process_vkCmdDrawIndirect(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdDrawIndexedIndirect(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            buffer,
     VkDeviceSize                                offset,
@@ -969,6 +1073,7 @@ void VulkanAsciiConsumer::Process_vkCmdDrawIndexedIndirect(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdDispatch(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     uint32_t                                    groupCountX,
     uint32_t                                    groupCountY,
@@ -978,6 +1083,7 @@ void VulkanAsciiConsumer::Process_vkCmdDispatch(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdDispatchIndirect(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            buffer,
     VkDeviceSize                                offset)
@@ -986,6 +1092,7 @@ void VulkanAsciiConsumer::Process_vkCmdDispatchIndirect(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdCopyBuffer(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            srcBuffer,
     format::HandleId                            dstBuffer,
@@ -996,6 +1103,7 @@ void VulkanAsciiConsumer::Process_vkCmdCopyBuffer(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdCopyImage(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            srcImage,
     VkImageLayout                               srcImageLayout,
@@ -1008,6 +1116,7 @@ void VulkanAsciiConsumer::Process_vkCmdCopyImage(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdBlitImage(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            srcImage,
     VkImageLayout                               srcImageLayout,
@@ -1021,6 +1130,7 @@ void VulkanAsciiConsumer::Process_vkCmdBlitImage(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdCopyBufferToImage(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            srcBuffer,
     format::HandleId                            dstImage,
@@ -1032,6 +1142,7 @@ void VulkanAsciiConsumer::Process_vkCmdCopyBufferToImage(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdCopyImageToBuffer(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            srcImage,
     VkImageLayout                               srcImageLayout,
@@ -1043,6 +1154,7 @@ void VulkanAsciiConsumer::Process_vkCmdCopyImageToBuffer(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdUpdateBuffer(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            dstBuffer,
     VkDeviceSize                                dstOffset,
@@ -1053,6 +1165,7 @@ void VulkanAsciiConsumer::Process_vkCmdUpdateBuffer(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdFillBuffer(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            dstBuffer,
     VkDeviceSize                                dstOffset,
@@ -1063,6 +1176,7 @@ void VulkanAsciiConsumer::Process_vkCmdFillBuffer(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdClearColorImage(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            image,
     VkImageLayout                               imageLayout,
@@ -1074,6 +1188,7 @@ void VulkanAsciiConsumer::Process_vkCmdClearColorImage(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdClearDepthStencilImage(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            image,
     VkImageLayout                               imageLayout,
@@ -1085,6 +1200,7 @@ void VulkanAsciiConsumer::Process_vkCmdClearDepthStencilImage(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdClearAttachments(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     uint32_t                                    attachmentCount,
     StructPointerDecoder<Decoded_VkClearAttachment>* pAttachments,
@@ -1095,6 +1211,7 @@ void VulkanAsciiConsumer::Process_vkCmdClearAttachments(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdResolveImage(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            srcImage,
     VkImageLayout                               srcImageLayout,
@@ -1107,6 +1224,7 @@ void VulkanAsciiConsumer::Process_vkCmdResolveImage(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdSetEvent(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            event,
     VkPipelineStageFlags                        stageMask)
@@ -1115,6 +1233,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetEvent(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdResetEvent(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            event,
     VkPipelineStageFlags                        stageMask)
@@ -1123,6 +1242,7 @@ void VulkanAsciiConsumer::Process_vkCmdResetEvent(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdWaitEvents(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     uint32_t                                    eventCount,
     HandlePointerDecoder<VkEvent>*              pEvents,
@@ -1139,6 +1259,7 @@ void VulkanAsciiConsumer::Process_vkCmdWaitEvents(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdPipelineBarrier(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     VkPipelineStageFlags                        srcStageMask,
     VkPipelineStageFlags                        dstStageMask,
@@ -1154,6 +1275,7 @@ void VulkanAsciiConsumer::Process_vkCmdPipelineBarrier(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdBeginQuery(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            queryPool,
     uint32_t                                    query,
@@ -1163,6 +1285,7 @@ void VulkanAsciiConsumer::Process_vkCmdBeginQuery(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdEndQuery(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            queryPool,
     uint32_t                                    query)
@@ -1171,6 +1294,7 @@ void VulkanAsciiConsumer::Process_vkCmdEndQuery(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdResetQueryPool(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            queryPool,
     uint32_t                                    firstQuery,
@@ -1180,6 +1304,7 @@ void VulkanAsciiConsumer::Process_vkCmdResetQueryPool(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdWriteTimestamp(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     VkPipelineStageFlagBits                     pipelineStage,
     format::HandleId                            queryPool,
@@ -1189,6 +1314,7 @@ void VulkanAsciiConsumer::Process_vkCmdWriteTimestamp(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdCopyQueryPoolResults(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            queryPool,
     uint32_t                                    firstQuery,
@@ -1202,6 +1328,7 @@ void VulkanAsciiConsumer::Process_vkCmdCopyQueryPoolResults(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdPushConstants(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            layout,
     VkShaderStageFlags                          stageFlags,
@@ -1213,6 +1340,7 @@ void VulkanAsciiConsumer::Process_vkCmdPushConstants(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdBeginRenderPass(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     StructPointerDecoder<Decoded_VkRenderPassBeginInfo>* pRenderPassBegin,
     VkSubpassContents                           contents)
@@ -1221,6 +1349,7 @@ void VulkanAsciiConsumer::Process_vkCmdBeginRenderPass(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdNextSubpass(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     VkSubpassContents                           contents)
 {
@@ -1228,12 +1357,14 @@ void VulkanAsciiConsumer::Process_vkCmdNextSubpass(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdEndRenderPass(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer)
 {
     fprintf(GetFile(), "%s\n", "vkCmdEndRenderPass");
 }
 
 void VulkanAsciiConsumer::Process_vkCmdExecuteCommands(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     uint32_t                                    commandBufferCount,
     HandlePointerDecoder<VkCommandBuffer>*      pCommandBuffers)
@@ -1243,6 +1374,7 @@ void VulkanAsciiConsumer::Process_vkCmdExecuteCommands(
 
 void VulkanAsciiConsumer::Process_vkBindBufferMemory2(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     uint32_t                                    bindInfoCount,
     StructPointerDecoder<Decoded_VkBindBufferMemoryInfo>* pBindInfos)
@@ -1252,6 +1384,7 @@ void VulkanAsciiConsumer::Process_vkBindBufferMemory2(
 
 void VulkanAsciiConsumer::Process_vkBindImageMemory2(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     uint32_t                                    bindInfoCount,
     StructPointerDecoder<Decoded_VkBindImageMemoryInfo>* pBindInfos)
@@ -1260,6 +1393,7 @@ void VulkanAsciiConsumer::Process_vkBindImageMemory2(
 }
 
 void VulkanAsciiConsumer::Process_vkGetDeviceGroupPeerMemoryFeatures(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     uint32_t                                    heapIndex,
     uint32_t                                    localDeviceIndex,
@@ -1270,6 +1404,7 @@ void VulkanAsciiConsumer::Process_vkGetDeviceGroupPeerMemoryFeatures(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdSetDeviceMask(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     uint32_t                                    deviceMask)
 {
@@ -1277,6 +1412,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetDeviceMask(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdDispatchBase(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     uint32_t                                    baseGroupX,
     uint32_t                                    baseGroupY,
@@ -1290,6 +1426,7 @@ void VulkanAsciiConsumer::Process_vkCmdDispatchBase(
 
 void VulkanAsciiConsumer::Process_vkEnumeratePhysicalDeviceGroups(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            instance,
     PointerDecoder<uint32_t>*                   pPhysicalDeviceGroupCount,
     StructPointerDecoder<Decoded_VkPhysicalDeviceGroupProperties>* pPhysicalDeviceGroupProperties)
@@ -1298,6 +1435,7 @@ void VulkanAsciiConsumer::Process_vkEnumeratePhysicalDeviceGroups(
 }
 
 void VulkanAsciiConsumer::Process_vkGetImageMemoryRequirements2(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkImageMemoryRequirementsInfo2>* pInfo,
     StructPointerDecoder<Decoded_VkMemoryRequirements2>* pMemoryRequirements)
@@ -1306,6 +1444,7 @@ void VulkanAsciiConsumer::Process_vkGetImageMemoryRequirements2(
 }
 
 void VulkanAsciiConsumer::Process_vkGetBufferMemoryRequirements2(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkBufferMemoryRequirementsInfo2>* pInfo,
     StructPointerDecoder<Decoded_VkMemoryRequirements2>* pMemoryRequirements)
@@ -1314,6 +1453,7 @@ void VulkanAsciiConsumer::Process_vkGetBufferMemoryRequirements2(
 }
 
 void VulkanAsciiConsumer::Process_vkGetImageSparseMemoryRequirements2(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkImageSparseMemoryRequirementsInfo2>* pInfo,
     PointerDecoder<uint32_t>*                   pSparseMemoryRequirementCount,
@@ -1323,6 +1463,7 @@ void VulkanAsciiConsumer::Process_vkGetImageSparseMemoryRequirements2(
 }
 
 void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceFeatures2(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     StructPointerDecoder<Decoded_VkPhysicalDeviceFeatures2>* pFeatures)
 {
@@ -1330,6 +1471,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceFeatures2(
 }
 
 void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceProperties2(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     StructPointerDecoder<Decoded_VkPhysicalDeviceProperties2>* pProperties)
 {
@@ -1337,6 +1479,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceProperties2(
 }
 
 void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceFormatProperties2(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     VkFormat                                    format,
     StructPointerDecoder<Decoded_VkFormatProperties2>* pFormatProperties)
@@ -1346,6 +1489,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceFormatProperties2(
 
 void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     StructPointerDecoder<Decoded_VkPhysicalDeviceImageFormatInfo2>* pImageFormatInfo,
     StructPointerDecoder<Decoded_VkImageFormatProperties2>* pImageFormatProperties)
@@ -1354,6 +1498,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2(
 }
 
 void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     PointerDecoder<uint32_t>*                   pQueueFamilyPropertyCount,
     StructPointerDecoder<Decoded_VkQueueFamilyProperties2>* pQueueFamilyProperties)
@@ -1362,6 +1507,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2(
 }
 
 void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceMemoryProperties2(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     StructPointerDecoder<Decoded_VkPhysicalDeviceMemoryProperties2>* pMemoryProperties)
 {
@@ -1369,6 +1515,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceMemoryProperties2(
 }
 
 void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     StructPointerDecoder<Decoded_VkPhysicalDeviceSparseImageFormatInfo2>* pFormatInfo,
     PointerDecoder<uint32_t>*                   pPropertyCount,
@@ -1378,6 +1525,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties
 }
 
 void VulkanAsciiConsumer::Process_vkTrimCommandPool(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            commandPool,
     VkCommandPoolTrimFlags                      flags)
@@ -1386,6 +1534,7 @@ void VulkanAsciiConsumer::Process_vkTrimCommandPool(
 }
 
 void VulkanAsciiConsumer::Process_vkGetDeviceQueue2(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkDeviceQueueInfo2>* pQueueInfo,
     HandlePointerDecoder<VkQueue>*              pQueue)
@@ -1395,6 +1544,7 @@ void VulkanAsciiConsumer::Process_vkGetDeviceQueue2(
 
 void VulkanAsciiConsumer::Process_vkCreateSamplerYcbcrConversion(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkSamplerYcbcrConversionCreateInfo>* pCreateInfo,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
@@ -1404,6 +1554,7 @@ void VulkanAsciiConsumer::Process_vkCreateSamplerYcbcrConversion(
 }
 
 void VulkanAsciiConsumer::Process_vkDestroySamplerYcbcrConversion(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            ycbcrConversion,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
@@ -1413,6 +1564,7 @@ void VulkanAsciiConsumer::Process_vkDestroySamplerYcbcrConversion(
 
 void VulkanAsciiConsumer::Process_vkCreateDescriptorUpdateTemplate(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkDescriptorUpdateTemplateCreateInfo>* pCreateInfo,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
@@ -1422,6 +1574,7 @@ void VulkanAsciiConsumer::Process_vkCreateDescriptorUpdateTemplate(
 }
 
 void VulkanAsciiConsumer::Process_vkDestroyDescriptorUpdateTemplate(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            descriptorUpdateTemplate,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
@@ -1430,6 +1583,7 @@ void VulkanAsciiConsumer::Process_vkDestroyDescriptorUpdateTemplate(
 }
 
 void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalBufferProperties(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     StructPointerDecoder<Decoded_VkPhysicalDeviceExternalBufferInfo>* pExternalBufferInfo,
     StructPointerDecoder<Decoded_VkExternalBufferProperties>* pExternalBufferProperties)
@@ -1438,6 +1592,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalBufferProperties(
 }
 
 void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalFenceProperties(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     StructPointerDecoder<Decoded_VkPhysicalDeviceExternalFenceInfo>* pExternalFenceInfo,
     StructPointerDecoder<Decoded_VkExternalFenceProperties>* pExternalFenceProperties)
@@ -1446,6 +1601,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalFenceProperties(
 }
 
 void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalSemaphoreProperties(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     StructPointerDecoder<Decoded_VkPhysicalDeviceExternalSemaphoreInfo>* pExternalSemaphoreInfo,
     StructPointerDecoder<Decoded_VkExternalSemaphoreProperties>* pExternalSemaphoreProperties)
@@ -1454,6 +1610,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalSemaphoreProperties
 }
 
 void VulkanAsciiConsumer::Process_vkGetDescriptorSetLayoutSupport(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkDescriptorSetLayoutCreateInfo>* pCreateInfo,
     StructPointerDecoder<Decoded_VkDescriptorSetLayoutSupport>* pSupport)
@@ -1462,6 +1619,7 @@ void VulkanAsciiConsumer::Process_vkGetDescriptorSetLayoutSupport(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdDrawIndirectCount(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            buffer,
     VkDeviceSize                                offset,
@@ -1474,6 +1632,7 @@ void VulkanAsciiConsumer::Process_vkCmdDrawIndirectCount(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdDrawIndexedIndirectCount(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            buffer,
     VkDeviceSize                                offset,
@@ -1487,6 +1646,7 @@ void VulkanAsciiConsumer::Process_vkCmdDrawIndexedIndirectCount(
 
 void VulkanAsciiConsumer::Process_vkCreateRenderPass2(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkRenderPassCreateInfo2>* pCreateInfo,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
@@ -1496,6 +1656,7 @@ void VulkanAsciiConsumer::Process_vkCreateRenderPass2(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdBeginRenderPass2(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     StructPointerDecoder<Decoded_VkRenderPassBeginInfo>* pRenderPassBegin,
     StructPointerDecoder<Decoded_VkSubpassBeginInfo>* pSubpassBeginInfo)
@@ -1504,6 +1665,7 @@ void VulkanAsciiConsumer::Process_vkCmdBeginRenderPass2(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdNextSubpass2(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     StructPointerDecoder<Decoded_VkSubpassBeginInfo>* pSubpassBeginInfo,
     StructPointerDecoder<Decoded_VkSubpassEndInfo>* pSubpassEndInfo)
@@ -1512,6 +1674,7 @@ void VulkanAsciiConsumer::Process_vkCmdNextSubpass2(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdEndRenderPass2(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     StructPointerDecoder<Decoded_VkSubpassEndInfo>* pSubpassEndInfo)
 {
@@ -1519,6 +1682,7 @@ void VulkanAsciiConsumer::Process_vkCmdEndRenderPass2(
 }
 
 void VulkanAsciiConsumer::Process_vkResetQueryPool(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            queryPool,
     uint32_t                                    firstQuery,
@@ -1529,6 +1693,7 @@ void VulkanAsciiConsumer::Process_vkResetQueryPool(
 
 void VulkanAsciiConsumer::Process_vkGetSemaphoreCounterValue(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            semaphore,
     PointerDecoder<uint64_t>*                   pValue)
@@ -1538,6 +1703,7 @@ void VulkanAsciiConsumer::Process_vkGetSemaphoreCounterValue(
 
 void VulkanAsciiConsumer::Process_vkWaitSemaphores(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkSemaphoreWaitInfo>* pWaitInfo,
     uint64_t                                    timeout)
@@ -1547,6 +1713,7 @@ void VulkanAsciiConsumer::Process_vkWaitSemaphores(
 
 void VulkanAsciiConsumer::Process_vkSignalSemaphore(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkSemaphoreSignalInfo>* pSignalInfo)
 {
@@ -1555,6 +1722,7 @@ void VulkanAsciiConsumer::Process_vkSignalSemaphore(
 
 void VulkanAsciiConsumer::Process_vkGetBufferDeviceAddress(
     VkDeviceAddress                             returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkBufferDeviceAddressInfo>* pInfo)
 {
@@ -1563,6 +1731,7 @@ void VulkanAsciiConsumer::Process_vkGetBufferDeviceAddress(
 
 void VulkanAsciiConsumer::Process_vkGetBufferOpaqueCaptureAddress(
     uint64_t                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkBufferDeviceAddressInfo>* pInfo)
 {
@@ -1571,6 +1740,7 @@ void VulkanAsciiConsumer::Process_vkGetBufferOpaqueCaptureAddress(
 
 void VulkanAsciiConsumer::Process_vkGetDeviceMemoryOpaqueCaptureAddress(
     uint64_t                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkDeviceMemoryOpaqueCaptureAddressInfo>* pInfo)
 {
@@ -1578,6 +1748,7 @@ void VulkanAsciiConsumer::Process_vkGetDeviceMemoryOpaqueCaptureAddress(
 }
 
 void VulkanAsciiConsumer::Process_vkDestroySurfaceKHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            instance,
     format::HandleId                            surface,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
@@ -1587,6 +1758,7 @@ void VulkanAsciiConsumer::Process_vkDestroySurfaceKHR(
 
 void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceSupportKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     uint32_t                                    queueFamilyIndex,
     format::HandleId                            surface,
@@ -1597,6 +1769,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceSupportKHR(
 
 void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilitiesKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     format::HandleId                            surface,
     StructPointerDecoder<Decoded_VkSurfaceCapabilitiesKHR>* pSurfaceCapabilities)
@@ -1606,6 +1779,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilitiesKHR(
 
 void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceFormatsKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     format::HandleId                            surface,
     PointerDecoder<uint32_t>*                   pSurfaceFormatCount,
@@ -1616,6 +1790,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceFormatsKHR(
 
 void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfacePresentModesKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     format::HandleId                            surface,
     PointerDecoder<uint32_t>*                   pPresentModeCount,
@@ -1626,6 +1801,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfacePresentModesKHR(
 
 void VulkanAsciiConsumer::Process_vkCreateSwapchainKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkSwapchainCreateInfoKHR>* pCreateInfo,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
@@ -1635,6 +1811,7 @@ void VulkanAsciiConsumer::Process_vkCreateSwapchainKHR(
 }
 
 void VulkanAsciiConsumer::Process_vkDestroySwapchainKHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            swapchain,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
@@ -1644,6 +1821,7 @@ void VulkanAsciiConsumer::Process_vkDestroySwapchainKHR(
 
 void VulkanAsciiConsumer::Process_vkGetSwapchainImagesKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            swapchain,
     PointerDecoder<uint32_t>*                   pSwapchainImageCount,
@@ -1654,6 +1832,7 @@ void VulkanAsciiConsumer::Process_vkGetSwapchainImagesKHR(
 
 void VulkanAsciiConsumer::Process_vkAcquireNextImageKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            swapchain,
     uint64_t                                    timeout,
@@ -1666,6 +1845,7 @@ void VulkanAsciiConsumer::Process_vkAcquireNextImageKHR(
 
 void VulkanAsciiConsumer::Process_vkQueuePresentKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            queue,
     StructPointerDecoder<Decoded_VkPresentInfoKHR>* pPresentInfo)
 {
@@ -1674,6 +1854,7 @@ void VulkanAsciiConsumer::Process_vkQueuePresentKHR(
 
 void VulkanAsciiConsumer::Process_vkGetDeviceGroupPresentCapabilitiesKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkDeviceGroupPresentCapabilitiesKHR>* pDeviceGroupPresentCapabilities)
 {
@@ -1682,6 +1863,7 @@ void VulkanAsciiConsumer::Process_vkGetDeviceGroupPresentCapabilitiesKHR(
 
 void VulkanAsciiConsumer::Process_vkGetDeviceGroupSurfacePresentModesKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            surface,
     PointerDecoder<VkDeviceGroupPresentModeFlagsKHR>* pModes)
@@ -1691,6 +1873,7 @@ void VulkanAsciiConsumer::Process_vkGetDeviceGroupSurfacePresentModesKHR(
 
 void VulkanAsciiConsumer::Process_vkGetPhysicalDevicePresentRectanglesKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     format::HandleId                            surface,
     PointerDecoder<uint32_t>*                   pRectCount,
@@ -1701,6 +1884,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDevicePresentRectanglesKHR(
 
 void VulkanAsciiConsumer::Process_vkAcquireNextImage2KHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkAcquireNextImageInfoKHR>* pAcquireInfo,
     PointerDecoder<uint32_t>*                   pImageIndex)
@@ -1710,6 +1894,7 @@ void VulkanAsciiConsumer::Process_vkAcquireNextImage2KHR(
 
 void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceDisplayPropertiesKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     PointerDecoder<uint32_t>*                   pPropertyCount,
     StructPointerDecoder<Decoded_VkDisplayPropertiesKHR>* pProperties)
@@ -1719,6 +1904,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceDisplayPropertiesKHR(
 
 void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     PointerDecoder<uint32_t>*                   pPropertyCount,
     StructPointerDecoder<Decoded_VkDisplayPlanePropertiesKHR>* pProperties)
@@ -1728,6 +1914,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
 
 void VulkanAsciiConsumer::Process_vkGetDisplayPlaneSupportedDisplaysKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     uint32_t                                    planeIndex,
     PointerDecoder<uint32_t>*                   pDisplayCount,
@@ -1738,6 +1925,7 @@ void VulkanAsciiConsumer::Process_vkGetDisplayPlaneSupportedDisplaysKHR(
 
 void VulkanAsciiConsumer::Process_vkGetDisplayModePropertiesKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     format::HandleId                            display,
     PointerDecoder<uint32_t>*                   pPropertyCount,
@@ -1748,6 +1936,7 @@ void VulkanAsciiConsumer::Process_vkGetDisplayModePropertiesKHR(
 
 void VulkanAsciiConsumer::Process_vkCreateDisplayModeKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     format::HandleId                            display,
     StructPointerDecoder<Decoded_VkDisplayModeCreateInfoKHR>* pCreateInfo,
@@ -1759,6 +1948,7 @@ void VulkanAsciiConsumer::Process_vkCreateDisplayModeKHR(
 
 void VulkanAsciiConsumer::Process_vkGetDisplayPlaneCapabilitiesKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     format::HandleId                            mode,
     uint32_t                                    planeIndex,
@@ -1769,6 +1959,7 @@ void VulkanAsciiConsumer::Process_vkGetDisplayPlaneCapabilitiesKHR(
 
 void VulkanAsciiConsumer::Process_vkCreateDisplayPlaneSurfaceKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            instance,
     StructPointerDecoder<Decoded_VkDisplaySurfaceCreateInfoKHR>* pCreateInfo,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
@@ -1779,6 +1970,7 @@ void VulkanAsciiConsumer::Process_vkCreateDisplayPlaneSurfaceKHR(
 
 void VulkanAsciiConsumer::Process_vkCreateSharedSwapchainsKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     uint32_t                                    swapchainCount,
     StructPointerDecoder<Decoded_VkSwapchainCreateInfoKHR>* pCreateInfos,
@@ -1790,6 +1982,7 @@ void VulkanAsciiConsumer::Process_vkCreateSharedSwapchainsKHR(
 
 void VulkanAsciiConsumer::Process_vkCreateXlibSurfaceKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            instance,
     StructPointerDecoder<Decoded_VkXlibSurfaceCreateInfoKHR>* pCreateInfo,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
@@ -1800,6 +1993,7 @@ void VulkanAsciiConsumer::Process_vkCreateXlibSurfaceKHR(
 
 void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceXlibPresentationSupportKHR(
     VkBool32                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     uint32_t                                    queueFamilyIndex,
     uint64_t                                    dpy,
@@ -1810,6 +2004,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceXlibPresentationSupportKHR(
 
 void VulkanAsciiConsumer::Process_vkCreateXcbSurfaceKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            instance,
     StructPointerDecoder<Decoded_VkXcbSurfaceCreateInfoKHR>* pCreateInfo,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
@@ -1820,6 +2015,7 @@ void VulkanAsciiConsumer::Process_vkCreateXcbSurfaceKHR(
 
 void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceXcbPresentationSupportKHR(
     VkBool32                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     uint32_t                                    queueFamilyIndex,
     uint64_t                                    connection,
@@ -1830,6 +2026,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceXcbPresentationSupportKHR(
 
 void VulkanAsciiConsumer::Process_vkCreateWaylandSurfaceKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            instance,
     StructPointerDecoder<Decoded_VkWaylandSurfaceCreateInfoKHR>* pCreateInfo,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
@@ -1840,6 +2037,7 @@ void VulkanAsciiConsumer::Process_vkCreateWaylandSurfaceKHR(
 
 void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceWaylandPresentationSupportKHR(
     VkBool32                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     uint32_t                                    queueFamilyIndex,
     uint64_t                                    display)
@@ -1849,6 +2047,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceWaylandPresentationSupportK
 
 void VulkanAsciiConsumer::Process_vkCreateAndroidSurfaceKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            instance,
     StructPointerDecoder<Decoded_VkAndroidSurfaceCreateInfoKHR>* pCreateInfo,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
@@ -1859,6 +2058,7 @@ void VulkanAsciiConsumer::Process_vkCreateAndroidSurfaceKHR(
 
 void VulkanAsciiConsumer::Process_vkCreateWin32SurfaceKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            instance,
     StructPointerDecoder<Decoded_VkWin32SurfaceCreateInfoKHR>* pCreateInfo,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
@@ -1869,6 +2069,7 @@ void VulkanAsciiConsumer::Process_vkCreateWin32SurfaceKHR(
 
 void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceWin32PresentationSupportKHR(
     VkBool32                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     uint32_t                                    queueFamilyIndex)
 {
@@ -1876,6 +2077,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceWin32PresentationSupportKHR
 }
 
 void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceFeatures2KHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     StructPointerDecoder<Decoded_VkPhysicalDeviceFeatures2>* pFeatures)
 {
@@ -1883,6 +2085,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceFeatures2KHR(
 }
 
 void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceProperties2KHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     StructPointerDecoder<Decoded_VkPhysicalDeviceProperties2>* pProperties)
 {
@@ -1890,6 +2093,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceProperties2KHR(
 }
 
 void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceFormatProperties2KHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     VkFormat                                    format,
     StructPointerDecoder<Decoded_VkFormatProperties2>* pFormatProperties)
@@ -1899,6 +2103,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceFormatProperties2KHR(
 
 void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2KHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     StructPointerDecoder<Decoded_VkPhysicalDeviceImageFormatInfo2>* pImageFormatInfo,
     StructPointerDecoder<Decoded_VkImageFormatProperties2>* pImageFormatProperties)
@@ -1907,6 +2112,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceImageFormatProperties2KHR(
 }
 
 void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2KHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     PointerDecoder<uint32_t>*                   pQueueFamilyPropertyCount,
     StructPointerDecoder<Decoded_VkQueueFamilyProperties2>* pQueueFamilyProperties)
@@ -1915,6 +2121,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceQueueFamilyProperties2KHR(
 }
 
 void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceMemoryProperties2KHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     StructPointerDecoder<Decoded_VkPhysicalDeviceMemoryProperties2>* pMemoryProperties)
 {
@@ -1922,6 +2129,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceMemoryProperties2KHR(
 }
 
 void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties2KHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     StructPointerDecoder<Decoded_VkPhysicalDeviceSparseImageFormatInfo2>* pFormatInfo,
     PointerDecoder<uint32_t>*                   pPropertyCount,
@@ -1931,6 +2139,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSparseImageFormatProperties
 }
 
 void VulkanAsciiConsumer::Process_vkGetDeviceGroupPeerMemoryFeaturesKHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     uint32_t                                    heapIndex,
     uint32_t                                    localDeviceIndex,
@@ -1941,6 +2150,7 @@ void VulkanAsciiConsumer::Process_vkGetDeviceGroupPeerMemoryFeaturesKHR(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdSetDeviceMaskKHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     uint32_t                                    deviceMask)
 {
@@ -1948,6 +2158,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetDeviceMaskKHR(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdDispatchBaseKHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     uint32_t                                    baseGroupX,
     uint32_t                                    baseGroupY,
@@ -1960,6 +2171,7 @@ void VulkanAsciiConsumer::Process_vkCmdDispatchBaseKHR(
 }
 
 void VulkanAsciiConsumer::Process_vkTrimCommandPoolKHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            commandPool,
     VkCommandPoolTrimFlags                      flags)
@@ -1969,6 +2181,7 @@ void VulkanAsciiConsumer::Process_vkTrimCommandPoolKHR(
 
 void VulkanAsciiConsumer::Process_vkEnumeratePhysicalDeviceGroupsKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            instance,
     PointerDecoder<uint32_t>*                   pPhysicalDeviceGroupCount,
     StructPointerDecoder<Decoded_VkPhysicalDeviceGroupProperties>* pPhysicalDeviceGroupProperties)
@@ -1977,6 +2190,7 @@ void VulkanAsciiConsumer::Process_vkEnumeratePhysicalDeviceGroupsKHR(
 }
 
 void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalBufferPropertiesKHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     StructPointerDecoder<Decoded_VkPhysicalDeviceExternalBufferInfo>* pExternalBufferInfo,
     StructPointerDecoder<Decoded_VkExternalBufferProperties>* pExternalBufferProperties)
@@ -1986,6 +2200,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalBufferPropertiesKHR
 
 void VulkanAsciiConsumer::Process_vkGetMemoryWin32HandleKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkMemoryGetWin32HandleInfoKHR>* pGetWin32HandleInfo,
     PointerDecoder<uint64_t, void*>*            pHandle)
@@ -1995,6 +2210,7 @@ void VulkanAsciiConsumer::Process_vkGetMemoryWin32HandleKHR(
 
 void VulkanAsciiConsumer::Process_vkGetMemoryWin32HandlePropertiesKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     VkExternalMemoryHandleTypeFlagBits          handleType,
     uint64_t                                    handle,
@@ -2005,6 +2221,7 @@ void VulkanAsciiConsumer::Process_vkGetMemoryWin32HandlePropertiesKHR(
 
 void VulkanAsciiConsumer::Process_vkGetMemoryFdKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkMemoryGetFdInfoKHR>* pGetFdInfo,
     PointerDecoder<int>*                        pFd)
@@ -2014,6 +2231,7 @@ void VulkanAsciiConsumer::Process_vkGetMemoryFdKHR(
 
 void VulkanAsciiConsumer::Process_vkGetMemoryFdPropertiesKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     VkExternalMemoryHandleTypeFlagBits          handleType,
     int                                         fd,
@@ -2023,6 +2241,7 @@ void VulkanAsciiConsumer::Process_vkGetMemoryFdPropertiesKHR(
 }
 
 void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalSemaphorePropertiesKHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     StructPointerDecoder<Decoded_VkPhysicalDeviceExternalSemaphoreInfo>* pExternalSemaphoreInfo,
     StructPointerDecoder<Decoded_VkExternalSemaphoreProperties>* pExternalSemaphoreProperties)
@@ -2032,6 +2251,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalSemaphoreProperties
 
 void VulkanAsciiConsumer::Process_vkImportSemaphoreWin32HandleKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkImportSemaphoreWin32HandleInfoKHR>* pImportSemaphoreWin32HandleInfo)
 {
@@ -2040,6 +2260,7 @@ void VulkanAsciiConsumer::Process_vkImportSemaphoreWin32HandleKHR(
 
 void VulkanAsciiConsumer::Process_vkGetSemaphoreWin32HandleKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkSemaphoreGetWin32HandleInfoKHR>* pGetWin32HandleInfo,
     PointerDecoder<uint64_t, void*>*            pHandle)
@@ -2049,6 +2270,7 @@ void VulkanAsciiConsumer::Process_vkGetSemaphoreWin32HandleKHR(
 
 void VulkanAsciiConsumer::Process_vkImportSemaphoreFdKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkImportSemaphoreFdInfoKHR>* pImportSemaphoreFdInfo)
 {
@@ -2057,6 +2279,7 @@ void VulkanAsciiConsumer::Process_vkImportSemaphoreFdKHR(
 
 void VulkanAsciiConsumer::Process_vkGetSemaphoreFdKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkSemaphoreGetFdInfoKHR>* pGetFdInfo,
     PointerDecoder<int>*                        pFd)
@@ -2065,6 +2288,7 @@ void VulkanAsciiConsumer::Process_vkGetSemaphoreFdKHR(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdPushDescriptorSetKHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     VkPipelineBindPoint                         pipelineBindPoint,
     format::HandleId                            layout,
@@ -2077,6 +2301,7 @@ void VulkanAsciiConsumer::Process_vkCmdPushDescriptorSetKHR(
 
 void VulkanAsciiConsumer::Process_vkCreateDescriptorUpdateTemplateKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkDescriptorUpdateTemplateCreateInfo>* pCreateInfo,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
@@ -2086,6 +2311,7 @@ void VulkanAsciiConsumer::Process_vkCreateDescriptorUpdateTemplateKHR(
 }
 
 void VulkanAsciiConsumer::Process_vkDestroyDescriptorUpdateTemplateKHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            descriptorUpdateTemplate,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
@@ -2095,6 +2321,7 @@ void VulkanAsciiConsumer::Process_vkDestroyDescriptorUpdateTemplateKHR(
 
 void VulkanAsciiConsumer::Process_vkCreateRenderPass2KHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkRenderPassCreateInfo2>* pCreateInfo,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
@@ -2104,6 +2331,7 @@ void VulkanAsciiConsumer::Process_vkCreateRenderPass2KHR(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdBeginRenderPass2KHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     StructPointerDecoder<Decoded_VkRenderPassBeginInfo>* pRenderPassBegin,
     StructPointerDecoder<Decoded_VkSubpassBeginInfo>* pSubpassBeginInfo)
@@ -2112,6 +2340,7 @@ void VulkanAsciiConsumer::Process_vkCmdBeginRenderPass2KHR(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdNextSubpass2KHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     StructPointerDecoder<Decoded_VkSubpassBeginInfo>* pSubpassBeginInfo,
     StructPointerDecoder<Decoded_VkSubpassEndInfo>* pSubpassEndInfo)
@@ -2120,6 +2349,7 @@ void VulkanAsciiConsumer::Process_vkCmdNextSubpass2KHR(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdEndRenderPass2KHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     StructPointerDecoder<Decoded_VkSubpassEndInfo>* pSubpassEndInfo)
 {
@@ -2128,6 +2358,7 @@ void VulkanAsciiConsumer::Process_vkCmdEndRenderPass2KHR(
 
 void VulkanAsciiConsumer::Process_vkGetSwapchainStatusKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            swapchain)
 {
@@ -2135,6 +2366,7 @@ void VulkanAsciiConsumer::Process_vkGetSwapchainStatusKHR(
 }
 
 void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalFencePropertiesKHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     StructPointerDecoder<Decoded_VkPhysicalDeviceExternalFenceInfo>* pExternalFenceInfo,
     StructPointerDecoder<Decoded_VkExternalFenceProperties>* pExternalFenceProperties)
@@ -2144,6 +2376,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalFencePropertiesKHR(
 
 void VulkanAsciiConsumer::Process_vkImportFenceWin32HandleKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkImportFenceWin32HandleInfoKHR>* pImportFenceWin32HandleInfo)
 {
@@ -2152,6 +2385,7 @@ void VulkanAsciiConsumer::Process_vkImportFenceWin32HandleKHR(
 
 void VulkanAsciiConsumer::Process_vkGetFenceWin32HandleKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkFenceGetWin32HandleInfoKHR>* pGetWin32HandleInfo,
     PointerDecoder<uint64_t, void*>*            pHandle)
@@ -2161,6 +2395,7 @@ void VulkanAsciiConsumer::Process_vkGetFenceWin32HandleKHR(
 
 void VulkanAsciiConsumer::Process_vkImportFenceFdKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkImportFenceFdInfoKHR>* pImportFenceFdInfo)
 {
@@ -2169,6 +2404,7 @@ void VulkanAsciiConsumer::Process_vkImportFenceFdKHR(
 
 void VulkanAsciiConsumer::Process_vkGetFenceFdKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkFenceGetFdInfoKHR>* pGetFdInfo,
     PointerDecoder<int>*                        pFd)
@@ -2178,6 +2414,7 @@ void VulkanAsciiConsumer::Process_vkGetFenceFdKHR(
 
 void VulkanAsciiConsumer::Process_vkEnumeratePhysicalDeviceQueueFamilyPerformanceQueryCountersKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     uint32_t                                    queueFamilyIndex,
     PointerDecoder<uint32_t>*                   pCounterCount,
@@ -2188,6 +2425,7 @@ void VulkanAsciiConsumer::Process_vkEnumeratePhysicalDeviceQueueFamilyPerformanc
 }
 
 void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceQueueFamilyPerformanceQueryPassesKHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     StructPointerDecoder<Decoded_VkQueryPoolPerformanceCreateInfoKHR>* pPerformanceQueryCreateInfo,
     PointerDecoder<uint32_t>*                   pNumPasses)
@@ -2197,6 +2435,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceQueueFamilyPerformanceQuery
 
 void VulkanAsciiConsumer::Process_vkAcquireProfilingLockKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkAcquireProfilingLockInfoKHR>* pInfo)
 {
@@ -2204,6 +2443,7 @@ void VulkanAsciiConsumer::Process_vkAcquireProfilingLockKHR(
 }
 
 void VulkanAsciiConsumer::Process_vkReleaseProfilingLockKHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device)
 {
     fprintf(GetFile(), "%s\n", "vkReleaseProfilingLockKHR");
@@ -2211,6 +2451,7 @@ void VulkanAsciiConsumer::Process_vkReleaseProfilingLockKHR(
 
 void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2KHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     StructPointerDecoder<Decoded_VkPhysicalDeviceSurfaceInfo2KHR>* pSurfaceInfo,
     StructPointerDecoder<Decoded_VkSurfaceCapabilities2KHR>* pSurfaceCapabilities)
@@ -2220,6 +2461,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2KHR(
 
 void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceFormats2KHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     StructPointerDecoder<Decoded_VkPhysicalDeviceSurfaceInfo2KHR>* pSurfaceInfo,
     PointerDecoder<uint32_t>*                   pSurfaceFormatCount,
@@ -2230,6 +2472,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceFormats2KHR(
 
 void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceDisplayProperties2KHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     PointerDecoder<uint32_t>*                   pPropertyCount,
     StructPointerDecoder<Decoded_VkDisplayProperties2KHR>* pProperties)
@@ -2239,6 +2482,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceDisplayProperties2KHR(
 
 void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceDisplayPlaneProperties2KHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     PointerDecoder<uint32_t>*                   pPropertyCount,
     StructPointerDecoder<Decoded_VkDisplayPlaneProperties2KHR>* pProperties)
@@ -2248,6 +2492,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceDisplayPlaneProperties2KHR(
 
 void VulkanAsciiConsumer::Process_vkGetDisplayModeProperties2KHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     format::HandleId                            display,
     PointerDecoder<uint32_t>*                   pPropertyCount,
@@ -2258,6 +2503,7 @@ void VulkanAsciiConsumer::Process_vkGetDisplayModeProperties2KHR(
 
 void VulkanAsciiConsumer::Process_vkGetDisplayPlaneCapabilities2KHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     StructPointerDecoder<Decoded_VkDisplayPlaneInfo2KHR>* pDisplayPlaneInfo,
     StructPointerDecoder<Decoded_VkDisplayPlaneCapabilities2KHR>* pCapabilities)
@@ -2266,6 +2512,7 @@ void VulkanAsciiConsumer::Process_vkGetDisplayPlaneCapabilities2KHR(
 }
 
 void VulkanAsciiConsumer::Process_vkGetImageMemoryRequirements2KHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkImageMemoryRequirementsInfo2>* pInfo,
     StructPointerDecoder<Decoded_VkMemoryRequirements2>* pMemoryRequirements)
@@ -2274,6 +2521,7 @@ void VulkanAsciiConsumer::Process_vkGetImageMemoryRequirements2KHR(
 }
 
 void VulkanAsciiConsumer::Process_vkGetBufferMemoryRequirements2KHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkBufferMemoryRequirementsInfo2>* pInfo,
     StructPointerDecoder<Decoded_VkMemoryRequirements2>* pMemoryRequirements)
@@ -2282,6 +2530,7 @@ void VulkanAsciiConsumer::Process_vkGetBufferMemoryRequirements2KHR(
 }
 
 void VulkanAsciiConsumer::Process_vkGetImageSparseMemoryRequirements2KHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkImageSparseMemoryRequirementsInfo2>* pInfo,
     PointerDecoder<uint32_t>*                   pSparseMemoryRequirementCount,
@@ -2292,6 +2541,7 @@ void VulkanAsciiConsumer::Process_vkGetImageSparseMemoryRequirements2KHR(
 
 void VulkanAsciiConsumer::Process_vkCreateSamplerYcbcrConversionKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkSamplerYcbcrConversionCreateInfo>* pCreateInfo,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
@@ -2301,6 +2551,7 @@ void VulkanAsciiConsumer::Process_vkCreateSamplerYcbcrConversionKHR(
 }
 
 void VulkanAsciiConsumer::Process_vkDestroySamplerYcbcrConversionKHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            ycbcrConversion,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
@@ -2310,6 +2561,7 @@ void VulkanAsciiConsumer::Process_vkDestroySamplerYcbcrConversionKHR(
 
 void VulkanAsciiConsumer::Process_vkBindBufferMemory2KHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     uint32_t                                    bindInfoCount,
     StructPointerDecoder<Decoded_VkBindBufferMemoryInfo>* pBindInfos)
@@ -2319,6 +2571,7 @@ void VulkanAsciiConsumer::Process_vkBindBufferMemory2KHR(
 
 void VulkanAsciiConsumer::Process_vkBindImageMemory2KHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     uint32_t                                    bindInfoCount,
     StructPointerDecoder<Decoded_VkBindImageMemoryInfo>* pBindInfos)
@@ -2327,6 +2580,7 @@ void VulkanAsciiConsumer::Process_vkBindImageMemory2KHR(
 }
 
 void VulkanAsciiConsumer::Process_vkGetDescriptorSetLayoutSupportKHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkDescriptorSetLayoutCreateInfo>* pCreateInfo,
     StructPointerDecoder<Decoded_VkDescriptorSetLayoutSupport>* pSupport)
@@ -2335,6 +2589,7 @@ void VulkanAsciiConsumer::Process_vkGetDescriptorSetLayoutSupportKHR(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdDrawIndirectCountKHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            buffer,
     VkDeviceSize                                offset,
@@ -2347,6 +2602,7 @@ void VulkanAsciiConsumer::Process_vkCmdDrawIndirectCountKHR(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdDrawIndexedIndirectCountKHR(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            buffer,
     VkDeviceSize                                offset,
@@ -2360,6 +2616,7 @@ void VulkanAsciiConsumer::Process_vkCmdDrawIndexedIndirectCountKHR(
 
 void VulkanAsciiConsumer::Process_vkGetSemaphoreCounterValueKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            semaphore,
     PointerDecoder<uint64_t>*                   pValue)
@@ -2369,6 +2626,7 @@ void VulkanAsciiConsumer::Process_vkGetSemaphoreCounterValueKHR(
 
 void VulkanAsciiConsumer::Process_vkWaitSemaphoresKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkSemaphoreWaitInfo>* pWaitInfo,
     uint64_t                                    timeout)
@@ -2378,6 +2636,7 @@ void VulkanAsciiConsumer::Process_vkWaitSemaphoresKHR(
 
 void VulkanAsciiConsumer::Process_vkSignalSemaphoreKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkSemaphoreSignalInfo>* pSignalInfo)
 {
@@ -2386,6 +2645,7 @@ void VulkanAsciiConsumer::Process_vkSignalSemaphoreKHR(
 
 void VulkanAsciiConsumer::Process_vkGetBufferDeviceAddressKHR(
     VkDeviceAddress                             returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkBufferDeviceAddressInfo>* pInfo)
 {
@@ -2394,6 +2654,7 @@ void VulkanAsciiConsumer::Process_vkGetBufferDeviceAddressKHR(
 
 void VulkanAsciiConsumer::Process_vkGetBufferOpaqueCaptureAddressKHR(
     uint64_t                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkBufferDeviceAddressInfo>* pInfo)
 {
@@ -2402,6 +2663,7 @@ void VulkanAsciiConsumer::Process_vkGetBufferOpaqueCaptureAddressKHR(
 
 void VulkanAsciiConsumer::Process_vkGetDeviceMemoryOpaqueCaptureAddressKHR(
     uint64_t                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkDeviceMemoryOpaqueCaptureAddressInfo>* pInfo)
 {
@@ -2410,6 +2672,7 @@ void VulkanAsciiConsumer::Process_vkGetDeviceMemoryOpaqueCaptureAddressKHR(
 
 void VulkanAsciiConsumer::Process_vkGetPipelineExecutablePropertiesKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkPipelineInfoKHR>* pPipelineInfo,
     PointerDecoder<uint32_t>*                   pExecutableCount,
@@ -2420,6 +2683,7 @@ void VulkanAsciiConsumer::Process_vkGetPipelineExecutablePropertiesKHR(
 
 void VulkanAsciiConsumer::Process_vkGetPipelineExecutableStatisticsKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkPipelineExecutableInfoKHR>* pExecutableInfo,
     PointerDecoder<uint32_t>*                   pStatisticCount,
@@ -2430,6 +2694,7 @@ void VulkanAsciiConsumer::Process_vkGetPipelineExecutableStatisticsKHR(
 
 void VulkanAsciiConsumer::Process_vkGetPipelineExecutableInternalRepresentationsKHR(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkPipelineExecutableInfoKHR>* pExecutableInfo,
     PointerDecoder<uint32_t>*                   pInternalRepresentationCount,
@@ -2440,6 +2705,7 @@ void VulkanAsciiConsumer::Process_vkGetPipelineExecutableInternalRepresentations
 
 void VulkanAsciiConsumer::Process_vkCreateDebugReportCallbackEXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            instance,
     StructPointerDecoder<Decoded_VkDebugReportCallbackCreateInfoEXT>* pCreateInfo,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
@@ -2449,6 +2715,7 @@ void VulkanAsciiConsumer::Process_vkCreateDebugReportCallbackEXT(
 }
 
 void VulkanAsciiConsumer::Process_vkDestroyDebugReportCallbackEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            instance,
     format::HandleId                            callback,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
@@ -2457,6 +2724,7 @@ void VulkanAsciiConsumer::Process_vkDestroyDebugReportCallbackEXT(
 }
 
 void VulkanAsciiConsumer::Process_vkDebugReportMessageEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            instance,
     VkDebugReportFlagsEXT                       flags,
     VkDebugReportObjectTypeEXT                  objectType,
@@ -2471,6 +2739,7 @@ void VulkanAsciiConsumer::Process_vkDebugReportMessageEXT(
 
 void VulkanAsciiConsumer::Process_vkDebugMarkerSetObjectTagEXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkDebugMarkerObjectTagInfoEXT>* pTagInfo)
 {
@@ -2479,6 +2748,7 @@ void VulkanAsciiConsumer::Process_vkDebugMarkerSetObjectTagEXT(
 
 void VulkanAsciiConsumer::Process_vkDebugMarkerSetObjectNameEXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkDebugMarkerObjectNameInfoEXT>* pNameInfo)
 {
@@ -2486,6 +2756,7 @@ void VulkanAsciiConsumer::Process_vkDebugMarkerSetObjectNameEXT(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdDebugMarkerBeginEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     StructPointerDecoder<Decoded_VkDebugMarkerMarkerInfoEXT>* pMarkerInfo)
 {
@@ -2493,12 +2764,14 @@ void VulkanAsciiConsumer::Process_vkCmdDebugMarkerBeginEXT(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdDebugMarkerEndEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer)
 {
     fprintf(GetFile(), "%s\n", "vkCmdDebugMarkerEndEXT");
 }
 
 void VulkanAsciiConsumer::Process_vkCmdDebugMarkerInsertEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     StructPointerDecoder<Decoded_VkDebugMarkerMarkerInfoEXT>* pMarkerInfo)
 {
@@ -2506,6 +2779,7 @@ void VulkanAsciiConsumer::Process_vkCmdDebugMarkerInsertEXT(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     uint32_t                                    firstBinding,
     uint32_t                                    bindingCount,
@@ -2517,6 +2791,7 @@ void VulkanAsciiConsumer::Process_vkCmdBindTransformFeedbackBuffersEXT(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdBeginTransformFeedbackEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     uint32_t                                    firstCounterBuffer,
     uint32_t                                    counterBufferCount,
@@ -2527,6 +2802,7 @@ void VulkanAsciiConsumer::Process_vkCmdBeginTransformFeedbackEXT(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdEndTransformFeedbackEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     uint32_t                                    firstCounterBuffer,
     uint32_t                                    counterBufferCount,
@@ -2537,6 +2813,7 @@ void VulkanAsciiConsumer::Process_vkCmdEndTransformFeedbackEXT(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdBeginQueryIndexedEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            queryPool,
     uint32_t                                    query,
@@ -2547,6 +2824,7 @@ void VulkanAsciiConsumer::Process_vkCmdBeginQueryIndexedEXT(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdEndQueryIndexedEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            queryPool,
     uint32_t                                    query,
@@ -2556,6 +2834,7 @@ void VulkanAsciiConsumer::Process_vkCmdEndQueryIndexedEXT(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdDrawIndirectByteCountEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     uint32_t                                    instanceCount,
     uint32_t                                    firstInstance,
@@ -2569,6 +2848,7 @@ void VulkanAsciiConsumer::Process_vkCmdDrawIndirectByteCountEXT(
 
 void VulkanAsciiConsumer::Process_vkGetImageViewHandleNVX(
     uint32_t                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkImageViewHandleInfoNVX>* pInfo)
 {
@@ -2576,6 +2856,7 @@ void VulkanAsciiConsumer::Process_vkGetImageViewHandleNVX(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdDrawIndirectCountAMD(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            buffer,
     VkDeviceSize                                offset,
@@ -2588,6 +2869,7 @@ void VulkanAsciiConsumer::Process_vkCmdDrawIndirectCountAMD(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdDrawIndexedIndirectCountAMD(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            buffer,
     VkDeviceSize                                offset,
@@ -2601,6 +2883,7 @@ void VulkanAsciiConsumer::Process_vkCmdDrawIndexedIndirectCountAMD(
 
 void VulkanAsciiConsumer::Process_vkGetShaderInfoAMD(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            pipeline,
     VkShaderStageFlagBits                       shaderStage,
@@ -2613,6 +2896,7 @@ void VulkanAsciiConsumer::Process_vkGetShaderInfoAMD(
 
 void VulkanAsciiConsumer::Process_vkCreateStreamDescriptorSurfaceGGP(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            instance,
     StructPointerDecoder<Decoded_VkStreamDescriptorSurfaceCreateInfoGGP>* pCreateInfo,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
@@ -2623,6 +2907,7 @@ void VulkanAsciiConsumer::Process_vkCreateStreamDescriptorSurfaceGGP(
 
 void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalImageFormatPropertiesNV(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     VkFormat                                    format,
     VkImageType                                 type,
@@ -2637,6 +2922,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceExternalImageFormatProperti
 
 void VulkanAsciiConsumer::Process_vkGetMemoryWin32HandleNV(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            memory,
     VkExternalMemoryHandleTypeFlagsNV           handleType,
@@ -2647,6 +2933,7 @@ void VulkanAsciiConsumer::Process_vkGetMemoryWin32HandleNV(
 
 void VulkanAsciiConsumer::Process_vkCreateViSurfaceNN(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            instance,
     StructPointerDecoder<Decoded_VkViSurfaceCreateInfoNN>* pCreateInfo,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
@@ -2656,6 +2943,7 @@ void VulkanAsciiConsumer::Process_vkCreateViSurfaceNN(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdBeginConditionalRenderingEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     StructPointerDecoder<Decoded_VkConditionalRenderingBeginInfoEXT>* pConditionalRenderingBegin)
 {
@@ -2663,12 +2951,14 @@ void VulkanAsciiConsumer::Process_vkCmdBeginConditionalRenderingEXT(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdEndConditionalRenderingEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer)
 {
     fprintf(GetFile(), "%s\n", "vkCmdEndConditionalRenderingEXT");
 }
 
 void VulkanAsciiConsumer::Process_vkCmdProcessCommandsNVX(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     StructPointerDecoder<Decoded_VkCmdProcessCommandsInfoNVX>* pProcessCommandsInfo)
 {
@@ -2676,6 +2966,7 @@ void VulkanAsciiConsumer::Process_vkCmdProcessCommandsNVX(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdReserveSpaceForCommandsNVX(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     StructPointerDecoder<Decoded_VkCmdReserveSpaceForCommandsInfoNVX>* pReserveSpaceInfo)
 {
@@ -2684,6 +2975,7 @@ void VulkanAsciiConsumer::Process_vkCmdReserveSpaceForCommandsNVX(
 
 void VulkanAsciiConsumer::Process_vkCreateIndirectCommandsLayoutNVX(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkIndirectCommandsLayoutCreateInfoNVX>* pCreateInfo,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
@@ -2693,6 +2985,7 @@ void VulkanAsciiConsumer::Process_vkCreateIndirectCommandsLayoutNVX(
 }
 
 void VulkanAsciiConsumer::Process_vkDestroyIndirectCommandsLayoutNVX(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            indirectCommandsLayout,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
@@ -2702,6 +2995,7 @@ void VulkanAsciiConsumer::Process_vkDestroyIndirectCommandsLayoutNVX(
 
 void VulkanAsciiConsumer::Process_vkCreateObjectTableNVX(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkObjectTableCreateInfoNVX>* pCreateInfo,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
@@ -2711,6 +3005,7 @@ void VulkanAsciiConsumer::Process_vkCreateObjectTableNVX(
 }
 
 void VulkanAsciiConsumer::Process_vkDestroyObjectTableNVX(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            objectTable,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
@@ -2720,6 +3015,7 @@ void VulkanAsciiConsumer::Process_vkDestroyObjectTableNVX(
 
 void VulkanAsciiConsumer::Process_vkUnregisterObjectsNVX(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            objectTable,
     uint32_t                                    objectCount,
@@ -2730,6 +3026,7 @@ void VulkanAsciiConsumer::Process_vkUnregisterObjectsNVX(
 }
 
 void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceGeneratedCommandsPropertiesNVX(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     StructPointerDecoder<Decoded_VkDeviceGeneratedCommandsFeaturesNVX>* pFeatures,
     StructPointerDecoder<Decoded_VkDeviceGeneratedCommandsLimitsNVX>* pLimits)
@@ -2738,6 +3035,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceGeneratedCommandsProperties
 }
 
 void VulkanAsciiConsumer::Process_vkCmdSetViewportWScalingNV(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     uint32_t                                    firstViewport,
     uint32_t                                    viewportCount,
@@ -2748,6 +3046,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetViewportWScalingNV(
 
 void VulkanAsciiConsumer::Process_vkReleaseDisplayEXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     format::HandleId                            display)
 {
@@ -2756,6 +3055,7 @@ void VulkanAsciiConsumer::Process_vkReleaseDisplayEXT(
 
 void VulkanAsciiConsumer::Process_vkAcquireXlibDisplayEXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     uint64_t                                    dpy,
     format::HandleId                            display)
@@ -2765,6 +3065,7 @@ void VulkanAsciiConsumer::Process_vkAcquireXlibDisplayEXT(
 
 void VulkanAsciiConsumer::Process_vkGetRandROutputDisplayEXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     uint64_t                                    dpy,
     size_t                                      rrOutput,
@@ -2775,6 +3076,7 @@ void VulkanAsciiConsumer::Process_vkGetRandROutputDisplayEXT(
 
 void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2EXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     format::HandleId                            surface,
     StructPointerDecoder<Decoded_VkSurfaceCapabilities2EXT>* pSurfaceCapabilities)
@@ -2784,6 +3086,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfaceCapabilities2EXT(
 
 void VulkanAsciiConsumer::Process_vkDisplayPowerControlEXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            display,
     StructPointerDecoder<Decoded_VkDisplayPowerInfoEXT>* pDisplayPowerInfo)
@@ -2793,6 +3096,7 @@ void VulkanAsciiConsumer::Process_vkDisplayPowerControlEXT(
 
 void VulkanAsciiConsumer::Process_vkRegisterDeviceEventEXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkDeviceEventInfoEXT>* pDeviceEventInfo,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
@@ -2803,6 +3107,7 @@ void VulkanAsciiConsumer::Process_vkRegisterDeviceEventEXT(
 
 void VulkanAsciiConsumer::Process_vkRegisterDisplayEventEXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            display,
     StructPointerDecoder<Decoded_VkDisplayEventInfoEXT>* pDisplayEventInfo,
@@ -2814,6 +3119,7 @@ void VulkanAsciiConsumer::Process_vkRegisterDisplayEventEXT(
 
 void VulkanAsciiConsumer::Process_vkGetSwapchainCounterEXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            swapchain,
     VkSurfaceCounterFlagBitsEXT                 counter,
@@ -2824,6 +3130,7 @@ void VulkanAsciiConsumer::Process_vkGetSwapchainCounterEXT(
 
 void VulkanAsciiConsumer::Process_vkGetRefreshCycleDurationGOOGLE(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            swapchain,
     StructPointerDecoder<Decoded_VkRefreshCycleDurationGOOGLE>* pDisplayTimingProperties)
@@ -2833,6 +3140,7 @@ void VulkanAsciiConsumer::Process_vkGetRefreshCycleDurationGOOGLE(
 
 void VulkanAsciiConsumer::Process_vkGetPastPresentationTimingGOOGLE(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            swapchain,
     PointerDecoder<uint32_t>*                   pPresentationTimingCount,
@@ -2842,6 +3150,7 @@ void VulkanAsciiConsumer::Process_vkGetPastPresentationTimingGOOGLE(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdSetDiscardRectangleEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     uint32_t                                    firstDiscardRectangle,
     uint32_t                                    discardRectangleCount,
@@ -2851,6 +3160,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetDiscardRectangleEXT(
 }
 
 void VulkanAsciiConsumer::Process_vkSetHdrMetadataEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     uint32_t                                    swapchainCount,
     HandlePointerDecoder<VkSwapchainKHR>*       pSwapchains,
@@ -2861,6 +3171,7 @@ void VulkanAsciiConsumer::Process_vkSetHdrMetadataEXT(
 
 void VulkanAsciiConsumer::Process_vkCreateIOSSurfaceMVK(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            instance,
     StructPointerDecoder<Decoded_VkIOSSurfaceCreateInfoMVK>* pCreateInfo,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
@@ -2871,6 +3182,7 @@ void VulkanAsciiConsumer::Process_vkCreateIOSSurfaceMVK(
 
 void VulkanAsciiConsumer::Process_vkCreateMacOSSurfaceMVK(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            instance,
     StructPointerDecoder<Decoded_VkMacOSSurfaceCreateInfoMVK>* pCreateInfo,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
@@ -2881,6 +3193,7 @@ void VulkanAsciiConsumer::Process_vkCreateMacOSSurfaceMVK(
 
 void VulkanAsciiConsumer::Process_vkSetDebugUtilsObjectNameEXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkDebugUtilsObjectNameInfoEXT>* pNameInfo)
 {
@@ -2889,6 +3202,7 @@ void VulkanAsciiConsumer::Process_vkSetDebugUtilsObjectNameEXT(
 
 void VulkanAsciiConsumer::Process_vkSetDebugUtilsObjectTagEXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkDebugUtilsObjectTagInfoEXT>* pTagInfo)
 {
@@ -2896,6 +3210,7 @@ void VulkanAsciiConsumer::Process_vkSetDebugUtilsObjectTagEXT(
 }
 
 void VulkanAsciiConsumer::Process_vkQueueBeginDebugUtilsLabelEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            queue,
     StructPointerDecoder<Decoded_VkDebugUtilsLabelEXT>* pLabelInfo)
 {
@@ -2903,12 +3218,14 @@ void VulkanAsciiConsumer::Process_vkQueueBeginDebugUtilsLabelEXT(
 }
 
 void VulkanAsciiConsumer::Process_vkQueueEndDebugUtilsLabelEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            queue)
 {
     fprintf(GetFile(), "%s\n", "vkQueueEndDebugUtilsLabelEXT");
 }
 
 void VulkanAsciiConsumer::Process_vkQueueInsertDebugUtilsLabelEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            queue,
     StructPointerDecoder<Decoded_VkDebugUtilsLabelEXT>* pLabelInfo)
 {
@@ -2916,6 +3233,7 @@ void VulkanAsciiConsumer::Process_vkQueueInsertDebugUtilsLabelEXT(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdBeginDebugUtilsLabelEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     StructPointerDecoder<Decoded_VkDebugUtilsLabelEXT>* pLabelInfo)
 {
@@ -2923,12 +3241,14 @@ void VulkanAsciiConsumer::Process_vkCmdBeginDebugUtilsLabelEXT(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdEndDebugUtilsLabelEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer)
 {
     fprintf(GetFile(), "%s\n", "vkCmdEndDebugUtilsLabelEXT");
 }
 
 void VulkanAsciiConsumer::Process_vkCmdInsertDebugUtilsLabelEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     StructPointerDecoder<Decoded_VkDebugUtilsLabelEXT>* pLabelInfo)
 {
@@ -2937,6 +3257,7 @@ void VulkanAsciiConsumer::Process_vkCmdInsertDebugUtilsLabelEXT(
 
 void VulkanAsciiConsumer::Process_vkCreateDebugUtilsMessengerEXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            instance,
     StructPointerDecoder<Decoded_VkDebugUtilsMessengerCreateInfoEXT>* pCreateInfo,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
@@ -2946,6 +3267,7 @@ void VulkanAsciiConsumer::Process_vkCreateDebugUtilsMessengerEXT(
 }
 
 void VulkanAsciiConsumer::Process_vkDestroyDebugUtilsMessengerEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            instance,
     format::HandleId                            messenger,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
@@ -2954,6 +3276,7 @@ void VulkanAsciiConsumer::Process_vkDestroyDebugUtilsMessengerEXT(
 }
 
 void VulkanAsciiConsumer::Process_vkSubmitDebugUtilsMessageEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            instance,
     VkDebugUtilsMessageSeverityFlagBitsEXT      messageSeverity,
     VkDebugUtilsMessageTypeFlagsEXT             messageTypes,
@@ -2964,6 +3287,7 @@ void VulkanAsciiConsumer::Process_vkSubmitDebugUtilsMessageEXT(
 
 void VulkanAsciiConsumer::Process_vkGetAndroidHardwareBufferPropertiesANDROID(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     uint64_t                                    buffer,
     StructPointerDecoder<Decoded_VkAndroidHardwareBufferPropertiesANDROID>* pProperties)
@@ -2973,6 +3297,7 @@ void VulkanAsciiConsumer::Process_vkGetAndroidHardwareBufferPropertiesANDROID(
 
 void VulkanAsciiConsumer::Process_vkGetMemoryAndroidHardwareBufferANDROID(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkMemoryGetAndroidHardwareBufferInfoANDROID>* pInfo,
     PointerDecoder<uint64_t, void*>*            pBuffer)
@@ -2981,6 +3306,7 @@ void VulkanAsciiConsumer::Process_vkGetMemoryAndroidHardwareBufferANDROID(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdSetSampleLocationsEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     StructPointerDecoder<Decoded_VkSampleLocationsInfoEXT>* pSampleLocationsInfo)
 {
@@ -2988,6 +3314,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetSampleLocationsEXT(
 }
 
 void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceMultisamplePropertiesEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     VkSampleCountFlagBits                       samples,
     StructPointerDecoder<Decoded_VkMultisamplePropertiesEXT>* pMultisampleProperties)
@@ -2997,6 +3324,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceMultisamplePropertiesEXT(
 
 void VulkanAsciiConsumer::Process_vkGetImageDrmFormatModifierPropertiesEXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            image,
     StructPointerDecoder<Decoded_VkImageDrmFormatModifierPropertiesEXT>* pProperties)
@@ -3006,6 +3334,7 @@ void VulkanAsciiConsumer::Process_vkGetImageDrmFormatModifierPropertiesEXT(
 
 void VulkanAsciiConsumer::Process_vkCreateValidationCacheEXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkValidationCacheCreateInfoEXT>* pCreateInfo,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
@@ -3015,6 +3344,7 @@ void VulkanAsciiConsumer::Process_vkCreateValidationCacheEXT(
 }
 
 void VulkanAsciiConsumer::Process_vkDestroyValidationCacheEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            validationCache,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
@@ -3024,6 +3354,7 @@ void VulkanAsciiConsumer::Process_vkDestroyValidationCacheEXT(
 
 void VulkanAsciiConsumer::Process_vkMergeValidationCachesEXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            dstCache,
     uint32_t                                    srcCacheCount,
@@ -3034,6 +3365,7 @@ void VulkanAsciiConsumer::Process_vkMergeValidationCachesEXT(
 
 void VulkanAsciiConsumer::Process_vkGetValidationCacheDataEXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            validationCache,
     PointerDecoder<size_t>*                     pDataSize,
@@ -3043,6 +3375,7 @@ void VulkanAsciiConsumer::Process_vkGetValidationCacheDataEXT(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdBindShadingRateImageNV(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            imageView,
     VkImageLayout                               imageLayout)
@@ -3051,6 +3384,7 @@ void VulkanAsciiConsumer::Process_vkCmdBindShadingRateImageNV(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdSetViewportShadingRatePaletteNV(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     uint32_t                                    firstViewport,
     uint32_t                                    viewportCount,
@@ -3060,6 +3394,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetViewportShadingRatePaletteNV(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdSetCoarseSampleOrderNV(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     VkCoarseSampleOrderTypeNV                   sampleOrderType,
     uint32_t                                    customSampleOrderCount,
@@ -3070,6 +3405,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetCoarseSampleOrderNV(
 
 void VulkanAsciiConsumer::Process_vkCreateAccelerationStructureNV(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkAccelerationStructureCreateInfoNV>* pCreateInfo,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
@@ -3079,6 +3415,7 @@ void VulkanAsciiConsumer::Process_vkCreateAccelerationStructureNV(
 }
 
 void VulkanAsciiConsumer::Process_vkDestroyAccelerationStructureNV(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            accelerationStructure,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
@@ -3087,6 +3424,7 @@ void VulkanAsciiConsumer::Process_vkDestroyAccelerationStructureNV(
 }
 
 void VulkanAsciiConsumer::Process_vkGetAccelerationStructureMemoryRequirementsNV(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkAccelerationStructureMemoryRequirementsInfoNV>* pInfo,
     StructPointerDecoder<Decoded_VkMemoryRequirements2KHR>* pMemoryRequirements)
@@ -3096,6 +3434,7 @@ void VulkanAsciiConsumer::Process_vkGetAccelerationStructureMemoryRequirementsNV
 
 void VulkanAsciiConsumer::Process_vkBindAccelerationStructureMemoryNV(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     uint32_t                                    bindInfoCount,
     StructPointerDecoder<Decoded_VkBindAccelerationStructureMemoryInfoNV>* pBindInfos)
@@ -3104,6 +3443,7 @@ void VulkanAsciiConsumer::Process_vkBindAccelerationStructureMemoryNV(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdBuildAccelerationStructureNV(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     StructPointerDecoder<Decoded_VkAccelerationStructureInfoNV>* pInfo,
     format::HandleId                            instanceData,
@@ -3118,6 +3458,7 @@ void VulkanAsciiConsumer::Process_vkCmdBuildAccelerationStructureNV(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdCopyAccelerationStructureNV(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            dst,
     format::HandleId                            src,
@@ -3127,6 +3468,7 @@ void VulkanAsciiConsumer::Process_vkCmdCopyAccelerationStructureNV(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdTraceRaysNV(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            raygenShaderBindingTableBuffer,
     VkDeviceSize                                raygenShaderBindingOffset,
@@ -3148,6 +3490,7 @@ void VulkanAsciiConsumer::Process_vkCmdTraceRaysNV(
 
 void VulkanAsciiConsumer::Process_vkCreateRayTracingPipelinesNV(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            pipelineCache,
     uint32_t                                    createInfoCount,
@@ -3160,6 +3503,7 @@ void VulkanAsciiConsumer::Process_vkCreateRayTracingPipelinesNV(
 
 void VulkanAsciiConsumer::Process_vkGetRayTracingShaderGroupHandlesNV(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            pipeline,
     uint32_t                                    firstGroup,
@@ -3172,6 +3516,7 @@ void VulkanAsciiConsumer::Process_vkGetRayTracingShaderGroupHandlesNV(
 
 void VulkanAsciiConsumer::Process_vkGetAccelerationStructureHandleNV(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            accelerationStructure,
     size_t                                      dataSize,
@@ -3181,6 +3526,7 @@ void VulkanAsciiConsumer::Process_vkGetAccelerationStructureHandleNV(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdWriteAccelerationStructuresPropertiesNV(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     uint32_t                                    accelerationStructureCount,
     HandlePointerDecoder<VkAccelerationStructureNV>* pAccelerationStructures,
@@ -3193,6 +3539,7 @@ void VulkanAsciiConsumer::Process_vkCmdWriteAccelerationStructuresPropertiesNV(
 
 void VulkanAsciiConsumer::Process_vkCompileDeferredNV(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            pipeline,
     uint32_t                                    shader)
@@ -3202,6 +3549,7 @@ void VulkanAsciiConsumer::Process_vkCompileDeferredNV(
 
 void VulkanAsciiConsumer::Process_vkGetMemoryHostPointerPropertiesEXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     VkExternalMemoryHandleTypeFlagBits          handleType,
     uint64_t                                    pHostPointer,
@@ -3211,6 +3559,7 @@ void VulkanAsciiConsumer::Process_vkGetMemoryHostPointerPropertiesEXT(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdWriteBufferMarkerAMD(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     VkPipelineStageFlagBits                     pipelineStage,
     format::HandleId                            dstBuffer,
@@ -3222,6 +3571,7 @@ void VulkanAsciiConsumer::Process_vkCmdWriteBufferMarkerAMD(
 
 void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     PointerDecoder<uint32_t>*                   pTimeDomainCount,
     PointerDecoder<VkTimeDomainEXT>*            pTimeDomains)
@@ -3231,6 +3581,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceCalibrateableTimeDomainsEXT
 
 void VulkanAsciiConsumer::Process_vkGetCalibratedTimestampsEXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     uint32_t                                    timestampCount,
     StructPointerDecoder<Decoded_VkCalibratedTimestampInfoEXT>* pTimestampInfos,
@@ -3241,6 +3592,7 @@ void VulkanAsciiConsumer::Process_vkGetCalibratedTimestampsEXT(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdDrawMeshTasksNV(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     uint32_t                                    taskCount,
     uint32_t                                    firstTask)
@@ -3249,6 +3601,7 @@ void VulkanAsciiConsumer::Process_vkCmdDrawMeshTasksNV(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdDrawMeshTasksIndirectNV(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            buffer,
     VkDeviceSize                                offset,
@@ -3259,6 +3612,7 @@ void VulkanAsciiConsumer::Process_vkCmdDrawMeshTasksIndirectNV(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdDrawMeshTasksIndirectCountNV(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     format::HandleId                            buffer,
     VkDeviceSize                                offset,
@@ -3271,6 +3625,7 @@ void VulkanAsciiConsumer::Process_vkCmdDrawMeshTasksIndirectCountNV(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdSetExclusiveScissorNV(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     uint32_t                                    firstExclusiveScissor,
     uint32_t                                    exclusiveScissorCount,
@@ -3280,6 +3635,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetExclusiveScissorNV(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdSetCheckpointNV(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     uint64_t                                    pCheckpointMarker)
 {
@@ -3287,6 +3643,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetCheckpointNV(
 }
 
 void VulkanAsciiConsumer::Process_vkGetQueueCheckpointDataNV(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            queue,
     PointerDecoder<uint32_t>*                   pCheckpointDataCount,
     StructPointerDecoder<Decoded_VkCheckpointDataNV>* pCheckpointData)
@@ -3296,6 +3653,7 @@ void VulkanAsciiConsumer::Process_vkGetQueueCheckpointDataNV(
 
 void VulkanAsciiConsumer::Process_vkInitializePerformanceApiINTEL(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkInitializePerformanceApiInfoINTEL>* pInitializeInfo)
 {
@@ -3303,6 +3661,7 @@ void VulkanAsciiConsumer::Process_vkInitializePerformanceApiINTEL(
 }
 
 void VulkanAsciiConsumer::Process_vkUninitializePerformanceApiINTEL(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device)
 {
     fprintf(GetFile(), "%s\n", "vkUninitializePerformanceApiINTEL");
@@ -3310,6 +3669,7 @@ void VulkanAsciiConsumer::Process_vkUninitializePerformanceApiINTEL(
 
 void VulkanAsciiConsumer::Process_vkCmdSetPerformanceMarkerINTEL(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     StructPointerDecoder<Decoded_VkPerformanceMarkerInfoINTEL>* pMarkerInfo)
 {
@@ -3318,6 +3678,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetPerformanceMarkerINTEL(
 
 void VulkanAsciiConsumer::Process_vkCmdSetPerformanceStreamMarkerINTEL(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     StructPointerDecoder<Decoded_VkPerformanceStreamMarkerInfoINTEL>* pMarkerInfo)
 {
@@ -3326,6 +3687,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetPerformanceStreamMarkerINTEL(
 
 void VulkanAsciiConsumer::Process_vkCmdSetPerformanceOverrideINTEL(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     StructPointerDecoder<Decoded_VkPerformanceOverrideInfoINTEL>* pOverrideInfo)
 {
@@ -3334,6 +3696,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetPerformanceOverrideINTEL(
 
 void VulkanAsciiConsumer::Process_vkAcquirePerformanceConfigurationINTEL(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkPerformanceConfigurationAcquireInfoINTEL>* pAcquireInfo,
     HandlePointerDecoder<VkPerformanceConfigurationINTEL>* pConfiguration)
@@ -3343,6 +3706,7 @@ void VulkanAsciiConsumer::Process_vkAcquirePerformanceConfigurationINTEL(
 
 void VulkanAsciiConsumer::Process_vkReleasePerformanceConfigurationINTEL(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            configuration)
 {
@@ -3351,6 +3715,7 @@ void VulkanAsciiConsumer::Process_vkReleasePerformanceConfigurationINTEL(
 
 void VulkanAsciiConsumer::Process_vkQueueSetPerformanceConfigurationINTEL(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            queue,
     format::HandleId                            configuration)
 {
@@ -3359,6 +3724,7 @@ void VulkanAsciiConsumer::Process_vkQueueSetPerformanceConfigurationINTEL(
 
 void VulkanAsciiConsumer::Process_vkGetPerformanceParameterINTEL(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     VkPerformanceParameterTypeINTEL             parameter,
     StructPointerDecoder<Decoded_VkPerformanceValueINTEL>* pValue)
@@ -3367,6 +3733,7 @@ void VulkanAsciiConsumer::Process_vkGetPerformanceParameterINTEL(
 }
 
 void VulkanAsciiConsumer::Process_vkSetLocalDimmingAMD(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            swapChain,
     VkBool32                                    localDimmingEnable)
@@ -3376,6 +3743,7 @@ void VulkanAsciiConsumer::Process_vkSetLocalDimmingAMD(
 
 void VulkanAsciiConsumer::Process_vkCreateImagePipeSurfaceFUCHSIA(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            instance,
     StructPointerDecoder<Decoded_VkImagePipeSurfaceCreateInfoFUCHSIA>* pCreateInfo,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
@@ -3386,6 +3754,7 @@ void VulkanAsciiConsumer::Process_vkCreateImagePipeSurfaceFUCHSIA(
 
 void VulkanAsciiConsumer::Process_vkCreateMetalSurfaceEXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            instance,
     StructPointerDecoder<Decoded_VkMetalSurfaceCreateInfoEXT>* pCreateInfo,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
@@ -3396,6 +3765,7 @@ void VulkanAsciiConsumer::Process_vkCreateMetalSurfaceEXT(
 
 void VulkanAsciiConsumer::Process_vkGetBufferDeviceAddressEXT(
     VkDeviceAddress                             returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkBufferDeviceAddressInfo>* pInfo)
 {
@@ -3404,6 +3774,7 @@ void VulkanAsciiConsumer::Process_vkGetBufferDeviceAddressEXT(
 
 void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceToolPropertiesEXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     PointerDecoder<uint32_t>*                   pToolCount,
     StructPointerDecoder<Decoded_VkPhysicalDeviceToolPropertiesEXT>* pToolProperties)
@@ -3413,6 +3784,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceToolPropertiesEXT(
 
 void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceCooperativeMatrixPropertiesNV(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     PointerDecoder<uint32_t>*                   pPropertyCount,
     StructPointerDecoder<Decoded_VkCooperativeMatrixPropertiesNV>* pProperties)
@@ -3422,6 +3794,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceCooperativeMatrixProperties
 
 void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     PointerDecoder<uint32_t>*                   pCombinationCount,
     StructPointerDecoder<Decoded_VkFramebufferMixedSamplesCombinationNV>* pCombinations)
@@ -3431,6 +3804,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSupportedFramebufferMixedSa
 
 void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfacePresentModes2EXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            physicalDevice,
     StructPointerDecoder<Decoded_VkPhysicalDeviceSurfaceInfo2KHR>* pSurfaceInfo,
     PointerDecoder<uint32_t>*                   pPresentModeCount,
@@ -3441,6 +3815,7 @@ void VulkanAsciiConsumer::Process_vkGetPhysicalDeviceSurfacePresentModes2EXT(
 
 void VulkanAsciiConsumer::Process_vkAcquireFullScreenExclusiveModeEXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            swapchain)
 {
@@ -3449,6 +3824,7 @@ void VulkanAsciiConsumer::Process_vkAcquireFullScreenExclusiveModeEXT(
 
 void VulkanAsciiConsumer::Process_vkReleaseFullScreenExclusiveModeEXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            swapchain)
 {
@@ -3457,6 +3833,7 @@ void VulkanAsciiConsumer::Process_vkReleaseFullScreenExclusiveModeEXT(
 
 void VulkanAsciiConsumer::Process_vkGetDeviceGroupSurfacePresentModes2EXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkPhysicalDeviceSurfaceInfo2KHR>* pSurfaceInfo,
     PointerDecoder<VkDeviceGroupPresentModeFlagsKHR>* pModes)
@@ -3466,6 +3843,7 @@ void VulkanAsciiConsumer::Process_vkGetDeviceGroupSurfacePresentModes2EXT(
 
 void VulkanAsciiConsumer::Process_vkCreateHeadlessSurfaceEXT(
     VkResult                                    returnValue,
+    const ApiCallInfo&                          call_info,
     format::HandleId                            instance,
     StructPointerDecoder<Decoded_VkHeadlessSurfaceCreateInfoEXT>* pCreateInfo,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
@@ -3475,6 +3853,7 @@ void VulkanAsciiConsumer::Process_vkCreateHeadlessSurfaceEXT(
 }
 
 void VulkanAsciiConsumer::Process_vkCmdSetLineStippleEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     uint32_t                                    lineStippleFactor,
     uint16_t                                    lineStipplePattern)
@@ -3483,6 +3862,7 @@ void VulkanAsciiConsumer::Process_vkCmdSetLineStippleEXT(
 }
 
 void VulkanAsciiConsumer::Process_vkResetQueryPoolEXT(
+    const ApiCallInfo&                          call_info,
     format::HandleId                            device,
     format::HandleId                            queryPool,
     uint32_t                                    firstQuery,

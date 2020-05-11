@@ -774,6 +774,9 @@ class BaseGenerator(OutputGenerator):
             paramDecl = self.makeAlignedParamDecl(returnType, 'returnValue', self.INDENT_SIZE, self.genOpts.alignFuncParam)
             paramDecls.append(paramDecl)
 
+        paramDecl = self.makeAlignedParamDecl('const ApiCallInfo&', 'call_info', self.INDENT_SIZE, self.genOpts.alignFuncParam)
+        paramDecls.append(paramDecl)
+
         for value in values:
             paramType = self.makeDecodedParamType(value)
 
