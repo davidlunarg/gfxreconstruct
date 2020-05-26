@@ -105,7 +105,7 @@ def GetExecutable(cmd):
 
     # Search for cmdpy in PATH
     for path in os.environ['PATH'].split(os.pathsep):
-        if os.path.isfile(path + cmdpy):
+        if os.path.isfile(path + '/' + cmdpy):
             return [sys.executable, path + '/' + cmdpy]
 
     # Search for cmdpy <scriptdir>/../cmd
