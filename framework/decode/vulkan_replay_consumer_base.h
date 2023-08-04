@@ -920,6 +920,28 @@ class VulkanReplayConsumerBase : public VulkanConsumer
         const struct AHardwareBuffer*                                           hardware_buffer,
         StructPointerDecoder<Decoded_VkAndroidHardwareBufferPropertiesANDROID>* pProperties);
 
+    VkResult OverrideWaitSemaphores(
+        PFN_vkWaitSemaphores                                                    func,
+        VkResult                                                                original_result,
+        const DeviceInfo*                                                       device_info,
+        const StructPointerDecoder<Decoded_VkSemaphoreWaitInfo>*                pInfo,
+        uint64_t                                                                timeout);
+
+    VkResult OverrideAcquireProfilingLockKHR(
+        PFN_vkAcquireProfilingLockKHR                                           func,
+        VkResult                                                                original_result,
+        const DeviceInfo*                                                       device_info,
+        const StructPointerDecoder<Decoded_VkAcquireProfilingLockInfoKHR>*      pInfo);
+
+    VkResult OverrideWaitForPresentKHR(
+        PFN_vkWaitForPresentKHR                                                 func,
+        VkResult                                                                original_result,
+        const DeviceInfo*                                                       device_info,
+        //HandlePointerDecoder<VkSwapchainKHR>*                                   pSwapchain,
+        SwapchainKHRInfo*                                                       swapchain_info,
+        uint64_t                                                                presentid,
+        uint64_t                                                                timeout);
+
   private:
     void RaiseFatalError(const char* message) const;
 
