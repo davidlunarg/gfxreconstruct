@@ -132,6 +132,10 @@ class VulkanReplayConsumerBodyGenerator(
             '#include "generated/generated_vulkan_struct_handle_mappers.h"',
             file=self.outFile
         )
+        write(
+            '#include "generated/generated_vulkan_dr_command_buffer_util.h"',
+            file=self.outFile
+        )
         write('#include "util/defines.h"', file=self.outFile)
         self.newline()
         write('GFXRECON_BEGIN_NAMESPACE(gfxrecon)', file=self.outFile)
@@ -242,9 +246,35 @@ class VulkanReplayConsumerBodyGenerator(
             return True
         return False
 
+    def get_param_list_handles(self, values):
+            """Create list of parameters that have handle types or are structs that contain handles."""
+            handles = []
+            for value in values:
+                if self.is_handle(value.base_type):
+                    handles.append(value)
+                elif self.is_struct(
+                    value.base_type
+                ) and (value.base_type in self.structs_with_handles):
+                    handles.append(value)
+            return handles
+
+    def make_get_command_handles_expr(self, cmd, handle_params):
+        """Generate an expression for a get command buffer handles utility function."""
+        args = ["in_commandBuffer"]
+        for value in handle_params:
+            if value.array_length:
+                args.append(value.array_length)
+            if self.is_handle(value.base_type):
+                args.append('in_'+value.name)
+            elif value.is_pointer:
+                args.append('in_'+value.name)
+            else:
+                args.append(value.name)
+        return 'TrackDR{}Handles({});'.format(cmd[2:], ', '.join(self.make_unique_list(args)))
+
     def make_consumer_func_body(self, return_type, name, values):
         """Return VulkanReplayConsumer class member function definition."""
-        body = ''
+        body='\n'
         is_override = name in self.REPLAY_OVERRIDES
 
         is_skip_offscreen = True
@@ -314,7 +344,6 @@ class VulkanReplayConsumerBodyGenerator(
                 ['    ' + val if val else val for val in preexpr]
             )
             body += '\n'
-            body += '\n'
         if return_type == 'VkResult':
             body += '    VkResult replay_result = {};\n'.format(call_expr)
             body += '    CheckResult("{}", returnValue, replay_result, call_info);\n'.format(
@@ -323,11 +352,25 @@ class VulkanReplayConsumerBodyGenerator(
         else:
             body += '    {};\n'.format(call_expr)
         if postexpr:
-            body += '\n'
             body += '\n'.join(
                 ['    ' + val if val else val for val in postexpr]
             )
             body += '\n'
+
+        drFuncExcludeList=['vkBeginCommandBuffer','vkResetCommandBuffer']
+        handle_params = self.get_param_list_handles(values)
+        if values[0].base_type == 'VkCommandBuffer' and len(handle_params) > 1 and (name not in drFuncExcludeList):
+            body += '    {\n'
+            if name in ['vkCmdPipelineBarrier', 'vkCmdBeginRenderPass', 'vkCmdDebugMarkerInsertEXT']:
+                body += '        VkCommandBuffer in_commandBuffer = MapHandle<CommandBufferInfo>(commandBuffer, &VulkanObjectInfoTable::GetCommandBufferInfo);\n'
+            if name == 'vkCmdPipelineBarrier':
+                body += '        const VkBufferMemoryBarrier* in_pBufferMemoryBarriers = pBufferMemoryBarriers->GetPointer();\n'
+                body += '        const VkImageMemoryBarrier* in_pImageMemoryBarriers = pImageMemoryBarriers->GetPointer();\n'
+            if name == 'vkCmdBeginRenderPass':
+                body += '        const VkRenderPassBeginInfo* in_pRenderPassBegin = pRenderPassBegin->GetPointer();\n'
+            get_handles_expr = self.make_get_command_handles_expr(name, handle_params[1:])
+            body += '        ' + get_handles_expr
+            body += '    }\n'
 
         cleanup_expr = self.make_remove_handle_expression(name, values)
         if cleanup_expr:

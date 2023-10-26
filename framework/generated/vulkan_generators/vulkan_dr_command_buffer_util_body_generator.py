@@ -1,7 +1,7 @@
 #!/usr/bin/python3 -i
 #
-# Copyright (c) 2018-2019 Valve Corporation
-# Copyright (c) 2018-2019 LunarG, Inc.
+# Copyright (c) 2018-2023 Valve Corporation
+# Copyright (c) 2018-2023 LunarG, Inc.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to
@@ -25,7 +25,7 @@ import sys
 from base_generator import BaseGenerator, BaseGeneratorOptions, ValueInfo, write
 
 
-class VulkanCommandBufferUtilBodyGeneratorOptions(BaseGeneratorOptions):
+class VulkanDRCommandBufferUtilBodyGeneratorOptions(BaseGeneratorOptions):
     """Options for generating a C++ class for Vulkan capture file replay."""
 
     def __init__(
@@ -52,8 +52,8 @@ class VulkanCommandBufferUtilBodyGeneratorOptions(BaseGeneratorOptions):
         )
 
 
-class VulkanCommandBufferUtilBodyGenerator(BaseGenerator):
-    """VulkanCommandBufferUtilBodyGenerator - subclass of BaseGenerator.
+class VulkanDRCommandBufferUtilBodyGenerator(BaseGenerator):
+    """VulkanDRCommandBufferUtilBodyGenerator - subclass of BaseGenerator.
     Generates C++ member definitions for the VulkanReplayConsumer class responsible for
     replaying decoded Vulkan API call parameter data.
     Generate a C++ class for Vulkan capture file replay.
@@ -81,7 +81,7 @@ class VulkanCommandBufferUtilBodyGenerator(BaseGenerator):
         self.command_info = dict()  # Map of Vulkan commands to parameter info
         # The following functions require custom implementations
         self.customImplementationRequired = {
-            'CmdPushDescriptorSetKHR'
+            'xxxCmdPushDescriptorSetKHR'   #TODO: do custom imp for this func?
         }
 
     def beginFile(self, gen_opts):
@@ -89,7 +89,7 @@ class VulkanCommandBufferUtilBodyGenerator(BaseGenerator):
         BaseGenerator.beginFile(self, gen_opts)
 
         write(
-            '#include "generated/generated_vulkan_command_buffer_util.h"',
+            '#include "generated/generated_vulkan_dr_command_buffer_util.h"',
             file=self.outFile
         )
         self.newline()
@@ -100,7 +100,44 @@ class VulkanCommandBufferUtilBodyGenerator(BaseGenerator):
         write('#include "encode/vulkan_state_info.h"', file=self.outFile)
         self.newline()
         write('GFXRECON_BEGIN_NAMESPACE(gfxrecon)', file=self.outFile)
-        write('GFXRECON_BEGIN_NAMESPACE(encode)', file=self.outFile)
+        write('GFXRECON_BEGIN_NAMESPACE(decode)', file=self.outFile)
+
+        write('', file=self.outFile)
+        write('enum DRCommandHandleType : uint32_t\n' +
+              '{\n' +
+              '    BufferHandle = 0,\n' +
+              '    BufferViewHandle,\n' +
+              '    CommandBufferHandle,\n' +
+              '    DescriptorSetHandle,\n' +
+              '    EventHandle,\n' +
+              '    FramebufferHandle,\n' +
+              '    ImageHandle,\n' +
+              '    ImageViewHandle,\n' +
+              '    PipelineHandle,\n' +
+              '    PipelineLayoutHandle,\n' +
+              '    QueryPoolHandle,\n' +
+              '    RenderPassHandle,\n' +
+              '    SamplerHandle,\n' +
+              '    AccelerationStructureKHRHandle,\n' +
+              '    AccelerationStructureNVHandle,\n' +
+              '    IndirectCommandsLayoutNVHandle,\n' +
+              '    DeferredOperationKHRHandle,\n' +
+              '    MicromapEXTHandle,\n' +
+              '    OpticalFlowSessionNVHandle,\n' +
+              '    VideoSessionKHRHandle,\n' +
+              '    VideoSessionParametersKHRHandle,\n' +
+              '    NumHandleTypes,\n' +
+              '    ShaderEXTHandle             //TODO: Need to add code to handle this case\n' +
+              '};\n', file=self.outFile)
+
+
+        write('std::set<format::HandleId> dr_command_handles[NumHandleTypes];', file=self.outFile)
+        write('struct handlesetstruct  {', file=self.outFile)
+        write('    std::set<format::HandleId> dr_command_handles[NumHandleTypes];', file=self.outFile)
+        write('};', file=self.outFile)
+        write('std::map<VkCommandBuffer, handlesetstruct> handleset;', file=self.outFile)
+
+        
 
     def endFile(self):
         """Method override."""
@@ -110,61 +147,26 @@ class VulkanCommandBufferUtilBodyGenerator(BaseGenerator):
                 if params and params[0].base_type == 'VkCommandBuffer':
                     # Check for parameters with handle types, ignoring the first VkCommandBuffer parameter.
                     handles = self.get_param_list_handles(params[1:])
+                    #handles = self.get_param_list_handles(params)   # ????  subscript with [1:] to exclude funs with cmdbuf as single arg????
 
-                    if (handles):
+                    drFuncExcludeList=['vkBeginCommandBuffer','vkResetCommandBuffer']
+                    args = self.get_arg_list(handles)
+                    if len(args) > 1 and (cmd not in drFuncExcludeList):
                         # Generate a function to build a list of handle types and values.
                         cmddef = '\n'
-                        cmddef += 'void Track{}Handles(CommandBufferWrapper* wrapper, {})\n'.format(
+                        cmddef += 'void TrackDR{}Handles(VkCommandBuffer commandBuffer, {})\n'.format(
                             cmd[2:], self.get_arg_list(handles)
                         )
                         cmddef += '{\n'
                         indent = self.INDENT_SIZE * ' '
-                        cmddef += indent + 'assert(wrapper != nullptr);\n'
-                        cmddef += '\n'
+                        cmddef += indent + 'assert(commandBuffer);\n'
                         for index, handle in enumerate(handles):
-                            cmddef += self.insert_command_handle(
-                                index, handle, indent=indent
-                            )
+                            cmddef += self.insert_command_handle( index, handle, indent=indent)
                         cmddef += '}'
-
                         write(cmddef, file=self.outFile)
 
         self.newline()
-        write('GFXRECON_END_NAMESPACE(encode)', file=self.outFile)
-        write('GFXRECON_END_NAMESPACE(gfxrecon)', file=self.outFile)
-
-        # Finish processing in superclass
-        BaseGenerator.endFile(self)
-
-    def endFileDecode(self):
-        """Method override."""
-        for cmd, info in self.command_info.items():
-            if not cmd[2:] in self.customImplementationRequired:
-                params = info[2]
-                if params and params[0].base_type == 'VkCommandBuffer':
-                    # Check for parameters with handle types, ignoring the first VkCommandBuffer parameter.
-                    handles = self.get_param_list_handles(params[1:])
-
-                    if (handles):
-                        # Generate a function to build a list of handle types and values.
-                        cmddef = '\n'
-                        cmddef += 'void Track{}Handles(CommandBufferWrapper* wrapper, {})\n'.format(
-                            cmd[2:], self.get_arg_list(handles)
-                        )
-                        cmddef += '{\n'
-                        indent = self.INDENT_SIZE * ' '
-                        cmddef += indent + 'assert(wrapper != nullptr);\n'
-                        cmddef += '\n'
-                        for index, handle in enumerate(handles):
-                            cmddef += self.insert_command_handle(
-                                index, handle, indent=indent
-                            )
-                        cmddef += '}'
-
-                        write(cmddef, file=self.outFile)
-
-        self.newline()
-        write('GFXRECON_END_NAMESPACE(encode)', file=self.outFile)
+        write('GFXRECON_END_NAMESPACE(decode)', file=self.outFile)
         write('GFXRECON_END_NAMESPACE(gfxrecon)', file=self.outFile)
 
         # Finish processing in superclass
@@ -217,8 +219,9 @@ class VulkanCommandBufferUtilBodyGenerator(BaseGenerator):
             args.append('{} {}'.format(value.full_type, value.name))
         return ', '.join(self.make_unique_list(args))
 
+    #TODO: Is index really needed?? Leaving it in for now
     def insert_command_handle(self, index, value, value_prefix='', indent=''):
-        body = ''
+        body = '\n'
         tail = ''
         index_name = None
         if (
@@ -249,10 +252,11 @@ class VulkanCommandBufferUtilBodyGenerator(BaseGenerator):
                 value_name = '{}[{}]'.format(value_name, index_name)
             elif value.is_pointer:
                 value_name = '(*{})'.format(value_name)
-            body += indent + 'if({} != VK_NULL_HANDLE) wrapper->command_handles[CommandHandleType::{}].insert(GetWrappedId<{}>({}));\n'.format(
-                value_name, type_enum_value, value.base_type[2:] + 'Wrapper' ,value_name
-            )
 
+            body += indent + 'if({} != VK_NULL_HANDLE)\n'.format(value_name)
+            body += indent + '{\n'
+            body += indent + '    handleset[commandBuffer].dr_command_handles[{}].insert(reinterpret_cast<format::HandleId>({}));\n'.format(type_enum_value, value_name)
+            body += indent + '}\n'
         elif self.is_struct(
             value.base_type
         ) and (value.base_type in self.structs_with_handles):
