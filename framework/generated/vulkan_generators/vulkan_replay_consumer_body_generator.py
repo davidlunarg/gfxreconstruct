@@ -369,7 +369,7 @@ class VulkanReplayConsumerBodyGenerator(
             if name == 'vkCmdBeginRenderPass':
                 body += '        const VkRenderPassBeginInfo* in_pRenderPassBegin = pRenderPassBegin->GetPointer();\n'
             get_handles_expr = self.make_get_command_handles_expr(name, handle_params[1:])
-            body += '        ' + get_handles_expr
+            body += '        ' + get_handles_expr + '\n'
             body += '    }\n'
 
         cleanup_expr = self.make_remove_handle_expression(name, values)
