@@ -610,14 +610,14 @@ class VulkanReferencedResourceConsumer : public VulkanReferencedResourceConsumer
         const ApiCallInfo&                          call_info,
         format::HandleId                            commandBuffer,
         uint32_t                                    infoCount,
-        StructPointerDecoder<Decoded_VkAccelerationStructureBuildGeometryInfoKHR>* pInfos,
-        StructPointerDecoder<Decoded_VkAccelerationStructureBuildRangeInfoKHR*>* ppBuildRangeInfos) override;
+        StructPointerDecoder<Decoded_VkAccelerationStructureBuildGeometryInfoKHR>/*@@@PLQ*/* pInfos,
+        StructPointerDecoder<Decoded_VkAccelerationStructureBuildRangeInfoKHR*>/*@@@EHI*/* ppBuildRangeInfos) override;
 
     virtual void Process_vkCmdBuildAccelerationStructuresIndirectKHR(
         const ApiCallInfo&                          call_info,
         format::HandleId                            commandBuffer,
         uint32_t                                    infoCount,
-        StructPointerDecoder<Decoded_VkAccelerationStructureBuildGeometryInfoKHR>* pInfos,
+        StructPointerDecoder<Decoded_VkAccelerationStructureBuildGeometryInfoKHR>/*@@@PLQ*/* pInfos,
         PointerDecoder<VkDeviceAddress>*            pIndirectDeviceAddresses,
         PointerDecoder<uint32_t>*                   pIndirectStrides,
         PointerDecoder<uint32_t*>*                  ppMaxPrimitiveCounts) override;
@@ -625,17 +625,17 @@ class VulkanReferencedResourceConsumer : public VulkanReferencedResourceConsumer
     virtual void Process_vkCmdCopyAccelerationStructureKHR(
         const ApiCallInfo&                          call_info,
         format::HandleId                            commandBuffer,
-        StructPointerDecoder<Decoded_VkCopyAccelerationStructureInfoKHR>* pInfo) override;
+        StructPointerDecoder<Decoded_VkCopyAccelerationStructureInfoKHR>/*@@@PLQ*/* pInfo) override;
 
     virtual void Process_vkCmdCopyAccelerationStructureToMemoryKHR(
         const ApiCallInfo&                          call_info,
         format::HandleId                            commandBuffer,
-        StructPointerDecoder<Decoded_VkCopyAccelerationStructureToMemoryInfoKHR>* pInfo) override;
+        StructPointerDecoder<Decoded_VkCopyAccelerationStructureToMemoryInfoKHR>/*@@@PLQ*/* pInfo) override;
 
     virtual void Process_vkCmdCopyMemoryToAccelerationStructureKHR(
         const ApiCallInfo&                          call_info,
         format::HandleId                            commandBuffer,
-        StructPointerDecoder<Decoded_VkCopyMemoryToAccelerationStructureInfoKHR>* pInfo) override;
+        StructPointerDecoder<Decoded_VkCopyMemoryToAccelerationStructureInfoKHR>/*@@@PLQ*/* pInfo) override;
 
     virtual void Process_vkCmdWriteAccelerationStructuresPropertiesKHR(
         const ApiCallInfo&                          call_info,

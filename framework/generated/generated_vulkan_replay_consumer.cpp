@@ -216,7 +216,7 @@ void VulkanReplayConsumer::Process_vkQueueSubmit(
 
     MapStructArrayHandles(pSubmits->GetMetaStructPointer(), pSubmits->GetLength(), GetObjectInfoTable());
     auto in_fence = GetObjectInfoTable().GetFenceInfo(fence);//@@@DFK
-    VkResult replay_result = OverrideQueueSubmit(GetDeviceTable(in_queue->handle)->QueueSubmit, call_info.index, returnValue, in_queue, submitCount, pSubmits, in_fence);
+    VkResult replay_result = OverrideQueueSubmit(GetDeviceTable(in_queue->handle)->QueueSubmit, call_info.index, returnValue, in_queue, submitCount, pSubmits, in_fence) /*@@@RFD*/;
     CheckResult("vkQueueSubmit", returnValue, replay_result, call_info);
 }
 
@@ -1157,9 +1157,7 @@ void VulkanReplayConsumer::Process_vkUpdateDescriptorSets(
     const VkCopyDescriptorSet* in_pDescriptorCopies = pDescriptorCopies->GetPointer();
     MapStructArrayHandles(pDescriptorCopies->GetMetaStructPointer(), pDescriptorCopies->GetLength(), GetObjectInfoTable());//@@@DFK
     GetDeviceTable(in_device)->UpdateDescriptorSets(in_device, descriptorWriteCount, in_pDescriptorWrites, descriptorCopyCount, in_pDescriptorCopies);//@@@HQA
-
-    ////////
-
+    //@@@TODO: VERIFY THIS IS CORRECT AND IS NEEDED
     UpdateDescriptorSets(descriptorWriteCount, pDescriptorWrites);
 }
 
@@ -1613,7 +1611,6 @@ void VulkanReplayConsumer::Process_vkCmdDraw(
     if (dumper.IsRecording())
     {
         GetDeviceTable(dumper.GetClonedCommandBuffer())->CmdDraw(dumper.GetClonedCommandBuffer(), vertexCount, instanceCount, firstVertex, firstInstance)/*@@@ABC*/;//@@@HERE
-
         if (dumper.DumpingDrawCallIndex(call_info.index))
         {
             dumper.FinalizeCommandBuffer(*GetDeviceTable(in_commandBuffer));
@@ -1637,7 +1634,6 @@ void VulkanReplayConsumer::Process_vkCmdDrawIndexed(
     if (dumper.IsRecording())
     {
         GetDeviceTable(dumper.GetClonedCommandBuffer())->CmdDrawIndexed(dumper.GetClonedCommandBuffer(), indexCount, instanceCount, firstIndex, vertexOffset, firstInstance)/*@@@ABC*/;//@@@HERE
-
         if (dumper.DumpingDrawCallIndex(call_info.index))
         {
             dumper.FinalizeCommandBuffer(*GetDeviceTable(in_commandBuffer));
@@ -1661,7 +1657,6 @@ void VulkanReplayConsumer::Process_vkCmdDrawIndirect(
     if (dumper.IsRecording())
     {
         GetDeviceTable(dumper.GetClonedCommandBuffer())->CmdDrawIndirect(dumper.GetClonedCommandBuffer(), in_buffer, offset, drawCount, stride)/*@@@ABC*/;//@@@HERE
-
         if (dumper.DumpingDrawCallIndex(call_info.index))
         {
             dumper.FinalizeCommandBuffer(*GetDeviceTable(in_commandBuffer));
@@ -1685,7 +1680,6 @@ void VulkanReplayConsumer::Process_vkCmdDrawIndexedIndirect(
     if (dumper.IsRecording())
     {
         GetDeviceTable(dumper.GetClonedCommandBuffer())->CmdDrawIndexedIndirect(dumper.GetClonedCommandBuffer(), in_buffer, offset, drawCount, stride)/*@@@ABC*/;//@@@HERE
-
         if (dumper.DumpingDrawCallIndex(call_info.index))
         {
             dumper.FinalizeCommandBuffer(*GetDeviceTable(in_commandBuffer));
@@ -1707,7 +1701,6 @@ void VulkanReplayConsumer::Process_vkCmdDispatch(
     if (dumper.IsRecording())
     {
         GetDeviceTable(dumper.GetClonedCommandBuffer())->CmdDispatch(dumper.GetClonedCommandBuffer(), groupCountX, groupCountY, groupCountZ)/*@@@ABC*/;//@@@HERE
-
         if (dumper.DumpingDispatchIndex(call_info.index))
         {
             dumper.FinalizeCommandBuffer(*GetDeviceTable(in_commandBuffer));
@@ -1729,6 +1722,10 @@ void VulkanReplayConsumer::Process_vkCmdDispatchIndirect(
     if (dumper.IsRecording())
     {
         GetDeviceTable(dumper.GetClonedCommandBuffer())->CmdDispatchIndirect(dumper.GetClonedCommandBuffer(), in_buffer, offset)/*@@@ABC*/;//@@@HERE
+        if (dumper.DumpingDrawCallIndex(call_info.index))
+        {
+            dumper.FinalizeCommandBuffer(*GetDeviceTable(in_commandBuffer));
+        }
     }
 }
 
@@ -2057,7 +2054,7 @@ void VulkanReplayConsumer::Process_vkCmdPipelineBarrier(
     // Push command in the command buffer clone
     if (dumper.IsRecording())
     {
-        GetDeviceTable(dumper.GetClonedCommandBuffer())->CmdPipelineBarrier(dumper.GetClonedCommandBuffer(), srcStageMask, dstStageMask, dependencyFlags, memoryBarrierCount, pMemoryBarriers->GetPointer(), bufferMemoryBarrierCount, pBufferMemoryBarriers->GetPointer(), imageMemoryBarrierCount, pImageMemoryBarriers->GetPointer())/*@@@ABC*/;//@@@HERE
+        GetDeviceTable(dumper.GetClonedCommandBuffer())->CmdPipelineBarrier(dumper.GetClonedCommandBuffer(), srcStageMask, dstStageMask, dependencyFlags, memoryBarrierCount, pMemoryBarriers->GetPointer(), bufferMemoryBarrierCount, pBufferMemoryBarriers->GetPointer(), imageMemoryBarrierCount, pImageMemoryBarriers->GetPointer())/*@@@xABC*/;//@@@xHERE
     }
 }
 
@@ -2190,7 +2187,7 @@ void VulkanReplayConsumer::Process_vkCmdBeginRenderPass(
     // Push command in the command buffer clone
     if (dumper.IsRecording())
     {
-        GetDeviceTable(dumper.GetClonedCommandBuffer())->CmdBeginRenderPass(dumper.GetClonedCommandBuffer(), pRenderPassBegin->GetPointer(), contents)/*@@@ABC*/;//@@@HERE
+        GetDeviceTable(dumper.GetClonedCommandBuffer())->CmdBeginRenderPass(dumper.GetClonedCommandBuffer(), pRenderPassBegin->GetPointer(), contents)/*@@@xABC*/;//@@@xHERE
         dumper.EnterRenderPass();
     }
 }
@@ -2315,6 +2312,10 @@ void VulkanReplayConsumer::Process_vkCmdDispatchBase(
     if (dumper.IsRecording())
     {
         GetDeviceTable(dumper.GetClonedCommandBuffer())->CmdDispatchBase(dumper.GetClonedCommandBuffer(), baseGroupX, baseGroupY, baseGroupZ, groupCountX, groupCountY, groupCountZ)/*@@@ABC*/;//@@@HERE
+        if (dumper.DumpingDrawCallIndex(call_info.index))
+        {
+            dumper.FinalizeCommandBuffer(*GetDeviceTable(in_commandBuffer));
+        }
     }
 }
 
@@ -2633,7 +2634,6 @@ void VulkanReplayConsumer::Process_vkCmdDrawIndirectCount(
     if (dumper.IsRecording())
     {
         GetDeviceTable(dumper.GetClonedCommandBuffer())->CmdDrawIndirectCount(dumper.GetClonedCommandBuffer(), in_buffer, offset, in_countBuffer, countBufferOffset, maxDrawCount, stride)/*@@@ABC*/;//@@@HERE
-
         if (dumper.DumpingDrawCallIndex(call_info.index))
         {
             dumper.FinalizeCommandBuffer(*GetDeviceTable(in_commandBuffer));
@@ -2660,7 +2660,6 @@ void VulkanReplayConsumer::Process_vkCmdDrawIndexedIndirectCount(
     if (dumper.IsRecording())
     {
         GetDeviceTable(dumper.GetClonedCommandBuffer())->CmdDrawIndexedIndirectCount(dumper.GetClonedCommandBuffer(), in_buffer, offset, in_countBuffer, countBufferOffset, maxDrawCount, stride)/*@@@ABC*/;//@@@HERE
-
         if (dumper.DumpingDrawCallIndex(call_info.index))
         {
             dumper.FinalizeCommandBuffer(*GetDeviceTable(in_commandBuffer));
@@ -2701,11 +2700,8 @@ void VulkanReplayConsumer::Process_vkCmdBeginRenderPass2(
     // Push command in the command buffer clone
     if (dumper.IsRecording())
     {
-        // XXX: vkCmdBeginRenderPass2 is not handled in the same way as vkCmdBeginRenderPass
-
-        // const auto* rp_begin_info_meta = pRenderPassBegin->GetMetaStructPointer();
-        // dumper.SetRenderTargets (rp_begin_info_meta->renderPass, rp_begin_info_meta->framebuffer, *rp_begin_info_meta->renderArea->decoded_value);
         GetDeviceTable(dumper.GetClonedCommandBuffer())->CmdBeginRenderPass2(dumper.GetClonedCommandBuffer(), in_pRenderPassBegin, in_pSubpassBeginInfo)/*@@@ABC*/;//@@@HERE
+        //@@@TODO: vkCmdBeginRenderPass2 is not handled in the same way as vkCmdBeginRenderPass
     }
 }
 
@@ -3134,9 +3130,7 @@ void VulkanReplayConsumer::Process_vkCmdBeginRendering(
     if (dumper.IsRecording())
     {
         GetDeviceTable(dumper.GetClonedCommandBuffer())->CmdBeginRendering(dumper.GetClonedCommandBuffer(), in_pRenderingInfo)/*@@@ABC*/;//@@@HERE
-
         const auto* rendering_info_meta = pRenderingInfo->GetMetaStructPointer();
-
         const auto* color_attachments_meta = rendering_info_meta->pColorAttachments->GetMetaStructPointer();
         std::vector<const ImageInfo*> color_att_img_infos(static_cast<size_t>(in_pRenderingInfo->colorAttachmentCount));
         std::vector<VkAttachmentStoreOp> color_att_storeOps(static_cast<size_t>(in_pRenderingInfo->colorAttachmentCount));
@@ -3144,23 +3138,16 @@ void VulkanReplayConsumer::Process_vkCmdBeginRendering(
         {
             const ImageViewInfo *img_view_info = GetObjectInfoTable().GetImageViewInfo(color_attachments_meta[i].imageView);
             assert(img_view_info);
-
             const ImageInfo* img_info = GetObjectInfoTable().GetImageInfo(img_view_info->image_id);
             assert(img_info);
-
             color_att_img_infos[i] = img_info;
-
             color_att_storeOps[i] = in_pRenderingInfo->pColorAttachments[i].storeOp;
         }
-
         const auto* depth_attachment = rendering_info_meta->pDepthAttachment->GetMetaStructPointer();
-
         const ImageViewInfo *depth_img_view_info = GetObjectInfoTable().GetImageViewInfo(depth_attachment->imageView);
         assert(depth_img_view_info);
-
         const ImageInfo* depth_img_info = GetObjectInfoTable().GetImageInfo(depth_img_view_info->image_id);
         assert(depth_img_info);
-
         dumper.SetRenderTargets(color_att_img_infos, color_att_storeOps, depth_img_info, in_pRenderingInfo->pDepthAttachment->storeOp);
         dumper.SetRenderArea(in_pRenderingInfo->renderArea);
     }
@@ -4243,7 +4230,26 @@ void VulkanReplayConsumer::Process_vkCmdBeginRenderingKHR(
     if (dumper.IsRecording())
     {
         GetDeviceTable(dumper.GetClonedCommandBuffer())->CmdBeginRenderingKHR(dumper.GetClonedCommandBuffer(), in_pRenderingInfo)/*@@@ABC*/;//@@@HERE
-        // dumper.SetRenderTargets(pRenderingInfo->GetMetaStructPointer());
+        const auto* rendering_info_meta = pRenderingInfo->GetMetaStructPointer();
+        const auto* color_attachments_meta = rendering_info_meta->pColorAttachments->GetMetaStructPointer();
+        std::vector<const ImageInfo*> color_att_img_infos(static_cast<size_t>(in_pRenderingInfo->colorAttachmentCount));
+        std::vector<VkAttachmentStoreOp> color_att_storeOps(static_cast<size_t>(in_pRenderingInfo->colorAttachmentCount));
+        for (uint32_t i =0; i < in_pRenderingInfo->colorAttachmentCount; ++i)
+        {
+            const ImageViewInfo *img_view_info = GetObjectInfoTable().GetImageViewInfo(color_attachments_meta[i].imageView);
+            assert(img_view_info);
+            const ImageInfo* img_info = GetObjectInfoTable().GetImageInfo(img_view_info->image_id);
+            assert(img_info);
+            color_att_img_infos[i] = img_info;
+            color_att_storeOps[i] = in_pRenderingInfo->pColorAttachments[i].storeOp;
+        }
+        const auto* depth_attachment = rendering_info_meta->pDepthAttachment->GetMetaStructPointer();
+        const ImageViewInfo *depth_img_view_info = GetObjectInfoTable().GetImageViewInfo(depth_attachment->imageView);
+        assert(depth_img_view_info);
+        const ImageInfo* depth_img_info = GetObjectInfoTable().GetImageInfo(depth_img_view_info->image_id);
+        assert(depth_img_info);
+        dumper.SetRenderTargets(color_att_img_infos, color_att_storeOps, depth_img_info, in_pRenderingInfo->pDepthAttachment->storeOp);
+        dumper.SetRenderArea(in_pRenderingInfo->renderArea);
     }
 }
 
@@ -4396,6 +4402,10 @@ void VulkanReplayConsumer::Process_vkCmdDispatchBaseKHR(
     if (dumper.IsRecording())
     {
         GetDeviceTable(dumper.GetClonedCommandBuffer())->CmdDispatchBaseKHR(dumper.GetClonedCommandBuffer(), baseGroupX, baseGroupY, baseGroupZ, groupCountX, groupCountY, groupCountZ)/*@@@ABC*/;//@@@HERE
+        if (dumper.DumpingDrawCallIndex(call_info.index))
+        {
+            dumper.FinalizeCommandBuffer(*GetDeviceTable(in_commandBuffer));
+        }
     }
 }
 
@@ -5098,7 +5108,6 @@ void VulkanReplayConsumer::Process_vkCmdDrawIndirectCountKHR(
     if (dumper.IsRecording())
     {
         GetDeviceTable(dumper.GetClonedCommandBuffer())->CmdDrawIndirectCountKHR(dumper.GetClonedCommandBuffer(), in_buffer, offset, in_countBuffer, countBufferOffset, maxDrawCount, stride)/*@@@ABC*/;//@@@HERE
-
         if (dumper.DumpingDrawCallIndex(call_info.index))
         {
             dumper.FinalizeCommandBuffer(*GetDeviceTable(in_commandBuffer));
@@ -5125,7 +5134,6 @@ void VulkanReplayConsumer::Process_vkCmdDrawIndexedIndirectCountKHR(
     if (dumper.IsRecording())
     {
         GetDeviceTable(dumper.GetClonedCommandBuffer())->CmdDrawIndexedIndirectCountKHR(dumper.GetClonedCommandBuffer(), in_buffer, offset, in_countBuffer, countBufferOffset, maxDrawCount, stride)/*@@@ABC*/;//@@@HERE
-
         if (dumper.DumpingDrawCallIndex(call_info.index))
         {
             dumper.FinalizeCommandBuffer(*GetDeviceTable(in_commandBuffer));
@@ -5723,7 +5731,6 @@ void VulkanReplayConsumer::Process_vkCmdTraceRaysIndirect2KHR(
     if (dumper.IsRecording())
     {
         GetDeviceTable(dumper.GetClonedCommandBuffer())->CmdTraceRaysIndirect2KHR(dumper.GetClonedCommandBuffer(), indirectDeviceAddress)/*@@@ABC*/;//@@@HERE
-
         if (dumper.DumpingTraceRaysIndex(call_info.index))
         {
             dumper.FinalizeCommandBuffer(*GetDeviceTable(in_commandBuffer));
@@ -5979,7 +5986,7 @@ void VulkanReplayConsumer::Process_vkCmdDebugMarkerInsertEXT(
     // Push command in the command buffer clone
     if (dumper.IsRecording())
     {
-        GetDeviceTable(dumper.GetClonedCommandBuffer())->CmdDebugMarkerInsertEXT(dumper.GetClonedCommandBuffer(), pMarkerInfo->GetPointer())/*@@@ABC*/;//@@@HERE
+        GetDeviceTable(dumper.GetClonedCommandBuffer())->CmdDebugMarkerInsertEXT(dumper.GetClonedCommandBuffer(), pMarkerInfo->GetPointer())/*@@@xABC*/;//@@@xHERE
     }
 }
 
@@ -6100,6 +6107,10 @@ void VulkanReplayConsumer::Process_vkCmdDrawIndirectByteCountEXT(
     if (dumper.IsRecording())
     {
         GetDeviceTable(dumper.GetClonedCommandBuffer())->CmdDrawIndirectByteCountEXT(dumper.GetClonedCommandBuffer(), instanceCount, firstInstance, in_counterBuffer, counterBufferOffset, counterOffset, vertexStride)/*@@@ABC*/;//@@@HERE
+        if (dumper.DumpingDrawCallIndex(call_info.index))
+        {
+            dumper.FinalizeCommandBuffer(*GetDeviceTable(in_commandBuffer));
+        }
     }
 }
 
@@ -6149,6 +6160,10 @@ void VulkanReplayConsumer::Process_vkCmdDrawIndirectCountAMD(
     if (dumper.IsRecording())
     {
         GetDeviceTable(dumper.GetClonedCommandBuffer())->CmdDrawIndirectCountAMD(dumper.GetClonedCommandBuffer(), in_buffer, offset, in_countBuffer, countBufferOffset, maxDrawCount, stride)/*@@@ABC*/;//@@@HERE
+        if (dumper.DumpingDrawCallIndex(call_info.index))
+        {
+            dumper.FinalizeCommandBuffer(*GetDeviceTable(in_commandBuffer));
+        }
     }
 }
 
@@ -6171,6 +6186,10 @@ void VulkanReplayConsumer::Process_vkCmdDrawIndexedIndirectCountAMD(
     if (dumper.IsRecording())
     {
         GetDeviceTable(dumper.GetClonedCommandBuffer())->CmdDrawIndexedIndirectCountAMD(dumper.GetClonedCommandBuffer(), in_buffer, offset, in_countBuffer, countBufferOffset, maxDrawCount, stride)/*@@@ABC*/;//@@@HERE
+        if (dumper.DumpingDrawCallIndex(call_info.index))
+        {
+            dumper.FinalizeCommandBuffer(*GetDeviceTable(in_commandBuffer));
+        }
     }
 }
 
@@ -7271,6 +7290,10 @@ void VulkanReplayConsumer::Process_vkCmdDrawMeshTasksNV(
     if (dumper.IsRecording())
     {
         GetDeviceTable(dumper.GetClonedCommandBuffer())->CmdDrawMeshTasksNV(dumper.GetClonedCommandBuffer(), taskCount, firstTask)/*@@@ABC*/;//@@@HERE
+        if (dumper.DumpingDrawCallIndex(call_info.index))
+        {
+            dumper.FinalizeCommandBuffer(*GetDeviceTable(in_commandBuffer));
+        }
     }
 }
 
@@ -7290,6 +7313,10 @@ void VulkanReplayConsumer::Process_vkCmdDrawMeshTasksIndirectNV(
     if (dumper.IsRecording())
     {
         GetDeviceTable(dumper.GetClonedCommandBuffer())->CmdDrawMeshTasksIndirectNV(dumper.GetClonedCommandBuffer(), in_buffer, offset, drawCount, stride)/*@@@ABC*/;//@@@HERE
+        if (dumper.DumpingDrawCallIndex(call_info.index))
+        {
+            dumper.FinalizeCommandBuffer(*GetDeviceTable(in_commandBuffer));
+        }
     }
 }
 
@@ -7312,6 +7339,10 @@ void VulkanReplayConsumer::Process_vkCmdDrawMeshTasksIndirectCountNV(
     if (dumper.IsRecording())
     {
         GetDeviceTable(dumper.GetClonedCommandBuffer())->CmdDrawMeshTasksIndirectCountNV(dumper.GetClonedCommandBuffer(), in_buffer, offset, in_countBuffer, countBufferOffset, maxDrawCount, stride)/*@@@ABC*/;//@@@HERE
+        if (dumper.DumpingDrawCallIndex(call_info.index))
+        {
+            dumper.FinalizeCommandBuffer(*GetDeviceTable(in_commandBuffer));
+        }
     }
 }
 
@@ -8591,6 +8622,10 @@ void VulkanReplayConsumer::Process_vkCmdDrawMultiEXT(
     if (dumper.IsRecording())
     {
         GetDeviceTable(dumper.GetClonedCommandBuffer())->CmdDrawMultiEXT(dumper.GetClonedCommandBuffer(), drawCount, in_pVertexInfo, instanceCount, firstInstance, stride)/*@@@ABC*/;//@@@HERE
+        if (dumper.DumpingDrawCallIndex(call_info.index))
+        {
+            dumper.FinalizeCommandBuffer(*GetDeviceTable(in_commandBuffer));
+        }
     }
 }
 
@@ -8613,6 +8648,10 @@ void VulkanReplayConsumer::Process_vkCmdDrawMultiIndexedEXT(
     if (dumper.IsRecording())
     {
         GetDeviceTable(dumper.GetClonedCommandBuffer())->CmdDrawMultiIndexedEXT(dumper.GetClonedCommandBuffer(), drawCount, in_pIndexInfo, instanceCount, firstInstance, stride, in_pVertexOffset)/*@@@ABC*/;//@@@HERE
+        if (dumper.DumpingDrawCallIndex(call_info.index))
+        {
+            dumper.FinalizeCommandBuffer(*GetDeviceTable(in_commandBuffer));
+        }
     }
 }
 
@@ -8859,6 +8898,10 @@ void VulkanReplayConsumer::Process_vkCmdDrawClusterHUAWEI(
     if (dumper.IsRecording())
     {
         GetDeviceTable(dumper.GetClonedCommandBuffer())->CmdDrawClusterHUAWEI(dumper.GetClonedCommandBuffer(), groupCountX, groupCountY, groupCountZ)/*@@@ABC*/;//@@@HERE
+        if (dumper.DumpingDrawCallIndex(call_info.index))
+        {
+            dumper.FinalizeCommandBuffer(*GetDeviceTable(in_commandBuffer));
+        }
     }
 }
 
@@ -8876,6 +8919,10 @@ void VulkanReplayConsumer::Process_vkCmdDrawClusterIndirectHUAWEI(
     if (dumper.IsRecording())
     {
         GetDeviceTable(dumper.GetClonedCommandBuffer())->CmdDrawClusterIndirectHUAWEI(dumper.GetClonedCommandBuffer(), in_buffer, offset)/*@@@ABC*/;//@@@HERE
+        if (dumper.DumpingDrawCallIndex(call_info.index))
+        {
+            dumper.FinalizeCommandBuffer(*GetDeviceTable(in_commandBuffer));
+        }
     }
 }
 
@@ -9936,7 +9983,6 @@ void VulkanReplayConsumer::Process_vkCmdTraceRaysKHR(
     if (dumper.IsRecording())
     {
         GetDeviceTable(dumper.GetClonedCommandBuffer())->CmdTraceRaysKHR(dumper.GetClonedCommandBuffer(), in_pRaygenShaderBindingTable, in_pMissShaderBindingTable, in_pHitShaderBindingTable, in_pCallableShaderBindingTable, width, height, depth)/*@@@ABC*/;//@@@HERE
-
         if (dumper.DumpingTraceRaysIndex(call_info.index))
         {
             dumper.FinalizeCommandBuffer(*GetDeviceTable(in_commandBuffer));
@@ -10006,7 +10052,6 @@ void VulkanReplayConsumer::Process_vkCmdTraceRaysIndirectKHR(
     if (dumper.IsRecording())
     {
         GetDeviceTable(dumper.GetClonedCommandBuffer())->CmdTraceRaysIndirectKHR(dumper.GetClonedCommandBuffer(), in_pRaygenShaderBindingTable, in_pMissShaderBindingTable, in_pHitShaderBindingTable, in_pCallableShaderBindingTable, indirectDeviceAddress)/*@@@ABC*/;//@@@HERE
-
         if (dumper.DumpingTraceRaysIndex(call_info.index))
         {
             dumper.FinalizeCommandBuffer(*GetDeviceTable(in_commandBuffer));
@@ -10056,6 +10101,10 @@ void VulkanReplayConsumer::Process_vkCmdDrawMeshTasksEXT(
     if (dumper.IsRecording())
     {
         GetDeviceTable(dumper.GetClonedCommandBuffer())->CmdDrawMeshTasksEXT(dumper.GetClonedCommandBuffer(), groupCountX, groupCountY, groupCountZ)/*@@@ABC*/;//@@@HERE
+        if (dumper.DumpingDrawCallIndex(call_info.index))
+        {
+            dumper.FinalizeCommandBuffer(*GetDeviceTable(in_commandBuffer));
+        }
     }
 }
 
@@ -10075,6 +10124,10 @@ void VulkanReplayConsumer::Process_vkCmdDrawMeshTasksIndirectEXT(
     if (dumper.IsRecording())
     {
         GetDeviceTable(dumper.GetClonedCommandBuffer())->CmdDrawMeshTasksIndirectEXT(dumper.GetClonedCommandBuffer(), in_buffer, offset, drawCount, stride)/*@@@ABC*/;//@@@HERE
+        if (dumper.DumpingDrawCallIndex(call_info.index))
+        {
+            dumper.FinalizeCommandBuffer(*GetDeviceTable(in_commandBuffer));
+        }
     }
 }
 
@@ -10097,6 +10150,10 @@ void VulkanReplayConsumer::Process_vkCmdDrawMeshTasksIndirectCountEXT(
     if (dumper.IsRecording())
     {
         GetDeviceTable(dumper.GetClonedCommandBuffer())->CmdDrawMeshTasksIndirectCountEXT(dumper.GetClonedCommandBuffer(), in_buffer, offset, in_countBuffer, countBufferOffset, maxDrawCount, stride)/*@@@ABC*/;//@@@HERE
+        if (dumper.DumpingDrawCallIndex(call_info.index))
+        {
+            dumper.FinalizeCommandBuffer(*GetDeviceTable(in_commandBuffer));
+        }
     }
 }
 

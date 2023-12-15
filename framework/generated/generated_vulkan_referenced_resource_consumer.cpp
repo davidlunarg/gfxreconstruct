@@ -1844,8 +1844,8 @@ void VulkanReferencedResourceConsumer::Process_vkCmdBuildAccelerationStructuresK
     const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     uint32_t                                    infoCount,
-    StructPointerDecoder<Decoded_VkAccelerationStructureBuildGeometryInfoKHR>* pInfos,
-    StructPointerDecoder<Decoded_VkAccelerationStructureBuildRangeInfoKHR*>* ppBuildRangeInfos)
+    StructPointerDecoder<Decoded_VkAccelerationStructureBuildGeometryInfoKHR>/*@@@PLQ*/* pInfos,
+    StructPointerDecoder<Decoded_VkAccelerationStructureBuildRangeInfoKHR*>/*@@@EHI*/* ppBuildRangeInfos)
 {
     GFXRECON_UNREFERENCED_PARAMETER(infoCount);
     GFXRECON_UNREFERENCED_PARAMETER(ppBuildRangeInfos);
@@ -1868,7 +1868,7 @@ void VulkanReferencedResourceConsumer::Process_vkCmdBuildAccelerationStructuresI
     const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
     uint32_t                                    infoCount,
-    StructPointerDecoder<Decoded_VkAccelerationStructureBuildGeometryInfoKHR>* pInfos,
+    StructPointerDecoder<Decoded_VkAccelerationStructureBuildGeometryInfoKHR>/*@@@PLQ*/* pInfos,
     PointerDecoder<VkDeviceAddress>*            pIndirectDeviceAddresses,
     PointerDecoder<uint32_t>*                   pIndirectStrides,
     PointerDecoder<uint32_t*>*                  ppMaxPrimitiveCounts)
@@ -1895,7 +1895,7 @@ void VulkanReferencedResourceConsumer::Process_vkCmdBuildAccelerationStructuresI
 void VulkanReferencedResourceConsumer::Process_vkCmdCopyAccelerationStructureKHR(
     const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
-    StructPointerDecoder<Decoded_VkCopyAccelerationStructureInfoKHR>* pInfo)
+    StructPointerDecoder<Decoded_VkCopyAccelerationStructureInfoKHR>/*@@@PLQ*/* pInfo)
 {
     assert(pInfo != nullptr);
 
@@ -1910,7 +1910,7 @@ void VulkanReferencedResourceConsumer::Process_vkCmdCopyAccelerationStructureKHR
 void VulkanReferencedResourceConsumer::Process_vkCmdCopyAccelerationStructureToMemoryKHR(
     const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
-    StructPointerDecoder<Decoded_VkCopyAccelerationStructureToMemoryInfoKHR>* pInfo)
+    StructPointerDecoder<Decoded_VkCopyAccelerationStructureToMemoryInfoKHR>/*@@@PLQ*/* pInfo)
 {
     assert(pInfo != nullptr);
 
@@ -1924,7 +1924,7 @@ void VulkanReferencedResourceConsumer::Process_vkCmdCopyAccelerationStructureToM
 void VulkanReferencedResourceConsumer::Process_vkCmdCopyMemoryToAccelerationStructureKHR(
     const ApiCallInfo&                          call_info,
     format::HandleId                            commandBuffer,
-    StructPointerDecoder<Decoded_VkCopyMemoryToAccelerationStructureInfoKHR>* pInfo)
+    StructPointerDecoder<Decoded_VkCopyMemoryToAccelerationStructureInfoKHR>/*@@@PLQ*/* pInfo)
 {
     assert(pInfo != nullptr);
 

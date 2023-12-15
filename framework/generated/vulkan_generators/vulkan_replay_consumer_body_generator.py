@@ -304,6 +304,11 @@ class VulkanReplayConsumerBodyGenerator(
                 call_expr = '{}(returnValue, {})'.format(
                     self.REPLAY_OVERRIDES[name], arglist
                 )
+            elif name in ['vkQueueSubmit']:
+                # vkQueueSubmit is like overrides with return_type of VkResult, but also needs call_info.index
+                call_expr = '{}({}, call_info.index, returnValue, {}) /*@@@RFD*/'.format(
+                    self.REPLAY_OVERRIDES[name], dispatchfunc, arglist
+                )
             elif return_type == 'VkResult':
                 # Override functions receive the decoded return value in addition to parameters.
                 call_expr = '{}({}, returnValue, {})'.format(
@@ -349,6 +354,9 @@ class VulkanReplayConsumerBodyGenerator(
                 body += '    {};//@@@HQA\n'.format(call_expr)
             else:
                 body += '    {};//@@@HQA\n'.format(call_expr)
+            if name == 'vkUpdateDescriptorSets':
+                body += '    //@@@TODO: VERIFY THIS IS CORRECT AND IS NEEDED\n'                   #TODO: Check this
+                body += '    UpdateDescriptorSets(descriptorWriteCount, pDescriptorWrites);\n'
 
         if postexpr:
             body += '\n'
@@ -367,14 +375,68 @@ class VulkanReplayConsumerBodyGenerator(
                 body += '\n'
                 body += '    if (dumper.DumpingBeginCommandBufferIndex(call_info.index))\n'
                 body += '    {\n'
-                body += '        dumper.CloneCommandBuffer(commandBuffer, GetDeviceTable(in_commandBuffer)->AllocateCommandBuffers);\n'
+                body += '        const CommandBufferInfo* cmd_buf_info = GetObjectInfoTable().GetCommandBufferInfo(commandBuffer);\n'
+                body += '        const DeviceInfo* device = GetObjectInfoTable().GetDeviceInfo(cmd_buf_info->parent_id);\n'
+                body += '        dumper.CloneCommandBuffer(commandBuffer, GetDeviceTable(device->handle)->AllocateCommandBuffers);\n'
                 body += '    }\n'
             else:
+                #TODO: Lots of special cases here. Can this be reduced???
                 body += '\n'
                 body += '    // Push command in the command buffer clone\n'
                 body += '    if (dumper.IsRecording())\n'
                 body += '    {\n'
-                body += '        {};//@@@HERE\n'.format(dr_call_expr.replace("in_commandBuffer", "dumper.GetClonedCommandBuffer()"))
+                if name == 'vkCmdPipelineBarrier':
+                    body += '        GetDeviceTable(dumper.GetClonedCommandBuffer())->CmdPipelineBarrier(dumper.GetClonedCommandBuffer(), srcStageMask, dstStageMask, dependencyFlags, memoryBarrierCount, pMemoryBarriers->GetPointer(), bufferMemoryBarrierCount, pBufferMemoryBarriers->GetPointer(), imageMemoryBarrierCount, pImageMemoryBarriers->GetPointer())/*@@@xABC*/;//@@@xHERE\n'
+                elif name == 'vkCmdBeginRenderPass':
+                    body += '        GetDeviceTable(dumper.GetClonedCommandBuffer())->CmdBeginRenderPass(dumper.GetClonedCommandBuffer(), pRenderPassBegin->GetPointer(), contents)/*@@@xABC*/;//@@@xHERE\n'
+                elif name == 'vkCmdDebugMarkerInsertEXT':
+                    body += '        GetDeviceTable(dumper.GetClonedCommandBuffer())->CmdDebugMarkerInsertEXT(dumper.GetClonedCommandBuffer(), pMarkerInfo->GetPointer())/*@@@xABC*/;//@@@xHERE\n'
+                else:
+                    body += '        {};//@@@HERE\n'.format(dr_call_expr.replace("in_commandBuffer", "dumper.GetClonedCommandBuffer()"))
+                if name == 'vkCmdBindDescriptorSets': #//@@@FHK May want to include other cases here...
+                    body += '        dumper.UpdateDescriptors(pipelineBindPoint, firstSet, pDescriptorSets->GetPointer(), descriptorSetCount);\n'
+                if name.startswith('vkCmdDraw') or name.startswith('vkCmdDispatch') or name.startswith('vkCmdTraceRaysIndirect'):
+                    if name == 'vkCmdDispatch':
+                        body += '        if (dumper.DumpingDispatchIndex(call_info.index))\n'
+                    elif name.startswith('vkCmdTraceRaysIndirect'):
+                        body += '        if (dumper.DumpingTraceRaysIndex(call_info.index))\n'
+                    else:
+                        body += '        if (dumper.DumpingDrawCallIndex(call_info.index))\n'
+                    body += '        {\n'
+                    body += '            dumper.FinalizeCommandBuffer(*GetDeviceTable(in_commandBuffer));\n'
+                    body += '        }\n'
+                if name == 'vkCmdBeginRenderPass':
+                    body += '        dumper.EnterRenderPass();\n'
+                if name == 'vkCmdEndRenderPass':
+                    body += '        dumper.ExitRenderPass();\n'
+                if name == 'vkCmdBeginRenderPass2':
+                    body += '        //@@@TODO: vkCmdBeginRenderPass2 is not handled in the same way as vkCmdBeginRenderPass\n'
+                if name.startswith('vkCmdBeginRendering'):
+                    body += '        const auto* rendering_info_meta = pRenderingInfo->GetMetaStructPointer();\n'
+                    body += '        const auto* color_attachments_meta = rendering_info_meta->pColorAttachments->GetMetaStructPointer();\n'
+                    body += '        std::vector<const ImageInfo*> color_att_img_infos(static_cast<size_t>(in_pRenderingInfo->colorAttachmentCount));\n'
+                    body += '        std::vector<VkAttachmentStoreOp> color_att_storeOps(static_cast<size_t>(in_pRenderingInfo->colorAttachmentCount));\n'
+                    body += '        for (uint32_t i =0; i < in_pRenderingInfo->colorAttachmentCount; ++i)\n'
+                    body += '        {\n'
+                    body += '            const ImageViewInfo *img_view_info = GetObjectInfoTable().GetImageViewInfo(color_attachments_meta[i].imageView);\n'
+                    body += '            assert(img_view_info);\n'
+                    body += '            const ImageInfo* img_info = GetObjectInfoTable().GetImageInfo(img_view_info->image_id);\n'
+                    body += '            assert(img_info);\n'
+                    body += '            color_att_img_infos[i] = img_info;\n'
+                    body += '            color_att_storeOps[i] = in_pRenderingInfo->pColorAttachments[i].storeOp;\n'
+                    body += '        }\n'
+                    body += '        const auto* depth_attachment = rendering_info_meta->pDepthAttachment->GetMetaStructPointer();\n'
+                    body += '        const ImageViewInfo *depth_img_view_info = GetObjectInfoTable().GetImageViewInfo(depth_attachment->imageView);\n'
+                    body += '        assert(depth_img_view_info);\n'
+                    body += '        const ImageInfo* depth_img_info = GetObjectInfoTable().GetImageInfo(depth_img_view_info->image_id);\n'
+                    body += '        assert(depth_img_info);\n'
+                    body += '        dumper.SetRenderTargets(color_att_img_infos, color_att_storeOps, depth_img_info, in_pRenderingInfo->pDepthAttachment->storeOp);\n'
+                    body += '        dumper.SetRenderArea(in_pRenderingInfo->renderArea);\n'
+                if name == 'vkCmdTraceRaysKHR':
+                    body += '        if (dumper.DumpingTraceRaysIndex(call_info.index))\n'
+                    body += '        {\n'
+                    body += '            dumper.FinalizeCommandBuffer(*GetDeviceTable(in_commandBuffer));\n'
+                    body += '        }\n'
                 body += '    }\n'
         else:
         # drFuncExcludeList=['vkBeginCommandBuffer','vkResetCommandBuffer']
