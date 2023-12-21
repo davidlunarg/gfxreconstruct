@@ -116,6 +116,7 @@ const char kDxTwoPassReplay[]             = "--dx12-two-pass-replay";
 const char kDxOverrideObjectNames[]       = "--dx12-override-object-names";
 const char kBatchingMemoryUsageArgument[] = "--batching-memory-usage";
 #endif
+const char kDumpResourcesArgument[]       = "--dump-resources";
 
 enum class WsiPlatform
 {
@@ -751,8 +752,12 @@ static std::vector<int32_t> GetFilteredMsgs(const gfxrecon::util::ArgumentParser
     return msgs;
 }
 
-static void GetReplayOptions(gfxrecon::decode::ReplayOptions& options, const gfxrecon::util::ArgumentParser& arg_parser)
+static void GetReplayOptions(gfxrecon::decode::ReplayOptions&      options,
+                             const gfxrecon::util::ArgumentParser& arg_parser,
+                             const std::string&                    filename)
 {
+    options.filename = filename;
+
     if (arg_parser.IsOptionSet(kValidateOption))
     {
         options.enable_validation_layer = true;
@@ -804,7 +809,7 @@ GetVulkanReplayOptions(const gfxrecon::util::ArgumentParser&           arg_parse
                        gfxrecon::decode::VulkanTrackedObjectInfoTable* tracked_object_info_table)
 {
     gfxrecon::decode::VulkanReplayOptions replay_options;
-    GetReplayOptions(replay_options, arg_parser);
+    GetReplayOptions(replay_options, arg_parser, filename);
 
 #if defined(WIN32)
     replay_options.enable_vulkan = IsApiFamilyIdEnabled(arg_parser, gfxrecon::format::ApiFamily_Vulkan);
@@ -894,14 +899,48 @@ GetVulkanReplayOptions(const gfxrecon::util::ArgumentParser&           arg_parse
         replay_options.surface_index = std::stoi(surface_index);
     }
 
+    const std::string& dump_resources = arg_parser.GetArgumentValue(kDumpResourcesArgument);
+    if (!dump_resources.empty())
+    {
+        std::vector<std::string> values = gfxrecon::util::strings::SplitString(dump_resources, ',');
+        if (!values.empty())
+        {
+            bool error = false;
+            if (values.size() % 3 == 0)
+            {
+                for (auto i=0; i < values.size(); i+=3)
+                {
+                    std::vector<int64_t> dr_args;
+                    char *endptr;
+                    dr_args.push_back(strtol(values[i+0].c_str(), &endptr, 10));
+                    error |= (errno != 0 || *endptr != 0);
+                    dr_args.push_back(strtol(values[i+1].c_str(), &endptr, 10));
+                    error |= (errno != 0 || *endptr != 0);
+                    dr_args.push_back(strtol(values[i+2].c_str(), &endptr, 10));
+                    error |= (errno != 0 || *endptr != 0);
+                    replay_options.dump_resources_params.push_back(dr_args);
+                }
+            }
+            // Ignore dump-resources arg errors if D3D12_SUPPORT is enabled -- args may be for D3D12 replay, so let GetDxReplayOptions generate an error.
+#if !defined(D3D12_SUPPORT)
+            if (error)
+            {
+                replay_options.dump_resources_params.erase();
+                GFXRECON_LOG_ERROR("The parameter to --dump-resources is invalid.");
+            }
+#endif
+        }
+    }
+
     return replay_options;
 }
 
 #if defined(D3D12_SUPPORT)
-static gfxrecon::decode::DxReplayOptions GetDxReplayOptions(const gfxrecon::util::ArgumentParser& arg_parser)
+static gfxrecon::decode::DxReplayOptions GetDxReplayOptions(const gfxrecon::util::ArgumentParser& arg_parser,
+                                                            const std::string&                    filename)
 {
     gfxrecon::decode::DxReplayOptions replay_options;
-    GetReplayOptions(replay_options, arg_parser);
+    GetReplayOptions(replay_options, arg_parser, filename);
 
     replay_options.enable_d3d12         = IsApiFamilyIdEnabled(arg_parser, gfxrecon::format::ApiFamily_D3D12);
     replay_options.DeniedDebugMessages  = GetFilteredMsgs(arg_parser, kDeniedMessages);
@@ -926,6 +965,39 @@ static gfxrecon::decode::DxReplayOptions GetDxReplayOptions(const gfxrecon::util
     if (arg_parser.IsOptionSet(kDxOverrideObjectNames))
     {
         replay_options.override_object_names = true;
+    }
+
+    const std::string& dump_resources = arg_parser.GetArgumentValue(kDumpResourcesArgument);
+    if (!dump_resources.empty())
+    {
+        // Ignore this option is it is of the form --dump-resource i1,i2,i3.  That is the Vulkan
+        // form of this option and the args should have already been parsed in GetVulkanReplayOptions.
+        std::vector<std::string> vvalues = gfxrecon::util::strings::SplitString(dump_resources, ',');
+        bool isVulkanDumpResources = false;
+        if (vvalues.size() % 3 == 0)
+        {
+            isVulkanDumpResources = true;
+        }
+        std::vector<std::string> values = gfxrecon::util::strings::SplitString(dump_resources, '-');
+        if (!isVulkanDumpResources && !values.empty())
+        {
+            if (values.size() != 2)
+            {
+                GFXRECON_LOG_ERROR("Ignoring invalid --dump-resources parameter: %s", dump_resources.c_str());
+            }
+            else if (values[0].compare("drawcall") == 0)
+            {
+                replay_options.dump_resources_type     = gfxrecon::decode::DumpResourcesType::kDrawCall;
+                replay_options.dump_resources_argument = std::stoi(values[1]);
+            }
+            else
+            {
+                GFXRECON_LOG_ERROR("Ignoring invalid --dump-resources parameter: %s", dump_resources.c_str());
+            }
+        }
+    } else
+    {
+            GFXRECON_LOG_ERROR("Ignoring --dump-resources, no parameters specified");
     }
 
     const std::string& memory_usage = arg_parser.GetArgumentValue(kBatchingMemoryUsageArgument);
