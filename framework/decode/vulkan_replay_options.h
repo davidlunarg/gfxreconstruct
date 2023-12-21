@@ -41,6 +41,12 @@ typedef std::function<VulkanResourceAllocator*()> CreateResourceAllocator;
 // Default log level to use prior to loading settings.
 const util::Log::Severity kDefaultLogLevel = util::Log::Severity::kInfoSeverity;
 
+// Indices to --dump-resources args stored in dump_resources_params array below
+const uint32_t kdr_BeginCommandBufferIndex = 0;
+const uint32_t kdr_DrawIndex = 1;
+const uint32_t kdr_QueueSubmintIndex = 2;
+
+
 // Sascha's Compute ray tracing
 // static constexpr uint64_t g_BeginCommandBuffer_Index = 185;
 // static constexpr uint64_t g_CmdDraw_Index            = 0;
@@ -129,6 +135,9 @@ struct VulkanReplayOptions : public ReplayOptions
     uint32_t                     screenshot_width, screenshot_height;
     float                        screenshot_scale;
     std::string                  replace_dir;
+
+    // The dump-resource arg can be repeated for multiple dumps, so it is a vector of vectors
+    std::vector<std::vector<int64_t>> dump_resources_params;
 
     std::vector<uint64_t>              BeginCommandBuffer_Index{ std::move(g_BeginCommandBuffer_Index) };
     std::vector<std::vector<uint64_t>> CmdDraw_Index{ std::move(g_CmdDraw_Index) };
