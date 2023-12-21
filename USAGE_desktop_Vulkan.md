@@ -531,6 +531,12 @@ Optional arguments:
               If this is specified the replayer will flush
               and wait for all current GPU work to finish at the
               start and end of the measurement range.
+  --dump-resources <vulkan-begincommandbuffercall-index>,<vulkan-drawcall-index>,<vulkan-queuesubmitcall-index>
+              Dump gpu resources for the specified draw call in the specific
+              command buffer, during the specific queuesubmit call.
+              This option can be repeated to initiate multple dumps of
+              gpu resources.
+
 ```
 
 ### Key Controls
