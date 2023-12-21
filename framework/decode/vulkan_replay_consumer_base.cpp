@@ -6818,12 +6818,13 @@ void VulkanReplayConsumerBase::OverrideCmdBeginRenderPass(
 
             depth_img_info = object_info_table_.GetImageInfo(depth_img_view_info->image_id);
             assert(depth_img_info);
-            VkAttachmentStoreOp depth_att_storeOp = render_pass_info->attachment_descs[depth_att_idx].storeOp;
-            depth_final_layout                    = render_pass_info->attachment_descs[depth_att_idx].finalLayout;
+            depth_att_storeOp  = render_pass_info->attachment_descs[depth_att_idx].storeOp;
+            depth_final_layout = render_pass_info->attachment_descs[depth_att_idx].finalLayout;
         }
         else
         {
             depth_img_info = nullptr;
+            depth_att_storeOp = VK_ATTACHMENT_STORE_OP_DONT_CARE;  //????
         }
 
         dumper.SetRenderTargets(command_buffer_info->handle,

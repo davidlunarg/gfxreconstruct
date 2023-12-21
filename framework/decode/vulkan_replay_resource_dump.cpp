@@ -100,6 +100,7 @@ VulkanReplayResourceDump::VulkanReplayResourceDump(const std::vector<uint64_t>& 
     recording_(false), inside_renderpass_(false), isolate_draw_call_(isolate_draw),
     object_info_table_(object_info_table)
 {
+#if 0
     // These should match
     assert(begin_command_buffer_index.size() == draw_indices.size());
 
@@ -113,6 +114,7 @@ VulkanReplayResourceDump::VulkanReplayResourceDump(const std::vector<uint64_t>& 
                                                       std::move(traceRays_indices[i]),
                                                       object_info_table));
     }
+#endif
 }
 
 VkResult VulkanReplayResourceDump::CloneCommandBuffer(uint64_t                   bcb_index,

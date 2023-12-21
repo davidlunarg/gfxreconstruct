@@ -41,6 +41,12 @@ typedef std::function<VulkanResourceAllocator*()> CreateResourceAllocator;
 // Default log level to use prior to loading settings.
 const util::Log::Severity kDefaultLogLevel = util::Log::Severity::kInfoSeverity;
 
+// Indices to --dump-resources args stored in dump_resources_params array below
+const uint32_t kdr_BeginCommandBufferIndex = 0;
+const uint32_t kdr_DrawIndex = 1;
+const uint32_t kdr_QueueSubmintIndex = 2;
+
+
 // Sascha's Compute ray tracing
 // static constexpr uint64_t g_BeginCommandBuffer_Index = 185;
 // static constexpr uint64_t g_CmdDraw_Index            = 0;
@@ -110,11 +116,11 @@ struct VulkanReplayOptions : public ReplayOptions
     float                        screenshot_scale;
     std::string                  replace_dir;
 
-    std::vector<uint64_t>              BeginCommandBuffer_Index{ std::move(g_BeginCommandBuffer_Index) };
-    std::vector<std::vector<uint64_t>> CmdDraw_Index{ std::move(g_CmdDraw_Index) };
-    std::vector<std::vector<uint64_t>> CmdDispatch_Index{ g_CmdDispatch_Index };
-    std::vector<std::vector<uint64_t>> CmdTraceRaysKHR_Index{ g_CmdTraceRaysKHR_Index };
-    std::vector<uint64_t>              QueueSubmit_indices{ std::move(g_QueueSubmit_Index) };
+    std::vector<uint64_t>              BeginCommandBuffer_Index;
+    std::vector<std::vector<uint64_t>> CmdDraw_Index;
+    std::vector<std::vector<uint64_t>> CmdDispatch_Index;
+    std::vector<std::vector<uint64_t>> CmdTraceRaysKHR_Index;
+    std::vector<uint64_t>              QueueSubmit_indices;
     bool                               isolate_draw{ g_isolate_draw };
 };
 
