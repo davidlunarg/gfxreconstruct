@@ -908,17 +908,20 @@ GetVulkanReplayOptions(const gfxrecon::util::ArgumentParser&           arg_parse
             bool error = false;
             if (values.size() % 3 == 0)
             {
-                for (auto i=0; i < values.size(); i+=3)
+                for (auto i = 0; i < values.size(); i += 3)
                 {
-                    std::vector<int64_t> dr_args;
-                    char *endptr;
-                    dr_args.push_back(strtol(values[i+0].c_str(), &endptr, 10));
+                    char*                 endptr;
+                    std::vector<uint64_t> dr_arg;
+                    dr_arg.push_back(strtol(values[i + 0].c_str(), &endptr, 10));
+                    replay_options.BeginCommandBuffer_Index.push_back(strtol(values[i + 0].c_str(), &endptr, 10));
+                    replay_options.CmdDispatch_Index.push_back({ 0 }); // KLUDGE, until I figure out how this is going to be set
+                    replay_options.CmdTraceRaysKHR_Index.push_back({ 0 }); // KLUDGE, until I figure out how this is going to be set
                     error |= (errno != 0 || *endptr != 0);
-                    dr_args.push_back(strtol(values[i+1].c_str(), &endptr, 10));
+                    dr_arg.push_back(strtol(values[i+1].c_str(), &endptr, 10));
                     error |= (errno != 0 || *endptr != 0);
-                    dr_args.push_back(strtol(values[i+2].c_str(), &endptr, 10));
+                    replay_options.CmdDraw_Index.push_back(dr_arg);
+                    replay_options.QueueSubmit_indices.push_back(strtol(values[i+2].c_str(), &endptr, 10));
                     error |= (errno != 0 || *endptr != 0);
-                    replay_options.dump_resources_params.push_back(dr_args);
                 }
             }
             // Ignore dump-resources arg errors if D3D12_SUPPORT is enabled -- args may be for D3D12 replay, so let GetDxReplayOptions generate an error.
@@ -995,9 +998,6 @@ static gfxrecon::decode::DxReplayOptions GetDxReplayOptions(const gfxrecon::util
                 GFXRECON_LOG_ERROR("Ignoring invalid --dump-resources parameter: %s", dump_resources.c_str());
             }
         }
-    } else
-    {
-            GFXRECON_LOG_ERROR("Ignoring --dump-resources, no parameters specified");
     }
 
     const std::string& memory_usage = arg_parser.GetArgumentValue(kBatchingMemoryUsageArgument);
