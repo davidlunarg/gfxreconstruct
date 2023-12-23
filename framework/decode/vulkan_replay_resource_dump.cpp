@@ -106,6 +106,8 @@ VulkanReplayResourceDump::VulkanReplayResourceDump(const std::vector<uint64_t>& 
     QueueSubmit_indices_(queueSubmit_indices),
     recording_(false), isolate_draw_call_(isolate_draw), object_info_table_(object_info_table), ignore_storeOps_(true)
 {
+    // Remove this, the values for this initialization should come from the command line
+#if 0
     // These should match
     assert(begin_command_buffer_index.size() == draw_indices.size());
 
@@ -163,6 +165,7 @@ void VulkanReplayResourceDump::EndRenderPass(VkCommandBuffer original_command_bu
 {
     CommandBufferStack* stack = FindCommandBufferStack(original_command_buffer);
     stack->EndRenderPass();
+#endif
 }
 
 VkResult VulkanReplayResourceDump::CloneCommandBuffer(uint64_t                   bcb_index,
@@ -1009,12 +1012,13 @@ VkResult VulkanReplayResourceDump::CommandBufferStack::BeginRenderPass(const Ren
 
         depth_img_info = object_info_table.GetImageInfo(depth_img_view_info->image_id);
         assert(depth_img_info);
-        VkAttachmentStoreOp depth_att_storeOp = active_renderpass->attachment_descs[depth_att_idx].storeOp;
+        depth_att_storeOp = active_renderpass->attachment_descs[depth_att_idx].storeOp;
         depth_final_layout                    = active_renderpass->attachment_descs[depth_att_idx].finalLayout;
     }
     else
     {
         depth_img_info = nullptr;
+        depth_att_storeOp = VK_ATTACHMENT_STORE_OP_STORE;
     }
 
     render_targets_.emplace_back(std::vector<RenderTargets>());
@@ -1143,12 +1147,13 @@ void VulkanReplayResourceDump::CommandBufferStack::NextSubpass(VkSubpassContents
 
         depth_img_info = object_info_table.GetImageInfo(depth_img_view_info->image_id);
         assert(depth_img_info);
-        VkAttachmentStoreOp depth_att_storeOp = active_renderpass->attachment_descs[depth_att_idx].storeOp;
+        depth_att_storeOp = active_renderpass->attachment_descs[depth_att_idx].storeOp;
         depth_final_layout                    = active_renderpass->attachment_descs[depth_att_idx].finalLayout;
     }
     else
     {
         depth_img_info = nullptr;
+        depth_att_storeOp = VK_ATTACHMENT_STORE_OP_STORE;
     }
 
     SetRenderTargets(std::move(color_att_imgs),
