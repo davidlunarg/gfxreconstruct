@@ -41,6 +41,8 @@ typedef std::function<VulkanResourceAllocator*()> CreateResourceAllocator;
 // Default log level to use prior to loading settings.
 const util::Log::Severity kDefaultLogLevel = util::Log::Severity::kInfoSeverity;
 
+static constexpr bool g_isolate_draw = false;
+
 // Indices to --dump-resources args stored in dump_resources_params array below -- NEEDED??
 const uint32_t kdr_BeginCommandBufferIndex = 0;
 const uint32_t kdr_DrawIndex = 1;
@@ -396,6 +398,14 @@ static const std::vector<std::vector<std::vector<uint64_t>>> g_RenderPassIndices
       { 2901254, 2901264 } }
 };
 
+// Structure/vector that holds dump resources command line args.
+// TODO: Delete this struct? It might be used only as temp variable holding intermediate results.
+struct ReplayOptionsTripletStruct {
+    uint64_t opt_BeginCommandBuffer_Index;
+    uint64_t opt_CmdDraw_Index;
+    uint64_t opt_QueueSubmit_Index;
+};
+
 struct VulkanReplayOptions : public ReplayOptions
 {
     bool                         enable_vulkan{ true };
@@ -415,8 +425,11 @@ struct VulkanReplayOptions : public ReplayOptions
     float                        screenshot_scale;
     std::string                  replace_dir;
 
+    std::vector<struct ReplayOptionsTripletStruct> OrigReplayOptions;
+
     std::vector<uint64_t>              BeginCommandBuffer_Index;
     std::vector<std::vector<uint64_t>> CmdDraw_Index;
+    std::vector<std::vector<std::vector<uint64_t>>> RenderPass_Indices{ g_RenderPassIndices };
     std::vector<std::vector<uint64_t>> CmdDispatch_Index;
     std::vector<std::vector<uint64_t>> CmdTraceRaysKHR_Index;
     std::vector<uint64_t>              QueueSubmit_indices;
