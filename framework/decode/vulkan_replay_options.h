@@ -117,6 +117,14 @@ static const std::vector<uint64_t>              g_QueueSubmit_Index        = { 1
 
 static constexpr bool g_isolate_draw = false;
 
+// Structure/vector that holds dump resources command line args.
+// TODO: Delete this struct? It might be used only as temp variable holding intermediate results.
+struct ReplayOptionsTripletStruct {
+    uint64_t opt_BeginCommandBuffer_Index;
+    uint64_t opt_CmdDraw_Index;
+    uint64_t opt_QueueSubmit_Index;
+};
+
 struct VulkanReplayOptions : public ReplayOptions
 {
     bool                         enable_vulkan{ true };
@@ -135,6 +143,8 @@ struct VulkanReplayOptions : public ReplayOptions
     uint32_t                     screenshot_width, screenshot_height;
     float                        screenshot_scale;
     std::string                  replace_dir;
+
+    std::vector<struct ReplayOptionsTripletStruct> OrigReplayOptions;
 
     std::vector<uint64_t>              BeginCommandBuffer_Index;
     std::vector<std::vector<uint64_t>> CmdDraw_Index;
