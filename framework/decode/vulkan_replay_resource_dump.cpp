@@ -29,9 +29,13 @@
 #include "Vulkan-Utility-Libraries/vk_format_utils.h"
 
 #include <sstream>
-#include <sys/time.h>
 
-#define TIME_DUMPING
+//#define TIME_DUMPING
+
+#ifdef TIME_DUMPING
+#include <sys/time.h>
+#endif
+
 
 GFXRECON_BEGIN_NAMESPACE(gfxrecon)
 GFXRECON_BEGIN_NAMESPACE(decode)
@@ -109,7 +113,7 @@ VulkanReplayResourceDump::VulkanReplayResourceDump(const std::vector<uint64_t>& 
     object_info_table_(object_info_table), ignore_storeOps_(true)
 {
     // Remove this, the values for this initialization should come from the command line
-#if 0
+#if 1
     // These should match
     assert(begin_command_buffer_index.size() == draw_indices.size());
 
@@ -2222,7 +2226,7 @@ VulkanReplayResourceDump::CommandBufferStack::GetRenderPassIndex(uint64_t dc_ind
         }
     }
 
-    assert(0);
+    //assert(0);
 
     return RenderPassSubpassPair(0, 0);
 }

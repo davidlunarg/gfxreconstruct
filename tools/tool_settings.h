@@ -910,28 +910,55 @@ GetVulkanReplayOptions(const gfxrecon::util::ArgumentParser&           arg_parse
             {
                 for (auto i = 0; i < values.size(); i += 3)
                 {
-                    char*                 endptr;
-                    std::vector<uint64_t> dr_arg;
-                    dr_arg.push_back(strtol(values[i + 0].c_str(), &endptr, 10));
-                    replay_options.BeginCommandBuffer_Index.push_back(strtol(values[i + 0].c_str(), &endptr, 10));
-                    replay_options.CmdDispatch_Index.push_back({ 0 }); // KLUDGE, until I figure out how this is going to be set
-                    replay_options.CmdTraceRaysKHR_Index.push_back({ 0 }); // KLUDGE, until I figure out how this is going to be set
+                    char* endptr;
+                    struct gfxrecon::decode::ReplayOptionsTripletStruct triplet;
+                    triplet.opt_BeginCommandBuffer_Index = strtol(values[i + 0].c_str(), &endptr, 10);
                     error |= (errno != 0 || *endptr != 0);
-                    dr_arg.push_back(strtol(values[i+1].c_str(), &endptr, 10));
+                    triplet.opt_CmdDraw_Index = strtol(values[i + 1].c_str(), &endptr, 10);
                     error |= (errno != 0 || *endptr != 0);
-                    replay_options.CmdDraw_Index.push_back(dr_arg);
-                    replay_options.QueueSubmit_indices.push_back(strtol(values[i+2].c_str(), &endptr, 10));
+                    triplet.opt_QueueSubmit_Index = strtol(values[i + 2].c_str(), &endptr, 10);
                     error |= (errno != 0 || *endptr != 0);
+                    if (!error)
+                    {
+                        replay_options.OrigReplayOptions.push_back(triplet);
+                    }
                 }
             }
-            // Ignore dump-resources arg errors if D3D12_SUPPORT is enabled -- args may be for D3D12 replay, so let GetDxReplayOptions generate an error.
+
 #if !defined(D3D12_SUPPORT)
+            // Ignore dump-resources arg errors if D3D12_SUPPORT is enabled -- args may be for D3D12 replay, so let GetDxReplayOptions generate an error.
             if (error)
             {
                 replay_options.dump_resources_params.erase();
                 GFXRECON_LOG_ERROR("The parameter to --dump-resources is invalid.");
             }
 #endif
+            if (!error)
+            {
+                // Transfer dr args to vectors
+                for (auto it=replay_options.OrigReplayOptions.begin(); it != replay_options.OrigReplayOptions.end(); it++)
+                {
+                    replay_options.BeginCommandBuffer_Index.push_back(it->opt_BeginCommandBuffer_Index);
+                    replay_options.QueueSubmit_indices.push_back(it->opt_QueueSubmit_Index);
+
+                    // Get index of BeginCommandBuffer_Index item we just inserted into
+                    size_t cdi = std::find(replay_options.BeginCommandBuffer_Index.begin(),replay_options.BeginCommandBuffer_Index.end(), it->opt_BeginCommandBuffer_Index) -
+                                 replay_options.BeginCommandBuffer_Index.begin();
+
+                    if (replay_options.CmdDraw_Index.size() <= cdi)
+                    {
+                        // Add a row to CommandDraw_Index by pushing new value
+                        replay_options.CmdDraw_Index.push_back({it->opt_CmdDraw_Index});
+                        replay_options.CmdDispatch_Index.push_back({it->opt_CmdDraw_Index});      //TODO: This is a kludge.
+                        replay_options.CmdTraceRaysKHR_Index.push_back({it->opt_CmdDraw_Index});  //TODO: This is a kludge
+                    }
+                    else
+                    {
+                        // Append a new value to existing CommandDraw_Index row
+                        replay_options.CmdDraw_Index[cdi].push_back(it->opt_CmdDraw_Index);
+                    }
+                }
+            }
         }
     }
 
