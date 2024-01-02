@@ -116,7 +116,8 @@ const char kDxTwoPassReplay[]             = "--dx12-two-pass-replay";
 const char kDxOverrideObjectNames[]       = "--dx12-override-object-names";
 const char kBatchingMemoryUsageArgument[] = "--batching-memory-usage";
 #endif
-const char kDumpResourcesArgument[]       = "--dump-resources";
+const char kDumpResourcesArgument[]             = "--dump-resources";
+const char kDumpResourcesBeforeDrawOption[]     = "--dump-resources-before-draw";
 
 enum class WsiPlatform
 {
@@ -949,7 +950,7 @@ GetVulkanReplayOptions(const gfxrecon::util::ArgumentParser&           arg_parse
                     {
                         // Add a row to CommandDraw_Index by pushing new value
                         replay_options.CmdDraw_Index.push_back({it->opt_CmdDraw_Index});
-                        replay_options.CmdDispatch_Index.push_back({it->opt_CmdDraw_Index});      //TODO: This is a kludge.
+                        replay_options.CmdDispatch_Index.push_back({it->opt_CmdDraw_Index});      //TODO: This is a kludge
                         replay_options.CmdTraceRaysKHR_Index.push_back({it->opt_CmdDraw_Index});  //TODO: This is a kludge
                         replay_options.RenderPass_Indices.push_back({{it->opt_CmdDraw_Index}});   //TODO: This is a kludge
                     }
@@ -962,6 +963,8 @@ GetVulkanReplayOptions(const gfxrecon::util::ArgumentParser&           arg_parse
             }
         }
     }
+
+    replay_options.dump_rts_before_dc = arg_parser.IsOptionSet(kDumpResourcesBeforeDrawOption);
 
     return replay_options;
 }

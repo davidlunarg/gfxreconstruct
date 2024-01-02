@@ -64,7 +64,6 @@ static const std::vector<std::vector<uint64_t>>              g_CmdDispatch_Index
 static const std::vector<std::vector<uint64_t>>              g_CmdTraceRaysKHR_Index = { { 0 } };
 static const std::vector<uint64_t>                           g_QueueSubmit_Index     = { 579 };
 static const std::vector<std::vector<std::vector<uint64_t>>> g_RenderPassIndices     = { { { 108, 125 } } };
-static const bool                                            g_dump_rts_before_dc    = true;
 
 // =============================================
 

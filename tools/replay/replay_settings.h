@@ -31,7 +31,7 @@ const char kOptions[] =
     "opcd|--omit-pipeline-cache-data,--remove-unsupported,--validate,--debug-device-lost,--create-dummy-allocations,--"
     "screenshot-all,--onhb|--omit-null-hardware-buffers,--qamr|--quit-after-measurement-"
     "range,--fmr|--flush-measurement-range,--use-captured-swapchain-indices,--dcp,--discard-cached-psos,"
-    "--use-cached-psos,--dx12-override-object-names";
+    "--use-cached-psos,--dx12-override-object-names,--dump-resources-before-draw";
 const char kArguments[] =
     "--log-level,--log-file,--gpu,--gpu-group,--pause-frame,--wsi,--surface-index,-m|--memory-translation,"
     "--replace-shaders,--screenshots,--denied-messages,--allowed-messages,--screenshot-format,--"
@@ -224,6 +224,15 @@ static void PrintUsage(const char* exe_name)
     GFXRECON_WRITE_CONSOLE("          \t\treturned by vkEnumeratePhysicalDeviceGroups.  Replay may fail");
     GFXRECON_WRITE_CONSOLE("          \t\tif the specified device group is not compatible with the");
     GFXRECON_WRITE_CONSOLE("          \t\toriginal capture device group.");
+    GFXRECON_WRITE_CONSOLE("  --dump-resources <vulkan-begincommandbuffercall-index>,<vulkan-drawcall-index>,<vulkan-queuesubmitcall-index>");
+    GFXRECON_WRITE_CONSOLE("          \t\tOutput gpu resources after the specified draw call in the specific command buffer, during");
+    GFXRECON_WRITE_CONSOLE("          \t\tthe specific queuesubmit call. Can use index of vulkan api call following the draw call");
+    GFXRECON_WRITE_CONSOLE("          \t\tto dump resources after the draw call. Option can be repeated to initiate multiple dumps.");
+    GFXRECON_WRITE_CONSOLE("  --dump-resources <filename>");
+    GFXRECON_WRITE_CONSOLE("          \t\tExtract --dump-resources args from the specified file.");
+    GFXRECON_WRITE_CONSOLE("  --dump-resources-before-draw");
+    GFXRECON_WRITE_CONSOLE("          \t\tIn addition to dumping gpu resources after the Vulkan draw calls specified by the");
+    GFXRECON_WRITE_CONSOLE("          \t\t--dump-resources argument, also dump resources before the draw calls.");
 
 #if defined(WIN32)
     GFXRECON_WRITE_CONSOLE("")
@@ -252,12 +261,6 @@ static void PrintUsage(const char* exe_name)
     GFXRECON_WRITE_CONSOLE("          \t\tInclude vertex, index, const buffer, shader resource, render target,");
     GFXRECON_WRITE_CONSOLE("          \t\tand depth stencil. And for before and after drawcall.");
 #endif
-    GFXRECON_WRITE_CONSOLE("  --dump-resources <vulkan-begincommandbuffercall-index>,<vulkan-drawcall-index>,<vulkan-queuesubmitcall-index>");
-    GFXRECON_WRITE_CONSOLE("          \t\tOutput gpu resources before the specified draw call in the specific command buffer, during");
-    GFXRECON_WRITE_CONSOLE("          \t\tthe specific queuesubmit call. Can use index of vulkan api call following the draw call");
-    GFXRECON_WRITE_CONSOLE("          \t\tto dump resources after the draw call. Option can be repeated to initiate multiple dumps.");
-    GFXRECON_WRITE_CONSOLE("  --dump-resources <filename>");
-    GFXRECON_WRITE_CONSOLE("          \t\tExtract --dump-resources args from the specified file.");
 
 #if defined(_DEBUG)
     GFXRECON_WRITE_CONSOLE("  --no-debug-popup\tDisable the 'Abort, Retry, Ignore' message box");
