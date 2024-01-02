@@ -429,11 +429,10 @@ struct VulkanReplayOptions : public ReplayOptions
     float                        screenshot_scale;
     std::string                  replace_dir;
 
-    // The dump-resource arg can be repeated for multiple dumps, so it is a vector of vectors
-    std::vector<std::vector<int64_t>>               dump_resources_params;
 
+    std::vector<struct ReplayOptionsTripletStruct>  OrigReplayOptions;
     std::vector<uint64_t>                           BeginCommandBuffer_Index;
-    std::vector<std::vector<uint64_t>>              CmdDraw_Index{ std::move;
+    std::vector<std::vector<uint64_t>>              CmdDraw_Index;
     std::vector<std::vector<std::vector<uint64_t>>> RenderPass_Indices;
     std::vector<std::vector<uint64_t>>              CmdDispatch_Index;
     std::vector<std::vector<uint64_t>>              CmdTraceRaysKHR_Index;

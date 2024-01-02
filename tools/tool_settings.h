@@ -951,6 +951,7 @@ GetVulkanReplayOptions(const gfxrecon::util::ArgumentParser&           arg_parse
                         replay_options.CmdDraw_Index.push_back({it->opt_CmdDraw_Index});
                         replay_options.CmdDispatch_Index.push_back({it->opt_CmdDraw_Index});      //TODO: This is a kludge.
                         replay_options.CmdTraceRaysKHR_Index.push_back({it->opt_CmdDraw_Index});  //TODO: This is a kludge
+                        replay_options.RenderPass_Indices.push_back({{it->opt_CmdDraw_Index}});   //TODO: This is a kludge
                     }
                     else
                     {
