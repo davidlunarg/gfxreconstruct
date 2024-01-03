@@ -1146,7 +1146,7 @@ void VulkanReplayResourceDump::CommandBufferStack::NextSubpass(VkSubpassContents
         const uint64_t              rp       = RP_index.first;
         const uint64_t              sp       = RP_index.second;
 
-        if (rp != current_renderpass || sp != current_subpass)
+        if (rp != current_renderpass)
         {
             continue;
         }
