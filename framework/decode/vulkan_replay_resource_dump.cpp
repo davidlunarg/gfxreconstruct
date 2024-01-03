@@ -352,7 +352,7 @@ void VulkanReplayResourceDump::Process_vkCmdDraw(const ApiCallInfo& call_info,
         func(*it, vertexCount, instanceCount, firstVertex, firstInstance);
     }
 
-    if (dump_rts_before_dc_ && DumpingDrawCallIndex(commandBuffer, call_info.index))
+    if (DumpingDrawCallIndex(commandBuffer, call_info.index))
     {
         FinalizeCommandBuffer(commandBuffer);
     }
@@ -379,7 +379,7 @@ void VulkanReplayResourceDump::Process_vkCmdDrawIndexed(const ApiCallInfo&   cal
         func(*it, indexCount, instanceCount, firstIndex, vertexOffset, firstInstance);
     }
 
-    if (dump_rts_before_dc_ && DumpingDrawCallIndex(commandBuffer, call_info.index))
+    if (DumpingDrawCallIndex(commandBuffer, call_info.index))
     {
         FinalizeCommandBuffer(commandBuffer);
     }
@@ -405,7 +405,7 @@ void VulkanReplayResourceDump::Process_vkCmdDrawIndirect(const ApiCallInfo&    c
         func(*it, buffer, offset, drawCount, stride);
     }
 
-    if (dump_rts_before_dc_ && DumpingDrawCallIndex(commandBuffer, call_info.index))
+    if (DumpingDrawCallIndex(commandBuffer, call_info.index))
     {
         FinalizeCommandBuffer(commandBuffer);
     }
@@ -431,7 +431,7 @@ void VulkanReplayResourceDump::Process_vkCmdDrawIndexedIndirect(const ApiCallInf
         func(*it, buffer, offset, drawCount, stride);
     }
 
-    if (dump_rts_before_dc_ && DumpingDrawCallIndex(commandBuffer, call_info.index))
+    if (DumpingDrawCallIndex(commandBuffer, call_info.index))
     {
         FinalizeCommandBuffer(commandBuffer);
     }
@@ -459,7 +459,7 @@ void VulkanReplayResourceDump::Process_vkCmdDrawIndirectCount(const ApiCallInfo&
         func(*it, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
     }
 
-    if (dump_rts_before_dc_ && DumpingDrawCallIndex(commandBuffer, call_info.index))
+    if (DumpingDrawCallIndex(commandBuffer, call_info.index))
     {
         FinalizeCommandBuffer(commandBuffer);
     }
@@ -487,7 +487,7 @@ void VulkanReplayResourceDump::Process_vkCmdDrawIndexedIndirectCount(const ApiCa
         func(*it, buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride);
     }
 
-    if (dump_rts_before_dc_ && DumpingDrawCallIndex(commandBuffer, call_info.index))
+    if (DumpingDrawCallIndex(commandBuffer, call_info.index))
     {
         FinalizeCommandBuffer(commandBuffer);
     }
