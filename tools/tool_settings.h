@@ -930,7 +930,7 @@ GetVulkanReplayOptions(const gfxrecon::util::ArgumentParser&           arg_parse
             // Ignore dump-resources arg errors if D3D12_SUPPORT is enabled -- args may be for D3D12 replay, so let GetDxReplayOptions generate an error.
             if (error)
             {
-                replay_options.dump_resources_params.erase();
+                // replay_options.dump_resources_params.erase();
                 GFXRECON_LOG_ERROR("The parameter to --dump-resources is invalid.");
             }
 #endif
