@@ -30,6 +30,7 @@
 #include "util/defines.h"
 #include "vulkan/vulkan.h"
 
+#include <string>
 #include <vector>
 #include <unordered_map>
 #include <utility> // std::pair
@@ -275,7 +276,7 @@ class VulkanReplayResourceDump
 
         uint32_t GetActiveCommandBuffers(cmd_buf_it& first, cmd_buf_it& last) const;
 
-        void DumpAttachments(uint64_t dc_index) const;
+        std::list<std::string> DumpAttachments(uint64_t dc_index) const;
 
         descriptor_set_t bound_descriptor_sets[kBindPoint_count];
 

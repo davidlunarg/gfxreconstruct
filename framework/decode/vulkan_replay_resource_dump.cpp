@@ -24,6 +24,10 @@
 #include "graphics/vulkan_resources_util.h"
 #include "util/image_writer.h"
 #include "util/buffer_writer.h"
+#include "util/file_output_stream.h"
+#include "util/json_util.h"
+#include "decode/json_writer.h"
+#include "../build/project_version.h"       // KLUDGEY - fix this in CMakefile??
 #include "vulkan_replay_resource_dump.h"
 
 #include "Vulkan-Utility-Libraries/vk_format_utils.h"
@@ -493,8 +497,10 @@ void VulkanReplayResourceDump::Process_vkCmdDrawIndexedIndirectCount(const ApiCa
     }
 }
 
-void VulkanReplayResourceDump::CommandBufferStack::DumpAttachments(uint64_t cmd_buf_index) const
+std::list<std::string> VulkanReplayResourceDump::CommandBufferStack::DumpAttachments(uint64_t cmd_buf_index) const
 {
+    std::list<std::string> filelist;  // Return value. Will return a list of filenames that were dumped.
+    
     assert(device_table != nullptr);
 
     const size_t                dc_index = dc_indices[CmdBufToDCVectorIndex(cmd_buf_index)];
@@ -505,7 +511,7 @@ void VulkanReplayResourceDump::CommandBufferStack::DumpAttachments(uint64_t cmd_
     if (!render_targets_[rp][sp].color_att_imgs.size() && render_targets_[rp][sp].depth_att_img == nullptr)
     {
         assert(render_targets_[rp][sp].color_att_storeOps.size() == 0);
-        return;
+        return filelist;
     }
 
     assert(original_command_buffer_info);
@@ -588,6 +594,8 @@ void VulkanReplayResourceDump::CommandBufferStack::DumpAttachments(uint64_t cmd_
                                              data.data(),
                                              stride,
                                              output_image_format);
+
+            filelist.push_back(filename.str());
         }
         // else
         // {
@@ -669,7 +677,10 @@ void VulkanReplayResourceDump::CommandBufferStack::DumpAttachments(uint64_t cmd_
                                          data.data(),
                                          stride,
                                          VkFormatToImageWriterDataFormat(image_info->format));
+        filelist.push_back(filename.str());
     }
+
+    return filelist;
 }
 
 VkResult VulkanReplayResourceDump::ModifyAndSubmit(std::vector<VkSubmitInfo>  modified_submit_infos,
@@ -820,7 +831,90 @@ VkResult VulkanReplayResourceDump::ModifyAndSubmit(std::vector<VkSubmitInfo>  mo
                     t0 = tim.tv_sec + (tim.tv_usec / 1000.0);
 #endif
                     // Dump resources
-                    stack->DumpAttachments(cb);
+                    
+                    // Create attachment files
+                    printf("%zu\n", stack->dc_indices[stack->CmdBufToDCVectorIndex(cb)]);
+                    std::list<std::string> filelist = stack->DumpAttachments(cb);
+
+
+                    // Open json output file
+                    FILE *json_out_file_handle;
+                    static int jc=0;
+                    std::string filename = "output" + std::to_string(jc++) + ".json";
+                    gfxrecon::util::platform::FileOpen(&json_out_file_handle, filename.c_str(), "w");  // NEED TO REALLY SET FILE NAME
+                    if (!json_out_file_handle)
+                    {
+                        // ERROR....
+                    }
+                    gfxrecon::util::FileNoLockOutputStream out_stream{ json_out_file_handle, false };
+                    
+                    // This was leveraged from gfxrecon_convert code. Some of the options don't make sense for dump resource.
+                    // Need to figure out if they are really needed...
+                    gfxrecon::util::JsonOptions            json_options;
+                    json_options.root_dir      = "."; //output_dir;     //NEED TO SET CORRECT DIR
+                    json_options.data_sub_dir  = ".";  //filename_stem;  //NEED TO SET CORRECT DIR
+                    json_options.format        = gfxrecon::util::JsonFormat::JSON;
+                    json_options.dump_binaries = true;  
+                    json_options.expand_flags  = false;
+
+                    gfxrecon::decode::JsonWriter json_writer{ json_options,
+                                                              GFXRECON_PROJECT_VERSION_STRING,
+                                                              "x.gfxr"};    // FIX THIS
+                    //file_processor.SetAnnotationProcessor(&json_writer);
+
+                    json_writer.StartStream(&out_stream);
+
+                    // Output attachments to json output file
+
+                    if (filelist.size() > 0)
+                    {
+                        nlohmann::ordered_json attachmentfiles;
+                        auto& json_data=json_writer.WriteBlockStart();
+                        std::list<std::string>::iterator it;
+                        for (it=filelist.begin(); it!=filelist.end(); it++)
+                        {
+                            auto& json_data=json_writer.WriteBlockStart();
+                            if (it->find("COLOR") != std::string::npos)
+                                attachmentfiles["colorImage"] = *it;
+                            else if (it->find("DEPTH") != std::string::npos)
+                                attachmentfiles["depthImage"] = *it;
+                        }
+                        json_data["attachmentFiles"] = attachmentfiles;
+                        json_writer.WriteBlockEnd();
+                    }
+
+#if 0
+                    // Output resources as json
+                    auto& json_data=json_writer.WriteBlockStart();
+                    //const util::JsonOptions& options   = json_writer.GetOptions();
+                    json_data["xyzzy"] = 1;
+                    json_data["abcd"]  = "A";
+                    json_writer.WriteBlockEnd();
+
+                    nlohmann::ordered_json object; //      = json_data["xyzzy"];
+                    object["pqrs"] = 2;
+                    object["abcd"] = "B";
+                    object["3"]        = 3;
+                    auto& json_data2=json_writer.WriteBlockStart();
+                    json_data["ABD"] = object;
+                    json_writer.WriteBlockEnd();
+
+                    //json_data2["123"] = json_data;
+                    //auto& json_data2=json_writer.WriteBlockStart();
+
+                    // Output state info as json???
+
+                    // Output attachmets as json and files
+                    //printf("%llu\n", stack->dc_indices[0]);
+                    //printf("%zu\n", cb);
+                    
+                    // Output more state info as json???
+#endif
+
+                    // Close json output
+                    json_writer.EndStream();
+                    gfxrecon::util::platform::FileClose(json_out_file_handle);
+
 
 #ifdef TIME_DUMPING
                     gettimeofday(&tim, NULL);
