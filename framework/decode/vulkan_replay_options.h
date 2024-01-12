@@ -426,6 +426,7 @@ struct VulkanReplayOptions : public ReplayOptions
     uint32_t                     screenshot_width, screenshot_height;
     float                        screenshot_scale;
     std::string                  replace_dir;
+    std::string                  dump_resources;
 
     std::vector<struct ReplayOptionsTripletStruct>  OrigReplayOptions;
     std::vector<uint64_t>                           BeginCommandBuffer_Index{ g_BeginCommandBuffer_indices };

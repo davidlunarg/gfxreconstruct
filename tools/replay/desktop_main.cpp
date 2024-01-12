@@ -33,6 +33,7 @@
 #include "graphics/fps_info.h"
 #include "util/argument_parser.h"
 #include "util/logging.h"
+#include "json/json.h"
 
 #if defined(D3D12_SUPPORT)
 #include "generated/generated_dx12_decoder.h"
@@ -85,6 +86,25 @@ void WaitForExit()
 #else
 void WaitForExit() {}
 #endif
+
+static std::string to_lower(std::string s)
+{
+   for (char &c: s)
+   {
+       c = tolower(c);
+   }
+   return s;
+}
+
+static bool ends_with(std::string const &fullString, std::string const &ending)
+{
+    bool rval = false;
+    if (fullString.length() >= ending.length())
+    {
+        rval = (0 == fullString.compare(fullString.length() - ending.length(), ending.length(), ending));
+    }
+    return rval;
+}
 
 const char kLayerEnvVar[] = "VK_INSTANCE_LAYERS";
 
@@ -139,6 +159,81 @@ int main(int argc, const char** argv)
             gfxrecon::decode::VulkanTrackedObjectInfoTable tracked_object_info_table;
             gfxrecon::decode::VulkanReplayOptions          vulkan_replay_options =
                 GetVulkanReplayOptions(arg_parser, filename, &tracked_object_info_table);
+
+            // Process --dump-resources param. We do it here so that other tools that use the VulkanReplayOptions
+            // class won't have to link in json processing library.
+            if (!vulkan_replay_options.dump_resources.empty())
+            {
+
+                // Check to see if dump-resource arg value is a json file.  Do this
+                // by simply checking the file name extenstion.
+                if (ends_with(to_lower(vulkan_replay_options.dump_resources), ".json"))
+                {
+                    try
+                    {
+                        std::ifstream dr_json_file(vulkan_replay_options.dump_resources, std::ifstream::binary);
+                        Json::Value   jargs;
+                        dr_json_file >> jargs;
+#if 1
+                        int s = jargs["BeginCommandBuffer"].size();
+                        int i = jargs["BeginCommandBuffer"][0].asInt();
+                        printf("@@ %d %d\n", s, i);
+                        s = jargs["CmdDraw"].size();
+                        i = jargs["CmdDraw"][1][5].asInt();
+                        printf("@@ %d %d\n", s, i);
+#endif
+                    }
+                    catch (...)
+                    {
+                        printf("json parse error\n");
+                        fflush(stdout);
+                        exit(0);
+                    }
+                    fflush(stdout);
+                    exit(0);
+
+                     // TODO: Transfer jargs to vectors in vulkan_replay_options
+                 }
+                 else
+                 {
+                     // Check to see if dump-resource arg value is a file. If it is, read the dump args from the file.
+                     // Allow either spaces or commas to separate fields in the file.
+                     std::ifstream infile(vulkan_replay_options.dump_resources);
+                     std::vector<std::string> drargs;
+                     if (!infile.fail())
+                     {
+                         bool err = false;
+                         for (std::string line; std::getline(infile, line); )
+                         {
+                             // Remove leading and trailing spaces
+                             line.erase(0, line.find_first_not_of(" "));
+                             line.erase(line.find_last_not_of(" ")+1);
+             
+                             // Remove instances of multiple spaces.
+                             // This is slow and inefficient, but it's compact code
+                             // and the loop should be executed only a few times.
+                             while (line.find("  ") != std::string::npos)
+                             {
+                                 line.replace(line.find("  "), 2, " ");
+                             }
+             
+                             // Replace spaces with commas
+                             std::replace(line.begin(), line.end(), ' ', ',');
+             
+                             // Save the modified line
+                             drargs.push_back(line);
+                         }
+                     }
+                     else
+                     {
+                         // dump-resource args are all specified on the command line
+                         drargs.push_back(vulkan_replay_options.dump_resources);
+                     }
+
+                     // TODO: ....Process dump_resources arg lines from drargs...
+                }
+            }
+
 
             uint32_t start_frame = 0;
             uint32_t end_frame   = 0;

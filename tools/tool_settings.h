@@ -162,6 +162,27 @@ const char kDefaultScreenshotDir[] = "/sdcard";
 const char kDefaultScreenshotDir[] = "";
 #endif
 
+#if 0
+static std::string to_lower(std::string s)
+{
+   for (char &c: s)
+   {
+       c = tolower(c);
+   }
+   return s;
+}
+
+static bool ends_with(std::string const &fullString, std::string const &ending)
+{
+    bool rval = false;
+    if (fullString.length() >= ending.length())
+    {
+        rval = (0 == fullString.compare(fullString.length() - ending.length(), ending.length(), ending));
+    }
+    return rval;
+}
+#endif
+
 static void ProcessDisableDebugPopup(const gfxrecon::util::ArgumentParser& arg_parser)
 {
 #if defined(WIN32) && defined(_DEBUG)
@@ -899,10 +920,52 @@ GetVulkanReplayOptions(const gfxrecon::util::ArgumentParser&           arg_parse
     {
         replay_options.surface_index = std::stoi(surface_index);
     }
+    
+    replay_options.dump_resources = arg_parser.GetArgumentValue(kDumpResourcesArgument);
 
+#if 0
+    // Check to see if dump-resource arg value is a json file.  Do this
+    // by simply checking the file name extenstion.
     const std::string& dump_resources = arg_parser.GetArgumentValue(kDumpResourcesArgument);
-    if (!dump_resources.empty())
+    if (!dump_resources.empty() && ends_with(to_lower(dump_resources), ".json"))
     {
+        //.... Read json file
+    }
+    else
+    {
+        // Check to see if dump-resource arg value is a file. If it is, read the dump args from the file.
+        // Allow either spaces or commas to separate fields in the file.
+        std::ifstream infile(arg_parser.GetArgumentValue(kDumpResourcesArgument));
+        std::vector<std::string> drargs;
+        if (!infile.fail())
+        {
+            bool err = false;
+            for (std::string line; std::getline(infile, line); )
+            {
+                // Remove leading and trailing spaces
+                line.erase(0, line.find_first_not_of(" "));
+                line.erase(line.find_last_not_of(" ")+1);
+
+                // Remove instances of multiple spaces.
+                // This is slow and inefficient, but it's compact code
+                // and the loop should be executed only a few times.
+                while (line.find("  ") != std::string::npos)
+                {
+                    line.replace(line.find("  "), 2, " ");
+                }
+
+                // Replace spaces with commas
+                std::replace(line.begin(), line.end(), ' ', ',');
+
+                // Save the modified line
+                drargs.push_back(line);
+            }
+        }
+
+
+
+
+
         std::vector<std::string> values = gfxrecon::util::strings::SplitString(dump_resources, ',');
         if (!values.empty())
         {
@@ -976,6 +1039,7 @@ GetVulkanReplayOptions(const gfxrecon::util::ArgumentParser&           arg_parse
             }
         }
     }
+#endif
 
     replay_options.dump_rts_before_dc = arg_parser.IsOptionSet(kDumpResourcesBeforeDrawOption);
 
