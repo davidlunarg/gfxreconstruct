@@ -160,11 +160,10 @@ int main(int argc, const char** argv)
             gfxrecon::decode::VulkanReplayOptions          vulkan_replay_options =
                 GetVulkanReplayOptions(arg_parser, filename, &tracked_object_info_table);
 
-            // Process --dump-resources param. We do it here so that other tools that use the VulkanReplayOptions
-            // class won't have to link in json processing library.
+            // Process --dump-resources param. We do it here so that other gfxr tools that use
+            // the VulkanReplayOptions class won't have to link in the json library.
             if (!vulkan_replay_options.dump_resources.empty())
             {
-
                 // Check to see if dump-resource arg value is a json file.  Do this
                 // by simply checking the file name extenstion.
                 if (ends_with(to_lower(vulkan_replay_options.dump_resources), ".json"))
@@ -174,25 +173,73 @@ int main(int argc, const char** argv)
                         std::ifstream dr_json_file(vulkan_replay_options.dump_resources, std::ifstream::binary);
                         Json::Value   jargs;
                         dr_json_file >> jargs;
-#if 1
-                        int s = jargs["BeginCommandBuffer"].size();
-                        int i = jargs["BeginCommandBuffer"][0].asInt();
-                        printf("@@ %d %d\n", s, i);
-                        s = jargs["CmdDraw"].size();
-                        i = jargs["CmdDraw"][1][5].asInt();
-                        printf("@@ %d %d\n", s, i);
-#endif
+
+                        // Transfer jargs to vectors in vulkan_replay_options
+                        for (int idx0=0; idx0 <jargs["BeginCommandBuffer"].size(); idx0++)
+                        {
+                            vulkan_replay_options.BeginCommandBuffer_Indices.push_back(jargs["BeginCommandBuffer"][idx0].asUInt64());
+                        }
+                        for (int idx0=0; idx0 <jargs["CmdDraw"].size(); idx0++)
+                        {
+                            vulkan_replay_options.CmdDraw_Indices.push_back(std::vector<uint64_t>());
+                            for (int idx1=0; idx1 <jargs["CmdDraw"][idx0].size(); idx1++)
+                            {
+                                vulkan_replay_options.CmdDraw_Indices[idx0].push_back(jargs["CmdDraw"][idx0][idx1].asUInt64());
+                            }
+                        }
+                        for (int idx0=0; idx0 <jargs["RenderPass"].size(); idx0++)
+                        {
+                            vulkan_replay_options.RenderPass_Indices.push_back(std::vector<std::vector<uint64_t>>());
+                            for (int idx1=0; idx1 <jargs["RenderPass"][idx0].size(); idx1++)
+                            {
+                                vulkan_replay_options.RenderPass_Indices[idx0].push_back(std::vector<uint64_t>());
+                                for (int idx2=0; idx2 <jargs["RenderPass"][idx0][idx1].size(); idx2++)
+                                {
+                                    vulkan_replay_options.RenderPass_Indices[idx0][idx1].push_back(jargs["RenderPass"][idx0][idx1][idx2].asUInt64());
+                                }
+                            }
+                        }
+                        for (int idx0=0; idx0 <jargs["NextSubPass"].size(); idx0++)
+                        {
+                            vulkan_replay_options.NextSubPass_Indices.push_back(std::vector<std::vector<uint64_t>>());
+                            for (int idx1=0; idx1 <jargs["NextSubPass"][idx0].size(); idx1++)
+                            {
+                                vulkan_replay_options.NextSubPass_Indices[idx0].push_back(std::vector<uint64_t>());
+                                for (int idx2=0; idx2 <jargs["NextSubPass"][idx0][idx1].size(); idx2++)
+                                {
+                                    jargs["NextSubPass"][idx0][idx1][idx2].asUInt64();   // DEBUG
+                                    vulkan_replay_options.NextSubPass_Indices[idx0][idx1].push_back(jargs["NextSubPass"][idx0][idx1][idx2].asUInt64());
+                                }
+                            }
+                        }
+                        for (int idx0=0; idx0 <jargs["CmdDispatch"].size(); idx0++)
+                        {
+                            vulkan_replay_options.CmdDispatch_Indices.push_back(std::vector<uint64_t>());
+                            for (int idx1=0; idx1 <jargs["CmdDispatch"][idx0].size(); idx1++)
+                            {
+                                vulkan_replay_options.CmdDispatch_Indices[idx0].push_back(jargs["CmdDispatch"][idx0][idx1].asUInt64());
+                            }
+                        }
+                        for (int idx0=0; idx0 <jargs["CmdTraceRays"].size(); idx0++)
+                        {
+                            vulkan_replay_options.CmdTraceRaysKHR_Indices.push_back(std::vector<uint64_t>());
+                            for (int idx1=0; idx1 <jargs["CmdTraceRays"][idx0].size(); idx1++)
+                            {
+                                vulkan_replay_options.CmdTraceRaysKHR_Indices[idx0].push_back(jargs["CmdTraceRays"][idx0][idx1].asUInt64());
+                            }
+                        }
+                        for (int idx0=0; idx0 <jargs["QueueSubmit"].size(); idx0++)
+                        {
+                            vulkan_replay_options.QueueSubmit_Indices.push_back(jargs["QueueSubmit"][idx0].asUInt64());
+                        }
+
+                        exit(0);  // TODO: For turnon. Remove me.
                     }
                     catch (...)
                     {
-                        printf("json parse error\n");
-                        fflush(stdout);
+                        GFXRECON_LOG_ERROR("Error reading file %s. Bad json format?", vulkan_replay_options.dump_resources.c_str());
                         exit(0);
                     }
-                    fflush(stdout);
-                    exit(0);
-
-                     // TODO: Transfer jargs to vectors in vulkan_replay_options
                  }
                  else
                  {
@@ -231,6 +278,7 @@ int main(int argc, const char** argv)
                      }
 
                      // TODO: ....Process dump_resources arg lines from drargs...
+                     exit(0);
                 }
             }
 

@@ -428,13 +428,16 @@ struct VulkanReplayOptions : public ReplayOptions
     std::string                  replace_dir;
     std::string                  dump_resources;
 
-    std::vector<struct ReplayOptionsTripletStruct>  OrigReplayOptions;
-    std::vector<uint64_t>                           BeginCommandBuffer_Index{ g_BeginCommandBuffer_indices };
-    std::vector<std::vector<uint64_t>>              CmdDraw_Index{ g_CmdDraw_indices };
-    std::vector<std::vector<std::vector<uint64_t>>> RenderPass_Indices{ g_RenderPass_indices };
-    std::vector<std::vector<uint64_t>>              CmdDispatch_Index{ g_CmdDispatch_indices };
-    std::vector<std::vector<uint64_t>>              CmdTraceRaysKHR_Index{ g_CmdTraceRaysKHR_indices };
-    std::vector<uint64_t>                           QueueSubmit_indices{ g_QueueSubmit_indices };
+    std::vector<struct ReplayOptionsTripletStruct>  OrigReplayOptions;    // TODO: Delete this??
+
+    std::vector<uint64_t>                           BeginCommandBuffer_Indices;
+    std::vector<std::vector<uint64_t>>              CmdDraw_Indices;
+    std::vector<std::vector<std::vector<uint64_t>>> RenderPass_Indices;
+    std::vector<std::vector<std::vector<uint64_t>>> NextSubPass_Indices;
+    std::vector<std::vector<uint64_t>>              CmdDispatch_Indices;
+    std::vector<std::vector<uint64_t>>              CmdTraceRaysKHR_Indices;
+    std::vector<uint64_t>                           QueueSubmit_Indices;
+
     bool                                            dump_rts_before_dc{ false };
     bool                                            isolate_draw{ false }; // How should this be set?
 };

@@ -156,12 +156,12 @@ static uint32_t GetHardwareBufferFormatBpp(uint32_t format)
 
 VulkanReplayConsumerBase::VulkanReplayConsumerBase(std::shared_ptr<application::Application> application,
                                                    const VulkanReplayOptions&                options) :
-    dumper(options.BeginCommandBuffer_Index,
-           options.CmdDraw_Index,
+    dumper(options.BeginCommandBuffer_Indices,
+           options.CmdDraw_Indices,
            options.RenderPass_Indices,
-           options.CmdDispatch_Index,
-           options.CmdTraceRaysKHR_Index,
-           options.QueueSubmit_indices,
+           options.CmdDispatch_Indices,
+           options.CmdTraceRaysKHR_Indices,
+           options.QueueSubmit_Indices,
            options.dump_rts_before_dc,
            options.isolate_draw,
            object_info_table_),
