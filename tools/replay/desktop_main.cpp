@@ -277,8 +277,90 @@ int main(int argc, const char** argv)
                          drargs.push_back(vulkan_replay_options.dump_resources);
                      }
 
-                     // TODO: ....Process dump_resources arg lines from drargs...
-                     exit(0);
+                     // TODO: FIGURE OUT HOW TO PUT THIS INTO THE MULTI-DIM ARRAYS...
+                     // Process non-json dump_resources args
+                     bool parse_error=false;
+                     for (int i=0; i<drargs.size() && !parse_error; i++)
+                     {
+                        uint64_t BeginCommandBuffer = 0;
+                        uint64_t CmdDraw = 0;
+                        uint64_t RenderPass = 0;
+                        uint64_t NextSubPass = 0;
+                        uint64_t CmdDispatch = 0;
+                        uint64_t CmdTraceRays = 0;
+                        uint64_t QueueSubmit = 0;
+                        size_t fstart;
+                        errno=0;
+
+                        //TODO: Parse error doesn't detect CmdDraw=88234x23984,NextSubPass=1982743
+                        //Need better parsing....
+                        // Maybe need to consume each line in order:
+                        //    Consume to first = and compare against possible fields
+                        //    Consume to next  ,  and make sure we have a good number
+
+                        if ((fstart = drargs[i].find("BeginCommandBuffer=")) != std::string::npos)
+                        {
+                            BeginCommandBuffer = strtol(drargs[i].c_str()+fstart+strlen("BeginCommandBuffer="), NULL, 10);
+                            parse_error |= (errno != 0);
+                        }
+                        if ((fstart = drargs[i].find("CmdDraw=")) != std::string::npos)
+                        {
+                            CmdDraw = strtol(drargs[i].c_str()+fstart+strlen("CmdDraw="), NULL, 10);
+                            parse_error |= (errno != 0);
+                        }
+                        if ((fstart = drargs[i].find("RenderPass=")) != std::string::npos)
+                        {
+                            RenderPass = strtol(drargs[i].c_str()+fstart+strlen("RenderPass="), NULL, 10);
+                            parse_error |= (errno != 0);
+                        }
+                        if ((fstart = drargs[i].find("NextSubPass=")) != std::string::npos)
+                        {
+                            NextSubPass = strtol(drargs[i].c_str()+fstart+strlen("NextSubPass="), NULL, 10);
+                            parse_error |= (errno != 0);
+                        }
+                        if ((fstart = drargs[i].find("CmdDispatch=")) != std::string::npos)
+                        {
+                            CmdDispatch = strtol(drargs[i].c_str()+fstart+strlen("CmdDispatch="), NULL, 10);
+                            parse_error |= (errno != 0);
+                        }
+                        if ((fstart = drargs[i].find("CmdTraceRays=")) != std::string::npos)
+                        {
+                            CmdTraceRays = strtol(drargs[i].c_str()+fstart+strlen("CmdTraceRays="), NULL, 10);
+                            parse_error |= (errno != 0);
+                        }
+                        if ((fstart = drargs[i].find("QueueSubmit=")) != std::string::npos)
+                        {
+                            QueueSubmit = strtol(drargs[i].c_str()+fstart+strlen("QueueSubmit="), NULL, 10);
+                            parse_error |= (errno != 0);
+                        }
+
+                        if (!parse_error)
+                        {
+                            vulkan_replay_options.BeginCommandBuffer_Indices.push_back(BeginCommandBuffer);
+
+                            vulkan_replay_options.CmdDraw_Indices.push_back(std::vector<uint64_t>());
+                            vulkan_replay_options.CmdDraw_Indices[0].push_back(CmdDraw);
+
+                            vulkan_replay_options.RenderPass_Indices.push_back(std::vector<std::vector<uint64_t>>());
+                            vulkan_replay_options.RenderPass_Indices[0].push_back(std::vector<uint64_t>());
+                            vulkan_replay_options.RenderPass_Indices[0][0].push_back(RenderPass);
+
+                            vulkan_replay_options.NextSubPass_Indices.push_back(std::vector<std::vector<uint64_t>>());
+                            vulkan_replay_options.NextSubPass_Indices[0].push_back(std::vector<uint64_t>());
+                            vulkan_replay_options.NextSubPass_Indices[0][0].push_back(NextSubPass);
+                                
+                            vulkan_replay_options.CmdDispatch_Indices.push_back(std::vector<uint64_t>());
+                            vulkan_replay_options.CmdDispatch_Indices[0].push_back(CmdDispatch);
+
+                            vulkan_replay_options.CmdTraceRaysKHR_Indices.push_back(std::vector<uint64_t>());
+                            vulkan_replay_options.CmdTraceRaysKHR_Indices[0].push_back(CmdTraceRays);
+
+                            vulkan_replay_options.QueueSubmit_Indices.push_back(QueueSubmit);
+                        }
+                     }
+                     if (parse_error) {
+                        GFXRECON_LOG_ERROR("Error in args...");  //TODO: But dont gen error for dx12 form of this arg
+                     }
                 }
             }
 
