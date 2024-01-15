@@ -1081,16 +1081,10 @@ static gfxrecon::decode::DxReplayOptions GetDxReplayOptions(const gfxrecon::util
     const std::string& dump_resources = arg_parser.GetArgumentValue(kDumpResourcesArgument);
     if (!dump_resources.empty())
     {
-        // Ignore this option is it is of the form --dump-resource i1,i2,i3.  That is the Vulkan
-        // form of this option and the args should have already been parsed in GetVulkanReplayOptions.
-        std::vector<std::string> vvalues = gfxrecon::util::strings::SplitString(dump_resources, ',');
-        bool isVulkanDumpResources = false;
-        if (vvalues.size() % 3 == 0)
-        {
-            isVulkanDumpResources = true;
-        }
+        // If this option does not start with "drawcall-", consider it a Vulkan option. It should
+        // have already been processed by GetVulkanReplayOptions.
         std::vector<std::string> values = gfxrecon::util::strings::SplitString(dump_resources, '-');
-        if (!isVulkanDumpResources && !values.empty())
+        if ((dump_resources.find("drawcall-")  == 0) && !values.empty())
         {
             if (values.size() != 2)
             {
