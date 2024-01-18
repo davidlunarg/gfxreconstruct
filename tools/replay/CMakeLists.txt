@@ -39,6 +39,7 @@ target_sources(gfxrecon-replay
 
 if (WIN32)
     target_include_directories(gfxrecon-replay PUBLIC ${CMAKE_BINARY_DIR} ../../external/json/win64/include)
+    target_include_directories(gfxrecon-replay PUBLIC ${CMAKE_BINARY_DIR} ../../external/precompiled/win64)
 else()
     target_include_directories(gfxrecon-replay PUBLIC ${CMAKE_BINARY_DIR} ../../external/json/linux/include)
 endif()
