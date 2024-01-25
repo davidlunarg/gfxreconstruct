@@ -136,7 +136,8 @@ VulkanReplayResourceDumpBase::VulkanReplayResourceDumpBase(const VulkanReplayOpt
                 options.TraceRays_Indices.size() ? options.TraceRays_Indices[i] : std::vector<uint64_t>(),
                 object_info_table,
                 options.dump_rts_before_dc,
-                dump_resource_path_));
+                dump_resource_path_,
+                options.dump_resources_scale));
     }
 
 #if defined(__ANDROID__) && defined(DELETE_STALE_DUMP_FILES)
@@ -652,7 +653,9 @@ void VulkanReplayResourceDumpBase::CommandBufferStack::DumpAttachments(uint64_t 
             VK_IMAGE_ASPECT_COLOR_BIT,
             data,
             subresource_offsets,
-            subresource_sizes);
+            subresource_sizes,
+            false,
+            dump_resources_scale);
 
         util::imagewriter::DataFormats output_image_format = VkFormatToImageWriterDataFormat(image_info->format);
 
@@ -673,11 +676,11 @@ void VulkanReplayResourceDumpBase::CommandBufferStack::DumpAttachments(uint64_t 
                          << 0 << ".bmp";
             }
             const uint32_t texel_size = vkuFormatElementSizeWithAspect(image_info->format, VK_IMAGE_ASPECT_COLOR_BIT);
-            const uint32_t stride     = texel_size * image_info->extent.width;
+            const uint32_t stride     = texel_size * image_info->extent.width * dump_resources_scale;
 
             util::imagewriter::WriteBmpImage(filename.str(),
-                                             image_info->extent.width,
-                                             image_info->extent.height,
+                                             image_info->extent.width * dump_resources_scale,
+                                             image_info->extent.height * dump_resources_scale,
                                              subresource_sizes[0],
                                              data.data(),
                                              stride,
@@ -719,7 +722,9 @@ void VulkanReplayResourceDumpBase::CommandBufferStack::DumpAttachments(uint64_t 
             VK_IMAGE_ASPECT_DEPTH_BIT,
             data,
             subresource_offsets,
-            subresource_sizes);
+            subresource_sizes,
+            false,
+            dump_resources_scale);
 
         std::stringstream filename;
         if (dump_rts_before_dc)
@@ -740,11 +745,11 @@ void VulkanReplayResourceDumpBase::CommandBufferStack::DumpAttachments(uint64_t 
         const uint32_t texel_size = image_info->format != VK_FORMAT_X8_D24_UNORM_PACK32
                                         ? vkuFormatElementSizeWithAspect(image_info->format, VK_IMAGE_ASPECT_DEPTH_BIT)
                                         : 4;
-        const uint32_t stride = texel_size * image_info->extent.width;
+        const uint32_t stride = texel_size * image_info->extent.width * dump_resources_scale;
 
         util::imagewriter::WriteBmpImage(filename.str(),
-                                         image_info->extent.width,
-                                         image_info->extent.height,
+                                         image_info->extent.width * dump_resources_scale,
+                                         image_info->extent.height * dump_resources_scale,
                                          subresource_sizes[0],
                                          data.data(),
                                          stride,
@@ -1983,14 +1988,15 @@ VulkanReplayResourceDumpBase::CommandBufferStack::CommandBufferStack(
     const std::vector<uint64_t>&              traceRays_indices,
     const VulkanObjectInfoTable&              object_info_table,
     bool                                      dump_rts_before_dc,
-    std::string                               dump_resource_path) :
+    std::string                               dump_resource_path,
+    float                                     dump_resources_scale) :
     original_command_buffer_handle(VK_NULL_HANDLE),
     original_command_buffer_info(nullptr), current_index(0), dc_indices(dc_indices), RP_indices(rp_indices),
     dispatch_indices(dispatch_indices), traceRays_indices(traceRays_indices), active_renderpass(nullptr),
     active_framebuffer(nullptr), bound_pipelines{ nullptr }, current_renderpass(0), current_subpass(0),
     dump_rts_before_dc(dump_rts_before_dc), aux_command_buffer(VK_NULL_HANDLE), aux_fence(VK_NULL_HANDLE),
     device_table(nullptr), object_info_table(object_info_table), replay_device_phys_mem_props(nullptr),
-    dump_resource_path(dump_resource_path)
+    dump_resource_path(dump_resource_path), dump_resources_scale(dump_resources_scale)
 {
     must_backup_resources = dc_indices.size() > 1;
 

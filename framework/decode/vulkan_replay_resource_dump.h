@@ -245,7 +245,8 @@ class VulkanReplayResourceDumpBase
                            const std::vector<uint64_t>&              traceRays_indices,
                            const VulkanObjectInfoTable&              object_info_table,
                            bool                                      dump_rts_before_dc,
-                           std::string                               dump_resource_path);
+                           std::string                               dump_resource_path,
+                           float                                     dump_resources_scale);
 
         ~CommandBufferStack();
 
@@ -265,6 +266,7 @@ class VulkanReplayResourceDumpBase
         uint32_t                           n_subpasses;
         bool                               dump_rts_before_dc;
         std::string                        dump_resource_path;
+        float                              dump_resources_scale;
 
         std::vector<std::vector<VkRenderPass>> render_pass_clones;
         bool                                   inside_renderpass;

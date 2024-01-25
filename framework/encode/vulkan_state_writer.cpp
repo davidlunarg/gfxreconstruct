@@ -1337,7 +1337,8 @@ void VulkanStateWriter::ProcessImageMemory(const DeviceWrapper*                 
                                                                          data,
                                                                          subresource_offsets,
                                                                          subresource_sizes,
-                                                                         true);
+                                                                         false,
+                                                                         1.0);
 
             if (result == VK_SUCCESS)
             {
