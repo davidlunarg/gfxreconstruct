@@ -27,6 +27,9 @@
 #include "util/buffer_writer.h"
 #include "vulkan_replay_resource_dump.h"
 
+// TODO: If the json dump class is moved to separate header file, can include that file instead.
+#include "vulkan_replay_consumer_base.h"
+
 #include "Vulkan-Utility-Libraries/vk_format_utils.h"
 
 #include <sstream>
@@ -770,6 +773,7 @@ bool VulkanReplayResourceDumpBase::DrawCallCommandBufferContext::ShouldDumpDrawC
 }
 
 VkResult VulkanReplayResourceDumpBase::DrawCallCommandBufferContext::DumpDrawCallsAttachments(VkQueue  queue,
+                                                                                              uint64_t qs_index,
                                                                                               uint64_t bcb_index)
 {
     BackUpMutableResources(queue);
@@ -787,6 +791,8 @@ VkResult VulkanReplayResourceDumpBase::DrawCallCommandBufferContext::DumpDrawCal
                                n_drawcalls,
                                dc_indices[CmdBufToDCVectorIndex(cb)],
                                bcb_index);
+        g_dumpJson.VulkanReplayResourceDumpJsonBlockStart();
+        g_dumpJson.VulkanReplayResourceDumpJsonData("QueueSubmitIndex", qs_index);
 
         VkSubmitInfo submit_info;
         submit_info.sType                = VK_STRUCTURE_TYPE_SUBMIT_INFO;
@@ -869,6 +875,8 @@ VkResult VulkanReplayResourceDumpBase::DrawCallCommandBufferContext::DumpDrawCal
         // {
         //     return res;
         // }
+
+        g_dumpJson.VulkanReplayResourceDumpJsonBlockEnd();
     }
 
 #ifdef TIME_DUMPING
@@ -955,6 +963,10 @@ VulkanReplayResourceDumpBase::DrawCallCommandBufferContext::DumpRenderTargetAtta
                          << util::ToString<VkImageAspectFlagBits>(VK_IMAGE_ASPECT_COLOR_BIT) << "_ml_" << 0 << "_al_"
                          << 0 << util::ScreenshotFormatToCStr(image_file_format);
             }
+
+            g_dumpJson.VulkanReplayResourceDumpJsonData("DrawIndex", dc_index);   // Is there a better place to set this?
+            g_dumpJson.VulkanReplayResourceDumpJsonData("RenderTargetImage", filename.str());
+
             const uint32_t texel_size = vkuFormatElementSizeWithAspect(image_info->format, VK_IMAGE_ASPECT_COLOR_BIT);
             const uint32_t stride     = texel_size * image_info->extent.width * dump_resources_scale;
 
@@ -995,6 +1007,9 @@ VulkanReplayResourceDumpBase::DrawCallCommandBufferContext::DumpRenderTargetAtta
                          << util::ToString<VkImageAspectFlagBits>(VK_IMAGE_ASPECT_COLOR_BIT) << "_ml_" << 0 << "_al_"
                          << 0 << ".bin";
             }
+
+            g_dumpJson.VulkanReplayResourceDumpJsonData("DrawIndex", dc_index);   // Is there a better place to set this?
+            g_dumpJson.VulkanReplayResourceDumpJsonData("RenderTargetImage", filename.str());
 
             util::bufferwriter::WriteBuffer(filename.str(), data.data(), data.size());
         }
@@ -1052,6 +1067,8 @@ VulkanReplayResourceDumpBase::DrawCallCommandBufferContext::DumpRenderTargetAtta
                          << "_ml_" << 0 << "_al_" << 0 << util::ScreenshotFormatToCStr(image_file_format);
             }
 
+            g_dumpJson.VulkanReplayResourceDumpJsonData("RenderTargetDepth", filename.str());
+
             // This is a bit awkward
             const uint32_t texel_size =
                 image_info->format != VK_FORMAT_X8_D24_UNORM_PACK32
@@ -1096,6 +1113,7 @@ VulkanReplayResourceDumpBase::DrawCallCommandBufferContext::DumpRenderTargetAtta
                          << "_ml_" << 0 << "_al_" << 0 << ".bin";
             }
 
+            g_dumpJson.VulkanReplayResourceDumpJsonData("RenderTargetDepth", filename.str());
             util::bufferwriter::WriteBuffer(filename.str(), data.data(), data.size());
         }
     }
@@ -1189,7 +1207,7 @@ VkResult VulkanReplayResourceDumpBase::ModifyAndSubmit(std::vector<VkSubmitInfo>
             {
                 assert(cmd_buf_begin_map_.find(command_buffer_handles[o]) != cmd_buf_begin_map_.end());
 
-                res = dc_context->DumpDrawCallsAttachments(queue, cmd_buf_begin_map_[command_buffer_handles[o]]);
+                res = dc_context->DumpDrawCallsAttachments(queue, index, cmd_buf_begin_map_[command_buffer_handles[o]]);
                 if (res == VK_SUCCESS)
                 {
                     submitted = true;
@@ -1206,7 +1224,7 @@ VkResult VulkanReplayResourceDumpBase::ModifyAndSubmit(std::vector<VkSubmitInfo>
             {
                 assert(cmd_buf_begin_map_.find(command_buffer_handles[o]) != cmd_buf_begin_map_.end());
                 res =
-                    dr_context->DumpDispatchRaysMutableResources(queue, cmd_buf_begin_map_[command_buffer_handles[o]]);
+                    dr_context->DumpDispatchRaysMutableResources(queue, index, cmd_buf_begin_map_[command_buffer_handles[o]]);
 
                 if (res == VK_SUCCESS)
                 {
@@ -3713,6 +3731,7 @@ void VulkanReplayResourceDumpBase::DispatchRaysCommandBufferContext::DestroyMuta
 
 VkResult
 VulkanReplayResourceDumpBase::DispatchRaysCommandBufferContext::DumpDispatchRaysMutableResources(VkQueue  queue,
+                                                                                                 uint64_t qs_index,
                                                                                                  uint64_t bcb_index)
 {
 #ifdef TIME_DUMPING
@@ -3786,6 +3805,8 @@ VulkanReplayResourceDumpBase::DispatchRaysCommandBufferContext::DumpDispatchRays
     gettimeofday(&tim, NULL);
     t0 = tim.tv_sec + (tim.tv_usec / 1000.0);
 #endif
+
+    g_dumpJson.VulkanReplayResourceDumpJsonData("QueueSubmitIndex", qs_index);
 
     for (auto index : dispatch_indices)
     {

@@ -68,6 +68,94 @@
 GFXRECON_BEGIN_NAMESPACE(gfxrecon)
 GFXRECON_BEGIN_NAMESPACE(decode)
 
+
+//TODO: Should move this to a separate header file...
+class VulkanReplayResourceDumpJson
+{
+  private:
+      std::string infile_;
+      std::string outfile_;
+
+  public:
+    VulkanReplayResourceDumpJson() { };
+
+    void VulkanReplayResourceDumpJsonInitialize(const std::string &infile)
+    {
+        int i = infile.size();
+        int         i2 = infile.compare(infile.size() - 4, 5, ".gfxr");
+        infile_ = infile;
+        if (infile.size() >= 5 && infile.compare(infile.size() - 4, 5, ".gfxr"))
+        {
+            outfile_ = infile.substr(0, infile.size() - 5);
+        }
+        outfile_ = outfile_ + "_dr.json";
+    };
+
+    void VulkanReplayResourceDumpJsonFileStart()
+    {
+       uint64_t beginCommandBufferIndex=1;
+
+        gfxrecon::util::platform::FileOpen(&jsonFileHandle_, outfile_.c_str(), "w");
+        assert(jsonFileHandle_);    // TODO: Generate an error if FileOpen fails
+        out_stream_ = new gfxrecon::util::FileNoLockOutputStream(jsonFileHandle_, false);
+        gfxrecon::util::JsonOptions json_options;
+        json_options.root_dir     = "."; // This field is not used
+        json_options.data_sub_dir = "."; // This field is not used
+        json_options.format       = gfxrecon::util::JsonFormat::JSON;
+
+        json_writer_ = new gfxrecon::decode::JsonWriter(json_options, GFXRECON_PROJECT_VERSION_STRING, infile_);
+
+        json_writer_->GetHeaderJson()["vulkan-version"] =
+            std::to_string(VK_VERSION_MAJOR(VK_HEADER_VERSION_COMPLETE)) + "." +
+            std::to_string(VK_VERSION_MINOR(VK_HEADER_VERSION_COMPLETE)) + "." +
+            std::to_string(VK_VERSION_PATCH(VK_HEADER_VERSION_COMPLETE));
+        json_writer_->StartStream(out_stream_);
+        dump_ = new nlohmann::ordered_json();
+        beginCommandBufferIndex_ = beginCommandBufferIndex;
+    }
+
+    void VulkanReplayResourceDumpJsonBlockStart() {
+        json_data_ = &json_writer_->WriteBlockStart();
+    }
+
+    void VulkanReplayResourceDumpJsonBlockEnd()
+    {
+        static uint32_t n=0;
+        (*json_data_)["resourceDump_" + std::to_string(n++)] = *dump_;
+        json_writer_->WriteBlockEnd();
+    }
+
+    void VulkanReplayResourceDumpJsonData(std::string descriptor, std::string value) {
+        (*dump_)[descriptor] = value;
+    }
+
+    void VulkanReplayResourceDumpJsonData(std::string descriptor, uint64_t value) {
+        (*dump_)[descriptor] = value;
+    }
+
+
+    ~VulkanReplayResourceDumpJson()
+    {
+        json_writer_->EndStream();
+        gfxrecon::util::platform::FileClose(jsonFileHandle_);
+
+        // TODO: Not sure if this is the best way to release these.
+        delete out_stream_;
+        delete json_writer_;
+        delete dump_;
+      }
+
+  private:
+    FILE*                                   jsonFileHandle_{ NULL };
+    gfxrecon::util::FileNoLockOutputStream* out_stream_{ NULL };
+    gfxrecon::decode::JsonWriter*           json_writer_;
+    nlohmann::ordered_json*                 json_data_{ NULL };
+    nlohmann::ordered_json*                 dump_{ NULL };
+    uint64_t                                beginCommandBufferIndex_;
+};
+
+extern VulkanReplayResourceDumpJson g_dumpJson;  // Declare a global instance of VulkanReplayResourceDumpJson
+
 class VulkanReplayConsumerBase : public VulkanConsumer
 {
   public:
@@ -1171,6 +1259,8 @@ class VulkanReplayConsumerBase : public VulkanConsumer
     void ProcessImportAndroidHardwareBufferInfo(const Decoded_VkMemoryAllocateInfo* allocate_info);
 
     void SetSwapchainWindowSize(const Decoded_VkSwapchainCreateInfoKHR* swapchain_info);
+
+    void InitializeJsonDumper(const std::string& infile);
 
     void InitializeScreenshotHandler();
 

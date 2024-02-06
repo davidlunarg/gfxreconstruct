@@ -53,6 +53,7 @@
 #include <unordered_set>
 #include <future>
 
+
 GFXRECON_BEGIN_NAMESPACE(gfxrecon)
 GFXRECON_BEGIN_NAMESPACE(decode)
 
@@ -71,6 +72,8 @@ const std::unordered_set<std::string> kSurfaceExtensions = {
 
 // Device extensions to enable for trimming state setup, when available.
 const std::unordered_set<std::string> kTrimStateSetupDeviceExtensions = { VK_EXT_SHADER_STENCIL_EXPORT_EXTENSION_NAME };
+
+VulkanReplayResourceDumpJson g_dumpJson;  // TODO: Can we avoid using global variable?
 
 static VKAPI_ATTR VkBool32 VKAPI_CALL DebugReportCallback(VkDebugReportFlagsEXT      flags,
                                                           VkDebugReportObjectTypeEXT objectType,
@@ -187,6 +190,11 @@ VulkanReplayConsumerBase::VulkanReplayConsumerBase(std::shared_ptr<application::
     if (options_.enable_debug_device_lost)
     {
         GFXRECON_LOG_WARNING("This debugging feature has not been implemented for Vulkan.");
+    }
+
+    if (options.dumping_resource)
+    {
+        g_dumpJson.VulkanReplayResourceDumpJsonInitialize(options.filename);
     }
 }
 
@@ -7094,6 +7102,8 @@ VkResult VulkanReplayConsumerBase::OverrideBeginCommandBuffer(
 
         const DeviceInfo* device = GetObjectInfoTable().GetDeviceInfo(command_buffer_info->parent_id);
         res = dumper.CloneCommandBuffer(index, command_buffer_info, GetDeviceTable(device->handle));
+
+        g_dumpJson.VulkanReplayResourceDumpJsonFileStart();
     }
 
     if (res == VK_SUCCESS)

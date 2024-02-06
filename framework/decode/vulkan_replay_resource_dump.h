@@ -32,6 +32,11 @@
 #include "util/defines.h"
 #include "vulkan/vulkan.h"
 
+#include "util/file_output_stream.h"
+#include "util/json_util.h"
+#include "decode/json_writer.h"
+#include "../build/project_version.h"  // TODO: Fix this in CMakeFile?
+
 #include <vector>
 #include <unordered_map>
 #include <utility> // std::pair
@@ -357,7 +362,7 @@ class VulkanReplayResourceDumpBase
 
         uint32_t GetDrawCallActiveCommandBuffers(cmd_buf_it& first, cmd_buf_it& last) const;
 
-        VkResult DumpDrawCallsAttachments(VkQueue queue, uint64_t bcb_index);
+        VkResult DumpDrawCallsAttachments(VkQueue queue, uint64_t qs_index, uint64_t bcb_index);
 
         VkResult DumpRenderTargetAttachments(uint64_t dc_index) const;
 
@@ -433,7 +438,7 @@ class VulkanReplayResourceDumpBase
 
         void CloneDispatchRaysResources(uint64_t index, bool cloning_before_cmd, bool is_dispatch);
 
-        VkResult DumpDispatchRaysMutableResources(VkQueue queue, uint64_t bcb_index);
+        VkResult DumpDispatchRaysMutableResources(VkQueue queue, uint64_t qs_index, uint64_t bcb_index);
 
         VkResult DumpMutableResources(uint64_t index, bool is_dispatch);
 
