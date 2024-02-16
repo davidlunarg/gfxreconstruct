@@ -47,6 +47,8 @@
 GFXRECON_BEGIN_NAMESPACE(gfxrecon)
 GFXRECON_BEGIN_NAMESPACE(decode)
 
+static VulkanReplayResourceDumpJson g_dump_json; //@@@@ 
+
 template <typename T>
 static bool IsInsideRange(const std::vector<T>& vec, T value)
 {
@@ -125,6 +127,11 @@ VulkanReplayResourceDumpBase::VulkanReplayResourceDumpBase(const VulkanReplayOpt
     // assert(options.BeginCommandBuffer_Indices.size() == options.Dispatch_Indices.size());
     // assert(options.BeginCommandBuffer_Indices.size() == options.TraceRays_Indices.size());
 
+    if (options.dumping_resource)
+    {
+        g_dump_json.VulkanReplayResourceDumpJsonOpen(options.filename);
+    }
+
     for (size_t i = 0; i < options.BeginCommandBuffer_Indices.size(); ++i)
     {
         const uint64_t bcb_index = options.BeginCommandBuffer_Indices[i];
@@ -195,6 +202,11 @@ VulkanReplayResourceDumpBase::VulkanReplayResourceDumpBase(const VulkanReplayOpt
     }
 #endif
 }
+
+VulkanReplayResourceDumpBase::~VulkanReplayResourceDumpBase()
+{
+    g_dump_json.VulkanReplayResourceDumpJsonClose();
+ }
 
 VulkanReplayResourceDumpBase::DrawCallCommandBufferContext*
 VulkanReplayResourceDumpBase::FindDrawCallCommandBufferContext(VkCommandBuffer original_command_buffer)
@@ -791,8 +803,21 @@ VkResult VulkanReplayResourceDumpBase::DrawCallCommandBufferContext::DumpDrawCal
                                n_drawcalls,
                                dc_indices[CmdBufToDCVectorIndex(cb)],
                                bcb_index);
-        g_dumpJson.VulkanReplayResourceDumpJsonBlockStart();
-        g_dumpJson.VulkanReplayResourceDumpJsonData("QueueSubmitIndex", qs_index);
+
+        this->n_subpasses = 1;
+
+        //&VulkanReplayResourceDumpBase::dump_json_->VulkanReplayResourceDumpJsonBlockStart();
+       //(&VulkanReplayResourceDumpBase::dump_json_)->VulkanReplayResourceDumpJsonBlockStart();
+        //&(VulkanReplayResourceDumpBase::dump_json_)->VulkanReplayResourceDumpJsonBlockStart();
+        g_dump_json.VulkanReplayResourceDumpJsonBlockStart();
+
+
+        // class VulkanReplayResourceDumpBase::dump_json_
+        //VulkanReplayResourceDumpBase::dump_json_.VulkanReplayResourceDumpJsonBlockStart();
+        //dump_json_.VulkanReplayResourceDumpJsonBlockStart();
+        //dump_json_.VulkanReplayResourceDumpJsonBlockStart();
+        //dump_json_.VulkanReplayResourceDumpJsonBlockStart();
+        //dump_json_.VulkanReplayResourceDumpJsonData("QueueSubmitIndex", qs_index);
 
         VkSubmitInfo submit_info;
         submit_info.sType                = VK_STRUCTURE_TYPE_SUBMIT_INFO;
@@ -876,7 +901,7 @@ VkResult VulkanReplayResourceDumpBase::DrawCallCommandBufferContext::DumpDrawCal
         //     return res;
         // }
 
-        g_dumpJson.VulkanReplayResourceDumpJsonBlockEnd();
+        g_dump_json.VulkanReplayResourceDumpJsonBlockEnd();
     }
 
 #ifdef TIME_DUMPING
@@ -964,8 +989,8 @@ VulkanReplayResourceDumpBase::DrawCallCommandBufferContext::DumpRenderTargetAtta
                          << 0 << util::ScreenshotFormatToCStr(image_file_format);
             }
 
-            g_dumpJson.VulkanReplayResourceDumpJsonData("DrawIndex", dc_index);   // Is there a better place to set this?
-            g_dumpJson.VulkanReplayResourceDumpJsonData("RenderTargetImage", filename.str());
+            g_dump_json.VulkanReplayResourceDumpJsonData("DrawIndex", dc_index);   // Is there a better place to set this?
+            g_dump_json.VulkanReplayResourceDumpJsonData("RenderTargetImage", filename.str());
 
             const uint32_t texel_size = vkuFormatElementSizeWithAspect(image_info->format, VK_IMAGE_ASPECT_COLOR_BIT);
             const uint32_t stride     = texel_size * image_info->extent.width * dump_resources_scale;
@@ -1008,8 +1033,8 @@ VulkanReplayResourceDumpBase::DrawCallCommandBufferContext::DumpRenderTargetAtta
                          << 0 << ".bin";
             }
 
-            g_dumpJson.VulkanReplayResourceDumpJsonData("DrawIndex", dc_index);   // Is there a better place to set this?
-            g_dumpJson.VulkanReplayResourceDumpJsonData("RenderTargetImage", filename.str());
+            g_dump_json.VulkanReplayResourceDumpJsonData("DrawIndex", dc_index);   // Is there a better place to set this?
+            g_dump_json.VulkanReplayResourceDumpJsonData("RenderTargetImage", filename.str());
 
             util::bufferwriter::WriteBuffer(filename.str(), data.data(), data.size());
         }
@@ -1067,7 +1092,7 @@ VulkanReplayResourceDumpBase::DrawCallCommandBufferContext::DumpRenderTargetAtta
                          << "_ml_" << 0 << "_al_" << 0 << util::ScreenshotFormatToCStr(image_file_format);
             }
 
-            g_dumpJson.VulkanReplayResourceDumpJsonData("RenderTargetDepth", filename.str());
+            g_dump_json.VulkanReplayResourceDumpJsonData("RenderTargetDepth", filename.str());
 
             // This is a bit awkward
             const uint32_t texel_size =
@@ -1113,7 +1138,7 @@ VulkanReplayResourceDumpBase::DrawCallCommandBufferContext::DumpRenderTargetAtta
                          << "_ml_" << 0 << "_al_" << 0 << ".bin";
             }
 
-            g_dumpJson.VulkanReplayResourceDumpJsonData("RenderTargetDepth", filename.str());
+            g_dump_json.VulkanReplayResourceDumpJsonData("RenderTargetDepth", filename.str());
             util::bufferwriter::WriteBuffer(filename.str(), data.data(), data.size());
         }
     }
@@ -3806,7 +3831,7 @@ VulkanReplayResourceDumpBase::DispatchRaysCommandBufferContext::DumpDispatchRays
     t0 = tim.tv_sec + (tim.tv_usec / 1000.0);
 #endif
 
-    g_dumpJson.VulkanReplayResourceDumpJsonData("QueueSubmitIndex", qs_index);
+    g_dump_json.VulkanReplayResourceDumpJsonData("QueueSubmitIndex", qs_index);
 
     for (auto index : dispatch_indices)
     {

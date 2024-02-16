@@ -32,14 +32,22 @@
 #include "util/defines.h"
 #include "vulkan/vulkan.h"
 
+#include "decode/vulkan_replay_resource_dump_json.h"
+
+//REMOVE THIS??
+#if 0
 #include "util/file_output_stream.h"
 #include "util/json_util.h"
 #include "decode/json_writer.h"
 #include "../build/project_version.h"  // TODO: Fix this in CMakeFile?
+#endif
 
+//REMOVE THIS??
+#if 0
 #include <vector>
 #include <unordered_map>
 #include <utility> // std::pair
+#endif
 
 GFXRECON_BEGIN_NAMESPACE(gfxrecon)
 GFXRECON_BEGIN_NAMESPACE(decode)
@@ -50,6 +58,8 @@ class VulkanReplayResourceDumpBase
     VulkanReplayResourceDumpBase() = delete;
 
     VulkanReplayResourceDumpBase(const VulkanReplayOptions& options, const VulkanObjectInfoTable& object_info_table);
+    
+    ~VulkanReplayResourceDumpBase();
 
     VkResult CloneCommandBuffer(uint64_t                   bcb_index,
                                 const CommandBufferInfo*   original_command_buffer_info,
@@ -522,6 +532,9 @@ class VulkanReplayResourceDumpBase
 
     const VulkanObjectInfoTable& object_info_table_;
 };
+
+//@@@@@static VulkanReplayResourceDumpJson g_dump_json_;  //Not suere if this is right . Should be extern?? Or move it
+
 
 GFXRECON_END_NAMESPACE(gfxrecon)
 GFXRECON_END_NAMESPACE(decode)
