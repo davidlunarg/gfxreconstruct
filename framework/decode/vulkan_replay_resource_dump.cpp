@@ -806,18 +806,7 @@ VkResult VulkanReplayResourceDumpBase::DrawCallCommandBufferContext::DumpDrawCal
 
         this->n_subpasses = 1;
 
-        //&VulkanReplayResourceDumpBase::dump_json_->VulkanReplayResourceDumpJsonBlockStart();
-       //(&VulkanReplayResourceDumpBase::dump_json_)->VulkanReplayResourceDumpJsonBlockStart();
-        //&(VulkanReplayResourceDumpBase::dump_json_)->VulkanReplayResourceDumpJsonBlockStart();
         g_dump_json.VulkanReplayResourceDumpJsonBlockStart();
-
-
-        // class VulkanReplayResourceDumpBase::dump_json_
-        //VulkanReplayResourceDumpBase::dump_json_.VulkanReplayResourceDumpJsonBlockStart();
-        //dump_json_.VulkanReplayResourceDumpJsonBlockStart();
-        //dump_json_.VulkanReplayResourceDumpJsonBlockStart();
-        //dump_json_.VulkanReplayResourceDumpJsonBlockStart();
-        //dump_json_.VulkanReplayResourceDumpJsonData("QueueSubmitIndex", qs_index);
 
         VkSubmitInfo submit_info;
         submit_info.sType                = VK_STRUCTURE_TYPE_SUBMIT_INFO;

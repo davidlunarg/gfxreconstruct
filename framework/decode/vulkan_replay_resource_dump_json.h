@@ -23,37 +23,19 @@
 #ifndef GFXRECON_VULKAN_REPLAY_DUMP_RESOURCE_DUMP_H
 #define GFXRECON_VULKAN_REPLAY_DUMP_RESOURCE_DUMP_H
 
-//WHICH ARE NEEDED???
-//#include "decode/api_decoder.h"
-//#include "decode/vulkan_replay_options.h"
-//#include "decode/vulkan_object_info_table.h"
-//#include "decode/struct_pointer_decoder.h"
-//#include "generated/generated_vulkan_dispatch_table.h"
-//#include "format/format.h"
-//#include "util/defines.h"
-//#include "vulkan/vulkan.h"
-
 #include "util/file_output_stream.h"
-//#include "util/json_util.h"
 #include "decode/json_writer.h"
 #include "../build/project_version.h"  // TODO: Fix this in CMakeFile?
-
-//#include <vector>
-//#include <unordered_map>
-//#include <utility> // std::pair
 
 GFXRECON_BEGIN_NAMESPACE(gfxrecon)
 GFXRECON_BEGIN_NAMESPACE(decode)
 
 class VulkanReplayResourceDumpJson
 {
-  //private:
-  //    std::string infile_;
-  //    std::string outfile_;
-
   public:
     VulkanReplayResourceDumpJson() { };
 
+    //@@@@ TODO: Move this to constructor, delete this method
     void VulkanReplayResourceDumpJsonOpen(const std::string &infile)
     {
         std::string outfile;
@@ -65,11 +47,6 @@ class VulkanReplayResourceDumpJson
             outfile = infile.substr(0, infile.size() - 5);
         }
         outfile = outfile + "_dr.json";     // DO INFILE and OUTFILE NEED TO BE SAVED???
-    //};
-
-    //void VulkanReplayResourceDumpJsonFileOpen()
-    //{
-        //uint64_t beginCommandBufferIndex=1;     // WHy?????
 
         gfxrecon::util::platform::FileOpen(&jsonFileHandle_, outfile.c_str(), "w");
         assert(jsonFileHandle_);    // TODO: Generate an error if FileOpen fails
@@ -87,7 +64,6 @@ class VulkanReplayResourceDumpJson
             std::to_string(VK_VERSION_PATCH(VK_HEADER_VERSION_COMPLETE));
         json_writer_->StartStream(out_stream_);
         dump_ = new nlohmann::ordered_json();
-        //beginCommandBufferIndex_ = beginCommandBufferIndex;     // WHy?????
     }
 
     void VulkanReplayResourceDumpJsonBlockStart() {
@@ -110,6 +86,8 @@ class VulkanReplayResourceDumpJson
     }
 
 
+    //@@@@ TODO: Move this to destructor, delete this method. Or maybe not... note that
+    //@@@@ this is not being called from dump_base destructor, need to figure out where to call this from
     void VulkanReplayResourceDumpJsonClose()
     {
         if (json_writer_)
@@ -117,7 +95,7 @@ class VulkanReplayResourceDumpJson
             json_writer_->EndStream();
             gfxrecon::util::platform::FileClose(jsonFileHandle_);
 
-            // TODO: Not sure if this is the best way to release these.
+            //@@@ TODO: Not sure if this is the best way to release these. Should I be using new/delete??
             delete out_stream_;
             delete json_writer_;
             delete dump_;
@@ -133,7 +111,6 @@ class VulkanReplayResourceDumpJson
     gfxrecon::decode::JsonWriter*           json_writer_;
     nlohmann::ordered_json*                 json_data_{ NULL };
     nlohmann::ordered_json*                 dump_{ NULL };
-    //uint64_t                                beginCommandBufferIndex_;  //Why????
 };
 
 GFXRECON_END_NAMESPACE(gfxrecon)
