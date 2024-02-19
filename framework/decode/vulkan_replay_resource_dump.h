@@ -46,8 +46,6 @@ class VulkanReplayResourceDumpBase
 
     VulkanReplayResourceDumpBase(const VulkanReplayOptions& options, const VulkanObjectInfoTable& object_info_table);
 
-    //~VulkanReplayResourceDumpBase();
-
     VkResult CloneCommandBuffer(uint64_t                   bcb_index,
                                 const CommandBufferInfo*   original_command_buffer_info,
                                 const encode::DeviceTable* device_table);
