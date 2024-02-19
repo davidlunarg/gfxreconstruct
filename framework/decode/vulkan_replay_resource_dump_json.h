@@ -25,7 +25,7 @@
 
 #include "util/file_output_stream.h"
 #include "decode/json_writer.h"
-#include "../build/project_version.h"  // TODO: Fix this in CMakeFile?
+#include "project_version.h"
 
 GFXRECON_BEGIN_NAMESPACE(gfxrecon)
 GFXRECON_BEGIN_NAMESPACE(decode)
@@ -41,12 +41,11 @@ class VulkanReplayResourceDumpJson
         std::string outfile;
         int i = infile.size();
         int         i2 = infile.compare(infile.size() - 4, 5, ".gfxr");
-        //infile_ = infile;
         if (infile.size() >= 5 && infile.compare(infile.size() - 4, 5, ".gfxr"))
         {
             outfile = infile.substr(0, infile.size() - 5);
         }
-        outfile = outfile + "_rd.json";     // DO INFILE and OUTFILE NEED TO BE SAVED???
+        outfile = outfile + "_rd.json";
 
         gfxrecon::util::platform::FileOpen(&jsonFileHandle_, outfile.c_str(), "w");
         assert(jsonFileHandle_);    // TODO: Generate an error if FileOpen fails
