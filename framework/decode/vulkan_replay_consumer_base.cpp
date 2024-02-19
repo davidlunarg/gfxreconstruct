@@ -53,7 +53,6 @@
 #include <unordered_set>
 #include <future>
 
-
 GFXRECON_BEGIN_NAMESPACE(gfxrecon)
 GFXRECON_BEGIN_NAMESPACE(decode)
 

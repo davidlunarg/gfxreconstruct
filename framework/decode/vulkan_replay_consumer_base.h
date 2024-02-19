@@ -1172,7 +1172,7 @@ class VulkanReplayConsumerBase : public VulkanConsumer
 
     void SetSwapchainWindowSize(const Decoded_VkSwapchainCreateInfoKHR* swapchain_info);
 
-    void InitializeJsonDumper(const std::string& infile);
+    //void InitializeJsonDumper(const std::string& infile);
 
     void InitializeScreenshotHandler();
 

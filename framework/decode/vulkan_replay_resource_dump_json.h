@@ -46,7 +46,7 @@ class VulkanReplayResourceDumpJson
         {
             outfile = infile.substr(0, infile.size() - 5);
         }
-        outfile = outfile + "_dr.json";     // DO INFILE and OUTFILE NEED TO BE SAVED???
+        outfile = outfile + "_rd.json";     // DO INFILE and OUTFILE NEED TO BE SAVED???
 
         gfxrecon::util::platform::FileOpen(&jsonFileHandle_, outfile.c_str(), "w");
         assert(jsonFileHandle_);    // TODO: Generate an error if FileOpen fails
@@ -85,9 +85,11 @@ class VulkanReplayResourceDumpJson
         (*dump_)[descriptor] = value;
     }
 
-
-    //@@@@ TODO: Move this to destructor, delete this method. Or maybe not... note that
-    //@@@@ this is not being called from dump_base destructor, need to figure out where to call this from
+    // TODO:
+    // Should move this code to the destructor and delete this method. But it's a a separate
+    // method because VulkanReplayResourceDump is calling exit(0), which results in destructors
+    // not being called and the json file not getting closed out.
+    // VulkanReplayResourceDump explicity calls this method before calling exit(0).
     void VulkanReplayResourceDumpJsonClose()
     {
         if (json_writer_)
@@ -95,14 +97,17 @@ class VulkanReplayResourceDumpJson
             json_writer_->EndStream();
             gfxrecon::util::platform::FileClose(jsonFileHandle_);
 
-            //@@@ TODO: Not sure if this is the best way to release these. Should I be using new/delete??
+            //@@@ TODO: Not sure if this is the best way to release these. Could I avoid new/delete??
             delete out_stream_;
             delete json_writer_;
             delete dump_;
+            json_writer_ = NULL;
         }
     }
 
-    ~VulkanReplayResourceDumpJson() { };
+    ~VulkanReplayResourceDumpJson() {
+        VulkanReplayResourceDumpJsonClose();
+    };
 
 
   private:

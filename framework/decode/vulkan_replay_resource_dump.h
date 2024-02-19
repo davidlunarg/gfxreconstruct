@@ -28,10 +28,13 @@
 #include "decode/vulkan_object_info_table.h"
 #include "decode/struct_pointer_decoder.h"
 #include "generated/generated_vulkan_dispatch_table.h"
+#include "decode/vulkan_replay_resource_dump_json.h"
 #include "format/format.h"
 #include "util/defines.h"
 #include "vulkan/vulkan.h"
-#include "decode/vulkan_replay_resource_dump_json.h"
+#include <vector>
+#include <unordered_map>
+#include <utility> // std::pair
 
 GFXRECON_BEGIN_NAMESPACE(gfxrecon)
 GFXRECON_BEGIN_NAMESPACE(decode)
@@ -43,7 +46,7 @@ class VulkanReplayResourceDumpBase
 
     VulkanReplayResourceDumpBase(const VulkanReplayOptions& options, const VulkanObjectInfoTable& object_info_table);
 
-    ~VulkanReplayResourceDumpBase();
+    //~VulkanReplayResourceDumpBase();
 
     VkResult CloneCommandBuffer(uint64_t                   bcb_index,
                                 const CommandBufferInfo*   original_command_buffer_info,
@@ -276,7 +279,8 @@ class VulkanReplayResourceDumpBase
                                      bool                                      dump_resources_before,
                                      const std::string&                        dump_resource_path,
                                      util::ScreenshotFormat                    image_file_format,
-                                     float                                     dump_resource_scale);
+                                     float                                     dump_resource_scale,
+                                     VulkanReplayResourceDumpJson*             dump_json);
 
         ~DrawCallCommandBufferContext();
 
@@ -295,6 +299,7 @@ class VulkanReplayResourceDumpBase
         const std::string&                 dump_resource_path;
         util::ScreenshotFormat             image_file_format;
         float                              dump_resources_scale;
+        VulkanReplayResourceDumpJson*      p_dump_json;
 
         std::vector<std::vector<VkRenderPass>> render_pass_clones;
         bool                                   inside_renderpass;
@@ -407,7 +412,8 @@ class VulkanReplayResourceDumpBase
                                          bool                         dump_resources_before,
                                          const std::string&           dump_resource_path,
                                          util::ScreenshotFormat       image_file_format,
-                                         float                        dump_resources_scale);
+                                         float                        dump_resources_scale,
+                                         VulkanReplayResourceDumpJson*             p_dump_json);
 
         ~DispatchRaysCommandBufferContext();
 
@@ -454,6 +460,7 @@ class VulkanReplayResourceDumpBase
         const std::string&     dump_resource_path;
         util::ScreenshotFormat image_file_format;
         float                  dump_resources_scale;
+        VulkanReplayResourceDumpJson*             p_dump_json;
 
         descriptor_set_t bound_descriptor_sets[kBindPoint_count];
 
@@ -509,6 +516,7 @@ class VulkanReplayResourceDumpBase
     const VulkanReplayResourceDumpBase::DispatchRaysCommandBufferContext*
     FindDispatchRaysCommandBufferContext(VkCommandBuffer original_command_buffer) const;
 
+    VulkanReplayResourceDumpJson dump_json_;
     bool recording_;
     bool dump_resources_before_;
     bool isolate_draw_call_;
