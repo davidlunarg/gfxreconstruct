@@ -25,11 +25,7 @@
 #include "graphics/vulkan_resources_util.h"
 #include "util/image_writer.h"
 #include "util/buffer_writer.h"
-//#include "vulkan_replay_resource_dump_json.h"
 #include "vulkan_replay_resource_dump.h"
-
-// TODO: If the json dump class is moved to separate header file, can include that file instead. .. REMOVE THIS...
-//#include "vulkan_replay_consumer_base.h"
 
 #include "Vulkan-Utility-Libraries/vk_format_utils.h"
 
@@ -47,8 +43,6 @@
 
 GFXRECON_BEGIN_NAMESPACE(gfxrecon)
 GFXRECON_BEGIN_NAMESPACE(decode)
-
-//static VulkanReplayResourceDumpJson g_dump_json; //@@@@   REMOVE THIS
 
 template <typename T>
 static bool IsInsideRange(const std::vector<T>& vec, T value)
@@ -205,11 +199,6 @@ VulkanReplayResourceDumpBase::VulkanReplayResourceDumpBase(const VulkanReplayOpt
     }
 #endif
 }
-
-//VulkanReplayResourceDumpBase::~VulkanReplayResourceDumpBase()
-//{
-//    dump_json_.VulkanReplayResourceDumpJsonClose();        // NEEED TO CALL THIS FROM SOMEWHERE ELSE. THIS DEScTUCTOR DOESNT GET CALLED
-//}
 
 VulkanReplayResourceDumpBase::DrawCallCommandBufferContext*
 VulkanReplayResourceDumpBase::FindDrawCallCommandBufferContext(VkCommandBuffer original_command_buffer)
@@ -979,7 +968,7 @@ VulkanReplayResourceDumpBase::DrawCallCommandBufferContext::DumpRenderTargetAtta
                          << 0 << util::ScreenshotFormatToCStr(image_file_format);
             }
 
-            p_dump_json->VulkanReplayResourceDumpJsonData("DrawIndex", dc_index);   // Is there a better place to set this?
+            p_dump_json->VulkanReplayResourceDumpJsonData("DrawIndex", dc_index);
             p_dump_json->VulkanReplayResourceDumpJsonData("RenderTargetImage", filename.str());
 
             const uint32_t texel_size = vkuFormatElementSizeWithAspect(image_info->format, VK_IMAGE_ASPECT_COLOR_BIT);
@@ -1023,7 +1012,7 @@ VulkanReplayResourceDumpBase::DrawCallCommandBufferContext::DumpRenderTargetAtta
                          << 0 << ".bin";
             }
 
-            p_dump_json->VulkanReplayResourceDumpJsonData("DrawIndex", dc_index);   // Is there a better place to set this?
+            p_dump_json->VulkanReplayResourceDumpJsonData("DrawIndex", dc_index);
             p_dump_json->VulkanReplayResourceDumpJsonData("RenderTargetImage", filename.str());
 
             util::bufferwriter::WriteBuffer(filename.str(), data.data(), data.size());
@@ -1276,7 +1265,8 @@ VkResult VulkanReplayResourceDumpBase::ModifyAndSubmit(std::vector<VkSubmitInfo>
         {
             // The code in VulkanReplayResourceDumpJsonClose would ideally be in
             // the VulkanReplayResourceDumpJson destructor. But the destructor
-            // doesn't get called when exit(0) is called, so we this method instead.
+            // doesn't get called when exit(0) is called, so we call this method
+            // instead.
             dump_json_.VulkanReplayResourceDumpJsonClose();
             exit(0);
         }
