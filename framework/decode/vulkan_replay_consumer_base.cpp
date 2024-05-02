@@ -50,6 +50,8 @@
 #include <numeric>
 #include <unordered_set>
 #include <future>
+#include <map>
+
 
 GFXRECON_BEGIN_NAMESPACE(gfxrecon)
 GFXRECON_BEGIN_NAMESPACE(decode)
@@ -69,6 +71,12 @@ const std::unordered_set<std::string> kSurfaceExtensions = {
 
 // Device extensions to enable for trimming state setup, when available.
 const std::unordered_set<std::string> kTrimStateSetupDeviceExtensions = { VK_EXT_SHADER_STENCIL_EXPORT_EXTENSION_NAME };
+
+
+// Declare map for keeping max semaphore values.
+// I don't think a global static variable is the place to store this.
+// Needs to come into created during vkCreateDevice call.
+std::map<VkSemaphore, uint32_t> semTrackTimelineValues;
 
 static VKAPI_ATTR VkBool32 VKAPI_CALL DebugReportCallback(VkDebugReportFlagsEXT      flags,
                                                           VkDebugReportObjectTypeEXT objectType,
@@ -3315,6 +3323,41 @@ VkResult VulkanReplayConsumerBase::OverrideQueueSubmit(PFN_vkQueueSubmit func,
     {
         fence = fence_info->handle;
     }
+
+    // Prototype code....
+
+    // submit_infos contains a list of binary semaphores to wait on and signal.
+    // sumbit_infos->pNext can point to a VkTimelineSemaphoreSubmitInfo struct, which will contain timeline sempahores to wait on and signal
+    // So will wait for all bin semaphores and timeline semaphores. Then we need to signal all bin semaphores and timeline semaphores.
+    // May have to examine/modify all these semaphores and their values so we can handle exported semaphores.
+
+    // Will I be able to remove have_imported_semaphores_???
+
+    // TODO: Should loop through all pNext structs looking for VkTimelineSemaphoreSubmitInfo structs, and process them.
+    // Maybe declare a function that loops through pnext structs looking for certain type and calls a func when it finds one?
+    // Might be a good idea to figure this out because checking max sem value signals will be done from lots of places in the code.
+
+    // For now we are assuming there is only one VkTimelineSemaphoreSubmitInfo pNext struct and that it is the first one.
+
+    // Modify wait values
+    if (submit_info_data->pNext &&
+       ((VkTimelineSemaphoreSubmitInfo*)submit_info_data->pNext)->sType == VK_STRUCTURE_TYPE_TIMELINE_SEMAPHORE_SUBMIT_INFO)
+    {
+        const VkTimelineSemaphoreSubmitInfo* timeline_submit_infos = (VkTimelineSemaphoreSubmitInfo*)submit_info_data->pNext;
+        for (uint32_t i = 0; i < submit_infos->waitSemaphoreCount ; i++)
+        {
+            if (semTrackTimelineValues.find(submit_infos->pWaitSemaphores[i]) != semTrackTimelineValues.end())
+            {
+                // Semaphore is in semTrackTimelineValues, modify wait value for it
+                uint64_t* pSemValue = (uint64_t*)&timeline_submit_infos->pWaitSemaphoreValues[i];
+                *pSemValue = semTrackTimelineValues[submit_infos->pWaitSemaphores[i]];
+            }
+        }
+
+        // TODO: Extract signal values for semaphores signaled by this call and save them in semTrackTimelineValues
+
+    }
+
 
     // Only attempt to filter imported semaphores if we know at least one has been imported.
     // If rendering is restricted to a specific surface, shadow semaphore and forward progress state will need to be
@@ -7323,6 +7366,12 @@ VulkanReplayConsumerBase::OverrideWaitSemaphores(PFN_vkWaitSemaphores func,
         timeout = 0;
     }
     result = func(device, wait_info, timeout);
+
+    if (original_result == VK_SUCCESS)
+    {
+        // Search pNext list for
+    }
+
     return result;
 }
 

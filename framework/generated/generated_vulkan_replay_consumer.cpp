@@ -35,11 +35,16 @@
 #include "generated/generated_vulkan_struct_handle_mappers.h"
 #include "util/defines.h"
 
+#include <map>
+
 GFXRECON_BEGIN_NAMESPACE(gfxrecon)
 GFXRECON_BEGIN_NAMESPACE(decode)
 
 template <typename T>
 void InitializeOutputStructPNext(StructPointerDecoder<T> *decoder);
+
+// Kludge for now...
+extern std::map<VkSemaphore, uint32_t> semTrackTimelineValues;
 
 void VulkanReplayConsumer::Process_vkCreateInstance(
     const ApiCallInfo&                          call_info,
@@ -4807,7 +4812,17 @@ void VulkanReplayConsumer::Process_vkWaitSemaphoresKHR(
     const VkSemaphoreWaitInfo* in_pWaitInfo = pWaitInfo->GetPointer();
     MapStructHandles(pWaitInfo->GetMetaStructPointer(), GetObjectInfoTable());
 
+    for (auto semIdx=0; semIdx < in_pWaitInfo->semaphoreCount; semIdx++)
+    {
+        uint64_t *pValues = (uint64_t*)in_pWaitInfo->pValues;
+        if (semTrackTimelineValues.find(in_pWaitInfo->pSemaphores[semIdx]) != semTrackTimelineValues.end())
+            pValues[semIdx] = semTrackTimelineValues[in_pWaitInfo->pSemaphores[semIdx]];
+        else
+            pValues[semIdx] = 0;
+    }
+
     VkResult replay_result = GetDeviceTable(in_device)->WaitSemaphoresKHR(in_device, in_pWaitInfo, timeout);
+
     CheckResult("vkWaitSemaphoresKHR", returnValue, replay_result, call_info);
 }
 
