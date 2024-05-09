@@ -143,8 +143,7 @@ void VulkanReplayDumpResourcesJson::InsertImageInfo(nlohmann::ordered_json& json
     json_entry["format"]  = util::ToString<VkFormat>(image_info->format);
     json_entry["type"]    = util::ToString<VkImageType>(image_info->type);
 
-    const std::string aspect_str_whole(util::ToString<VkImageAspectFlagBits>(aspect));
-    const std::string aspect_str(aspect_str_whole.begin() + 16, aspect_str_whole.end() - 4);
+    const std::string aspect_str(util::ToString<VkImageAspectFlagBits>(aspect));
     json_entry["aspect"] = aspect_str;
 
     json_entry["dimensions"][0] = extent != nullptr ? extent->width : image_info->extent.width;

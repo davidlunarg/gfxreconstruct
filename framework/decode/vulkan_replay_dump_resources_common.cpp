@@ -735,9 +735,7 @@ std::string ShaderStageToStr(VkShaderStageFlagBits shader_stage)
 
 std::string ImageAspectToStr(VkImageAspectFlagBits aspect)
 {
-    std::string aspect_str_whole(util::ToString<VkImageAspectFlagBits>(aspect));
-    std::string aspect_str(aspect_str_whole.begin() + 16, aspect_str_whole.end() - 4);
-
+    std::string aspect_str(util::ToString<VkImageAspectFlagBits>(aspect));
     std::transform(
         aspect_str.begin(), aspect_str.end(), aspect_str.begin(), [](unsigned char c) { return std::tolower(c); });
 
