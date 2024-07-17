@@ -815,7 +815,7 @@ VkResult DrawCallsDumpingContext::DumpDrawCalls(
         const uint64_t              rp       = RP_index.first;
 
         // Dump vertex/index buffers
-        if (dump_vertex_index_buffers && (!dump_resources_before || dump_resources_before && !(cb % 2)))
+        if (!dump_resources_before || dump_resources_before && !(cb % 2))
         {
             res = DumpVertexIndexBuffers(qs_index, bcb_index, dc_index);
             if (res != VK_SUCCESS)
@@ -1056,6 +1056,7 @@ void DrawCallsDumpingContext::GenerateOutputJsonDrawCallInfo(
             dc_params_json_entry["actualDrawCount"] = dc_params.actual_draw_count;
 
             auto& indirect_param_entries = dc_params_json_entry["indirectParams"];
+            printf("@@@ actual_draw_count = %d\n", dc_params.actual_draw_count); fflush(stdout);
             for (uint32_t di = 0; di < dc_params.actual_draw_count; ++di)
             {
                 indirect_param_entries[di]["indexCount"]    = dc_params.draw_indexed_params[di].indexCount;
@@ -1945,6 +1946,7 @@ VkResult DrawCallsDumpingContext::FetchDrawIndirectParams(uint64_t dc_index)
 
         // Fetch draw count buffer
         std::vector<uint8_t> data;
+        printf("@@@%d Calling ReadFromBufferResource\n", __LINE__); fflush(stdout);
         VkResult             res = resource_util.ReadFromBufferResource(
             ic_params.new_count_buffer, sizeof(uint32_t), 0, ic_params.count_buffer_info->queue_family_index, data);
         if (res != VK_SUCCESS)
@@ -1952,11 +1954,31 @@ VkResult DrawCallsDumpingContext::FetchDrawIndirectParams(uint64_t dc_index)
             GFXRECON_LOG_ERROR("Reading from buffer resource failed (%s).", util::ToString<VkResult>(res).c_str())
             return res;
         }
+        printf("@@@%d ReadFromBufferResource data=%x\n", __LINE__, *((uint32_t*)data.data())); fflush(stdout);
+        uint32_t* d = (uint32_t*)data.data();
+        printf("@@@%d *d = %d\n", __LINE__, *d);
+        fflush(stdout);
 
         assert(data.size() == sizeof(uint32_t));
         assert(ic_params.actual_draw_count == std::numeric_limits<uint32_t>::max());
         util::platform::MemoryCopy(&ic_params.actual_draw_count, sizeof(uint32_t), data.data(), data.size());
         assert(ic_params.actual_draw_count != std::numeric_limits<uint32_t>::max());
+        printf("@@@%d ic_params.actual_draw_count=%d\n", __LINE__,ic_params.actual_draw_count); fflush(stdout);
+
+
+
+        printf("@@@%d Calling ReadFromBufferResource again\n", __LINE__); fflush(stdout);
+        res = resource_util.ReadFromBufferResource(
+            ic_params.new_count_buffer, 4, 0, ic_params.count_buffer_info->queue_family_index, data);
+        d = (uint32_t*)data.data();
+        printf("@@@%d *d = %d\n", __LINE__, *d);
+        fflush(stdout);
+
+        printf("@@@@@@@@@@@@\n");
+        printf("About to exit\n");
+        printf("@@@@@@@@@@@@\n");
+        fflush(stdout);
+        exit(0);
 
         if (!ic_params.actual_draw_count)
         {
