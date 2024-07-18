@@ -814,8 +814,17 @@ VkResult DrawCallsDumpingContext::DumpDrawCalls(
         const uint64_t              sp       = RP_index.second;
         const uint64_t              rp       = RP_index.first;
 
+        // Fetch draw params for all Indirect and IndirectCount draw calls from the buffers
+        // into the DrawCallParameters
+        res = FetchDrawIndirectParams(dc_index);
+        if (res != VK_SUCCESS)
+        {
+            GFXRECON_LOG_ERROR("Fetching indirect draw parameters failed (%s).", util::ToString<VkResult>(res).c_str())
+            return res;
+        }
+
         // Dump vertex/index buffers
-        if (!dump_resources_before || dump_resources_before && !(cb % 2))
+        if (dump_vertex_index_buffers && (!dump_resources_before || dump_resources_before && !(cb % 2)))
         {
             res = DumpVertexIndexBuffers(qs_index, bcb_index, dc_index);
             if (res != VK_SUCCESS)
@@ -2092,15 +2101,7 @@ VkResult DrawCallsDumpingContext::FetchDrawIndirectParams(uint64_t dc_index)
 
 VkResult DrawCallsDumpingContext::DumpVertexIndexBuffers(uint64_t qs_index, uint64_t bcb_index, uint64_t dc_index)
 {
-    // Fetch draw params for all Indirect and IndirectCount draw calls from the buffers
-    // into the DrawCallParameters
-    VkResult res = FetchDrawIndirectParams(dc_index);
-    if (res != VK_SUCCESS)
-    {
-        GFXRECON_LOG_ERROR("Fetching indirect draw parameters failed (%s).", util::ToString<VkResult>(res).c_str())
-        return res;
-    }
-
+    VkResult res;
     assert(original_command_buffer_info);
     assert(original_command_buffer_info->parent_id != format::kNullHandleId);
     const DeviceInfo* device_info = object_info_table.GetDeviceInfo(original_command_buffer_info->parent_id);
