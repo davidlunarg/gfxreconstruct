@@ -1983,11 +1983,11 @@ VkResult DrawCallsDumpingContext::FetchDrawIndirectParams(uint64_t dc_index)
         printf("@@@%d *d = %d\n", __LINE__, *d);
         fflush(stdout);
 
-        printf("@@@@@@@@@@@@\n");
-        printf("About to exit\n");
-        printf("@@@@@@@@@@@@\n");
-        fflush(stdout);
-        exit(0);
+        //printf("@@@@@@@@@@@@\n");
+        //printf("About to exit\n");
+        //printf("@@@@@@@@@@@@\n");
+        //fflush(stdout);
+        //exit(0);
 
         if (!ic_params.actual_draw_count)
         {
@@ -2576,7 +2576,7 @@ void DrawCallsDumpingContext::BindDescriptorSets(VkPipelineBindPoint            
     {
         uint32_t set_index = first_set + i;
 
-        if (pipeline_bind_point == VK_PIPELINE_BIND_POINT_GRAPHICS)
+        if (descriptor_sets_infos[i] != nullptr && pipeline_bind_point == VK_PIPELINE_BIND_POINT_GRAPHICS)
         {
             bound_descriptor_sets_gr[set_index] = *descriptor_sets_infos[i];
 
