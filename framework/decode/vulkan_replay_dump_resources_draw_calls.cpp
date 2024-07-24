@@ -303,7 +303,7 @@ VkResult DrawCallsDumpingContext::CopyDrawIndirectParameters(uint64_t index)
         VkResult res = CloneBuffer(object_info_table,
                                    device_table,
                                    replay_device_phys_mem_props,
-                                   ic_params.params_buffer_info,
+                                   ic_params.count_buffer_info,
                                    &ic_params.new_params_buffer,
                                    &ic_params.new_params_memory,
                                    copy_buffer_size);
@@ -319,7 +319,7 @@ VkResult DrawCallsDumpingContext::CopyDrawIndirectParameters(uint64_t index)
             std::vector<VkBufferCopy> regions(param_buffer_stride ? max_draw_count : 1);
             if (param_buffer_stride != draw_call_params_size)
             {
-                VkDeviceSize src_offset = ic_params.params_buffer_offset;
+                VkDeviceSize src_offset = ic_params.count_buffer_offset;
                 VkDeviceSize dst_offset = 0;
                 for (uint32_t i = 0; i < max_draw_count; ++i)
                 {
@@ -395,14 +395,14 @@ VkResult DrawCallsDumpingContext::CopyDrawIndirectParameters(uint64_t index)
 
             VkCommandBuffer cmd_buf = command_buffers[current_cb_index];
             device_table->CmdCopyBuffer(
-                cmd_buf, ic_params.params_buffer_info->handle, ic_params.new_params_buffer, 1, &region);
+                cmd_buf, ic_params.count_buffer_info->handle, ic_params.new_count_buffer, 1, &region);
 
             VkBufferMemoryBarrier buf_barrier;
             buf_barrier.sType               = VK_STRUCTURE_TYPE_BUFFER_MEMORY_BARRIER;
             buf_barrier.pNext               = nullptr;
             buf_barrier.buffer              = ic_params.new_count_buffer;
             buf_barrier.srcAccessMask       = VK_ACCESS_TRANSFER_WRITE_BIT;
-            buf_barrier.srcAccessMask       = VK_ACCESS_TRANSFER_READ_BIT;
+            buf_barrier.dstAccessMask       = VK_ACCESS_TRANSFER_READ_BIT;
             buf_barrier.srcQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;
             buf_barrier.dstQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;
             buf_barrier.size                = count_buffer_size;
@@ -1065,7 +1065,6 @@ void DrawCallsDumpingContext::GenerateOutputJsonDrawCallInfo(
             dc_params_json_entry["actualDrawCount"] = dc_params.actual_draw_count;
 
             auto& indirect_param_entries = dc_params_json_entry["indirectParams"];
-            printf("@@@ actual_draw_count = %d\n", dc_params.actual_draw_count); fflush(stdout);
             for (uint32_t di = 0; di < dc_params.actual_draw_count; ++di)
             {
                 indirect_param_entries[di]["indexCount"]    = dc_params.draw_indexed_params[di].indexCount;
@@ -1955,7 +1954,6 @@ VkResult DrawCallsDumpingContext::FetchDrawIndirectParams(uint64_t dc_index)
 
         // Fetch draw count buffer
         std::vector<uint8_t> data;
-        printf("@@@%d Calling ReadFromBufferResource\n", __LINE__); fflush(stdout);
         VkResult             res = resource_util.ReadFromBufferResource(
             ic_params.new_count_buffer, sizeof(uint32_t), 0, ic_params.count_buffer_info->queue_family_index, data);
         if (res != VK_SUCCESS)
@@ -1963,31 +1961,13 @@ VkResult DrawCallsDumpingContext::FetchDrawIndirectParams(uint64_t dc_index)
             GFXRECON_LOG_ERROR("Reading from buffer resource failed (%s).", util::ToString<VkResult>(res).c_str())
             return res;
         }
-        printf("@@@%d ReadFromBufferResource data=%x\n", __LINE__, *((uint32_t*)data.data())); fflush(stdout);
-        uint32_t* d = (uint32_t*)data.data();
-        printf("@@@%d *d = %d\n", __LINE__, *d);
-        fflush(stdout);
-
         assert(data.size() == sizeof(uint32_t));
         assert(ic_params.actual_draw_count == std::numeric_limits<uint32_t>::max());
         util::platform::MemoryCopy(&ic_params.actual_draw_count, sizeof(uint32_t), data.data(), data.size());
         assert(ic_params.actual_draw_count != std::numeric_limits<uint32_t>::max());
-        printf("@@@%d ic_params.actual_draw_count=%d\n", __LINE__,ic_params.actual_draw_count); fflush(stdout);
 
-
-
-        printf("@@@%d Calling ReadFromBufferResource again\n", __LINE__); fflush(stdout);
         res = resource_util.ReadFromBufferResource(
             ic_params.new_count_buffer, 4, 0, ic_params.count_buffer_info->queue_family_index, data);
-        d = (uint32_t*)data.data();
-        printf("@@@%d *d = %d\n", __LINE__, *d);
-        fflush(stdout);
-
-        //printf("@@@@@@@@@@@@\n");
-        //printf("About to exit\n");
-        //printf("@@@@@@@@@@@@\n");
-        //fflush(stdout);
-        //exit(0);
 
         if (!ic_params.actual_draw_count)
         {
