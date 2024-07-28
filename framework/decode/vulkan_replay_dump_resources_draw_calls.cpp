@@ -285,7 +285,7 @@ VkResult DrawCallsDumpingContext::CopyDrawIndirectParameters(uint64_t index)
 
         const uint32_t max_draw_count = ic_params.max_draw_count;
 
-        // Not sure from spec if max_draw_count can be zero. Assume it can
+        // Not sure from spec if maxDrawCount can be zero. Assume it can
         if (!max_draw_count)
         {
             return VK_SUCCESS;
@@ -295,8 +295,17 @@ VkResult DrawCallsDumpingContext::CopyDrawIndirectParameters(uint64_t index)
             IsDrawCallIndexed(dc_params.type) ? sizeof(VkDrawIndexedIndirectCommand) : sizeof(VkDrawIndirectCommand);
 
         // Create a buffer to copy the parameters buffer
-        const VkDeviceSize copy_buffer_size = draw_call_params_size * max_draw_count;
-        assert(copy_buffer_size <= ic_params.params_buffer_info->size);
+        //
+        // #VUID-vkCmdDrawIndexedIndirectCount-maxDrawCount-03143:
+        // ---------------------------------------------------
+        // If maxDrawCount is greater than or equal to 1,
+        // (stride × (maxDrawCount - 1) + offset + sizeof(VkDrawIndexedIndirectCommand))
+        //  must be less than or equal to the size of buffer
+        // ---------------------------------------------------
+        const uint32_t     param_buffer_stride = ic_params.stride;
+        VkDeviceSize       param_buffer_offset = ic_params.params_buffer_offset;
+        const VkDeviceSize copy_buffer_size    = param_buffer_stride * (max_draw_count - 1) + draw_call_params_size;
+        assert(copy_buffer_size <= ic_params.params_buffer_info->size + param_buffer_offset);
 
         ic_params.new_params_buffer_size = copy_buffer_size;
 
@@ -315,23 +324,21 @@ VkResult DrawCallsDumpingContext::CopyDrawIndirectParameters(uint64_t index)
 
         // Inject a cmdCopyBuffer to copy the draw params into the new buffer
         {
-            const uint32_t            param_buffer_stride = ic_params.stride;
-            std::vector<VkBufferCopy> regions(param_buffer_stride ? max_draw_count : 1);
+            std::vector<VkBufferCopy> regions(max_draw_count);
             if (param_buffer_stride != draw_call_params_size)
             {
-                VkDeviceSize src_offset = ic_params.count_buffer_offset;
                 VkDeviceSize dst_offset = 0;
                 for (uint32_t i = 0; i < max_draw_count; ++i)
                 {
                     regions[i].size = draw_call_params_size;
 
-                    regions[i].srcOffset = src_offset;
-                    src_offset += param_buffer_stride;
+                    regions[i].srcOffset = param_buffer_offset;
+                    param_buffer_offset += param_buffer_stride;
 
                     regions[i].dstOffset = dst_offset;
                     dst_offset += draw_call_params_size;
                 }
-                assert(src_offset == copy_buffer_size);
+                assert(param_buffer_offset == copy_buffer_size);
             }
             else
             {
@@ -352,7 +359,7 @@ VkResult DrawCallsDumpingContext::CopyDrawIndirectParameters(uint64_t index)
             buf_barrier.pNext               = nullptr;
             buf_barrier.buffer              = ic_params.new_params_buffer;
             buf_barrier.srcAccessMask       = VK_ACCESS_TRANSFER_WRITE_BIT;
-            buf_barrier.srcAccessMask       = VK_ACCESS_TRANSFER_READ_BIT;
+            buf_barrier.dstAccessMask       = VK_ACCESS_TRANSFER_READ_BIT;
             buf_barrier.srcQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;
             buf_barrier.dstQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;
             buf_barrier.size                = copy_buffer_size;
@@ -436,8 +443,15 @@ VkResult DrawCallsDumpingContext::CopyDrawIndirectParameters(uint64_t index)
             IsDrawCallIndexed(dc_params.type) ? sizeof(VkDrawIndexedIndirectCommand) : sizeof(VkDrawIndirectCommand);
 
         // Create a buffer to copy the parameters buffer
-        const VkDeviceSize copy_buffer_size = draw_call_params_size * draw_count;
-        assert(copy_buffer_size <= i_params.params_buffer_info->size);
+        //
+        // VUID-vkCmdDrawIndexedIndirect-drawCount-00540
+        // If drawCount is greater than 1, (stride × (drawCount - 1) + offset + sizeof(VkDrawIndexedIndirectCommand))
+        // must be less than or equal to the size of buffer
+        const uint32_t     param_buffer_stride = i_params.stride;
+        const uint32_t     param_buffer_offset = i_params.params_buffer_offset;
+        const VkDeviceSize copy_buffer_size =
+            (draw_count > 1) ? (param_buffer_stride * (draw_count - 1) + draw_call_params_size) : draw_call_params_size;
+        assert(copy_buffer_size <= i_params.params_buffer_info->size + param_buffer_offset);
 
         i_params.new_params_buffer_size = copy_buffer_size;
 
@@ -456,11 +470,10 @@ VkResult DrawCallsDumpingContext::CopyDrawIndirectParameters(uint64_t index)
 
         // Inject a cmdCopyBuffer to copy the draw params into the new buffer
         {
-            const uint32_t            param_buffer_stride = i_params.stride;
-            std::vector<VkBufferCopy> regions(param_buffer_stride ? draw_count : 1);
+            std::vector<VkBufferCopy> regions(draw_count);
             if (param_buffer_stride != draw_call_params_size)
             {
-                VkDeviceSize src_offset = i_params.params_buffer_offset;
+                VkDeviceSize src_offset = param_buffer_offset;
                 VkDeviceSize dst_offset = 0;
                 for (uint32_t i = 0; i < draw_count; ++i)
                 {
@@ -493,7 +506,7 @@ VkResult DrawCallsDumpingContext::CopyDrawIndirectParameters(uint64_t index)
             buf_barrier.pNext               = nullptr;
             buf_barrier.buffer              = i_params.new_params_buffer;
             buf_barrier.srcAccessMask       = VK_ACCESS_TRANSFER_WRITE_BIT;
-            buf_barrier.srcAccessMask       = VK_ACCESS_TRANSFER_READ_BIT;
+            buf_barrier.dstAccessMask       = VK_ACCESS_TRANSFER_READ_BIT;
             buf_barrier.srcQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;
             buf_barrier.dstQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;
             buf_barrier.size                = copy_buffer_size;
@@ -680,7 +693,7 @@ void DrawCallsDumpingContext::FinalizeCommandBuffer()
                     barrier.newLayout           = VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL;
                     barrier.image               = cat->handle;
                     barrier.subresourceRange    = {
-                           VK_IMAGE_ASPECT_COLOR_BIT, 0, VK_REMAINING_MIP_LEVELS, 0, VK_REMAINING_ARRAY_LAYERS
+                        VK_IMAGE_ASPECT_COLOR_BIT, 0, VK_REMAINING_MIP_LEVELS, 0, VK_REMAINING_ARRAY_LAYERS
                     };
 
                     device_table->CmdPipelineBarrier(current_command_buffer,
@@ -1385,7 +1398,7 @@ VkResult DrawCallsDumpingContext::RevertRenderTargetImageLayouts(VkQueue queue, 
     img_barrier.dstQueueFamilyIndex = VK_QUEUE_FAMILY_IGNORED;
     img_barrier.oldLayout           = VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL;
     img_barrier.subresourceRange    = {
-           VK_IMAGE_ASPECT_COLOR_BIT, 0, VK_REMAINING_MIP_LEVELS, 0, VK_REMAINING_ARRAY_LAYERS
+        VK_IMAGE_ASPECT_COLOR_BIT, 0, VK_REMAINING_MIP_LEVELS, 0, VK_REMAINING_ARRAY_LAYERS
     };
 
     for (size_t i = 0; i < render_targets[rp][sp].color_att_imgs.size(); ++i)
