@@ -837,7 +837,7 @@ VkResult DrawCallsDumpingContext::DumpDrawCalls(
         }
 
         // Dump vertex/index buffers
-        if (dump_vertex_index_buffers && (!dump_resources_before || dump_resources_before && !(cb % 2)))
+        if (dump_vertex_index_buffers && (!dump_resources_before || dump_resources_before && (cb % 2)))
         {
             res = DumpVertexIndexBuffers(qs_index, bcb_index, dc_index);
             if (res != VK_SUCCESS)
@@ -856,7 +856,7 @@ VkResult DrawCallsDumpingContext::DumpDrawCalls(
         }
 
         // Dump immutable resources
-        if (dump_immutable_resources && (!dump_resources_before || dump_resources_before && !(cb % 2)))
+        if (dump_immutable_resources && (!dump_resources_before || dump_resources_before && (cb % 2)))
         {
             VkResult res = DumpImmutableDescriptors(qs_index, bcb_index, dc_index, rp);
             if (res != VK_SUCCESS)
@@ -866,7 +866,7 @@ VkResult DrawCallsDumpingContext::DumpDrawCalls(
             }
         }
 
-        if (!dump_resources_before || dump_resources_before && !(cb % 2))
+        if (!dump_resources_before || dump_resources_before && (cb % 2))
         {
             GenerateOutputJsonDrawCallInfo(qs_index, bcb_index, cb, rp, sp);
         }
