@@ -525,9 +525,6 @@ VkResult DumpImageToFile(const ImageInfo*                   image_info,
         {
             std::string filename = filenames[f++];
 
-            if (aspects[i] == VK_IMAGE_ASPECT_STENCIL_BIT)
-                continue;
-
             if (output_image_format != util::imagewriter::DataFormats::kFormat_UNSPECIFIED)
             {
                 VkExtent3D scaled_extent;
