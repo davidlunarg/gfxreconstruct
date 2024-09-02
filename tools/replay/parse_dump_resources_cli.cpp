@@ -80,6 +80,12 @@ static bool CheckIndicesForErrors(const gfxrecon::decode::VulkanReplayOptions& v
     {
         for (const auto& indices : vulkan_replay_options.Draw_Indices)
         {
+            if (indices.size() == 0)
+            {
+                GFXRECON_LOG_ERROR("ERROR - incomplete --dump-resources parameters");
+                GFXRECON_LOG_ERROR("DrawCall indices must be a 2 dimensional array")
+                return true;
+            }
             if (!AreIndicesSorted(indices))
             {
                 GFXRECON_LOG_ERROR("ERROR - incorrect --dump-resources parameters");
@@ -91,18 +97,18 @@ static bool CheckIndicesForErrors(const gfxrecon::decode::VulkanReplayOptions& v
 
     if (vulkan_replay_options.RenderPass_Indices.size())
     {
-        bool is_complete = false;
+        bool is_complete = true;
         for (const auto& indices0 : vulkan_replay_options.RenderPass_Indices)
         {
             if (!indices0.size())
             {
-                is_complete = true;
+                is_complete = false;
                 break;
             }
 
             for (const auto& indices1 : indices0)
             {
-                is_complete |= (indices1.size() > 0);
+                is_complete &= (indices1.size() > 0);
 
                 if (!AreIndicesSorted(indices1))
                 {
@@ -163,16 +169,16 @@ static bool CheckIndicesForErrors(const gfxrecon::decode::VulkanReplayOptions& v
         return true;
     }
 
+    // Make sure each Draw has corresponding RenderPass indices
+    if (vulkan_replay_options.Draw_Indices.size() != vulkan_replay_options.RenderPass_Indices.size())
+    {
+        GFXRECON_LOG_ERROR("ERROR - incomplete --dump-resources parameters");
+        GFXRECON_LOG_ERROR("DrawCall indices must always be accompanied by render pass indices");
+        return true;
+    }
+
     for (int i = 0; i < vulkan_replay_options.Draw_Indices.size(); i++)
     {
-        // Make sure each Draw has corresponding RenderPass indices
-        if (vulkan_replay_options.Draw_Indices[i].size() != vulkan_replay_options.RenderPass_Indices[i].size())
-        {
-            GFXRECON_LOG_ERROR("ERROR - incomplete --dump-resources parameters");
-            GFXRECON_LOG_ERROR("DrawCall indices must always be accompanied by render pass indices");
-            return true;
-        }
-
         // Each dump command must specify a draw, tracerays, or dispatch call
         if (vulkan_replay_options.Draw_Indices[i].size() == 0 &&
             vulkan_replay_options.Dispatch_Indices[i].size() == 0 &&
