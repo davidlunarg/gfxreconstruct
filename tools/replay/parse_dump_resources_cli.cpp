@@ -496,6 +496,49 @@ bool parse_dump_resources_arg(gfxrecon::decode::VulkanReplayOptions& vulkan_repl
                 }
             }
         }
+
+        // Some indices are only specified for a particular type of resource dump.
+        // For each one that is not specified in the args, clear its vector.
+        bool clear_it = true;
+        for (const auto& indices : vulkan_replay_options.Draw_Indices)
+        {
+            clear_it &= (indices.size() == 0);
+        }
+        if (clear_it)
+        {
+            vulkan_replay_options.Draw_Indices.clear();
+        }
+
+        clear_it = true;
+        for (const auto& indices : vulkan_replay_options.RenderPass_Indices)
+        {
+            clear_it &= (indices.size() == 0);
+        }
+        if (clear_it)
+        {
+            vulkan_replay_options.RenderPass_Indices.clear();
+        }
+
+        clear_it = true;
+        for (const auto& indices : vulkan_replay_options.Dispatch_Indices)
+        {
+            clear_it &= (indices.size() == 0);
+        }
+        if (clear_it)
+        {
+            vulkan_replay_options.Dispatch_Indices.clear();
+        }
+
+        clear_it = true;
+        for (const auto& indices : vulkan_replay_options.TraceRays_Indices)
+        {
+            clear_it &= (indices.size() == 0);
+        }
+        if (clear_it)
+        {
+            vulkan_replay_options.TraceRays_Indices.clear();
+        }
+
     }
 
     if (parse_error)
