@@ -1059,7 +1059,7 @@ void VulkanReplayDumpResourcesBase::OverrideCmdBindDescriptorSets(const ApiCallI
     }
 
     DispatchTraceRaysDumpingContext* dr_context = FindDispatchRaysCommandBufferContext(original_command_buffer);
-    if (dr_context)
+    if (dr_context && (pipeline_bind_point == VK_PIPELINE_BIND_POINT_COMPUTE || pipeline_bind_point == VK_PIPELINE_BIND_POINT_RAY_TRACING_KHR))
     {
         dr_context->BindDescriptorSets(
             pipeline_bind_point, first_set, desc_set_infos, dynamicOffsetCount, pDynamicOffsets);
