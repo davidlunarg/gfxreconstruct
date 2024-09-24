@@ -44,6 +44,10 @@
 GFXRECON_BEGIN_NAMESPACE(gfxrecon)
 GFXRECON_BEGIN_NAMESPACE(decode)
 
+extern VkCommandBuffer drCB_orig;
+extern VkCommandBuffer drCB;
+extern bool use_drCB;
+
 VulkanReplayDumpResourcesBase::VulkanReplayDumpResourcesBase(const VulkanReplayOptions& options,
                                                              VulkanObjectInfoTable&     object_info_table) :
     QueueSubmit_indices_(options.QueueSubmit_Indices),
@@ -273,6 +277,7 @@ VkResult VulkanReplayDumpResourcesBase::CloneCommandBuffer(uint64_t           bc
                                util::ToString<VkResult>(res).c_str())
             return res;
         }
+        drCB_orig = dr_context->DR_command_buffer;
 
         cmd_buf_begin_map_[original_command_buffer_info->handle] = bcb_index;
         recording_                                               = true;
@@ -1336,6 +1341,7 @@ void VulkanReplayDumpResourcesBase::OverrideCmdDispatch(const ApiCallInfo& call_
         dr_context->SnapshotBoundDescriptorsDispatch(disp_index);
         dr_context->FinalizeCommandBuffer(true);
         UpdateRecordingStatus(original_command_buffer);
+        use_drCB = true;
     }
 }
 
@@ -1789,6 +1795,28 @@ VkResult VulkanReplayDumpResourcesBase::QueueSubmit(const std::vector<VkSubmitIn
     bool     submitted  = false;
     VkResult res        = VK_SUCCESS;
 
+    bool found_drCB = false;
+
+    for (int i=0; i<submit_infos.size(); i++)
+    {
+        const VkSubmitInfo *si;
+        si = &submit_infos[i];
+        for (int j = 0; j < si->commandBufferCount; j++)
+        {
+            if (drCB == si->pCommandBuffers[j])
+            {
+                found_drCB = true;
+                break;
+            }
+        }
+    }
+
+    if (found_drCB && drCB_orig != VK_NULL_HANDLE)
+    {
+        device_table.EndCommandBuffer(drCB_orig);
+        drCB_orig = VK_NULL_HANDLE;
+    }
+
     // First do a submission with all command buffer except the ones we are interested in
     std::vector<VkSubmitInfo>                 modified_submit_infos = submit_infos;
     std::vector<std::vector<VkCommandBuffer>> modified_command_buffer_handles(modified_submit_infos.size());
@@ -1799,15 +1827,12 @@ VkResult VulkanReplayDumpResourcesBase::QueueSubmit(const std::vector<VkSubmitIn
 
         for (uint32_t o = 0; o < command_buffer_count; ++o)
         {
-            auto bcb_entry = cmd_buf_begin_map_.find(command_buffer_handles[o]);
-            if (bcb_entry != cmd_buf_begin_map_.end())
+            pre_submit = true;
+            modified_command_buffer_handles[s].push_back(command_buffer_handles[o]);
+            if (drCB == command_buffer_handles[o])
             {
-                continue;
-            }
-            else
-            {
-                pre_submit = true;
-                modified_command_buffer_handles[s].push_back(command_buffer_handles[o]);
+                use_drCB = false;
+                drCB = VK_NULL_HANDLE;
             }
         }
 
@@ -1958,8 +1983,6 @@ bool VulkanReplayDumpResourcesBase::GetDrawCallActiveCommandBuffers(VkCommandBuf
                                                                     CommandBufferIterator& first,
                                                                     CommandBufferIterator& last) const
 {
-    assert(IsRecording(original_command_buffer));
-
     const DrawCallsDumpingContext* stack = FindDrawCallCommandBufferContext(original_command_buffer);
 
     if (stack != nullptr)
@@ -1976,8 +1999,6 @@ bool VulkanReplayDumpResourcesBase::GetDrawCallActiveCommandBuffers(VkCommandBuf
 VkCommandBuffer
 VulkanReplayDumpResourcesBase::GetDispatchRaysCommandBuffer(VkCommandBuffer original_command_buffer) const
 {
-    assert(IsRecording(original_command_buffer));
-
     const DispatchTraceRaysDumpingContext* context = FindDispatchRaysCommandBufferContext(original_command_buffer);
 
     if (context != nullptr)
@@ -2021,29 +2042,7 @@ bool VulkanReplayDumpResourcesBase::MustDumpQueueSubmitIndex(uint64_t index) con
 
 bool VulkanReplayDumpResourcesBase::IsRecording(VkCommandBuffer original_command_buffer) const
 {
-    if (recording_)
-    {
-        const DrawCallsDumpingContext* dc_context = FindDrawCallCommandBufferContext(original_command_buffer);
-        if (dc_context)
-        {
-            if (dc_context->IsRecording())
-            {
-                return true;
-            }
-        }
-
-        const DispatchTraceRaysDumpingContext* dr_context =
-            FindDispatchRaysCommandBufferContext(original_command_buffer);
-        if (dr_context != nullptr)
-        {
-            if (dr_context->IsRecording())
-            {
-                return true;
-            }
-        }
-    }
-
-    return false;
+    return (original_command_buffer == drCB);
 }
 
 uint64_t

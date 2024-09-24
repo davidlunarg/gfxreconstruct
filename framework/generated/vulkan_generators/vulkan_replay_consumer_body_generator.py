@@ -144,6 +144,9 @@ class VulkanReplayConsumerBodyGenerator(
         write('GFXRECON_BEGIN_NAMESPACE(gfxrecon)', file=self.outFile)
         write('GFXRECON_BEGIN_NAMESPACE(decode)', file=self.outFile)
         self.newline()
+        write('extern VkCommandBuffer drCB;', file=self.outFile)
+        write('extern bool use_drCB;', file=self.outFile)
+        self.newline()
         write('template <typename T>', file=self.outFile)
         write('void InitializeOutputStructPNext(StructPointerDecoder<T> *decoder);', file=self.outFile)
 
@@ -336,24 +339,6 @@ class VulkanReplayConsumerBodyGenerator(
                 ['    ' + val if val else val for val in preexpr]
             )
             body += '\n'
-            body += '\n'
-        if return_type == 'VkResult':
-            if is_async:
-                body += '    if (UseAsyncOperations())\n'
-                body += '    {\n'
-                body += '        auto task = {}(call_info, returnValue, {});\n'.format(self.REPLAY_ASYNC_OVERRIDES[name], arglist)
-                body += '        if(task)\n'
-                body += '        {\n'
-                body += '           {}\n'.format(postexpr[0])
-                body += '           return;\n'
-                body += '        }\n'
-                body += '    }\n'
-                postexpr = postexpr[1:]  # drop async post-expression, don't repeat later
-
-            body += '    VkResult replay_result = {};\n'.format(call_expr)
-            body += '    CheckResult("{}", returnValue, replay_result, call_info);\n'.format(name)
-        else:
-            body += '    {};\n'.format(call_expr)
 
         # Dump resources code generation
         if is_cmd:
@@ -401,6 +386,32 @@ class VulkanReplayConsumerBodyGenerator(
             body += '    {\n'
             body += '        resource_dumper.Process_{}(call_info, {}, {});\n'.format(name, dispatchfunc, dump_resource_arglist)
             body += '    }\n'
+
+        body += '\n'
+
+        if return_type == 'VkResult':
+            if is_async:
+                body += '    if (UseAsyncOperations())\n'
+                body += '    {\n'
+                body += '        auto task = {}(call_info, returnValue, {});\n'.format(self.REPLAY_ASYNC_OVERRIDES[name], arglist)
+                body += '        if(task)\n'
+                body += '        {\n'
+                body += '           {}\n'.format(postexpr[0])
+                body += '           return;\n'
+                body += '        }\n'
+                body += '    }\n'
+                postexpr = postexpr[1:]  # drop async post-expression, don't repeat later
+
+            body += '    VkResult replay_result = {};\n'.format(call_expr)
+            body += '    CheckResult("{}", returnValue, replay_result, call_info);\n'.format(name)
+        else:
+            if '->Cmd' in call_expr and 'OverrideCmd' not in call_expr:
+                body += '    if (drCB != in_commandBuffer)\n'
+                body += '    {\n'
+                body += '        {};\n'.format(call_expr)
+                body += '    }\n'
+            else:
+                body += '    {};\n'.format(call_expr)
 
         if postexpr:
             body += '\n'

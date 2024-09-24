@@ -178,7 +178,11 @@ class DispatchTraceRaysDumpingContext
                                           uint64_t cmd_index) const;
 
     const CommandBufferInfo*       original_command_buffer_info;
+
+  public:
     VkCommandBuffer                DR_command_buffer;
+
+  private:
     std::vector<uint64_t>          dispatch_indices;
     std::vector<uint64_t>          trace_rays_indices;
     const PipelineInfo*            bound_pipelines[kBindPoint_count];

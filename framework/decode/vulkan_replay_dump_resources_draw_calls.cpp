@@ -1475,7 +1475,7 @@ VkResult DrawCallsDumpingContext::RevertRenderTargetImageLayouts(VkQueue queue, 
         if (res != VK_SUCCESS)
         {
             GFXRECON_LOG_ERROR(
-                "(%s:%u) EndCommandBuffer failed with %s", __FILE__, __LINE__, util::ToString<VkResult>(res).c_str());
+                "(%s:%u) ResetFences failed with %s", __FILE__, __LINE__, util::ToString<VkResult>(res).c_str());
             return res;
         }
 

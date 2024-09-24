@@ -48,6 +48,9 @@
 GFXRECON_BEGIN_NAMESPACE(gfxrecon)
 GFXRECON_BEGIN_NAMESPACE(decode)
 
+extern VkCommandBuffer drCB;
+extern bool use_drCB;
+
 DispatchTraceRaysDumpingContext::DispatchTraceRaysDumpingContext(const std::vector<uint64_t>&   dispatch_indices,
                                                                  const std::vector<uint64_t>&   trace_rays_indices,
                                                                  VulkanObjectInfoTable&         object_info_table,
@@ -176,8 +179,6 @@ void DispatchTraceRaysDumpingContext::FinalizeCommandBuffer(bool is_dispatch)
                (dump_resources_before ? (current_trace_rays_index / 2) : current_trace_rays_index) ==
                    trace_rays_indices.size());
         assert(DR_command_buffer != VK_NULL_HANDLE);
-
-        device_table->EndCommandBuffer(DR_command_buffer);
     }
 }
 

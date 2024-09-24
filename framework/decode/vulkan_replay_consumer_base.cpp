@@ -66,6 +66,11 @@
 GFXRECON_BEGIN_NAMESPACE(gfxrecon)
 GFXRECON_BEGIN_NAMESPACE(decode)
 
+// THESE GLOBAL VARIABLES ARE A KLUDGE!
+VkCommandBuffer drCB_orig = VK_NULL_HANDLE;
+VkCommandBuffer drCB      = VK_NULL_HANDLE;
+bool use_drCB = false;
+
 const size_t kMaxEventStatusRetries      = 16;
 const size_t kMaxQueryPoolResultsRetries = 16;
 
@@ -5240,17 +5245,20 @@ void VulkanReplayConsumerBase::OverrideCmdPipelineBarrier(
     uint32_t                                                   imageMemoryBarrierCount,
     const StructPointerDecoder<Decoded_VkImageMemoryBarrier>*  pImageMemoryBarriers)
 {
-    swapchain_->CmdPipelineBarrier(func,
-                                   command_buffer_info,
-                                   srcStageMask,
-                                   dstStageMask,
-                                   dependencyFlags,
-                                   memoryBarrierCount,
-                                   pMemoryBarriers->GetPointer(),
-                                   bufferMemoryBarrierCount,
-                                   pBufferMemoryBarriers->GetPointer(),
-                                   imageMemoryBarrierCount,
-                                   pImageMemoryBarriers->GetPointer());
+    if (drCB != command_buffer_info->handle)
+    {
+        swapchain_->CmdPipelineBarrier(func,
+                                       command_buffer_info,
+                                       srcStageMask,
+                                       dstStageMask,
+                                       dependencyFlags,
+                                       memoryBarrierCount,
+                                       pMemoryBarriers->GetPointer(),
+                                       bufferMemoryBarrierCount,
+                                       pBufferMemoryBarriers->GetPointer(),
+                                       imageMemoryBarrierCount,
+                                       pImageMemoryBarriers->GetPointer());
+    }
 
     for (uint32_t i = 0; i < imageMemoryBarrierCount; ++i)
     {
@@ -5267,7 +5275,10 @@ void VulkanReplayConsumerBase::OverrideCmdPipelineBarrier2(
     CommandBufferInfo*                              command_buffer_info,
     StructPointerDecoder<Decoded_VkDependencyInfo>* pDependencyInfo)
 {
-    swapchain_->CmdPipelineBarrier2(func, command_buffer_info, pDependencyInfo->GetPointer());
+    if (drCB != command_buffer_info->handle)
+    {
+        swapchain_->CmdPipelineBarrier2(func, command_buffer_info, pDependencyInfo->GetPointer());
+    }
 
     if (pDependencyInfo != nullptr)
     {
@@ -7899,6 +7910,8 @@ VkResult VulkanReplayConsumerBase::OverrideBeginCommandBuffer(
 
         res = resource_dumper.CloneCommandBuffer(
             index, command_buffer_info, GetDeviceTable(device->handle), GetInstanceTable(device->parent));
+
+        drCB = command_buffer;
     }
 
     if (res == VK_SUCCESS)
@@ -7923,7 +7936,14 @@ VkResult VulkanReplayConsumerBase::OverrideResetCommandBuffer(PFN_vkResetCommand
         resource_dumper.ResetCommandBuffer((command_buffer));
     }
 
-    return func(command_buffer, flags);
+    if (drCB != command_buffer_info->handle)
+    {
+        return func(command_buffer, flags);
+    }
+
+    return VK_SUCCESS;
+
+
 }
 
 VkResult VulkanReplayConsumerBase::OverrideResetCommandPool(PFN_vkResetCommandPool  func,
@@ -8055,7 +8075,10 @@ void VulkanReplayConsumerBase::OverrideCmdBeginRenderPass(
 
     VkCommandBuffer command_buffer = command_buffer_info->handle;
 
-    func(command_buffer, render_pass_begin_info_decoder->GetPointer(), contents);
+    if (drCB != command_buffer_info->handle)
+    {
+        func(command_buffer, render_pass_begin_info_decoder->GetPointer(), contents);
+    }
 }
 
 void VulkanReplayConsumerBase::OverrideCmdBeginRenderPass2(
@@ -8093,7 +8116,10 @@ void VulkanReplayConsumerBase::OverrideCmdBeginRenderPass2(
 
     VkCommandBuffer command_buffer = command_buffer_info->handle;
 
-    func(command_buffer, render_pass_begin_info_decoder->GetPointer(), subpass_begin_info_decode->GetPointer());
+    if (drCB != command_buffer_info->handle)
+    {
+        func(command_buffer, render_pass_begin_info_decoder->GetPointer(), subpass_begin_info_decode->GetPointer());
+    }
 }
 
 VkResult VulkanReplayConsumerBase::OverrideCreateImageView(
