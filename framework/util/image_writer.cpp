@@ -321,11 +321,13 @@ static const uint8_t* ConvertIntoTemporaryBuffer(uint32_t    width,
         break;
 
         default:
-            GFXRECON_LOG_ERROR("Format %u not handled", format);
+            GFXRECON_LOG_ERROR("@@@@Format1 %u not handled", format);
             assert(0);
+            GFXRECON_LOG_ERROR("@@@@Format2 %u not handled", format);
             return nullptr;
     }
 
+    GFXRECON_LOG_ERROR("@@@@ConvertIntoTemporaryBuffe returning %p", reinterpret_cast<const uint8_t*>(temporary_buffer.data()));
     return reinterpret_cast<const uint8_t*>(temporary_buffer.data());
 }
 
@@ -532,6 +534,8 @@ bool WritePngImage(const std::string& filename,
     }
 
     const uint8_t* bytes = ConvertIntoTemporaryBuffer(width, height, data, data_pitch, format, true, write_alpha);
+    GFXRECON_LOG_ERROR("@@@bytes = %p", bytes);
+
 
     stbi_write_png_compression_level = 4;
     const uint32_t png_row_pitch     = width * (write_alpha ? kImageBpp : kImageBppNoAlpha);
