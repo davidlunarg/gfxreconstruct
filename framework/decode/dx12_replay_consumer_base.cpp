@@ -4554,6 +4554,14 @@ void Dx12ReplayConsumerBase::PreCall_ID3D12GraphicsCommandList_ResourceBarrier(
             {
                 it->second.emplace_back(std::move(state));
             }
+            if (state.transition.StateAfter & modifiableTransitionStates)
+            {
+                 dump_resources_->ModifiableResourceAdd(barriers[i].Transition->pResource);
+            }
+            else
+            {
+                dump_resources_->ModifiableResourceRemove(barriers[i].Transition->pResource);
+            }
         }
     }
 }

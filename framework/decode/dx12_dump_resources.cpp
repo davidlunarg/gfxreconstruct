@@ -1412,7 +1412,9 @@ void Dx12DumpResources::CopyDrawCallResources(DxObjectInfo*                     
     }
     active_delegate_->WriteSingleData(json_path, "drawcall_type", drawcall_type_name);
 
-    if (drawcall_type != DumpDrawCallType::kDispatch)
+    // We're about to dump vertex and index buffers. If we are only dumping modifiable resources,
+    // skip the dump because vertex/index buffers are not modifiable resources.
+    if (!options_.dump_resources_modifiable_state_only && drawcall_type != DumpDrawCallType::kDispatch)
     {
         // vertex
         const std::vector<D3D12_VERTEX_BUFFER_VIEW>* vertex_buffer_views = nullptr;
@@ -2092,8 +2094,15 @@ void Dx12DumpResources::CopyResourceAsyncRead(graphics::dx12::ID3D12FenceComPtr 
         }
     }
 
-    // After copying task is done, write the data to disk, and free it to reduce memory use.
-    active_delegate_->DumpResource(copy_resource_data);
+    // Dump the resource if we're not restricting dumps to modifiable resources or the
+    // resource is in the modifiable resources set
+    if (!options_.dump_resources_modifiable_state_only ||
+        modifiableResources_.find(copy_resource_data->source_resource_id) != modifiableResources_.end())
+    {
+        active_delegate_->DumpResource(copy_resource_data);
+    }
+
+    // Free the resource data
     copy_resource_data->Clear();
 
     // Signal command queue to continue execution.

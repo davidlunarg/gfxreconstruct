@@ -140,6 +140,7 @@ const char kDumpResourcesImageFormat[]            = "--dump-resources-image-form
 const char kDumpResourcesScaleArgument[]          = "--dump-resources-scale";
 const char kDumpResourcesDepth[]                  = "--dump-resources-dump-depth-attachment";
 const char kDumpResourcesDirArgument[]            = "--dump-resources-dir";
+const char kDumpResourcesModifiableStateOnly[]    = "--dump-resources-modifiable-state-only";
 const char kDumpResourcesColorAttIdxArg[]         = "--dump-resources-dump-color-attachment-index";
 const char kDumpResourcesDumpVertexIndexBuffers[] = "--dump-resources-dump-vertex-index-buffers";
 const char kDumpResourcesJsonPerCommand[]         = "--dump-resources-json-output-per-command";
@@ -193,6 +194,7 @@ const char kDefaultDumpResourcesDir[] = "/sdcard";
 #else
 const char kDefaultScreenshotDir[]    = "";
 const char kDefaultDumpResourcesDir[] = "";
+const bool kDefaultDumpResourcesModifiableStateOnly = false;
 #endif
 
 static void ProcessDisableDebugPopup(const gfxrecon::util::ArgumentParser& arg_parser)
@@ -1192,8 +1194,9 @@ static gfxrecon::decode::DxReplayOptions GetDxReplayOptions(const gfxrecon::util
         }
     }
 
-    replay_options.dump_resources_output_dir = GetDumpResourcesDir(arg_parser);
-    replay_options.dump_resources_before     = arg_parser.IsOptionSet(kDumpResourcesBeforeDrawOption);
+    replay_options.dump_resources_output_dir            = GetDumpResourcesDir(arg_parser);
+    replay_options.dump_resources_before                = arg_parser.IsOptionSet(kDumpResourcesBeforeDrawOption);
+    replay_options.dump_resources_modifiable_state_only = GetDumpResourcesModifiableStateOnly(arg_parser);
 
     const std::string& memory_usage = arg_parser.GetArgumentValue(kBatchingMemoryUsageArgument);
     if (!memory_usage.empty())
