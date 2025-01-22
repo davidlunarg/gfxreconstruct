@@ -72,6 +72,7 @@ struct ReplayOptions
     std::string                  asset_file_path;
     std::string                  dump_resources_output_dir;
     bool                         dump_resources_before{ false };
+    bool                         dump_resources_modifiable_state_only;
 };
 
 GFXRECON_END_NAMESPACE(decode)

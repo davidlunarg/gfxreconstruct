@@ -1412,7 +1412,9 @@ void Dx12DumpResources::CopyDrawCallResources(DxObjectInfo*                     
     }
     active_delegate_->WriteSingleData(json_path, "drawcall_type", drawcall_type_name);
 
-    if (drawcall_type != DumpDrawCallType::kDispatch)
+    // We're about to dump vertex and index buffers. If we are only dumping modifiable resources,
+    // skip the dump because vertex/index buffers are not modifiable resources.
+    if (!options_.dump_resources_modifiable_state_only && drawcall_type != DumpDrawCallType::kDispatch)
     {
         // vertex
         const std::vector<D3D12_VERTEX_BUFFER_VIEW>* vertex_buffer_views = nullptr;
@@ -1964,6 +1966,7 @@ bool Dx12DumpResources::CopyResourceAsyncQueue(const std::vector<format::HandleI
         // Determine subresource states in order to transition to D3D12_RESOURCE_STATE_COPY_SOURCE.
         std::vector<graphics::dx12::ResourceStateInfo> res_infos = source_resource_extra_info->resource_state_infos;
         auto                                           size      = front_command_list_ids.size();
+
         for (uint32_t i = 0; i < size; ++i)
         {
             auto cmd_list_extra_info =
@@ -2092,8 +2095,34 @@ void Dx12DumpResources::CopyResourceAsyncRead(graphics::dx12::ID3D12FenceComPtr 
         }
     }
 
-    // After copying task is done, write the data to disk, and free it to reduce memory use.
-    active_delegate_->DumpResource(copy_resource_data);
+    // Always dump the resource if not dumping only modifiable resources
+    if (!options_.dump_resources_modifiable_state_only)
+    {
+
+        active_delegate_->DumpResource(copy_resource_data);
+    }
+    else
+    {
+
+        // Get the current state for this resource
+        auto source_resource_object_info = get_object_info_func_(copy_resource_data->source_resource_id);
+        auto source_resource             = reinterpret_cast<ID3D12Resource*>(source_resource_object_info->object);
+        auto source_resource_extra_info  = GetExtraInfo<D3D12ResourceInfo>(source_resource_object_info);
+        std::vector<graphics::dx12::ResourceStateInfo> res_infos = source_resource_extra_info->resource_state_infos;
+        uint64_t                                       curState  = 0;
+        for (auto it = res_infos.begin(); it != res_infos.end(); it++)
+        {
+            curState |= it->states;
+        }
+
+        // Dump the resource if is it in modifiable state
+        if (curState & modifiableTransitionStates)
+        {
+            active_delegate_->DumpResource(copy_resource_data);
+        }
+    }
+
+    // Free the resource data
     copy_resource_data->Clear();
 
     // Signal command queue to continue execution.
