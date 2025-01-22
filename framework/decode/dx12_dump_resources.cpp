@@ -1368,6 +1368,9 @@ void Dx12DumpResources::WriteRootParameters(DxObjectInfo*                       
     }
 }
 
+extern bool dumpOnlyModifiableResources;
+extern std::unordered_set<format::HandleId> modifiableResources;
+
 void Dx12DumpResources::CopyDrawCallResources(DxObjectInfo*                        queue_object_info,
                                               const std::vector<format::HandleId>& front_command_list_ids,
                                               graphics::dx12::Dx12DumpResourcePos  pos)
@@ -1406,7 +1409,9 @@ void Dx12DumpResources::CopyDrawCallResources(DxObjectInfo*                     
     }
     active_delegate_->WriteSingleData(json_path, "drawcall_type", drawcall_type_name);
 
-    if (drawcall_type != DumpDrawCallType::kDispatch)
+    // We're about to dump vertex and index buffers. If dumpOnlyModifiableResources is true,
+    // skip the dump because those buffers are not a modifiable resources.
+    if (!dumpOnlyModifiableResources && drawcall_type != DumpDrawCallType::kDispatch)
     {
         // vertex
         const std::vector<D3D12_VERTEX_BUFFER_VIEW>* vertex_buffer_views = nullptr;
@@ -2544,6 +2549,12 @@ void DefaultDx12DumpResourcesDelegate::WriteResource(nlohmann::ordered_json&   j
                                                      const std::string&        prefix_file_name,
                                                      const CopyResourceDataPtr resource_data)
 {
+    if (modifiableResources.find(resource_data->source_resource_id) == modifiableResources.end())
+    {
+        printf("@@@Skipping write file for res id of %lld ????\n", resource_data->source_resource_id);
+        return;
+    }
+    
     if (resource_data->source_resource_id == format::kNullHandleId)
     {
         return;
@@ -2576,6 +2587,7 @@ void DefaultDx12DumpResourcesDelegate::WriteResource(nlohmann::ordered_json&   j
         util::FieldToJson(jdata_sub[json_path], file_name_sub.c_str(), json_options_);
 
         std::string file_path = gfxrecon::util::filepath::Join(json_options_.root_dir, file_name_sub);
+        printf("@@@Writing file %s\n", file_path.c_str());
         WriteBinaryFile(file_path, resource_data->datas[sub_index], offset, size);
         ++json_sub_index;
     }
