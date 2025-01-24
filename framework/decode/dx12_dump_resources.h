@@ -60,6 +60,19 @@ enum class Dx12DumpResourceType : uint32_t
     kComputeRootParameters,
 };
 
+const uint64_t modifiableTransitionStates =
+    D3D12_RESOURCE_STATE_RENDER_TARGET |
+    D3D12_RESOURCE_STATE_DEPTH_WRITE |
+    D3D12_RESOURCE_STATE_STREAM_OUT |
+    D3D12_RESOURCE_STATE_COPY_DEST |
+    D3D12_RESOURCE_STATE_RESOLVE_DEST |
+    D3D12_RESOURCE_STATE_RAYTRACING_ACCELERATION_STRUCTURE |
+    D3D12_RESOURCE_STATE_ALL_SHADER_RESOURCE |
+    D3D12_RESOURCE_STATE_VIDEO_DECODE_WRITE |
+    D3D12_RESOURCE_STATE_VIDEO_PROCESS_WRITE |
+    D3D12_RESOURCE_STATE_VIDEO_ENCODE_WRITE;
+
+
 struct CopyResourceData
 {
     // Allow default constructor, disallow copy constructor.
@@ -389,6 +402,11 @@ class Dx12DumpResources
     std::unique_ptr<DefaultDx12DumpResourcesDelegate> default_delegate_;
     Dx12DumpResourcesDelegate*                        user_delegate_;
     Dx12DumpResourcesDelegate*                        active_delegate_;
+    std::unordered_set<format::HandleId>              modifiableResources_;
+
+  public:
+    void ModifiableResourceAdd(format::HandleId resource){modifiableResources_.insert(resource);}
+    void ModifiableResourceRemove(format::HandleId resource){modifiableResources_.erase(resource);}
 };
 
 GFXRECON_END_NAMESPACE(decode)

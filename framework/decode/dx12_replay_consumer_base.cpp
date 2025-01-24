@@ -4519,20 +4519,8 @@ void Dx12ReplayConsumerBase::PostCall_ApiCall_ID3D12SwapChainAssistant_GetLUID(c
     AddAdapterLuid(*capture_return_value.decoded_value, replay_return_value);
 }
 
-// MOVE THESE
+// MOVE THIS
 bool dumpOnlyModifiableResources = true;
-std::unordered_set<format::HandleId> modifiableResources({});
-const uint64_t modifiableTransitionStates =
-    D3D12_RESOURCE_STATE_RENDER_TARGET | 
-    D3D12_RESOURCE_STATE_DEPTH_WRITE | 
-    D3D12_RESOURCE_STATE_STREAM_OUT | 
-    D3D12_RESOURCE_STATE_COPY_DEST | 
-    D3D12_RESOURCE_STATE_RESOLVE_DEST | 
-    D3D12_RESOURCE_STATE_RAYTRACING_ACCELERATION_STRUCTURE | 
-    D3D12_RESOURCE_STATE_ALL_SHADER_RESOURCE |
-    D3D12_RESOURCE_STATE_VIDEO_DECODE_WRITE | 
-    D3D12_RESOURCE_STATE_VIDEO_PROCESS_WRITE | 
-    D3D12_RESOURCE_STATE_VIDEO_ENCODE_WRITE;
 
 void Dx12ReplayConsumerBase::PreCall_ID3D12GraphicsCommandList_ResourceBarrier(
     const ApiCallInfo&                                    call_info,
@@ -4544,8 +4532,6 @@ void Dx12ReplayConsumerBase::PreCall_ID3D12GraphicsCommandList_ResourceBarrier(
     auto       extra_info      = GetExtraInfo<D3D12CommandListInfo>(GetObjectInfo(command_list_id));
 
     auto barriers = pBarriers->GetMetaStructPointer();
-    printf("\n@@@NumBarriers=%d\n", NumBarriers);
-    printf("@@call_info.index=%lld\n", call_info.index);
     for (uint32_t i = 0; i < NumBarriers; ++i)
     {
         if (barriers[i].decoded_value->Type == D3D12_RESOURCE_BARRIER_TYPE_TRANSITION)
@@ -4572,12 +4558,13 @@ void Dx12ReplayConsumerBase::PreCall_ID3D12GraphicsCommandList_ResourceBarrier(
                 it->second.emplace_back(std::move(state));
             }
             if (state.transition.StateAfter & modifiableTransitionStates)
-                modifiableResources.insert(barriers[i].Transition->pResource);
+            {
+                 dump_resources_->ModifiableResourceAdd(barriers[i].Transition->pResource);
+            }
             else
-                modifiableResources.erase(barriers[i].Transition->pResource);
-            printf("@@@state.transition.pResource=%lld\n", (long long)barriers[i].Transition->pResource);
-            printf("@@@state.transition.StateBefore=0x%x\n", (unsigned int)state.transition.StateBefore);
-            printf("@@@state.transition.StateAfter=0x%x\n", (unsigned int)state.transition.StateAfter);
+            {
+                dump_resources_->ModifiableResourceRemove(barriers[i].Transition->pResource);
+            }
         }
     }
 }

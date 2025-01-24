@@ -1368,8 +1368,7 @@ void Dx12DumpResources::WriteRootParameters(DxObjectInfo*                       
     }
 }
 
-extern bool dumpOnlyModifiableResources;
-extern std::unordered_set<format::HandleId> modifiableResources;
+extern bool dumpOnlyModifiableResources;   // MOVE THIS
 
 void Dx12DumpResources::CopyDrawCallResources(DxObjectInfo*                        queue_object_info,
                                               const std::vector<format::HandleId>& front_command_list_ids,
@@ -2091,8 +2090,10 @@ void Dx12DumpResources::CopyResourceAsyncRead(graphics::dx12::ID3D12FenceComPtr 
         }
     }
 
-    // Dump the resource if we're not restricting dumps to modifiable resources or the resource is in the modifiable resources set
-    if (!dumpOnlyModifiableResources || modifiableResources.find(copy_resource_data->source_resource_id) != modifiableResources.end())
+    // Dump the resource if we're not restricting dumps to modifiable resources or the
+    // resource is in the modifiable resources set
+    if (!dumpOnlyModifiableResources ||
+        modifiableResources_.find(copy_resource_data->source_resource_id) != modifiableResources_.end())
     {
         active_delegate_->DumpResource(copy_resource_data);
     }
@@ -2586,7 +2587,6 @@ void DefaultDx12DumpResourcesDelegate::WriteResource(nlohmann::ordered_json&   j
         util::FieldToJson(jdata_sub[json_path], file_name_sub.c_str(), json_options_);
 
         std::string file_path = gfxrecon::util::filepath::Join(json_options_.root_dir, file_name_sub);
-        printf("@@@Writing file %s\n", file_path.c_str());
         WriteBinaryFile(file_path, resource_data->datas[sub_index], offset, size);
         ++json_sub_index;
     }
