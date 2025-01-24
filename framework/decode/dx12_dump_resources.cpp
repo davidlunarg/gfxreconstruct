@@ -2091,8 +2091,13 @@ void Dx12DumpResources::CopyResourceAsyncRead(graphics::dx12::ID3D12FenceComPtr 
         }
     }
 
-    // After copying task is done, write the data to disk, and free it to reduce memory use.
-    active_delegate_->DumpResource(copy_resource_data);
+    // Dump the resource if we're not restricting dumps to modifiable resources or the resource is in the modifiable resources set
+    if (!dumpOnlyModifiableResources || modifiableResources.find(copy_resource_data->source_resource_id) != modifiableResources.end())
+    {
+        active_delegate_->DumpResource(copy_resource_data);
+    }
+
+    // Free the resource data
     copy_resource_data->Clear();
 
     // Signal command queue to continue execution.
@@ -2549,12 +2554,6 @@ void DefaultDx12DumpResourcesDelegate::WriteResource(nlohmann::ordered_json&   j
                                                      const std::string&        prefix_file_name,
                                                      const CopyResourceDataPtr resource_data)
 {
-    if (modifiableResources.find(resource_data->source_resource_id) == modifiableResources.end())
-    {
-        printf("@@@Skipping write file for res id of %lld ????\n", resource_data->source_resource_id);
-        return;
-    }
-    
     if (resource_data->source_resource_id == format::kNullHandleId)
     {
         return;
