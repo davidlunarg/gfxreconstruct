@@ -4519,9 +4519,6 @@ void Dx12ReplayConsumerBase::PostCall_ApiCall_ID3D12SwapChainAssistant_GetLUID(c
     AddAdapterLuid(*capture_return_value.decoded_value, replay_return_value);
 }
 
-// MOVE THIS
-bool dumpOnlyModifiableResources = true;
-
 void Dx12ReplayConsumerBase::PreCall_ID3D12GraphicsCommandList_ResourceBarrier(
     const ApiCallInfo&                                    call_info,
     DxObjectInfo*                                         object_info,

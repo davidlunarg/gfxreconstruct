@@ -212,9 +212,11 @@ Usage:
                         [--fwo <x,y> | --force-windowed-origin <x,y>]
                         [--log-level <level>] [--log-file <file>] [--log-debugview]
                         [--batching-memory-usage <pct>]
-                        [--dump-resources <submit-index,command-index,draw-call-index>] <file>
+                        [--dump-resources <submit-index,command-index,draw-call-index>]
+                        [--dump-resources-modifiable-state-only ]
                         [--dump-resources-dir <dir>]
                         [--pbi-all] [--pbis <index1,index2>]
+                        <file>
 
 Required arguments:
   <file>                Path to the capture file to replay.
@@ -347,6 +349,8 @@ D3D12-only:
                                Arguments becomes three indices, submit index, command index,
                                draw call index. The command index is based on its in ExecuteCommandLists.
   --dump-resources-dir <dir>   Directory to write dump resources output files. Default is the current working directory.
+  --dump-resources-modifiable-state-only
+                               Only dump resources that are in a modifiable state set by D3D12 ResourceBarrier
 ```
 
 
