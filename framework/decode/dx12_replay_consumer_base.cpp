@@ -390,7 +390,7 @@ void Dx12ReplayConsumerBase::ApplyBatchedResourceInitInfo(
         // 2. One ExecuteCommandLists could work for only one swapchain buffer.
         // 3. The current back buffer index has to match the swapchain buffer.
         // 4. After ExecuteCommandLists, the current back buffer index has to back init.
-        // 5. It shouldn't change resource states until all Presnt are done since Present require 
+        // 5. It shouldn't change resource states until all Presnt are done since Present require
         //    D3D12_RESOURCE_STATE_PRESENT. The before_states supposes to be PRESENT.
 
         // Although it has only one swapchain mostly, it probably has a plural in some cases.
@@ -404,7 +404,7 @@ void Dx12ReplayConsumerBase::ApplyBatchedResourceInitInfo(
             auto swapchain             = reinterpret_cast<IDXGISwapChain3*>(swapchain_info->object);
             swapchain_infos[swapchain] = swapchain_extra_info;
 
-            for (auto &state : resource_info.second->before_states)
+            for (auto& state : resource_info.second->before_states)
             {
                 if (state.states != D3D12_RESOURCE_STATE_PRESENT)
                 {
@@ -4556,7 +4556,7 @@ void Dx12ReplayConsumerBase::PreCall_ID3D12GraphicsCommandList_ResourceBarrier(
             }
             if (state.transition.StateAfter & modifiableTransitionStates)
             {
-                 dump_resources_->ModifiableResourceAdd(barriers[i].Transition->pResource);
+                dump_resources_->ModifiableResourceAdd(barriers[i].Transition->pResource);
             }
             else
             {
@@ -4641,7 +4641,7 @@ void Dx12ReplayConsumerBase::PostCall_ID3D12Device_CreateShaderResourceView(
     }
     else
     {
-        srv_info.desc     = *(pDesc->GetMetaStructPointer()->decoded_value);
+        srv_info.desc         = *(pDesc->GetMetaStructPointer()->decoded_value);
         srv_info.is_desc_null = false;
 
         if (options_.enable_dump_resources)

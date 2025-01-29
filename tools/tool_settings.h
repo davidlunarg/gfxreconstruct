@@ -192,8 +192,8 @@ const char kScreenshotFormatPng[] = "png";
 const char kDefaultScreenshotDir[]    = "/sdcard";
 const char kDefaultDumpResourcesDir[] = "/sdcard";
 #else
-const char kDefaultScreenshotDir[]    = "";
-const char kDefaultDumpResourcesDir[] = "";
+const char kDefaultScreenshotDir[]                  = "";
+const char kDefaultDumpResourcesDir[]               = "";
 const bool kDefaultDumpResourcesModifiableStateOnly = false;
 #endif
 
