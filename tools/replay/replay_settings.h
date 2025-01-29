@@ -36,7 +36,7 @@ const char kOptions[] =
     "--dump-resources-dump-depth-attachment,--dump-"
     "resources-dump-vertex-index-buffers,--dump-resources-json-output-per-command,--dump-resources-dump-immutable-"
     "resources,--dump-resources-dump-all-image-subresources,--dump-resources-dump-raw-images,--dump-resources-dump-"
-    "separate-alpha,--pbi-all,--preload-measurement-range, --add-new-pipeline-caches";
+    "separate-alpha,,--dump-resources-modifiable-state-only,--pbi-all,--preload-measurement-range, --add-new-pipeline-caches";
 const char kArguments[] =
     "--log-level,--log-file,--gpu,--gpu-group,--pause-frame,--wsi,--surface-index,-m|--memory-translation,"
     "--replace-shaders,--screenshots,--denied-messages,--allowed-messages,--screenshot-format,--"
@@ -378,6 +378,8 @@ static void PrintUsage(const char* exe_name)
     GFXRECON_WRITE_CONSOLE("  --dump-resources-dir <dir>");
     GFXRECON_WRITE_CONSOLE("          \t\tDirectory to write dump resources output files.");
     GFXRECON_WRITE_CONSOLE("          \t\tDefault is the current working directory.");
+    GFXRECON_WRITE_CONSOLE("  --dump-resources-modifiable-state-only");
+    GFXRECON_WRITE_CONSOLE("          \t\tOnly dump resources that are in a modifiable state set by D3D12 ResourceBarrier")
 #endif
 }
 

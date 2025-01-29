@@ -584,18 +584,6 @@ static std::string GetDumpResourcesDir(const gfxrecon::util::ArgumentParser& arg
     return kDefaultDumpResourcesDir;
 }
 
-static bool GetDumpResourcesModifiableStateOnly(const gfxrecon::util::ArgumentParser& arg_parser)
-{
-    const auto& value = arg_parser.GetArgumentValue(kDumpResourcesModifiableStateOnly);
-
-    if (!value.empty())
-    {
-        return value;
-    }
-
-    return kDefaultDumpResourcesModifiableStateOnly;
-}
-
 static void GetScreenshotSize(const gfxrecon::util::ArgumentParser& arg_parser, uint32_t& width, uint32_t& height)
 {
     const auto& value = arg_parser.GetArgumentValue(kScreenshotSizeArgument);
@@ -1207,7 +1195,7 @@ static gfxrecon::decode::DxReplayOptions GetDxReplayOptions(const gfxrecon::util
     }
 
     replay_options.dump_resources_output_dir = GetDumpResourcesDir(arg_parser);
-    replay_options.dump_resources_modifiable_state_only = GetDumpResourcesModifiableStateOnly(arg_parser);
+    replay_options.dump_resources_modifiable_state_only = arg_parser.IsOptionSet(kDumpResourcesModifiableStateOnly);
 
     const std::string& memory_usage = arg_parser.GetArgumentValue(kBatchingMemoryUsageArgument);
     if (!memory_usage.empty())
