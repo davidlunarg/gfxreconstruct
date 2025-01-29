@@ -1196,7 +1196,7 @@ static gfxrecon::decode::DxReplayOptions GetDxReplayOptions(const gfxrecon::util
 
     replay_options.dump_resources_output_dir            = GetDumpResourcesDir(arg_parser);
     replay_options.dump_resources_before                = arg_parser.IsOptionSet(kDumpResourcesBeforeDrawOption);
-    replay_options.dump_resources_modifiable_state_only = GetDumpResourcesModifiableStateOnly(arg_parser);
+    replay_options.dump_resources_modifiable_state_only = arg_parser.IsOptionSet(kDumpResourcesModifiableStateOnly);
 
     const std::string& memory_usage = arg_parser.GetArgumentValue(kBatchingMemoryUsageArgument);
     if (!memory_usage.empty())
