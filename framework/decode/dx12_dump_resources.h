@@ -63,10 +63,8 @@ enum class Dx12DumpResourceType : uint32_t
 const uint64_t modifiableTransitionStates =
     D3D12_RESOURCE_STATE_RENDER_TARGET | D3D12_RESOURCE_STATE_DEPTH_WRITE | D3D12_RESOURCE_STATE_STREAM_OUT |
     D3D12_RESOURCE_STATE_COPY_DEST | D3D12_RESOURCE_STATE_RESOLVE_DEST |
-    D3D12_RESOURCE_STATE_RAYTRACING_ACCELERATION_STRUCTURE |
-    D3D12_RESOURCE_STATE_VIDEO_DECODE_WRITE | D3D12_RESOURCE_STATE_VIDEO_PROCESS_WRITE |
-    D3D12_RESOURCE_STATE_VIDEO_ENCODE_WRITE;
-
+    D3D12_RESOURCE_STATE_RAYTRACING_ACCELERATION_STRUCTURE | D3D12_RESOURCE_STATE_VIDEO_DECODE_WRITE |
+    D3D12_RESOURCE_STATE_VIDEO_PROCESS_WRITE | D3D12_RESOURCE_STATE_VIDEO_ENCODE_WRITE;
 
 struct CopyResourceData
 {
@@ -161,9 +159,9 @@ class Dx12DumpResourcesDelegate
 
     virtual void BeginDumpResources(const std::string&        dump_resources_output_dir,
                                     const std::string&        capture_file_name,
-                                    const TrackDumpResources& track_dump_resources) = 0;
-    virtual void DumpResource(CopyResourceDataPtr resource_data)                    = 0;
-    virtual void EndDumpResources()                                                 = 0;
+                                    const TrackDumpResources& track_dump_resources)                                 = 0;
+    virtual void DumpResource(CopyResourceDataPtr resource_data)                                                    = 0;
+    virtual void EndDumpResources()                                                                                 = 0;
     virtual void WriteSingleData(const std::vector<std::pair<std::string, int32_t>>& json_path,
                                  const std::string&                                  key,
                                  uint64_t                                            value)                                                                    = 0;
@@ -176,7 +174,7 @@ class Dx12DumpResourcesDelegate
     virtual void WriteNote(const std::vector<std::pair<std::string, int32_t>>& json_path, const std::string& value) = 0;
     virtual void WriteRootParameterInfo(const std::vector<std::pair<std::string, int32_t>>& json_path,
                                         uint32_t                                            root_parameter_index,
-                                        const TrackRootParameter&                           root_parameter)                                 = 0;
+                                        const TrackRootParameter&                           root_parameter)                                   = 0;
     virtual void WriteNotFoundView(const std::vector<std::pair<std::string, int32_t>>& json_path,
                                    format::HandleId                                    heap_id,
                                    uint32_t                                            heap_index)                                                             = 0;
@@ -400,8 +398,8 @@ class Dx12DumpResources
     std::unordered_set<format::HandleId>              modifiableResources_;
 
   public:
-    void ModifiableResourceAdd(format::HandleId resource){modifiableResources_.insert(resource);}
-    void ModifiableResourceRemove(format::HandleId resource){modifiableResources_.erase(resource);}
+    void ModifiableResourceAdd(format::HandleId resource) { modifiableResources_.insert(resource); }
+    void ModifiableResourceRemove(format::HandleId resource) { modifiableResources_.erase(resource); }
 };
 
 GFXRECON_END_NAMESPACE(decode)
