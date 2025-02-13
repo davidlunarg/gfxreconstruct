@@ -2104,19 +2104,23 @@ void Dx12DumpResources::CopyResourceAsyncRead(graphics::dx12::ID3D12FenceComPtr 
     else
     {
 
-        // Get the current state for this resource
+        // Determine if this resource is modifiable. It is modifiable if any subresource state
+        // has one of the states in modifiableTransitionStates set, or a subresource state is
+        // D3D12_RESOURCE_STATE_COMMON. We treat D3D12_RESOURCE_STATE_COMMON as modifiable because
+        // that state could be considered modifiable based on how the resource is used.
         auto source_resource_object_info = get_object_info_func_(copy_resource_data->source_resource_id);
         auto source_resource             = reinterpret_cast<ID3D12Resource*>(source_resource_object_info->object);
         auto source_resource_extra_info  = GetExtraInfo<D3D12ResourceInfo>(source_resource_object_info);
         std::vector<graphics::dx12::ResourceStateInfo> res_infos = source_resource_extra_info->resource_state_infos;
-        uint64_t                                       curState  = 0;
-        for (auto it = res_infos.begin(); it != res_infos.end(); it++)
+        bool                                           resourceIsModifiable = false;
+        for (auto it = res_infos.begin(); it != res_infos.end() && !resourceIsModifiable; it++)
         {
-            curState |= it->states;
+            resourceIsModifiable =
+                ((modifiableTransitionStates && it->states) || it->states == D3D12_RESOURCE_STATE_COMMON);
         }
 
         // Dump the resource if is it in modifiable state
-        if (curState & modifiableTransitionStates)
+        if (resourceIsModifiable)
         {
             active_delegate_->DumpResource(copy_resource_data);
         }
