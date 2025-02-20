@@ -2096,12 +2096,11 @@ void Dx12DumpResources::CopyResourceAsyncRead(graphics::dx12::ID3D12FenceComPtr 
     }
 
     // Always dump the resource if not dumping only modifiable resources
-    if (!options_.dump_resources_modifiable_state_only)
-    {
-
-        active_delegate_->DumpResource(copy_resource_data);
-    }
-    else
+    //if (!options_.dump_resources_modifiable_state_only)
+    //{
+    //    active_delegate_->DumpResource(copy_resource_data);
+    //}
+    //else
     {
 
         // Determine if this resource is modifiable. It is modifiable if any subresource state
@@ -2113,17 +2112,24 @@ void Dx12DumpResources::CopyResourceAsyncRead(graphics::dx12::ID3D12FenceComPtr 
         auto source_resource_extra_info  = GetExtraInfo<D3D12ResourceInfo>(source_resource_object_info);
         std::vector<graphics::dx12::ResourceStateInfo> res_infos = source_resource_extra_info->resource_state_infos;
         bool                                           resourceIsModifiable = false;
-        for (auto it = res_infos.begin(); it != res_infos.end() && !resourceIsModifiable; it++)
+        printf("@@nsubresources size=%d\n", (int)res_infos.size());
+        uint32_t bits=0;
+        uint32_t bitshift=0;
+        for (auto it = res_infos.begin(); it != res_infos.end(); it++)
         {
-            resourceIsModifiable =
+            resourceIsModifiable |=
                 ((modifiableTransitionStates && it->states) || it->states == D3D12_RESOURCE_STATE_COMMON);
+            if ((modifiableTransitionStates && it->states) || it->states == D3D12_RESOURCE_STATE_COMMON)
+                bits |= (1<<bitshift);
+            bitshift++;
         }
+        printf("@@modresourcesbits=0x%x\n\n", bits);
 
         // Dump the resource if is it in modifiable state
-        if (resourceIsModifiable)
-        {
+        //if (resourceIsModifiable)
+        //{
             active_delegate_->DumpResource(copy_resource_data);
-        }
+        //}
     }
 
     // Free the resource data
