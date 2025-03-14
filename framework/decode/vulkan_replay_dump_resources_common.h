@@ -61,6 +61,8 @@ struct MinMaxVertexIndex
     uint32_t max = 0;
 };
 
+using BoundDescriptorSets = std::unordered_map<uint32_t, VulkanDescriptorSetInfo>;
+
 DumpedImageFormat GetDumpedImageFormat(const VulkanDeviceInfo*            device_info,
                                        const encode::VulkanDeviceTable*   device_table,
                                        const encode::VulkanInstanceTable* instance_table,
@@ -157,6 +159,13 @@ enum class DumpResourceType : uint32_t
     kDispatchTraceRaysImageDescriptor,
     kDispatchTraceRaysBufferDescriptor,
     kDispatchTraceRaysInlineUniformBufferDescriptor,
+};
+
+enum class DumpResourcesCommandBufferLevel
+{
+    kUnknown = 0,
+    kPrimary,
+    kSecondary
 };
 
 #define DEPTH_ATTACHMENT ~0
