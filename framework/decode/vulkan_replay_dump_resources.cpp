@@ -79,6 +79,8 @@ VulkanReplayDumpResourcesBase::VulkanReplayDumpResourcesBase(const VulkanReplayO
         active_delegate_->Open();
     }
 
+    bool draw = false;
+    bool dispatch = false;
     for (size_t i = 0; i < options.BeginCommandBuffer_Indices.size(); ++i)
     {
         const uint64_t bcb_index    = options.BeginCommandBuffer_Indices[i];
@@ -90,6 +92,7 @@ VulkanReplayDumpResourcesBase::VulkanReplayDumpResourcesBase(const VulkanReplayO
 
         if (has_draw)
         {
+            draw = true;
             draw_call_contexts.emplace(
                 std::piecewise_construct,
                 std::forward_as_tuple(bcb_index),
@@ -103,6 +106,7 @@ VulkanReplayDumpResourcesBase::VulkanReplayDumpResourcesBase(const VulkanReplayO
 
         if (has_dispatch)
         {
+            dispatch = true;
             dispatch_ray_contexts.emplace(
                 std::piecewise_construct,
                 std::forward_as_tuple(bcb_index),
@@ -117,16 +121,35 @@ VulkanReplayDumpResourcesBase::VulkanReplayDumpResourcesBase(const VulkanReplayO
                                       *active_delegate_));
         }
 
-        if (has_secondaries && !has_draw)
+        if (has_secondaries)
         {
-            draw_call_contexts.emplace(std::piecewise_construct,
-                                       std::forward_as_tuple(bcb_index),
-                                       std::forward_as_tuple(nullptr,
-                                                             &options.RenderPass_Indices[i],
-                                                             &options.ExecuteCommands_Indices[i],
-                                                             *object_info_table,
-                                                             options,
-                                                             *active_delegate_));
+            if (dispatch)
+            {
+                dispatch_ray_contexts.emplace(
+                    std::piecewise_construct,
+                    std::forward_as_tuple(bcb_index),
+                    std::forward_as_tuple((options.Dispatch_Indices.size() && options.Dispatch_Indices[i].size())
+                                              ? options.Dispatch_Indices[i]
+                                              : DispatchIndices(),
+                                          (options.TraceRays_Indices.size() && options.TraceRays_Indices[i].size())
+                                              ? options.TraceRays_Indices[i]
+                                              : TraceRaysIndices(),
+                                          *object_info_table_,
+                                          options,
+                                          *active_delegate_));
+            }
+
+            if (draw)
+            {
+                draw_call_contexts.emplace(std::piecewise_construct,
+                                           std::forward_as_tuple(bcb_index),
+                                           std::forward_as_tuple(nullptr,
+                                                                 &options.RenderPass_Indices[i],
+                                                                 &options.ExecuteCommands_Indices[i],
+                                                                 *object_info_table,
+                                                                 options,
+                                                                 *active_delegate_));
+            }
         }
     }
 

@@ -60,7 +60,7 @@ DispatchTraceRaysDumpingContext::DispatchTraceRaysDumpingContext(const std::vect
     instance_table_(nullptr), object_info_table_(object_info_table), replay_device_phys_mem_props_(nullptr),
     current_dispatch_index_(0), current_trace_rays_index_(0), delegate_(delegate),
     dump_immutable_resources_(options.dump_resources_dump_immutable_resources), reached_end_command_buffer_(false),
-    bound_pipeline_compute_(nullptr), bound_pipeline_trace_rays_(nullptr)
+    bound_pipeline_compute_(nullptr), bound_pipeline_trace_rays_(nullptr), command_buffer_level_(DumpResourcesCommandBufferLevel::kPrimary)
 {}
 
 DispatchTraceRaysDumpingContext::~DispatchTraceRaysDumpingContext()
