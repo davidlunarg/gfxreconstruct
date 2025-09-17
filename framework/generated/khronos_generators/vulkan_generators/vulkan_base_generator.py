@@ -82,10 +82,15 @@ _remove_extensions = [
     "VK_NV_external_compute_queue",
     "VK_OHOS_surface",
     "VK_AMDX_dense_geometry_format",
-    "VK_KHR_video_decode_h264",
-    "VK_KHR_video_encode_h264",
     "VK_KHR_video_decode_h265",
     "VK_KHR_video_encode_h265",
+    "VK_KHR_video_maintenance2",
+]
+
+_remove_video_extensions = [
+    "vulkan_video_codec_h265std",
+    "vulkan_video_codec_h265std_decode",
+    "vulkan_video_codec_h265std_encode",
 ]
 
 # Turn lists of names/patterns into matching regular expressions.
@@ -299,9 +304,29 @@ class VulkanBaseGenerator(KhronosBaseGenerator):
         if not self.VIDEO_TREE:
             return
 
+        self.omit_video_structs = set()
+        self.omit_video_enum_groups = set()
+
+        extensions = self.VIDEO_TREE.find('extensions')
+        for element in extensions.iter('extension'):
+            print("video extension %s" % element.get('name'))
+            name = element.get('name')
+            if name in _remove_video_extensions:
+                print("remove extension %s" % name)
+                for type_element in element.iter('type'):
+                    print("omit struct %s" % type_element.get('name'))
+                    self.omit_video_structs.add(type_element.get('name'))
+                    self.omit_video_enum_groups.add(type_element.get('name'))
+                # for enum_element in element.iter('enum'):
+                    # print("omit enum %s" % enum_element.get('name'))
+                    # self.omit_video_enum_groups.add(enum_element.get('name'))
+
         types = self.VIDEO_TREE.find('types')
         for element in types.iter('type'):
             name = element.get('name')
+            if name in self.omit_video_structs:
+                print("struct %s omitted" % name)
+                continue
             category = element.get('category')
             if name and category and (category == 'struct' or category == 'union'):
                 self.struct_names.add(name)
@@ -310,6 +335,9 @@ class VulkanBaseGenerator(KhronosBaseGenerator):
 
         for element in self.VIDEO_TREE.iter('enums'):
             group_name = element.get('name')
+            if group_name in self.omit_video_enum_groups:
+                print("enum group %s omitted" % group_name)
+                continue
             self.enum_names.add(group_name)
             enumerants = dict()
             for elem in element.findall('enum'):
