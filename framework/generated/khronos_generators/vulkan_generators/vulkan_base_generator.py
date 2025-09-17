@@ -87,6 +87,9 @@ _remove_extensions = [
     "VK_KHR_video_maintenance2",
 ]
 
+# Exclude *video* extensions from code generation.  This excludes all
+# generation of struct and enums under these video extensions
+# TODO: This should probably behave like _remove_extensions 
 _remove_video_extensions = [
     "vulkan_video_codec_h265std",
     "vulkan_video_codec_h265std_decode",
@@ -304,29 +307,27 @@ class VulkanBaseGenerator(KhronosBaseGenerator):
         if not self.VIDEO_TREE:
             return
 
-        self.omit_video_structs = set()
-        self.omit_video_enum_groups = set()
+        # Which video types should be omitted
+        omit_video_types = set()
 
+        # for all extensions in _remove_video_extensions, collect types
+        # that should not be omitted.
         extensions = self.VIDEO_TREE.find('extensions')
         for element in extensions.iter('extension'):
-            print("video extension %s" % element.get('name'))
             name = element.get('name')
             if name in _remove_video_extensions:
-                print("remove extension %s" % name)
                 for type_element in element.iter('type'):
-                    print("omit struct %s" % type_element.get('name'))
-                    self.omit_video_structs.add(type_element.get('name'))
-                    self.omit_video_enum_groups.add(type_element.get('name'))
-                # for enum_element in element.iter('enum'):
-                    # print("omit enum %s" % enum_element.get('name'))
-                    # self.omit_video_enum_groups.add(enum_element.get('name'))
+                    omit_video_types.add(type_element.get('name'))
 
         types = self.VIDEO_TREE.find('types')
         for element in types.iter('type'):
             name = element.get('name')
-            if name in self.omit_video_structs:
-                print("struct %s omitted" % name)
+
+            # if this type (struct) was in a removed video extension,
+            # don't process it
+            if name in omit_video_types:
                 continue
+
             category = element.get('category')
             if name and category and (category == 'struct' or category == 'union'):
                 self.struct_names.add(name)
@@ -335,9 +336,12 @@ class VulkanBaseGenerator(KhronosBaseGenerator):
 
         for element in self.VIDEO_TREE.iter('enums'):
             group_name = element.get('name')
-            if group_name in self.omit_video_enum_groups:
-                print("enum group %s omitted" % group_name)
+
+            # if this enum group was in a removed video extension,
+            # don't process it
+            if group_name in omit_video_types:
                 continue
+
             self.enum_names.add(group_name)
             enumerants = dict()
             for elem in element.findall('enum'):
