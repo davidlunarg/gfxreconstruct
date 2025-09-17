@@ -81,6 +81,11 @@ _remove_extensions = [
     "VK_NV_cluster_acceleration_structure",
     "VK_NV_external_compute_queue",
     "VK_OHOS_surface",
+    "VK_AMDX_dense_geometry_format",
+    "VK_KHR_video_decode_h264",
+    "VK_KHR_video_encode_h264",
+    "VK_KHR_video_decode_h265",
+    "VK_KHR_video_encode_h265",
 ]
 
 # Turn lists of names/patterns into matching regular expressions.
