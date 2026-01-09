@@ -360,6 +360,7 @@ VkResult VulkanVirtualSwapchain::CreateSwapchainResourceData(const VulkanDeviceI
                                            swapchain_info->capture_id);
                         return result;
                     }
+
                 }
                 uint32_t semaphore_count = static_cast<uint32_t>(copy_cmd_data.semaphores.size());
                 if (semaphore_count < capture_image_count)
@@ -726,6 +727,7 @@ VkResult VulkanVirtualSwapchain::QueuePresentKHR(VkResult                       
                                                  const VulkanQueueInfo*                      queue_info,
                                                  const VkPresentInfoKHR*                     present_info)
 {
+    GFXRECON_LOG_ERROR("@@@AAA ============== Entered VulkanVirtualSwapchain::QueuePresentKHR, present_info=%p", present_info);
     VkResult result = VK_ERROR_UNKNOWN;
     if (queue_info == nullptr)
     {
@@ -805,11 +807,14 @@ VkResult VulkanVirtualSwapchain::QueuePresentKHR(VkResult                       
     // QueuePresent to QueueX, but waiting on SemB before it executes.  And that is assuming that
     // the buffer image is even accessible on both Queues!
 
+    GFXRECON_LOG_ERROR("@@@EBB, swapchainCount=%d", (int)swapchainCount);
     for (uint32_t i = 0; i < swapchainCount; ++i)
     {
         const auto* swapchain_info      = swapchain_infos[i];
         uint32_t    capture_image_index = capture_image_indices[i];
         uint32_t    replay_image_index  = present_info->pImageIndices[i];
+
+        GFXRECON_LOG_ERROR("@@@FBC, capture_image_index=%d", capture_image_index);
 
         auto aspect_mask       = graphics::GetFormatAspects(swapchain_info->format);
         subresource.aspectMask = aspect_mask;
@@ -845,6 +850,9 @@ VkResult VulkanVirtualSwapchain::QueuePresentKHR(VkResult                       
 
         // Use a command buffer and semaphore from the same queue index
         auto& copy_cmd_data  = swapchain_resources->copy_cmd_data[queue_family_index];
+        GFXRECON_LOG_ERROR("@@@IBC2 copy_cmd_data.command_buffers.size() = %d", copy_cmd_data.command_buffers.size())
+        // Bug: size() is 2, capture_image_index 2)
+
         auto  command_buffer = copy_cmd_data.command_buffers[capture_image_index];
         auto  copy_semaphore = copy_cmd_data.semaphores[capture_image_index];
         auto  copy_fence     = copy_cmd_data.fences[capture_image_index];
