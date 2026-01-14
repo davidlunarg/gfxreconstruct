@@ -856,6 +856,10 @@ VkResult VulkanVirtualSwapchain::QueuePresentKHR(VkResult                       
         auto  command_buffer = copy_cmd_data.command_buffers[capture_image_index];
         auto  copy_semaphore = copy_cmd_data.semaphores[capture_image_index];
         auto  copy_fence     = copy_cmd_data.fences[capture_image_index];
+        
+        GFXRECON_LOG_ERROR("@@@IBD, command_buffer=%p", command_buffer);
+        GFXRECON_LOG_ERROR("@@@IBE, copy_semaphore=%p", copy_semaphore);
+        GFXRECON_LOG_ERROR("@@@IBF, copy_fence=%p", copy_fence);
 
         std::vector<VkSemaphore> wait_semaphores;
         std::vector<VkSemaphore> signal_semaphores;
