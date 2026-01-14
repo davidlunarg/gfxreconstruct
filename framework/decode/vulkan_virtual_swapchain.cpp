@@ -187,6 +187,9 @@ VkResult VulkanVirtualSwapchain::CreateSwapchainResourceData(const VulkanDeviceI
                                                              VkImage*                      images,
                                                              bool                          offscreen)
 {
+    GFXRECON_LOG_ERROR("@@@FGG CreateSwapchainResourceData entered");
+    GFXRECON_LOG_ERROR("@@@FGG capture_image_count = %d", capture_image_count);
+    GFXRECON_LOG_ERROR("@@@FGG replay_image_count = %d", replay_image_count);
     VkDevice       device    = VK_NULL_HANDLE;
     VkSwapchainKHR swapchain = VK_NULL_HANDLE;
     VkResult       result    = VK_SUCCESS;
@@ -332,11 +335,15 @@ VkResult VulkanVirtualSwapchain::CreateSwapchainResourceData(const VulkanDeviceI
             // use it during the present.
             uint32_t start_size = static_cast<uint32_t>(copy_cmd_data.command_buffers.size());
             uint32_t new_count  = property_count;
+            GFXRECON_LOG_ERROR("@@@FGH start_size = %d", start_size);
+            GFXRECON_LOG_ERROR("@@@FGH new_count = %d", new_count);
             if (start_size < new_count)
             {
                 // Create one command buffer per queue per swapchain image so that we don't reset a command buffer that
                 // may be in active use.
                 uint32_t command_buffer_count = static_cast<uint32_t>(copy_cmd_data.command_buffers.size());
+                GFXRECON_LOG_ERROR("@@@FGI command_buffer_count = %d", command_buffer_count);
+                GFXRECON_LOG_ERROR("@@@FGI capture_image_count = %d", capture_image_count);
                 if (command_buffer_count < capture_image_count)
                 {
                     copy_cmd_data.command_buffers.resize(capture_image_count);
@@ -363,6 +370,8 @@ VkResult VulkanVirtualSwapchain::CreateSwapchainResourceData(const VulkanDeviceI
 
                 }
                 uint32_t semaphore_count = static_cast<uint32_t>(copy_cmd_data.semaphores.size());
+                GFXRECON_LOG_ERROR("@@@FGJ semaphore_count = %d", semaphore_count);
+                GFXRECON_LOG_ERROR("@@@FGJ capture_image_count = %d", capture_image_count);
                 if (semaphore_count < capture_image_count)
                 {
                     copy_cmd_data.semaphores.resize(capture_image_count);
@@ -388,6 +397,8 @@ VkResult VulkanVirtualSwapchain::CreateSwapchainResourceData(const VulkanDeviceI
                     }
                 }
                 uint32_t fence_count = static_cast<uint32_t>(copy_cmd_data.fences.size());
+                GFXRECON_LOG_ERROR("@@@FGK fence_count = %d", fence_count);
+                GFXRECON_LOG_ERROR("@@@FGK capture_image_count = %d", capture_image_count);
                 if (fence_count < capture_image_count)
                 {
                     copy_cmd_data.fences.resize(capture_image_count);
@@ -613,6 +624,8 @@ VkResult VulkanVirtualSwapchain::GetSwapchainImagesKHR(VkResult                 
         swapchain          = swapchain_info->handle;
         replay_image_count = &swapchain_info->replay_image_count;
     }
+    GFXRECON_LOG_ERROR("@@@XEE, swapchain=%p", swapchain);
+    GFXRECON_LOG_ERROR("@@@XEE, replay_image_count=%d", *replay_image_count);
 
     // Get the swapchain resource data so we have access to the virtual swapchain-specific information.
     if (swapchain == VK_NULL_HANDLE || swapchain_resources_.find(swapchain) == swapchain_resources_.end())
@@ -634,6 +647,7 @@ VkResult VulkanVirtualSwapchain::GetSwapchainImagesKHR(VkResult                 
     // TODO: Adjust the swapchain image format if the specified format is not supported by the replay device.
 
     result = func(device, swapchain, replay_image_count, replay_images);
+    GFXRECON_LOG_ERROR("@@@XEF, post func: replay_image_count=%d", *replay_image_count);
 
     if ((result == VK_SUCCESS) && (image_count != nullptr))
     {
