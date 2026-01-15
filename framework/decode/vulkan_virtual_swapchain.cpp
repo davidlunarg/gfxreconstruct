@@ -71,6 +71,9 @@ VkResult VulkanVirtualSwapchain::CreateSwapchainKHR(VkResult                    
         physical_device, create_info->surface, &surfCapabilities);
     GFXRECON_ASSERT(result == VK_SUCCESS);
 
+    GFXRECON_LOG_ERROR("@@@WAA modified_create_info.minImageCount =  %d", modified_create_info.minImageCount);
+    GFXRECON_LOG_ERROR("@@@WAA surfCapabilities.minImageCount = %d", surfCapabilities.minImageCount);
+    GFXRECON_LOG_ERROR("@@@WAA surfCapabilities.maxImageCount = %d", surfCapabilities.maxImageCount);
     if (modified_create_info.minImageCount < surfCapabilities.minImageCount)
     {
         modified_create_info.minImageCount = surfCapabilities.minImageCount;
@@ -79,6 +82,7 @@ VkResult VulkanVirtualSwapchain::CreateSwapchainKHR(VkResult                    
     {
         modified_create_info.minImageCount = surfCapabilities.maxImageCount;
     }
+    GFXRECON_LOG_ERROR("@@@WAB modified_create_info.minImageCount =  %d", modified_create_info.minImageCount);
     auto replay_swapchain = swapchain->GetHandlePointer();
 
     result = func(device, &modified_create_info, allocator, replay_swapchain);
