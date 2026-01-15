@@ -189,7 +189,7 @@ VkResult VulkanVirtualSwapchain::CreateSwapchainResourceData(const VulkanDeviceI
 {
     GFXRECON_LOG_ERROR("@@@FGG CreateSwapchainResourceData entered");
     GFXRECON_LOG_ERROR("@@@FGG capture_image_count = %d", capture_image_count);
-    GFXRECON_LOG_ERROR("@@@FGG replay_image_count = %d", replay_image_count);
+    GFXRECON_LOG_ERROR("@@@FGG *replay_image_count = %d", *replay_image_count);
     VkDevice       device    = VK_NULL_HANDLE;
     VkSwapchainKHR swapchain = VK_NULL_HANDLE;
     VkResult       result    = VK_SUCCESS;

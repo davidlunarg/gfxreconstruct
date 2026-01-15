@@ -8256,6 +8256,7 @@ VulkanReplayConsumerBase::OverrideQueuePresentKHR(PFN_vkQueuePresentKHR         
     modified_times_.clear();
     removed_semaphores_.clear();
     removed_swapchain_indices_.clear();
+    GFXRECON_LOG_ERROR("@@@QAA capture_image_indices_.clear() called");
     capture_image_indices_.clear();
     swapchain_infos_.clear();
 
@@ -8285,6 +8286,7 @@ VulkanReplayConsumerBase::OverrideQueuePresentKHR(PFN_vkQueuePresentKHR         
 
                 uint32_t capture_image_index = present_info->pImageIndices[i];
                 capture_image_indices_.emplace_back(capture_image_index);
+                GFXRECON_LOG_ERROR("@@@QAC capture_image_indices_, added %d, size is now %d", (int)capture_image_index, (int)capture_image_indices_.size());
 
                 if (capture_image_index >= static_cast<uint32_t>(swapchain_info->acquired_indices.size()))
                 {
@@ -8418,9 +8420,11 @@ VulkanReplayConsumerBase::OverrideQueuePresentKHR(PFN_vkQueuePresentKHR         
                                        present_info->pImageIndices,
                                        std::next(present_info->pImageIndices, present_info->swapchainCount));
 
+        GFXRECON_LOG_ERROR("@@@QAD capture_image_indices_ about to add to it, size is %d", (int)capture_image_indices_.size());
         capture_image_indices_.insert(capture_image_indices_.end(),
                                       present_info->pImageIndices,
                                       std::next(present_info->pImageIndices, present_info->swapchainCount));
+        GFXRECON_LOG_ERROR("@@@QAE capture_image_indices_ was added to, size is now %d", (int)capture_image_indices_.size());
 
         swapchain_infos_.insert(swapchain_infos_.end(), present_info->swapchainCount, nullptr);
 
@@ -8435,7 +8439,9 @@ VulkanReplayConsumerBase::OverrideQueuePresentKHR(PFN_vkQueuePresentKHR         
                 swapchain_infos_[i] = swapchain_info;
 
                 uint32_t capture_image_index = present_info->pImageIndices[i];
+                GFXRECON_LOG_ERROR("@@@QAF capture_image_indices_ about to add %d to it, size is %d", capture_image_index, (int)capture_image_indices_.size());
                 capture_image_indices_[i]    = capture_image_index;
+                GFXRECON_LOG_ERROR("@@@QAF capture_image_indices_ was added to, size is now %d", (int)capture_image_indices_.size());
 
                 if (capture_image_index >= static_cast<uint32_t>(swapchain_info->acquired_indices.size()))
                 {
@@ -8497,6 +8503,7 @@ VulkanReplayConsumerBase::OverrideQueuePresentKHR(PFN_vkQueuePresentKHR         
     // Only attempt to find imported or shadow semaphores if we know at least one around.
     if ((!have_imported_semaphores_) && (shadow_semaphores_.empty()) && (modified_present_info.swapchainCount != 0))
     {
+        GFXRECON_LOG_ERROR("@@@QAG calling QueuePresentKHR, size of cii is %d", (int)capture_image_indices_.size());
         result = swapchain_->QueuePresentKHR(
             original_result, func, capture_image_indices_, swapchain_infos_, queue_info, &modified_present_info);
     }
@@ -8520,6 +8527,7 @@ VulkanReplayConsumerBase::OverrideQueuePresentKHR(PFN_vkQueuePresentKHR         
 
         if (removed_semaphores_.empty())
         {
+            GFXRECON_LOG_ERROR("@@@QAH calling QueuePresentKHR, size of cii is %d", (int)capture_image_indices_.size());
             result = swapchain_->QueuePresentKHR(
                 original_result, func, capture_image_indices_, swapchain_infos_, queue_info, &modified_present_info);
         }
@@ -8546,6 +8554,7 @@ VulkanReplayConsumerBase::OverrideQueuePresentKHR(PFN_vkQueuePresentKHR         
             modified_present_info.waitSemaphoreCount = static_cast<uint32_t>(semaphore_memory.size());
             modified_present_info.pWaitSemaphores    = semaphore_memory.data();
 
+            GFXRECON_LOG_ERROR("@@@QAI calling QueuePresentKHR, size of cii is %d", (int)capture_image_indices_.size());
             result = swapchain_->QueuePresentKHR(
                 original_result, func, capture_image_indices_, swapchain_infos_, queue_info, &modified_present_info);
         }
