@@ -7838,6 +7838,7 @@ VkResult VulkanReplayConsumerBase::OverrideGetSwapchainImagesKHR(PFN_vkGetSwapch
                                                                  PointerDecoder<uint32_t>*      pSwapchainImageCount,
                                                                  HandlePointerDecoder<VkImage>* pSwapchainImages)
 {
+    GFXRECON_LOG_ERROR("@@@GSI VulkanReplayConsumerBase::OverrideGetSwapchainImagesKHR called");
     GFXRECON_UNREFERENCED_PARAMETER(original_result);
 
     assert((device_info != nullptr) && (swapchain_info != nullptr) && (pSwapchainImageCount != nullptr) &&
@@ -7924,12 +7925,17 @@ VkResult VulkanReplayConsumerBase::OverrideGetSwapchainImagesKHR(PFN_vkGetSwapch
         // It means the application only ran GetSwapchainImage once. It didn't get image count first.
         if (swapchain_info->replay_image_count == 0 && replay_images != nullptr)
         {
+            GFXRECON_LOG_ERROR("@@@GSJ calling swapchain_->GetSwapchainImagesKHR");
             swapchain_->GetSwapchainImagesKHR(
                 original_result, func, device_info, swapchain_info, capture_image_count, replay_image_count, nullptr);
+            GFXRECON_LOG_ERROR("@@@GSK capture_image_count = %d", capture_image_count);
         }
 
+        GFXRECON_LOG_ERROR("@@@GSL calling swapchain_->GetSwapchainImagesKHR");
         result = swapchain_->GetSwapchainImagesKHR(
             original_result, func, device_info, swapchain_info, capture_image_count, replay_image_count, replay_images);
+            GFXRECON_LOG_ERROR("@@@GSM capture_image_count = %d", capture_image_count);
+            GFXRECON_LOG_ERROR("@@@GSM replay_image_count = %d", replay_image_count);
 
         if ((result == VK_SUCCESS) && (replay_images != nullptr) && (replay_image_count != nullptr))
         {
