@@ -612,6 +612,10 @@ VkResult VulkanVirtualSwapchain::GetSwapchainImagesKHR(VkResult                 
                                                        uint32_t*                   image_count,
                                                        VkImage*                    images)
 {
+    GFXRECON_LOG_ERROR("@@@XEA Entered VulkanVirtualSwapchain::GetSwapchainImagesKHR");
+    GFXRECON_LOG_ERROR("@@@XEA swapchain_info->capture_id=%p", swapchain_info->capture_id);
+    GFXRECON_LOG_ERROR("@@@XEA swapchain_info->width=%d", (int)swapchain_info->width);
+    GFXRECON_LOG_ERROR("@@@XEA swapchain_info->replay_image_count=%d", swapchain_info->replay_image_count);
     VkDevice       device             = VK_NULL_HANDLE;
     VkSwapchainKHR swapchain          = VK_NULL_HANDLE;
     uint32_t*      replay_image_count = nullptr;
@@ -626,10 +630,18 @@ VkResult VulkanVirtualSwapchain::GetSwapchainImagesKHR(VkResult                 
     if (swapchain_info != nullptr)
     {
         swapchain          = swapchain_info->handle;
+        GFXRECON_LOG_ERROR("@@@XEB swapchain set to %p", swapchain);
         replay_image_count = &swapchain_info->replay_image_count;
     }
-    GFXRECON_LOG_ERROR("@@@XEE, swapchain=%p", swapchain);
-    GFXRECON_LOG_ERROR("@@@XEE, replay_image_count=%d", *replay_image_count);
+    GFXRECON_LOG_ERROR("@@@XEE swapchain=%p", swapchain);
+    GFXRECON_LOG_ERROR("@@@XEE replay_image_count=%d", *replay_image_count);
+
+    GFXRECON_LOG_ERROR("@@@XEF swapchain_info->acquired_indices.size() =%d", (int)swapchain_info->acquired_indices.size());
+    for (int i=0; i<swapchain_info->acquired_indices.size(); i++)
+    {
+        GFXRECON_LOG_ERROR("@@@XEF swapchain_info->acquired_indices[%d].acquired =%d", i, (int)swapchain_info->acquired_indices[i].acquired);
+        GFXRECON_LOG_ERROR("@@@XEF swapchain_info->acquired_indices[%d].index =%d", i, (int)swapchain_info->acquired_indices[i].index);
+    }
 
     // Get the swapchain resource data so we have access to the virtual swapchain-specific information.
     if (swapchain == VK_NULL_HANDLE || swapchain_resources_.find(swapchain) == swapchain_resources_.end())
