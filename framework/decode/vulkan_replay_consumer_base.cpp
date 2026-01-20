@@ -7880,6 +7880,7 @@ VkResult VulkanReplayConsumerBase::OverrideGetSwapchainImagesKHR(PFN_vkGetSwapch
         {
             // Set the image count from data saved in trace file.
             (*replay_image_count) = capture_image_count;
+            GFXRECON_LOG_ERROR("@@@GSJ *replay_image_count set to ", *replay_image_count);
         }
         else
         {
@@ -7959,7 +7960,7 @@ VkResult VulkanReplayConsumerBase::OverrideGetSwapchainImagesKHR(PFN_vkGetSwapch
         result = swapchain_->GetSwapchainImagesKHR(
             original_result, func, device_info, swapchain_info, capture_image_count, replay_image_count, replay_images);
             GFXRECON_LOG_ERROR("@@@GSM capture_image_count = %d", capture_image_count);
-            GFXRECON_LOG_ERROR("@@@GSM replay_image_count = %d", replay_image_count);
+            GFXRECON_LOG_ERROR("@@@GSM *replay_image_count = %d", *replay_image_count);
 
         if ((result == VK_SUCCESS) && (replay_images != nullptr) && (replay_image_count != nullptr))
         {

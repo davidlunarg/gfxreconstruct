@@ -337,11 +337,12 @@ VkResult VulkanVirtualSwapchain::CreateSwapchainResourceData(const VulkanDeviceI
             // Command Buffers, Semaphores, etc) as many queue families that are available.
             // This is because at any point, the application may get a Device queue from that family and
             // use it during the present.
-            uint32_t start_size = static_cast<uint32_t>(copy_cmd_data.command_buffers.size());
-            uint32_t new_count  = property_count;
-            GFXRECON_LOG_ERROR("@@@FGH start_size = %d", start_size);
-            GFXRECON_LOG_ERROR("@@@FGH new_count = %d", new_count);
-            if (start_size < new_count)
+            GFXRECON_LOG_ERROR("@@@FGH Skipping three lines...");
+            //uint32_t start_size = static_cast<uint32_t>(copy_cmd_data.command_buffers.size());
+            //uint32_t new_count  = property_count;
+            //GFXRECON_LOG_ERROR("@@@FGH start_size = %d", start_size);
+            //GFXRECON_LOG_ERROR("@@@FGH new_count = %d", new_count);
+            //if (start_size < new_count)
             {
                 // Create one command buffer per queue per swapchain image so that we don't reset a command buffer that
                 // may be in active use.
