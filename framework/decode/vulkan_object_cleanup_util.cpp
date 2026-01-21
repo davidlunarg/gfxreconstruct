@@ -69,12 +69,15 @@ void FreeChildObjects(CommonObjectInfoTable* table,
                       void (CommonObjectInfoTable::*RemoveFunc)(format::HandleId),
                       std::function<void(const S*, const T*)> destroy_func)
 {
+    GFXRECON_LOG_ERROR("@@FCOs enter");
     assert(table != nullptr);
 
     // Visit all table entries and sort them by parent ID.  Using unordered_map to filter duplicate handles.
     std::unordered_map<format::HandleId, std::unordered_map<typename T::HandleType, const T*>> objects;
 
+    GFXRECON_LOG_ERROR("@@FCOs table=%p", table);
     (table->*VisitFunc)([&](const T* info) {
+        GFXRECON_LOG_ERROR("@@FCOs info=%p", info);
         if constexpr (has_handle_future_v<T>)
         {
             sync_handle(const_cast<T*>(info));
@@ -84,6 +87,7 @@ void FreeChildObjects(CommonObjectInfoTable* table,
 
     for (const auto& entry : objects)
     {
+        GFXRECON_LOG_ERROR("@@FCOs &entry=%p", &entry);
         auto parent_info = (table->*GetParentInfoFunc)(entry.first);
 
         if (parent_info != nullptr)
@@ -93,10 +97,14 @@ void FreeChildObjects(CommonObjectInfoTable* table,
             {
                 if (object_info.second != nullptr)
                 {
+                    GFXRECON_LOG_ERROR("@@FCOs calling destroy_func");
                     destroy_func(parent_info, object_info.second);
+                    GFXRECON_LOG_ERROR("@@FCOs remove_entries=%d", remove_entries);
                     if (remove_entries)
                     {
+                        GFXRECON_LOG_ERROR("@@FCOs calling removeFunc capid=%p", object_info.second->capture_id);
                         (table->*RemoveFunc)(object_info.second->capture_id);
+                        GFXRECON_LOG_ERROR("@@FCOs removeFunc return");
                     }
                 }
             }
@@ -110,6 +118,7 @@ void FreeChildObjects(CommonObjectInfoTable* table,
                                  entry.first);
         }
     }
+    GFXRECON_LOG_ERROR("@@FCOs exit");
 }
 
 template <typename T>
@@ -691,6 +700,7 @@ void FreeAllLiveObjects(CommonObjectInfoTable*                                  
         &CommonObjectInfoTable::VisitVkSurfaceKHRInfo,
         &CommonObjectInfoTable::RemoveVkSurfaceKHRInfo,
         [&](const VulkanInstanceInfo* parent_info, const VulkanSurfaceKHRInfo* object_info) {
+            GFXRECON_LOG_ERROR("@@FALO surfaceinfo object_info=%p", object_info);
             assert((parent_info != nullptr) && (object_info != nullptr));
             auto table = get_instance_table(parent_info->handle);
             swapchain->DestroySurface(table->DestroySurfaceKHR, parent_info, object_info, nullptr);
