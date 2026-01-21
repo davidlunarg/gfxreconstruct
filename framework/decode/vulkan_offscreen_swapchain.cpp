@@ -132,6 +132,9 @@ void VulkanOffscreenSwapchain::DestroySwapchainKHR(PFN_vkDestroySwapchainKHR    
 {
     if ((device_info != nullptr) && (swapchain_info != nullptr))
     {
+        GFXRECON_LOG_ERROR("@@VOS:DSCK calling CleanSwapchainResourceData, swapchain_info = %p", swapchain_info);
+        GFXRECON_LOG_ERROR("@@VOS:DSCK swapchain_info->surface = %p", swapchain_info->surface);
+    GFXRECON_LOG_ERROR("@@VOS:DSCK swapchain_info->surface_id = %p", (void*) swapchain_info->surface_id);
         CleanSwapchainResourceData(device_info, swapchain_info);
     }
 }

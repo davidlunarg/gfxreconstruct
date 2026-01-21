@@ -97,6 +97,9 @@ VkResult VulkanVirtualSwapchain::CreateSwapchainKHR(VkResult                    
 void VulkanVirtualSwapchain::CleanSwapchainResourceData(const VulkanDeviceInfo*       device_info,
                                                         const VulkanSwapchainKHRInfo* swapchain_info)
 {
+    GFXRECON_LOG_ERROR("@@VVS:CSRD entered swapchain_info = %p", swapchain_info);
+    GFXRECON_LOG_ERROR("@@VVS:CSRD swapchain_info->surface = %p", swapchain_info->surface);
+    GFXRECON_LOG_ERROR("@@VVS:CSRD swapchain_info->surface_id = %p", (void*) swapchain_info->surface_id);
     VkDevice       device    = VK_NULL_HANDLE;
     VkSwapchainKHR swapchain = VK_NULL_HANDLE;
 
@@ -168,6 +171,8 @@ void VulkanVirtualSwapchain::DestroySwapchainKHR(PFN_vkDestroySwapchainKHR     f
         // CleanSwapchainResourceData() makes Vulkan API calls that are not in the capture file.
         // Notify any layers by calling the provided pointer to their ReportReplayGeneratedVulkanCommands
         decode::BeginInjectedCommands();
+
+         GFXRECON_LOG_ERROR("@@VVS:DSCK calling CleanSwapchainResourceData, swapchain_info = %p", swapchain_info);
 
         CleanSwapchainResourceData(device_info, swapchain_info);
 
