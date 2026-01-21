@@ -165,6 +165,7 @@ void FreeAllLiveObjects(CommonObjectInfoTable*                                  
                         std::function<const graphics::VulkanDeviceTable*(const void*)>   get_device_table,
                         VulkanSwapchain*                                                 swapchain)
 {
+    GFXRECON_LOG_ERROR("@@FALO event");
     FreeChildObjects<VulkanDeviceInfo, VulkanEventInfo>(
         table,
         GFXRECON_STR(VkDevice),
@@ -179,6 +180,7 @@ void FreeAllLiveObjects(CommonObjectInfoTable*                                  
             get_device_table(parent_info->handle)->DestroyEvent(parent_info->handle, object_info->handle, nullptr);
         });
 
+    GFXRECON_LOG_ERROR("@@FALO fence");
     FreeChildObjects<VulkanDeviceInfo, VulkanFenceInfo>(
         table,
         GFXRECON_STR(VkDevice),
@@ -361,6 +363,7 @@ void FreeAllLiveObjects(CommonObjectInfoTable*                                  
             allocator->FreeMemory(object_info->handle, nullptr, object_info->allocator_data);
         });
 
+    GFXRECON_LOG_ERROR("@@FALO plinecache");
     FreeChildObjects<VulkanDeviceInfo, VulkanPipelineCacheInfo>(
         table,
         GFXRECON_STR(VkDevice),
@@ -450,6 +453,7 @@ void FreeAllLiveObjects(CommonObjectInfoTable*                                  
                 ->DestroyDescriptorUpdateTemplate(parent_info->handle, object_info->handle, nullptr);
         });
 
+    GFXRECON_LOG_ERROR("@@FALO cpinfo");
     FreeChildObjects<VulkanDeviceInfo, VulkanCommandPoolInfo>(
         table,
         GFXRECON_STR(VkDevice),
@@ -555,6 +559,7 @@ void FreeAllLiveObjects(CommonObjectInfoTable*                                  
                 ->DestroyDeferredOperationKHR(parent_info->handle, object_info->handle, nullptr);
         });
 
+    GFXRECON_LOG_ERROR("@@FALO pdsi");
     FreeChildObjects<VulkanDeviceInfo, VulkanPrivateDataSlotInfo>(
         table,
         GFXRECON_STR(VkDevice),
@@ -617,6 +622,7 @@ void FreeAllLiveObjects(CommonObjectInfoTable*                                  
 
     // VKDescriptorPool objects have a special destroy function to destroy any retired descriptor pool objects that ran
     // out of memory during replay.
+    GFXRECON_LOG_ERROR("@@FALO vdpi");
     FreeChildObjects<VulkanDeviceInfo, VulkanDescriptorPoolInfo>(
         table,
         GFXRECON_STR(VkDevice),
@@ -641,6 +647,7 @@ void FreeAllLiveObjects(CommonObjectInfoTable*                                  
 
     // VkSwapchainKHR objects have a special destroy function to ignore the object when it has a null surface handle.
     // A valid swapchain object was not created in this case.
+    GFXRECON_LOG_ERROR("@@FALO VulkanSwapchainKHRInfo");
     FreeChildObjects<VulkanDeviceInfo, VulkanSwapchainKHRInfo>(
         table,
         GFXRECON_STR(VkDevice),
@@ -673,6 +680,7 @@ void FreeAllLiveObjects(CommonObjectInfoTable*                                  
 
     // VkSurfaceKHR objects have a special destroy function to destroy the object through the Window object that
     // initially created it.
+    GFXRECON_LOG_ERROR("@@FALO surfaceinfo");
     FreeChildObjects<VulkanInstanceInfo, VulkanSurfaceKHRInfo>(
         table,
         GFXRECON_STR(VkInstance),
@@ -688,6 +696,7 @@ void FreeAllLiveObjects(CommonObjectInfoTable*                                  
             swapchain->DestroySurface(table->DestroySurfaceKHR, parent_info, object_info, nullptr);
         });
 
+    GFXRECON_LOG_ERROR("@@FALO FreeParentObjects");
     FreeParentObjects<VulkanDeviceInfo>(table,
                                         remove_entries,
                                         &CommonObjectInfoTable::VisitVkDeviceInfo,

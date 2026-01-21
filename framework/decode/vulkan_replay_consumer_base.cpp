@@ -307,6 +307,8 @@ VulkanReplayConsumerBase::~VulkanReplayConsumerBase()
         }
     });
 
+    GFXRECON_LOG_ERROR("@@@VRCBD VulkanReplayConsumerBase::~VulkanReplayConsumerBase() &swapchain_ = %p", &swapchain_);
+    GFXRECON_LOG_ERROR("@@@VRCBD VulkanReplayConsumerBase::~VulkanReplayConsumerBase() swapchain_.get() = %p", swapchain_.get());
     object_cleanup::FreeAllLiveObjects(
         object_info_table_,
         false,
