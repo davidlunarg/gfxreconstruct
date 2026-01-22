@@ -112,6 +112,7 @@ VkResult VulkanDefaultAllocator::CreateImage(const VkImageCreateInfo*     create
                                              VkImage*                     image,
                                              ResourceData*                allocator_data)
 {
+    GFXRECON_LOG_ERROR("@@VVA:CI CreateImage entered, imageptr = %p, allocator-dataptr = %p", image, allocator_data);
     VkResult result = VK_ERROR_INITIALIZATION_FAILED;
 
     if (allocator_data != nullptr)
@@ -122,6 +123,9 @@ VkResult VulkanDefaultAllocator::CreateImage(const VkImageCreateInfo*     create
         (*allocator_data)                = reinterpret_cast<ResourceData>(resource_alloc_info);
 
         result = functions_.create_image(device_, create_info, allocation_callbacks, image);
+        GFXRECON_LOG_ERROR("@@VVA:CI created image: result=%d image=%p", result, (void*)(*image));
+    } else {
+        GFXRECON_LOG_ERROR("@@VVA:CI No image created!!");
     }
 
     return result;
