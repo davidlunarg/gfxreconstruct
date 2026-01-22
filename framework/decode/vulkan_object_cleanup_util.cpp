@@ -97,7 +97,9 @@ void FreeChildObjects(CommonObjectInfoTable* table,
             {
                 if (object_info.second != nullptr)
                 {
-                    GFXRECON_LOG_ERROR("@@FCOs calling destroy_func");
+                    //GFXRECON_LOG_ERROR("@@FCOs calling destroy_func = %p", destroy_func);
+                    GFXRECON_LOG_ERROR("@@FCOs calling parent_info = %p", parent_info);
+                    GFXRECON_LOG_ERROR("@@FCOs calling object_info.second() = %p", object_info.second);
                     destroy_func(parent_info, object_info.second);
                     GFXRECON_LOG_ERROR("@@FCOs remove_entries=%d", remove_entries);
                     if (remove_entries)

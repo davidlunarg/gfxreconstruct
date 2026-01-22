@@ -129,8 +129,13 @@ void VulkanVirtualSwapchain::CleanSwapchainResourceData(const VulkanDeviceInfo* 
 
             for (const VirtualImage& image_info : swapchain_resources->virtual_swapchain_images)
             {
-                GFXRECON_LOG_ERROR("@@VVS:CSRD free memory")
+                GFXRECON_LOG_ERROR("@@VVS:CSRD1 DestroyImageIndirect")
+                GFXRECON_LOG_ERROR("@@VVS:CSRD1 allocator=%p", allocator)
+                GFXRECON_LOG_ERROR("@@VVS:CSRD1 image_info.image=%p", (void*)image_info.image)
+                GFXRECON_LOG_ERROR("@@VVS:CSRD1 image_info.resource_allocator_data=%p", (void*)image_info.resource_allocator_data)
                 allocator->DestroyImageDirect(image_info.image, nullptr, image_info.resource_allocator_data);
+                GFXRECON_LOG_ERROR("@@VVS:CSRD2 free memory")
+                GFXRECON_LOG_ERROR("@@VVS:CSRD2 image_info.resource_allocator_data=%p", (void*)image_info.resource_allocator_data)
                 allocator->FreeMemoryDirect(image_info.memory, nullptr, image_info.memory_allocator_data);
             }
 
@@ -178,6 +183,7 @@ void VulkanVirtualSwapchain::DestroySwapchainKHR(PFN_vkDestroySwapchainKHR     f
                                                  const VulkanSwapchainKHRInfo* swapchain_info,
                                                  const VkAllocationCallbacks*  allocator)
 {
+     GFXRECON_LOG_ERROR("@@VVS:DSCK entered");
     if ((device_info != nullptr) && (swapchain_info != nullptr))
     {
         // CleanSwapchainResourceData() makes Vulkan API calls that are not in the capture file.

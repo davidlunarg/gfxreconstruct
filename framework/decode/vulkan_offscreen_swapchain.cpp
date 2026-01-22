@@ -130,6 +130,7 @@ void VulkanOffscreenSwapchain::DestroySwapchainKHR(PFN_vkDestroySwapchainKHR    
                                                    const VulkanSwapchainKHRInfo* swapchain_info,
                                                    const VkAllocationCallbacks*  allocator)
 {
+    GFXRECON_LOG_ERROR("@@VOS:DSCK entered");
     if ((device_info != nullptr) && (swapchain_info != nullptr))
     {
         GFXRECON_LOG_ERROR("@@VOS:DSCK calling CleanSwapchainResourceData, swapchain_info = %p", swapchain_info);

@@ -131,6 +131,10 @@ void VulkanDefaultAllocator::DestroyImage(VkImage                      image,
                                           const VkAllocationCallbacks* allocation_callbacks,
                                           ResourceData                 allocator_data)
 {
+    GFXRECON_LOG_ERROR("@@VVA:DI DestroyImage entered")
+    GFXRECON_LOG_ERROR("@@VVA:DI image=%p", (void*)image)
+    GFXRECON_LOG_ERROR("@@VVA:DI acb=%p", allocation_callbacks)
+    GFXRECON_LOG_ERROR("@@VVA:DI ad=%p", allocator_data)
     if (allocator_data != 0)
     {
         auto resource_alloc_info = reinterpret_cast<ResourceAllocInfo*>(allocator_data);
