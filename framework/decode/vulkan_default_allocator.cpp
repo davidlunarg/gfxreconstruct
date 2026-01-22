@@ -28,9 +28,13 @@
 #include "util/platform.h"
 
 #include <cassert>
+#include <unordered_set>
+
+std::unordered_set<VkImage> iset;
 
 GFXRECON_BEGIN_NAMESPACE(gfxrecon)
 GFXRECON_BEGIN_NAMESPACE(decode)
+
 
 VulkanDefaultAllocator::VulkanDefaultAllocator() : device_(VK_NULL_HANDLE), memory_properties_{} {}
 
@@ -124,12 +128,14 @@ VkResult VulkanDefaultAllocator::CreateImage(const VkImageCreateInfo*     create
 
         result = functions_.create_image(device_, create_info, allocation_callbacks, image);
         GFXRECON_LOG_ERROR("@@VVA:CI created image: result=%d image=%p", result, (void*)(*image));
+        iset.insert(*image);
     } else {
         GFXRECON_LOG_ERROR("@@VVA:CI No image created!!");
     }
 
     return result;
 }
+
 
 void VulkanDefaultAllocator::DestroyImage(VkImage                      image,
                                           const VkAllocationCallbacks* allocation_callbacks,
@@ -145,7 +151,14 @@ void VulkanDefaultAllocator::DestroyImage(VkImage                      image,
         delete resource_alloc_info;
     }
 
-    functions_.destroy_image(device_, image, allocation_callbacks);
+    if (iset.find(image) != iset.end())
+    {
+        functions_.destroy_image(device_, image, allocation_callbacks);
+        iset.erase(image);
+    } else
+    {
+        GFXRECON_LOG_ERROR("@@VVA:DI skipped destroy of image = %p", image)
+    }
 }
 
 VkResult VulkanDefaultAllocator::CreateVideoSession(const VkVideoSessionCreateInfoKHR* create_info,
