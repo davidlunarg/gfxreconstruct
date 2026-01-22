@@ -100,6 +100,7 @@ void VulkanVirtualSwapchain::CleanSwapchainResourceData(const VulkanDeviceInfo* 
     GFXRECON_LOG_ERROR("@@VVS:CSRD entered swapchain_info = %p", swapchain_info);
     GFXRECON_LOG_ERROR("@@VVS:CSRD swapchain_info->surface = %p", swapchain_info->surface);
     GFXRECON_LOG_ERROR("@@VVS:CSRD swapchain_info->surface_id = %p", (void*) swapchain_info->surface_id);
+    GFXRECON_LOG_ERROR("@@VVS:CSRD swapchain_info->handle = %p", (void*) swapchain_info->handle);
     VkDevice       device    = VK_NULL_HANDLE;
     VkSwapchainKHR swapchain = VK_NULL_HANDLE;
 
@@ -107,6 +108,8 @@ void VulkanVirtualSwapchain::CleanSwapchainResourceData(const VulkanDeviceInfo* 
     {
         device    = device_info->handle;
         swapchain = swapchain_info->handle;
+        
+        GFXRECON_LOG_ERROR("@@VVS:CSRD swapchain = %p", (void*) swapchain);
 
         auto allocator = device_info->allocator.get();
         assert(allocator != nullptr);
@@ -119,12 +122,14 @@ void VulkanVirtualSwapchain::CleanSwapchainResourceData(const VulkanDeviceInfo* 
             {
                 for (const auto& fence : copy_cmd_data.second.fences)
                 {
+                    GFXRECON_LOG_ERROR("@@VVS:CSRD WaitForFences")
                     device_table_->WaitForFences(device, 1, &fence, VK_TRUE, ~0UL);
                 }
             }
 
             for (const VirtualImage& image_info : swapchain_resources->virtual_swapchain_images)
             {
+                GFXRECON_LOG_ERROR("@@VVS:CSRD free memory")
                 allocator->DestroyImageDirect(image_info.image, nullptr, image_info.resource_allocator_data);
                 allocator->FreeMemoryDirect(image_info.memory, nullptr, image_info.memory_allocator_data);
             }
@@ -133,6 +138,7 @@ void VulkanVirtualSwapchain::CleanSwapchainResourceData(const VulkanDeviceInfo* 
             {
                 if (copy_cmd_data.second.command_pool != VK_NULL_HANDLE)
                 {
+                    GFXRECON_LOG_ERROR("@@VVS:CSRD free cb")
                     device_table_->FreeCommandBuffers(
                         device,
                         copy_cmd_data.second.command_pool,
@@ -142,23 +148,29 @@ void VulkanVirtualSwapchain::CleanSwapchainResourceData(const VulkanDeviceInfo* 
                 }
                 for (const auto& semaphore : copy_cmd_data.second.semaphores)
                 {
+                    GFXRECON_LOG_ERROR("@@VVS:CSRD destroy sem")
                     device_table_->DestroySemaphore(device, semaphore, nullptr);
                 }
                 for (const auto& fence : copy_cmd_data.second.fences)
                 {
+                    GFXRECON_LOG_ERROR("@@VVS:CSRD destroy fence")
                     device_table_->DestroyFence(device, fence, nullptr);
                 }
             }
 
+            GFXRECON_LOG_ERROR("@@VVS:CSRD erase swapchain")
             swapchain_resources_.erase(swapchain);
         }
 
         for (const VulkanImageInfo& image_info : swapchain_info->image_infos)
         {
+            GFXRECON_LOG_ERROR("@@VVS:CSRD Destroy ImageDirect")
             allocator->DestroyImageDirect(image_info.handle, nullptr, image_info.allocator_data);
+            GFXRECON_LOG_ERROR("@@VVS:CSRD Free MemDirect")
             allocator->FreeMemoryDirect(image_info.memory, nullptr, image_info.memory_allocator_data);
         }
     }
+    GFXRECON_LOG_ERROR("@@VVS:CSRD Exit")
 }
 
 void VulkanVirtualSwapchain::DestroySwapchainKHR(PFN_vkDestroySwapchainKHR     func,

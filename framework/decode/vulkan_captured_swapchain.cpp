@@ -53,12 +53,14 @@ void VulkanCapturedSwapchain::DestroySwapchainKHR(PFN_vkDestroySwapchainKHR     
                                                   const VulkanSwapchainKHRInfo* swapchain_info,
                                                   const VkAllocationCallbacks*  allocator)
 {
+    GFXRECON_LOG_ERROR("@@VCSC:CSRD entered swapchain_info = %p", (void*) swapchain_info);
     VkDevice       device    = VK_NULL_HANDLE;
     VkSwapchainKHR swapchain = VK_NULL_HANDLE;
 
     if (device_info != nullptr)
     {
         device = device_info->handle;
+        GFXRECON_LOG_ERROR("@@VCSC:CSRD set device = %p", (void*) device);
     }
 
     if (swapchain_info != nullptr)
@@ -66,6 +68,7 @@ void VulkanCapturedSwapchain::DestroySwapchainKHR(PFN_vkDestroySwapchainKHR     
         swapchain = swapchain_info->handle;
     }
 
+    GFXRECON_LOG_ERROR("@@VCSC:CSRD calling func()");
     func(device, swapchain, allocator);
 }
 
