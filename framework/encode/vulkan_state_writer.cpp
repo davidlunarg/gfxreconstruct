@@ -1502,6 +1502,7 @@ void VulkanStateWriter::WriteImageState(const VulkanStateTable& state_table)
         // Skip create call for swapchain images, i.e. vkGetSwapchainImagesKHR
         // This call is already emitted by the state setup for the parent swapchain
         GFXRECON_LOG_ERROR("GNN image_wrapper->is_swapchain_image is %d",image_wrapper->is_swapchain_image);
+        GFXRECON_LOG_ERROR("GNN &image_wrapper->is_swapchain_image = %p",&image_wrapper->is_swapchain_image);
         if (image_wrapper->is_swapchain_image)
         {
             return;
@@ -2550,6 +2551,7 @@ void VulkanStateWriter::ProcessImageMemory(const vulkan_wrappers::DeviceWrapper*
         std::vector<uint8_t>                        data;
 
         GFXRECON_LOG_ERROR("GPN image_wrapper->is_swapchain_image is %d",image_wrapper->is_swapchain_image);
+        GFXRECON_LOG_ERROR("GPN &image_wrapper->is_swapchain_image is %p",&image_wrapper->is_swapchain_image);
         GFXRECON_ASSERT(
             (image_wrapper != nullptr) &&
             (((image_wrapper->is_swapchain_image || image_wrapper->is_sparse_image) && memory_wrapper == nullptr) ||
