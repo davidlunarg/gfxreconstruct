@@ -1501,6 +1501,7 @@ void VulkanStateWriter::WriteImageState(const VulkanStateTable& state_table)
     state_table.VisitWrappers([&](const vulkan_wrappers::ImageWrapper* image_wrapper) {
         // Skip create call for swapchain images, i.e. vkGetSwapchainImagesKHR
         // This call is already emitted by the state setup for the parent swapchain
+        GFXRECON_LOG_ERROR("GNN image_wrapper->is_swapchain_image is %d",image_wrapper->is_swapchain_image);
         if (image_wrapper->is_swapchain_image)
         {
             return;
@@ -2548,6 +2549,7 @@ void VulkanStateWriter::ProcessImageMemory(const vulkan_wrappers::DeviceWrapper*
         const uint8_t*                              bytes          = nullptr;
         std::vector<uint8_t>                        data;
 
+        GFXRECON_LOG_ERROR("GPN image_wrapper->is_swapchain_image is %d",image_wrapper->is_swapchain_image);
         GFXRECON_ASSERT(
             (image_wrapper != nullptr) &&
             (((image_wrapper->is_swapchain_image || image_wrapper->is_sparse_image) && memory_wrapper == nullptr) ||
@@ -2731,6 +2733,7 @@ void VulkanStateWriter::ProcessImageMemoryWithAssetFile(const vulkan_wrappers::D
 
         if (image_wrapper->dirty)
         {
+            GFXRECON_LOG_ERROR("GPP image_wrapper->is_swapchain_image is %d",image_wrapper->is_swapchain_image);
             GFXRECON_ASSERT((image_wrapper->is_swapchain_image && memory_wrapper == nullptr) ||
                             (!image_wrapper->is_swapchain_image && memory_wrapper != nullptr));
 
@@ -3044,6 +3047,7 @@ void VulkanStateWriter::WriteImageMemoryState(const VulkanStateTable& state_tabl
         const vulkan_wrappers::DeviceMemoryWrapper* memory_wrapper =
             state_table.GetVulkanDeviceMemoryWrapper(wrapper->bind_memory_id);
 
+        GFXRECON_LOG_ERROR("GQR wrapper->is_swapchain_image is %d",wrapper->is_swapchain_image);
         if ((wrapper->is_swapchain_image && memory_wrapper == nullptr && wrapper->bind_device != nullptr) ||
             (!wrapper->is_swapchain_image && memory_wrapper != nullptr) ||
             (!wrapper->is_swapchain_image && wrapper->is_sparse_image && wrapper->bind_device != nullptr))

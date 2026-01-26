@@ -52,6 +52,7 @@ void AddChildObject<VulkanImageInfo>(
 {
     assert(objects != nullptr);
 
+    GFXRECON_LOG_ERROR("@@ABBX info->is_swapchain_image  = %d",info->is_swapchain_image);
     if (!info->is_swapchain_image)
     {
         (*objects)[info->parent_id].insert(std::make_pair(info->handle, info));
@@ -312,6 +313,7 @@ void FreeAllLiveObjects(CommonObjectInfoTable*                                  
             auto allocator = parent_info->allocator.get();
             assert(allocator != nullptr);
 
+            GFXRECON_LOG_ERROR("@@ADB object_info->is_swapchain_image  = %d",object_info->is_swapchain_image);
             if (!object_info->is_swapchain_image) {
                 GFXRECON_LOG_ERROR("@@Calling DestroyImage(%p, ...)", object_info->handle);
                 allocator->DestroyImage(object_info->handle, nullptr, object_info->allocator_data);

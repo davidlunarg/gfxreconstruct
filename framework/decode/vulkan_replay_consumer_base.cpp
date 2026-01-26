@@ -7936,6 +7936,7 @@ VkResult VulkanReplayConsumerBase::OverrideGetSwapchainImagesKHR(PFN_vkGetSwapch
                 image_info->sample_count       = VK_SAMPLE_COUNT_1_BIT;
                 image_info->type               = VK_IMAGE_TYPE_2D;
                 image_info->current_layout     = VK_IMAGE_LAYOUT_UNDEFINED;
+                GFXRECON_LOG_ERROR("@@CDF is_swapchain_image set to true")
                 image_info->is_swapchain_image = true;
 
                 // Create a copy of the image info to use for image cleanup when the swapchain is destroyed.
@@ -7975,6 +7976,7 @@ VkResult VulkanReplayConsumerBase::OverrideGetSwapchainImagesKHR(PFN_vkGetSwapch
                 image_info->sample_count       = VK_SAMPLE_COUNT_1_BIT;
                 image_info->type               = VK_IMAGE_TYPE_2D;
                 image_info->current_layout     = VK_IMAGE_LAYOUT_UNDEFINED;
+                GFXRECON_LOG_ERROR("@@CFF is_swapchain_image set to true")
                 image_info->is_swapchain_image = true;
             }
 
@@ -10246,6 +10248,7 @@ VkResult VulkanReplayConsumerBase::OverrideCreateImageView(
     GFXRECON_ASSERT(img_info != nullptr);
 
     // If image has external format, this format is undefined.
+    GFXRECON_LOG_ERROR("@@DEF img_info->is_swapchain_image = %d",img_info->is_swapchain_image);
     if (modified_create_info.format == VK_FORMAT_UNDEFINED)
     {
         if (graphics::vulkan_struct_get_pnext<VkSamplerYcbcrConversionInfo>(&modified_create_info))
@@ -10260,6 +10263,7 @@ VkResult VulkanReplayConsumerBase::OverrideCreateImageView(
         // for swapchain-images set image-view to a fallback format, avoid issues with distorted HDR/SRGB colors
         modified_create_info.format =
             vkuFormatIsSRGB(modified_create_info.format) ? VK_FORMAT_B8G8R8A8_SRGB : VK_FORMAT_B8G8R8A8_UNORM;
+        GFXRECON_LOG_ERROR("@@DEG modified_create_info set to 0x%x",modified_create_info);
     }
 
     if (device_info->property_feature_info.feature_descriptorBufferCaptureReplay && !UseAddressReplacement(device_info))

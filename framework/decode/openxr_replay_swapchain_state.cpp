@@ -237,6 +237,7 @@ XrResult SwapchainData::InitVirtualSwapchain(PointerDecoder<uint32_t>*          
         VulkanImageInfo handle_info;
         handle_info.handle             = proxy.image;
         handle_info.memory             = proxy.memory;
+        GFXRECON_LOG_ERROR("@@AA handle_info.is_swapchain_image set to true");
         handle_info.is_swapchain_image = true;
         vk_binding.vulkan_consumer->AddImageHandle(device_id, image_id, proxy.image, std::move(handle_info));
 

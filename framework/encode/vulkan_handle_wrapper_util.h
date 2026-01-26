@@ -460,6 +460,7 @@ inline void CreateWrappedHandle<DeviceWrapper,
         CreateWrappedNonDispatchHandle<ImageWrapper>(handle, get_id);
         wrapper                     = GetWrapper<ImageWrapper>(*handle);
         wrapper->is_swapchain_image = true;
+        GFXRECON_LOG_ERROR("@@GHU wrapper->is_swapchain_image set to true");
         wrapper->parent_swapchains.insert(parent_wrapper->handle);
         parent_wrapper->child_images.push_back(wrapper);
     }
