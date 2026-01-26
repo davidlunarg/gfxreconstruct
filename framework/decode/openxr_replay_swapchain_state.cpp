@@ -237,6 +237,7 @@ XrResult SwapchainData::InitVirtualSwapchain(PointerDecoder<uint32_t>*          
         VulkanImageInfo handle_info;
         handle_info.handle             = proxy.image;
         handle_info.memory             = proxy.memory;
+        GFXRECON_LOG_ERROR("@@AA proxy.image is %p", proxy.image);
         GFXRECON_LOG_ERROR("@@AA handle_info.is_swapchain_image set to true");
         GFXRECON_LOG_ERROR("@@AA &handle_info.is_swapchain_image = %p", &handle_info.is_swapchain_image);
         handle_info.is_swapchain_image = true;

@@ -112,7 +112,7 @@ VkResult VulkanDefaultAllocator::CreateImage(const VkImageCreateInfo*     create
                                              VkImage*                     image,
                                              ResourceData*                allocator_data)
 {
-    GFXRECON_LOG_ERROR("@@VulkanDefaultAllocator::CreateImage entered, allocator_data = %p", allocator_data);
+    GFXRECON_LOG_ERROR("@@HJU VulkanDefaultAllocator::CreateImage entered, allocator_data = %p", allocator_data);
     VkResult result = VK_ERROR_INITIALIZATION_FAILED;
 
     if (allocator_data != nullptr)
@@ -124,11 +124,11 @@ VkResult VulkanDefaultAllocator::CreateImage(const VkImageCreateInfo*     create
 
         result = functions_.create_image(device_, create_info, allocation_callbacks, image);
         if (result == VK_SUCCESS) {
-            GFXRECON_LOG_ERROR("@@VulkanDefaultAllocator::CreateImage created image: image=%p", (void*)(*image));
+            GFXRECON_LOG_ERROR("@@HJU VulkanDefaultAllocator::CreateImage created image: image=%p", (void*)(*image));
         } else
-            GFXRECON_LOG_ERROR("@@VulkanDefaultAllocator::CreateImage image create failed, result = %d", result);
+            GFXRECON_LOG_ERROR("@@HJU VulkanDefaultAllocator::CreateImage image create failed, result = %d", result);
     } else {
-        GFXRECON_LOG_ERROR("@@VulkanDefaultAllocator::CreateImage -- no image created, allocator_data is nullptr");
+        GFXRECON_LOG_ERROR("@@HJU VulkanDefaultAllocator::CreateImage -- no image created, allocator_data is nullptr");
     }
 
     return result;

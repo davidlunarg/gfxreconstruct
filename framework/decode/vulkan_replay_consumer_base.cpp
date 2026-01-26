@@ -7936,6 +7936,7 @@ VkResult VulkanReplayConsumerBase::OverrideGetSwapchainImagesKHR(PFN_vkGetSwapch
                 image_info->sample_count       = VK_SAMPLE_COUNT_1_BIT;
                 image_info->type               = VK_IMAGE_TYPE_2D;
                 image_info->current_layout     = VK_IMAGE_LAYOUT_UNDEFINED;
+                GFXRECON_LOG_ERROR("@@CDF image_info->handle  = %p",image_info->handle);
                 GFXRECON_LOG_ERROR("@@CDF image_info->is_swapchain_image set to true")
                 GFXRECON_LOG_ERROR("@@CDF &image_info->is_swapchain_image  = %p",image_info->is_swapchain_image)
                 image_info->is_swapchain_image = true;
@@ -7977,6 +7978,7 @@ VkResult VulkanReplayConsumerBase::OverrideGetSwapchainImagesKHR(PFN_vkGetSwapch
                 image_info->sample_count       = VK_SAMPLE_COUNT_1_BIT;
                 image_info->type               = VK_IMAGE_TYPE_2D;
                 image_info->current_layout     = VK_IMAGE_LAYOUT_UNDEFINED;
+                GFXRECON_LOG_ERROR("@@DFF image_info->handle  = %p",image_info->handle);
                 GFXRECON_LOG_ERROR("@@CFF image_info->is_swapchain_image set to true")
                 GFXRECON_LOG_ERROR("@@CFF &image_info->is_swapchain_image  = %p",image_info->is_swapchain_image)
                 image_info->is_swapchain_image = true;
@@ -10250,6 +10252,7 @@ VkResult VulkanReplayConsumerBase::OverrideCreateImageView(
     GFXRECON_ASSERT(img_info != nullptr);
 
     // If image has external format, this format is undefined.
+    GFXRECON_LOG_ERROR("@@DEF img_info->handle = %p",img_info->handle);
     GFXRECON_LOG_ERROR("@@DEF img_info->is_swapchain_image = %d",img_info->is_swapchain_image);
     GFXRECON_LOG_ERROR("@@DEF &img_info->is_swapchain_image = %p",&img_info->is_swapchain_image);
     if (modified_create_info.format == VK_FORMAT_UNDEFINED)

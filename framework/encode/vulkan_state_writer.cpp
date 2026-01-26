@@ -1501,8 +1501,9 @@ void VulkanStateWriter::WriteImageState(const VulkanStateTable& state_table)
     state_table.VisitWrappers([&](const vulkan_wrappers::ImageWrapper* image_wrapper) {
         // Skip create call for swapchain images, i.e. vkGetSwapchainImagesKHR
         // This call is already emitted by the state setup for the parent swapchain
-        GFXRECON_LOG_ERROR("GNN image_wrapper->is_swapchain_image is %d",image_wrapper->is_swapchain_image);
-        GFXRECON_LOG_ERROR("GNN &image_wrapper->is_swapchain_image = %p",&image_wrapper->is_swapchain_image);
+        GFXRECON_LOG_ERROR("@@HJK image = %p", image_wrapper->handle);
+        GFXRECON_LOG_ERROR("@@GNN image_wrapper->is_swapchain_image is %d",image_wrapper->is_swapchain_image);
+        GFXRECON_LOG_ERROR("@@GNN &image_wrapper->is_swapchain_image = %p",&image_wrapper->is_swapchain_image);
         if (image_wrapper->is_swapchain_image)
         {
             return;

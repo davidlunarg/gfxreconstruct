@@ -666,9 +666,10 @@ void VulkanStateTracker::TrackBeginRenderPass(VkCommandBuffer command_buffer, co
     {
         for (size_t i = 0; i < wrapper->render_pass_framebuffer->attachments.size(); ++i)
         {
-            GFXRECON_LOG_ERROR("HJK wrapper->render_pass_framebuffer->attachments[i]->is_swapchain_image = %d",
+            GFXRECON_LOG_ERROR("@@HJK image = %p", wrapper->render_pass_framebuffer->attachments[i]->handle);
+            GFXRECON_LOG_ERROR("@@HJK wrapper->render_pass_framebuffer->attachments[i]->is_swapchain_image = %d",
                                wrapper->render_pass_framebuffer->attachments[i]->is_swapchain_image);
-            GFXRECON_LOG_ERROR("&HJK wrapper->render_pass_framebuffer->attachments[i]->is_swapchain_image = %p",
+            GFXRECON_LOG_ERROR("@@HJK &wrapper->render_pass_framebuffer->attachments[i]->is_swapchain_image = %p",
                                &wrapper->render_pass_framebuffer->attachments[i]->is_swapchain_image);
             if (wrapper->render_pass_framebuffer->attachments[i]->is_swapchain_image)
             {
