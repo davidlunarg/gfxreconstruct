@@ -155,12 +155,12 @@ class VulkanVirtualSwapchain : public VulkanSwapchain
 
     bool AddSwapchainResourceData(VkSwapchainKHR swapchain);
 
-    VkResult CreateSwapchainResourceData(const VulkanDeviceInfo*       device_info,
-                                         const VulkanSwapchainKHRInfo* swapchain_info,
-                                         uint32_t                      capture_image_count,
-                                         uint32_t*                     replay_image_count,
-                                         VkImage*                      images,
-                                         bool                          offscreen);
+    VkResult CreateSwapchainResourceData(const VulkanDeviceInfo* device_info,
+                                         VulkanSwapchainKHRInfo* swapchain_info,
+                                         uint32_t                capture_image_count,
+                                         uint32_t*               replay_image_count,
+                                         VkImage*                images,
+                                         bool                    offscreen);
 
     void CleanSwapchainResourceData(const VulkanDeviceInfo* device_info, const VulkanSwapchainKHRInfo* swapchain_info);
 

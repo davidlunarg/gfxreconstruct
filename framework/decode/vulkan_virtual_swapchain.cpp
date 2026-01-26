@@ -203,12 +203,12 @@ void VulkanVirtualSwapchain::DestroySwapchainKHR(PFN_vkDestroySwapchainKHR     f
 }
 
 // Offscreen only need virtual_swapchain_images. Skip ther other tasks for offscreen.
-VkResult VulkanVirtualSwapchain::CreateSwapchainResourceData(const VulkanDeviceInfo*       device_info,
-                                                             const VulkanSwapchainKHRInfo* swapchain_info,
-                                                             uint32_t                      capture_image_count,
-                                                             uint32_t*                     replay_image_count,
-                                                             VkImage*                      images,
-                                                             bool                          offscreen)
+VkResult VulkanVirtualSwapchain::CreateSwapchainResourceData(const VulkanDeviceInfo* device_info,
+                                                             VulkanSwapchainKHRInfo* swapchain_info,
+                                                             uint32_t                capture_image_count,
+                                                             uint32_t*               replay_image_count,
+                                                             VkImage*                images,
+                                                             bool                    offscreen)
 {
     VkDevice       device    = VK_NULL_HANDLE;
     VkSwapchainKHR swapchain = VK_NULL_HANDLE;
@@ -488,7 +488,11 @@ VkResult VulkanVirtualSwapchain::CreateSwapchainResourceData(const VulkanDeviceI
                                    swapchain_info->capture_id);
                 break;
             }
-            swapchain_resources->virtual_swapchain_images.emplace_back(std::move(image));
+
+            GFXRECON_LOG_ERROR("@@DFJ Setting swapchain_info->image_infos[%d].is_swapchain_image to true", i);
+            GFXRECON_LOG_ERROR("@@DFJ &swapchain_info->image_infos[%d].is_swapchain_image = %p", i, &swapchain_info->image_infos[i].is_swapchain_image);
+            swapchain_info->image_infos[i].is_swapchain_image = true;
+
         }
 
         if (!offscreen)
@@ -1117,7 +1121,7 @@ VkResult VulkanVirtualSwapchain::CreateVirtualSwapchainImage(const VulkanDeviceI
 
     VkResult result =
         allocator->CreateImageDirect(&image_create_info, nullptr, &image.image, &image.resource_allocator_data);
-
+    
     if (result == VK_SUCCESS)
     {
         if ((instance_table_ == nullptr) || (device_table_ == nullptr))
