@@ -139,17 +139,17 @@ void VulkanDefaultAllocator::DestroyImage(VkImage                      image,
                                           const VkAllocationCallbacks* allocation_callbacks,
                                           ResourceData                 allocator_data)
 {
-    GFXRECON_LOG_ERROR("@@VulkanDefaultAllocator::DestroyImage entered, allocator_data=%p", allocator_data)
-    GFXRECON_LOG_ERROR("@@VulkanDefaultAllocator::DestroyImage image=%p", (void*)image)
+    GFXRECON_LOG_ERROR("@@RTU VulkanDefaultAllocator::DestroyImage entered, allocator_data=%p", allocator_data)
+    GFXRECON_LOG_ERROR("@@RTU VulkanDefaultAllocator::DestroyImage image=%p", (void*)image)
     if (allocator_data != 0)
     {
         auto resource_alloc_info = reinterpret_cast<ResourceAllocInfo*>(allocator_data);
         delete resource_alloc_info;
     }
 
-    GFXRECON_LOG_ERROR("@@VulkanDefaultAllocator::DestroyImage about to destroy image %p", image)
-    functions_.destroy_image(device_, image, allocation_callbacks);
-    GFXRECON_LOG_ERROR("@@VulkanDefaultAllocator::DestroyImage destroyed image %p", image)
+    GFXRECON_LOG_ERROR("@@RTU VulkanDefaultAllocator::DestroyImage about to destroy image %p", image)
+    functions_.destroy_image(device_, image, allocation_callbacks);   // crashing here, image destroyed twice
+    GFXRECON_LOG_ERROR("@@RTU VulkanDefaultAllocator::DestroyImage destroyed image %p", image)
 }
 
 VkResult VulkanDefaultAllocator::CreateVideoSession(const VkVideoSessionCreateInfoKHR* create_info,

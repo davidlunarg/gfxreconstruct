@@ -7938,7 +7938,7 @@ VkResult VulkanReplayConsumerBase::OverrideGetSwapchainImagesKHR(PFN_vkGetSwapch
                 image_info->current_layout     = VK_IMAGE_LAYOUT_UNDEFINED;
                 GFXRECON_LOG_ERROR("@@CDF image_info->handle  = %p",image_info->handle);
                 GFXRECON_LOG_ERROR("@@CDF image_info->is_swapchain_image set to true")
-                GFXRECON_LOG_ERROR("@@CDF &image_info->is_swapchain_image  = %p",image_info->is_swapchain_image)
+                GFXRECON_LOG_ERROR("@@CDF &image_info->is_swapchain_image  = %p", &image_info->is_swapchain_image)
                 image_info->is_swapchain_image = true;
 
                 // Create a copy of the image info to use for image cleanup when the swapchain is destroyed.
