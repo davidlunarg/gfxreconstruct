@@ -494,7 +494,7 @@ VkResult VulkanVirtualSwapchain::CreateSwapchainResourceData(const VulkanDeviceI
             GFXRECON_LOG_ERROR("@@DFJ &swapchain_info->image_infosX = %p", &swapchain_info->image_infosX);
             GFXRECON_LOG_ERROR("@@DFJ &swapchain_info->image_infosX[0] = %p", &swapchain_info->image_infosX[0]);
             GFXRECON_LOG_ERROR("@@DFJ &swapchain_info->image_infosX[%d].is_swapchain_image = %p", i, &swapchain_info->image_infosX[i].is_swapchain_image);
-            swapchain_info->image_infosX[i].is_swapchain_image = true;
+            //swapchain_info->image_infosX[i].is_swapchain_image = true;   THIS CRASHES
 
         }
 

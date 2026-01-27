@@ -7936,13 +7936,13 @@ VkResult VulkanReplayConsumerBase::OverrideGetSwapchainImagesKHR(PFN_vkGetSwapch
                 image_info->sample_count       = VK_SAMPLE_COUNT_1_BIT;
                 image_info->type               = VK_IMAGE_TYPE_2D;
                 image_info->current_layout     = VK_IMAGE_LAYOUT_UNDEFINED;
-                GFXRECON_LOG_ERROR("@@CDF image_info->handle  = %p",image_info->handle);
-                GFXRECON_LOG_ERROR("@@CDF image_info->is_swapchain_image set to true")
-                GFXRECON_LOG_ERROR("@@CDF &image_info->is_swapchain_image  = %p", &image_info->is_swapchain_image)
                 image_info->is_swapchain_image = true;
+                GFXRECON_LOG_ERROR("@@CDF image_info->handle  = %p",image_info->handle);
 
                 // Create a copy of the image info to use for image cleanup when the swapchain is destroyed.
                 swapchain_info->image_infosX.push_back(*image_info);
+                GFXRECON_LOG_ERROR("@@CDE swapchain_info->image_infosX.is_swapchain_image set to true")
+                GFXRECON_LOG_ERROR("@@CDE &swapchain_info->image_infosX.is_swapchain_image  = %p", &swapchain_info->image_infosX[i].is_swapchain_image)
             }
 
             GFXRECON_LOG_ERROR("@@CDG swapchain_info->image_infosX.size() = %d", swapchain_info->image_infosX.size());
