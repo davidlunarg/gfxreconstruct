@@ -622,7 +622,7 @@ struct VulkanSwapchainKHRInfo : public VulkanObjectInfo<VkSwapchainKHR>
     // When replay is restricted to a specific surface, a dummy swapchain is created for the omitted surfaces, requiring
     // backing images.
     uint32_t                     replay_image_count{ 0 };
-    std::vector<VulkanImageInfo> image_infos;
+    std::vector<VulkanImageInfo> image_infosX;
     VkSwapchainCreateFlagsKHR    image_flags{ 0 };
     VkFormat                     image_format{ VK_FORMAT_UNDEFINED };
     uint32_t                     image_array_layers{ 0 };

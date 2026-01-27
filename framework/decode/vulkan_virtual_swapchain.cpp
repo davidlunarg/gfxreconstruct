@@ -165,7 +165,7 @@ void VulkanVirtualSwapchain::CleanSwapchainResourceData(const VulkanDeviceInfo* 
         }
 
         GFXRECON_LOG_ERROR("@@VulkanVirtualSwapchain::CleanSwapchainResourceData freeing images")
-        for (const VulkanImageInfo& image_info : swapchain_info->image_infos)
+        for (const VulkanImageInfo& image_info : swapchain_info->image_infosX)
         {
             GFXRECON_LOG_ERROR("@@VVS:CSRD Destroy ImageDirect")
             allocator->DestroyImageDirect(image_info.handle, nullptr, image_info.allocator_data);
@@ -489,9 +489,11 @@ VkResult VulkanVirtualSwapchain::CreateSwapchainResourceData(const VulkanDeviceI
                 break;
             }
 
-            GFXRECON_LOG_ERROR("@@DFJ Setting swapchain_info->image_infos[%d].is_swapchain_image to true", i);
-            GFXRECON_LOG_ERROR("@@DFJ &swapchain_info->image_infos[%d].is_swapchain_image = %p", i, &swapchain_info->image_infos[i].is_swapchain_image);
-            swapchain_info->image_infos[i].is_swapchain_image = true;
+            GFXRECON_LOG_ERROR("@@DFJ Setting swapchain_info->image_infosX[%d].is_swapchain_image to true", i);
+            GFXRECON_LOG_ERROR("@@DFJ &swapchain_info = %p", swapchain_info);
+            GFXRECON_LOG_ERROR("@@DFJ swapchain_info->image_infosX = %p", swapchain_info->image_infosX);
+            GFXRECON_LOG_ERROR("@@DFJ &swapchain_info->image_infosX[%d].is_swapchain_image = %p", i, &swapchain_info->image_infosX[i].is_swapchain_image);
+            swapchain_info->image_infosX[i].is_swapchain_image = true;
 
         }
 

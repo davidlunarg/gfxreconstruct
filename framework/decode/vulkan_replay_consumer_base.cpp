@@ -7843,7 +7843,7 @@ void VulkanReplayConsumerBase::OverrideDestroySwapchainKHR(
         auto allocator = device_info->allocator.get();
         assert(allocator != nullptr);
 
-        for (const VulkanImageInfo& image_info : swapchain_info->image_infos)
+        for (const VulkanImageInfo& image_info : swapchain_info->image_infosX)
         {
             allocator->DestroyImageDirect(image_info.handle, nullptr, image_info.allocator_data);
             allocator->FreeMemoryDirect(image_info.memory, nullptr, image_info.memory_allocator_data);
@@ -7942,7 +7942,7 @@ VkResult VulkanReplayConsumerBase::OverrideGetSwapchainImagesKHR(PFN_vkGetSwapch
                 image_info->is_swapchain_image = true;
 
                 // Create a copy of the image info to use for image cleanup when the swapchain is destroyed.
-                swapchain_info->image_infos.push_back(*image_info);
+                swapchain_info->image_infosX.push_back(*image_info);
             }
         }
     }

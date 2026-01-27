@@ -678,7 +678,7 @@ void FreeAllLiveObjects(CommonObjectInfoTable*                                  
                 auto allocator = parent_info->allocator.get();
                 assert(allocator != nullptr);
 
-                for (const VulkanImageInfo& image_info : object_info->image_infos)
+                for (const VulkanImageInfo& image_info : object_info->image_infosX)
                 {
                     allocator->DestroyImageDirect(image_info.handle, nullptr, image_info.allocator_data);
                     allocator->FreeMemoryDirect(image_info.memory, nullptr, image_info.memory_allocator_data);
