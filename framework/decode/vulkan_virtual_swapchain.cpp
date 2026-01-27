@@ -495,11 +495,14 @@ VkResult VulkanVirtualSwapchain::CreateSwapchainResourceData(const VulkanDeviceI
             GFXRECON_LOG_ERROR("@@DFJ &swapchain_info->image_infosX[0] = %p", &swapchain_info->image_infosX[0]);
             GFXRECON_LOG_ERROR("@@DFJ &swapchain_info->image_infosX[%d].is_swapchain_image = %p", i, &swapchain_info->image_infosX[i].is_swapchain_image);
             //swapchain_info->image_infosX[i].is_swapchain_image = true;   THIS CRASHES
+            GFXRECON_LOG_ERROR("@@DFK1")
 
         }
+        GFXRECON_LOG_ERROR("@@DFK2")
 
         if (!offscreen)
         {
+            GFXRECON_LOG_ERROR("@@DFK3")
             VkCommandBufferBeginInfo begin_info = { VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO };
             begin_info.pNext                    = nullptr;
             begin_info.flags                    = 0;
@@ -606,11 +609,18 @@ VkResult VulkanVirtualSwapchain::CreateSwapchainResourceData(const VulkanDeviceI
             }
         }
     }
+    GFXRECON_LOG_ERROR("@@DFK4, &swapchain_resources->virtual_swapchain_images[0]=%p", &swapchain_resources->virtual_swapchain_images[0])
+    GFXRECON_LOG_ERROR("@@DFK4, &swapchain_resources->virtual_swapchain_images[0].image=%p", &swapchain_resources->virtual_swapchain_images[0].image)
+    GFXRECON_LOG_ERROR("@@DFK4, swapchain_resources->virtual_swapchain_images[0].image=%p", swapchain_resources->virtual_swapchain_images[0].image)
 
     for (uint32_t i = 0; i < capture_image_count; ++i)
     {
+        GFXRECON_LOG_ERROR("@@DFK5 i=%d",i)
+        GFXRECON_LOG_ERROR("@@DFK5 &images[i]=%p",&images[i])
         images[i] = swapchain_resources->virtual_swapchain_images[i].image;
+        GFXRECON_LOG_ERROR("@@DFK5 images[i]=%p",images[i])
     }
+    GFXRECON_LOG_ERROR("@@DFK6")
     return result;
 }
 
