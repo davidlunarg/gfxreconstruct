@@ -7944,6 +7944,15 @@ VkResult VulkanReplayConsumerBase::OverrideGetSwapchainImagesKHR(PFN_vkGetSwapch
                 // Create a copy of the image info to use for image cleanup when the swapchain is destroyed.
                 swapchain_info->image_infosX.push_back(*image_info);
             }
+
+            GFXRECON_LOG_ERROR("@@CDG swapchain_info->image_infosX.size() = %d", swapchain_info->image_infosX.size());
+            GFXRECON_LOG_ERROR("@@CDG &swapchain_info->image_infosX = %p",&swapchain_info->image_infosX);
+            for (uint32_t i = 0 ; i< swapchain_info->image_infosX.size(); i++)
+            {
+                GFXRECON_LOG_ERROR("@@CDG &swapchain_info->image_infosX[%i] = %p", i, &swapchain_info->image_infosX[i]);
+                GFXRECON_LOG_ERROR("@@CDG &swapchain_info->image_infosX[%i].is_swapchain_image = %p", i, &swapchain_info->image_infosX[i].is_swapchain_image);
+                GFXRECON_LOG_ERROR("@@CDG swapchain_info->image_infosX[%i].is_swapchain_image = %d", i, swapchain_info->image_infosX[i].is_swapchain_image);
+            }
         }
     }
     else
