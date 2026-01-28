@@ -37,6 +37,7 @@ VkResult VulkanCapturedSwapchain::CreateSwapchainKHR(VkResult                   
                                                      HandlePointerDecoder<VkSwapchainKHR>* swapchain,
                                                      const graphics::VulkanDeviceTable*    device_table)
 {
+    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
     VkDevice device = VK_NULL_HANDLE;
 
     if (device_info != nullptr)
@@ -53,6 +54,7 @@ void VulkanCapturedSwapchain::DestroySwapchainKHR(PFN_vkDestroySwapchainKHR     
                                                   const VulkanSwapchainKHRInfo* swapchain_info,
                                                   const VkAllocationCallbacks*  allocator)
 {
+    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
     VkDevice       device    = VK_NULL_HANDLE;
     VkSwapchainKHR swapchain = VK_NULL_HANDLE;
 
@@ -77,6 +79,7 @@ VkResult VulkanCapturedSwapchain::GetSwapchainImagesKHR(VkResult                
                                                         uint32_t*                   image_count,
                                                         VkImage*                    images)
 {
+    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
     VkDevice       device    = VK_NULL_HANDLE;
     VkSwapchainKHR swapchain = VK_NULL_HANDLE;
 
@@ -113,6 +116,7 @@ VkResult VulkanCapturedSwapchain::AcquireNextImageKHR(VkResult                  
                                                       uint32_t                  capture_image_index,
                                                       uint32_t*                 image_index)
 {
+    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
     VkDevice       device    = VK_NULL_HANDLE;
     VkSwapchainKHR swapchain = VK_NULL_HANDLE;
 
@@ -147,6 +151,7 @@ VkResult VulkanCapturedSwapchain::AcquireNextImage2KHR(VkResult                 
                                                        uint32_t                         capture_image_index,
                                                        uint32_t*                        image_index)
 {
+    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
     GFXRECON_UNREFERENCED_PARAMETER(swapchain_info);
 
     VkDevice device = VK_NULL_HANDLE;
@@ -176,6 +181,7 @@ VkResult VulkanCapturedSwapchain::QueuePresentKHR(VkResult                      
                                                   const VulkanQueueInfo*                      queue_info,
                                                   const VkPresentInfoKHR*                     present_info)
 {
+    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
     VkQueue queue = VK_NULL_HANDLE;
 
     if (queue_info != nullptr)
@@ -193,6 +199,7 @@ VkResult VulkanCapturedSwapchain::CreateRenderPass(VkResult                     
                                                    const VkAllocationCallbacks*  allocator,
                                                    VkRenderPass*                 render_pass)
 {
+    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
     VkDevice device = VK_NULL_HANDLE;
 
     if (device_info != nullptr)
@@ -210,6 +217,7 @@ VkResult VulkanCapturedSwapchain::CreateRenderPass2(VkResult                    
                                                     const VkAllocationCallbacks*   allocator,
                                                     VkRenderPass*                  render_pass)
 {
+    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
     VkDevice device = VK_NULL_HANDLE;
 
     if (device_info != nullptr)
@@ -232,6 +240,7 @@ void VulkanCapturedSwapchain::CmdPipelineBarrier(PFN_vkCmdPipelineBarrier       
                                                  uint32_t                       image_memory_barrier_count,
                                                  const VkImageMemoryBarrier*    image_memory_barriers)
 {
+    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
     VkCommandBuffer command_buffer = VK_NULL_HANDLE;
 
     if (command_buffer_info != nullptr)
@@ -255,6 +264,7 @@ void VulkanCapturedSwapchain::CmdPipelineBarrier2(PFN_vkCmdPipelineBarrier2 func
                                                   VulkanCommandBufferInfo*  command_buffer_info,
                                                   const VkDependencyInfo*   pDependencyInfo)
 {
+    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
 
     VkCommandBuffer command_buffer = VK_NULL_HANDLE;
 
@@ -274,6 +284,7 @@ void VulkanCapturedSwapchain::ProcessSetSwapchainImageStateCommand(
     const CommonObjectInfoTable&                        object_info_table,
     SwapchainImageTracker&                              swapchain_image_tracker)
 {
+    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
     VkDevice       device    = device_info->handle;
     VkSwapchainKHR swapchain = swapchain_info->handle;
 
@@ -349,6 +360,7 @@ void VulkanCapturedSwapchain::ProcessSetSwapchainImageStatePreAcquire(
     const CommonObjectInfoTable&                        object_info_table,
     SwapchainImageTracker&                              swapchain_image_tracker)
 {
+    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
     VkDevice device = device_info->handle;
     assert(device_table_ != nullptr);
 
@@ -548,6 +560,7 @@ void VulkanCapturedSwapchain::ProcessSetSwapchainImageStateQueueSubmit(
     const std::vector<format::SwapchainImageStateInfo>& image_info,
     const CommonObjectInfoTable&                        object_info_table)
 {
+    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
     auto device = device_info->handle;
     assert(device_table_ != nullptr);
 

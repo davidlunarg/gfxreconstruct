@@ -36,6 +36,7 @@ void SwapchainData::InitSwapchainData(const GraphicsBinding&       binding,
                                       const XrSwapchainCreateInfo& info,
                                       XrSwapchain                  replay_handle)
 {
+    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
     // Save off a reference to the session's graphics binding information
     graphics_binding_ = &binding;
 
@@ -60,6 +61,7 @@ void SwapchainData::InitSwapchainData(const GraphicsBinding&       binding,
 
 XrResult SwapchainData::ImportReplaySwapchain(StructPointerDecoder<Decoded_XrSwapchainImageBaseHeader>* images)
 {
+    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
     XrResult                    result             = XR_SUCCESS;
     XrSwapchainImageBaseHeader* replay_images      = images->GetOutputPointer();
     size_t                      replay_image_count = images->GetOutputLength();
@@ -89,6 +91,7 @@ XrResult SwapchainData::ImportReplaySwapchain(StructPointerDecoder<Decoded_XrSwa
 XrResult SwapchainData::InitVirtualSwapchain(PointerDecoder<uint32_t>*                                 imageCountOutput,
                                              StructPointerDecoder<Decoded_XrSwapchainImageBaseHeader>* capture_images)
 {
+    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
     // This call is invalid without a Session with a graphics binding specified
     assert(graphics_binding_);
 
@@ -113,6 +116,7 @@ XrResult SwapchainData::InitVirtualSwapchain(PointerDecoder<uint32_t>*          
 XrResult SwapchainData::InitVirtualSwapchain(PointerDecoder<uint32_t>*                                imageCountOutput,
                                              StructPointerDecoder<Decoded_XrSwapchainImageVulkanKHR>* capture_images)
 {
+    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
 
     // Unpack the graphics binding info, we shouldn't be called unless the binding *is* Vulkan
     assert(graphics_binding_->IsVulkan());
@@ -281,6 +285,7 @@ XrResult SwapchainData::InitVirtualSwapchain(PointerDecoder<uint32_t>*          
 
 XrResult SwapchainData::AcquireSwapchainImage(uint32_t capture_index, uint32_t replay_index)
 {
+    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
     capture_to_replay_map_[capture_index] = replay_index;
     acquire_release_fifo_.push_front(capture_index);
 
@@ -296,6 +301,7 @@ XrResult SwapchainData::AcquireSwapchainImage(uint32_t capture_index, uint32_t r
 
 XrResult SwapchainData::ReleaseSwapchainImage(StructPointerDecoder<Decoded_XrSwapchainImageReleaseInfo>* releaseInfo)
 {
+    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
     XrResult xr_result = XR_SUCCESS;
 
     if (graphics_binding_->IsVulkan())
@@ -310,6 +316,7 @@ XrResult SwapchainData::ReleaseSwapchainImage(StructPointerDecoder<Decoded_XrSwa
 
 void SwapchainData::WaitedWithoutTimeout()
 {
+    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
     // WIP: Do we need to track anything here?
     // The calling order will be enforced by the runtime at replay time, and if the application
     // didn't handle XR_TIMEOUT correctly, that's an invalid trace, which the replay runtime may respond poorly
@@ -318,6 +325,7 @@ void SwapchainData::WaitedWithoutTimeout()
 
 void SwapchainData::Clear()
 {
+    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
     if (graphics_binding_->IsVulkan())
     {
         Clear(*swapchain_graphics_info_.vulkan_info);
@@ -327,6 +335,7 @@ void SwapchainData::Clear()
 
 void SwapchainData::Clear(VulkanSwapchainInfo& vk_swap)
 {
+    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
     assert(graphics_binding_->IsVulkan());
     const VulkanGraphicsBinding& vk_binding   = graphics_binding_->GetVulkanBinding();
     const VkDevice               vk_device    = vk_binding.device;
@@ -346,6 +355,7 @@ void SwapchainData::Clear(VulkanSwapchainInfo& vk_swap)
 
 XrResult SwapchainData::AcquireSwapchainImage(uint32_t capture_index, uint32_t replay_index, VulkanSwapchainInfo& swap)
 {
+    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
     // Unpack the graphics binding info, we shouldn't be called unless the binding *is* Vulkan
     assert(graphics_binding_->IsVulkan());
 
@@ -409,6 +419,7 @@ XrResult SwapchainData::AcquireSwapchainImage(uint32_t capture_index, uint32_t r
 XrResult SwapchainData::ReleaseSwapchainImage(StructPointerDecoder<Decoded_XrSwapchainImageReleaseInfo>* releaseInfo,
                                               VulkanSwapchainInfo&                                       vk_swap)
 {
+    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
 
     // Unpack the graphics binding info, we shouldn't be called unless the binding *is* Vulkan
     assert(graphics_binding_->IsVulkan());
@@ -545,6 +556,7 @@ XrResult SwapchainData::ReleaseSwapchainImage(StructPointerDecoder<Decoded_XrSwa
 
 void SwapchainData::MapVulkanSwapchainImageFlags(XrSwapchainUsageFlags xr_flags, VkImageCreateInfo& info)
 {
+    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
     // NOTE: This is Vulkan specific.
     struct ImageUsageMap
     {
@@ -592,6 +604,7 @@ void SwapchainData::MapVulkanSwapchainImageFlags(XrSwapchainUsageFlags xr_flags,
 
 XrResult SwapchainData::InitSwapchainData(const XrSwapchainCreateInfo& xr_info, VulkanSwapchainInfo& vk_swap)
 {
+    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
     XrResult xr_result = XR_SUCCESS; // WIP: Determine if there is a better code for this
 
     // Set up the flags and usages
