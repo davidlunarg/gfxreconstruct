@@ -98,8 +98,9 @@ void FreeChildObjects(CommonObjectInfoTable* table,
             {
                 if (object_info.second != nullptr)
                 {
-                    GFXRECON_LOG_ERROR("@@FreeChildObjects calling destroy_func");
+                    GFXRECON_LOG_ERROR("@@FreeChildObjects calling destroy_func(%p,%p)", parent_info, object_info.second);
                     destroy_func(parent_info, object_info.second);
+                    GFXRECON_LOG_ERROR("@@FreeChildObjects destroy_func returned");
                     if (remove_entries)
                     {
                         (table->*RemoveFunc)(object_info.second->capture_id);
