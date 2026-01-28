@@ -34,7 +34,7 @@ GFXRECON_BEGIN_NAMESPACE(decode)
 
 bool VulkanVirtualSwapchain::AddSwapchainResourceData(VkSwapchainKHR swapchain)
 {
-    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
+    GFXRECON_LOG_ERROR("@@Func08: %s", __func__);
     auto data = std::make_unique<SwapchainResourceData>();
     if (data == nullptr)
     {
@@ -53,7 +53,7 @@ VkResult VulkanVirtualSwapchain::CreateSwapchainKHR(VkResult                    
                                                     HandlePointerDecoder<VkSwapchainKHR>* swapchain,
                                                     const graphics::VulkanDeviceTable*    device_table)
 {
-    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
+    GFXRECON_LOG_ERROR("@@Func08: %s", __func__);
     VkDevice                 device          = VK_NULL_HANDLE;
     VkPhysicalDevice         physical_device = VK_NULL_HANDLE;
     VkSurfaceCapabilitiesKHR surfCapabilities{};
@@ -99,7 +99,7 @@ VkResult VulkanVirtualSwapchain::CreateSwapchainKHR(VkResult                    
 void VulkanVirtualSwapchain::CleanSwapchainResourceData(const VulkanDeviceInfo*       device_info,
                                                         const VulkanSwapchainKHRInfo* swapchain_info)
 {
-    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
+    GFXRECON_LOG_ERROR("@@Func08: %s", __func__);
     GFXRECON_LOG_ERROR("@@VulkanVirtualSwapchain::CleanSwapchainResourceData entered, swapchain_info = %p", swapchain_info);
     GFXRECON_LOG_ERROR("@@VulkanVirtualSwapchain::CleanSwapchainResourceData swapchain_info->surface = %p", swapchain_info->surface);
     GFXRECON_LOG_ERROR("@@VulkanVirtualSwapchain::CleanSwapchainResourceData swapchain_info->surface_id = %p", (void*) swapchain_info->surface_id);
@@ -185,7 +185,7 @@ void VulkanVirtualSwapchain::DestroySwapchainKHR(PFN_vkDestroySwapchainKHR     f
                                                  const VulkanSwapchainKHRInfo* swapchain_info,
                                                  const VkAllocationCallbacks*  allocator)
 {
-    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
+    GFXRECON_LOG_ERROR("@@Func08: %s", __func__);
     GFXRECON_LOG_ERROR("@@VulkanVirtualSwapchain::DestroySwapchainKHR entered");
     if ((device_info != nullptr) && (swapchain_info != nullptr))
     {
@@ -214,7 +214,7 @@ VkResult VulkanVirtualSwapchain::CreateSwapchainResourceData(const VulkanDeviceI
                                                              VkImage*                images,
                                                              bool                    offscreen)
 {
-    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
+    GFXRECON_LOG_ERROR("@@Func08: %s", __func__);
     VkDevice       device    = VK_NULL_HANDLE;
     VkSwapchainKHR swapchain = VK_NULL_HANDLE;
     VkResult       result    = VK_SUCCESS;
@@ -638,7 +638,7 @@ VkResult VulkanVirtualSwapchain::GetSwapchainImagesKHR(VkResult                 
                                                        uint32_t*                   image_count,
                                                        VkImage*                    images)
 {
-    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
+    GFXRECON_LOG_ERROR("@@Func08: %s", __func__);
     VkDevice       device             = VK_NULL_HANDLE;
     VkSwapchainKHR swapchain          = VK_NULL_HANDLE;
     uint32_t*      replay_image_count = nullptr;
@@ -711,7 +711,7 @@ VkResult VulkanVirtualSwapchain::AcquireNextImageKHR(VkResult                  o
                                                      uint32_t                  capture_image_index,
                                                      uint32_t*                 image_index)
 {
-    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
+    GFXRECON_LOG_ERROR("@@Func08: %s", __func__);
     VkDevice       device    = VK_NULL_HANDLE;
     VkSwapchainKHR swapchain = VK_NULL_HANDLE;
     VkResult       result    = VK_NOT_READY;
@@ -745,7 +745,7 @@ VkResult VulkanVirtualSwapchain::AcquireNextImage2KHR(VkResult                  
                                                       uint32_t                         capture_image_index,
                                                       uint32_t*                        image_index)
 {
-    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
+    GFXRECON_LOG_ERROR("@@Func08: %s", __func__);
     VkDevice device = VK_NULL_HANDLE;
 
     if (device_info != nullptr)
@@ -771,7 +771,7 @@ VkResult VulkanVirtualSwapchain::QueuePresentKHR(VkResult                       
                                                  const VulkanQueueInfo*                      queue_info,
                                                  const VkPresentInfoKHR*                     present_info)
 {
-    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
+    GFXRECON_LOG_ERROR("@@Func08: %s", __func__);
     VkResult result = VK_ERROR_UNKNOWN;
     if (queue_info == nullptr)
     {
@@ -1059,7 +1059,7 @@ VkResult VulkanVirtualSwapchain::CreateRenderPass(VkResult                      
                                                   const VkAllocationCallbacks*  allocator,
                                                   VkRenderPass*                 render_pass)
 {
-    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
+    GFXRECON_LOG_ERROR("@@Func08: %s", __func__);
     VkDevice device = VK_NULL_HANDLE;
 
     if (device_info != nullptr)
@@ -1077,7 +1077,7 @@ VkResult VulkanVirtualSwapchain::CreateRenderPass2(VkResult                     
                                                    const VkAllocationCallbacks*   allocator,
                                                    VkRenderPass*                  render_pass)
 {
-    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
+    GFXRECON_LOG_ERROR("@@Func08: %s", __func__);
     VkDevice device = VK_NULL_HANDLE;
 
     if (device_info != nullptr)
@@ -1100,7 +1100,7 @@ void VulkanVirtualSwapchain::CmdPipelineBarrier(PFN_vkCmdPipelineBarrier       f
                                                 uint32_t                       image_memory_barrier_count,
                                                 const VkImageMemoryBarrier*    image_memory_barriers)
 {
-    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
+    GFXRECON_LOG_ERROR("@@Func08: %s", __func__);
     VkCommandBuffer command_buffer = VK_NULL_HANDLE;
 
     if (command_buffer_info != nullptr)
@@ -1124,7 +1124,7 @@ void VulkanVirtualSwapchain::CmdPipelineBarrier2(PFN_vkCmdPipelineBarrier2 func,
                                                  VulkanCommandBufferInfo*  command_buffer_info,
                                                  const VkDependencyInfo*   pDependencyInfo)
 {
-    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
+    GFXRECON_LOG_ERROR("@@Func08: %s", __func__);
 
     VkCommandBuffer command_buffer = VK_NULL_HANDLE;
 
@@ -1140,7 +1140,7 @@ VkResult VulkanVirtualSwapchain::CreateVirtualSwapchainImage(const VulkanDeviceI
                                                              const VkImageCreateInfo& image_create_info,
                                                              VirtualImage&            image)
 {
-    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
+    GFXRECON_LOG_ERROR("@@Func08: %s", __func__);
     // TODO: This is the same code used in VulkanReplayConsumerBase::CreateSwapchainImage, which
     // should be moved to a shared graphics utility function.
 

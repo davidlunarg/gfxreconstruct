@@ -36,11 +36,14 @@ VulkanDefaultAllocator::VulkanDefaultAllocator() : device_(VK_NULL_HANDLE), memo
 
 VulkanDefaultAllocator::VulkanDefaultAllocator(const std::string& custom_error_string) :
     device_(VK_NULL_HANDLE), memory_properties_{}, custom_error_string_(custom_error_string)
-{}
-
+{
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
+}
 VulkanDefaultAllocator::VulkanDefaultAllocator(std::string&& custom_error_string) :
     device_(VK_NULL_HANDLE), memory_properties_{}, custom_error_string_(std::move(custom_error_string))
-{}
+{
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
+}
 
 VkResult VulkanDefaultAllocator::Initialize(uint32_t                                api_version,
                                             VkInstance                              instance,
@@ -52,6 +55,7 @@ VkResult VulkanDefaultAllocator::Initialize(uint32_t                            
                                             const VkPhysicalDeviceMemoryProperties& replay_memory_properties,
                                             const Functions&                        functions)
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     GFXRECON_UNREFERENCED_PARAMETER(api_version);
     GFXRECON_UNREFERENCED_PARAMETER(instance);
     GFXRECON_UNREFERENCED_PARAMETER(physical_device);
@@ -69,6 +73,7 @@ VkResult VulkanDefaultAllocator::Initialize(uint32_t                            
 
 void VulkanDefaultAllocator::Destroy()
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     device_ = VK_NULL_HANDLE;
 }
 
@@ -78,6 +83,7 @@ VkResult VulkanDefaultAllocator::CreateBuffer(const VkBufferCreateInfo*    creat
                                               VkBuffer*                    buffer,
                                               ResourceData*                allocator_data)
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     VkResult result = VK_ERROR_INITIALIZATION_FAILED;
 
     if (allocator_data != nullptr)
@@ -97,6 +103,7 @@ void VulkanDefaultAllocator::DestroyBuffer(VkBuffer                     buffer,
                                            const VkAllocationCallbacks* allocation_callbacks,
                                            ResourceData                 allocator_data)
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     if (allocator_data != 0)
     {
         auto resource_alloc_info = reinterpret_cast<ResourceAllocInfo*>(allocator_data);
@@ -112,6 +119,7 @@ VkResult VulkanDefaultAllocator::CreateImage(const VkImageCreateInfo*     create
                                              VkImage*                     image,
                                              ResourceData*                allocator_data)
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     GFXRECON_LOG_ERROR("@@HJU VulkanDefaultAllocator::CreateImage entered, allocator_data = %p", allocator_data);
     VkResult result = VK_ERROR_INITIALIZATION_FAILED;
 
@@ -139,6 +147,7 @@ void VulkanDefaultAllocator::DestroyImage(VkImage                      image,
                                           const VkAllocationCallbacks* allocation_callbacks,
                                           ResourceData                 allocator_data)
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     GFXRECON_LOG_ERROR("@@RTU VulkanDefaultAllocator::DestroyImage entered, allocator_data=%p", allocator_data)
     GFXRECON_LOG_ERROR("@@RTU VulkanDefaultAllocator::DestroyImage image=%p", (void*)image)
     if (allocator_data != 0)
@@ -158,6 +167,7 @@ VkResult VulkanDefaultAllocator::CreateVideoSession(const VkVideoSessionCreateIn
                                                     VkVideoSessionKHR*                 session,
                                                     ResourceData*                      allocator_data)
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     VkResult result = VK_ERROR_INITIALIZATION_FAILED;
 
     if (allocator_data != nullptr)
@@ -177,6 +187,7 @@ void VulkanDefaultAllocator::DestroyVideoSession(VkVideoSessionKHR            se
                                                  const VkAllocationCallbacks* allocation_callbacks,
                                                  ResourceData                 allocator_data)
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     if (allocator_data != 0)
     {
         auto resource_alloc_info = reinterpret_cast<ResourceAllocInfo*>(allocator_data);
@@ -190,6 +201,7 @@ void VulkanDefaultAllocator::GetBufferMemoryRequirements(VkBuffer              b
                                                          VkMemoryRequirements* memory_requirements,
                                                          ResourceData          allocator_data)
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     functions_.get_buffer_memory_requirements(device_, buffer, memory_requirements);
 }
 
@@ -197,6 +209,7 @@ void VulkanDefaultAllocator::GetBufferMemoryRequirements2(const VkBufferMemoryRe
                                                           VkMemoryRequirements2*                 memory_requirements,
                                                           ResourceData                           allocator_data)
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     functions_.get_buffer_memory_requirements2(device_, info, memory_requirements);
 }
 
@@ -206,6 +219,7 @@ void VulkanDefaultAllocator::GetImageSubresourceLayout(VkImage                  
                                                        const VkSubresourceLayout* original_layout,
                                                        ResourceData               allocator_data)
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     GFXRECON_UNREFERENCED_PARAMETER(original_layout);
     GFXRECON_UNREFERENCED_PARAMETER(allocator_data);
     functions_.get_image_subresource_layout(device_, image, subresource, layout);
@@ -215,6 +229,7 @@ void VulkanDefaultAllocator::GetImageMemoryRequirements(VkImage               im
                                                         VkMemoryRequirements* memory_requirements,
                                                         ResourceData          allocator_data)
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     functions_.get_image_memory_requirements(device_, image, memory_requirements);
 }
 
@@ -222,6 +237,7 @@ void VulkanDefaultAllocator::GetImageMemoryRequirements2(const VkImageMemoryRequ
                                                          VkMemoryRequirements2*                memory_requirements,
                                                          ResourceData                          allocator_data)
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     functions_.get_image_memory_requirements2(device_, info, memory_requirements);
 }
 
@@ -231,6 +247,7 @@ VulkanDefaultAllocator::GetVideoSessionMemoryRequirementsKHR(VkVideoSessionKHR v
                                                              VkVideoSessionMemoryRequirementsKHR* memory_requirements,
                                                              ResourceData                         allocator_datas)
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     return functions_.get_video_session_memory_requirements(
         device_, video_session, memory_requirements_count, memory_requirements);
 }
@@ -241,6 +258,7 @@ VkResult VulkanDefaultAllocator::AllocateMemory(const VkMemoryAllocateInfo*  all
                                                 VkDeviceMemory*              memory,
                                                 MemoryData*                  allocator_data)
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     VkResult result = VK_ERROR_INITIALIZATION_FAILED;
 
     if ((allocate_info != nullptr) && (allocator_data != nullptr) &&
@@ -256,6 +274,7 @@ void VulkanDefaultAllocator::FreeMemory(VkDeviceMemory               memory,
                                         const VkAllocationCallbacks* allocation_callbacks,
                                         MemoryData                   allocator_data)
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     if (allocator_data != 0)
     {
         auto memory_alloc_info = reinterpret_cast<MemoryAllocInfo*>(allocator_data);
@@ -273,6 +292,7 @@ void VulkanDefaultAllocator::GetDeviceMemoryCommitment(VkDeviceMemory memory,
                                                        VkDeviceSize*  committed_memory_in_bytes,
                                                        MemoryData     allocator_data)
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     GFXRECON_UNREFERENCED_PARAMETER(allocator_data);
     functions_.get_device_memory_commitment(device_, memory, committed_memory_in_bytes);
 }
@@ -284,6 +304,7 @@ bool VulkanDefaultAllocator::UpdateAllocInfo(ResourceData           allocator_re
                                              MemoryData             allocator_memory_data,
                                              VkMemoryPropertyFlags* bind_memory_property)
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     if ((allocator_resource_data != 0) && (allocator_memory_data != 0))
     {
         auto resource_alloc_info              = reinterpret_cast<ResourceAllocInfo*>(allocator_resource_data);
@@ -329,6 +350,7 @@ VkResult VulkanDefaultAllocator::BindBufferMemory(VkBuffer               buffer,
                                                   MemoryData             allocator_memory_data,
                                                   VkMemoryPropertyFlags* bind_memory_properties)
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     VkResult result = VK_ERROR_INITIALIZATION_FAILED;
 
     if (bind_memory_properties != nullptr)
@@ -359,6 +381,7 @@ VkResult VulkanDefaultAllocator::BindBufferMemory2(uint32_t                     
                                                    const MemoryData*             allocator_memory_datas,
                                                    VkMemoryPropertyFlags*        bind_memory_properties)
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     VkResult result = VK_ERROR_INITIALIZATION_FAILED;
 
     if ((bind_infos != nullptr) && (allocator_buffer_datas != nullptr) && (allocator_memory_datas != nullptr) &&
@@ -397,6 +420,7 @@ VkResult VulkanDefaultAllocator::BindImageMemory(VkImage                image,
                                                  MemoryData             allocator_memory_data,
                                                  VkMemoryPropertyFlags* bind_memory_properties)
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     VkResult result = VK_ERROR_INITIALIZATION_FAILED;
 
     if (bind_memory_properties != nullptr)
@@ -427,6 +451,7 @@ VkResult VulkanDefaultAllocator::BindImageMemory2(uint32_t                     b
                                                   const MemoryData*            allocator_memory_datas,
                                                   VkMemoryPropertyFlags*       bind_memory_properties)
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     VkResult result = VK_ERROR_INITIALIZATION_FAILED;
 
     if ((bind_infos != nullptr) && (allocator_image_datas != nullptr) && (allocator_memory_datas != nullptr) &&
@@ -465,6 +490,7 @@ VkResult VulkanDefaultAllocator::BindVideoSessionMemory(VkVideoSessionKHR       
                                                         const MemoryData*                      allocator_memory_datas,
                                                         VkMemoryPropertyFlags*                 bind_memory_properties)
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     VkResult result = VK_ERROR_INITIALIZATION_FAILED;
 
     if ((bind_infos != nullptr) && (allocator_session_data != 0) && (allocator_memory_datas != nullptr) &&
@@ -502,6 +528,7 @@ VkResult VulkanDefaultAllocator::MapMemory(VkDeviceMemory   memory,
                                            void**           data,
                                            MemoryData       allocator_data)
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     VkResult result = VK_ERROR_INITIALIZATION_FAILED;
 
     if (data != nullptr)
@@ -528,6 +555,7 @@ VkResult VulkanDefaultAllocator::MapMemory(VkDeviceMemory   memory,
 VkResult
 VulkanDefaultAllocator::MapMemory2(const VkMemoryMapInfo* memory_map_info, void** data, MemoryData allocator_data)
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     GFXRECON_UNREFERENCED_PARAMETER(allocator_data);
 
     VkResult result = VK_ERROR_INITIALIZATION_FAILED;
@@ -555,6 +583,7 @@ VulkanDefaultAllocator::MapMemory2(const VkMemoryMapInfo* memory_map_info, void*
 
 void VulkanDefaultAllocator::UnmapMemory(VkDeviceMemory memory, MemoryData allocator_data)
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     if (allocator_data != 0)
     {
         auto memory_alloc_info            = reinterpret_cast<MemoryAllocInfo*>(allocator_data);
@@ -566,6 +595,7 @@ void VulkanDefaultAllocator::UnmapMemory(VkDeviceMemory memory, MemoryData alloc
 
 VkResult VulkanDefaultAllocator::UnmapMemory2(const VkMemoryUnmapInfo* memory_unmap_info, MemoryData allocator_data)
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     GFXRECON_UNREFERENCED_PARAMETER(allocator_data);
 
     if (allocator_data != 0)
@@ -581,6 +611,7 @@ VkResult VulkanDefaultAllocator::FlushMappedMemoryRanges(uint32_t               
                                                          const VkMappedMemoryRange* memory_ranges,
                                                          const MemoryData*          allocator_datas)
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     GFXRECON_UNREFERENCED_PARAMETER(allocator_datas);
     return functions_.flush_memory_ranges(device_, memory_range_count, memory_ranges);
 }
@@ -589,6 +620,7 @@ VkResult VulkanDefaultAllocator::InvalidateMappedMemoryRanges(uint32_t          
                                                               const VkMappedMemoryRange* memory_ranges,
                                                               const MemoryData*          allocator_datas)
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     GFXRECON_UNREFERENCED_PARAMETER(allocator_datas);
     return functions_.invalidate_memory_ranges(device_, memory_range_count, memory_ranges);
 }
@@ -597,6 +629,7 @@ VkResult VulkanDefaultAllocator::SetDebugUtilsObjectNameEXT(VkDevice            
                                                             VkDebugUtilsObjectNameInfoEXT* name_info,
                                                             uintptr_t                      allocator_data)
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     GFXRECON_UNREFERENCED_PARAMETER(allocator_data);
     return functions_.set_debug_utils_object_name(device, name_info);
 }
@@ -605,6 +638,7 @@ VkResult VulkanDefaultAllocator::SetDebugUtilsObjectTagEXT(VkDevice             
                                                            VkDebugUtilsObjectTagInfoEXT* tag_info,
                                                            uintptr_t                     allocator_data)
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     GFXRECON_UNREFERENCED_PARAMETER(allocator_data);
     return functions_.set_debug_utils_object_tag(device, tag_info);
 }
@@ -614,6 +648,7 @@ VkResult VulkanDefaultAllocator::WriteMappedMemoryRange(MemoryData     allocator
                                                         uint64_t       size,
                                                         const uint8_t* data)
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     VkResult result = VK_ERROR_INITIALIZATION_FAILED;
 
     if (allocator_data != 0)
@@ -641,6 +676,7 @@ VkResult VulkanDefaultAllocator::WriteMappedMemoryRange(MemoryData     allocator
 
 void VulkanDefaultAllocator::ReportAllocateMemoryIncompatibility(const VkMemoryAllocateInfo* allocate_info)
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     if ((allocate_info != nullptr) && (allocate_info->memoryTypeIndex >= memory_properties_.memoryTypeCount))
     {
         GFXRECON_LOG_FATAL(
@@ -657,6 +693,7 @@ void VulkanDefaultAllocator::ReportBindBufferIncompatibility(VkBuffer     buffer
                                                              ResourceData allocator_resource_data,
                                                              MemoryData   allocator_memory_data)
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     GFXRECON_UNREFERENCED_PARAMETER(allocator_resource_data);
 
     if (allocator_memory_data != 0)
@@ -672,6 +709,7 @@ void VulkanDefaultAllocator::ReportBindBuffer2Incompatibility(uint32_t          
                                                               const ResourceData*           allocator_resource_datas,
                                                               const MemoryData*             allocator_memory_datas)
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     GFXRECON_UNREFERENCED_PARAMETER(allocator_resource_datas);
 
     if ((bind_infos != nullptr) && (allocator_memory_datas != nullptr))
@@ -691,6 +729,7 @@ void VulkanDefaultAllocator::ReportBindImageIncompatibility(VkImage      image,
                                                             ResourceData allocator_resource_data,
                                                             MemoryData   allocator_memory_data)
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     GFXRECON_UNREFERENCED_PARAMETER(allocator_resource_data);
 
     if (allocator_memory_data != 0)
@@ -706,6 +745,7 @@ void VulkanDefaultAllocator::ReportBindImage2Incompatibility(uint32_t           
                                                              const ResourceData*          allocator_resource_datas,
                                                              const MemoryData*            allocator_memory_datas)
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     GFXRECON_UNREFERENCED_PARAMETER(allocator_resource_datas);
 
     if ((bind_infos != nullptr) && (allocator_memory_datas != nullptr))
@@ -727,6 +767,7 @@ void VulkanDefaultAllocator::ReportBindVideoSessionIncompatibility(VkVideoSessio
                                                                    const ResourceData allocator_resource_data,
                                                                    const MemoryData*  allocator_memory_datas)
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     GFXRECON_UNREFERENCED_PARAMETER(allocator_resource_data);
 
     if ((bind_infos != nullptr) && (allocator_memory_datas != nullptr))
@@ -757,6 +798,7 @@ void VulkanDefaultAllocator::ReportBindAccelerationStructureMemoryNVIncompatibil
     const ResourceData*                            allocator_acc_datas,
     const MemoryData*                              allocator_memory_datas)
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     GFXRECON_UNREFERENCED_PARAMETER(allocator_acc_datas);
 
     if ((bind_infos != nullptr) && (allocator_memory_datas != nullptr))
@@ -794,6 +836,7 @@ void VulkanDefaultAllocator::ReportQueueBindSparseIncompatibility(VkQueue       
                                                                   const ResourceData*     allocator_img_datas,
                                                                   const MemoryData*       allocator_img_mem_datas)
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     uint32_t alc_buf_i    = 0;
     uint32_t alc_img_op_i = 0;
     uint32_t alc_img_i    = 0;
@@ -848,6 +891,7 @@ void VulkanDefaultAllocator::ReportBindIncompatibility(const VkMemoryRequirement
                                                        const MemoryData*           allocator_memory_datas,
                                                        uint32_t                    resource_count)
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     assert((requirements != nullptr) && (allocator_memory_datas != nullptr));
 
     for (uint32_t i = 0; i < resource_count; ++i)
@@ -880,6 +924,7 @@ VkResult VulkanDefaultAllocator::MapResourceMemoryDirect(VkDeviceSize     size,
                                                          void**           data,
                                                          ResourceData     allocator_data)
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     VkResult result = VK_ERROR_MEMORY_MAP_FAILED;
 
     if (allocator_data != 0)
@@ -921,6 +966,7 @@ VkResult VulkanDefaultAllocator::MapResourceMemoryDirect(VkDeviceSize     size,
 
 void VulkanDefaultAllocator::UnmapResourceMemoryDirect(ResourceData allocator_data)
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     if (allocator_data != 0)
     {
         auto resource_alloc_info = reinterpret_cast<ResourceAllocInfo*>(allocator_data);
@@ -957,6 +1003,7 @@ VkResult VulkanDefaultAllocator::Allocate(const VkMemoryAllocateInfo*  allocate_
                                           VkDeviceMemory*              memory,
                                           MemoryData*                  allocator_data)
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     assert((allocate_info != nullptr) && (allocator_data != nullptr));
 
     VkResult result = functions_.allocate_memory(device_, allocate_info, allocation_callbacks, memory);
@@ -978,6 +1025,7 @@ VkResult VulkanDefaultAllocator::Allocate(const VkMemoryAllocateInfo*  allocate_
 
 void VulkanDefaultAllocator::SetDeviceMemoryPriority(VkDeviceMemory memory, float priority, MemoryData allocator_data)
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     GFXRECON_UNREFERENCED_PARAMETER(allocator_data);
     functions_.set_device_memory_priority(device_, memory, priority);
 }
@@ -987,6 +1035,7 @@ VulkanDefaultAllocator::GetMemoryRemoteAddressNV(const VkMemoryGetRemoteAddressI
                                                  VkRemoteAddressNV*                    address,
                                                  MemoryData                            allocator_data)
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     GFXRECON_UNREFERENCED_PARAMETER(allocator_data);
     return functions_.get_memory_remote_address_nv(device_, memory_get_remote_address_info, address);
 }
@@ -997,6 +1046,7 @@ VkResult VulkanDefaultAllocator::CreateAccelerationStructureNV(const VkAccelerat
                                                                VkAccelerationStructureNV*   acc_str,
                                                                ResourceData*                allocator_data)
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     VkResult result = VK_ERROR_INITIALIZATION_FAILED;
 
     if (allocator_data != nullptr)
@@ -1016,6 +1066,7 @@ void VulkanDefaultAllocator::DestroyAccelerationStructureNV(VkAccelerationStruct
                                                             const VkAllocationCallbacks* allocation_callbacks,
                                                             ResourceData                 allocator_data)
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     if (allocator_data != 0)
     {
         auto resource_alloc_info = reinterpret_cast<ResourceAllocInfo*>(allocator_data);
@@ -1030,6 +1081,7 @@ void VulkanDefaultAllocator::GetAccelerationStructureMemoryRequirementsNV(
     VkMemoryRequirements2KHR*                              memory_requirements,
     ResourceData                                           allocator_data)
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     functions_.get_acceleration_structure_memory_requirements_nv(device_, info, memory_requirements);
 }
 
@@ -1040,6 +1092,7 @@ VulkanDefaultAllocator::BindAccelerationStructureMemoryNV(uint32_t bind_info_cou
                                                           const MemoryData*      allocator_memory_datas,
                                                           VkMemoryPropertyFlags* bind_memory_properties)
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     VkResult result = VK_ERROR_INITIALIZATION_FAILED;
 
     if ((bind_infos != nullptr) && (allocator_acc_datas != nullptr) && (allocator_memory_datas != nullptr) &&
@@ -1075,6 +1128,7 @@ VkResult VulkanDefaultAllocator::GetMemoryFd(const VkMemoryGetFdInfoKHR* get_fd_
                                              int*                        pFd,
                                              MemoryData                  allocator_data)
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     GFXRECON_UNREFERENCED_PARAMETER(allocator_data);
     return functions_.get_memory_fd(device_, get_fd_info, pFd);
 }
@@ -1093,6 +1147,7 @@ VkResult VulkanDefaultAllocator::QueueBindSparse(VkQueue                 queue,
                                                  const MemoryData*       allocator_img_mem_datas,
                                                  VkMemoryPropertyFlags*  bind_img_mem_properties)
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     VkResult result = VK_ERROR_INITIALIZATION_FAILED;
     
     if (bind_infos != nullptr)
@@ -1196,6 +1251,7 @@ VkResult VulkanDefaultAllocator::QueueBindSparse(VkQueue                 queue,
 uint64_t VulkanDefaultAllocator::GetDeviceMemoryOpaqueCaptureAddress(const VkDeviceMemoryOpaqueCaptureAddressInfo* info,
                                                                      MemoryData allocator_data)
 {
+    GFXRECON_LOG_ERROR("@@Func03: %s", __func__);
     GFXRECON_UNREFERENCED_PARAMETER(allocator_data);
     return functions_.get_device_memory_opaque_capture_address(device_, info);
 }

@@ -40,7 +40,7 @@ VkResult VulkanOffscreenSwapchain::CreateSurface(VkResult                       
                                                  const uint32_t                       height,
                                                  bool                                 force_windowed)
 {
-    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
+    GFXRECON_LOG_ERROR("@@Func05: %s", __func__);
     GFXRECON_ASSERT(surface);
 
     instance_table_ = instance_table;
@@ -79,7 +79,7 @@ void VulkanOffscreenSwapchain::DestroySurface(PFN_vkDestroySurfaceKHR      func,
                                               const VulkanSurfaceKHRInfo*  surface_info,
                                               const VkAllocationCallbacks* allocator)
 {
-    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
+    GFXRECON_LOG_ERROR("@@Func05: %s", __func__);
 }
 
 VkResult VulkanOffscreenSwapchain::CreateSwapchainKHR(VkResult                              original_result,
@@ -90,7 +90,7 @@ VkResult VulkanOffscreenSwapchain::CreateSwapchainKHR(VkResult                  
                                                       HandlePointerDecoder<VkSwapchainKHR>* swapchain,
                                                       const graphics::VulkanDeviceTable*    device_table)
 {
-    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
+    GFXRECON_LOG_ERROR("@@Func05: %s", __func__);
     GFXRECON_ASSERT(device_info);
     device_table_ = device_table;
 
@@ -134,7 +134,7 @@ void VulkanOffscreenSwapchain::DestroySwapchainKHR(PFN_vkDestroySwapchainKHR    
                                                    const VulkanSwapchainKHRInfo* swapchain_info,
                                                    const VkAllocationCallbacks*  allocator)
 {
-    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
+    GFXRECON_LOG_ERROR("@@Func05: %s", __func__);
     GFXRECON_LOG_ERROR("@@VulkanOffscreenSwapchain::DestroySwapchainKHR entered");
     if ((device_info != nullptr) && (swapchain_info != nullptr))
     {
@@ -153,7 +153,7 @@ VkResult VulkanOffscreenSwapchain::GetSwapchainImagesKHR(VkResult               
                                                          uint32_t*                   image_count,
                                                          VkImage*                    images)
 {
-    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
+    GFXRECON_LOG_ERROR("@@Func05: %s", __func__);
     GFXRECON_ASSERT(swapchain_info);
     uint32_t* replay_image_count = &swapchain_info->replay_image_count;
 
@@ -185,7 +185,7 @@ VkResult VulkanOffscreenSwapchain::AcquireNextImageKHR(VkResult                 
                                                        uint32_t                  capture_image_index,
                                                        uint32_t*                 image_index)
 {
-    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
+    GFXRECON_LOG_ERROR("@@Func05: %s", __func__);
     *image_index = capture_image_index;
     if (semaphore != VK_NULL_HANDLE || fence != VK_NULL_HANDLE)
     {
@@ -221,7 +221,7 @@ VkResult VulkanOffscreenSwapchain::AcquireNextImage2KHR(VkResult                
                                                         uint32_t                         capture_image_index,
                                                         uint32_t*                        image_index)
 {
-    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
+    GFXRECON_LOG_ERROR("@@Func05: %s", __func__);
     *image_index = capture_image_index;
     if (acquire_info->semaphore != VK_NULL_HANDLE || acquire_info->fence != VK_NULL_HANDLE)
     {
@@ -257,7 +257,7 @@ VkResult VulkanOffscreenSwapchain::QueuePresentKHR(VkResult                     
                                                    const VulkanQueueInfo*                      queue_info,
                                                    const VkPresentInfoKHR*                     present_info)
 {
-    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
+    GFXRECON_LOG_ERROR("@@Func05: %s", __func__);
     if (swapchain_options_.offscreen_swapchain_frame_boundary)
     {
         std::vector<VkImage> images(present_info->swapchainCount);
@@ -313,7 +313,7 @@ VkResult VulkanOffscreenSwapchain::SignalSemaphoresFence(const VulkanQueueInfo* 
                                                          const VkSemaphore*     signal_semaphores,
                                                          VkFence                fence)
 {
-    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
+    GFXRECON_LOG_ERROR("@@Func05: %s", __func__);
     VkPipelineStageFlags wait_stage  = VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT;
     VkSubmitInfo         submit_info = { VK_STRUCTURE_TYPE_SUBMIT_INFO };
 

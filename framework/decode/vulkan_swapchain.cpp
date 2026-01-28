@@ -28,7 +28,7 @@ GFXRECON_BEGIN_NAMESPACE(decode)
 
 void VulkanSwapchain::Clean()
 {
-    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
+    GFXRECON_LOG_ERROR("@@Func07: %s", __func__);
     if (swapchain_options_.surface_index >= create_surface_count_)
     {
         GFXRECON_LOG_WARNING("Rendering was restricted to surface index %u, but a surface was never created for that "
@@ -60,7 +60,7 @@ VkResult VulkanSwapchain::CreateSurface(VkResult                             ori
                                         const uint32_t                       height,
                                         bool                                 force_windowed)
 {
-    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
+    GFXRECON_LOG_ERROR("@@Func07: %s", __func__);
     assert(instance_info != nullptr);
 
     instance_table_ = instance_table;
@@ -152,7 +152,7 @@ void VulkanSwapchain::DestroySurface(PFN_vkDestroySurfaceKHR      func,
                                      const VulkanSurfaceKHRInfo*  surface_info,
                                      const VkAllocationCallbacks* allocator)
 {
-    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
+    GFXRECON_LOG_ERROR("@@Func07: %s", __func__);
     assert(instance_info != nullptr);
 
     VkInstance   instance = instance_info->handle;
@@ -192,7 +192,7 @@ VkResult VulkanSwapchain::AcquireNextImageKHR(VkResult                  original
                                               uint32_t                  capture_image_index,
                                               uint32_t*                 image_index)
 {
-    GFXRECON_LOG_ERROR("@@Func: %s", __func__);
+    GFXRECON_LOG_ERROR("@@Func07: %s", __func__);
     VkSemaphore semaphore = VK_NULL_HANDLE;
     VkFence     fence     = VK_NULL_HANDLE;
 

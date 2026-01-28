@@ -40,6 +40,7 @@ template <typename T>
 void AddChildObject(std::unordered_map<format::HandleId, std::unordered_map<typename T::HandleType, const T*>>* objects,
                     const T*                                                                                    info)
 {
+    GFXRECON_LOG_ERROR("@@Func04: %s", __func__);
     assert(objects != nullptr);
     (*objects)[info->parent_id].insert(std::make_pair(info->handle, info));
 }
@@ -50,6 +51,7 @@ void AddChildObject<VulkanImageInfo>(
     std::unordered_map<format::HandleId, std::unordered_map<VkImage, const VulkanImageInfo*>>* objects,
     const VulkanImageInfo*                                                                     info)
 {
+    GFXRECON_LOG_ERROR("@@Func04: %s", __func__);
     assert(objects != nullptr);
 
     GFXRECON_LOG_ERROR("@@ABBX info->is_swapchain_image  = %d",info->is_swapchain_image);
@@ -71,7 +73,7 @@ void FreeChildObjects(CommonObjectInfoTable* table,
                       void (CommonObjectInfoTable::*RemoveFunc)(format::HandleId),
                       std::function<void(const S*, const T*)> destroy_func)
 {
-    GFXRECON_LOG_ERROR("@@FreeChildObjects enter");
+    GFXRECON_LOG_ERROR("@@Func04: %s", __func__);
     assert(table != nullptr);
 
     // Visit all table entries and sort them by parent ID.  Using unordered_map to filter duplicate handles.
@@ -124,6 +126,7 @@ void FreeParentObjects(CommonObjectInfoTable* table,
                        void (CommonObjectInfoTable::*RemoveFunc)(format::HandleId),
                        std::function<void(const T*)> destroy_func)
 {
+    GFXRECON_LOG_ERROR("@@Func04: %s", __func__);
     assert(table != nullptr);
 
     std::unordered_map<typename T::HandleType, const T*> objects;
@@ -148,6 +151,7 @@ void ClearObjects(CommonObjectInfoTable* table,
                   void (CommonObjectInfoTable::*VisitFunc)(std::function<void(const T*)>) const,
                   void (CommonObjectInfoTable::*RemoveFunc)(format::HandleId))
 {
+    GFXRECON_LOG_ERROR("@@Func04: %s", __func__);
     assert(table != nullptr);
 
     std::vector<const T*> objects;
@@ -170,6 +174,7 @@ void FreeAllLiveObjects(CommonObjectInfoTable*                                  
                         std::function<const graphics::VulkanDeviceTable*(const void*)>   get_device_table,
                         VulkanSwapchain*                                                 swapchain)
 {
+    GFXRECON_LOG_ERROR("@@Func04: %s", __func__);
     FreeChildObjects<VulkanDeviceInfo, VulkanEventInfo>(
         table,
         GFXRECON_STR(VkDevice),
@@ -757,6 +762,7 @@ void FreeAllLiveInstances(CommonObjectInfoTable*                                
                           std::function<const graphics::VulkanInstanceTable*(const void*)> get_instance_table,
                           std::function<const graphics::VulkanDeviceTable*(const void*)>   get_device_table)
 {
+    GFXRECON_LOG_ERROR("@@Func04: %s", __func__);
     FreeParentObjects<VulkanInstanceInfo>(table,
                                           remove_entries,
                                           &CommonObjectInfoTable::VisitVkInstanceInfo,
