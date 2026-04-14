@@ -34,7 +34,7 @@ bool skip_while_looping(const graphics::FrameLoopInfo* frame_loop_info,
 
     // Examine the api call id and current looping state to determine whether the api
     // call should skipped.
-    // 
+    //
     // Returns true if the call should be skipped, false otherwise.
     //
     // In general, api calls that create objects or allocate resources are not skipped
@@ -216,25 +216,31 @@ bool skip_while_looping(const graphics::FrameLoopInfo* frame_loop_info,
         ApiCall_vkRegisterObjectsNVX,
         ApiCall_vkTransitionImageLayout,
     };
-    
+
+    // Don't skip if frame_loop_info is NULL. We're not looping.
+    if (!frame_loop_info)
+    {
+        return false;
+    }
+
+    // Skip all resource destroy commands in first and subsequent iterations.
     if (skipDestroy.contains(call_id) &&
         (frame_loop_info->IsFirstIteration() || frame_loop_info->IsLooping()))
     {
-        // Skip all resource destroy commands in first and subsequent iterations
         return true;
     }
 
+    // Don't skip if we're not in the first iteration or loop.
     if (!frame_loop_info->IsLooping())
     {
-        // We are either in the first iteration or not in a loop. Don't skip.
         return false;
     }
 
 
+    // Skip resource create commands after the first loop iteration.
     if  (!frame_loop_info->IsFirstIteration() && skipAllocate.contains(call_id))
-        // Skip resource create commands after the first loop iteration
         return true;
-    
+
     return false;
 }
 
