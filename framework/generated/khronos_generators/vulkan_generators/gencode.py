@@ -64,6 +64,7 @@ from vulkan_cpp_consumer_header_generator import VulkanCppConsumerHeaderGenerato
 from vulkan_json_consumer_header_generator import VulkanExportJsonConsumerHeaderGenerator, VulkanExportJsonConsumerHeaderGeneratorOptions
 from vulkan_json_consumer_body_generator import VulkanExportJsonConsumerBodyGenerator, VulkanExportJsonConsumerBodyGeneratorOptions
 from vulkan_replay_consumer_body_generator import VulkanReplayConsumerBodyGenerator, VulkanReplayConsumerBodyGeneratorOptions
+from vulkan_replay_frame_loop_consumer_body_generator import VulkanReplayFrameLoopConsumerBodyGenerator, VulkanReplayFrameLoopConsumerBodyGeneratorOptions
 from vulkan_replay_dump_resources_body_generator import VulkanReplayDumpResourcesBodyGenerator, VulkanReplayDumpResourcesBodyGeneratorOptions
 from vulkan_replay_dump_resources_header_generator import VulkanReplayDumpResourcesHeaderGenerator, VulkanReplayDumpResourcesHeaderGeneratorOptions
 from vulkan_referenced_resource_consumer_header_generator import VulkanReferencedResourceHeaderGenerator, VulkanReferencedResourceHeaderGeneratorOptions
@@ -134,9 +135,11 @@ def end_timer(timeit, msg):
 default_blacklists = 'blacklists.json'
 default_platform_types = 'platform_types.json'
 default_replay_overrides = 'replay_overrides.json'
+default_replay_frame_loop_overrides = 'replay_frame_loop_overrides.json'
 default_dump_resources_overrides = 'dump_resources_overrides.json'
 default_capture_overrides = 'capture_overrides.json'
 default_replay_async_overrides = 'replay_async_overrides.json'
+default_replay_frame_loop_async_overrides = 'replay_frame_loop_async_overrides.json'
 
 
 def _getExtraVulkanHeaders(extraHeadersDir):
@@ -200,9 +203,11 @@ def make_gen_opts(args):
     blacklists = os.path.join(args.configs, default_blacklists)
     platform_types = os.path.join(args.configs, default_platform_types)
     replay_overrides = os.path.join(args.configs, default_replay_overrides)
+    replay_frame_loop_overrides = os.path.join(args.configs, default_replay_frame_loop_overrides)
     dump_resources_overrides = os.path.join(args.configs, default_dump_resources_overrides)
     capture_overrides = os.path.join(args.configs, default_capture_overrides)
     replay_async_overrides = os.path.join(args.configs, default_replay_async_overrides)
+    replay_frame_loop_async_overrides = os.path.join(args.configs, default_replay_frame_loop_async_overrides)
 
     # Copyright text prefixing all headers (list of strings).
     prefix_strings = [
@@ -385,6 +390,7 @@ def make_gen_opts(args):
             extra_headers=extra_headers
         )
     ]
+
     gen_opts['generated_vulkan_replay_consumer.h'] = [
         VulkanConsumerHeaderGenerator,
         VulkanConsumerHeaderGeneratorOptions(
@@ -394,6 +400,25 @@ def make_gen_opts(args):
             constructor_args=
             'std::shared_ptr<application::Application> application, const VulkanReplayOptions& options',
             filename='generated_vulkan_replay_consumer.h',
+            directory=directory,
+            blacklists=blacklists,
+            platform_types=platform_types,
+            prefix_text=prefix_strings + vk_prefix_strings,
+            protect_file=True,
+            protect_feature=False,
+            extra_headers=extra_headers
+        )
+    ]
+
+    gen_opts['generated_vulkan_replay_frame_loop_consumer.h'] = [
+        VulkanConsumerHeaderGenerator,
+        VulkanConsumerHeaderGeneratorOptions(
+            class_name='VulkanReplayFrameLoopConsumer',
+            base_class_header='vulkan_replay_frame_loop_consumer_base.h',
+            is_override=True,
+            constructor_args=
+            'std::shared_ptr<application::Application> application, const VulkaneplayFrameLoopOptions& options',
+            filename='generated_vulkan_replay_frame_loop_consumer.h',
             directory=directory,
             blacklists=blacklists,
             platform_types=platform_types,
@@ -489,6 +514,23 @@ def make_gen_opts(args):
             replay_overrides=replay_overrides,
             dump_resources_overrides=dump_resources_overrides,
             replay_async_overrides=replay_async_overrides,
+            platform_types=platform_types,
+            prefix_text=prefix_strings + vk_prefix_strings,
+            protect_file=False,
+            protect_feature=False,
+            extra_headers=extra_headers
+        )
+    ]
+
+    gen_opts['generated_vulkan_replay_frame_loop_consumer.cpp'] = [
+        VulkanReplayFrameLoopConsumerBodyGenerator,
+        VulkanReplayFrameLoopConsumerBodyGeneratorOptions(
+            filename='generated_vulkan_replay_frame_loop_consumer.cpp',
+            directory=directory,
+            blacklists=blacklists,
+            #replay_frame_loop_overrides=replay_frame_loop_overrides,   TODO: figure this out
+            dump_resources_overrides=dump_resources_overrides,
+            #replay_frame_loop_async_overrides=replay_frame_loop_async_overrides,   TODO: figure this out
             platform_types=platform_types,
             prefix_text=prefix_strings + vk_prefix_strings,
             protect_file=False,
