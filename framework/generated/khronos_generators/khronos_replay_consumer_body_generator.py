@@ -174,8 +174,11 @@ class KhronosReplayConsumerBodyGenerator():
         Method override.
         Return ReplayConsumer class member function definition.
         """
+        ### @@@@@@@@@@@@@@ HERE IS WHERE THE WORK IS DONE
+        #   is_override and REPLAY_OVERRIDES are different in replay/loop
         body = ''
         is_override = name in self.REPLAY_OVERRIDES
+        #print("@@@666loop self.REPLAY_OVERRIDES=",self.REPLAY_OVERRIDES)
         is_dump_resources = self.is_dump_resources_api_call(name)
         is_dump_resources_transfer = name in self.DUMP_RESOURCES_TRANSFER_API_CALLS
 
@@ -217,6 +220,7 @@ class KhronosReplayConsumerBodyGenerator():
 
         call_expr = ''
 
+        #print("@@@777replay  is_override=", ascii(is_override))
         if is_override:
             if self.is_core_create_command(name, True):
                 call_expr = '{}(returnValue, {})'.format(

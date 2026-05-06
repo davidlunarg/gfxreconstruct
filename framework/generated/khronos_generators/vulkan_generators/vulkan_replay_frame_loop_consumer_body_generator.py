@@ -33,9 +33,10 @@ class VulkanReplayFrameLoopConsumerBodyGeneratorOptions(VulkanBaseGeneratorOptio
 
     def __init__(
         self,
-        replay_frame_loop_overrides=None,  # Path to JSON file listing Vulkan API calls to override on replay.
-        dump_resources_overrides=None,  # Path to JSON file listing Vulkan API calls to override on replay.
-        replay_frame_loop_async_overrides=None,  # Path to JSON file listing Vulkan API calls to override on replay.
+        replay_overrides=None,           # Path to JSON file listing Vulkan API .. NEEDED??
+        replay_frame_loop_overrides=None,           # Path to JSON file listing Vulkan API calls to override on replay.
+        dump_resources_overrides=None,     # Path to JSON file listing Vulkan API  ... NEEDED??
+        replay_async_overrides=None,    # TODO: extra args here. How do I avoid them?
         blacklists=None,  # Path to JSON file listing apicalls and structs to ignore.
         platform_types=None,  # Path to JSON file listing platform (WIN32, X11, etc.) defined types.
         filename=None,
@@ -45,6 +46,7 @@ class VulkanReplayFrameLoopConsumerBodyGeneratorOptions(VulkanBaseGeneratorOptio
         protect_feature=True,
         extra_headers=[]
     ):
+        print("@@3VulkanReplayFrameLoopConsumerBodyGeneratorOptions __init called, replay_overrides = " + ascii(replay_overrides))   # Always None!
         VulkanBaseGeneratorOptions.__init__(
             self,
             blacklists,
@@ -54,9 +56,10 @@ class VulkanReplayFrameLoopConsumerBodyGeneratorOptions(VulkanBaseGeneratorOptio
             prefix_text,
             protect_file,
             protect_feature,
-            #replay_frame_loop_overrides=replay_frame_loop_overrides,      TODO: Are these needed?
+            replay_overrides=replay_overrides,
+            replay_frame_loop_overrides=replay_frame_loop_overrides,
             dump_resources_overrides=dump_resources_overrides,
-            #replay_frame_loop_async_overrides=replay_frame_loop_async_overrides,      TODO: Are these needed?
+            replay_async_overrides=replay_async_overrides,
             extra_headers=extra_headers
         )
 
@@ -96,6 +99,7 @@ class VulkanReplayFrameLoopConsumerBodyGenerator(
     def __init__(
         self, err_file=sys.stderr, warn_file=sys.stderr, diag_file=sys.stdout
     ):
+        print("@@4VulkanReplayFrameLoopConsumerBodyGenerator __init__ called")
         VulkanBaseGenerator.__init__(
             self,
             err_file=err_file,
@@ -105,6 +109,7 @@ class VulkanReplayFrameLoopConsumerBodyGenerator(
 
 
     def endFile(self):
+        print("@@5VulkanReplayFrameLoopConsumerBodyGenerator endFile called")
         """Method override."""
         api_data = self.get_api_data()
 

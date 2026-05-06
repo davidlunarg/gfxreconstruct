@@ -176,13 +176,17 @@ class KhronosReplayFrameLoopConsumerBodyGenerator():
         Method override.
         Return ReplayConsumer class member function definition.
         """
+        ### @@@@@@@@@@@@@@ HERE IS WHERE THE WORK IS DONE
+        #   is_override and REPLAY_OVERRIDES are different in replay/loop
         body = ''
-        is_override = name in self.REPLAY_OVERRIDES
+        is_override = name in self.REPLAY_FRAME_LOOP_OVERRIDES
+        print("@@@666 self.REPLAY_FRAME_LOOP_OVERRIDES=",self.REPLAY_FRAME_LOOP_OVERRIDES)
         is_dump_resources = self.is_dump_resources_api_call(name)
         is_dump_resources_transfer = name in self.DUMP_RESOURCES_TRANSFER_API_CALLS
 
         is_skip_offscreen = True
 
+        #TODO: REMOVE THIS??
         # function 'can' use asynchronous control-flow
         is_async = name in self.REPLAY_ASYNC_OVERRIDES
 
@@ -219,16 +223,17 @@ class KhronosReplayFrameLoopConsumerBodyGenerator():
 
         call_expr = ''
 
+        print("@@@777loop  is_overrided=", ascii(is_override))
         if is_override:
             if self.is_core_create_command(name, True):
                 call_expr = '{}(returnValue, {})'.format(
-                    self.REPLAY_OVERRIDES[name], arglist
+                    self.REPLAY_FRAME_LOOP_OVERRIDES[name], arglist
                 )
             elif self.is_custom_return_type(api_data, return_type):
                 call_expr = self.handle_custom_return_type(name, dispatchfunc, arglist)
             else:
                 call_expr = '{}({}, {})'.format(
-                    self.REPLAY_OVERRIDES[name], dispatchfunc, arglist
+                    self.REPLAY_FRAME_LOOP_OVERRIDES[name], dispatchfunc, arglist
                 )
         else:
             call_expr = '{}({})'.format(dispatchfunc, arglist)
