@@ -220,7 +220,6 @@ class KhronosReplayConsumerBodyGenerator():
 
         call_expr = ''
 
-        #print("@@@777replay  is_override=", ascii(is_override))
         if is_override:
             if self.is_core_create_command(name, True):
                 call_expr = '{}(returnValue, {})'.format(

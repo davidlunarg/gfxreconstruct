@@ -46,7 +46,6 @@ class VulkanReplayConsumerBodyGeneratorOptions(VulkanBaseGeneratorOptions):
         protect_feature=True,
         extra_headers=[]
     ):
-        print("@@7VulkanReplayConsumerBodyGeneratorOptions __init__ called, replay_overrides = " + ascii(replay_overrides))  # Always a file name!
         VulkanBaseGeneratorOptions.__init__(
             self,
             blacklists,

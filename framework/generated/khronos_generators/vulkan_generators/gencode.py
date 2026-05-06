@@ -202,7 +202,6 @@ def make_gen_opts(args):
     blacklists = os.path.join(args.configs, default_blacklists)
     platform_types = os.path.join(args.configs, default_platform_types)
     replay_overrides = os.path.join(args.configs, default_replay_overrides)
-    print("@@6replay_overrides set to " + ascii(replay_overrides))
     replay_frame_loop_overrides = os.path.join(args.configs, default_replay_frame_loop_overrides)
     dump_resources_overrides = os.path.join(args.configs, default_dump_resources_overrides)
     capture_overrides = os.path.join(args.configs, default_capture_overrides)
@@ -1019,15 +1018,11 @@ def gen_target(args):
       interfaces
     """
     # Create generator options with specified parameters
-    print("@@100 gen_target, args= " + ascii(args))
     make_gen_opts(args)
 
     if args.target in gen_opts:
         create_generator = gen_opts[args.target][0]
         options = gen_opts[args.target][1]
-        print("@@101 args.target = " + ascii(args))
-        print("@@102 create_generator = " + ascii(create_generator))
-        print("@@103 options = " + ascii(options))
 
         if not args.quiet:
             write('* Building', options.filename, file=sys.stderr)
@@ -1062,7 +1057,6 @@ def gen_target(args):
                 file=sys.stderr
             )
 
-        print("@@104 create_generator = " + ascii(create_generator))
         gen = create_generator(
             err_file=err_warn, warn_file=err_warn, diag_file=diag
         )

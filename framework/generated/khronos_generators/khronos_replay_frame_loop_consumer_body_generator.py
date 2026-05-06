@@ -177,12 +177,14 @@ class KhronosReplayFrameLoopConsumerBodyGenerator():
         Return ReplayConsumer class member function definition.
         """
         ### @@@@@@@@@@@@@@ HERE IS WHERE THE WORK IS DONE
-        #   is_override and REPLAY_OVERRIDES are different in replay/loop
-        body = ''
+        body = '    //@@@Generated in make_consumer_func_body...\n'
         is_override = name in self.REPLAY_FRAME_LOOP_OVERRIDES
-        print("@@@666 self.REPLAY_FRAME_LOOP_OVERRIDES=",self.REPLAY_FRAME_LOOP_OVERRIDES)
+        print("@@@666 name= ", ascii(name), " is_override= ", ascii(is_override))
         is_dump_resources = self.is_dump_resources_api_call(name)
         is_dump_resources_transfer = name in self.DUMP_RESOURCES_TRANSFER_API_CALLS
+        if is_override:
+           print("@@@777 is_override is set, so skipping body of func")
+           return body
 
         is_skip_offscreen = True
 
@@ -223,7 +225,6 @@ class KhronosReplayFrameLoopConsumerBodyGenerator():
 
         call_expr = ''
 
-        print("@@@777loop  is_overrided=", ascii(is_override))
         if is_override:
             if self.is_core_create_command(name, True):
                 call_expr = '{}(returnValue, {})'.format(
@@ -300,7 +301,15 @@ class KhronosReplayFrameLoopConsumerBodyGenerator():
             write('template <typename T>', file=self.outFile)
             write('void InitializeOutputStruct{}(StructPointerDecoder<T> *decoder);'.format(api_data.extended_struct_func_prefix), file=self.outFile)
 
+        self.newline()
+
         for cmd in self.get_all_filtered_cmd_names():
+
+            if cmd not in self.REPLAY_FRAME_LOOP_OVERRIDES:
+                print("@@@!!! Skipping func ", cmd)
+                #write('// '+ cmd+' skpped', file=self.outFile)
+                #self.newline()
+                continue
 
             if self.is_resource_dump_class(
             ) and self.is_dump_resources_api_call(cmd) == False:

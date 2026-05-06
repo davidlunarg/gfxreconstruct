@@ -46,7 +46,6 @@ class VulkanReplayFrameLoopConsumerBodyGeneratorOptions(VulkanBaseGeneratorOptio
         protect_feature=True,
         extra_headers=[]
     ):
-        print("@@3VulkanReplayFrameLoopConsumerBodyGeneratorOptions __init called, replay_overrides = " + ascii(replay_overrides))   # Always None!
         VulkanBaseGeneratorOptions.__init__(
             self,
             blacklists,
@@ -65,12 +64,6 @@ class VulkanReplayFrameLoopConsumerBodyGeneratorOptions(VulkanBaseGeneratorOptio
 
         self.begin_end_file_data.specific_headers.extend((
             'generated/generated_vulkan_replay_frame_loop_consumer.h',
-            '// TODO: Remove these',
-            '//decode/custom_vulkan_struct_handle_mappers.h',
-            '//decode/vulkan_handle_mapping_util.h',
-            '//generated/generated_vulkan_dispatch_table.h',
-            '//generated/generated_vulkan_struct_handle_mappers.h',
-            '//util/defines.h',
         ))
         self.begin_end_file_data.namespaces.extend(('gfxrecon', 'decode'))
         self.begin_end_file_data.common_api_headers = []
@@ -99,7 +92,6 @@ class VulkanReplayFrameLoopConsumerBodyGenerator(
     def __init__(
         self, err_file=sys.stderr, warn_file=sys.stderr, diag_file=sys.stdout
     ):
-        print("@@4VulkanReplayFrameLoopConsumerBodyGenerator __init__ called")
         VulkanBaseGenerator.__init__(
             self,
             err_file=err_file,
@@ -109,7 +101,6 @@ class VulkanReplayFrameLoopConsumerBodyGenerator(
 
 
     def endFile(self):
-        print("@@5VulkanReplayFrameLoopConsumerBodyGenerator endFile called")
         """Method override."""
         api_data = self.get_api_data()
 

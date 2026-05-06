@@ -693,8 +693,6 @@ class KhronosBaseGenerator(OutputGenerator):
         dump_resources_overrides_filename,
         replay_async_overrides_filename
     ):
-        print("@@@998 in __load_replay_overrides, filename=", ascii(filename))
-        print("@@@999 in __load_replay_overrides, replay_frame_loop_overrides_filename=", ascii(replay_frame_loop_overrides_filename))
         if filename is not None:
             overrides = json.loads(open(filename, 'r').read())
             self.REPLAY_OVERRIDES = overrides['functions']
@@ -707,7 +705,6 @@ class KhronosBaseGenerator(OutputGenerator):
             )
             self.REPLAY_FRAME_LOOP_OVERRIDES = frame_loop_overrides[
                 'functions']        #TODO: Don't use 'functions'??
-            print("@@@888 set self.REPLAY_FRAME_LOOP_OVERRIDES to ", self.REPLAY_FRAME_LOOP_OVERRIDES)
 
         if dump_resources_overrides_filename is not None:
             dump_resources_overrides = json.loads(
@@ -740,8 +737,6 @@ class KhronosBaseGenerator(OutputGenerator):
             # so these structs will be added to the blacklist.
             self.STRUCT_BLACKLIST += self.PLATFORM_STRUCTS
 
-        if gen_opts.replay_frame_loop_overrides:
-            print("@@@789 gen_opts.replay_frame_loop_overrides is ", gen_opts.replay_frame_loop_overrides)
         if (
             gen_opts.replay_overrides or gen_opts.replay_frame_loop_overrides or
             gen_opts.dump_resources_overrides or gen_opts.replay_async_overrides

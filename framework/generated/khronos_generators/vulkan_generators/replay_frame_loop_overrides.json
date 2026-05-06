@@ -2,9 +2,12 @@
   "comment": "TODO: Should make functions a list, without the Override name... might",
   "comment": "get rid of transfer??",
   "functions":  {
-       "vkCreateInstance": "OverrideCreateInstance"
+       "vkCreateInstance": "OverrideCreateInstance",
+       "vkCreateDevice": "OverridevkCreateDevice",
+       "vkDestroyDevice": "OverridevkDestroyDevice"
   },
   "transfer": [
+      "NotUsed...DeleteMe?",
       "vkCreateInstance",
       "vkCreateDevice"
   ]
