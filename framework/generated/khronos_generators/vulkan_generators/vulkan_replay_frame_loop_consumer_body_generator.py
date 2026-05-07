@@ -63,6 +63,7 @@ class VulkanReplayFrameLoopConsumerBodyGeneratorOptions(VulkanBaseGeneratorOptio
         )
 
         self.begin_end_file_data.specific_headers.extend((
+            'generated/generated_vulkan_replay_consumer.h',
             'generated/generated_vulkan_replay_frame_loop_consumer.h',
         ))
         self.begin_end_file_data.namespaces.extend(('gfxrecon', 'decode'))
@@ -105,8 +106,8 @@ class VulkanReplayFrameLoopConsumerBodyGenerator(
         api_data = self.get_api_data()
 
         KhronosReplayFrameLoopConsumerBodyGenerator.generate_replay_consumer_content(self, api_data)
-        KhronosReplayFrameLoopConsumerBodyGenerator.generate_extended_struct_handling(self, api_data)
-        KhronosReplayFrameLoopConsumerBodyGenerator.generate_extended_struct_initialize_template(self, api_data)
+        #KhronosReplayFrameLoopConsumerBodyGenerator.generate_extended_struct_handling(self, api_data)
+        #KhronosReplayFrameLoopConsumerBodyGenerator.generate_extended_struct_initialize_template(self, api_data)
 
         self.newline()
 

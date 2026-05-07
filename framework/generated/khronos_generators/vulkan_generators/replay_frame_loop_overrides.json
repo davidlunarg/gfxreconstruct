@@ -1,10 +1,20 @@
 {
-  "comment": "TODO: Should make functions a list, without the Override name... might",
-  "comment": "get rid of transfer??",
+  "comment": "TODO: Should make functions a list, without the Override name...",
+  "comment": "Might create different types of func, with difference code generazted for each type ...",
   "functions":  {
-       "vkCreateInstance": "OverrideCreateInstance",
-       "vkCreateDevice": "OverridevkCreateDevice",
-       "vkDestroyDevice": "OverridevkDestroyDevice"
+        "vkCreateInstance": "OverrideCreateInstance",
+        "vkCreateXlibSurfaceKHR": "OverrideCreateXlibSurfaceKHR",
+        "vkCreateXcbSurfaceKHR": "OverrideCreateXcbSurfaceKHR",
+        "vkCreateWaylandSurfaceKHR": "OverrideCreateWaylandSurfaceKHR",
+        "vkCreateAndroidSurfaceKHR": "OverrideCreateAndroidSurfaceKHR",
+        "vkCreateWin32SurfaceKHR": "OverrideCreateWin32SurfaceKHR",
+        "vkCreateMetalSurfaceEXT": "OverrideCreateMetalSurfaceEXT",
+        "vkCreateHeadlessSurfaceEXT": "OverrideCreateHeadlessSurfaceEXT",
+        "vkCreateDirectFBSurfaceEXT": "OverrideCreateDirectFBSurfaceEXT",
+        "vkCreateScreenSurfaceQNX": "OverrideCreateScreenSurfaceQNX",
+        "vkCreateDisplayPlaneSurfaceKHR": "OverrideCreateDisplayPlaneSurfaceKHR",
+        "vkCreateDevice": "OverrideCreateDevice",
+        "vkCreateSwapchainKHR": "OverrideCreateSwapchainKHR"
   },
   "transfer": [
       "NotUsed...DeleteMe?",

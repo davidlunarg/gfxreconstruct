@@ -171,19 +171,26 @@ class KhronosReplayFrameLoopConsumerBodyGenerator():
 
         return call_expr
 
+    #TODO: Rename this??
     def make_consumer_func_body(self, api_data, return_type, name, values):
         """
         Method override.
-        Return ReplayConsumer class member function definition.
+        Return ReplayFrameLoopConsumer class member function definition.
         """
-        ### @@@@@@@@@@@@@@ HERE IS WHERE THE WORK IS DONE
-        body = '    //@@@Generated in make_consumer_func_body...\n'
+        body = ''
         is_override = name in self.REPLAY_FRAME_LOOP_OVERRIDES
-        print("@@@666 name= ", ascii(name), " is_override= ", ascii(is_override))
         is_dump_resources = self.is_dump_resources_api_call(name)
         is_dump_resources_transfer = name in self.DUMP_RESOURCES_TRANSFER_API_CALLS
         if is_override:
-           print("@@@777 is_override is set, so skipping body of func")
+           body += '    if (frame_loop_info_.IsRepetition())\n'
+           body += '    {\n'
+           body += '        return;\n'
+           body += '    }\n'
+           # Output a function call to replay consumer
+           body += '    VulkanReplayConsumer::'+name+'('
+           args=[]
+           [ args.append(value.name) for value in values ]
+           body += ", ".join(args) + ');\n'
            return body
 
         is_skip_offscreen = True
@@ -293,22 +300,14 @@ class KhronosReplayFrameLoopConsumerBodyGenerator():
         return body
 
     def generate_replay_consumer_content(self, api_data):
-        """Performs C++ code generation for the replay consumer."""
+        """Performs C++ code generation for the replay frame loop consumer."""
         platform_type = api_data.api_class_prefix
-
-        if not self.is_resource_dump_class():
-            self.newline()
-            write('template <typename T>', file=self.outFile)
-            write('void InitializeOutputStruct{}(StructPointerDecoder<T> *decoder);'.format(api_data.extended_struct_func_prefix), file=self.outFile)
 
         self.newline()
 
         for cmd in self.get_all_filtered_cmd_names():
 
             if cmd not in self.REPLAY_FRAME_LOOP_OVERRIDES:
-                print("@@@!!! Skipping func ", cmd)
-                #write('// '+ cmd+' skpped', file=self.outFile)
-                #self.newline()
                 continue
 
             if self.is_resource_dump_class(
@@ -410,53 +409,6 @@ class KhronosReplayFrameLoopConsumerBodyGenerator():
         write('}', file=self.outFile)
 
         self.newline()
-
-    def generate_extended_struct_initialize_template(self, api_data):
-        var_name = 'in_' + api_data.extended_struct_variable.lower()
-
-        write('template <typename T>', file=self.outFile)
-        write(
-            'void InitializeOutputStruct{}(StructPointerDecoder<T> *decoder)'.
-            format(api_data.extended_struct_func_prefix),
-            file=self.outFile
-        )
-        write('{', file=self.outFile)
-        write('    if(decoder->IsNull()) return;', file=self.outFile)
-        write(
-            '    size_t len = decoder->GetOutputLength();', file=self.outFile
-        )
-        write('    auto input = decoder->GetPointer();', file=self.outFile)
-        write(
-            '    auto output = decoder->GetOutputPointer();',
-            file=self.outFile
-        )
-        write('    for( size_t i = 0 ; i < len; ++i )', file=self.outFile)
-        write('    {', file=self.outFile)
-        write(
-            '        const auto* {} = reinterpret_cast<const {}*>(input[i].{});'
-            .format(
-                var_name, api_data.base_in_struct,
-                api_data.extended_struct_variable
-            ),
-            file=self.outFile
-        )
-        write(
-            '        if( {} == nullptr ) continue;'.format(var_name),
-            file=self.outFile
-        )
-        write(
-            '        auto* output_struct = reinterpret_cast<{}*>(&output[i]);'.
-            format(api_data.base_out_struct),
-            file=self.outFile
-        )
-        write(
-            '        InitializeOutputStruct{}Impl({}, output_struct);'.format(
-                api_data.extended_struct_func_prefix, var_name
-            ),
-            file=self.outFile
-        )
-        write('    }', file=self.outFile)
-        write('}', file=self.outFile)
 
     def needs_remove_handle_expression(self, command):
         """ Method may be overridden. """
