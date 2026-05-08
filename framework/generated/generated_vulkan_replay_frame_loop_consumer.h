@@ -44,19 +44,12 @@
 
 GFXRECON_BEGIN_NAMESPACE(gfxrecon)
 GFXRECON_BEGIN_NAMESPACE(decode)
-class VulkanReplayFrameLoopConsumer : public VulkanReplayFrameLoopConsumerBase
+BBBclass VulkanReplayFrameLoopConsumer : public VulkanReplayFrameLoopConsumerBase
 {
   public:
     VulkanReplayFrameLoopConsumer(std::shared_ptr<application::Application> application, const VulkaneplayFrameLoopOptions& options) : VulkanReplayFrameLoopConsumerBase(application, options) { }
 
     virtual ~VulkanReplayFrameLoopConsumer() override { }
-
-    virtual void Process_vkCreateInstance(
-        const ApiCallInfo&                          call_info,
-        VkResult                                    returnValue,
-        StructPointerDecoder<Decoded_VkInstanceCreateInfo>* pCreateInfo,
-        StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
-        HandlePointerDecoder<VkInstance>*           pInstance) override;
 
     virtual void Process_vkDestroyInstance(
         const ApiCallInfo&                          call_info,
@@ -107,14 +100,6 @@ class VulkanReplayFrameLoopConsumer : public VulkanReplayFrameLoopConsumerBase
         const ApiCallInfo&                          call_info,
         format::HandleId                            physicalDevice,
         StructPointerDecoder<Decoded_VkPhysicalDeviceMemoryProperties>* pMemoryProperties) override;
-
-    virtual void Process_vkCreateDevice(
-        const ApiCallInfo&                          call_info,
-        VkResult                                    returnValue,
-        format::HandleId                            physicalDevice,
-        StructPointerDecoder<Decoded_VkDeviceCreateInfo>* pCreateInfo,
-        StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
-        HandlePointerDecoder<VkDevice>*             pDevice) override;
 
     virtual void Process_vkDestroyDevice(
         const ApiCallInfo&                          call_info,
@@ -1622,14 +1607,6 @@ class VulkanReplayFrameLoopConsumer : public VulkanReplayFrameLoopConsumerBase
         PointerDecoder<uint32_t>*                   pPresentModeCount,
         PointerDecoder<VkPresentModeKHR>*           pPresentModes) override;
 
-    virtual void Process_vkCreateSwapchainKHR(
-        const ApiCallInfo&                          call_info,
-        VkResult                                    returnValue,
-        format::HandleId                            device,
-        StructPointerDecoder<Decoded_VkSwapchainCreateInfoKHR>* pCreateInfo,
-        StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
-        HandlePointerDecoder<VkSwapchainKHR>*       pSwapchain) override;
-
     virtual void Process_vkDestroySwapchainKHR(
         const ApiCallInfo&                          call_info,
         format::HandleId                            device,
@@ -1735,14 +1712,6 @@ class VulkanReplayFrameLoopConsumer : public VulkanReplayFrameLoopConsumerBase
         uint32_t                                    planeIndex,
         StructPointerDecoder<Decoded_VkDisplayPlaneCapabilitiesKHR>* pCapabilities) override;
 
-    virtual void Process_vkCreateDisplayPlaneSurfaceKHR(
-        const ApiCallInfo&                          call_info,
-        VkResult                                    returnValue,
-        format::HandleId                            instance,
-        StructPointerDecoder<Decoded_VkDisplaySurfaceCreateInfoKHR>* pCreateInfo,
-        StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
-        HandlePointerDecoder<VkSurfaceKHR>*         pSurface) override;
-
     virtual void Process_vkCreateSharedSwapchainsKHR(
         const ApiCallInfo&                          call_info,
         VkResult                                    returnValue,
@@ -1752,14 +1721,6 @@ class VulkanReplayFrameLoopConsumer : public VulkanReplayFrameLoopConsumerBase
         StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
         HandlePointerDecoder<VkSwapchainKHR>*       pSwapchains) override;
 
-    virtual void Process_vkCreateXlibSurfaceKHR(
-        const ApiCallInfo&                          call_info,
-        VkResult                                    returnValue,
-        format::HandleId                            instance,
-        StructPointerDecoder<Decoded_VkXlibSurfaceCreateInfoKHR>* pCreateInfo,
-        StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
-        HandlePointerDecoder<VkSurfaceKHR>*         pSurface) override;
-
     virtual void Process_vkGetPhysicalDeviceXlibPresentationSupportKHR(
         const ApiCallInfo&                          call_info,
         VkBool32                                    returnValue,
@@ -1767,14 +1728,6 @@ class VulkanReplayFrameLoopConsumer : public VulkanReplayFrameLoopConsumerBase
         uint32_t                                    queueFamilyIndex,
         uint64_t                                    dpy,
         size_t                                      visualID) override;
-
-    virtual void Process_vkCreateXcbSurfaceKHR(
-        const ApiCallInfo&                          call_info,
-        VkResult                                    returnValue,
-        format::HandleId                            instance,
-        StructPointerDecoder<Decoded_VkXcbSurfaceCreateInfoKHR>* pCreateInfo,
-        StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
-        HandlePointerDecoder<VkSurfaceKHR>*         pSurface) override;
 
     virtual void Process_vkGetPhysicalDeviceXcbPresentationSupportKHR(
         const ApiCallInfo&                          call_info,
@@ -1784,36 +1737,12 @@ class VulkanReplayFrameLoopConsumer : public VulkanReplayFrameLoopConsumerBase
         uint64_t                                    connection,
         uint32_t                                    visual_id) override;
 
-    virtual void Process_vkCreateWaylandSurfaceKHR(
-        const ApiCallInfo&                          call_info,
-        VkResult                                    returnValue,
-        format::HandleId                            instance,
-        StructPointerDecoder<Decoded_VkWaylandSurfaceCreateInfoKHR>* pCreateInfo,
-        StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
-        HandlePointerDecoder<VkSurfaceKHR>*         pSurface) override;
-
     virtual void Process_vkGetPhysicalDeviceWaylandPresentationSupportKHR(
         const ApiCallInfo&                          call_info,
         VkBool32                                    returnValue,
         format::HandleId                            physicalDevice,
         uint32_t                                    queueFamilyIndex,
         uint64_t                                    display) override;
-
-    virtual void Process_vkCreateAndroidSurfaceKHR(
-        const ApiCallInfo&                          call_info,
-        VkResult                                    returnValue,
-        format::HandleId                            instance,
-        StructPointerDecoder<Decoded_VkAndroidSurfaceCreateInfoKHR>* pCreateInfo,
-        StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
-        HandlePointerDecoder<VkSurfaceKHR>*         pSurface) override;
-
-    virtual void Process_vkCreateWin32SurfaceKHR(
-        const ApiCallInfo&                          call_info,
-        VkResult                                    returnValue,
-        format::HandleId                            instance,
-        StructPointerDecoder<Decoded_VkWin32SurfaceCreateInfoKHR>* pCreateInfo,
-        StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
-        HandlePointerDecoder<VkSurfaceKHR>*         pSurface) override;
 
     virtual void Process_vkGetPhysicalDeviceWin32PresentationSupportKHR(
         const ApiCallInfo&                          call_info,
@@ -3619,14 +3548,6 @@ class VulkanReplayFrameLoopConsumer : public VulkanReplayFrameLoopConsumerBase
         StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
         HandlePointerDecoder<VkSurfaceKHR>*         pSurface) override;
 
-    virtual void Process_vkCreateMetalSurfaceEXT(
-        const ApiCallInfo&                          call_info,
-        VkResult                                    returnValue,
-        format::HandleId                            instance,
-        StructPointerDecoder<Decoded_VkMetalSurfaceCreateInfoEXT>* pCreateInfo,
-        StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
-        HandlePointerDecoder<VkSurfaceKHR>*         pSurface) override;
-
     virtual void Process_vkGetBufferDeviceAddressEXT(
         const ApiCallInfo&                          call_info,
         VkDeviceAddress                             returnValue,
@@ -3680,14 +3601,6 @@ class VulkanReplayFrameLoopConsumer : public VulkanReplayFrameLoopConsumerBase
         format::HandleId                            device,
         StructPointerDecoder<Decoded_VkPhysicalDeviceSurfaceInfo2KHR>* pSurfaceInfo,
         PointerDecoder<VkDeviceGroupPresentModeFlagsKHR>* pModes) override;
-
-    virtual void Process_vkCreateHeadlessSurfaceEXT(
-        const ApiCallInfo&                          call_info,
-        VkResult                                    returnValue,
-        format::HandleId                            instance,
-        StructPointerDecoder<Decoded_VkHeadlessSurfaceCreateInfoEXT>* pCreateInfo,
-        StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
-        HandlePointerDecoder<VkSurfaceKHR>*         pSurface) override;
 
     virtual void Process_vkCmdSetLineStippleEXT(
         const ApiCallInfo&                          call_info,
@@ -3990,14 +3903,6 @@ class VulkanReplayFrameLoopConsumer : public VulkanReplayFrameLoopConsumerBase
         uint32_t                                    deviceRelativeId,
         HandlePointerDecoder<VkDisplayKHR>*         pDisplay) override;
 
-    virtual void Process_vkCreateDirectFBSurfaceEXT(
-        const ApiCallInfo&                          call_info,
-        VkResult                                    returnValue,
-        format::HandleId                            instance,
-        StructPointerDecoder<Decoded_VkDirectFBSurfaceCreateInfoEXT>* pCreateInfo,
-        StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
-        HandlePointerDecoder<VkSurfaceKHR>*         pSurface) override;
-
     virtual void Process_vkGetPhysicalDeviceDirectFBPresentationSupportEXT(
         const ApiCallInfo&                          call_info,
         VkBool32                                    returnValue,
@@ -4078,14 +3983,6 @@ class VulkanReplayFrameLoopConsumer : public VulkanReplayFrameLoopConsumerBase
         const ApiCallInfo&                          call_info,
         format::HandleId                            commandBuffer,
         VkBool32                                    primitiveRestartEnable) override;
-
-    virtual void Process_vkCreateScreenSurfaceQNX(
-        const ApiCallInfo&                          call_info,
-        VkResult                                    returnValue,
-        format::HandleId                            instance,
-        StructPointerDecoder<Decoded_VkScreenSurfaceCreateInfoQNX>* pCreateInfo,
-        StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
-        HandlePointerDecoder<VkSurfaceKHR>*         pSurface) override;
 
     virtual void Process_vkGetPhysicalDeviceScreenPresentationSupportQNX(
         const ApiCallInfo&                          call_info,

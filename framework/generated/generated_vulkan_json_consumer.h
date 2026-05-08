@@ -44,7 +44,7 @@
 
 GFXRECON_BEGIN_NAMESPACE(gfxrecon)
 GFXRECON_BEGIN_NAMESPACE(decode)
-class VulkanExportJsonConsumer : public VulkanExportJsonConsumerBase
+AAAclass VulkanExportJsonConsumer : public VulkanExportJsonConsumerBase
 {
   public:
     VulkanExportJsonConsumer() { }

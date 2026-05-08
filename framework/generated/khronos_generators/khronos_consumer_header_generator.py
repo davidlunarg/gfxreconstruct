@@ -37,7 +37,7 @@ class KhronosConsumerHeaderGenerator():
 
     def write_class_setup(self, class_name, constructor_args):
         write(
-            'class {class_name} : public {class_name}Base'.format(
+            'AAAclass {class_name} : public {class_name}Base'.format(
                 class_name=class_name
             ),
             file=self.outFile

@@ -59,6 +59,7 @@ from vulkan_pnext_struct_decode_generator import DecodePNextStructGenerator, Dec
 
 # Consumers
 from vulkan_consumer_header_generator import VulkanConsumerHeaderGenerator, VulkanConsumerHeaderGeneratorOptions
+from vulkan_replay_frame_loop_consumer_header_generator import VulkanFrameLoopConsumerHeaderGenerator, VulkanFrameLoopConsumerHeaderGeneratorOptions
 from vulkan_cpp_consumer_body_generator import VulkanCppConsumerBodyGenerator,VulkanCppConsumerBodyGeneratorOptions
 from vulkan_cpp_consumer_header_generator import VulkanCppConsumerHeaderGenerator, VulkanCppConsumerHeaderGeneratorOptions
 from vulkan_json_consumer_header_generator import VulkanExportJsonConsumerHeaderGenerator, VulkanExportJsonConsumerHeaderGeneratorOptions
@@ -409,8 +410,8 @@ def make_gen_opts(args):
     ]
 
     gen_opts['generated_vulkan_replay_frame_loop_consumer.h'] = [
-        VulkanConsumerHeaderGenerator,
-        VulkanConsumerHeaderGeneratorOptions(
+        VulkanFrameLoopConsumerHeaderGenerator,
+        VulkanFrameLoopConsumerHeaderGeneratorOptions(
             class_name='VulkanReplayFrameLoopConsumer',
             base_class_header='vulkan_replay_frame_loop_consumer_base.h',
             is_override=True,
@@ -423,7 +424,8 @@ def make_gen_opts(args):
             prefix_text=prefix_strings + vk_prefix_strings,
             protect_file=True,
             protect_feature=False,
-            extra_headers=extra_headers
+            extra_headers=extra_headers,
+            replay_frame_loop_overrides=replay_frame_loop_overrides,
         )
     ]
 

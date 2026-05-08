@@ -34,7 +34,7 @@ GFXRECON_BEGIN_NAMESPACE(gfxrecon)
 GFXRECON_BEGIN_NAMESPACE(decode)
 
 
-void VulkanReplayFrameLoopConsumer::Process_vkCreateInstance(
+void VulkanXXXReplayFrameLoopConsumer::Process_vkCreateInstance(
     const ApiCallInfo&                          call_info,
     VkResult                                    returnValue,
     StructPointerDecoder<Decoded_VkInstanceCreateInfo>* pCreateInfo,
@@ -48,7 +48,7 @@ void VulkanReplayFrameLoopConsumer::Process_vkCreateInstance(
     VulkanReplayConsumer::vkCreateInstance(pCreateInfo, pAllocator, pInstance);
 }
 
-void VulkanReplayFrameLoopConsumer::Process_vkCreateDevice(
+void VulkanXXXReplayFrameLoopConsumer::Process_vkCreateDevice(
     const ApiCallInfo&                          call_info,
     VkResult                                    returnValue,
     format::HandleId                            physicalDevice,
@@ -63,7 +63,7 @@ void VulkanReplayFrameLoopConsumer::Process_vkCreateDevice(
     VulkanReplayConsumer::vkCreateDevice(physicalDevice, pCreateInfo, pAllocator, pDevice);
 }
 
-void VulkanReplayFrameLoopConsumer::Process_vkCreateSwapchainKHR(
+void VulkanXXXReplayFrameLoopConsumer::Process_vkCreateSwapchainKHR(
     const ApiCallInfo&                          call_info,
     VkResult                                    returnValue,
     format::HandleId                            device,
@@ -78,7 +78,7 @@ void VulkanReplayFrameLoopConsumer::Process_vkCreateSwapchainKHR(
     VulkanReplayConsumer::vkCreateSwapchainKHR(device, pCreateInfo, pAllocator, pSwapchain);
 }
 
-void VulkanReplayFrameLoopConsumer::Process_vkCreateDisplayPlaneSurfaceKHR(
+void VulkanXXXReplayFrameLoopConsumer::Process_vkCreateDisplayPlaneSurfaceKHR(
     const ApiCallInfo&                          call_info,
     VkResult                                    returnValue,
     format::HandleId                            instance,
@@ -93,7 +93,7 @@ void VulkanReplayFrameLoopConsumer::Process_vkCreateDisplayPlaneSurfaceKHR(
     VulkanReplayConsumer::vkCreateDisplayPlaneSurfaceKHR(instance, pCreateInfo, pAllocator, pSurface);
 }
 
-void VulkanReplayFrameLoopConsumer::Process_vkCreateXlibSurfaceKHR(
+void VulkanXXXReplayFrameLoopConsumer::Process_vkCreateXlibSurfaceKHR(
     const ApiCallInfo&                          call_info,
     VkResult                                    returnValue,
     format::HandleId                            instance,
@@ -108,7 +108,7 @@ void VulkanReplayFrameLoopConsumer::Process_vkCreateXlibSurfaceKHR(
     VulkanReplayConsumer::vkCreateXlibSurfaceKHR(instance, pCreateInfo, pAllocator, pSurface);
 }
 
-void VulkanReplayFrameLoopConsumer::Process_vkCreateXcbSurfaceKHR(
+void VulkanXXXReplayFrameLoopConsumer::Process_vkCreateXcbSurfaceKHR(
     const ApiCallInfo&                          call_info,
     VkResult                                    returnValue,
     format::HandleId                            instance,
@@ -123,7 +123,7 @@ void VulkanReplayFrameLoopConsumer::Process_vkCreateXcbSurfaceKHR(
     VulkanReplayConsumer::vkCreateXcbSurfaceKHR(instance, pCreateInfo, pAllocator, pSurface);
 }
 
-void VulkanReplayFrameLoopConsumer::Process_vkCreateWaylandSurfaceKHR(
+void VulkanXXXReplayFrameLoopConsumer::Process_vkCreateWaylandSurfaceKHR(
     const ApiCallInfo&                          call_info,
     VkResult                                    returnValue,
     format::HandleId                            instance,
@@ -138,7 +138,7 @@ void VulkanReplayFrameLoopConsumer::Process_vkCreateWaylandSurfaceKHR(
     VulkanReplayConsumer::vkCreateWaylandSurfaceKHR(instance, pCreateInfo, pAllocator, pSurface);
 }
 
-void VulkanReplayFrameLoopConsumer::Process_vkCreateAndroidSurfaceKHR(
+void VulkanXXXReplayFrameLoopConsumer::Process_vkCreateAndroidSurfaceKHR(
     const ApiCallInfo&                          call_info,
     VkResult                                    returnValue,
     format::HandleId                            instance,
@@ -153,7 +153,7 @@ void VulkanReplayFrameLoopConsumer::Process_vkCreateAndroidSurfaceKHR(
     VulkanReplayConsumer::vkCreateAndroidSurfaceKHR(instance, pCreateInfo, pAllocator, pSurface);
 }
 
-void VulkanReplayFrameLoopConsumer::Process_vkCreateWin32SurfaceKHR(
+void VulkanXXXReplayFrameLoopConsumer::Process_vkCreateWin32SurfaceKHR(
     const ApiCallInfo&                          call_info,
     VkResult                                    returnValue,
     format::HandleId                            instance,
@@ -168,7 +168,7 @@ void VulkanReplayFrameLoopConsumer::Process_vkCreateWin32SurfaceKHR(
     VulkanReplayConsumer::vkCreateWin32SurfaceKHR(instance, pCreateInfo, pAllocator, pSurface);
 }
 
-void VulkanReplayFrameLoopConsumer::Process_vkCreateMetalSurfaceEXT(
+void VulkanXXXReplayFrameLoopConsumer::Process_vkCreateMetalSurfaceEXT(
     const ApiCallInfo&                          call_info,
     VkResult                                    returnValue,
     format::HandleId                            instance,
@@ -183,7 +183,7 @@ void VulkanReplayFrameLoopConsumer::Process_vkCreateMetalSurfaceEXT(
     VulkanReplayConsumer::vkCreateMetalSurfaceEXT(instance, pCreateInfo, pAllocator, pSurface);
 }
 
-void VulkanReplayFrameLoopConsumer::Process_vkCreateHeadlessSurfaceEXT(
+void VulkanXXXReplayFrameLoopConsumer::Process_vkCreateHeadlessSurfaceEXT(
     const ApiCallInfo&                          call_info,
     VkResult                                    returnValue,
     format::HandleId                            instance,
@@ -198,7 +198,7 @@ void VulkanReplayFrameLoopConsumer::Process_vkCreateHeadlessSurfaceEXT(
     VulkanReplayConsumer::vkCreateHeadlessSurfaceEXT(instance, pCreateInfo, pAllocator, pSurface);
 }
 
-void VulkanReplayFrameLoopConsumer::Process_vkCreateDirectFBSurfaceEXT(
+void VulkanXXXReplayFrameLoopConsumer::Process_vkCreateDirectFBSurfaceEXT(
     const ApiCallInfo&                          call_info,
     VkResult                                    returnValue,
     format::HandleId                            instance,
@@ -213,7 +213,7 @@ void VulkanReplayFrameLoopConsumer::Process_vkCreateDirectFBSurfaceEXT(
     VulkanReplayConsumer::vkCreateDirectFBSurfaceEXT(instance, pCreateInfo, pAllocator, pSurface);
 }
 
-void VulkanReplayFrameLoopConsumer::Process_vkCreateScreenSurfaceQNX(
+void VulkanXXXReplayFrameLoopConsumer::Process_vkCreateScreenSurfaceQNX(
     const ApiCallInfo&                          call_info,
     VkResult                                    returnValue,
     format::HandleId                            instance,

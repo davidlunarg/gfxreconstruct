@@ -328,7 +328,7 @@ class KhronosReplayFrameLoopConsumerBodyGenerator():
             else:
                 cmddef += self.make_consumer_func_decl(
                     return_type,
-                    '{}ReplayFrameLoopConsumer::Process_'.format(platform_type) + cmd,
+                    '{}XXXReplayFrameLoopConsumer::Process_'.format(platform_type) + cmd,
                     values
                 ) + '\n'
             cmddef += '{\n'
