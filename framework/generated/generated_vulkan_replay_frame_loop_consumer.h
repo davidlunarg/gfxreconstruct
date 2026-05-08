@@ -30,7 +30,7 @@
 #ifndef  GFXRECON_GENERATED_VULKAN_REPLAY_FRAME_LOOP_CONSUMER_H
 #define  GFXRECON_GENERATED_VULKAN_REPLAY_FRAME_LOOP_CONSUMER_H
 
-#include "decode/vulkan_replay_frame_loop_consumer_base.h"
+#include "decode/vulkan_replay_consumer_base.h"
 #include "util/defines.h"
 
 #include "vulkan/vulkan.h"
@@ -44,7 +44,7 @@
 
 GFXRECON_BEGIN_NAMESPACE(gfxrecon)
 GFXRECON_BEGIN_NAMESPACE(decode)
-BBBclass VulkanReplayFrameLoopConsumer : public VulkanReplayFrameLoopConsumerBase
+class VulkanReplayFrameLoopConsumer : public VulkanReplayFrameLoopConsumerBase
 {
   public:
     VulkanReplayFrameLoopConsumer(std::shared_ptr<application::Application> application, const VulkaneplayFrameLoopOptions& options) : VulkanReplayFrameLoopConsumerBase(application, options) { }

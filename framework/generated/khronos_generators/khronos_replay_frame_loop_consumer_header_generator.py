@@ -25,7 +25,7 @@ import sys
 from khronos_base_generator import write
 
 
-class KhronosConsumerHeaderGenerator():
+class KhronosFrameLoopConsumerHeaderGenerator():
     """KhronosConsumerHeaderGenerator
     Generates C++ member declarations for the appropriate consumer class responsible
     for processing the current Khronos API call parameter data.
@@ -33,9 +33,14 @@ class KhronosConsumerHeaderGenerator():
 
     def skip_generating_command(self, command):
         """ Method may be overridden. """
-        return self.is_manually_generated_cmd_name(command)
+        print("QQQ1 self.REPLAY_FRAME_LOOP_OVERRIDES=", ascii(self.REPLAY_FRAME_LOOP_OVERRIDES))
+        # DON"T USE THIS FUNC, should use self.REPLAY_FRAME_LOOP_OVERRIDES.. but its currently not set
+        return (command in self.REPLAY_FRAME_LOOP_OVERRIDES)  # ????
+        #return (self.REPLAY_FRAME_LOOP_OVERRIDES[command] == None)  # ???? WRONG
+        #return self.is_manually_generated_cmd_name(command)
 
     def write_class_setup(self, class_name, constructor_args):
+        print("QQQ2 self.REPLAY_FRAME_LOOP_OVERRIDES=", ascii(self.REPLAY_FRAME_LOOP_OVERRIDES))
         write(
             'class {class_name} : public {class_name}Base'.format(
                 class_name=class_name
@@ -62,10 +67,12 @@ class KhronosConsumerHeaderGenerator():
         )
 
     def write_class_completion(self):
+        print("QQQ3 self.REPLAY_FRAME_LOOP_OVERRIDES=", ascii(self.REPLAY_FRAME_LOOP_OVERRIDES))
         write('};', file=self.outFile)
 
     def write_class_contents(self):
         """Method may be overridden."""
+        print("QQQ4 self.REPLAY_FRAME_LOOP_OVERRIDES=", ascii(self.REPLAY_FRAME_LOOP_OVERRIDES))
         for cmd in self.get_all_filtered_cmd_names():
             if self.skip_generating_command(cmd):
                 continue
@@ -91,6 +98,7 @@ class KhronosConsumerHeaderGenerator():
             write(cmddef, file=self.outFile)
 
     def output_header_contents(self, class_name, constructor_args):
+        #print("QQQ5 self.REPLAY_FRAME_LOOP_OVERRIDES=", ascii(self.REPLAY_FRAME_LOOP_OVERRIDES))
         self.write_class_setup(class_name, constructor_args)
         self.write_class_contents()
         self.write_class_completion()

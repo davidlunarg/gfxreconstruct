@@ -44,7 +44,7 @@
 
 GFXRECON_BEGIN_NAMESPACE(gfxrecon)
 GFXRECON_BEGIN_NAMESPACE(decode)
-AAAclass VulkanReplayConsumer : public VulkanReplayConsumerBase
+class VulkanReplayConsumer : public VulkanReplayConsumerBase
 {
   public:
     VulkanReplayConsumer(std::shared_ptr<application::Application> application, const VulkanReplayOptions& options) : VulkanReplayConsumerBase(application, options) { }

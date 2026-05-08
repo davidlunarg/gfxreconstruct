@@ -413,7 +413,7 @@ def make_gen_opts(args):
         VulkanFrameLoopConsumerHeaderGenerator,
         VulkanFrameLoopConsumerHeaderGeneratorOptions(
             class_name='VulkanReplayFrameLoopConsumer',
-            base_class_header='vulkan_replay_frame_loop_consumer_base.h',
+            base_class_header='vulkan_replay_consumer_base.h',
             is_override=True,
             constructor_args=
             'std::shared_ptr<application::Application> application, const VulkaneplayFrameLoopOptions& options',
