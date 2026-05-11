@@ -50,26 +50,22 @@ class KhronosFrameLoopConsumerBaseHeaderGenerator():
         )
         write('{', file=self.outFile)
         write('  public:', file=self.outFile)
-        # We don't generate a constructor (it is manually written). So we ignore constructor_args.
-        # TODO: Can we remove constructor_args?
-        # TODO: Delete this code...
-        #if constructor_args:
-        #    arg_list = ', '.join(
-        #        [arg.split(' ')[-1] for arg in constructor_args.split(',')]
-        #    )
-        #    write(
-        #        '    {class_name}({}) : {class_name}Base({}) {{ }}\n'.format(
-        #            constructor_args, arg_list, class_name=class_name
-        #        ),
-        #        file=self.outFile
-        #    )
-        #else:
-        #    write('    {}() {{ }}\n'.format(class_name), file=self.outFile)
-        # We don't generate a destructor (it is manually written).
-        #write(
-        #    '    virtual ~{}() override {{ }}'.format(class_name),
-        #    file=self.outFile
-        #)
+        if constructor_args:
+            arg_list = ', '.join(
+                [arg.split(' ')[-1] for arg in constructor_args.split(',')]
+            )
+            write(
+                '    {class_name}({}) : VulkanReplayConsumer({}) {{ }}\n'.format(
+                    constructor_args, arg_list, class_name=class_name
+                ),
+                file=self.outFile
+            )
+        else:
+            write('    {}() {{ }}\n'.format(class_name), file=self.outFile)
+        write(
+            '    virtual ~{}() override {{ }}'.format(class_name),
+            file=self.outFile
+        )
 
     def write_class_completion(self):
         print("QQQ3 self.REPLAY_FRAME_LOOP_OVERRIDES=", ascii(self.REPLAY_FRAME_LOOP_OVERRIDES))

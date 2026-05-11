@@ -47,6 +47,9 @@ GFXRECON_BEGIN_NAMESPACE(decode)
 class VulkanReplayFrameLoopConsumerBase : public VulkanReplayConsumer
 {
   public:
+    VulkanReplayFrameLoopConsumerBase(std::shared_ptr<application::Application> application, const VulkanReplayOptions& options) : VulkanReplayConsumer(application, options) { }
+
+    virtual ~VulkanReplayFrameLoopConsumerBase() override { }
 
     void Process_vkCreateInstance(
         const ApiCallInfo&                          call_info,
