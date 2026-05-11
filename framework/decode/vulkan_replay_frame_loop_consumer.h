@@ -24,21 +24,14 @@
 #define GFXRECON_DECODE_VULKAN_REPLAY_FRAME_LOOP_CONSUMER_H
 
 #include "util/defines.h"
-#include "generated/generated_vulkan_replay_consumer.h"
+#include "generated/generated_vulkan_replay_frame_loop_consumer_base.h"
 
 GFXRECON_BEGIN_NAMESPACE(gfxrecon)
 GFXRECON_BEGIN_NAMESPACE(decode)
 
-class VulkanReplayFrameLoopConsumer : public VulkanReplayConsumer
+class VulkanReplayFrameLoopConsumer : public VulkanReplayFrameLoopConsumerBase
 {
   public:
-    VulkanReplayFrameLoopConsumer(std::shared_ptr<application::Application> application,
-                                  const VulkanReplayOptions&                options,
-                                  graphics::FrameLoopInfo&                  frame_loop_info) :
-        VulkanReplayConsumer(application, options),
-        frame_loop_info_(frame_loop_info)
-    {}
-
     void Process_vkCreateInstance(const ApiCallInfo&                                   call_info,
                                   VkResult                                             returnValue,
                                   StructPointerDecoder<Decoded_VkInstanceCreateInfo>*  pCreateInfo,
@@ -148,8 +141,8 @@ class VulkanReplayFrameLoopConsumer : public VulkanReplayConsumer
                                      StructPointerDecoder<Decoded_VkAllocationCallbacks>*   pAllocator,
                                      HandlePointerDecoder<VkCommandPool>*                   pCommandPool) override;
 
-  private:
-    graphics::FrameLoopInfo& frame_loop_info_;
+//  private:
+//    graphics::FrameLoopInfo& frame_loop_info_;
 };
 
 GFXRECON_END_NAMESPACE(decode)

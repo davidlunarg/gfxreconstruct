@@ -31,7 +31,6 @@
 #define  GFXRECON_GENERATED_VULKAN_REPLAY_FRAME_LOOP_CONSUMER_BASE_H
 
 #include "decode/vulkan_replay_consumer_base.h"
-#include "util/defines.h"
 
 #include "vulkan/vulkan.h"
 #include "vk_video/vulkan_video_codec_h264std.h"
@@ -47,7 +46,7 @@ GFXRECON_BEGIN_NAMESPACE(decode)
 class VulkanReplayFrameLoopConsumerBase : public VulkanReplayConsumer
 {
   public:
-    VulkanReplayFrameLoopConsumerBase(std::shared_ptr<application::Application> application, const VulkanReplayOptions& options) : VulkanReplayConsumer(application, options) { }
+    VulkanReplayFrameLoopConsumerBase(std::shared_ptr<application::Application> application, const VulkanReplayOptions& options,graphics::FrameLoopInfo& frame_loop_info) : VulkanReplayConsumer(application, options), frame_loop_info_(frame_loop_info) { }
 
     virtual ~VulkanReplayFrameLoopConsumerBase() override { }
 
@@ -4986,6 +4985,8 @@ class VulkanReplayFrameLoopConsumerBase : public VulkanReplayConsumer
         VkDeviceSize                                countBufferOffset,
         uint32_t                                    maxDrawCount,
         uint32_t                                    stride) override;
+  protected:
+    graphics::FrameLoopInfo& frame_loop_info_;
 };
 
 GFXRECON_END_NAMESPACE(decode)
