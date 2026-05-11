@@ -26,7 +26,7 @@
 from khronos_base_generator import write
 
 
-class KhronosReplayFrameLoopConsumerBodyGenerator():
+class KhronosReplayFrameLoopConsumerBaseBodyGenerator():
     """Base class for generating replay cousumers body code."""
 
     def get_parent_id(self, api_data, value, values):
@@ -175,7 +175,7 @@ class KhronosReplayFrameLoopConsumerBodyGenerator():
     def make_consumer_func_body(self, api_data, return_type, name, values):
         """
         Method override.
-        Return ReplayFrameLoopConsumer class member function definition.
+        Return ReplayFrameLoopConsumerBase class member function definition.
         """
         body = ''
         is_override = name in self.REPLAY_FRAME_LOOP_OVERRIDES

@@ -25,20 +25,20 @@
 import json
 import sys
 from vulkan_base_generator import VulkanBaseGenerator, VulkanBaseGeneratorOptions, write
-from khronos_replay_frame_loop_consumer_body_generator import KhronosReplayFrameLoopConsumerBodyGenerator
+from khronos_replay_frame_loop_consumer_base_body_generator import KhronosReplayFrameLoopConsumerBaseBodyGenerator
 
 
-class VulkanReplayFrameLoopConsumerBodyGeneratorOptions(VulkanBaseGeneratorOptions):
+class VulkanReplayFrameLoopConsumerBaseBodyGeneratorOptions(VulkanBaseGeneratorOptions):
     """Options for generating a C++ class for Vulkan capture file replay."""
 
     def __init__(
         self,
-        replay_overrides=None,           # Path to JSON file listing Vulkan API .. NEEDED??
-        replay_frame_loop_overrides=None,           # Path to JSON file listing Vulkan API calls to override on replay.
-        dump_resources_overrides=None,     # Path to JSON file listing Vulkan API  ... NEEDED??
-        replay_async_overrides=None,    # TODO: extra args here. How do I avoid them?
-        blacklists=None,  # Path to JSON file listing apicalls and structs to ignore.
-        platform_types=None,  # Path to JSON file listing platform (WIN32, X11, etc.) defined types.
+        replay_overrides=None,            # Path to JSON file listing Vulkan API .. NEEDED??
+        replay_frame_loop_overrides=None, # Path to JSON file listing Vulkan API calls to override on replay.
+        dump_resources_overrides=None,    # Path to JSON file listing Vulkan API  ... NEEDED??
+        replay_async_overrides=None,      # TODO: extra args here. How do I avoid them?
+        blacklists=None,                  # Path to JSON file listing apicalls and structs to ignore.
+        platform_types=None,              # Path to JSON file listing platform (WIN32, X11, etc.) defined types.
         filename=None,
         directory='.',
         prefix_text='',
@@ -64,16 +64,16 @@ class VulkanReplayFrameLoopConsumerBodyGeneratorOptions(VulkanBaseGeneratorOptio
 
         self.begin_end_file_data.specific_headers.extend((
             'generated/generated_vulkan_replay_consumer.h',
-            'generated/generated_vulkan_replay_frame_loop_consumer.h',
+            'generated/generated_vulkan_replay_frame_loop_consumer_base.h',
         ))
         self.begin_end_file_data.namespaces.extend(('gfxrecon', 'decode'))
         self.begin_end_file_data.common_api_headers = []
 
-class VulkanReplayFrameLoopConsumerBodyGenerator(
-    KhronosReplayFrameLoopConsumerBodyGenerator, VulkanBaseGenerator
+class VulkanReplayFrameLoopConsumerBaseBodyGenerator(
+    KhronosReplayFrameLoopConsumerBaseBodyGenerator, VulkanBaseGenerator
 ):
-    """VulkanReplayFrameLoopConsumerBodyGenerator - subclass of VulkanBaseGenerator.
-    Generates C++ member definitions for the VulkanReplayFrameLoopConsumer class responsible for
+    """VulkanReplayFrameLoopConsumerBaseBodyGenerator - subclass of VulkanBaseGenerator.
+    Generates C++ member definitions for the VulkanReplayFrameLoopConsumerBase class responsible for
     replaying decoded Vulkan API call parameter data..... TODO
     Generate a C++ class for Vulkan capture file replay.
     """
@@ -105,9 +105,7 @@ class VulkanReplayFrameLoopConsumerBodyGenerator(
         """Method override."""
         api_data = self.get_api_data()
 
-        KhronosReplayFrameLoopConsumerBodyGenerator.generate_replay_consumer_content(self, api_data)
-        #KhronosReplayFrameLoopConsumerBodyGenerator.generate_extended_struct_handling(self, api_data)
-        #KhronosReplayFrameLoopConsumerBodyGenerator.generate_extended_struct_initialize_template(self, api_data)
+        KhronosReplayFrameLoopConsumerBaseBodyGenerator.generate_replay_consumer_content(self, api_data)
 
         self.newline()
 
@@ -228,7 +226,7 @@ class VulkanReplayFrameLoopConsumerBodyGenerator(
 
     def needs_remove_handle_expression(self, command):
         """Method override."""
-        if (KhronosReplayFrameLoopConsumerBodyGenerator.needs_remove_handle_expression(self, command) or
+        if (KhronosReplayFrameLoopConsumerBaseBodyGenerator.needs_remove_handle_expression(self, command) or
             command == 'vkFreeMemory'):
             return True
         return False
@@ -239,7 +237,7 @@ class VulkanReplayFrameLoopConsumerBodyGenerator(
         if self.needs_remove_handle_expression(name):
             value = self.determine_handle_to_remove_value(name, values)
             if value.base_type not in self.POOL_OBJECT_ASSOCIATIONS:
-                expr = KhronosReplayFrameLoopConsumerBodyGenerator.generate_remove_handle_expression(self, name, values)
+                expr = KhronosReplayFrameLoopConsumerBaseBodyGenerator.generate_remove_handle_expression(self, name, values)
             else:
                 # Pools require special case processing to cleanup objects allocated from them.
                 expr = 'RemovePoolHandle<Vulkan{type}Info>({}, &CommonObjectInfoTable::Get{basetype}Info, &CommonObjectInfoTable::Remove{basetype}Info, &CommonObjectInfoTable::Remove{}Info);'.format(

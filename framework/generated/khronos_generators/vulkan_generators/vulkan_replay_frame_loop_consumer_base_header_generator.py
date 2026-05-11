@@ -23,12 +23,12 @@
 
 import sys
 from vulkan_base_generator import VulkanBaseGenerator, VulkanBaseGeneratorOptions, write
-from khronos_replay_frame_loop_consumer_header_generator import KhronosFrameLoopConsumerHeaderGenerator
+from khronos_replay_frame_loop_consumer_base_header_generator import KhronosFrameLoopConsumerBaseHeaderGenerator
 
 # TODO: REMOVE THIS
 import traceback
 
-class VulkanFrameLoopConsumerHeaderGeneratorOptions(VulkanBaseGeneratorOptions):
+class VulkanFrameLoopConsumerBaseHeaderGeneratorOptions(VulkanBaseGeneratorOptions):
     """Adds the following new option:
     is_override - Specify whether the member function declarations are
                   virtual function overrides or pure virtual functions.
@@ -81,9 +81,9 @@ class VulkanFrameLoopConsumerHeaderGeneratorOptions(VulkanBaseGeneratorOptions):
         self.begin_end_file_data.namespaces.extend(('gfxrecon', 'decode'))
 
 
-class VulkanFrameLoopConsumerHeaderGenerator(VulkanBaseGenerator, KhronosFrameLoopConsumerHeaderGenerator):
+class VulkanFrameLoopConsumerBaseHeaderGenerator(VulkanBaseGenerator, KhronosFrameLoopConsumerBaseHeaderGenerator):
     """ - subclass of VulkanBaseGenerator.
-    Generates C++ member declarations for the VulkanFrameLoopConsumer class ... TODO...
+    Generates C++ member declarations for the VulkanFrameLoopConsumerBase class ... TODO...
     Generate C++ class declarations for Vulkan parameter processing.
     """
 
@@ -102,7 +102,7 @@ class VulkanFrameLoopConsumerHeaderGenerator(VulkanBaseGenerator, KhronosFrameLo
     def endFile(self):
         """Method override."""
         print("@@@ZZZ3")
-        KhronosFrameLoopConsumerHeaderGenerator.output_header_contents(
+        KhronosFrameLoopConsumerBaseHeaderGenerator.output_header_contents(
             self, self.genOpts.class_name, self.genOpts.constructor_args)
 
         self.newline()

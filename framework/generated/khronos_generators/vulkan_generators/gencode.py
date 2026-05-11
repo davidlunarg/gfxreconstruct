@@ -59,13 +59,13 @@ from vulkan_pnext_struct_decode_generator import DecodePNextStructGenerator, Dec
 
 # Consumers
 from vulkan_consumer_header_generator import VulkanConsumerHeaderGenerator, VulkanConsumerHeaderGeneratorOptions
-from vulkan_replay_frame_loop_consumer_header_generator import VulkanFrameLoopConsumerHeaderGenerator, VulkanFrameLoopConsumerHeaderGeneratorOptions
+from vulkan_replay_frame_loop_consumer_base_header_generator import VulkanFrameLoopConsumerBaseHeaderGenerator, VulkanFrameLoopConsumerBaseHeaderGeneratorOptions
 from vulkan_cpp_consumer_body_generator import VulkanCppConsumerBodyGenerator,VulkanCppConsumerBodyGeneratorOptions
 from vulkan_cpp_consumer_header_generator import VulkanCppConsumerHeaderGenerator, VulkanCppConsumerHeaderGeneratorOptions
 from vulkan_json_consumer_header_generator import VulkanExportJsonConsumerHeaderGenerator, VulkanExportJsonConsumerHeaderGeneratorOptions
 from vulkan_json_consumer_body_generator import VulkanExportJsonConsumerBodyGenerator, VulkanExportJsonConsumerBodyGeneratorOptions
 from vulkan_replay_consumer_body_generator import VulkanReplayConsumerBodyGenerator, VulkanReplayConsumerBodyGeneratorOptions
-from vulkan_replay_frame_loop_consumer_body_generator import VulkanReplayFrameLoopConsumerBodyGenerator, VulkanReplayFrameLoopConsumerBodyGeneratorOptions
+from vulkan_replay_frame_loop_consumer_base_body_generator import VulkanReplayFrameLoopConsumerBaseBodyGenerator, VulkanReplayFrameLoopConsumerBaseBodyGeneratorOptions
 from vulkan_replay_dump_resources_body_generator import VulkanReplayDumpResourcesBodyGenerator, VulkanReplayDumpResourcesBodyGeneratorOptions
 from vulkan_replay_dump_resources_header_generator import VulkanReplayDumpResourcesHeaderGenerator, VulkanReplayDumpResourcesHeaderGeneratorOptions
 from vulkan_referenced_resource_consumer_header_generator import VulkanReferencedResourceHeaderGenerator, VulkanReferencedResourceHeaderGeneratorOptions
@@ -409,15 +409,15 @@ def make_gen_opts(args):
         )
     ]
 
-    gen_opts['generated_vulkan_replay_frame_loop_consumer.h'] = [
-        VulkanFrameLoopConsumerHeaderGenerator,
-        VulkanFrameLoopConsumerHeaderGeneratorOptions(
-            class_name='VulkanReplayFrameLoopConsumer',
+    gen_opts['generated_vulkan_replay_frame_loop_consumer_base.h'] = [
+        VulkanFrameLoopConsumerBaseHeaderGenerator,
+        VulkanFrameLoopConsumerBaseHeaderGeneratorOptions(
+            class_name='VulkanReplayFrameLoopConsumerBase',
             base_class_header='vulkan_replay_consumer_base.h',
             is_override=True,
-            constructor_args=
-            'std::shared_ptr<application::Application> application, const VulkaneplayFrameLoopOptions& options',
-            filename='generated_vulkan_replay_frame_loop_consumer.h',
+            #constructor_args=
+            #'std::shared_ptr<application::Application> application, const VulkanReplayOptions& options, graphics::FrameLoopInfo& frame_loop_info',
+            filename='generated_vulkan_replay_frame_loop_consumer_base.h',
             directory=directory,
             blacklists=blacklists,
             platform_types=platform_types,
@@ -522,10 +522,10 @@ def make_gen_opts(args):
         )
     ]
 
-    gen_opts['generated_vulkan_replay_frame_loop_consumer.cpp'] = [
-        VulkanReplayFrameLoopConsumerBodyGenerator,
-        VulkanReplayFrameLoopConsumerBodyGeneratorOptions(
-            filename='generated_vulkan_replay_frame_loop_consumer.cpp',
+    gen_opts['generated_vulkan_replay_frame_loop_consumer_base.cpp'] = [
+        VulkanReplayFrameLoopConsumerBaseBodyGenerator,
+        VulkanReplayFrameLoopConsumerBaseBodyGeneratorOptions(
+            filename='generated_vulkan_replay_frame_loop_consumer_base.cpp',
             directory=directory,
             blacklists=blacklists,
             replay_frame_loop_overrides=replay_frame_loop_overrides,   # TODO: figure this out

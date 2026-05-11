@@ -25,8 +25,8 @@ import sys
 from khronos_base_generator import write
 
 
-class KhronosFrameLoopConsumerHeaderGenerator():
-    """KhronosConsumerHeaderGenerator
+class KhronosFrameLoopConsumerBaseHeaderGenerator():
+    """KhronosConsumerBHeaderGenerator  TODO:... Fixt this
     Generates C++ member declarations for the appropriate consumer class responsible
     for processing the current Khronos API call parameter data.
     """
@@ -42,29 +42,34 @@ class KhronosFrameLoopConsumerHeaderGenerator():
     def write_class_setup(self, class_name, constructor_args):
         print("QQQ2 self.REPLAY_FRAME_LOOP_OVERRIDES=", ascii(self.REPLAY_FRAME_LOOP_OVERRIDES))
         write(
-            'class {class_name} : public {class_name}Base'.format(
+            #'AAAclass {class_name} : public {class_name}Base'.format(  DELETE ME
+            'class {class_name} : public VulkanReplayConsumer'.format(
                 class_name=class_name
             ),
             file=self.outFile
         )
         write('{', file=self.outFile)
         write('  public:', file=self.outFile)
-        if constructor_args:
-            arg_list = ', '.join(
-                [arg.split(' ')[-1] for arg in constructor_args.split(',')]
-            )
-            write(
-                '    {class_name}({}) : {class_name}Base({}) {{ }}\n'.format(
-                    constructor_args, arg_list, class_name=class_name
-                ),
-                file=self.outFile
-            )
-        else:
-            write('    {}() {{ }}\n'.format(class_name), file=self.outFile)
-        write(
-            '    virtual ~{}() override {{ }}'.format(class_name),
-            file=self.outFile
-        )
+        # We don't generate a constructor (it is manually written). So we ignore constructor_args.
+        # TODO: Can we remove constructor_args?
+        # TODO: Delete this code...
+        #if constructor_args:
+        #    arg_list = ', '.join(
+        #        [arg.split(' ')[-1] for arg in constructor_args.split(',')]
+        #    )
+        #    write(
+        #        '    {class_name}({}) : {class_name}Base({}) {{ }}\n'.format(
+        #            constructor_args, arg_list, class_name=class_name
+        #        ),
+        #        file=self.outFile
+        #    )
+        #else:
+        #    write('    {}() {{ }}\n'.format(class_name), file=self.outFile)
+        # We don't generate a destructor (it is manually written).
+        #write(
+        #    '    virtual ~{}() override {{ }}'.format(class_name),
+        #    file=self.outFile
+        #)
 
     def write_class_completion(self):
         print("QQQ3 self.REPLAY_FRAME_LOOP_OVERRIDES=", ascii(self.REPLAY_FRAME_LOOP_OVERRIDES))
@@ -86,13 +91,17 @@ class KhronosFrameLoopConsumerHeaderGenerator():
             )
 
             cmddef = '\n'
+            # TODO: Shoudl is_override even be checked? Should always be override??
             if self.genOpts.is_override:
                 cmddef += self.indent(
-                    'virtual ' + decl + ' override;', self.INDENT_SIZE
+                    # TODO: Was this... Can I delete virtual??
+                    #'virtual ' + decl + ' override;', self.INDENT_SIZE
+                    decl + ' override;', self.INDENT_SIZE
                 )
             else:
                 cmddef += self.indent(
-                    'virtual ' + decl + ' {}', self.INDENT_SIZE
+                    # TODO: Was this... Can I delete virtual??
+                    decl + ' {}', self.INDENT_SIZE
                 )
 
             write(cmddef, file=self.outFile)
