@@ -24,6 +24,8 @@
 #define GFXRECON_DECODE_VULKAN_REPLAY_FRAME_LOOP_CONSUMER_H
 
 #include "util/defines.h"
+#include "decode/vulkan_replay_consumer_base.h"
+#include "generated/generated_vulkan_replay_consumer.h"
 #include "generated/generated_vulkan_replay_frame_loop_consumer_base.h"
 
 GFXRECON_BEGIN_NAMESPACE(gfxrecon)

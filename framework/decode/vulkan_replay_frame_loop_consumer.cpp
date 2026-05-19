@@ -20,9 +20,8 @@
 ** DEALINGS IN THE SOFTWARE.
 */
 
-#include "decode/vulkan_replay_frame_loop_consumer.h"
-
 #include "generated/generated_vulkan_replay_consumer.h"
+#include "decode/vulkan_replay_frame_loop_consumer.h"
 
 GFXRECON_BEGIN_NAMESPACE(gfxrecon)
 GFXRECON_BEGIN_NAMESPACE(decode)
