@@ -26,6 +26,8 @@
 GFXRECON_BEGIN_NAMESPACE(gfxrecon)
 GFXRECON_BEGIN_NAMESPACE(decode)
 
+//VulkanReplayFrameLoopConsumer::VulkanReplayFrameLoopConsumer(void) {}
+
 void VulkanReplayFrameLoopConsumer::Process_vkCreateInstance(
     const ApiCallInfo&                                   call_info,
     VkResult                                             returnValue,
