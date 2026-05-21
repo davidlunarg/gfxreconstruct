@@ -47,7 +47,13 @@ class VulkanReplayFrameLoopConsumerBase : public VulkanReplayConsumer
 {
   public:
 
-    VulkanReplayFrameLoopConsumerBase(std::shared_ptr<application::Application> application, const VulkanReplayOptions& options,graphics::FrameLoopInfo& frame_loop_info) : VulkanReplayConsumer(application, options), frame_loop_info_(frame_loop_info) { }
+    VulkanReplayFrameLoopConsumerBase(std::shared_ptr<application::Application> application,
+                                      const VulkanReplayOptions& options,
+                                      graphics::FrameLoopInfo& frame_loop_info);
+
+    //VulkanReplayFrameLoopConsumerBase(std::shared_ptr<application::Application> application,
+    //                                  const VulkanReplayOptions& options,
+    //                                  graphics::FrameLoopInfo& frame_loop_info) : VulkanReplayConsumer(application, options), frame_loop_info_(frame_loop_info) { }
 
     virtual ~VulkanReplayFrameLoopConsumerBase() override { }
 

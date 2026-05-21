@@ -40,11 +40,12 @@ class VulkanReplayFrameLoopConsumer : public VulkanReplayFrameLoopConsumerBase
     VulkanReplayFrameLoopConsumer(std::shared_ptr<application::Application> application,
                                   const VulkanReplayOptions&                options,
                                   graphics::FrameLoopInfo&                  frame_loop_info)
-        //:
-        //VulkanFrameLoopReplayConsumerBase(application, options, frame_loop_info)
-        //,
-        //frame_loop_info_(frame_loop_info)
-    {}
+        ;
+//      :
+//      VulkanFrameLoopReplayConsumerBase(application, options, frame_loop_info)
+//      //,
+//      //frame_loop_info_(frame_loop_info)
+//    {}
     
 
     void Process_vkCreateInstance(const ApiCallInfo&                                   call_info,
@@ -156,8 +157,8 @@ class VulkanReplayFrameLoopConsumer : public VulkanReplayFrameLoopConsumerBase
                                      StructPointerDecoder<Decoded_VkAllocationCallbacks>*   pAllocator,
                                      HandlePointerDecoder<VkCommandPool>*                   pCommandPool) override;
 
-  private:
-    graphics::FrameLoopInfo& frame_loop_info_;
+  //private:
+  //  graphics::FrameLoopInfo& frame_loop_info_;
 };
 
 GFXRECON_END_NAMESPACE(decode)
