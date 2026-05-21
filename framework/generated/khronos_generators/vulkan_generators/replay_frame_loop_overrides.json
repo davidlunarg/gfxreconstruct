@@ -17,6 +17,7 @@
         "vkCreateSwapchainKHR": "OverrideCreateSwapchainKHR"
   },
   "functions":  {
+        "vkCreateInstance": "OverrideCreateInstance"
   },
   "transfer": [
       "NotUsed...DeleteMe?",

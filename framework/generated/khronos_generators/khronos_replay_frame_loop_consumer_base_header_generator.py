@@ -75,8 +75,13 @@ class KhronosFrameLoopConsumerBaseHeaderGenerator():
         """Method may be overridden."""
         print("QQQ4 self.REPLAY_FRAME_LOOP_OVERRIDES=", ascii(self.REPLAY_FRAME_LOOP_OVERRIDES))
         for cmd in self.get_all_filtered_cmd_names():
-            if self.skip_generating_command(cmd):
+            #if self.skip_generating_command(cmd):
+            # TODO: this check is backwards (or badly named)
+            if not self.skip_generating_command(cmd):
+                print("222GGG header skipping ", cmd)
                 continue
+
+            print("222GGG header generating ", cmd)
 
             info = self.all_cmd_params[cmd]
             return_type = info[0]

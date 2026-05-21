@@ -33,31 +33,20 @@
 GFXRECON_BEGIN_NAMESPACE(gfxrecon)
 GFXRECON_BEGIN_NAMESPACE(decode)
 
-VulkanReplayFrameLoopConsumerBase::VulkanReplayFrameLoopConsumerBase(
-    std::shared_ptr<application::Application> application,
-    const VulkanReplayOptions& options,
-    graphics::FrameLoopInfo& frame_loop_info) : VulkanReplayConsumer(application, options), frame_loop_info_(frame_loop_info)
-    { }
 
-void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDevice(
-    const ApiCallInfo&                                   call_info,
-    VkResult                                             returnValue,
-    format::HandleId                                     physicalDevice,
-    StructPointerDecoder<Decoded_VkDeviceCreateInfo>*    pCreateInfo,
+void VulkanReplayFrameLoopConsumer::Process_vkCreateInstance(
+    const ApiCallInfo&                          call_info,
+    VkResult                                    returnValue,
+    StructPointerDecoder<Decoded_VkInstanceCreateInfo>* pCreateInfo,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
-    HandlePointerDecoder<VkDevice>*                      pDevice)
+    HandlePointerDecoder<VkInstance>*           pInstance)
 {
-    printf("@@@In CreateDevice...");
     if (frame_loop_info_.IsRepetition())
     {
-        // When repeating a frame, the device has already been created during the first iteration of the frame.
         return;
     }
-    VulkanReplayConsumer::Process_vkCreateDevice(
-        call_info, returnValue, physicalDevice, pCreateInfo, pAllocator, pDevice);
+    VulkanReplayConsumer::vkCreateInstance(pCreateInfo, pAllocator, pInstance);
 }
-
-
 
 GFXRECON_END_NAMESPACE(decode)
 GFXRECON_END_NAMESPACE(gfxrecon)
