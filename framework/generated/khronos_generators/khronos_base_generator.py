@@ -699,13 +699,11 @@ class KhronosBaseGenerator(OutputGenerator):
         
         if replay_frame_loop_overrides_filename is not None:
 
-            print("RFLOF=",replay_frame_loop_overrides_filename)
             frame_loop_overrides = json.loads(
                 open(replay_frame_loop_overrides_filename , 'r').read()
             )
             self.REPLAY_FRAME_LOOP_OVERRIDES = frame_loop_overrides[
                 'functions']        #TODO: Don't use 'functions'??
-            print("SSSS self.REPLAY_FRAME_LOOP_OVERRIDES=",self.REPLAY_FRAME_LOOP_OVERRIDES)
 
         if dump_resources_overrides_filename is not None:
             dump_resources_overrides = json.loads(
@@ -743,13 +741,10 @@ class KhronosBaseGenerator(OutputGenerator):
         b2 = (gen_opts.replay_frame_loop_overrides is not None)
         b3 = (gen_opts.dump_resources_overrides is not None)
         b4 = (gen_opts.replay_async_overrides is not None)
-        print("QQQQ", b1, b2, b3, b4)
         if (
             gen_opts.replay_overrides or gen_opts.replay_frame_loop_overrides or
             gen_opts.dump_resources_overrides or gen_opts.replay_async_overrides
         ):
-            print("TTTT calling self.__load_replay_overrides")
-            print("TTTT ", ascii(gen_opts.replay_frame_loop_overrides))
             self.__load_replay_overrides(
                 gen_opts.replay_overrides,
                 gen_opts.replay_frame_loop_overrides,

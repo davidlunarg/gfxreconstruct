@@ -51,10 +51,6 @@ class VulkanFrameLoopConsumerBaseHeaderGeneratorOptions(VulkanBaseGeneratorOptio
         extra_headers=[],
         replay_frame_loop_overrides=None
     ):
-        print("@@@ZZZ1, is_override=", ascii(is_override))
-        print("@@@ZZZ1, replay_frame_loop_overrides=",ascii(replay_frame_loop_overrides))
-        #print("@@@ZZZ1, self.REPLAY_FRAME_LOOP_OVERRIDES=",ascii(self.REPLAY_FRAME_LOOP_OVERRIDES))    It doesn't exist here
-        #traceback.print_stack()
         VulkanBaseGeneratorOptions.__init__(
             self,
             blacklists,
@@ -90,7 +86,6 @@ class VulkanFrameLoopConsumerBaseHeaderGenerator(VulkanBaseGenerator, KhronosFra
     def __init__(
         self, err_file=sys.stderr, warn_file=sys.stderr, diag_file=sys.stdout
     ):
-        print("@@@ZZZ2")
         VulkanBaseGenerator.__init__(
             self,
             err_file=err_file,
@@ -101,7 +96,6 @@ class VulkanFrameLoopConsumerBaseHeaderGenerator(VulkanBaseGenerator, KhronosFra
 
     def endFile(self):
         """Method override."""
-        print("@@@ZZZ3")
         KhronosFrameLoopConsumerBaseHeaderGenerator.output_header_contents(
             self, self.genOpts.class_name, self.genOpts.constructor_args)
 

@@ -33,14 +33,12 @@ class KhronosFrameLoopConsumerBaseHeaderGenerator():
 
     def skip_generating_command(self, command):
         """ Method may be overridden. """
-        print("QQQ1 self.REPLAY_FRAME_LOOP_OVERRIDES=", ascii(self.REPLAY_FRAME_LOOP_OVERRIDES))
         # DON"T USE THIS FUNC, should use self.REPLAY_FRAME_LOOP_OVERRIDES.. but its currently not set
         return (command in self.REPLAY_FRAME_LOOP_OVERRIDES)  # ????
         #return (self.REPLAY_FRAME_LOOP_OVERRIDES[command] == None)  # ???? WRONG
         #return self.is_manually_generated_cmd_name(command)
 
     def write_class_setup(self, class_name, constructor_args):
-        print("QQQ2 self.REPLAY_FRAME_LOOP_OVERRIDES=", ascii(self.REPLAY_FRAME_LOOP_OVERRIDES))
         write(
             #'AAAclass {class_name} : public {class_name}Base'.format(  DELETE ME
             'class {class_name} : public VulkanReplayConsumer'.format(
@@ -80,15 +78,11 @@ class KhronosFrameLoopConsumerBaseHeaderGenerator():
 
     def write_class_contents(self):
         """Method may be overridden."""
-        print("QQQ4 self.REPLAY_FRAME_LOOP_OVERRIDES=", ascii(self.REPLAY_FRAME_LOOP_OVERRIDES))
         for cmd in self.get_all_filtered_cmd_names():
             #if self.skip_generating_command(cmd):
             # TODO: this check is backwards (or badly named)
             if not self.skip_generating_command(cmd):
-                print("222GGG header skipping ", cmd)
                 continue
-
-            print("222GGG header generating ", cmd)
 
             info = self.all_cmd_params[cmd]
             return_type = info[0]
@@ -99,7 +93,7 @@ class KhronosFrameLoopConsumerBaseHeaderGenerator():
             )
 
             cmddef = '\n'
-            # TODO: Shoudl is_override even be checked? Should always be override??
+            # TODO: Should is_override even be checked?
             if self.genOpts.is_override:
                 cmddef += self.indent(
                     # TODO: Was this... Can I delete virtual??
@@ -115,7 +109,6 @@ class KhronosFrameLoopConsumerBaseHeaderGenerator():
             write(cmddef, file=self.outFile)
 
     def output_header_contents(self, class_name, constructor_args):
-        #print("QQQ5 self.REPLAY_FRAME_LOOP_OVERRIDES=", ascii(self.REPLAY_FRAME_LOOP_OVERRIDES))
         self.write_class_setup(class_name, constructor_args)
         self.write_class_contents()
         self.write_class_completion()
