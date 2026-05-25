@@ -54,12 +54,18 @@ class KhronosFrameLoopConsumerBaseHeaderGenerator():
             arg_list = ', '.join(
                 [arg.split(' ')[-1] for arg in constructor_args.split(',')]
             )
+            # KLUDGES:
+            # We remove the last arg in call to VulkanReplayConsumer ctor.
+            # frame_loop_info_ initialize is hardcoded.
+            arg_list=arg_list.rpartition(",")[0]
             write(
-                '    {class_name}({}) : VulkanReplayConsumer({}) {{ }}\n'.format(
+                '    {class_name}({}) :\n        VulkanReplayConsumer({}),'.format(
                     constructor_args, arg_list, class_name=class_name
                 ),
                 file=self.outFile
             )
+            write(
+                '        frame_loop_info_(frame_loop_info) { }\n', file=self.outFile)
         else:
             write('    {}() {{ }}\n'.format(class_name), file=self.outFile)
         write(
@@ -68,7 +74,8 @@ class KhronosFrameLoopConsumerBaseHeaderGenerator():
         )
 
     def write_class_completion(self):
-        print("QQQ3 self.REPLAY_FRAME_LOOP_OVERRIDES=", ascii(self.REPLAY_FRAME_LOOP_OVERRIDES))
+        write("  protected:\n", file=self.outFile)
+        write("    graphics::FrameLoopInfo& frame_loop_info_;\n", file=self.outFile)
         write('};', file=self.outFile)
 
     def write_class_contents(self):

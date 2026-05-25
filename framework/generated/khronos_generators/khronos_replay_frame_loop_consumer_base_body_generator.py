@@ -187,8 +187,8 @@ class KhronosReplayFrameLoopConsumerBaseBodyGenerator():
            body += '        return;\n'
            body += '    }\n'
            # Output a function call to replay consumer
-           body += '    VulkanReplayConsumer::'+name+'('
-           args=[]
+           body += '    VulkanReplayConsumer::Process_'+name+'('
+           args=['call_info', 'returnValue']
            [ args.append(value.name) for value in values ]
            body += ", ".join(args) + ');\n'
            return body
@@ -328,7 +328,7 @@ class KhronosReplayFrameLoopConsumerBaseBodyGenerator():
             else:
                 cmddef += self.make_consumer_func_decl(
                     return_type,
-                    '{}ReplayFrameLoopConsumer::Process_'.format(platform_type) + cmd,
+                    '{}ReplayFrameLoopConsumerBase::Process_'.format(platform_type) + cmd,
                     values
                 ) + '\n'
             cmddef += '{\n'

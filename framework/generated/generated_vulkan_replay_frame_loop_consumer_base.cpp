@@ -45,8 +45,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateInstance(
     {
         return;
     }
-    VulkanReplayConsumer::Process_vkCreateInstance(
-         call_info, returnValue, pCreateInfo, pAllocator, pInstance);
+    VulkanReplayConsumer::Process_vkCreateInstance(call_info, returnValue, pCreateInfo, pAllocator, pInstance);
 }
 
 GFXRECON_END_NAMESPACE(decode)
