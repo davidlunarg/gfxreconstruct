@@ -21,17 +21,19 @@
 */
 
 #include "generated/generated_vulkan_replay_consumer.h"
+#include "generated/generated_vulkan_replay_frame_loop_consumer_base.h"
 #include "decode/vulkan_replay_frame_loop_consumer.h"
 
 GFXRECON_BEGIN_NAMESPACE(gfxrecon)
 GFXRECON_BEGIN_NAMESPACE(decode)
 
-VulkanReplayFrameLoopConsumer::VulkanReplayFrameLoopConsumer(
-    std::shared_ptr<application::Application> application,
-    const VulkanReplayOptions&                options,
-    graphics::FrameLoopInfo&                  frame_loop_info) :
-    VulkanReplayFrameLoopConsumerBase(application, options, frame_loop_info) 
-{ }
+//VulkanReplayFrameLoopConsumer::VulkanReplayFrameLoopConsumer(
+//    std::shared_ptr<application::Application> application,
+//    const VulkanReplayOptions&                options,
+//    graphics::FrameLoopInfo&                  frame_loop_info) :
+//    VulkanReplayFrameLoopConsumerBase(application, options),
+//    frame_loop_info_(frame_loop_info)
+//{}
 
 void VulkanReplayFrameLoopConsumer::Process_vkCreateInstance(
     const ApiCallInfo&                                   call_info,
@@ -228,7 +230,6 @@ void VulkanReplayFrameLoopConsumer::Process_vkCreateDisplayPlaneSurfaceKHR(
         call_info, returnValue, instance, pCreateInfo, pAllocator, pSurface);
 }
 
-#if 0
 void VulkanReplayFrameLoopConsumer::Process_vkCreateDevice(
     const ApiCallInfo&                                   call_info,
     VkResult                                             returnValue,
@@ -246,7 +247,6 @@ void VulkanReplayFrameLoopConsumer::Process_vkCreateDevice(
     VulkanReplayConsumer::Process_vkCreateDevice(
         call_info, returnValue, physicalDevice, pCreateInfo, pAllocator, pDevice);
 }
-#endif
 
 void VulkanReplayFrameLoopConsumer::Process_vkCreateSwapchainKHR(
     const ApiCallInfo&                                      call_info,

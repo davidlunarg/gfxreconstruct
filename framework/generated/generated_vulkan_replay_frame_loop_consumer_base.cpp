@@ -34,7 +34,7 @@ GFXRECON_BEGIN_NAMESPACE(gfxrecon)
 GFXRECON_BEGIN_NAMESPACE(decode)
 
 
-void VulkanReplayFrameLoopConsumer::Process_vkCreateInstance(
+void VulkanReplayFrameLoopConsumerBase::Process_vkCreateInstance(
     const ApiCallInfo&                          call_info,
     VkResult                                    returnValue,
     StructPointerDecoder<Decoded_VkInstanceCreateInfo>* pCreateInfo,
@@ -45,7 +45,8 @@ void VulkanReplayFrameLoopConsumer::Process_vkCreateInstance(
     {
         return;
     }
-    VulkanReplayConsumer::vkCreateInstance(pCreateInfo, pAllocator, pInstance);
+    VulkanReplayConsumer::Process_vkCreateInstance(
+         call_info, returnValue, pCreateInfo, pAllocator, pInstance);
 }
 
 GFXRECON_END_NAMESPACE(decode)
