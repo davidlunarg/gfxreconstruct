@@ -178,129 +178,27 @@ class KhronosReplayFrameLoopConsumerBaseBodyGenerator():
         Return ReplayFrameLoopConsumerBase class member function definition.
         """
         body = ''
-        is_override = name in self.REPLAY_FRAME_LOOP_RESOURCE_ALLOCATE_OVERRIDES
-        is_dump_resources = self.is_dump_resources_api_call(name)
-        is_dump_resources_transfer = name in self.DUMP_RESOURCES_TRANSFER_API_CALLS
-        if is_override:
+
+        if name in self.REPLAY_FRAME_LOOP_RESOURCE_ALLOCATE_OVERRIDES:
+           body += '    // Return if not the first time through loop\n'
            body += '    if (frame_loop_info_.IsRepetition())\n'
-           body += '    {\n'
-           body += '        return;\n'
-           body += '    }\n'
-           # Output a function call to replay consumer
-           body += '    VulkanReplayConsumer::Process_'+name+'('
-           args=['call_info']
-           if return_type != 'void':
-               args.append('returnValue')
-           [ args.append(value.name) for value in values ]
-           body += ", ".join(args) + ');\n'
-           return body
-
-        is_skip_offscreen = True
-
-        #TODO: REMOVE THIS??
-        # function 'can' use asynchronous control-flow
-        is_async = name in self.REPLAY_ASYNC_OVERRIDES
-
-        for key in self.NOT_SKIP_FUNCTIONS_OFFSCREEN:
-            if key in name:
-                is_skip_offscreen = False
-                break
-
-        if is_skip_offscreen:
-            body += self.check_skip_offscreen(values, name)
-
-        args, preexpr, postexpr, push_handleid_expr = self.make_body_expression(
-            api_data, return_type, name, values, is_override
-        )
-        arglist = ', '.join(args)
-
-        dispatchfunc = ''
-        if not self.is_core_type(name):
-            object_name = args[0]
-            object_name_is_handle = False
-            if self.use_instance_table(name, values[0].base_type):
-                dispatchfunc = 'GetInstanceTable'
-                if api_data.has_device and values[0].base_type == api_data.device_type:
-                    object_name, device_items = self.handle_instance_device_items()
-                    preexpr.extend(device_items)
-                    object_name_is_handle = True
-            else:
-                dispatchfunc = 'GetDeviceTable'
-
-            if is_override and not object_name_is_handle:
-                dispatchfunc += '({}->handle)->{}'.format(object_name, name[2:])
-            else:
-                dispatchfunc += '({})->{}'.format(object_name, name[2:])
-
-        call_expr = ''
-
-        if is_override:
-            if self.is_core_create_command(name, True):
-                call_expr = '{}(returnValue, {})'.format(
-                    self.REPLAY_FRAME_LOOP_RESOURCE_ALLOCATE_OVERRIDES[name], arglist
-                )
-            elif self.is_custom_return_type(api_data, return_type):
-                call_expr = self.handle_custom_return_type(name, dispatchfunc, arglist)
-            else:
-                call_expr = '{}({}, {})'.format(
-                    self.REPLAY_FRAME_LOOP_RESOURCE_ALLOCATE_OVERRIDES[name], dispatchfunc, arglist
-                )
         else:
-            call_expr = '{}({})'.format(dispatchfunc, arglist)
+           # name in self.REPLAY_FRAME_LOOP_RESOURCE_FREE_OVERRIDES:
+           body += '    // Return for all loop iterations\n'
+           body += '    if (frame_loop_info_.IsLooping())\n'
 
-        if preexpr:
-            body += '\n'.join(
-                ['    ' + val if val else val for val in preexpr]
-            )
-            body += '\n'
-            body += '\n'
-
-            # Dump resources code generation
-            if is_dump_resources and is_dump_resources_transfer:
-                body += self.make_resource_dumper_call(api_data, name, values, is_override, is_dump_resources_transfer,
-                                                       return_type, dispatchfunc, arglist, True)
-
-        if return_type == api_data.return_type_enum:
-            if is_async:
-                body += '    if (UseAsyncOperations())\n'
-                body += '    {\n'
-                body += '        auto task = {}({}, returnValue, call_info, {});\n'.format(self.REPLAY_ASYNC_OVERRIDES[name], dispatchfunc, arglist)
-                body += '        if(task)\n'
-                body += '        {\n'
-                body += '           {}\n'.format(postexpr[0])
-                body += '           return;\n'
-                body += '        }\n'
-                body += '    }\n'
-                postexpr = postexpr[1:]  # drop async post-expression, don't repeat later
-
-            body += push_handleid_expr[0]
-            body += '    {} replay_result = {};\n'.format(api_data.return_type_enum, call_expr)
-            body += '    CheckResult("{}", returnValue, replay_result, call_info);\n'.format(name)
-        else:
-            body += push_handleid_expr[0]
-            body += '    {};\n'.format(call_expr)
-        body += push_handleid_expr[1]
-
-        # Dump resources code generation
-        if is_dump_resources:
-            body += self.make_resource_dumper_call(api_data, name, values, is_override, is_dump_resources_transfer,
-                                                   return_type, dispatchfunc, arglist, False)
-
-        if postexpr:
-            body += '\n'
-            body += '\n'.join(
-                ['    ' + val if val else val for val in postexpr]
-            )
-            body += '\n'
-
-        body += self.generate_custom_call(name, return_type, values)
-
-        cleanup_expr = self.generate_remove_handle_expression(name, values)
-        if cleanup_expr:
-            body += '    {}\n'.format(cleanup_expr)
-
+        body += '    {\n'
+        body += '        return;\n'
+        body += '    }\n'
+        # Output a function call to replay consumer
+        body += '    VulkanReplayConsumer::Process_'+name+'('
+        args=['call_info']
+        if return_type != 'void':
+            args.append('returnValue')
+        [ args.append(value.name) for value in values ]
+        body += ", ".join(args) + ');\n'
         return body
-
+       
     def generate_replay_consumer_content(self, api_data):
         """Performs C++ code generation for the replay frame loop consumer."""
         platform_type = api_data.api_class_prefix
@@ -309,9 +207,12 @@ class KhronosReplayFrameLoopConsumerBaseBodyGenerator():
 
         for cmd in self.get_all_filtered_cmd_names():
 
-            if cmd not in self.REPLAY_FRAME_LOOP_RESOURCE_ALLOCATE_OVERRIDES:
+            if ((cmd not in self.REPLAY_FRAME_LOOP_RESOURCE_ALLOCATE_OVERRIDES) and
+                (cmd not in self.REPLAY_FRAME_LOOP_RESOURCE_FREE_OVERRIDES)
+            ):
                 continue
 
+            # TODO: Remove??
             if self.is_resource_dump_class(
             ) and self.is_dump_resources_api_call(cmd) == False:
                 continue

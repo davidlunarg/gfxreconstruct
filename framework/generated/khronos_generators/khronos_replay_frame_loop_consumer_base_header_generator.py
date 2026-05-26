@@ -34,7 +34,8 @@ class KhronosFrameLoopConsumerBaseHeaderGenerator():
     def skip_generating_command(self, command):
         """ Method may be overridden. """
         # TODO: May also want to check the other flavor of overrides
-        return (command in self.REPLAY_FRAME_LOOP_RESOURCE_ALLOCATE_OVERRIDES)
+        return ((command in self.REPLAY_FRAME_LOOP_RESOURCE_ALLOCATE_OVERRIDES) or
+                (command in self.REPLAY_FRAME_LOOP_RESOURCE_FREE_OVERRIDES))
 
     def write_class_setup(self, class_name, constructor_args):
         write(
@@ -96,9 +97,10 @@ class KhronosFrameLoopConsumerBaseHeaderGenerator():
                 cmddef += self.indent(
                     # TODO: Was this... Can I delete virtual??
                     #'virtual ' + decl + ' override;', self.INDENT_SIZE
-                    decl + ' override;', self.INDENT_SIZE
+                    decl + ';', self.INDENT_SIZE
                 )
             else:
+                # TODO: Can the be removed? ...all funcs are override...
                 cmddef += self.indent(
                     # TODO: Was this... Can I delete virtual??
                     decl + ' {}', self.INDENT_SIZE

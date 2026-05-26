@@ -41,11 +41,25 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateInstance(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkInstance>*           pInstance)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkCreateInstance(call_info, returnValue, pCreateInfo, pAllocator, pInstance);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyInstance(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            instance,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkDestroyInstance(call_info, instance, pAllocator);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDevice(
@@ -56,11 +70,25 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDevice(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkDevice>*             pDevice)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkCreateDevice(call_info, returnValue, physicalDevice, pCreateInfo, pAllocator, pDevice);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDevice(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            device,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkDestroyDevice(call_info, device, pAllocator);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkAllocateMemory(
@@ -71,11 +99,26 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkAllocateMemory(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkDeviceMemory>*       pMemory)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkAllocateMemory(call_info, returnValue, device, pAllocateInfo, pAllocator, pMemory);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkFreeMemory(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            device,
+    format::HandleId                            memory,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkFreeMemory(call_info, device, memory, pAllocator);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkMapMemory(
@@ -88,11 +131,25 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkMapMemory(
     VkMemoryMapFlags                            flags,
     PointerDecoder<uint64_t, void*>*            ppData)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkMapMemory(call_info, returnValue, device, memory, offset, size, flags, ppData);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkUnmapMemory(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            device,
+    format::HandleId                            memory)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkUnmapMemory(call_info, device, memory);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkBindBufferMemory(
@@ -103,6 +160,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkBindBufferMemory(
     format::HandleId                            memory,
     VkDeviceSize                                memoryOffset)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
@@ -118,6 +176,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkBindImageMemory(
     format::HandleId                            memory,
     VkDeviceSize                                memoryOffset)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
@@ -133,6 +192,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkQueueBindSparse(
     StructPointerDecoder<Decoded_VkBindSparseInfo>* pBindInfo,
     format::HandleId                            fence)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
@@ -148,11 +208,26 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateFence(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkFence>*              pFence)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkCreateFence(call_info, returnValue, device, pCreateInfo, pAllocator, pFence);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyFence(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            device,
+    format::HandleId                            fence,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkDestroyFence(call_info, device, fence, pAllocator);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateSemaphore(
@@ -163,11 +238,26 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateSemaphore(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkSemaphore>*          pSemaphore)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkCreateSemaphore(call_info, returnValue, device, pCreateInfo, pAllocator, pSemaphore);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkDestroySemaphore(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            device,
+    format::HandleId                            semaphore,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkDestroySemaphore(call_info, device, semaphore, pAllocator);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateQueryPool(
@@ -178,11 +268,26 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateQueryPool(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkQueryPool>*          pQueryPool)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkCreateQueryPool(call_info, returnValue, device, pCreateInfo, pAllocator, pQueryPool);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyQueryPool(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            device,
+    format::HandleId                            queryPool,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkDestroyQueryPool(call_info, device, queryPool, pAllocator);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateBuffer(
@@ -193,11 +298,26 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateBuffer(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkBuffer>*             pBuffer)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkCreateBuffer(call_info, returnValue, device, pCreateInfo, pAllocator, pBuffer);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyBuffer(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            device,
+    format::HandleId                            buffer,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkDestroyBuffer(call_info, device, buffer, pAllocator);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateImage(
@@ -208,11 +328,26 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateImage(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkImage>*              pImage)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkCreateImage(call_info, returnValue, device, pCreateInfo, pAllocator, pImage);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyImage(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            device,
+    format::HandleId                            image,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkDestroyImage(call_info, device, image, pAllocator);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateImageView(
@@ -223,11 +358,26 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateImageView(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkImageView>*          pView)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkCreateImageView(call_info, returnValue, device, pCreateInfo, pAllocator, pView);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyImageView(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            device,
+    format::HandleId                            imageView,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkDestroyImageView(call_info, device, imageView, pAllocator);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateCommandPool(
@@ -238,11 +388,26 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateCommandPool(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkCommandPool>*        pCommandPool)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkCreateCommandPool(call_info, returnValue, device, pCreateInfo, pAllocator, pCommandPool);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyCommandPool(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            device,
+    format::HandleId                            commandPool,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkDestroyCommandPool(call_info, device, commandPool, pAllocator);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkAllocateCommandBuffers(
@@ -252,11 +417,27 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkAllocateCommandBuffers(
     StructPointerDecoder<Decoded_VkCommandBufferAllocateInfo>* pAllocateInfo,
     HandlePointerDecoder<VkCommandBuffer>*      pCommandBuffers)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkAllocateCommandBuffers(call_info, returnValue, device, pAllocateInfo, pCommandBuffers);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkFreeCommandBuffers(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            device,
+    format::HandleId                            commandPool,
+    uint32_t                                    commandBufferCount,
+    HandlePointerDecoder<VkCommandBuffer>*      pCommandBuffers)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkFreeCommandBuffers(call_info, device, commandPool, commandBufferCount, pCommandBuffers);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateEvent(
@@ -267,11 +448,26 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateEvent(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkEvent>*              pEvent)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkCreateEvent(call_info, returnValue, device, pCreateInfo, pAllocator, pEvent);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyEvent(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            device,
+    format::HandleId                            event,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkDestroyEvent(call_info, device, event, pAllocator);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateBufferView(
@@ -282,11 +478,26 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateBufferView(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkBufferView>*         pView)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkCreateBufferView(call_info, returnValue, device, pCreateInfo, pAllocator, pView);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyBufferView(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            device,
+    format::HandleId                            bufferView,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkDestroyBufferView(call_info, device, bufferView, pAllocator);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateShaderModule(
@@ -297,11 +508,26 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateShaderModule(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkShaderModule>*       pShaderModule)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkCreateShaderModule(call_info, returnValue, device, pCreateInfo, pAllocator, pShaderModule);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyShaderModule(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            device,
+    format::HandleId                            shaderModule,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkDestroyShaderModule(call_info, device, shaderModule, pAllocator);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreatePipelineCache(
@@ -312,11 +538,26 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreatePipelineCache(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkPipelineCache>*      pPipelineCache)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkCreatePipelineCache(call_info, returnValue, device, pCreateInfo, pAllocator, pPipelineCache);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyPipelineCache(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            device,
+    format::HandleId                            pipelineCache,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkDestroyPipelineCache(call_info, device, pipelineCache, pAllocator);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkMergePipelineCaches(
@@ -327,6 +568,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkMergePipelineCaches(
     uint32_t                                    srcCacheCount,
     HandlePointerDecoder<VkPipelineCache>*      pSrcCaches)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
@@ -344,11 +586,26 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateComputePipelines(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkPipeline>*           pPipelines)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkCreateComputePipelines(call_info, returnValue, device, pipelineCache, createInfoCount, pCreateInfos, pAllocator, pPipelines);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyPipeline(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            device,
+    format::HandleId                            pipeline,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkDestroyPipeline(call_info, device, pipeline, pAllocator);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreatePipelineLayout(
@@ -359,11 +616,26 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreatePipelineLayout(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkPipelineLayout>*     pPipelineLayout)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkCreatePipelineLayout(call_info, returnValue, device, pCreateInfo, pAllocator, pPipelineLayout);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyPipelineLayout(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            device,
+    format::HandleId                            pipelineLayout,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkDestroyPipelineLayout(call_info, device, pipelineLayout, pAllocator);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateSampler(
@@ -374,11 +646,26 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateSampler(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkSampler>*            pSampler)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkCreateSampler(call_info, returnValue, device, pCreateInfo, pAllocator, pSampler);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkDestroySampler(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            device,
+    format::HandleId                            sampler,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkDestroySampler(call_info, device, sampler, pAllocator);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDescriptorSetLayout(
@@ -389,11 +676,26 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDescriptorSetLayout(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkDescriptorSetLayout>* pSetLayout)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkCreateDescriptorSetLayout(call_info, returnValue, device, pCreateInfo, pAllocator, pSetLayout);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDescriptorSetLayout(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            device,
+    format::HandleId                            descriptorSetLayout,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkDestroyDescriptorSetLayout(call_info, device, descriptorSetLayout, pAllocator);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDescriptorPool(
@@ -404,11 +706,26 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDescriptorPool(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkDescriptorPool>*     pDescriptorPool)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkCreateDescriptorPool(call_info, returnValue, device, pCreateInfo, pAllocator, pDescriptorPool);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDescriptorPool(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            device,
+    format::HandleId                            descriptorPool,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkDestroyDescriptorPool(call_info, device, descriptorPool, pAllocator);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkAllocateDescriptorSets(
@@ -418,11 +735,28 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkAllocateDescriptorSets(
     StructPointerDecoder<Decoded_VkDescriptorSetAllocateInfo>* pAllocateInfo,
     HandlePointerDecoder<VkDescriptorSet>*      pDescriptorSets)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkAllocateDescriptorSets(call_info, returnValue, device, pAllocateInfo, pDescriptorSets);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkFreeDescriptorSets(
+    const ApiCallInfo&                          call_info,
+    VkResult                                    returnValue,
+    format::HandleId                            device,
+    format::HandleId                            descriptorPool,
+    uint32_t                                    descriptorSetCount,
+    HandlePointerDecoder<VkDescriptorSet>*      pDescriptorSets)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkFreeDescriptorSets(call_info, returnValue, device, descriptorPool, descriptorSetCount, pDescriptorSets);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateGraphicsPipelines(
@@ -435,6 +769,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateGraphicsPipelines(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkPipeline>*           pPipelines)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
@@ -450,11 +785,26 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateFramebuffer(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkFramebuffer>*        pFramebuffer)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkCreateFramebuffer(call_info, returnValue, device, pCreateInfo, pAllocator, pFramebuffer);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyFramebuffer(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            device,
+    format::HandleId                            framebuffer,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkDestroyFramebuffer(call_info, device, framebuffer, pAllocator);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateRenderPass(
@@ -465,11 +815,26 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateRenderPass(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkRenderPass>*         pRenderPass)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkCreateRenderPass(call_info, returnValue, device, pCreateInfo, pAllocator, pRenderPass);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyRenderPass(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            device,
+    format::HandleId                            renderPass,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkDestroyRenderPass(call_info, device, renderPass, pAllocator);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkBindBufferMemory2(
@@ -479,6 +844,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkBindBufferMemory2(
     uint32_t                                    bindInfoCount,
     StructPointerDecoder<Decoded_VkBindBufferMemoryInfo>* pBindInfos)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
@@ -493,6 +859,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkBindImageMemory2(
     uint32_t                                    bindInfoCount,
     StructPointerDecoder<Decoded_VkBindImageMemoryInfo>* pBindInfos)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
@@ -508,11 +875,26 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDescriptorUpdateTemplate
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkDescriptorUpdateTemplate>* pDescriptorUpdateTemplate)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkCreateDescriptorUpdateTemplate(call_info, returnValue, device, pCreateInfo, pAllocator, pDescriptorUpdateTemplate);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDescriptorUpdateTemplate(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            device,
+    format::HandleId                            descriptorUpdateTemplate,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkDestroyDescriptorUpdateTemplate(call_info, device, descriptorUpdateTemplate, pAllocator);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateSamplerYcbcrConversion(
@@ -523,11 +905,26 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateSamplerYcbcrConversion(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkSamplerYcbcrConversion>* pYcbcrConversion)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkCreateSamplerYcbcrConversion(call_info, returnValue, device, pCreateInfo, pAllocator, pYcbcrConversion);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkDestroySamplerYcbcrConversion(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            device,
+    format::HandleId                            ycbcrConversion,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkDestroySamplerYcbcrConversion(call_info, device, ycbcrConversion, pAllocator);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateRenderPass2(
@@ -538,6 +935,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateRenderPass2(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkRenderPass>*         pRenderPass)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
@@ -553,11 +951,26 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreatePrivateDataSlot(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkPrivateDataSlot>*    pPrivateDataSlot)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkCreatePrivateDataSlot(call_info, returnValue, device, pCreateInfo, pAllocator, pPrivateDataSlot);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyPrivateDataSlot(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            device,
+    format::HandleId                            privateDataSlot,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkDestroyPrivateDataSlot(call_info, device, privateDataSlot, pAllocator);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkMapMemory2(
@@ -567,11 +980,26 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkMapMemory2(
     StructPointerDecoder<Decoded_VkMemoryMapInfo>* pMemoryMapInfo,
     PointerDecoder<uint64_t, void*>*            ppData)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkMapMemory2(call_info, returnValue, device, pMemoryMapInfo, ppData);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkUnmapMemory2(
+    const ApiCallInfo&                          call_info,
+    VkResult                                    returnValue,
+    format::HandleId                            device,
+    StructPointerDecoder<Decoded_VkMemoryUnmapInfo>* pMemoryUnmapInfo)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkUnmapMemory2(call_info, returnValue, device, pMemoryUnmapInfo);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkTransitionImageLayout(
@@ -581,11 +1009,26 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkTransitionImageLayout(
     uint32_t                                    transitionCount,
     StructPointerDecoder<Decoded_VkHostImageLayoutTransitionInfo>* pTransitions)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkTransitionImageLayout(call_info, returnValue, device, transitionCount, pTransitions);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkDestroySurfaceKHR(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            instance,
+    format::HandleId                            surface,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkDestroySurfaceKHR(call_info, instance, surface, pAllocator);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateSwapchainKHR(
@@ -596,11 +1039,26 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateSwapchainKHR(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkSwapchainKHR>*       pSwapchain)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkCreateSwapchainKHR(call_info, returnValue, device, pCreateInfo, pAllocator, pSwapchain);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkDestroySwapchainKHR(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            device,
+    format::HandleId                            swapchain,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkDestroySwapchainKHR(call_info, device, swapchain, pAllocator);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDisplayModeKHR(
@@ -612,6 +1070,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDisplayModeKHR(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkDisplayModeKHR>*     pMode)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
@@ -627,6 +1086,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDisplayPlaneSurfaceKHR(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkSurfaceKHR>*         pSurface)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
@@ -643,6 +1103,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateSharedSwapchainsKHR(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkSwapchainKHR>*       pSwapchains)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
@@ -658,6 +1119,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateXlibSurfaceKHR(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkSurfaceKHR>*         pSurface)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
@@ -673,6 +1135,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateXcbSurfaceKHR(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkSurfaceKHR>*         pSurface)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
@@ -688,6 +1151,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateWaylandSurfaceKHR(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkSurfaceKHR>*         pSurface)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
@@ -703,6 +1167,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateAndroidSurfaceKHR(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkSurfaceKHR>*         pSurface)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
@@ -718,6 +1183,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateWin32SurfaceKHR(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkSurfaceKHR>*         pSurface)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
@@ -733,11 +1199,26 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateVideoSessionKHR(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkVideoSessionKHR>*    pVideoSession)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkCreateVideoSessionKHR(call_info, returnValue, device, pCreateInfo, pAllocator, pVideoSession);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyVideoSessionKHR(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            device,
+    format::HandleId                            videoSession,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkDestroyVideoSessionKHR(call_info, device, videoSession, pAllocator);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkBindVideoSessionMemoryKHR(
@@ -748,6 +1229,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkBindVideoSessionMemoryKHR(
     uint32_t                                    bindSessionMemoryInfoCount,
     StructPointerDecoder<Decoded_VkBindVideoSessionMemoryInfoKHR>* pBindSessionMemoryInfos)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
@@ -763,11 +1245,26 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateVideoSessionParametersKH
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkVideoSessionParametersKHR>* pVideoSessionParameters)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkCreateVideoSessionParametersKHR(call_info, returnValue, device, pCreateInfo, pAllocator, pVideoSessionParameters);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyVideoSessionParametersKHR(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            device,
+    format::HandleId                            videoSessionParameters,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkDestroyVideoSessionParametersKHR(call_info, device, videoSessionParameters, pAllocator);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkImportSemaphoreFdKHR(
@@ -776,6 +1273,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkImportSemaphoreFdKHR(
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkImportSemaphoreFdInfoKHR>* pImportSemaphoreFdInfo)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
@@ -791,11 +1289,26 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDescriptorUpdateTemplate
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkDescriptorUpdateTemplate>* pDescriptorUpdateTemplate)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkCreateDescriptorUpdateTemplateKHR(call_info, returnValue, device, pCreateInfo, pAllocator, pDescriptorUpdateTemplate);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDescriptorUpdateTemplateKHR(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            device,
+    format::HandleId                            descriptorUpdateTemplate,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkDestroyDescriptorUpdateTemplateKHR(call_info, device, descriptorUpdateTemplate, pAllocator);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateRenderPass2KHR(
@@ -806,6 +1319,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateRenderPass2KHR(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkRenderPass>*         pRenderPass)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
@@ -819,6 +1333,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkImportFenceFdKHR(
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkImportFenceFdInfoKHR>* pImportFenceFdInfo)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
@@ -832,11 +1347,24 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkAcquireProfilingLockKHR(
     format::HandleId                            device,
     StructPointerDecoder<Decoded_VkAcquireProfilingLockInfoKHR>* pInfo)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkAcquireProfilingLockKHR(call_info, returnValue, device, pInfo);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkReleaseProfilingLockKHR(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            device)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkReleaseProfilingLockKHR(call_info, device);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateSamplerYcbcrConversionKHR(
@@ -847,11 +1375,26 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateSamplerYcbcrConversionKH
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkSamplerYcbcrConversion>* pYcbcrConversion)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkCreateSamplerYcbcrConversionKHR(call_info, returnValue, device, pCreateInfo, pAllocator, pYcbcrConversion);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkDestroySamplerYcbcrConversionKHR(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            device,
+    format::HandleId                            ycbcrConversion,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkDestroySamplerYcbcrConversionKHR(call_info, device, ycbcrConversion, pAllocator);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkBindBufferMemory2KHR(
@@ -861,6 +1404,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkBindBufferMemory2KHR(
     uint32_t                                    bindInfoCount,
     StructPointerDecoder<Decoded_VkBindBufferMemoryInfo>* pBindInfos)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
@@ -875,6 +1419,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkBindImageMemory2KHR(
     uint32_t                                    bindInfoCount,
     StructPointerDecoder<Decoded_VkBindImageMemoryInfo>* pBindInfos)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
@@ -889,11 +1434,26 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDeferredOperationKHR(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkDeferredOperationKHR>* pDeferredOperation)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkCreateDeferredOperationKHR(call_info, returnValue, device, pAllocator, pDeferredOperation);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDeferredOperationKHR(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            device,
+    format::HandleId                            operation,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkDestroyDeferredOperationKHR(call_info, device, operation, pAllocator);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkMapMemory2KHR(
@@ -903,11 +1463,26 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkMapMemory2KHR(
     StructPointerDecoder<Decoded_VkMemoryMapInfo>* pMemoryMapInfo,
     PointerDecoder<uint64_t, void*>*            ppData)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkMapMemory2KHR(call_info, returnValue, device, pMemoryMapInfo, ppData);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkUnmapMemory2KHR(
+    const ApiCallInfo&                          call_info,
+    VkResult                                    returnValue,
+    format::HandleId                            device,
+    StructPointerDecoder<Decoded_VkMemoryUnmapInfo>* pMemoryUnmapInfo)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkUnmapMemory2KHR(call_info, returnValue, device, pMemoryUnmapInfo);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreatePipelineBinariesKHR(
@@ -918,11 +1493,55 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreatePipelineBinariesKHR(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     StructPointerDecoder<Decoded_VkPipelineBinaryHandlesInfoKHR>* pBinaries)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkCreatePipelineBinariesKHR(call_info, returnValue, device, pCreateInfo, pAllocator, pBinaries);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyPipelineBinaryKHR(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            device,
+    format::HandleId                            pipelineBinary,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkDestroyPipelineBinaryKHR(call_info, device, pipelineBinary, pAllocator);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkReleaseCapturedPipelineDataKHR(
+    const ApiCallInfo&                          call_info,
+    VkResult                                    returnValue,
+    format::HandleId                            device,
+    StructPointerDecoder<Decoded_VkReleaseCapturedPipelineDataInfoKHR>* pInfo,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkReleaseCapturedPipelineDataKHR(call_info, returnValue, device, pInfo, pAllocator);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkReleaseSwapchainImagesKHR(
+    const ApiCallInfo&                          call_info,
+    VkResult                                    returnValue,
+    format::HandleId                            device,
+    StructPointerDecoder<Decoded_VkReleaseSwapchainImagesInfoKHR>* pReleaseInfo)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkReleaseSwapchainImagesKHR(call_info, returnValue, device, pReleaseInfo);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDebugReportCallbackEXT(
@@ -933,11 +1552,26 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDebugReportCallbackEXT(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkDebugReportCallbackEXT>* pCallback)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkCreateDebugReportCallbackEXT(call_info, returnValue, instance, pCreateInfo, pAllocator, pCallback);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDebugReportCallbackEXT(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            instance,
+    format::HandleId                            callback,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkDestroyDebugReportCallbackEXT(call_info, instance, callback, pAllocator);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateStreamDescriptorSurfaceGGP(
@@ -948,6 +1582,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateStreamDescriptorSurfaceG
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkSurfaceKHR>*         pSurface)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
@@ -963,11 +1598,26 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateViSurfaceNN(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkSurfaceKHR>*         pSurface)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkCreateViSurfaceNN(call_info, returnValue, instance, pCreateInfo, pAllocator, pSurface);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkReleaseDisplayEXT(
+    const ApiCallInfo&                          call_info,
+    VkResult                                    returnValue,
+    format::HandleId                            physicalDevice,
+    format::HandleId                            display)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkReleaseDisplayEXT(call_info, returnValue, physicalDevice, display);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkRegisterDeviceEventEXT(
@@ -978,6 +1628,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkRegisterDeviceEventEXT(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkFence>*              pFence)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
@@ -994,6 +1645,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkRegisterDisplayEventEXT(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkFence>*              pFence)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
@@ -1009,6 +1661,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateIOSSurfaceMVK(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkSurfaceKHR>*         pSurface)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
@@ -1024,6 +1677,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateMacOSSurfaceMVK(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkSurfaceKHR>*         pSurface)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
@@ -1039,11 +1693,26 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDebugUtilsMessengerEXT(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkDebugUtilsMessengerEXT>* pMessenger)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkCreateDebugUtilsMessengerEXT(call_info, returnValue, instance, pCreateInfo, pAllocator, pMessenger);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDebugUtilsMessengerEXT(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            instance,
+    format::HandleId                            messenger,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkDestroyDebugUtilsMessengerEXT(call_info, instance, messenger, pAllocator);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateValidationCacheEXT(
@@ -1054,11 +1723,26 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateValidationCacheEXT(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkValidationCacheEXT>* pValidationCache)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkCreateValidationCacheEXT(call_info, returnValue, device, pCreateInfo, pAllocator, pValidationCache);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyValidationCacheEXT(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            device,
+    format::HandleId                            validationCache,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkDestroyValidationCacheEXT(call_info, device, validationCache, pAllocator);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateAccelerationStructureNV(
@@ -1069,11 +1753,26 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateAccelerationStructureNV(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkAccelerationStructureNV>* pAccelerationStructure)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkCreateAccelerationStructureNV(call_info, returnValue, device, pCreateInfo, pAllocator, pAccelerationStructure);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyAccelerationStructureNV(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            device,
+    format::HandleId                            accelerationStructure,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkDestroyAccelerationStructureNV(call_info, device, accelerationStructure, pAllocator);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkBindAccelerationStructureMemoryNV(
@@ -1083,6 +1782,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkBindAccelerationStructureMemor
     uint32_t                                    bindInfoCount,
     StructPointerDecoder<Decoded_VkBindAccelerationStructureMemoryInfoNV>* pBindInfos)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
@@ -1100,11 +1800,26 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateRayTracingPipelinesNV(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkPipeline>*           pPipelines)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkCreateRayTracingPipelinesNV(call_info, returnValue, device, pipelineCache, createInfoCount, pCreateInfos, pAllocator, pPipelines);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkReleasePerformanceConfigurationINTEL(
+    const ApiCallInfo&                          call_info,
+    VkResult                                    returnValue,
+    format::HandleId                            device,
+    format::HandleId                            configuration)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkReleasePerformanceConfigurationINTEL(call_info, returnValue, device, configuration);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateImagePipeSurfaceFUCHSIA(
@@ -1115,6 +1830,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateImagePipeSurfaceFUCHSIA(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkSurfaceKHR>*         pSurface)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
@@ -1130,11 +1846,26 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateMetalSurfaceEXT(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkSurfaceKHR>*         pSurface)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkCreateMetalSurfaceEXT(call_info, returnValue, instance, pCreateInfo, pAllocator, pSurface);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkReleaseFullScreenExclusiveModeEXT(
+    const ApiCallInfo&                          call_info,
+    VkResult                                    returnValue,
+    format::HandleId                            device,
+    format::HandleId                            swapchain)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkReleaseFullScreenExclusiveModeEXT(call_info, returnValue, device, swapchain);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateHeadlessSurfaceEXT(
@@ -1145,11 +1876,26 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateHeadlessSurfaceEXT(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkSurfaceKHR>*         pSurface)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkCreateHeadlessSurfaceEXT(call_info, returnValue, instance, pCreateInfo, pAllocator, pSurface);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkReleaseSwapchainImagesEXT(
+    const ApiCallInfo&                          call_info,
+    VkResult                                    returnValue,
+    format::HandleId                            device,
+    StructPointerDecoder<Decoded_VkReleaseSwapchainImagesInfoKHR>* pReleaseInfo)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkReleaseSwapchainImagesEXT(call_info, returnValue, device, pReleaseInfo);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateIndirectCommandsLayoutNV(
@@ -1160,11 +1906,26 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateIndirectCommandsLayoutNV
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkIndirectCommandsLayoutNV>* pIndirectCommandsLayout)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkCreateIndirectCommandsLayoutNV(call_info, returnValue, device, pCreateInfo, pAllocator, pIndirectCommandsLayout);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyIndirectCommandsLayoutNV(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            device,
+    format::HandleId                            indirectCommandsLayout,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkDestroyIndirectCommandsLayoutNV(call_info, device, indirectCommandsLayout, pAllocator);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreatePrivateDataSlotEXT(
@@ -1175,11 +1936,26 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreatePrivateDataSlotEXT(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkPrivateDataSlot>*    pPrivateDataSlot)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkCreatePrivateDataSlotEXT(call_info, returnValue, device, pCreateInfo, pAllocator, pPrivateDataSlot);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyPrivateDataSlotEXT(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            device,
+    format::HandleId                            privateDataSlot,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkDestroyPrivateDataSlotEXT(call_info, device, privateDataSlot, pAllocator);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDirectFBSurfaceEXT(
@@ -1190,6 +1966,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDirectFBSurfaceEXT(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkSurfaceKHR>*         pSurface)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
@@ -1205,6 +1982,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateScreenSurfaceQNX(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkSurfaceKHR>*         pSurface)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
@@ -1220,11 +1998,26 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateMicromapEXT(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkMicromapEXT>*        pMicromap)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkCreateMicromapEXT(call_info, returnValue, device, pCreateInfo, pAllocator, pMicromap);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyMicromapEXT(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            device,
+    format::HandleId                            micromap,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkDestroyMicromapEXT(call_info, device, micromap, pAllocator);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateOpticalFlowSessionNV(
@@ -1235,11 +2028,26 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateOpticalFlowSessionNV(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkOpticalFlowSessionNV>* pSession)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkCreateOpticalFlowSessionNV(call_info, returnValue, device, pCreateInfo, pAllocator, pSession);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyOpticalFlowSessionNV(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            device,
+    format::HandleId                            session,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkDestroyOpticalFlowSessionNV(call_info, device, session, pAllocator);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkBindOpticalFlowSessionImageNV(
@@ -1251,6 +2059,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkBindOpticalFlowSessionImageNV(
     format::HandleId                            view,
     VkImageLayout                               layout)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
@@ -1267,11 +2076,26 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateShadersEXT(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkShaderEXT>*          pShaders)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkCreateShadersEXT(call_info, returnValue, device, createInfoCount, pCreateInfos, pAllocator, pShaders);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyShaderEXT(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            device,
+    format::HandleId                            shader,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkDestroyShaderEXT(call_info, device, shader, pAllocator);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDataGraphPipelinesARM(
@@ -1285,6 +2109,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDataGraphPipelinesARM(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkPipeline>*           pPipelines)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
@@ -1300,6 +2125,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDataGraphPipelineSession
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkDataGraphPipelineSessionARM>* pSession)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
@@ -1314,11 +2140,26 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkBindDataGraphPipelineSessionMe
     uint32_t                                    bindInfoCount,
     StructPointerDecoder<Decoded_VkBindDataGraphPipelineSessionMemoryInfoARM>* pBindInfos)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkBindDataGraphPipelineSessionMemoryARM(call_info, returnValue, device, bindInfoCount, pBindInfos);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDataGraphPipelineSessionARM(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            device,
+    format::HandleId                            session,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkDestroyDataGraphPipelineSessionARM(call_info, device, session, pAllocator);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateIndirectCommandsLayoutEXT(
@@ -1329,11 +2170,26 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateIndirectCommandsLayoutEX
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkIndirectCommandsLayoutEXT>* pIndirectCommandsLayout)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkCreateIndirectCommandsLayoutEXT(call_info, returnValue, device, pCreateInfo, pAllocator, pIndirectCommandsLayout);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyIndirectCommandsLayoutEXT(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            device,
+    format::HandleId                            indirectCommandsLayout,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkDestroyIndirectCommandsLayoutEXT(call_info, device, indirectCommandsLayout, pAllocator);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateIndirectExecutionSetEXT(
@@ -1344,11 +2200,26 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateIndirectExecutionSetEXT(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkIndirectExecutionSetEXT>* pIndirectExecutionSet)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkCreateIndirectExecutionSetEXT(call_info, returnValue, device, pCreateInfo, pAllocator, pIndirectExecutionSet);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyIndirectExecutionSetEXT(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            device,
+    format::HandleId                            indirectExecutionSet,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkDestroyIndirectExecutionSetEXT(call_info, device, indirectExecutionSet, pAllocator);
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateAccelerationStructureKHR(
@@ -1359,11 +2230,26 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateAccelerationStructureKHR
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkAccelerationStructureKHR>* pAccelerationStructure)
 {
+    // Return if not the first time through loop
     if (frame_loop_info_.IsRepetition())
     {
         return;
     }
     VulkanReplayConsumer::Process_vkCreateAccelerationStructureKHR(call_info, returnValue, device, pCreateInfo, pAllocator, pAccelerationStructure);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyAccelerationStructureKHR(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            device,
+    format::HandleId                            accelerationStructure,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
+{
+    // Return for all loop iterations
+    if (frame_loop_info_.IsLooping())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkDestroyAccelerationStructureKHR(call_info, device, accelerationStructure, pAllocator);
 }
 
 GFXRECON_END_NAMESPACE(decode)
