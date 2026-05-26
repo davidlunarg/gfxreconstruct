@@ -188,7 +188,9 @@ class KhronosReplayFrameLoopConsumerBaseBodyGenerator():
            body += '    }\n'
            # Output a function call to replay consumer
            body += '    VulkanReplayConsumer::Process_'+name+'('
-           args=['call_info', 'returnValue']
+           args=['call_info']
+           if return_type != 'void':
+               args.append('returnValue')
            [ args.append(value.name) for value in values ]
            body += ", ".join(args) + ');\n'
            return body

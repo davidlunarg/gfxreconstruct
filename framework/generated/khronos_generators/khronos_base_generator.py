@@ -702,8 +702,13 @@ class KhronosBaseGenerator(OutputGenerator):
             frame_loop_overrides = json.loads(
                 open(replay_frame_loop_overrides_filename , 'r').read()
             )
+            # TODO: Make these three separate lists
             self.REPLAY_FRAME_LOOP_OVERRIDES = frame_loop_overrides[
-                'functions']        #TODO: Don't use 'functions'??
+                'manual']
+            self.REPLAY_FRAME_LOOP_OVERRIDES = frame_loop_overrides[
+                'resourceAllocate']
+            self.REPLAY_FRAME_LOOP_OVERRIDES = frame_loop_overrides[
+                'resourceFree']
 
         if dump_resources_overrides_filename is not None:
             dump_resources_overrides = json.loads(
