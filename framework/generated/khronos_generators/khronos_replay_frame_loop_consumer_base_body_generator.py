@@ -198,7 +198,7 @@ class KhronosReplayFrameLoopConsumerBaseBodyGenerator():
         [ args.append(value.name) for value in values ]
         body += ", ".join(args) + ');\n'
         return body
-       
+
     def generate_replay_consumer_content(self, api_data):
         """Performs C++ code generation for the replay frame loop consumer."""
         platform_type = api_data.api_class_prefix

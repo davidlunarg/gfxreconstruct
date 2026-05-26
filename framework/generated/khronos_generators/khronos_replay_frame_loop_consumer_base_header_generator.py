@@ -100,7 +100,7 @@ class KhronosFrameLoopConsumerBaseHeaderGenerator():
                     decl + ';', self.INDENT_SIZE
                 )
             else:
-                # TODO: Can the be removed? ...all funcs are override...
+                # TODO: Can this be removed? ...all funcs are override...
                 cmddef += self.indent(
                     # TODO: Was this... Can I delete virtual??
                     decl + ' {}', self.INDENT_SIZE

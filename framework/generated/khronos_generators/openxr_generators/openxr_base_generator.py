@@ -102,7 +102,6 @@ class OpenXrBaseGeneratorOptions(KhronosBaseGeneratorOptions):
         separate line, align parameter names at the specified column
       replay_overrides - Path to JSON file listing OpenXr API calls to
         override on replay.
-      replay_frame_loop_overrides -  ...... TODO???
       dump_resources_overrides - Path to JSON file listing OpenXr API
         calls to override on replay.
       replay_async_overrides - Path to JSON file listing OpenXr API calls
