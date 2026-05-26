@@ -481,7 +481,6 @@ class KhronosBaseGenerator(OutputGenerator):
         self.REPLAY_OVERRIDES = {}
         self.REPLAY_FRAME_LOOP_RESOURCE_ALLOCATE_OVERRIDES = {}
         self.REPLAY_FRAME_LOOP_RESOURCE_FREE_OVERRIDES = {}
-        self.REPLAY_FRAME_LOOP_MANUAL_OVERRIDES = {}
         self.DUMP_RESOURCES_OVERRIDES = {}
         self.DUMP_RESOURCES_TRANSFER_API_CALLS = {}
         self.REPLAY_ASYNC_OVERRIDES = {}
@@ -704,9 +703,6 @@ class KhronosBaseGenerator(OutputGenerator):
             frame_loop_overrides = json.loads(
                 open(replay_frame_loop_overrides_filename , 'r').read()
             )
-            # TODO: Make these three separate lists
-            self.REPLAY_FRAME_LOOP_MANUAL_OVERRIDES = frame_loop_overrides[
-                'manual']
             self.REPLAY_FRAME_LOOP_RESOURCE_ALLOCATE_OVERRIDES = frame_loop_overrides[
                 'resourceAllocate']
             self.REPLAY_FRAME_LOOP_RESOURCE_FREE_OVERRIDES = frame_loop_overrides[
