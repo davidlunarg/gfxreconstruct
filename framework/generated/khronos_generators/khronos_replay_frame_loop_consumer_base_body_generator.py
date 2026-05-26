@@ -178,7 +178,7 @@ class KhronosReplayFrameLoopConsumerBaseBodyGenerator():
         Return ReplayFrameLoopConsumerBase class member function definition.
         """
         body = ''
-        is_override = name in self.REPLAY_FRAME_LOOP_OVERRIDES
+        is_override = name in self.REPLAY_FRAME_LOOP_RESOURCE_ALLOCATE_OVERRIDES
         is_dump_resources = self.is_dump_resources_api_call(name)
         is_dump_resources_transfer = name in self.DUMP_RESOURCES_TRANSFER_API_CALLS
         if is_override:
@@ -237,13 +237,13 @@ class KhronosReplayFrameLoopConsumerBaseBodyGenerator():
         if is_override:
             if self.is_core_create_command(name, True):
                 call_expr = '{}(returnValue, {})'.format(
-                    self.REPLAY_FRAME_LOOP_OVERRIDES[name], arglist
+                    self.REPLAY_FRAME_LOOP_RESOURCE_ALLOCATE_OVERRIDES[name], arglist
                 )
             elif self.is_custom_return_type(api_data, return_type):
                 call_expr = self.handle_custom_return_type(name, dispatchfunc, arglist)
             else:
                 call_expr = '{}({}, {})'.format(
-                    self.REPLAY_FRAME_LOOP_OVERRIDES[name], dispatchfunc, arglist
+                    self.REPLAY_FRAME_LOOP_RESOURCE_ALLOCATE_OVERRIDES[name], dispatchfunc, arglist
                 )
         else:
             call_expr = '{}({})'.format(dispatchfunc, arglist)
@@ -309,7 +309,7 @@ class KhronosReplayFrameLoopConsumerBaseBodyGenerator():
 
         for cmd in self.get_all_filtered_cmd_names():
 
-            if cmd not in self.REPLAY_FRAME_LOOP_OVERRIDES:
+            if cmd not in self.REPLAY_FRAME_LOOP_RESOURCE_ALLOCATE_OVERRIDES:
                 continue
 
             if self.is_resource_dump_class(

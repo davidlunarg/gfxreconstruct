@@ -479,7 +479,9 @@ class KhronosBaseGenerator(OutputGenerator):
         # Map of Khronos function names to override function names.  Calls to Khronos functions in the map
         # will be replaced by the override value.
         self.REPLAY_OVERRIDES = {}
-        self.REPLAY_FRAME_LOOP_OVERRIDES = {}
+        self.REPLAY_FRAME_LOOP_RESOURCE_ALLOCATE_OVERRIDES = {}
+        self.REPLAY_FRAME_LOOP_RESOURCE_FREE_OVERRIDES = {}
+        self.REPLAY_FRAME_LOOP_MANUAL_OVERRIDES = {}
         self.DUMP_RESOURCES_OVERRIDES = {}
         self.DUMP_RESOURCES_TRANSFER_API_CALLS = {}
         self.REPLAY_ASYNC_OVERRIDES = {}
@@ -703,11 +705,11 @@ class KhronosBaseGenerator(OutputGenerator):
                 open(replay_frame_loop_overrides_filename , 'r').read()
             )
             # TODO: Make these three separate lists
-            self.REPLAY_FRAME_LOOP_OVERRIDES = frame_loop_overrides[
+            self.REPLAY_FRAME_LOOP_MANUAL_OVERRIDES = frame_loop_overrides[
                 'manual']
-            self.REPLAY_FRAME_LOOP_OVERRIDES = frame_loop_overrides[
+            self.REPLAY_FRAME_LOOP_RESOURCE_ALLOCATE_OVERRIDES = frame_loop_overrides[
                 'resourceAllocate']
-            self.REPLAY_FRAME_LOOP_OVERRIDES = frame_loop_overrides[
+            self.REPLAY_FRAME_LOOP_RESOURCE_FREE_OVERRIDES = frame_loop_overrides[
                 'resourceFree']
 
         if dump_resources_overrides_filename is not None:

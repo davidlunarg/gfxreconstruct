@@ -33,10 +33,8 @@ class KhronosFrameLoopConsumerBaseHeaderGenerator():
 
     def skip_generating_command(self, command):
         """ Method may be overridden. """
-        # DON"T USE THIS FUNC, should use self.REPLAY_FRAME_LOOP_OVERRIDES.. but its currently not set
-        return (command in self.REPLAY_FRAME_LOOP_OVERRIDES)  # ????
-        #return (self.REPLAY_FRAME_LOOP_OVERRIDES[command] == None)  # ???? WRONG
-        #return self.is_manually_generated_cmd_name(command)
+        # TODO: May also want to check the other flavor of overrides
+        return (command in self.REPLAY_FRAME_LOOP_RESOURCE_ALLOCATE_OVERRIDES)
 
     def write_class_setup(self, class_name, constructor_args):
         write(
