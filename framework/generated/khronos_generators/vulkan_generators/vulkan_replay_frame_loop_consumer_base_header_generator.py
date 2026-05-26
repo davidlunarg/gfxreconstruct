@@ -49,7 +49,7 @@ class VulkanFrameLoopConsumerBaseHeaderGeneratorOptions(VulkanBaseGeneratorOptio
         protect_file=False,
         protect_feature=True,
         extra_headers=[],
-        replay_frame_loop_resource_allocate_overrides=None
+        replay_frame_loop_overrides=None
     ):
         VulkanBaseGeneratorOptions.__init__(
             self,
@@ -61,13 +61,13 @@ class VulkanFrameLoopConsumerBaseHeaderGeneratorOptions(VulkanBaseGeneratorOptio
             protect_file,
             protect_feature,
             extra_headers=extra_headers,
-            replay_frame_loop_resource_allocate_overrides=replay_frame_loop_resource_allocate_overrides
+            replay_frame_loop_overrides=replay_frame_loop_overrides
         )
         self.class_name = class_name
         self.base_class_header = base_class_header
         self.is_override = is_override
         self.constructor_args = constructor_args
-        self.replay_frame_loop_resource_allocate_overrides = replay_frame_loop_resource_allocate_overrides
+        self.replay_frame_loop_overrides = replay_frame_loop_overrides
 
         self.begin_end_file_data.specific_headers.extend((
             'decode/{}'.format(self.base_class_header),
