@@ -42,7 +42,7 @@ class VulkanFrameLoopConsumerBaseHeaderGeneratorOptions(VulkanBaseGeneratorOptio
         self,
         class_name,
         base_class_header,
-        is_override,   # TODO: NEEDED??
+        is_override,   # TODO: NEEDED??   REMOVE THIS???
         constructor_args='',
         blacklists=None,  # Path to JSON file listing apicalls and structs to ignore. TODO: Needed?
         platform_types=None,  # Path to JSON file listing platform (WIN32, X11, etc.) defined types.

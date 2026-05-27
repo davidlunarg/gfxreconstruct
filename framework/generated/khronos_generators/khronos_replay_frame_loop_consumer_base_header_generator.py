@@ -24,7 +24,6 @@
 import sys
 from khronos_base_generator import write
 
-
 class KhronosFrameLoopConsumerBaseHeaderGenerator():
     """KhronosConsumerBHeaderGenerator  TODO:... Fixt this
     Generates C++ member declarations for the appropriate consumer class responsible
@@ -32,7 +31,6 @@ class KhronosFrameLoopConsumerBaseHeaderGenerator():
     """
 
     def skip_generating_command(self, command):
-        """ Method may be overridden. """
         return ((command not in self.REPLAY_FRAME_LOOP_RESOURCE_ALLOCATE_OVERRIDES) and
                 (command not in self.REPLAY_FRAME_LOOP_RESOURCE_FREE_OVERRIDES))
 
@@ -75,10 +73,11 @@ class KhronosFrameLoopConsumerBaseHeaderGenerator():
         write('};', file=self.outFile)
 
     def write_class_contents(self):
-        """Method may be overridden."""
         for cmd in self.get_all_filtered_cmd_names():
 
-            if self.skip_generating_command(cmd):
+            if ((cmd not in self.REPLAY_FRAME_LOOP_RESOURCE_ALLOCATE_OVERRIDES) and
+                (cmd not in self.REPLAY_FRAME_LOOP_RESOURCE_FREE_OVERRIDES)
+            ):
                 continue
 
             info = self.all_cmd_params[cmd]
@@ -88,19 +87,10 @@ class KhronosFrameLoopConsumerBaseHeaderGenerator():
             decl = self.make_consumer_func_decl(
                 return_type, 'Process_' + cmd, values
             )
-
             cmddef = '\n'
-            # TODO: Should is_override even be checked?
-            if self.genOpts.is_override:
-                cmddef += self.indent(
-                    decl + ';', self.INDENT_SIZE
-                )
-            else:
-                # TODO: Can this be removed?
-                cmddef += self.indent(
-                    decl + ' {}', self.INDENT_SIZE
-                )
-
+            cmddef += self.indent(
+                decl + ';', self.INDENT_SIZE
+            )
             write(cmddef, file=self.outFile)
 
     def output_header_contents(self, class_name, constructor_args):
