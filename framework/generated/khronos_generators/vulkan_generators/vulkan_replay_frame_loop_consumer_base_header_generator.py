@@ -32,17 +32,14 @@ from khronos_replay_frame_loop_consumer_base_header_generator import KhronosFram
 import traceback
 
 class VulkanFrameLoopConsumerBaseHeaderGeneratorOptions(VulkanBaseGeneratorOptions):
-    """Adds the following new option:
-    is_override - Specify whether the member function declarations are
-                  virtual function overrides or pure virtual functions.
-    Options for generating C++ class declarations for Vulkan parameter processing.
+    """
+    Class for generating C++ member declarations for the VulkanFrameLoopConsumerBase class
     """
 
     def __init__(
         self,
         class_name,
         base_class_header,
-        is_override,   # TODO: NEEDED??   REMOVE THIS???
         constructor_args='',
         blacklists=None,  # Path to JSON file listing apicalls and structs to ignore. TODO: Needed?
         platform_types=None,  # Path to JSON file listing platform (WIN32, X11, etc.) defined types.
@@ -68,7 +65,6 @@ class VulkanFrameLoopConsumerBaseHeaderGeneratorOptions(VulkanBaseGeneratorOptio
         )
         self.class_name = class_name
         self.base_class_header = base_class_header
-        self.is_override = is_override
         self.constructor_args = constructor_args
         self.replay_frame_loop_overrides = replay_frame_loop_overrides
 
