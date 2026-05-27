@@ -234,114 +234,35 @@ class VulkanReplayFrameLoopConsumerBaseBodyGenerator(
             return True
         return False
 
-    def generate_remove_handle_expression(self, name, values):
-        """Method override."""
-        expr = None
-        if self.needs_remove_handle_expression(name):
-            value = self.determine_handle_to_remove_value(name, values)
-            if value.base_type not in self.POOL_OBJECT_ASSOCIATIONS:
-                expr = KhronosReplayFrameLoopConsumerBaseBodyGenerator.generate_remove_handle_expression(self, name, values)
-            else:
-                # Pools require special case processing to cleanup objects allocated from them.
-                expr = 'RemovePoolHandle<Vulkan{type}Info>({}, &CommonObjectInfoTable::Get{basetype}Info, &CommonObjectInfoTable::Remove{basetype}Info, &CommonObjectInfoTable::Remove{}Info);'.format(
-                    value.name,
-                    self.POOL_OBJECT_ASSOCIATIONS[value.base_type],
-                    type=value.base_type[2:],
-                    basetype=value.base_type
-                )
-        elif name.startswith('vkFree'):
-            # For pool based vkFreeCommandBuffers and vkFreeDescriptorSets, the pool handle is the second parameter, the array count is the third parameter and the array of handles to free is the fourth parameter.
-            value = values[3]
-            expr = 'RemovePoolHandles<Vulkan{pooltype}Info, Vulkan{type}Info>({}, {}, {}, &CommonObjectInfoTable::Get{poolbasetype}Info, &CommonObjectInfoTable::Remove{basetype}Info);'.format(
-                values[1].name,
-                value.name,
-                values[2].name,
-                type=value.base_type[2:],
-                basetype=value.base_type,
-                pooltype=self.POOL_OBJECT_ASSOCIATIONS[value.base_type][2:],
-                poolbasetype=self.POOL_OBJECT_ASSOCIATIONS[value.base_type]
-            )
+    #def generate_remove_handle_expression(self, name, values):
+    #    """Method override."""
+    #    expr = None
+    #    if self.needs_remove_handle_expression(name):
+    #        value = self.determine_handle_to_remove_value(name, values)
+    #        if value.base_type not in self.POOL_OBJECT_ASSOCIATIONS:
+    #            expr = KhronosReplayFrameLoopConsumerBaseBodyGenerator.generate_remove_handle_expression(self, name, values)
+    #        else:
+    #            # Pools require special case processing to cleanup objects allocated from them.
+    #            expr = 'RemovePoolHandle<Vulkan{type}Info>({}, &CommonObjectInfoTable::Get{basetype}Info, &CommonObjectInfoTable::Remove{basetype}Info, &CommonObjectInfoTable::Remove{}Info);'.format(
+    #                value.name,
+    #                self.POOL_OBJECT_ASSOCIATIONS[value.base_type],
+    #                type=value.base_type[2:],
+    #                basetype=value.base_type
+    #            )
+    #    elif name.startswith('vkFree'):
+    #        # For pool based vkFreeCommandBuffers and vkFreeDescriptorSets, the pool handle is the second parameter, the array count is the third parameter and the array of handles to free is the fourth parameter.
+    #        value = values[3]
+    #        expr = 'RemovePoolHandles<Vulkan{pooltype}Info, Vulkan{type}Info>({}, {}, {}, &CommonObjectInfoTable::Get{poolbasetype}Info, &CommonObjectInfoTable::Remove{basetype}Info);'.format(
+    #            values[1].name,
+    #            value.name,
+    #            values[2].name,
+    #            type=value.base_type[2:],
+    #            basetype=value.base_type,
+    #            pooltype=self.POOL_OBJECT_ASSOCIATIONS[value.base_type][2:],
+    #            poolbasetype=self.POOL_OBJECT_ASSOCIATIONS[value.base_type]
+    #        )
 
-        return expr
+    #    return expr
 
     def is_async_handle_type(self, basetype):
         return basetype in ["VkPipeline", "VkShaderExt"]
-
-    def is_allocation_callback_type(self, struct):
-        """Method override."""
-        return struct == 'VkAllocationCallbacks'
-
-    def is_special_case_value(self, value, is_override):
-        """Method override."""
-        if (value.base_type == 'VkSurfaceKHR' or
-                (value.name == 'pSurfaceInfo' and value.base_type != 'VkSurfaceKHR') or
-                (value.base_type == "VkSwapchainKHR" and not is_override)
-                or value.base_type == 'VkDebugUtilsObjectNameInfoEXT'):
-            return True
-        return False
-
-    def handle_special_case_pointer_array(self, value, is_override):
-        """Method override."""
-        preexpr = []
-
-        # If surface was not created, need to automatically ignore for non-overrides queries
-        # Swapchain also need to check if a dummy swapchain was created instead
-        if value.name == 'pSurfaceInfo' and value.base_type != 'VkSurfaceKHR':
-            expr = 'MapStructHandles({}->GetMetaStructPointer(), GetObjectInfoTable());'.format(
-                value.name
-            )
-            preexpr.append(expr)
-
-            expr = 'if ({}->GetPointer()->surface == VK_NULL_HANDLE) {{ return; }}'.format(
-                value.name
-            )
-            preexpr.append(expr)
-
-            var_name = 'in_' + value.name + '_meta'
-            expr = 'auto {} = {}->GetMetaStructPointer();'.format(
-                var_name, value.name
-            )
-            preexpr.append(expr)
-
-            expr = 'if (GetObjectInfoTable().GetVkSurfaceKHRInfo({}->surface) == nullptr || '.format(
-                var_name
-            )
-            expr += 'GetObjectInfoTable().GetVkSurfaceKHRInfo({}->surface)->surface_creation_skipped) {{ return; }}'.format(
-                var_name
-            )
-            preexpr.append(expr)
-        # If surface was not created, need to automatically ignore for non-overrides queries
-        # Swapchain also need to check if a dummy swapchain was created instead
-        elif value.base_type == 'VkSurfaceKHR':
-            if is_override:
-                arg_name = 'in_' + value.name
-                expr = 'if ({} == nullptr || {}->surface_creation_skipped) {{ return; }}'.format(
-                    arg_name, arg_name
-                )
-                preexpr.append(expr)
-            else:
-                expr = 'if (GetObjectInfoTable().GetVkSurfaceKHRInfo({}) == nullptr || '.format(
-                    value.name
-                )
-                expr += 'GetObjectInfoTable().GetVkSurfaceKHRInfo({})->surface_creation_skipped) {{ return; }}'.format(
-                    value.name
-                )
-                preexpr.append(expr)
-        elif value.base_type == 'VkSwapchainKHR' and not is_override:
-            expr = 'if (GetObjectInfoTable().GetVkSurfaceKHRInfo(GetObjectInfoTable().Get{}Info({})->surface_id) == nullptr || '.format(
-                value.base_type, value.name
-            )
-            expr += 'GetObjectInfoTable().GetVkSurfaceKHRInfo(GetObjectInfoTable().Get{}Info({})->surface_id)->surface_creation_skipped) {{ return; }}'.format(
-                value.base_type, value.name
-            )
-            preexpr.append(expr)
-        return preexpr
-
-
-    def needs_pipeline_customization(self, name):
-        """Method override."""
-        return (name == 'vkCreateGraphicsPipelines' or name == 'vkCreateComputePipelines' or name == 'vkCreateRayTracingPipelinesNV')
-
-    def handle_pipeline_customization(self, length_name):
-        """Method override."""
-        return 'if (omitted_pipeline_cache_data_) {{AllowCompileDuringPipelineCreation({}, pCreateInfos->GetPointer());}}'.format(length_name)
