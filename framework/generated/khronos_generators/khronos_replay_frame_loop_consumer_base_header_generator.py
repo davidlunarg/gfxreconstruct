@@ -21,9 +21,6 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
-# TODO: This was ported from replay consumer. There's lots of extra code here
-# that is specific to the replay consumer that should be removed.
-
 import sys
 from khronos_base_generator import write
 
@@ -34,12 +31,10 @@ class KhronosFrameLoopConsumerBaseHeaderGenerator():
     for processing the current Khronos API call parameter data.
     """
 
-    # TODO: Rename this func, naming is inverted.
     def skip_generating_command(self, command):
         """ Method may be overridden. """
-        # TODO: May also want to check the other flavor of overrides
-        return ((command in self.REPLAY_FRAME_LOOP_RESOURCE_ALLOCATE_OVERRIDES) or
-                (command in self.REPLAY_FRAME_LOOP_RESOURCE_FREE_OVERRIDES))
+        return ((command not in self.REPLAY_FRAME_LOOP_RESOURCE_ALLOCATE_OVERRIDES) and
+                (command not in self.REPLAY_FRAME_LOOP_RESOURCE_FREE_OVERRIDES))
 
     def write_class_setup(self, class_name, constructor_args):
         write(
@@ -54,7 +49,8 @@ class KhronosFrameLoopConsumerBaseHeaderGenerator():
             arg_list = ', '.join(
                 [arg.split(' ')[-1] for arg in constructor_args.split(',')]
             )
-            # KLUDGES:
+            # TODO:
+            # KLUDGE !!!!!!!!!!!!!!
             # We remove the last arg in call to VulkanReplayConsumer ctor.
             # frame_loop_info_ initialize is hardcoded.
             arg_list=arg_list.rpartition(",")[0]
@@ -81,8 +77,8 @@ class KhronosFrameLoopConsumerBaseHeaderGenerator():
     def write_class_contents(self):
         """Method may be overridden."""
         for cmd in self.get_all_filtered_cmd_names():
-            # TODO: this check is backwards, rename this func
-            if not self.skip_generating_command(cmd):
+
+            if self.skip_generating_command(cmd):
                 continue
 
             info = self.all_cmd_params[cmd]

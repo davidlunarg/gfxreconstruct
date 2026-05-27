@@ -34,7 +34,6 @@ GFXRECON_BEGIN_NAMESPACE(decode)
 class VulkanReplayFrameLoopConsumer : public VulkanReplayFrameLoopConsumerBase
 {
   public:
-
     VulkanReplayFrameLoopConsumer(std::shared_ptr<application::Application> application,
                                   const VulkanReplayOptions&                options,
                                   graphics::FrameLoopInfo&                  frame_loop_info) :
