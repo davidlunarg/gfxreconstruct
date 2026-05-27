@@ -25,9 +25,8 @@ import sys
 from khronos_base_generator import write
 
 class KhronosFrameLoopConsumerBaseHeaderGenerator():
-    """KhronosConsumerBHeaderGenerator  TODO:... Fixt this
-    Generates C++ member declarations for the appropriate consumer class responsible
-    for processing the current Khronos API call parameter data.
+    """KhronosFrameLoopConsumerBaseHeaderGenerator
+    Generates C++ header for the generated frame loop functions.
     """
 
     def skip_generating_command(self, command):

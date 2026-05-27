@@ -21,15 +21,9 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
-# TODO: This was ported from replay consumer. There's lots of extra code here
-# that is specific to the replay consumer that should be removed.
-
 import sys
 from vulkan_base_generator import VulkanBaseGenerator, VulkanBaseGeneratorOptions, write
 from khronos_replay_frame_loop_consumer_base_header_generator import KhronosFrameLoopConsumerBaseHeaderGenerator
-
-# TODO: REMOVE THIS?
-import traceback
 
 class VulkanFrameLoopConsumerBaseHeaderGeneratorOptions(VulkanBaseGeneratorOptions):
     """
