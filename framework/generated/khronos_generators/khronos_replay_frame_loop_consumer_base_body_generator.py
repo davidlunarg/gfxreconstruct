@@ -21,19 +21,13 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
-# TODO: This was ported from replay consumer. There's lots of extra code here
-# that is specific to the replay consumer that should be removed.
-
 from khronos_base_generator import write
 
 class KhronosReplayFrameLoopConsumerBaseBodyGenerator():
-    """Base class for generating replay cousumers body code."""
+    """Base class for generating replay frame loop consumers body code."""
 
     def make_replay_frame_loop_consumer_func_body(self, api_data, return_type, name, values):
-        """
-        Method override.
-        Return ReplayFrameLoopConsumerBase class member function definition.
-        """
+
         body = ''
 
         if name in self.REPLAY_FRAME_LOOP_RESOURCE_ALLOCATE_OVERRIDES:
