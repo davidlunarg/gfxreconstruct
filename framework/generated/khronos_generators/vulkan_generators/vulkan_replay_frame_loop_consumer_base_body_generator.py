@@ -136,21 +136,6 @@ class VulkanReplayFrameLoopConsumerBaseBodyGenerator(
             return True
         return False
 
-    def is_pool_allocation(self, command):
-        """
-        Method override.
-        Determine if an API call is perfroming a pool allocation.
-        """
-        if command.startswith('vkAllocate') and (command != 'vkAllocateMemory'):
-            return True
-        return False
-
-    def get_pool_allocation_type(self, value):
-        """Method may be overriden"""
-        if value.base_type in self.POOL_OBJECT_ASSOCIATIONS:
-            return self.POOL_OBJECT_ASSOCIATIONS[value.base_type]
-        return None
-
     def check_skip_offscreen(self, values, name):
         """Method override. """
         body = ''
@@ -226,43 +211,6 @@ class VulkanReplayFrameLoopConsumerBaseBodyGenerator(
                 elif self.is_handle(value.base_type) and not value.is_pointer and value.base_type == 'VkCommandBuffer':
                     dump_resource_arglist += 'in_' + value.name
         return dump_resource_arglist
-
-    def needs_remove_handle_expression(self, command):
-        """Method override."""
-        if (KhronosReplayFrameLoopConsumerBaseBodyGenerator.needs_remove_handle_expression(self, command) or
-            command == 'vkFreeMemory'):
-            return True
-        return False
-
-    #def generate_remove_handle_expression(self, name, values):
-    #    """Method override."""
-    #    expr = None
-    #    if self.needs_remove_handle_expression(name):
-    #        value = self.determine_handle_to_remove_value(name, values)
-    #        if value.base_type not in self.POOL_OBJECT_ASSOCIATIONS:
-    #            expr = KhronosReplayFrameLoopConsumerBaseBodyGenerator.generate_remove_handle_expression(self, name, values)
-    #        else:
-    #            # Pools require special case processing to cleanup objects allocated from them.
-    #            expr = 'RemovePoolHandle<Vulkan{type}Info>({}, &CommonObjectInfoTable::Get{basetype}Info, &CommonObjectInfoTable::Remove{basetype}Info, &CommonObjectInfoTable::Remove{}Info);'.format(
-    #                value.name,
-    #                self.POOL_OBJECT_ASSOCIATIONS[value.base_type],
-    #                type=value.base_type[2:],
-    #                basetype=value.base_type
-    #            )
-    #    elif name.startswith('vkFree'):
-    #        # For pool based vkFreeCommandBuffers and vkFreeDescriptorSets, the pool handle is the second parameter, the array count is the third parameter and the array of handles to free is the fourth parameter.
-    #        value = values[3]
-    #        expr = 'RemovePoolHandles<Vulkan{pooltype}Info, Vulkan{type}Info>({}, {}, {}, &CommonObjectInfoTable::Get{poolbasetype}Info, &CommonObjectInfoTable::Remove{basetype}Info);'.format(
-    #            values[1].name,
-    #            value.name,
-    #            values[2].name,
-    #            type=value.base_type[2:],
-    #            basetype=value.base_type,
-    #            pooltype=self.POOL_OBJECT_ASSOCIATIONS[value.base_type][2:],
-    #            poolbasetype=self.POOL_OBJECT_ASSOCIATIONS[value.base_type]
-    #        )
-
-    #    return expr
 
     def is_async_handle_type(self, basetype):
         return basetype in ["VkPipeline", "VkShaderExt"]

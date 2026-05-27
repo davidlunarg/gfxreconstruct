@@ -29,31 +29,6 @@ from khronos_base_generator import write
 class KhronosReplayFrameLoopConsumerBaseBodyGenerator():
     """Base class for generating replay cousumers body code."""
 
-    def get_parent_id(self, api_data, value, values):
-        """Get the ID of the parent object when creating a handle.  The instance type is does not have a parent object."""
-        if value.base_type != api_data.instance_type:
-            return values[0].name
-        return 'format::kNullHandleId'
-
-    def is_pool_allocation(self, command):
-        """Method may be overriden. """
-        return False
-
-    def get_pool_allocation_type(self, value):
-        """Method may be overriden. """
-        return None
-
-    def check_skip_extended_struct_handling(self, struct, struct_type):
-        """Method may be overriden. """
-        return False
-
-    def generate_custom_extended_struct_handling(self, struct, struct_type):
-        """ Method may be overriden.
-            None implies no customization
-        """
-
-        return None
-
     def make_replay_frame_loop_consumer_func_body(self, api_data, return_type, name, values):
         """
         Method override.
@@ -94,11 +69,6 @@ class KhronosReplayFrameLoopConsumerBaseBodyGenerator():
             ):
                 continue
 
-            # TODO: Remove??
-            if self.is_resource_dump_class(
-            ) and self.is_dump_resources_api_call(cmd) == False:
-                continue
-
             info = self.all_cmd_params[cmd]
             return_type = info[0]
             values = info[2]
@@ -121,21 +91,3 @@ class KhronosReplayFrameLoopConsumerBaseBodyGenerator():
             cmddef += '}'
 
             write(cmddef, file=self.outFile)
-
-    def needs_remove_handle_expression(self, command):
-        """ Method may be overridden. """
-        api_data = self.get_api_data()
-        if (
-            command.startswith(api_data.command_prefix)
-            and command[len(api_data.command_prefix):].startswith('Destroy')
-        ):
-            return True
-        return False
-
-    # TODO: Should probably remove this... but it's still referenced elsewere...
-    def determine_handle_to_remove_value(self, command, values):
-        """Method may be overridden."""
-        if self.is_core_destroy_command(command):
-            return values[0]
-        else:
-            return values[1]
