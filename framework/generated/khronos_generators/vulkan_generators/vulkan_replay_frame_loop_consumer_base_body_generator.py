@@ -108,7 +108,7 @@ class VulkanReplayFrameLoopConsumerBaseBodyGenerator(
         """Method override."""
         api_data = self.get_api_data()
 
-        KhronosReplayFrameLoopConsumerBaseBodyGenerator.generate_replay_consumer_content(self, api_data)
+        KhronosReplayFrameLoopConsumerBaseBodyGenerator.generate_replay_frame_loop_consumer_content(self, api_data)
 
         self.newline()
 
