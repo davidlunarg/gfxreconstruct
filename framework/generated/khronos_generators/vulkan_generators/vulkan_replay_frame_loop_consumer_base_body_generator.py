@@ -32,7 +32,7 @@ class VulkanReplayFrameLoopConsumerBaseBodyGeneratorOptions(VulkanBaseGeneratorO
 
     def __init__(
         self,
-        replay_frame_loop_overrides=None, # Path to JSON file listing Vulkan API calls to override on replay.
+        replay_frame_loop_overrides=None, # Path to JSON file listing Vulkan API calls to generate.
         blacklists=None,                  # Path to JSON file listing apicalls and structs to ignore
         platform_types=None,              # Path to JSON file listing platform (WIN32, X11, etc.) defined types.
         filename=None,

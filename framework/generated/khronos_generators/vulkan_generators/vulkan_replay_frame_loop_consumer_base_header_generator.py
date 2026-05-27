@@ -41,7 +41,7 @@ class VulkanFrameLoopConsumerBaseHeaderGeneratorOptions(VulkanBaseGeneratorOptio
         class_name,
         base_class_header,
         constructor_args='',
-        blacklists=None,  # Path to JSON file listing apicalls and structs to ignore. TODO: Needed?
+        blacklists=None,      # Path to JSON file listing apicalls and structs to ignore.
         platform_types=None,  # Path to JSON file listing platform (WIN32, X11, etc.) defined types.
         filename=None,
         directory='.',
