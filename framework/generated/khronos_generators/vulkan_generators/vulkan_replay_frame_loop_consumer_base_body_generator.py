@@ -36,9 +36,7 @@ class VulkanReplayFrameLoopConsumerBaseBodyGeneratorOptions(VulkanBaseGeneratorO
 
     def __init__(
         self,
-        replay_overrides=None,            # TODO: Remove
         replay_frame_loop_overrides=None, # Path to JSON file listing Vulkan API calls to override on replay.
-        dump_resources_overrides=None,    # TODO: Remove?
         replay_async_overrides=None,      # TODO: Remove?
         blacklists=None,                  # Path to JSON file listing apicalls and structs to ignore. TODO: Needed?
         platform_types=None,              # Path to JSON file listing platform (WIN32, X11, etc.) defined types.
@@ -58,9 +56,7 @@ class VulkanReplayFrameLoopConsumerBaseBodyGeneratorOptions(VulkanBaseGeneratorO
             prefix_text,
             protect_file,
             protect_feature,
-            replay_overrides=replay_overrides,
             replay_frame_loop_overrides=replay_frame_loop_overrides,
-            dump_resources_overrides=dump_resources_overrides,
             replay_async_overrides=replay_async_overrides,
             extra_headers=extra_headers
         )
@@ -184,33 +180,6 @@ class VulkanReplayFrameLoopConsumerBaseBodyGenerator(
                 self.REPLAY_OVERRIDES[name], dispatch_func, arg_list
             )
         return call_expr
-
-    def is_custom_dump_resource_type(self, is_dump_resources, is_override, name, value):
-        if is_dump_resources:
-            is_dr_override = name in self.DUMP_RESOURCES_OVERRIDES
-            if is_override:
-                if self.is_handle(value.base_type) and value.base_type in ["VkPipeline", "VkPipelineLayout"] and name != "vkCmdPushConstants":
-                    return True
-            elif is_dr_override:
-                if value.base_type == 'VkPipeline':
-                    return True
-                elif self.is_handle(value.base_type) and not value.is_pointer and value.base_type == 'VkCommandBuffer':
-                    return True
-        return False
-
-    def handle_custom_dump_resource_type(self, is_dump_resources, is_override, name, value):
-        dump_resource_arglist = ''
-        if is_dump_resources:
-            is_dr_override = name in self.DUMP_RESOURCES_OVERRIDES
-            if is_override:
-                if self.is_handle(value.base_type) and value.base_type in ["VkPipeline", "VkPipelineLayout"]:
-                    dump_resource_arglist += 'in_' + value.name
-            elif is_dr_override:
-                if value.base_type == 'VkPipeline':
-                    dump_resource_arglist += 'GetObjectInfoTable().GetVkPipelineInfo(pipeline)'
-                elif self.is_handle(value.base_type) and not value.is_pointer and value.base_type == 'VkCommandBuffer':
-                    dump_resource_arglist += 'in_' + value.name
-        return dump_resource_arglist
 
     def is_async_handle_type(self, basetype):
         return basetype in ["VkPipeline", "VkShaderExt"]
