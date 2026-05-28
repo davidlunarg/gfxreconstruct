@@ -46,30 +46,19 @@ class KhronosFrameLoopConsumerBaseHeaderGenerator():
             arg_list = ', '.join(
                 [arg.split(' ')[-1] for arg in constructor_args.split(',')]
             )
-            # This is a kludge. The ctor args for this class (VulkanReplayFrameLoopConsumerBase)
-            # are not the same as the ctor args for the VulkanReplayConsumer class, so we
-            # can't just pass them along. We need to remove the last arg when calling the
-            # VulkanReplayConsumer ctor. In addition, the arg we removed (frame_loop_info)
-            # needs to be used to initialize the protected member frame_loop_info_.
-            arg_list=arg_list.rpartition(",")[0]
             write(
-                '    {class_name}({}) :\n        VulkanReplayConsumer({}),'.format(
+                '    {class_name}({}) :\n        VulkanReplayConsumer({})'.format(
                     constructor_args, arg_list, class_name=class_name
                 ),
                 file=self.outFile
             )
-            write(
-                '        frame_loop_info_(frame_loop_info) { }\n', file=self.outFile)
+            write('    {}\n', file=self.outFile)
         else:
             write('    {}() {{ }}\n'.format(class_name), file=self.outFile)
-        write(
-            '    virtual ~{}() override {{ }}'.format(class_name),
-            file=self.outFile
-        )
+        write('    virtual ~{}() override {{ }}'.format(class_name), file=self.outFile)
+        write('    virtual graphics::FrameLoopInfo& getFrameLoopInfo() = 0;', file=self.outFile)
 
     def write_class_completion(self):
-        write("  protected:\n", file=self.outFile)
-        write("    graphics::FrameLoopInfo& frame_loop_info_;\n", file=self.outFile)
         write('};', file=self.outFile)
 
     def write_class_contents(self):

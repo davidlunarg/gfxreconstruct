@@ -32,11 +32,11 @@ class KhronosReplayFrameLoopConsumerBaseBodyGenerator():
 
         if name in self.REPLAY_FRAME_LOOP_RESOURCE_ALLOCATE_OVERRIDES:
            body += '    // Return if not the first time through loop\n'
-           body += '    if (frame_loop_info_.IsRepetition())\n'
+           body += '    if (getFrameLoopInfo().IsRepetition())\n'
         else:
            # name in self.REPLAY_FRAME_LOOP_RESOURCE_FREE_OVERRIDES:
            body += '    // Return for all loop iterations\n'
-           body += '    if (frame_loop_info_.IsLooping())\n'
+           body += '    if (getFrameLoopInfo().IsLooping())\n'
 
         body += '    {\n'
         body += '        return;\n'

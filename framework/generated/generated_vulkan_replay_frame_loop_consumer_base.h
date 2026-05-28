@@ -47,11 +47,12 @@ GFXRECON_BEGIN_NAMESPACE(decode)
 class VulkanReplayFrameLoopConsumerBase : public VulkanReplayConsumer
 {
   public:
-    VulkanReplayFrameLoopConsumerBase(std::shared_ptr<application::Application> application, const VulkanReplayOptions& options, graphics::FrameLoopInfo& frame_loop_info) :
-        VulkanReplayConsumer(application, options),
-        frame_loop_info_(frame_loop_info) { }
+    VulkanReplayFrameLoopConsumerBase(std::shared_ptr<application::Application> application, const VulkanReplayOptions& options) :
+        VulkanReplayConsumer(application, options)
+    {}
 
     virtual ~VulkanReplayFrameLoopConsumerBase() override { }
+    virtual graphics::FrameLoopInfo& getFrameLoopInfo() = 0;
 
     void Process_vkCreateInstance(
         const ApiCallInfo&                          call_info,
@@ -1102,10 +1103,6 @@ class VulkanReplayFrameLoopConsumerBase : public VulkanReplayConsumer
         format::HandleId                            device,
         format::HandleId                            accelerationStructure,
         StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator);
-  protected:
-
-    graphics::FrameLoopInfo& frame_loop_info_;
-
 };
 
 GFXRECON_END_NAMESPACE(decode)

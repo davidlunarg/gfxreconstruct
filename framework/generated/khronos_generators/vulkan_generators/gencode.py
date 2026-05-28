@@ -415,7 +415,7 @@ def make_gen_opts(args):
             class_name='VulkanReplayFrameLoopConsumerBase',
             base_class_header='vulkan_replay_consumer_base.h',
             constructor_args=
-            'std::shared_ptr<application::Application> application, const VulkanReplayOptions& options, graphics::FrameLoopInfo& frame_loop_info',
+            'std::shared_ptr<application::Application> application, const VulkanReplayOptions& options',
             filename='generated_vulkan_replay_frame_loop_consumer_base.h',
             directory=directory,
             blacklists=blacklists,

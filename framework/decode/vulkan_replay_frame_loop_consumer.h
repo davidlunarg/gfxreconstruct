@@ -37,7 +37,8 @@ class VulkanReplayFrameLoopConsumer : public VulkanReplayFrameLoopConsumerBase
     VulkanReplayFrameLoopConsumer(std::shared_ptr<application::Application> application,
                                   const VulkanReplayOptions&                options,
                                   graphics::FrameLoopInfo&                  frame_loop_info) :
-        VulkanReplayFrameLoopConsumerBase(application, options, frame_loop_info)
+        VulkanReplayFrameLoopConsumerBase(application, options),
+        frame_loop_info_(frame_loop_info)
     {}
 
     void Process_vkBeginCommandBuffer(
@@ -50,6 +51,15 @@ class VulkanReplayFrameLoopConsumer : public VulkanReplayFrameLoopConsumerBase
         const ApiCallInfo&                          call_info,
         VkResult                                    returnValue,
         format::HandleId                            commandBuffer);
+
+    graphics::FrameLoopInfo& getFrameLoopInfo()
+    {
+      return frame_loop_info_;
+    }
+
+  private:
+      graphics::FrameLoopInfo& frame_loop_info_;
+
 };
 
 GFXRECON_END_NAMESPACE(decode)
