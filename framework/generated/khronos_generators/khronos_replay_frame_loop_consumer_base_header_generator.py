@@ -46,10 +46,11 @@ class KhronosFrameLoopConsumerBaseHeaderGenerator():
             arg_list = ', '.join(
                 [arg.split(' ')[-1] for arg in constructor_args.split(',')]
             )
-            # TODO:
-            # KLUDGE !!!!!!!!!!!!!!
-            # We remove the last arg in call to VulkanReplayConsumer ctor.
-            # frame_loop_info_ initialize is hardcoded.
+            # This is a kludge. The ctor args for this class (VulkanReplayFrameLoopConsumerBase)
+            # are not the same as the ctor args for the VulkanReplayConsumer class, so we
+            # can't just pass them along. We need to remove the last arg when calling the
+            # VulkanReplayConsumer ctor. In addition, the arg we removed (frame_loop_info)
+            # needs to be used to initialize the protected member frame_loop_info_.
             arg_list=arg_list.rpartition(",")[0]
             write(
                 '    {class_name}({}) :\n        VulkanReplayConsumer({}),'.format(
