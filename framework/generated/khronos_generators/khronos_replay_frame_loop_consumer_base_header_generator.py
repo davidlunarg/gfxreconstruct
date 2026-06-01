@@ -78,7 +78,7 @@ class KhronosFrameLoopConsumerBaseHeaderGenerator():
             )
             cmddef = '\n'
             cmddef += self.indent(
-                decl + ';', self.INDENT_SIZE
+                decl + ' override;', self.INDENT_SIZE
             )
             write(cmddef, file=self.outFile)
 

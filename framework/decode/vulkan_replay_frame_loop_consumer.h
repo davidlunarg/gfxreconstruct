@@ -41,7 +41,7 @@ class VulkanReplayFrameLoopConsumer : public VulkanReplayFrameLoopConsumerBase
         frame_loop_info_(frame_loop_info)
     {}
 
-    graphics::FrameLoopInfo& getFrameLoopInfo() { return frame_loop_info_; }
+    graphics::FrameLoopInfo& getFrameLoopInfo() override { return frame_loop_info_; }
 
     void Process_vkCreateCommandPool(const ApiCallInfo&                                     call_info,
                                      VkResult                                               returnValue,
