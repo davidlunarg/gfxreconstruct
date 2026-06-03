@@ -239,6 +239,24 @@ void VulkanReplayConsumer::Process_vkQueueSubmit(
     MapStructArrayHandles(pSubmits->GetMetaStructPointer(), pSubmits->GetLength(), GetObjectInfoTable());
     auto in_fence = GetObjectInfoTable().GetVkFenceInfo(fence);
 
+    static uint64_t count=1;
+    VkFrameBoundaryEXT frameBoundary = {
+        .sType = VK_STRUCTURE_TYPE_FRAME_BOUNDARY_EXT,
+        .pNext = NULL,
+        .flags = VK_FRAME_BOUNDARY_FRAME_END_BIT_EXT,
+        .frameID = count,
+        .imageCount = 0,
+        .pImages = NULL,
+        .bufferCount = 0,
+        .pBuffers = NULL,
+        .tagName = 0,
+        .tagSize = 0,
+        .pTag = NULL
+    };
+    VkSubmitInfo *submit_info = pSubmits->GetPointer();
+    if (count == 787)
+        submit_info->pNext = &frameBoundary;
+    count++;
     VkResult replay_result = OverrideQueueSubmit(GetDeviceTable(in_queue->handle)->QueueSubmit, call_info.index, returnValue, in_queue, submitCount, pSubmits, in_fence);
     CheckResult("vkQueueSubmit", returnValue, replay_result, call_info);
 }
@@ -4125,7 +4143,6 @@ void VulkanReplayConsumer::Process_vkAcquireNextImageKHR(
     auto in_semaphore = GetObjectInfoTable().GetVkSemaphoreInfo(semaphore);
     auto in_fence = GetObjectInfoTable().GetVkFenceInfo(fence);
     pImageIndex->IsNull() ? nullptr : pImageIndex->AllocateOutputData(1, static_cast<uint32_t>(0));
-
     VkResult replay_result = OverrideAcquireNextImageKHR(GetDeviceTable(in_device->handle)->AcquireNextImageKHR, returnValue, in_device, in_swapchain, timeout, in_semaphore, in_fence, pImageIndex);
     CheckResult("vkAcquireNextImageKHR", returnValue, replay_result, call_info);
 }
