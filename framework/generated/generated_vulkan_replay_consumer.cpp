@@ -243,7 +243,7 @@ void VulkanReplayConsumer::Process_vkQueueSubmit(
     VkFrameBoundaryEXT frameBoundary = {
         .sType = VK_STRUCTURE_TYPE_FRAME_BOUNDARY_EXT,
         .pNext = NULL,
-        .flags = VK_FRAME_BOUNDARY_FRAME_END_BIT_EXT,
+        .flags = 0,
         .frameID = count,
         .imageCount = 0,
         .pImages = NULL,
@@ -254,8 +254,9 @@ void VulkanReplayConsumer::Process_vkQueueSubmit(
         .pTag = NULL
     };
     VkSubmitInfo *submit_info = pSubmits->GetPointer();
-    if (count == 1225)
-        submit_info->pNext = &frameBoundary;
+    if (count == 1225-656)
+        frameBoundary.flags = VK_FRAME_BOUNDARY_FRAME_END_BIT_EXT;
+    submit_info->pNext = &frameBoundary;
     count++;
     VkResult replay_result = OverrideQueueSubmit(GetDeviceTable(in_queue->handle)->QueueSubmit, call_info.index, returnValue, in_queue, submitCount, pSubmits, in_fence);
     CheckResult("vkQueueSubmit", returnValue, replay_result, call_info);

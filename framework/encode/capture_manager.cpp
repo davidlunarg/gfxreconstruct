@@ -1109,9 +1109,10 @@ void CommonCaptureManager::WriteFrameMarker(format::MarkerType marker_type)
 
 void CommonCaptureManager::EndFrame(format::ApiFamilyId api_family, std::shared_lock<ApiCallMutexT>& current_lock)
 {
-    static int emcount = 1;
+    //static int emcount = 1;
     // Write an end-of-frame marker to the capture file.
-    if (emcount++ != 384) {
+    //if (emcount++ != 383) {
+    if (current_frame_ != 383) {
         WriteFrameMarker(format::MarkerType::kEndMarker);
     }
 
