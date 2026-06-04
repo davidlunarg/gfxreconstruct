@@ -254,8 +254,10 @@ void VulkanReplayConsumer::Process_vkQueueSubmit(
         .pTag = NULL
     };
     VkSubmitInfo *submit_info = pSubmits->GetPointer();
-    if (count == 1225-656)
+    if (count == 1225-656) {
         frameBoundary.flags = VK_FRAME_BOUNDARY_FRAME_END_BIT_EXT;
+        frameBoundary.flags |= 2;
+    }
     submit_info->pNext = &frameBoundary;
     count++;
     VkResult replay_result = OverrideQueueSubmit(GetDeviceTable(in_queue->handle)->QueueSubmit, call_info.index, returnValue, in_queue, submitCount, pSubmits, in_fence);
