@@ -298,12 +298,34 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateBuffer(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkBuffer>*             pBuffer)
 {
-    // Return if not the first time through loop
-    if (getFrameLoopInfo().IsRepetition())
+    bool doit;
+
+    format::HandleId buffer = *pBuffer->GetPointer();
+
+    if (!getFrameLoopInfo().IsLooping())
     {
-        return;
+        // Do it if were not looping
+        printf("@@CreateBuffer - not in loop\n");
+        doit=true;
     }
-    VulkanReplayConsumer::Process_vkCreateBuffer(call_info, returnValue, device, pCreateInfo, pAllocator, pBuffer);
+    else
+    {
+        // We are in a loop
+        // Do it if the current create is not in the loopSet.
+        // This handle the case of both when it is created in the loop w/o destroying
+        // in the loop, and when it is created in the loop and destroyed in the loop.
+        doit = std::find(createBuffer_loopSet.begin(), createBuffer_loopSet.end(), buffer) == 
+                  createBuffer_loopSet.end();
+    }
+
+    if (doit)
+    {
+        printf("@@Executing Process_vkCreateBuffer\n");
+        VulkanReplayConsumer::Process_vkCreateBuffer(call_info, returnValue, device, pCreateInfo, pAllocator, pBuffer);
+        if (getFrameLoopInfo().IsLooping())
+            createBuffer_loopSet.insert(buffer);
+    } else
+        printf("@@Skipping Process_vkCreateBuffer\n");
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyBuffer(
@@ -312,12 +334,42 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyBuffer(
     format::HandleId                            buffer,
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
 {
-    // Return for all loop iterations
-    if (getFrameLoopInfo().IsLooping())
+    // Skip for loop iterations 1-(n-1).
+    // skip if looping and if it's not final iteration
+    // Execute if buffer is in createBuffer_loopSet
+
+    // Call Process_vkDestroyBuffer if:
+    //   We are not looping
+    //   We are looping and buffer is in createBuffer_loopSet
+    //   We are looping and this is the last iteration
+
+    bool doit;
+    if (!getFrameLoopInfo().IsLooping())
     {
-        return;
+        printf("@@DestroyBuffer - not in loop\n");
+        doit=true;
     }
-    VulkanReplayConsumer::Process_vkDestroyBuffer(call_info, device, buffer, pAllocator);
+    else
+    {
+        doit = std::find(createBuffer_loopSet.begin(), createBuffer_loopSet.end(), buffer) != 
+                  createBuffer_loopSet.end();
+        doit |= getFrameLoopInfo().IsFinalIteration();
+    }
+    if (doit) {
+        printf("@@Executing Process_vkDestroyBuffer\n");
+        VulkanReplayConsumer::Process_vkDestroyBuffer(call_info, device, buffer, pAllocator);
+    }
+    else
+    {
+        printf("@@Skipping Process_vkDestroyBuffer\n");
+    }
+
+    // Remove buffer from createBuffer_loopSet
+    if (std::find(createBuffer_loopSet.begin(), createBuffer_loopSet.end(), buffer) != 
+                  createBuffer_loopSet.end())
+    {
+        createBuffer_loopSet.erase(buffer);
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateImage(

@@ -1103,6 +1103,9 @@ class VulkanReplayFrameLoopConsumerBase : public VulkanReplayConsumer
         format::HandleId                            device,
         format::HandleId                            accelerationStructure,
         StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator) override;
+
+    protected:
+        std::set<format::HandleId> createBuffer_loopSet;
 };
 
 GFXRECON_END_NAMESPACE(decode)
