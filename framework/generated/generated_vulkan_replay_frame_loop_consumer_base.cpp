@@ -56,7 +56,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateInstance(
             loopSet.insert(handle);
         }
     } else
-        printf("@@Skipping Process_vkCreateBuffer\n");
+        printf("@@Skipping Process_vkCreateInstance\n");
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyInstance(
@@ -68,7 +68,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyInstance(
     // Skip if looping and if not final iteration
     // Execute if instance is in loopSet
 
-    // Call Process_vkDestroyBuffer if:
+    // Call Process_vkDestroyInstance if:
     //    We are not looping
     //    We are looping and instance is in loopSet
     //    We are looping and this is the last iteration
@@ -113,7 +113,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDevice(
             loopSet.insert(handle);
         }
     } else
-        printf("@@Skipping Process_vkCreateBuffer\n");
+        printf("@@Skipping Process_vkCreateDevice\n");
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDevice(
@@ -125,7 +125,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDevice(
     // Skip if looping and if not final iteration
     // Execute if device is in loopSet
 
-    // Call Process_vkDestroyBuffer if:
+    // Call Process_vkDestroyDevice if:
     //    We are not looping
     //    We are looping and device is in loopSet
     //    We are looping and this is the last iteration
@@ -170,7 +170,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkAllocateMemory(
             loopSet.insert(handle);
         }
     } else
-        printf("@@Skipping Process_vkCreateBuffer\n");
+        printf("@@Skipping Process_vkAllocateMemory\n");
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkFreeMemory(
@@ -183,7 +183,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkFreeMemory(
     // Skip if looping and if not final iteration
     // Execute if memory is in loopSet
 
-    // Call Process_vkDestroyBuffer if:
+    // Call Process_vkFreeMemory if:
     //    We are not looping
     //    We are looping and memory is in loopSet
     //    We are looping and this is the last iteration
@@ -228,7 +228,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateFence(
             loopSet.insert(handle);
         }
     } else
-        printf("@@Skipping Process_vkCreateBuffer\n");
+        printf("@@Skipping Process_vkCreateFence\n");
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyFence(
@@ -241,7 +241,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyFence(
     // Skip if looping and if not final iteration
     // Execute if fence is in loopSet
 
-    // Call Process_vkDestroyBuffer if:
+    // Call Process_vkDestroyFence if:
     //    We are not looping
     //    We are looping and fence is in loopSet
     //    We are looping and this is the last iteration
@@ -344,7 +344,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateImage(
             loopSet.insert(handle);
         }
     } else
-        printf("@@Skipping Process_vkCreateBuffer\n");
+        printf("@@Skipping Process_vkCreateImage\n");
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyImage(
@@ -357,7 +357,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyImage(
     // Skip if looping and if not final iteration
     // Execute if image is in loopSet
 
-    // Call Process_vkDestroyBuffer if:
+    // Call Process_vkDestroyImage if:
     //    We are not looping
     //    We are looping and image is in loopSet
     //    We are looping and this is the last iteration
@@ -402,7 +402,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateImageView(
             loopSet.insert(handle);
         }
     } else
-        printf("@@Skipping Process_vkCreateBuffer\n");
+        printf("@@Skipping Process_vkCreateImageView\n");
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyImageView(
@@ -415,7 +415,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyImageView(
     // Skip if looping and if not final iteration
     // Execute if imageView is in loopSet
 
-    // Call Process_vkDestroyBuffer if:
+    // Call Process_vkDestroyImageView if:
     //    We are not looping
     //    We are looping and imageView is in loopSet
     //    We are looping and this is the last iteration
@@ -460,7 +460,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateCommandPool(
             loopSet.insert(handle);
         }
     } else
-        printf("@@Skipping Process_vkCreateBuffer\n");
+        printf("@@Skipping Process_vkCreateCommandPool\n");
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyCommandPool(
@@ -473,7 +473,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyCommandPool(
     // Skip if looping and if not final iteration
     // Execute if commandPool is in loopSet
 
-    // Call Process_vkDestroyBuffer if:
+    // Call Process_vkDestroyCommandPool if:
     //    We are not looping
     //    We are looping and commandPool is in loopSet
     //    We are looping and this is the last iteration
@@ -518,7 +518,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateEvent(
             loopSet.insert(handle);
         }
     } else
-        printf("@@Skipping Process_vkCreateBuffer\n");
+        printf("@@Skipping Process_vkCreateEvent\n");
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyEvent(
@@ -531,7 +531,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyEvent(
     // Skip if looping and if not final iteration
     // Execute if event is in loopSet
 
-    // Call Process_vkDestroyBuffer if:
+    // Call Process_vkDestroyEvent if:
     //    We are not looping
     //    We are looping and event is in loopSet
     //    We are looping and this is the last iteration
@@ -576,7 +576,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateBufferView(
             loopSet.insert(handle);
         }
     } else
-        printf("@@Skipping Process_vkCreateBuffer\n");
+        printf("@@Skipping Process_vkCreateBufferView\n");
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyBufferView(
@@ -589,7 +589,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyBufferView(
     // Skip if looping and if not final iteration
     // Execute if bufferView is in loopSet
 
-    // Call Process_vkDestroyBuffer if:
+    // Call Process_vkDestroyBufferView if:
     //    We are not looping
     //    We are looping and bufferView is in loopSet
     //    We are looping and this is the last iteration
@@ -634,7 +634,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDescriptorSetLayout(
             loopSet.insert(handle);
         }
     } else
-        printf("@@Skipping Process_vkCreateBuffer\n");
+        printf("@@Skipping Process_vkCreateDescriptorSetLayout\n");
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDescriptorSetLayout(
@@ -647,7 +647,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDescriptorSetLayout(
     // Skip if looping and if not final iteration
     // Execute if descriptorSetLayout is in loopSet
 
-    // Call Process_vkDestroyBuffer if:
+    // Call Process_vkDestroyDescriptorSetLayout if:
     //    We are not looping
     //    We are looping and descriptorSetLayout is in loopSet
     //    We are looping and this is the last iteration
@@ -692,7 +692,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDescriptorPool(
             loopSet.insert(handle);
         }
     } else
-        printf("@@Skipping Process_vkCreateBuffer\n");
+        printf("@@Skipping Process_vkCreateDescriptorPool\n");
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDescriptorPool(
@@ -705,7 +705,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDescriptorPool(
     // Skip if looping and if not final iteration
     // Execute if descriptorPool is in loopSet
 
-    // Call Process_vkDestroyBuffer if:
+    // Call Process_vkDestroyDescriptorPool if:
     //    We are not looping
     //    We are looping and descriptorPool is in loopSet
     //    We are looping and this is the last iteration
@@ -750,7 +750,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateFramebuffer(
             loopSet.insert(handle);
         }
     } else
-        printf("@@Skipping Process_vkCreateBuffer\n");
+        printf("@@Skipping Process_vkCreateFramebuffer\n");
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyFramebuffer(
@@ -763,7 +763,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyFramebuffer(
     // Skip if looping and if not final iteration
     // Execute if framebuffer is in loopSet
 
-    // Call Process_vkDestroyBuffer if:
+    // Call Process_vkDestroyFramebuffer if:
     //    We are not looping
     //    We are looping and framebuffer is in loopSet
     //    We are looping and this is the last iteration
@@ -808,7 +808,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDescriptorUpdateTemplate
             loopSet.insert(handle);
         }
     } else
-        printf("@@Skipping Process_vkCreateBuffer\n");
+        printf("@@Skipping Process_vkCreateDescriptorUpdateTemplate\n");
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDescriptorUpdateTemplate(
@@ -821,7 +821,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDescriptorUpdateTemplat
     // Skip if looping and if not final iteration
     // Execute if descriptorUpdateTemplate is in loopSet
 
-    // Call Process_vkDestroyBuffer if:
+    // Call Process_vkDestroyDescriptorUpdateTemplate if:
     //    We are not looping
     //    We are looping and descriptorUpdateTemplate is in loopSet
     //    We are looping and this is the last iteration
@@ -866,7 +866,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDescriptorUpdateTemplate
             loopSet.insert(handle);
         }
     } else
-        printf("@@Skipping Process_vkCreateBuffer\n");
+        printf("@@Skipping Process_vkCreateDescriptorUpdateTemplateKHR\n");
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDescriptorUpdateTemplateKHR(
@@ -879,7 +879,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDescriptorUpdateTemplat
     // Skip if looping and if not final iteration
     // Execute if descriptorUpdateTemplate is in loopSet
 
-    // Call Process_vkDestroyBuffer if:
+    // Call Process_vkDestroyDescriptorUpdateTemplateKHR if:
     //    We are not looping
     //    We are looping and descriptorUpdateTemplate is in loopSet
     //    We are looping and this is the last iteration
@@ -923,7 +923,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDeferredOperationKHR(
             loopSet.insert(handle);
         }
     } else
-        printf("@@Skipping Process_vkCreateBuffer\n");
+        printf("@@Skipping Process_vkCreateDeferredOperationKHR\n");
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDeferredOperationKHR(
@@ -936,7 +936,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDeferredOperationKHR(
     // Skip if looping and if not final iteration
     // Execute if operation is in loopSet
 
-    // Call Process_vkDestroyBuffer if:
+    // Call Process_vkDestroyDeferredOperationKHR if:
     //    We are not looping
     //    We are looping and operation is in loopSet
     //    We are looping and this is the last iteration
@@ -981,7 +981,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDebugReportCallbackEXT(
             loopSet.insert(handle);
         }
     } else
-        printf("@@Skipping Process_vkCreateBuffer\n");
+        printf("@@Skipping Process_vkCreateDebugReportCallbackEXT\n");
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDebugReportCallbackEXT(
@@ -994,7 +994,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDebugReportCallbackEXT(
     // Skip if looping and if not final iteration
     // Execute if callback is in loopSet
 
-    // Call Process_vkDestroyBuffer if:
+    // Call Process_vkDestroyDebugReportCallbackEXT if:
     //    We are not looping
     //    We are looping and callback is in loopSet
     //    We are looping and this is the last iteration
@@ -1039,7 +1039,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDebugUtilsMessengerEXT(
             loopSet.insert(handle);
         }
     } else
-        printf("@@Skipping Process_vkCreateBuffer\n");
+        printf("@@Skipping Process_vkCreateDebugUtilsMessengerEXT\n");
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDebugUtilsMessengerEXT(
@@ -1052,7 +1052,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDebugUtilsMessengerEXT(
     // Skip if looping and if not final iteration
     // Execute if messenger is in loopSet
 
-    // Call Process_vkDestroyBuffer if:
+    // Call Process_vkDestroyDebugUtilsMessengerEXT if:
     //    We are not looping
     //    We are looping and messenger is in loopSet
     //    We are looping and this is the last iteration
@@ -1097,7 +1097,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateAccelerationStructureNV(
             loopSet.insert(handle);
         }
     } else
-        printf("@@Skipping Process_vkCreateBuffer\n");
+        printf("@@Skipping Process_vkCreateAccelerationStructureNV\n");
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyAccelerationStructureNV(
@@ -1110,7 +1110,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyAccelerationStructureNV
     // Skip if looping and if not final iteration
     // Execute if accelerationStructure is in loopSet
 
-    // Call Process_vkDestroyBuffer if:
+    // Call Process_vkDestroyAccelerationStructureNV if:
     //    We are not looping
     //    We are looping and accelerationStructure is in loopSet
     //    We are looping and this is the last iteration
@@ -1155,7 +1155,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateIndirectCommandsLayoutNV
             loopSet.insert(handle);
         }
     } else
-        printf("@@Skipping Process_vkCreateBuffer\n");
+        printf("@@Skipping Process_vkCreateIndirectCommandsLayoutNV\n");
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyIndirectCommandsLayoutNV(
@@ -1168,7 +1168,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyIndirectCommandsLayoutN
     // Skip if looping and if not final iteration
     // Execute if indirectCommandsLayout is in loopSet
 
-    // Call Process_vkDestroyBuffer if:
+    // Call Process_vkDestroyIndirectCommandsLayoutNV if:
     //    We are not looping
     //    We are looping and indirectCommandsLayout is in loopSet
     //    We are looping and this is the last iteration
@@ -1213,7 +1213,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDataGraphPipelineSession
             loopSet.insert(handle);
         }
     } else
-        printf("@@Skipping Process_vkCreateBuffer\n");
+        printf("@@Skipping Process_vkCreateDataGraphPipelineSessionARM\n");
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDataGraphPipelineSessionARM(
@@ -1226,7 +1226,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDataGraphPipelineSessio
     // Skip if looping and if not final iteration
     // Execute if session is in loopSet
 
-    // Call Process_vkDestroyBuffer if:
+    // Call Process_vkDestroyDataGraphPipelineSessionARM if:
     //    We are not looping
     //    We are looping and session is in loopSet
     //    We are looping and this is the last iteration
@@ -1271,7 +1271,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateIndirectCommandsLayoutEX
             loopSet.insert(handle);
         }
     } else
-        printf("@@Skipping Process_vkCreateBuffer\n");
+        printf("@@Skipping Process_vkCreateIndirectCommandsLayoutEXT\n");
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyIndirectCommandsLayoutEXT(
@@ -1284,7 +1284,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyIndirectCommandsLayoutE
     // Skip if looping and if not final iteration
     // Execute if indirectCommandsLayout is in loopSet
 
-    // Call Process_vkDestroyBuffer if:
+    // Call Process_vkDestroyIndirectCommandsLayoutEXT if:
     //    We are not looping
     //    We are looping and indirectCommandsLayout is in loopSet
     //    We are looping and this is the last iteration
@@ -1329,7 +1329,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateIndirectExecutionSetEXT(
             loopSet.insert(handle);
         }
     } else
-        printf("@@Skipping Process_vkCreateBuffer\n");
+        printf("@@Skipping Process_vkCreateIndirectExecutionSetEXT\n");
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyIndirectExecutionSetEXT(
@@ -1342,7 +1342,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyIndirectExecutionSetEXT
     // Skip if looping and if not final iteration
     // Execute if indirectExecutionSet is in loopSet
 
-    // Call Process_vkDestroyBuffer if:
+    // Call Process_vkDestroyIndirectExecutionSetEXT if:
     //    We are not looping
     //    We are looping and indirectExecutionSet is in loopSet
     //    We are looping and this is the last iteration
@@ -1387,7 +1387,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateAccelerationStructureKHR
             loopSet.insert(handle);
         }
     } else
-        printf("@@Skipping Process_vkCreateBuffer\n");
+        printf("@@Skipping Process_vkCreateAccelerationStructureKHR\n");
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyAccelerationStructureKHR(
@@ -1400,7 +1400,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyAccelerationStructureKH
     // Skip if looping and if not final iteration
     // Execute if accelerationStructure is in loopSet
 
-    // Call Process_vkDestroyBuffer if:
+    // Call Process_vkDestroyAccelerationStructureKHR if:
     //    We are not looping
     //    We are looping and accelerationStructure is in loopSet
     //    We are looping and this is the last iteration

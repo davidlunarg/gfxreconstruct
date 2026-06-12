@@ -37,8 +37,8 @@ class KhronosReplayFrameLoopConsumerBaseBodyGenerator():
             body += '    if (!getFrameLoopInfo().IsLooping() ||\n'
             body += '        find(loopSet.begin(), loopSet.end(), handle) == loopSet.end())\n'
             body += '    {\n'
-            body += '        printf("@@Executing Process_' + name +'\\n");\n'
-            body += '        VulkanReplayConsumer::Process_' + name +'('
+            body += '        printf("@@Executing Process_' + name + '\\n");\n'
+            body += '        VulkanReplayConsumer::Process_' + name + '('
             args=['call_info']
             if return_type != 'void':
                 args.append('returnValue')
@@ -50,13 +50,13 @@ class KhronosReplayFrameLoopConsumerBaseBodyGenerator():
             body += '            loopSet.insert(handle);\n'
             body += '        }\n'
             body += '    } else\n'
-            body += '        printf("@@Skipping Process_vkCreateBuffer\\n");\n'
+            body += '        printf("@@Skipping Process_' + name + '\\n");\n'
         else:
             # name in self.REPLAY_FRAME_LOOP_RESOURCE_FREE_OVERRIDES:
             body += '    // Skip for loop iterations 1-(n-1).\n'
             body += '    // Skip if looping and if not final iteration\n'
             body += '    // Execute if ' + values[-2].name + ' is in loopSet\n\n'
-            body += '    // Call Process_vkDestroyBuffer if:\n'
+            body += '    // Call Process_' + name + ' if:\n'
             body += '    //    We are not looping\n'
             body += '    //    We are looping and ' + values[-2].name + ' is in loopSet\n'
             body += '    //    We are looping and this is the last iteration\n'
