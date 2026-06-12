@@ -298,32 +298,20 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateBuffer(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkBuffer>*             pBuffer)
 {
-    bool doit;
-
     format::HandleId buffer = *pBuffer->GetPointer();
 
-    if (!getFrameLoopInfo().IsLooping())
-    {
-        // Do it if were not looping
-        printf("@@CreateBuffer - not in loop\n");
-        doit=true;
-    }
-    else
-    {
-        // We are in a loop
-        // Do it if the current create is not in the loopSet.
-        // This handle the case of both when it is created in the loop w/o destroying
-        // in the loop, and when it is created in the loop and destroyed in the loop.
-        doit = std::find(createBuffer_loopSet.begin(), createBuffer_loopSet.end(), buffer) == 
-                  createBuffer_loopSet.end();
-    }
-
-    if (doit)
+    // Pass the call along if we aren't looping or
+    // if we are looping and the handle is not in loopSet
+    if (!getFrameLoopInfo().IsLooping() ||
+        find(createBuffer_loopSet.begin(), createBuffer_loopSet.end(), buffer) == createBuffer_loopSet.end())
     {
         printf("@@Executing Process_vkCreateBuffer\n");
         VulkanReplayConsumer::Process_vkCreateBuffer(call_info, returnValue, device, pCreateInfo, pAllocator, pBuffer);
+        // If we are looping, save the hande in loopSet
         if (getFrameLoopInfo().IsLooping())
+        {
             createBuffer_loopSet.insert(buffer);
+        }
     } else
         printf("@@Skipping Process_vkCreateBuffer\n");
 }
@@ -343,19 +331,12 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyBuffer(
     //   We are looping and buffer is in createBuffer_loopSet
     //   We are looping and this is the last iteration
 
-    bool doit;
-    if (!getFrameLoopInfo().IsLooping())
+    bool callDestroyBuffer;
+
+    if (!getFrameLoopInfo().IsLooping() ||
+        std::find(createBuffer_loopSet.begin(), createBuffer_loopSet.end(), buffer) != createBuffer_loopSet.end() ||
+        getFrameLoopInfo().IsFinalIteration())
     {
-        printf("@@DestroyBuffer - not in loop\n");
-        doit=true;
-    }
-    else
-    {
-        doit = std::find(createBuffer_loopSet.begin(), createBuffer_loopSet.end(), buffer) != 
-                  createBuffer_loopSet.end();
-        doit |= getFrameLoopInfo().IsFinalIteration();
-    }
-    if (doit) {
         printf("@@Executing Process_vkDestroyBuffer\n");
         VulkanReplayConsumer::Process_vkDestroyBuffer(call_info, device, buffer, pAllocator);
     }
