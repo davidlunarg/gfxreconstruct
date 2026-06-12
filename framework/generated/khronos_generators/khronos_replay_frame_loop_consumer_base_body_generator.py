@@ -31,24 +31,58 @@ class KhronosReplayFrameLoopConsumerBaseBodyGenerator():
         body = ''
 
         if name in self.REPLAY_FRAME_LOOP_RESOURCE_ALLOCATE_OVERRIDES:
-           body += '    // Return if not the first time through loop\n'
-           body += '    if (getFrameLoopInfo().IsRepetition())\n'
+            body += '    format::HandleId handle = *' + values[-1].name + '->GetPointer();\n\n'
+            body += '    // Pass the call along if we are not looping or\n'
+            body += '    // if we are looping and the handle is not in loopSet\n'
+            body += '    if (!getFrameLoopInfo().IsLooping() ||\n'
+            body += '        find(loopSet.begin(), loopSet.end(), handle) == loopSet.end())\n'
+            body += '    {\n'
+            body += '        printf("@@Executing Process_' + name +'\\n");\n'
+            body += '        VulkanReplayConsumer::Process_' + name +'('
+            args=['call_info']
+            if return_type != 'void':
+                args.append('returnValue')
+            [ args.append(value.name) for value in values ]
+            body += ", ".join(args) + ');\n'
+            body += '        // If we are looping, save the handle in loopSet\n'
+            body += '        if (getFrameLoopInfo().IsLooping())\n'
+            body += '        {\n'
+            body += '            loopSet.insert(handle);\n'
+            body += '        }\n'
+            body += '    } else\n'
+            body += '        printf("@@Skipping Process_vkCreateBuffer\\n");\n'
         else:
-           # name in self.REPLAY_FRAME_LOOP_RESOURCE_FREE_OVERRIDES:
-           body += '    // Return for all loop iterations\n'
-           body += '    if (getFrameLoopInfo().IsLooping())\n'
-
-        body += '    {\n'
-        body += '        return;\n'
-        body += '    }\n'
-        # Output a function call to replay consumer
-        body += '    VulkanReplayConsumer::Process_'+name+'('
-        args=['call_info']
-        if return_type != 'void':
-            args.append('returnValue')
-        [ args.append(value.name) for value in values ]
-        body += ", ".join(args) + ');\n'
+            # name in self.REPLAY_FRAME_LOOP_RESOURCE_FREE_OVERRIDES:
+            body += '    // Skip for loop iterations 1-(n-1).\n'
+            body += '    // Skip if looping and if not final iteration\n'
+            body += '    // Execute if ' + values[-2].name + ' is in loopSet\n\n'
+            body += '    // Call Process_vkDestroyBuffer if:\n'
+            body += '    //    We are not looping\n'
+            body += '    //    We are looping and ' + values[-2].name + ' is in loopSet\n'
+            body += '    //    We are looping and this is the last iteration\n'
+            body += '    if (!getFrameLoopInfo().IsLooping() ||\n'
+            body += '        std::find(loopSet.begin(), loopSet.end(), ' + values[-2].name + ') != loopSet.end() ||\n'
+            body += '        getFrameLoopInfo().IsFinalIteration())\n'
+            body += '    {\n'
+            body += '        printf("@@Executing Process_' + name + '\\n");\n'
+            body += '        VulkanReplayConsumer::Process_' + name +'('
+            args=['call_info']
+            if return_type != 'void':
+                args.append('returnValue')
+            [ args.append(value.name) for value in values ]
+            body += ", ".join(args) + ');\n'
+            body += '    }\n'
+            body += '    else\n'
+            body += '    {\n'
+            body += '        printf("@@Skipping Process_' + name + '\\n");\n'
+            body += '    }\n'
+            body += '    // Remove ' + values[-2].name + ' from loopSet\n'
+            body += '    if (std::find(loopSet.begin(), loopSet.end(), ' + values[-2].name + ') != loopSet.end())\n'
+            body += '    {\n'
+            body += '        loopSet.erase(' + values[-2].name + ');\n'
+            body += '    }\n'
         return body
+
 
     def generate_replay_frame_loop_consumer_content(self, api_data):
         """Performs C++ code generation for the replay frame loop consumer."""
