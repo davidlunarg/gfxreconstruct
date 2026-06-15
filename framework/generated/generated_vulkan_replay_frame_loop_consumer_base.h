@@ -385,8 +385,14 @@ class VulkanReplayFrameLoopConsumerBase : public VulkanReplayConsumer
         format::HandleId                            device,
         format::HandleId                            accelerationStructure,
         StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator) override;
+
     protected:
-        std::set<format::HandleId> loopSet;  // TODO: Rename this?
+        std::set<format::HandleId> allocatedLoopResources;
+        bool inAllocatedLoopResources(format::HandleId handle)
+        {
+             return std::find(allocatedLoopResources.begin(), allocatedLoopResources.end(), handle) !=
+                    allocatedLoopResources.end();
+        }
 };
 
 GFXRECON_END_NAMESPACE(decode)

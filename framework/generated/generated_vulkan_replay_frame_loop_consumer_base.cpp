@@ -44,16 +44,15 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateInstance(
     format::HandleId handle = *pInstance->GetPointer();
 
     // Pass the call along if we are not looping or
-    // if we are looping and the handle is not in loopSet
-    if (!getFrameLoopInfo().IsLooping() ||
-        find(loopSet.begin(), loopSet.end(), handle) == loopSet.end())
+    // if we are looping and the handle is not in allocatedLoopResources
+    if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
         printf("@@Executing Process_vkCreateInstance\n");
         VulkanReplayConsumer::Process_vkCreateInstance(call_info, returnValue, pCreateInfo, pAllocator, pInstance);
-        // If we are looping, save the handle in loopSet
+        // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
-            loopSet.insert(handle);
+            allocatedLoopResources.insert(handle);
         }
     } else
         printf("@@Skipping Process_vkCreateInstance\n");
@@ -66,14 +65,14 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyInstance(
 {
     // Skip for loop iterations 1-(n-1).
     // Skip if looping and if not final iteration
-    // Execute if instance is in loopSet
+    // Execute if instance is in allocatedLoopResources
 
     // Call Process_vkDestroyInstance if:
     //    We are not looping
-    //    We are looping and instance is in loopSet
+    //    We are looping and instance is in allocatedLoopResources
     //    We are looping and this is the last iteration
     if (!getFrameLoopInfo().IsLooping() ||
-        std::find(loopSet.begin(), loopSet.end(), instance) != loopSet.end() ||
+        inAllocatedLoopResources(instance) ||
         getFrameLoopInfo().IsFinalIteration())
     {
         printf("@@Executing Process_vkDestroyInstance\n");
@@ -83,10 +82,10 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyInstance(
     {
         printf("@@Skipping Process_vkDestroyInstance\n");
     }
-    // Remove instance from loopSet
-    if (std::find(loopSet.begin(), loopSet.end(), instance) != loopSet.end())
+    // Remove instance from allocatedLoopResources
+    if (inAllocatedLoopResources(instance))
     {
-        loopSet.erase(instance);
+        allocatedLoopResources.erase(instance);
     }
 }
 
@@ -101,16 +100,15 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDevice(
     format::HandleId handle = *pDevice->GetPointer();
 
     // Pass the call along if we are not looping or
-    // if we are looping and the handle is not in loopSet
-    if (!getFrameLoopInfo().IsLooping() ||
-        find(loopSet.begin(), loopSet.end(), handle) == loopSet.end())
+    // if we are looping and the handle is not in allocatedLoopResources
+    if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
         printf("@@Executing Process_vkCreateDevice\n");
         VulkanReplayConsumer::Process_vkCreateDevice(call_info, returnValue, physicalDevice, pCreateInfo, pAllocator, pDevice);
-        // If we are looping, save the handle in loopSet
+        // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
-            loopSet.insert(handle);
+            allocatedLoopResources.insert(handle);
         }
     } else
         printf("@@Skipping Process_vkCreateDevice\n");
@@ -123,14 +121,14 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDevice(
 {
     // Skip for loop iterations 1-(n-1).
     // Skip if looping and if not final iteration
-    // Execute if device is in loopSet
+    // Execute if device is in allocatedLoopResources
 
     // Call Process_vkDestroyDevice if:
     //    We are not looping
-    //    We are looping and device is in loopSet
+    //    We are looping and device is in allocatedLoopResources
     //    We are looping and this is the last iteration
     if (!getFrameLoopInfo().IsLooping() ||
-        std::find(loopSet.begin(), loopSet.end(), device) != loopSet.end() ||
+        inAllocatedLoopResources(device) ||
         getFrameLoopInfo().IsFinalIteration())
     {
         printf("@@Executing Process_vkDestroyDevice\n");
@@ -140,10 +138,10 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDevice(
     {
         printf("@@Skipping Process_vkDestroyDevice\n");
     }
-    // Remove device from loopSet
-    if (std::find(loopSet.begin(), loopSet.end(), device) != loopSet.end())
+    // Remove device from allocatedLoopResources
+    if (inAllocatedLoopResources(device))
     {
-        loopSet.erase(device);
+        allocatedLoopResources.erase(device);
     }
 }
 
@@ -158,16 +156,15 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkAllocateMemory(
     format::HandleId handle = *pMemory->GetPointer();
 
     // Pass the call along if we are not looping or
-    // if we are looping and the handle is not in loopSet
-    if (!getFrameLoopInfo().IsLooping() ||
-        find(loopSet.begin(), loopSet.end(), handle) == loopSet.end())
+    // if we are looping and the handle is not in allocatedLoopResources
+    if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
         printf("@@Executing Process_vkAllocateMemory\n");
         VulkanReplayConsumer::Process_vkAllocateMemory(call_info, returnValue, device, pAllocateInfo, pAllocator, pMemory);
-        // If we are looping, save the handle in loopSet
+        // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
-            loopSet.insert(handle);
+            allocatedLoopResources.insert(handle);
         }
     } else
         printf("@@Skipping Process_vkAllocateMemory\n");
@@ -181,14 +178,14 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkFreeMemory(
 {
     // Skip for loop iterations 1-(n-1).
     // Skip if looping and if not final iteration
-    // Execute if memory is in loopSet
+    // Execute if memory is in allocatedLoopResources
 
     // Call Process_vkFreeMemory if:
     //    We are not looping
-    //    We are looping and memory is in loopSet
+    //    We are looping and memory is in allocatedLoopResources
     //    We are looping and this is the last iteration
     if (!getFrameLoopInfo().IsLooping() ||
-        std::find(loopSet.begin(), loopSet.end(), memory) != loopSet.end() ||
+        inAllocatedLoopResources(memory) ||
         getFrameLoopInfo().IsFinalIteration())
     {
         printf("@@Executing Process_vkFreeMemory\n");
@@ -198,10 +195,10 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkFreeMemory(
     {
         printf("@@Skipping Process_vkFreeMemory\n");
     }
-    // Remove memory from loopSet
-    if (std::find(loopSet.begin(), loopSet.end(), memory) != loopSet.end())
+    // Remove memory from allocatedLoopResources
+    if (inAllocatedLoopResources(memory))
     {
-        loopSet.erase(memory);
+        allocatedLoopResources.erase(memory);
     }
 }
 
@@ -216,16 +213,15 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateFence(
     format::HandleId handle = *pFence->GetPointer();
 
     // Pass the call along if we are not looping or
-    // if we are looping and the handle is not in loopSet
-    if (!getFrameLoopInfo().IsLooping() ||
-        find(loopSet.begin(), loopSet.end(), handle) == loopSet.end())
+    // if we are looping and the handle is not in allocatedLoopResources
+    if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
         printf("@@Executing Process_vkCreateFence\n");
         VulkanReplayConsumer::Process_vkCreateFence(call_info, returnValue, device, pCreateInfo, pAllocator, pFence);
-        // If we are looping, save the handle in loopSet
+        // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
-            loopSet.insert(handle);
+            allocatedLoopResources.insert(handle);
         }
     } else
         printf("@@Skipping Process_vkCreateFence\n");
@@ -239,14 +235,14 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyFence(
 {
     // Skip for loop iterations 1-(n-1).
     // Skip if looping and if not final iteration
-    // Execute if fence is in loopSet
+    // Execute if fence is in allocatedLoopResources
 
     // Call Process_vkDestroyFence if:
     //    We are not looping
-    //    We are looping and fence is in loopSet
+    //    We are looping and fence is in allocatedLoopResources
     //    We are looping and this is the last iteration
     if (!getFrameLoopInfo().IsLooping() ||
-        std::find(loopSet.begin(), loopSet.end(), fence) != loopSet.end() ||
+        inAllocatedLoopResources(fence) ||
         getFrameLoopInfo().IsFinalIteration())
     {
         printf("@@Executing Process_vkDestroyFence\n");
@@ -256,10 +252,10 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyFence(
     {
         printf("@@Skipping Process_vkDestroyFence\n");
     }
-    // Remove fence from loopSet
-    if (std::find(loopSet.begin(), loopSet.end(), fence) != loopSet.end())
+    // Remove fence from allocatedLoopResources
+    if (inAllocatedLoopResources(fence))
     {
-        loopSet.erase(fence);
+        allocatedLoopResources.erase(fence);
     }
 }
 
@@ -274,16 +270,15 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateBuffer(
     format::HandleId handle = *pBuffer->GetPointer();
 
     // Pass the call along if we are not looping or
-    // if we are looping and the handle is not in loopSet
-    if (!getFrameLoopInfo().IsLooping() ||
-        find(loopSet.begin(), loopSet.end(), handle) == loopSet.end())
+    // if we are looping and the handle is not in allocatedLoopResources
+    if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
         printf("@@Executing Process_vkCreateBuffer\n");
         VulkanReplayConsumer::Process_vkCreateBuffer(call_info, returnValue, device, pCreateInfo, pAllocator, pBuffer);
-        // If we are looping, save the handle in loopSet
+        // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
-            loopSet.insert(handle);
+            allocatedLoopResources.insert(handle);
         }
     } else
         printf("@@Skipping Process_vkCreateBuffer\n");
@@ -297,14 +292,14 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyBuffer(
 {
     // Skip for loop iterations 1-(n-1).
     // Skip if looping and if not final iteration
-    // Execute if buffer is in loopSet
+    // Execute if buffer is in allocatedLoopResources
 
     // Call Process_vkDestroyBuffer if:
     //    We are not looping
-    //    We are looping and buffer is in loopSet
+    //    We are looping and buffer is in allocatedLoopResources
     //    We are looping and this is the last iteration
     if (!getFrameLoopInfo().IsLooping() ||
-        std::find(loopSet.begin(), loopSet.end(), buffer) != loopSet.end() ||
+        inAllocatedLoopResources(buffer) ||
         getFrameLoopInfo().IsFinalIteration())
     {
         printf("@@Executing Process_vkDestroyBuffer\n");
@@ -314,10 +309,10 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyBuffer(
     {
         printf("@@Skipping Process_vkDestroyBuffer\n");
     }
-    // Remove buffer from loopSet
-    if (std::find(loopSet.begin(), loopSet.end(), buffer) != loopSet.end())
+    // Remove buffer from allocatedLoopResources
+    if (inAllocatedLoopResources(buffer))
     {
-        loopSet.erase(buffer);
+        allocatedLoopResources.erase(buffer);
     }
 }
 
@@ -332,16 +327,15 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateImage(
     format::HandleId handle = *pImage->GetPointer();
 
     // Pass the call along if we are not looping or
-    // if we are looping and the handle is not in loopSet
-    if (!getFrameLoopInfo().IsLooping() ||
-        find(loopSet.begin(), loopSet.end(), handle) == loopSet.end())
+    // if we are looping and the handle is not in allocatedLoopResources
+    if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
         printf("@@Executing Process_vkCreateImage\n");
         VulkanReplayConsumer::Process_vkCreateImage(call_info, returnValue, device, pCreateInfo, pAllocator, pImage);
-        // If we are looping, save the handle in loopSet
+        // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
-            loopSet.insert(handle);
+            allocatedLoopResources.insert(handle);
         }
     } else
         printf("@@Skipping Process_vkCreateImage\n");
@@ -355,14 +349,14 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyImage(
 {
     // Skip for loop iterations 1-(n-1).
     // Skip if looping and if not final iteration
-    // Execute if image is in loopSet
+    // Execute if image is in allocatedLoopResources
 
     // Call Process_vkDestroyImage if:
     //    We are not looping
-    //    We are looping and image is in loopSet
+    //    We are looping and image is in allocatedLoopResources
     //    We are looping and this is the last iteration
     if (!getFrameLoopInfo().IsLooping() ||
-        std::find(loopSet.begin(), loopSet.end(), image) != loopSet.end() ||
+        inAllocatedLoopResources(image) ||
         getFrameLoopInfo().IsFinalIteration())
     {
         printf("@@Executing Process_vkDestroyImage\n");
@@ -372,10 +366,10 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyImage(
     {
         printf("@@Skipping Process_vkDestroyImage\n");
     }
-    // Remove image from loopSet
-    if (std::find(loopSet.begin(), loopSet.end(), image) != loopSet.end())
+    // Remove image from allocatedLoopResources
+    if (inAllocatedLoopResources(image))
     {
-        loopSet.erase(image);
+        allocatedLoopResources.erase(image);
     }
 }
 
@@ -390,16 +384,15 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateImageView(
     format::HandleId handle = *pView->GetPointer();
 
     // Pass the call along if we are not looping or
-    // if we are looping and the handle is not in loopSet
-    if (!getFrameLoopInfo().IsLooping() ||
-        find(loopSet.begin(), loopSet.end(), handle) == loopSet.end())
+    // if we are looping and the handle is not in allocatedLoopResources
+    if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
         printf("@@Executing Process_vkCreateImageView\n");
         VulkanReplayConsumer::Process_vkCreateImageView(call_info, returnValue, device, pCreateInfo, pAllocator, pView);
-        // If we are looping, save the handle in loopSet
+        // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
-            loopSet.insert(handle);
+            allocatedLoopResources.insert(handle);
         }
     } else
         printf("@@Skipping Process_vkCreateImageView\n");
@@ -413,14 +406,14 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyImageView(
 {
     // Skip for loop iterations 1-(n-1).
     // Skip if looping and if not final iteration
-    // Execute if imageView is in loopSet
+    // Execute if imageView is in allocatedLoopResources
 
     // Call Process_vkDestroyImageView if:
     //    We are not looping
-    //    We are looping and imageView is in loopSet
+    //    We are looping and imageView is in allocatedLoopResources
     //    We are looping and this is the last iteration
     if (!getFrameLoopInfo().IsLooping() ||
-        std::find(loopSet.begin(), loopSet.end(), imageView) != loopSet.end() ||
+        inAllocatedLoopResources(imageView) ||
         getFrameLoopInfo().IsFinalIteration())
     {
         printf("@@Executing Process_vkDestroyImageView\n");
@@ -430,10 +423,10 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyImageView(
     {
         printf("@@Skipping Process_vkDestroyImageView\n");
     }
-    // Remove imageView from loopSet
-    if (std::find(loopSet.begin(), loopSet.end(), imageView) != loopSet.end())
+    // Remove imageView from allocatedLoopResources
+    if (inAllocatedLoopResources(imageView))
     {
-        loopSet.erase(imageView);
+        allocatedLoopResources.erase(imageView);
     }
 }
 
@@ -448,16 +441,15 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateCommandPool(
     format::HandleId handle = *pCommandPool->GetPointer();
 
     // Pass the call along if we are not looping or
-    // if we are looping and the handle is not in loopSet
-    if (!getFrameLoopInfo().IsLooping() ||
-        find(loopSet.begin(), loopSet.end(), handle) == loopSet.end())
+    // if we are looping and the handle is not in allocatedLoopResources
+    if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
         printf("@@Executing Process_vkCreateCommandPool\n");
         VulkanReplayConsumer::Process_vkCreateCommandPool(call_info, returnValue, device, pCreateInfo, pAllocator, pCommandPool);
-        // If we are looping, save the handle in loopSet
+        // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
-            loopSet.insert(handle);
+            allocatedLoopResources.insert(handle);
         }
     } else
         printf("@@Skipping Process_vkCreateCommandPool\n");
@@ -471,14 +463,14 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyCommandPool(
 {
     // Skip for loop iterations 1-(n-1).
     // Skip if looping and if not final iteration
-    // Execute if commandPool is in loopSet
+    // Execute if commandPool is in allocatedLoopResources
 
     // Call Process_vkDestroyCommandPool if:
     //    We are not looping
-    //    We are looping and commandPool is in loopSet
+    //    We are looping and commandPool is in allocatedLoopResources
     //    We are looping and this is the last iteration
     if (!getFrameLoopInfo().IsLooping() ||
-        std::find(loopSet.begin(), loopSet.end(), commandPool) != loopSet.end() ||
+        inAllocatedLoopResources(commandPool) ||
         getFrameLoopInfo().IsFinalIteration())
     {
         printf("@@Executing Process_vkDestroyCommandPool\n");
@@ -488,10 +480,10 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyCommandPool(
     {
         printf("@@Skipping Process_vkDestroyCommandPool\n");
     }
-    // Remove commandPool from loopSet
-    if (std::find(loopSet.begin(), loopSet.end(), commandPool) != loopSet.end())
+    // Remove commandPool from allocatedLoopResources
+    if (inAllocatedLoopResources(commandPool))
     {
-        loopSet.erase(commandPool);
+        allocatedLoopResources.erase(commandPool);
     }
 }
 
@@ -506,16 +498,15 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateEvent(
     format::HandleId handle = *pEvent->GetPointer();
 
     // Pass the call along if we are not looping or
-    // if we are looping and the handle is not in loopSet
-    if (!getFrameLoopInfo().IsLooping() ||
-        find(loopSet.begin(), loopSet.end(), handle) == loopSet.end())
+    // if we are looping and the handle is not in allocatedLoopResources
+    if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
         printf("@@Executing Process_vkCreateEvent\n");
         VulkanReplayConsumer::Process_vkCreateEvent(call_info, returnValue, device, pCreateInfo, pAllocator, pEvent);
-        // If we are looping, save the handle in loopSet
+        // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
-            loopSet.insert(handle);
+            allocatedLoopResources.insert(handle);
         }
     } else
         printf("@@Skipping Process_vkCreateEvent\n");
@@ -529,14 +520,14 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyEvent(
 {
     // Skip for loop iterations 1-(n-1).
     // Skip if looping and if not final iteration
-    // Execute if event is in loopSet
+    // Execute if event is in allocatedLoopResources
 
     // Call Process_vkDestroyEvent if:
     //    We are not looping
-    //    We are looping and event is in loopSet
+    //    We are looping and event is in allocatedLoopResources
     //    We are looping and this is the last iteration
     if (!getFrameLoopInfo().IsLooping() ||
-        std::find(loopSet.begin(), loopSet.end(), event) != loopSet.end() ||
+        inAllocatedLoopResources(event) ||
         getFrameLoopInfo().IsFinalIteration())
     {
         printf("@@Executing Process_vkDestroyEvent\n");
@@ -546,10 +537,10 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyEvent(
     {
         printf("@@Skipping Process_vkDestroyEvent\n");
     }
-    // Remove event from loopSet
-    if (std::find(loopSet.begin(), loopSet.end(), event) != loopSet.end())
+    // Remove event from allocatedLoopResources
+    if (inAllocatedLoopResources(event))
     {
-        loopSet.erase(event);
+        allocatedLoopResources.erase(event);
     }
 }
 
@@ -564,16 +555,15 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateBufferView(
     format::HandleId handle = *pView->GetPointer();
 
     // Pass the call along if we are not looping or
-    // if we are looping and the handle is not in loopSet
-    if (!getFrameLoopInfo().IsLooping() ||
-        find(loopSet.begin(), loopSet.end(), handle) == loopSet.end())
+    // if we are looping and the handle is not in allocatedLoopResources
+    if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
         printf("@@Executing Process_vkCreateBufferView\n");
         VulkanReplayConsumer::Process_vkCreateBufferView(call_info, returnValue, device, pCreateInfo, pAllocator, pView);
-        // If we are looping, save the handle in loopSet
+        // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
-            loopSet.insert(handle);
+            allocatedLoopResources.insert(handle);
         }
     } else
         printf("@@Skipping Process_vkCreateBufferView\n");
@@ -587,14 +577,14 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyBufferView(
 {
     // Skip for loop iterations 1-(n-1).
     // Skip if looping and if not final iteration
-    // Execute if bufferView is in loopSet
+    // Execute if bufferView is in allocatedLoopResources
 
     // Call Process_vkDestroyBufferView if:
     //    We are not looping
-    //    We are looping and bufferView is in loopSet
+    //    We are looping and bufferView is in allocatedLoopResources
     //    We are looping and this is the last iteration
     if (!getFrameLoopInfo().IsLooping() ||
-        std::find(loopSet.begin(), loopSet.end(), bufferView) != loopSet.end() ||
+        inAllocatedLoopResources(bufferView) ||
         getFrameLoopInfo().IsFinalIteration())
     {
         printf("@@Executing Process_vkDestroyBufferView\n");
@@ -604,10 +594,10 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyBufferView(
     {
         printf("@@Skipping Process_vkDestroyBufferView\n");
     }
-    // Remove bufferView from loopSet
-    if (std::find(loopSet.begin(), loopSet.end(), bufferView) != loopSet.end())
+    // Remove bufferView from allocatedLoopResources
+    if (inAllocatedLoopResources(bufferView))
     {
-        loopSet.erase(bufferView);
+        allocatedLoopResources.erase(bufferView);
     }
 }
 
@@ -622,16 +612,15 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDescriptorSetLayout(
     format::HandleId handle = *pSetLayout->GetPointer();
 
     // Pass the call along if we are not looping or
-    // if we are looping and the handle is not in loopSet
-    if (!getFrameLoopInfo().IsLooping() ||
-        find(loopSet.begin(), loopSet.end(), handle) == loopSet.end())
+    // if we are looping and the handle is not in allocatedLoopResources
+    if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
         printf("@@Executing Process_vkCreateDescriptorSetLayout\n");
         VulkanReplayConsumer::Process_vkCreateDescriptorSetLayout(call_info, returnValue, device, pCreateInfo, pAllocator, pSetLayout);
-        // If we are looping, save the handle in loopSet
+        // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
-            loopSet.insert(handle);
+            allocatedLoopResources.insert(handle);
         }
     } else
         printf("@@Skipping Process_vkCreateDescriptorSetLayout\n");
@@ -645,14 +634,14 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDescriptorSetLayout(
 {
     // Skip for loop iterations 1-(n-1).
     // Skip if looping and if not final iteration
-    // Execute if descriptorSetLayout is in loopSet
+    // Execute if descriptorSetLayout is in allocatedLoopResources
 
     // Call Process_vkDestroyDescriptorSetLayout if:
     //    We are not looping
-    //    We are looping and descriptorSetLayout is in loopSet
+    //    We are looping and descriptorSetLayout is in allocatedLoopResources
     //    We are looping and this is the last iteration
     if (!getFrameLoopInfo().IsLooping() ||
-        std::find(loopSet.begin(), loopSet.end(), descriptorSetLayout) != loopSet.end() ||
+        inAllocatedLoopResources(descriptorSetLayout) ||
         getFrameLoopInfo().IsFinalIteration())
     {
         printf("@@Executing Process_vkDestroyDescriptorSetLayout\n");
@@ -662,10 +651,10 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDescriptorSetLayout(
     {
         printf("@@Skipping Process_vkDestroyDescriptorSetLayout\n");
     }
-    // Remove descriptorSetLayout from loopSet
-    if (std::find(loopSet.begin(), loopSet.end(), descriptorSetLayout) != loopSet.end())
+    // Remove descriptorSetLayout from allocatedLoopResources
+    if (inAllocatedLoopResources(descriptorSetLayout))
     {
-        loopSet.erase(descriptorSetLayout);
+        allocatedLoopResources.erase(descriptorSetLayout);
     }
 }
 
@@ -680,16 +669,15 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDescriptorPool(
     format::HandleId handle = *pDescriptorPool->GetPointer();
 
     // Pass the call along if we are not looping or
-    // if we are looping and the handle is not in loopSet
-    if (!getFrameLoopInfo().IsLooping() ||
-        find(loopSet.begin(), loopSet.end(), handle) == loopSet.end())
+    // if we are looping and the handle is not in allocatedLoopResources
+    if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
         printf("@@Executing Process_vkCreateDescriptorPool\n");
         VulkanReplayConsumer::Process_vkCreateDescriptorPool(call_info, returnValue, device, pCreateInfo, pAllocator, pDescriptorPool);
-        // If we are looping, save the handle in loopSet
+        // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
-            loopSet.insert(handle);
+            allocatedLoopResources.insert(handle);
         }
     } else
         printf("@@Skipping Process_vkCreateDescriptorPool\n");
@@ -703,14 +691,14 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDescriptorPool(
 {
     // Skip for loop iterations 1-(n-1).
     // Skip if looping and if not final iteration
-    // Execute if descriptorPool is in loopSet
+    // Execute if descriptorPool is in allocatedLoopResources
 
     // Call Process_vkDestroyDescriptorPool if:
     //    We are not looping
-    //    We are looping and descriptorPool is in loopSet
+    //    We are looping and descriptorPool is in allocatedLoopResources
     //    We are looping and this is the last iteration
     if (!getFrameLoopInfo().IsLooping() ||
-        std::find(loopSet.begin(), loopSet.end(), descriptorPool) != loopSet.end() ||
+        inAllocatedLoopResources(descriptorPool) ||
         getFrameLoopInfo().IsFinalIteration())
     {
         printf("@@Executing Process_vkDestroyDescriptorPool\n");
@@ -720,10 +708,10 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDescriptorPool(
     {
         printf("@@Skipping Process_vkDestroyDescriptorPool\n");
     }
-    // Remove descriptorPool from loopSet
-    if (std::find(loopSet.begin(), loopSet.end(), descriptorPool) != loopSet.end())
+    // Remove descriptorPool from allocatedLoopResources
+    if (inAllocatedLoopResources(descriptorPool))
     {
-        loopSet.erase(descriptorPool);
+        allocatedLoopResources.erase(descriptorPool);
     }
 }
 
@@ -738,16 +726,15 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateFramebuffer(
     format::HandleId handle = *pFramebuffer->GetPointer();
 
     // Pass the call along if we are not looping or
-    // if we are looping and the handle is not in loopSet
-    if (!getFrameLoopInfo().IsLooping() ||
-        find(loopSet.begin(), loopSet.end(), handle) == loopSet.end())
+    // if we are looping and the handle is not in allocatedLoopResources
+    if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
         printf("@@Executing Process_vkCreateFramebuffer\n");
         VulkanReplayConsumer::Process_vkCreateFramebuffer(call_info, returnValue, device, pCreateInfo, pAllocator, pFramebuffer);
-        // If we are looping, save the handle in loopSet
+        // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
-            loopSet.insert(handle);
+            allocatedLoopResources.insert(handle);
         }
     } else
         printf("@@Skipping Process_vkCreateFramebuffer\n");
@@ -761,14 +748,14 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyFramebuffer(
 {
     // Skip for loop iterations 1-(n-1).
     // Skip if looping and if not final iteration
-    // Execute if framebuffer is in loopSet
+    // Execute if framebuffer is in allocatedLoopResources
 
     // Call Process_vkDestroyFramebuffer if:
     //    We are not looping
-    //    We are looping and framebuffer is in loopSet
+    //    We are looping and framebuffer is in allocatedLoopResources
     //    We are looping and this is the last iteration
     if (!getFrameLoopInfo().IsLooping() ||
-        std::find(loopSet.begin(), loopSet.end(), framebuffer) != loopSet.end() ||
+        inAllocatedLoopResources(framebuffer) ||
         getFrameLoopInfo().IsFinalIteration())
     {
         printf("@@Executing Process_vkDestroyFramebuffer\n");
@@ -778,10 +765,10 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyFramebuffer(
     {
         printf("@@Skipping Process_vkDestroyFramebuffer\n");
     }
-    // Remove framebuffer from loopSet
-    if (std::find(loopSet.begin(), loopSet.end(), framebuffer) != loopSet.end())
+    // Remove framebuffer from allocatedLoopResources
+    if (inAllocatedLoopResources(framebuffer))
     {
-        loopSet.erase(framebuffer);
+        allocatedLoopResources.erase(framebuffer);
     }
 }
 
@@ -796,16 +783,15 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDescriptorUpdateTemplate
     format::HandleId handle = *pDescriptorUpdateTemplate->GetPointer();
 
     // Pass the call along if we are not looping or
-    // if we are looping and the handle is not in loopSet
-    if (!getFrameLoopInfo().IsLooping() ||
-        find(loopSet.begin(), loopSet.end(), handle) == loopSet.end())
+    // if we are looping and the handle is not in allocatedLoopResources
+    if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
         printf("@@Executing Process_vkCreateDescriptorUpdateTemplate\n");
         VulkanReplayConsumer::Process_vkCreateDescriptorUpdateTemplate(call_info, returnValue, device, pCreateInfo, pAllocator, pDescriptorUpdateTemplate);
-        // If we are looping, save the handle in loopSet
+        // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
-            loopSet.insert(handle);
+            allocatedLoopResources.insert(handle);
         }
     } else
         printf("@@Skipping Process_vkCreateDescriptorUpdateTemplate\n");
@@ -819,14 +805,14 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDescriptorUpdateTemplat
 {
     // Skip for loop iterations 1-(n-1).
     // Skip if looping and if not final iteration
-    // Execute if descriptorUpdateTemplate is in loopSet
+    // Execute if descriptorUpdateTemplate is in allocatedLoopResources
 
     // Call Process_vkDestroyDescriptorUpdateTemplate if:
     //    We are not looping
-    //    We are looping and descriptorUpdateTemplate is in loopSet
+    //    We are looping and descriptorUpdateTemplate is in allocatedLoopResources
     //    We are looping and this is the last iteration
     if (!getFrameLoopInfo().IsLooping() ||
-        std::find(loopSet.begin(), loopSet.end(), descriptorUpdateTemplate) != loopSet.end() ||
+        inAllocatedLoopResources(descriptorUpdateTemplate) ||
         getFrameLoopInfo().IsFinalIteration())
     {
         printf("@@Executing Process_vkDestroyDescriptorUpdateTemplate\n");
@@ -836,10 +822,10 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDescriptorUpdateTemplat
     {
         printf("@@Skipping Process_vkDestroyDescriptorUpdateTemplate\n");
     }
-    // Remove descriptorUpdateTemplate from loopSet
-    if (std::find(loopSet.begin(), loopSet.end(), descriptorUpdateTemplate) != loopSet.end())
+    // Remove descriptorUpdateTemplate from allocatedLoopResources
+    if (inAllocatedLoopResources(descriptorUpdateTemplate))
     {
-        loopSet.erase(descriptorUpdateTemplate);
+        allocatedLoopResources.erase(descriptorUpdateTemplate);
     }
 }
 
@@ -854,16 +840,15 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDescriptorUpdateTemplate
     format::HandleId handle = *pDescriptorUpdateTemplate->GetPointer();
 
     // Pass the call along if we are not looping or
-    // if we are looping and the handle is not in loopSet
-    if (!getFrameLoopInfo().IsLooping() ||
-        find(loopSet.begin(), loopSet.end(), handle) == loopSet.end())
+    // if we are looping and the handle is not in allocatedLoopResources
+    if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
         printf("@@Executing Process_vkCreateDescriptorUpdateTemplateKHR\n");
         VulkanReplayConsumer::Process_vkCreateDescriptorUpdateTemplateKHR(call_info, returnValue, device, pCreateInfo, pAllocator, pDescriptorUpdateTemplate);
-        // If we are looping, save the handle in loopSet
+        // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
-            loopSet.insert(handle);
+            allocatedLoopResources.insert(handle);
         }
     } else
         printf("@@Skipping Process_vkCreateDescriptorUpdateTemplateKHR\n");
@@ -877,14 +862,14 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDescriptorUpdateTemplat
 {
     // Skip for loop iterations 1-(n-1).
     // Skip if looping and if not final iteration
-    // Execute if descriptorUpdateTemplate is in loopSet
+    // Execute if descriptorUpdateTemplate is in allocatedLoopResources
 
     // Call Process_vkDestroyDescriptorUpdateTemplateKHR if:
     //    We are not looping
-    //    We are looping and descriptorUpdateTemplate is in loopSet
+    //    We are looping and descriptorUpdateTemplate is in allocatedLoopResources
     //    We are looping and this is the last iteration
     if (!getFrameLoopInfo().IsLooping() ||
-        std::find(loopSet.begin(), loopSet.end(), descriptorUpdateTemplate) != loopSet.end() ||
+        inAllocatedLoopResources(descriptorUpdateTemplate) ||
         getFrameLoopInfo().IsFinalIteration())
     {
         printf("@@Executing Process_vkDestroyDescriptorUpdateTemplateKHR\n");
@@ -894,10 +879,10 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDescriptorUpdateTemplat
     {
         printf("@@Skipping Process_vkDestroyDescriptorUpdateTemplateKHR\n");
     }
-    // Remove descriptorUpdateTemplate from loopSet
-    if (std::find(loopSet.begin(), loopSet.end(), descriptorUpdateTemplate) != loopSet.end())
+    // Remove descriptorUpdateTemplate from allocatedLoopResources
+    if (inAllocatedLoopResources(descriptorUpdateTemplate))
     {
-        loopSet.erase(descriptorUpdateTemplate);
+        allocatedLoopResources.erase(descriptorUpdateTemplate);
     }
 }
 
@@ -911,16 +896,15 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDeferredOperationKHR(
     format::HandleId handle = *pDeferredOperation->GetPointer();
 
     // Pass the call along if we are not looping or
-    // if we are looping and the handle is not in loopSet
-    if (!getFrameLoopInfo().IsLooping() ||
-        find(loopSet.begin(), loopSet.end(), handle) == loopSet.end())
+    // if we are looping and the handle is not in allocatedLoopResources
+    if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
         printf("@@Executing Process_vkCreateDeferredOperationKHR\n");
         VulkanReplayConsumer::Process_vkCreateDeferredOperationKHR(call_info, returnValue, device, pAllocator, pDeferredOperation);
-        // If we are looping, save the handle in loopSet
+        // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
-            loopSet.insert(handle);
+            allocatedLoopResources.insert(handle);
         }
     } else
         printf("@@Skipping Process_vkCreateDeferredOperationKHR\n");
@@ -934,14 +918,14 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDeferredOperationKHR(
 {
     // Skip for loop iterations 1-(n-1).
     // Skip if looping and if not final iteration
-    // Execute if operation is in loopSet
+    // Execute if operation is in allocatedLoopResources
 
     // Call Process_vkDestroyDeferredOperationKHR if:
     //    We are not looping
-    //    We are looping and operation is in loopSet
+    //    We are looping and operation is in allocatedLoopResources
     //    We are looping and this is the last iteration
     if (!getFrameLoopInfo().IsLooping() ||
-        std::find(loopSet.begin(), loopSet.end(), operation) != loopSet.end() ||
+        inAllocatedLoopResources(operation) ||
         getFrameLoopInfo().IsFinalIteration())
     {
         printf("@@Executing Process_vkDestroyDeferredOperationKHR\n");
@@ -951,10 +935,10 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDeferredOperationKHR(
     {
         printf("@@Skipping Process_vkDestroyDeferredOperationKHR\n");
     }
-    // Remove operation from loopSet
-    if (std::find(loopSet.begin(), loopSet.end(), operation) != loopSet.end())
+    // Remove operation from allocatedLoopResources
+    if (inAllocatedLoopResources(operation))
     {
-        loopSet.erase(operation);
+        allocatedLoopResources.erase(operation);
     }
 }
 
@@ -969,16 +953,15 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDebugReportCallbackEXT(
     format::HandleId handle = *pCallback->GetPointer();
 
     // Pass the call along if we are not looping or
-    // if we are looping and the handle is not in loopSet
-    if (!getFrameLoopInfo().IsLooping() ||
-        find(loopSet.begin(), loopSet.end(), handle) == loopSet.end())
+    // if we are looping and the handle is not in allocatedLoopResources
+    if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
         printf("@@Executing Process_vkCreateDebugReportCallbackEXT\n");
         VulkanReplayConsumer::Process_vkCreateDebugReportCallbackEXT(call_info, returnValue, instance, pCreateInfo, pAllocator, pCallback);
-        // If we are looping, save the handle in loopSet
+        // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
-            loopSet.insert(handle);
+            allocatedLoopResources.insert(handle);
         }
     } else
         printf("@@Skipping Process_vkCreateDebugReportCallbackEXT\n");
@@ -992,14 +975,14 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDebugReportCallbackEXT(
 {
     // Skip for loop iterations 1-(n-1).
     // Skip if looping and if not final iteration
-    // Execute if callback is in loopSet
+    // Execute if callback is in allocatedLoopResources
 
     // Call Process_vkDestroyDebugReportCallbackEXT if:
     //    We are not looping
-    //    We are looping and callback is in loopSet
+    //    We are looping and callback is in allocatedLoopResources
     //    We are looping and this is the last iteration
     if (!getFrameLoopInfo().IsLooping() ||
-        std::find(loopSet.begin(), loopSet.end(), callback) != loopSet.end() ||
+        inAllocatedLoopResources(callback) ||
         getFrameLoopInfo().IsFinalIteration())
     {
         printf("@@Executing Process_vkDestroyDebugReportCallbackEXT\n");
@@ -1009,10 +992,10 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDebugReportCallbackEXT(
     {
         printf("@@Skipping Process_vkDestroyDebugReportCallbackEXT\n");
     }
-    // Remove callback from loopSet
-    if (std::find(loopSet.begin(), loopSet.end(), callback) != loopSet.end())
+    // Remove callback from allocatedLoopResources
+    if (inAllocatedLoopResources(callback))
     {
-        loopSet.erase(callback);
+        allocatedLoopResources.erase(callback);
     }
 }
 
@@ -1027,16 +1010,15 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDebugUtilsMessengerEXT(
     format::HandleId handle = *pMessenger->GetPointer();
 
     // Pass the call along if we are not looping or
-    // if we are looping and the handle is not in loopSet
-    if (!getFrameLoopInfo().IsLooping() ||
-        find(loopSet.begin(), loopSet.end(), handle) == loopSet.end())
+    // if we are looping and the handle is not in allocatedLoopResources
+    if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
         printf("@@Executing Process_vkCreateDebugUtilsMessengerEXT\n");
         VulkanReplayConsumer::Process_vkCreateDebugUtilsMessengerEXT(call_info, returnValue, instance, pCreateInfo, pAllocator, pMessenger);
-        // If we are looping, save the handle in loopSet
+        // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
-            loopSet.insert(handle);
+            allocatedLoopResources.insert(handle);
         }
     } else
         printf("@@Skipping Process_vkCreateDebugUtilsMessengerEXT\n");
@@ -1050,14 +1032,14 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDebugUtilsMessengerEXT(
 {
     // Skip for loop iterations 1-(n-1).
     // Skip if looping and if not final iteration
-    // Execute if messenger is in loopSet
+    // Execute if messenger is in allocatedLoopResources
 
     // Call Process_vkDestroyDebugUtilsMessengerEXT if:
     //    We are not looping
-    //    We are looping and messenger is in loopSet
+    //    We are looping and messenger is in allocatedLoopResources
     //    We are looping and this is the last iteration
     if (!getFrameLoopInfo().IsLooping() ||
-        std::find(loopSet.begin(), loopSet.end(), messenger) != loopSet.end() ||
+        inAllocatedLoopResources(messenger) ||
         getFrameLoopInfo().IsFinalIteration())
     {
         printf("@@Executing Process_vkDestroyDebugUtilsMessengerEXT\n");
@@ -1067,10 +1049,10 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDebugUtilsMessengerEXT(
     {
         printf("@@Skipping Process_vkDestroyDebugUtilsMessengerEXT\n");
     }
-    // Remove messenger from loopSet
-    if (std::find(loopSet.begin(), loopSet.end(), messenger) != loopSet.end())
+    // Remove messenger from allocatedLoopResources
+    if (inAllocatedLoopResources(messenger))
     {
-        loopSet.erase(messenger);
+        allocatedLoopResources.erase(messenger);
     }
 }
 
@@ -1085,16 +1067,15 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateAccelerationStructureNV(
     format::HandleId handle = *pAccelerationStructure->GetPointer();
 
     // Pass the call along if we are not looping or
-    // if we are looping and the handle is not in loopSet
-    if (!getFrameLoopInfo().IsLooping() ||
-        find(loopSet.begin(), loopSet.end(), handle) == loopSet.end())
+    // if we are looping and the handle is not in allocatedLoopResources
+    if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
         printf("@@Executing Process_vkCreateAccelerationStructureNV\n");
         VulkanReplayConsumer::Process_vkCreateAccelerationStructureNV(call_info, returnValue, device, pCreateInfo, pAllocator, pAccelerationStructure);
-        // If we are looping, save the handle in loopSet
+        // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
-            loopSet.insert(handle);
+            allocatedLoopResources.insert(handle);
         }
     } else
         printf("@@Skipping Process_vkCreateAccelerationStructureNV\n");
@@ -1108,14 +1089,14 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyAccelerationStructureNV
 {
     // Skip for loop iterations 1-(n-1).
     // Skip if looping and if not final iteration
-    // Execute if accelerationStructure is in loopSet
+    // Execute if accelerationStructure is in allocatedLoopResources
 
     // Call Process_vkDestroyAccelerationStructureNV if:
     //    We are not looping
-    //    We are looping and accelerationStructure is in loopSet
+    //    We are looping and accelerationStructure is in allocatedLoopResources
     //    We are looping and this is the last iteration
     if (!getFrameLoopInfo().IsLooping() ||
-        std::find(loopSet.begin(), loopSet.end(), accelerationStructure) != loopSet.end() ||
+        inAllocatedLoopResources(accelerationStructure) ||
         getFrameLoopInfo().IsFinalIteration())
     {
         printf("@@Executing Process_vkDestroyAccelerationStructureNV\n");
@@ -1125,10 +1106,10 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyAccelerationStructureNV
     {
         printf("@@Skipping Process_vkDestroyAccelerationStructureNV\n");
     }
-    // Remove accelerationStructure from loopSet
-    if (std::find(loopSet.begin(), loopSet.end(), accelerationStructure) != loopSet.end())
+    // Remove accelerationStructure from allocatedLoopResources
+    if (inAllocatedLoopResources(accelerationStructure))
     {
-        loopSet.erase(accelerationStructure);
+        allocatedLoopResources.erase(accelerationStructure);
     }
 }
 
@@ -1143,16 +1124,15 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateIndirectCommandsLayoutNV
     format::HandleId handle = *pIndirectCommandsLayout->GetPointer();
 
     // Pass the call along if we are not looping or
-    // if we are looping and the handle is not in loopSet
-    if (!getFrameLoopInfo().IsLooping() ||
-        find(loopSet.begin(), loopSet.end(), handle) == loopSet.end())
+    // if we are looping and the handle is not in allocatedLoopResources
+    if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
         printf("@@Executing Process_vkCreateIndirectCommandsLayoutNV\n");
         VulkanReplayConsumer::Process_vkCreateIndirectCommandsLayoutNV(call_info, returnValue, device, pCreateInfo, pAllocator, pIndirectCommandsLayout);
-        // If we are looping, save the handle in loopSet
+        // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
-            loopSet.insert(handle);
+            allocatedLoopResources.insert(handle);
         }
     } else
         printf("@@Skipping Process_vkCreateIndirectCommandsLayoutNV\n");
@@ -1166,14 +1146,14 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyIndirectCommandsLayoutN
 {
     // Skip for loop iterations 1-(n-1).
     // Skip if looping and if not final iteration
-    // Execute if indirectCommandsLayout is in loopSet
+    // Execute if indirectCommandsLayout is in allocatedLoopResources
 
     // Call Process_vkDestroyIndirectCommandsLayoutNV if:
     //    We are not looping
-    //    We are looping and indirectCommandsLayout is in loopSet
+    //    We are looping and indirectCommandsLayout is in allocatedLoopResources
     //    We are looping and this is the last iteration
     if (!getFrameLoopInfo().IsLooping() ||
-        std::find(loopSet.begin(), loopSet.end(), indirectCommandsLayout) != loopSet.end() ||
+        inAllocatedLoopResources(indirectCommandsLayout) ||
         getFrameLoopInfo().IsFinalIteration())
     {
         printf("@@Executing Process_vkDestroyIndirectCommandsLayoutNV\n");
@@ -1183,10 +1163,10 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyIndirectCommandsLayoutN
     {
         printf("@@Skipping Process_vkDestroyIndirectCommandsLayoutNV\n");
     }
-    // Remove indirectCommandsLayout from loopSet
-    if (std::find(loopSet.begin(), loopSet.end(), indirectCommandsLayout) != loopSet.end())
+    // Remove indirectCommandsLayout from allocatedLoopResources
+    if (inAllocatedLoopResources(indirectCommandsLayout))
     {
-        loopSet.erase(indirectCommandsLayout);
+        allocatedLoopResources.erase(indirectCommandsLayout);
     }
 }
 
@@ -1201,16 +1181,15 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDataGraphPipelineSession
     format::HandleId handle = *pSession->GetPointer();
 
     // Pass the call along if we are not looping or
-    // if we are looping and the handle is not in loopSet
-    if (!getFrameLoopInfo().IsLooping() ||
-        find(loopSet.begin(), loopSet.end(), handle) == loopSet.end())
+    // if we are looping and the handle is not in allocatedLoopResources
+    if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
         printf("@@Executing Process_vkCreateDataGraphPipelineSessionARM\n");
         VulkanReplayConsumer::Process_vkCreateDataGraphPipelineSessionARM(call_info, returnValue, device, pCreateInfo, pAllocator, pSession);
-        // If we are looping, save the handle in loopSet
+        // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
-            loopSet.insert(handle);
+            allocatedLoopResources.insert(handle);
         }
     } else
         printf("@@Skipping Process_vkCreateDataGraphPipelineSessionARM\n");
@@ -1224,14 +1203,14 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDataGraphPipelineSessio
 {
     // Skip for loop iterations 1-(n-1).
     // Skip if looping and if not final iteration
-    // Execute if session is in loopSet
+    // Execute if session is in allocatedLoopResources
 
     // Call Process_vkDestroyDataGraphPipelineSessionARM if:
     //    We are not looping
-    //    We are looping and session is in loopSet
+    //    We are looping and session is in allocatedLoopResources
     //    We are looping and this is the last iteration
     if (!getFrameLoopInfo().IsLooping() ||
-        std::find(loopSet.begin(), loopSet.end(), session) != loopSet.end() ||
+        inAllocatedLoopResources(session) ||
         getFrameLoopInfo().IsFinalIteration())
     {
         printf("@@Executing Process_vkDestroyDataGraphPipelineSessionARM\n");
@@ -1241,10 +1220,10 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDataGraphPipelineSessio
     {
         printf("@@Skipping Process_vkDestroyDataGraphPipelineSessionARM\n");
     }
-    // Remove session from loopSet
-    if (std::find(loopSet.begin(), loopSet.end(), session) != loopSet.end())
+    // Remove session from allocatedLoopResources
+    if (inAllocatedLoopResources(session))
     {
-        loopSet.erase(session);
+        allocatedLoopResources.erase(session);
     }
 }
 
@@ -1259,16 +1238,15 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateIndirectCommandsLayoutEX
     format::HandleId handle = *pIndirectCommandsLayout->GetPointer();
 
     // Pass the call along if we are not looping or
-    // if we are looping and the handle is not in loopSet
-    if (!getFrameLoopInfo().IsLooping() ||
-        find(loopSet.begin(), loopSet.end(), handle) == loopSet.end())
+    // if we are looping and the handle is not in allocatedLoopResources
+    if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
         printf("@@Executing Process_vkCreateIndirectCommandsLayoutEXT\n");
         VulkanReplayConsumer::Process_vkCreateIndirectCommandsLayoutEXT(call_info, returnValue, device, pCreateInfo, pAllocator, pIndirectCommandsLayout);
-        // If we are looping, save the handle in loopSet
+        // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
-            loopSet.insert(handle);
+            allocatedLoopResources.insert(handle);
         }
     } else
         printf("@@Skipping Process_vkCreateIndirectCommandsLayoutEXT\n");
@@ -1282,14 +1260,14 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyIndirectCommandsLayoutE
 {
     // Skip for loop iterations 1-(n-1).
     // Skip if looping and if not final iteration
-    // Execute if indirectCommandsLayout is in loopSet
+    // Execute if indirectCommandsLayout is in allocatedLoopResources
 
     // Call Process_vkDestroyIndirectCommandsLayoutEXT if:
     //    We are not looping
-    //    We are looping and indirectCommandsLayout is in loopSet
+    //    We are looping and indirectCommandsLayout is in allocatedLoopResources
     //    We are looping and this is the last iteration
     if (!getFrameLoopInfo().IsLooping() ||
-        std::find(loopSet.begin(), loopSet.end(), indirectCommandsLayout) != loopSet.end() ||
+        inAllocatedLoopResources(indirectCommandsLayout) ||
         getFrameLoopInfo().IsFinalIteration())
     {
         printf("@@Executing Process_vkDestroyIndirectCommandsLayoutEXT\n");
@@ -1299,10 +1277,10 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyIndirectCommandsLayoutE
     {
         printf("@@Skipping Process_vkDestroyIndirectCommandsLayoutEXT\n");
     }
-    // Remove indirectCommandsLayout from loopSet
-    if (std::find(loopSet.begin(), loopSet.end(), indirectCommandsLayout) != loopSet.end())
+    // Remove indirectCommandsLayout from allocatedLoopResources
+    if (inAllocatedLoopResources(indirectCommandsLayout))
     {
-        loopSet.erase(indirectCommandsLayout);
+        allocatedLoopResources.erase(indirectCommandsLayout);
     }
 }
 
@@ -1317,16 +1295,15 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateIndirectExecutionSetEXT(
     format::HandleId handle = *pIndirectExecutionSet->GetPointer();
 
     // Pass the call along if we are not looping or
-    // if we are looping and the handle is not in loopSet
-    if (!getFrameLoopInfo().IsLooping() ||
-        find(loopSet.begin(), loopSet.end(), handle) == loopSet.end())
+    // if we are looping and the handle is not in allocatedLoopResources
+    if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
         printf("@@Executing Process_vkCreateIndirectExecutionSetEXT\n");
         VulkanReplayConsumer::Process_vkCreateIndirectExecutionSetEXT(call_info, returnValue, device, pCreateInfo, pAllocator, pIndirectExecutionSet);
-        // If we are looping, save the handle in loopSet
+        // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
-            loopSet.insert(handle);
+            allocatedLoopResources.insert(handle);
         }
     } else
         printf("@@Skipping Process_vkCreateIndirectExecutionSetEXT\n");
@@ -1340,14 +1317,14 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyIndirectExecutionSetEXT
 {
     // Skip for loop iterations 1-(n-1).
     // Skip if looping and if not final iteration
-    // Execute if indirectExecutionSet is in loopSet
+    // Execute if indirectExecutionSet is in allocatedLoopResources
 
     // Call Process_vkDestroyIndirectExecutionSetEXT if:
     //    We are not looping
-    //    We are looping and indirectExecutionSet is in loopSet
+    //    We are looping and indirectExecutionSet is in allocatedLoopResources
     //    We are looping and this is the last iteration
     if (!getFrameLoopInfo().IsLooping() ||
-        std::find(loopSet.begin(), loopSet.end(), indirectExecutionSet) != loopSet.end() ||
+        inAllocatedLoopResources(indirectExecutionSet) ||
         getFrameLoopInfo().IsFinalIteration())
     {
         printf("@@Executing Process_vkDestroyIndirectExecutionSetEXT\n");
@@ -1357,10 +1334,10 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyIndirectExecutionSetEXT
     {
         printf("@@Skipping Process_vkDestroyIndirectExecutionSetEXT\n");
     }
-    // Remove indirectExecutionSet from loopSet
-    if (std::find(loopSet.begin(), loopSet.end(), indirectExecutionSet) != loopSet.end())
+    // Remove indirectExecutionSet from allocatedLoopResources
+    if (inAllocatedLoopResources(indirectExecutionSet))
     {
-        loopSet.erase(indirectExecutionSet);
+        allocatedLoopResources.erase(indirectExecutionSet);
     }
 }
 
@@ -1375,16 +1352,15 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateAccelerationStructureKHR
     format::HandleId handle = *pAccelerationStructure->GetPointer();
 
     // Pass the call along if we are not looping or
-    // if we are looping and the handle is not in loopSet
-    if (!getFrameLoopInfo().IsLooping() ||
-        find(loopSet.begin(), loopSet.end(), handle) == loopSet.end())
+    // if we are looping and the handle is not in allocatedLoopResources
+    if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
         printf("@@Executing Process_vkCreateAccelerationStructureKHR\n");
         VulkanReplayConsumer::Process_vkCreateAccelerationStructureKHR(call_info, returnValue, device, pCreateInfo, pAllocator, pAccelerationStructure);
-        // If we are looping, save the handle in loopSet
+        // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
-            loopSet.insert(handle);
+            allocatedLoopResources.insert(handle);
         }
     } else
         printf("@@Skipping Process_vkCreateAccelerationStructureKHR\n");
@@ -1398,14 +1374,14 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyAccelerationStructureKH
 {
     // Skip for loop iterations 1-(n-1).
     // Skip if looping and if not final iteration
-    // Execute if accelerationStructure is in loopSet
+    // Execute if accelerationStructure is in allocatedLoopResources
 
     // Call Process_vkDestroyAccelerationStructureKHR if:
     //    We are not looping
-    //    We are looping and accelerationStructure is in loopSet
+    //    We are looping and accelerationStructure is in allocatedLoopResources
     //    We are looping and this is the last iteration
     if (!getFrameLoopInfo().IsLooping() ||
-        std::find(loopSet.begin(), loopSet.end(), accelerationStructure) != loopSet.end() ||
+        inAllocatedLoopResources(accelerationStructure) ||
         getFrameLoopInfo().IsFinalIteration())
     {
         printf("@@Executing Process_vkDestroyAccelerationStructureKHR\n");
@@ -1415,10 +1391,10 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyAccelerationStructureKH
     {
         printf("@@Skipping Process_vkDestroyAccelerationStructureKHR\n");
     }
-    // Remove accelerationStructure from loopSet
-    if (std::find(loopSet.begin(), loopSet.end(), accelerationStructure) != loopSet.end())
+    // Remove accelerationStructure from allocatedLoopResources
+    if (inAllocatedLoopResources(accelerationStructure))
     {
-        loopSet.erase(accelerationStructure);
+        allocatedLoopResources.erase(accelerationStructure);
     }
 }
 

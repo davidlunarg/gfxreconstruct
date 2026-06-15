@@ -59,8 +59,14 @@ class KhronosFrameLoopConsumerBaseHeaderGenerator():
         write('    virtual graphics::FrameLoopInfo& getFrameLoopInfo() = 0;', file=self.outFile)
 
     def write_class_completion(self):
+        write('', file=self.outFile)
         write('    protected:', file=self.outFile)
-        write('        std::set<format::HandleId> loopSet;  // TODO: Rename this?', file=self.outFile)
+        write('        std::set<format::HandleId> allocatedLoopResources;', file=self.outFile)
+        write('        bool inAllocatedLoopResources(format::HandleId handle)', file=self.outFile)
+        write('        {', file=self.outFile)
+        write('             return std::find(allocatedLoopResources.begin(), allocatedLoopResources.end(), handle) !=', file=self.outFile)
+        write('                    allocatedLoopResources.end();', file=self.outFile);
+        write('        }', file=self.outFile)
         write('};', file=self.outFile)
 
     def write_class_contents(self):
