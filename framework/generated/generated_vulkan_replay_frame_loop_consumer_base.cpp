@@ -829,6 +829,214 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDescriptorUpdateTemplat
     }
 }
 
+void VulkanReplayFrameLoopConsumerBase::Process_vkDestroySurfaceKHR(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            instance,
+    format::HandleId                            surface,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
+{
+    // Skip for loop iterations 1-(n-1).
+    // Skip if looping and if not final iteration
+    // Execute if surface is in allocatedLoopResources
+
+    // Call Process_vkDestroySurfaceKHR if:
+    //    We are not looping
+    //    We are looping and surface is in allocatedLoopResources
+    //    We are looping and this is the last iteration
+    if (!getFrameLoopInfo().IsLooping() ||
+        inAllocatedLoopResources(surface) ||
+        getFrameLoopInfo().IsFinalIteration())
+    {
+        printf("@@Executing Process_vkDestroySurfaceKHR\n");
+        VulkanReplayConsumer::Process_vkDestroySurfaceKHR(call_info, instance, surface, pAllocator);
+    }
+    else
+    {
+        printf("@@Skipping Process_vkDestroySurfaceKHR\n");
+    }
+    // Remove surface from allocatedLoopResources
+    if (inAllocatedLoopResources(surface))
+    {
+        allocatedLoopResources.erase(surface);
+    }
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDisplayModeKHR(
+    const ApiCallInfo&                          call_info,
+    VkResult                                    returnValue,
+    format::HandleId                            physicalDevice,
+    format::HandleId                            display,
+    StructPointerDecoder<Decoded_VkDisplayModeCreateInfoKHR>* pCreateInfo,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
+    HandlePointerDecoder<VkDisplayModeKHR>*     pMode)
+{
+    format::HandleId handle = *pMode->GetPointer();
+
+    // Pass the call along if we are not looping or
+    // if we are looping and the handle is not in allocatedLoopResources
+    if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
+    {
+        printf("@@Executing Process_vkCreateDisplayModeKHR\n");
+        VulkanReplayConsumer::Process_vkCreateDisplayModeKHR(call_info, returnValue, physicalDevice, display, pCreateInfo, pAllocator, pMode);
+        // If we are looping, save the handle in allocatedLoopResources
+        if (getFrameLoopInfo().IsLooping())
+        {
+            allocatedLoopResources.insert(handle);
+        }
+    } else
+        printf("@@Skipping Process_vkCreateDisplayModeKHR\n");
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDisplayPlaneSurfaceKHR(
+    const ApiCallInfo&                          call_info,
+    VkResult                                    returnValue,
+    format::HandleId                            instance,
+    StructPointerDecoder<Decoded_VkDisplaySurfaceCreateInfoKHR>* pCreateInfo,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
+    HandlePointerDecoder<VkSurfaceKHR>*         pSurface)
+{
+    format::HandleId handle = *pSurface->GetPointer();
+
+    // Pass the call along if we are not looping or
+    // if we are looping and the handle is not in allocatedLoopResources
+    if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
+    {
+        printf("@@Executing Process_vkCreateDisplayPlaneSurfaceKHR\n");
+        VulkanReplayConsumer::Process_vkCreateDisplayPlaneSurfaceKHR(call_info, returnValue, instance, pCreateInfo, pAllocator, pSurface);
+        // If we are looping, save the handle in allocatedLoopResources
+        if (getFrameLoopInfo().IsLooping())
+        {
+            allocatedLoopResources.insert(handle);
+        }
+    } else
+        printf("@@Skipping Process_vkCreateDisplayPlaneSurfaceKHR\n");
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkCreateXlibSurfaceKHR(
+    const ApiCallInfo&                          call_info,
+    VkResult                                    returnValue,
+    format::HandleId                            instance,
+    StructPointerDecoder<Decoded_VkXlibSurfaceCreateInfoKHR>* pCreateInfo,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
+    HandlePointerDecoder<VkSurfaceKHR>*         pSurface)
+{
+    format::HandleId handle = *pSurface->GetPointer();
+
+    // Pass the call along if we are not looping or
+    // if we are looping and the handle is not in allocatedLoopResources
+    if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
+    {
+        printf("@@Executing Process_vkCreateXlibSurfaceKHR\n");
+        VulkanReplayConsumer::Process_vkCreateXlibSurfaceKHR(call_info, returnValue, instance, pCreateInfo, pAllocator, pSurface);
+        // If we are looping, save the handle in allocatedLoopResources
+        if (getFrameLoopInfo().IsLooping())
+        {
+            allocatedLoopResources.insert(handle);
+        }
+    } else
+        printf("@@Skipping Process_vkCreateXlibSurfaceKHR\n");
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkCreateXcbSurfaceKHR(
+    const ApiCallInfo&                          call_info,
+    VkResult                                    returnValue,
+    format::HandleId                            instance,
+    StructPointerDecoder<Decoded_VkXcbSurfaceCreateInfoKHR>* pCreateInfo,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
+    HandlePointerDecoder<VkSurfaceKHR>*         pSurface)
+{
+    format::HandleId handle = *pSurface->GetPointer();
+
+    // Pass the call along if we are not looping or
+    // if we are looping and the handle is not in allocatedLoopResources
+    if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
+    {
+        printf("@@Executing Process_vkCreateXcbSurfaceKHR\n");
+        VulkanReplayConsumer::Process_vkCreateXcbSurfaceKHR(call_info, returnValue, instance, pCreateInfo, pAllocator, pSurface);
+        // If we are looping, save the handle in allocatedLoopResources
+        if (getFrameLoopInfo().IsLooping())
+        {
+            allocatedLoopResources.insert(handle);
+        }
+    } else
+        printf("@@Skipping Process_vkCreateXcbSurfaceKHR\n");
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkCreateWaylandSurfaceKHR(
+    const ApiCallInfo&                          call_info,
+    VkResult                                    returnValue,
+    format::HandleId                            instance,
+    StructPointerDecoder<Decoded_VkWaylandSurfaceCreateInfoKHR>* pCreateInfo,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
+    HandlePointerDecoder<VkSurfaceKHR>*         pSurface)
+{
+    format::HandleId handle = *pSurface->GetPointer();
+
+    // Pass the call along if we are not looping or
+    // if we are looping and the handle is not in allocatedLoopResources
+    if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
+    {
+        printf("@@Executing Process_vkCreateWaylandSurfaceKHR\n");
+        VulkanReplayConsumer::Process_vkCreateWaylandSurfaceKHR(call_info, returnValue, instance, pCreateInfo, pAllocator, pSurface);
+        // If we are looping, save the handle in allocatedLoopResources
+        if (getFrameLoopInfo().IsLooping())
+        {
+            allocatedLoopResources.insert(handle);
+        }
+    } else
+        printf("@@Skipping Process_vkCreateWaylandSurfaceKHR\n");
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkCreateAndroidSurfaceKHR(
+    const ApiCallInfo&                          call_info,
+    VkResult                                    returnValue,
+    format::HandleId                            instance,
+    StructPointerDecoder<Decoded_VkAndroidSurfaceCreateInfoKHR>* pCreateInfo,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
+    HandlePointerDecoder<VkSurfaceKHR>*         pSurface)
+{
+    format::HandleId handle = *pSurface->GetPointer();
+
+    // Pass the call along if we are not looping or
+    // if we are looping and the handle is not in allocatedLoopResources
+    if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
+    {
+        printf("@@Executing Process_vkCreateAndroidSurfaceKHR\n");
+        VulkanReplayConsumer::Process_vkCreateAndroidSurfaceKHR(call_info, returnValue, instance, pCreateInfo, pAllocator, pSurface);
+        // If we are looping, save the handle in allocatedLoopResources
+        if (getFrameLoopInfo().IsLooping())
+        {
+            allocatedLoopResources.insert(handle);
+        }
+    } else
+        printf("@@Skipping Process_vkCreateAndroidSurfaceKHR\n");
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkCreateWin32SurfaceKHR(
+    const ApiCallInfo&                          call_info,
+    VkResult                                    returnValue,
+    format::HandleId                            instance,
+    StructPointerDecoder<Decoded_VkWin32SurfaceCreateInfoKHR>* pCreateInfo,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
+    HandlePointerDecoder<VkSurfaceKHR>*         pSurface)
+{
+    format::HandleId handle = *pSurface->GetPointer();
+
+    // Pass the call along if we are not looping or
+    // if we are looping and the handle is not in allocatedLoopResources
+    if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
+    {
+        printf("@@Executing Process_vkCreateWin32SurfaceKHR\n");
+        VulkanReplayConsumer::Process_vkCreateWin32SurfaceKHR(call_info, returnValue, instance, pCreateInfo, pAllocator, pSurface);
+        // If we are looping, save the handle in allocatedLoopResources
+        if (getFrameLoopInfo().IsLooping())
+        {
+            allocatedLoopResources.insert(handle);
+        }
+    } else
+        printf("@@Skipping Process_vkCreateWin32SurfaceKHR\n");
+}
+
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDescriptorUpdateTemplateKHR(
     const ApiCallInfo&                          call_info,
     VkResult                                    returnValue,
@@ -999,6 +1207,106 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDebugReportCallbackEXT(
     }
 }
 
+void VulkanReplayFrameLoopConsumerBase::Process_vkCreateStreamDescriptorSurfaceGGP(
+    const ApiCallInfo&                          call_info,
+    VkResult                                    returnValue,
+    format::HandleId                            instance,
+    StructPointerDecoder<Decoded_VkStreamDescriptorSurfaceCreateInfoGGP>* pCreateInfo,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
+    HandlePointerDecoder<VkSurfaceKHR>*         pSurface)
+{
+    format::HandleId handle = *pSurface->GetPointer();
+
+    // Pass the call along if we are not looping or
+    // if we are looping and the handle is not in allocatedLoopResources
+    if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
+    {
+        printf("@@Executing Process_vkCreateStreamDescriptorSurfaceGGP\n");
+        VulkanReplayConsumer::Process_vkCreateStreamDescriptorSurfaceGGP(call_info, returnValue, instance, pCreateInfo, pAllocator, pSurface);
+        // If we are looping, save the handle in allocatedLoopResources
+        if (getFrameLoopInfo().IsLooping())
+        {
+            allocatedLoopResources.insert(handle);
+        }
+    } else
+        printf("@@Skipping Process_vkCreateStreamDescriptorSurfaceGGP\n");
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkCreateViSurfaceNN(
+    const ApiCallInfo&                          call_info,
+    VkResult                                    returnValue,
+    format::HandleId                            instance,
+    StructPointerDecoder<Decoded_VkViSurfaceCreateInfoNN>* pCreateInfo,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
+    HandlePointerDecoder<VkSurfaceKHR>*         pSurface)
+{
+    format::HandleId handle = *pSurface->GetPointer();
+
+    // Pass the call along if we are not looping or
+    // if we are looping and the handle is not in allocatedLoopResources
+    if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
+    {
+        printf("@@Executing Process_vkCreateViSurfaceNN\n");
+        VulkanReplayConsumer::Process_vkCreateViSurfaceNN(call_info, returnValue, instance, pCreateInfo, pAllocator, pSurface);
+        // If we are looping, save the handle in allocatedLoopResources
+        if (getFrameLoopInfo().IsLooping())
+        {
+            allocatedLoopResources.insert(handle);
+        }
+    } else
+        printf("@@Skipping Process_vkCreateViSurfaceNN\n");
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkCreateIOSSurfaceMVK(
+    const ApiCallInfo&                          call_info,
+    VkResult                                    returnValue,
+    format::HandleId                            instance,
+    StructPointerDecoder<Decoded_VkIOSSurfaceCreateInfoMVK>* pCreateInfo,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
+    HandlePointerDecoder<VkSurfaceKHR>*         pSurface)
+{
+    format::HandleId handle = *pSurface->GetPointer();
+
+    // Pass the call along if we are not looping or
+    // if we are looping and the handle is not in allocatedLoopResources
+    if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
+    {
+        printf("@@Executing Process_vkCreateIOSSurfaceMVK\n");
+        VulkanReplayConsumer::Process_vkCreateIOSSurfaceMVK(call_info, returnValue, instance, pCreateInfo, pAllocator, pSurface);
+        // If we are looping, save the handle in allocatedLoopResources
+        if (getFrameLoopInfo().IsLooping())
+        {
+            allocatedLoopResources.insert(handle);
+        }
+    } else
+        printf("@@Skipping Process_vkCreateIOSSurfaceMVK\n");
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkCreateMacOSSurfaceMVK(
+    const ApiCallInfo&                          call_info,
+    VkResult                                    returnValue,
+    format::HandleId                            instance,
+    StructPointerDecoder<Decoded_VkMacOSSurfaceCreateInfoMVK>* pCreateInfo,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
+    HandlePointerDecoder<VkSurfaceKHR>*         pSurface)
+{
+    format::HandleId handle = *pSurface->GetPointer();
+
+    // Pass the call along if we are not looping or
+    // if we are looping and the handle is not in allocatedLoopResources
+    if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
+    {
+        printf("@@Executing Process_vkCreateMacOSSurfaceMVK\n");
+        VulkanReplayConsumer::Process_vkCreateMacOSSurfaceMVK(call_info, returnValue, instance, pCreateInfo, pAllocator, pSurface);
+        // If we are looping, save the handle in allocatedLoopResources
+        if (getFrameLoopInfo().IsLooping())
+        {
+            allocatedLoopResources.insert(handle);
+        }
+    } else
+        printf("@@Skipping Process_vkCreateMacOSSurfaceMVK\n");
+}
+
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDebugUtilsMessengerEXT(
     const ApiCallInfo&                          call_info,
     VkResult                                    returnValue,
@@ -1113,6 +1421,81 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyAccelerationStructureNV
     }
 }
 
+void VulkanReplayFrameLoopConsumerBase::Process_vkCreateImagePipeSurfaceFUCHSIA(
+    const ApiCallInfo&                          call_info,
+    VkResult                                    returnValue,
+    format::HandleId                            instance,
+    StructPointerDecoder<Decoded_VkImagePipeSurfaceCreateInfoFUCHSIA>* pCreateInfo,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
+    HandlePointerDecoder<VkSurfaceKHR>*         pSurface)
+{
+    format::HandleId handle = *pSurface->GetPointer();
+
+    // Pass the call along if we are not looping or
+    // if we are looping and the handle is not in allocatedLoopResources
+    if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
+    {
+        printf("@@Executing Process_vkCreateImagePipeSurfaceFUCHSIA\n");
+        VulkanReplayConsumer::Process_vkCreateImagePipeSurfaceFUCHSIA(call_info, returnValue, instance, pCreateInfo, pAllocator, pSurface);
+        // If we are looping, save the handle in allocatedLoopResources
+        if (getFrameLoopInfo().IsLooping())
+        {
+            allocatedLoopResources.insert(handle);
+        }
+    } else
+        printf("@@Skipping Process_vkCreateImagePipeSurfaceFUCHSIA\n");
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkCreateMetalSurfaceEXT(
+    const ApiCallInfo&                          call_info,
+    VkResult                                    returnValue,
+    format::HandleId                            instance,
+    StructPointerDecoder<Decoded_VkMetalSurfaceCreateInfoEXT>* pCreateInfo,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
+    HandlePointerDecoder<VkSurfaceKHR>*         pSurface)
+{
+    format::HandleId handle = *pSurface->GetPointer();
+
+    // Pass the call along if we are not looping or
+    // if we are looping and the handle is not in allocatedLoopResources
+    if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
+    {
+        printf("@@Executing Process_vkCreateMetalSurfaceEXT\n");
+        VulkanReplayConsumer::Process_vkCreateMetalSurfaceEXT(call_info, returnValue, instance, pCreateInfo, pAllocator, pSurface);
+        // If we are looping, save the handle in allocatedLoopResources
+        if (getFrameLoopInfo().IsLooping())
+        {
+            allocatedLoopResources.insert(handle);
+        }
+    } else
+        printf("@@Skipping Process_vkCreateMetalSurfaceEXT\n");
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkCreateHeadlessSurfaceEXT(
+    const ApiCallInfo&                          call_info,
+    VkResult                                    returnValue,
+    format::HandleId                            instance,
+    StructPointerDecoder<Decoded_VkHeadlessSurfaceCreateInfoEXT>* pCreateInfo,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
+    HandlePointerDecoder<VkSurfaceKHR>*         pSurface)
+{
+    format::HandleId handle = *pSurface->GetPointer();
+
+    // Pass the call along if we are not looping or
+    // if we are looping and the handle is not in allocatedLoopResources
+    if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
+    {
+        printf("@@Executing Process_vkCreateHeadlessSurfaceEXT\n");
+        VulkanReplayConsumer::Process_vkCreateHeadlessSurfaceEXT(call_info, returnValue, instance, pCreateInfo, pAllocator, pSurface);
+        // If we are looping, save the handle in allocatedLoopResources
+        if (getFrameLoopInfo().IsLooping())
+        {
+            allocatedLoopResources.insert(handle);
+        }
+    } else
+        printf("@@Skipping Process_vkCreateHeadlessSurfaceEXT\n");
+}
+
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateIndirectCommandsLayoutNV(
     const ApiCallInfo&                          call_info,
     VkResult                                    returnValue,
@@ -1168,6 +1551,56 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyIndirectCommandsLayoutN
     {
         allocatedLoopResources.erase(indirectCommandsLayout);
     }
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDirectFBSurfaceEXT(
+    const ApiCallInfo&                          call_info,
+    VkResult                                    returnValue,
+    format::HandleId                            instance,
+    StructPointerDecoder<Decoded_VkDirectFBSurfaceCreateInfoEXT>* pCreateInfo,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
+    HandlePointerDecoder<VkSurfaceKHR>*         pSurface)
+{
+    format::HandleId handle = *pSurface->GetPointer();
+
+    // Pass the call along if we are not looping or
+    // if we are looping and the handle is not in allocatedLoopResources
+    if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
+    {
+        printf("@@Executing Process_vkCreateDirectFBSurfaceEXT\n");
+        VulkanReplayConsumer::Process_vkCreateDirectFBSurfaceEXT(call_info, returnValue, instance, pCreateInfo, pAllocator, pSurface);
+        // If we are looping, save the handle in allocatedLoopResources
+        if (getFrameLoopInfo().IsLooping())
+        {
+            allocatedLoopResources.insert(handle);
+        }
+    } else
+        printf("@@Skipping Process_vkCreateDirectFBSurfaceEXT\n");
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkCreateScreenSurfaceQNX(
+    const ApiCallInfo&                          call_info,
+    VkResult                                    returnValue,
+    format::HandleId                            instance,
+    StructPointerDecoder<Decoded_VkScreenSurfaceCreateInfoQNX>* pCreateInfo,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
+    HandlePointerDecoder<VkSurfaceKHR>*         pSurface)
+{
+    format::HandleId handle = *pSurface->GetPointer();
+
+    // Pass the call along if we are not looping or
+    // if we are looping and the handle is not in allocatedLoopResources
+    if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
+    {
+        printf("@@Executing Process_vkCreateScreenSurfaceQNX\n");
+        VulkanReplayConsumer::Process_vkCreateScreenSurfaceQNX(call_info, returnValue, instance, pCreateInfo, pAllocator, pSurface);
+        // If we are looping, save the handle in allocatedLoopResources
+        if (getFrameLoopInfo().IsLooping())
+        {
+            allocatedLoopResources.insert(handle);
+        }
+    } else
+        printf("@@Skipping Process_vkCreateScreenSurfaceQNX\n");
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDataGraphPipelineSessionARM(
