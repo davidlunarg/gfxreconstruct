@@ -81,6 +81,20 @@ class VulkanReplayFrameLoopConsumer : public VulkanReplayFrameLoopConsumerBase
                                       uint32_t                               descriptorSetCount,
                                       HandlePointerDecoder<VkDescriptorSet>* pDescriptorSets) override;
 
+    void Process_vkMapMemory(const ApiCallInfo&               call_info,
+                             VkResult                         returnValue,
+                             format::HandleId                 device,
+                             format::HandleId                 memory,
+                             VkDeviceSize                     offset,
+                             VkDeviceSize                     size,
+                             VkMemoryMapFlags                 flags,
+                             PointerDecoder<uint64_t, void*>* ppData);
+
+    void Process_vkUnmapMemory(const ApiCallInfo& call_info,
+                               format::HandleId   device,
+                               format::HandleId   memory);
+
+
   private:
     void RemovePoolDanglingCreateDescriptors(format::HandleId descriptorPool);
 
@@ -94,6 +108,14 @@ class VulkanReplayFrameLoopConsumer : public VulkanReplayFrameLoopConsumerBase
     std::unordered_set<format::HandleId> dangling_create_descriptor_sets_;
     std::unordered_set<format::HandleId> dangling_destroy_descriptor_pools_;
     std::unordered_set<format::HandleId> dangling_destroy_descriptor_sets_;
+
+    // Support for vkMapMemory/vkUnMapMemory
+    std::set<format::HandleId> mappedLoopMemory;
+    bool inMappedLoopMemory(format::HandleId handle)
+    {
+        return std::find(mappedLoopMemory.begin(), mappedLoopMemory.end(), handle) !=
+               mappedLoopMemory.end();
+    }
 };
 
 GFXRECON_END_NAMESPACE(decode)

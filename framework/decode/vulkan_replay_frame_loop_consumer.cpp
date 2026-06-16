@@ -242,5 +242,56 @@ void VulkanReplayFrameLoopConsumer::Process_vkFreeDescriptorSets(const ApiCallIn
         call_info, returnValue, device, descriptorPool, descriptorSetCount, pDescriptorSets);
 }
 
+
+void VulkanReplayFrameLoopConsumer::Process_vkMapMemory(
+    const ApiCallInfo&                          call_info,
+    VkResult                                    returnValue,
+    format::HandleId                            device,
+    format::HandleId                            memory,
+    VkDeviceSize                                offset,
+    VkDeviceSize                                size,
+    VkMemoryMapFlags                            flags,
+    PointerDecoder<uint64_t, void*>*            ppData)
+{
+    // Pass the call along if we are not looping or
+    // if we are looping and the handle is not in mappedLoopMemory
+    if (!getFrameLoopInfo().IsLooping() || !inMappedLoopMemory(memory))
+    {
+        VulkanReplayConsumer::Process_vkMapMemory(call_info, returnValue, device, memory, offset,
+                                                  size, flags, ppData);
+        // If we are looping, save the memory handle in mappedLoopMemory
+        if (getFrameLoopInfo().IsLooping())
+        {
+            mappedLoopMemory.insert(memory);
+        }
+    }
+}
+
+void VulkanReplayFrameLoopConsumer::Process_vkUnmapMemory(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            device,
+    format::HandleId                            memory)
+{
+    // Skip for loop iterations 1-(n-1).
+    // Skip if looping and if not final iteration
+    // Execute if memory is in mappedLoopMemory
+
+    // Call Process_vkUnmapMemory if:
+    //    We are not looping
+    //    We are looping and memory in mappedLoopMemory
+    //    We are looping and this is the last iteration
+    if (!getFrameLoopInfo().IsLooping() ||
+        inMappedLoopMemory(memory) ||
+        getFrameLoopInfo().IsFinalIteration())
+    {
+        VulkanReplayConsumer::Process_vkUnmapMemory(call_info, device, memory);
+    }
+    // Remove memory handle from mappedLoopMemory
+    if (inMappedLoopMemory(memory))
+    {
+        mappedLoopMemory.erase(memory);
+    }
+}
+
 GFXRECON_END_NAMESPACE(decode)
 GFXRECON_END_NAMESPACE(gfxrecon)
