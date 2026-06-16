@@ -47,15 +47,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateInstance(
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateInstance\n");
         VulkanReplayConsumer::Process_vkCreateInstance(call_info, returnValue, pCreateInfo, pAllocator, pInstance);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateInstance\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyInstance(
@@ -75,12 +73,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyInstance(
         inAllocatedLoopResources(instance) ||
         getFrameLoopInfo().IsFinalIteration())
     {
-        printf("@@Executing Process_vkDestroyInstance\n");
         VulkanReplayConsumer::Process_vkDestroyInstance(call_info, instance, pAllocator);
-    }
-    else
-    {
-        printf("@@Skipping Process_vkDestroyInstance\n");
     }
     // Remove instance from allocatedLoopResources
     if (inAllocatedLoopResources(instance))
@@ -103,15 +96,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDevice(
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateDevice\n");
         VulkanReplayConsumer::Process_vkCreateDevice(call_info, returnValue, physicalDevice, pCreateInfo, pAllocator, pDevice);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateDevice\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDevice(
@@ -131,12 +122,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDevice(
         inAllocatedLoopResources(device) ||
         getFrameLoopInfo().IsFinalIteration())
     {
-        printf("@@Executing Process_vkDestroyDevice\n");
         VulkanReplayConsumer::Process_vkDestroyDevice(call_info, device, pAllocator);
-    }
-    else
-    {
-        printf("@@Skipping Process_vkDestroyDevice\n");
     }
     // Remove device from allocatedLoopResources
     if (inAllocatedLoopResources(device))
@@ -159,15 +145,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkAllocateMemory(
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkAllocateMemory\n");
         VulkanReplayConsumer::Process_vkAllocateMemory(call_info, returnValue, device, pAllocateInfo, pAllocator, pMemory);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkAllocateMemory\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkFreeMemory(
@@ -188,12 +172,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkFreeMemory(
         inAllocatedLoopResources(memory) ||
         getFrameLoopInfo().IsFinalIteration())
     {
-        printf("@@Executing Process_vkFreeMemory\n");
         VulkanReplayConsumer::Process_vkFreeMemory(call_info, device, memory, pAllocator);
-    }
-    else
-    {
-        printf("@@Skipping Process_vkFreeMemory\n");
     }
     // Remove memory from allocatedLoopResources
     if (inAllocatedLoopResources(memory))
@@ -216,15 +195,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateFence(
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateFence\n");
         VulkanReplayConsumer::Process_vkCreateFence(call_info, returnValue, device, pCreateInfo, pAllocator, pFence);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateFence\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyFence(
@@ -245,12 +222,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyFence(
         inAllocatedLoopResources(fence) ||
         getFrameLoopInfo().IsFinalIteration())
     {
-        printf("@@Executing Process_vkDestroyFence\n");
         VulkanReplayConsumer::Process_vkDestroyFence(call_info, device, fence, pAllocator);
-    }
-    else
-    {
-        printf("@@Skipping Process_vkDestroyFence\n");
     }
     // Remove fence from allocatedLoopResources
     if (inAllocatedLoopResources(fence))
@@ -273,15 +245,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateSemaphore(
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateSemaphore\n");
         VulkanReplayConsumer::Process_vkCreateSemaphore(call_info, returnValue, device, pCreateInfo, pAllocator, pSemaphore);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateSemaphore\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroySemaphore(
@@ -302,12 +272,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroySemaphore(
         inAllocatedLoopResources(semaphore) ||
         getFrameLoopInfo().IsFinalIteration())
     {
-        printf("@@Executing Process_vkDestroySemaphore\n");
         VulkanReplayConsumer::Process_vkDestroySemaphore(call_info, device, semaphore, pAllocator);
-    }
-    else
-    {
-        printf("@@Skipping Process_vkDestroySemaphore\n");
     }
     // Remove semaphore from allocatedLoopResources
     if (inAllocatedLoopResources(semaphore))
@@ -330,15 +295,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateQueryPool(
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateQueryPool\n");
         VulkanReplayConsumer::Process_vkCreateQueryPool(call_info, returnValue, device, pCreateInfo, pAllocator, pQueryPool);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateQueryPool\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyQueryPool(
@@ -359,12 +322,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyQueryPool(
         inAllocatedLoopResources(queryPool) ||
         getFrameLoopInfo().IsFinalIteration())
     {
-        printf("@@Executing Process_vkDestroyQueryPool\n");
         VulkanReplayConsumer::Process_vkDestroyQueryPool(call_info, device, queryPool, pAllocator);
-    }
-    else
-    {
-        printf("@@Skipping Process_vkDestroyQueryPool\n");
     }
     // Remove queryPool from allocatedLoopResources
     if (inAllocatedLoopResources(queryPool))
@@ -387,15 +345,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateBuffer(
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateBuffer\n");
         VulkanReplayConsumer::Process_vkCreateBuffer(call_info, returnValue, device, pCreateInfo, pAllocator, pBuffer);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateBuffer\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyBuffer(
@@ -416,12 +372,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyBuffer(
         inAllocatedLoopResources(buffer) ||
         getFrameLoopInfo().IsFinalIteration())
     {
-        printf("@@Executing Process_vkDestroyBuffer\n");
         VulkanReplayConsumer::Process_vkDestroyBuffer(call_info, device, buffer, pAllocator);
-    }
-    else
-    {
-        printf("@@Skipping Process_vkDestroyBuffer\n");
     }
     // Remove buffer from allocatedLoopResources
     if (inAllocatedLoopResources(buffer))
@@ -444,15 +395,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateImage(
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateImage\n");
         VulkanReplayConsumer::Process_vkCreateImage(call_info, returnValue, device, pCreateInfo, pAllocator, pImage);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateImage\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyImage(
@@ -473,12 +422,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyImage(
         inAllocatedLoopResources(image) ||
         getFrameLoopInfo().IsFinalIteration())
     {
-        printf("@@Executing Process_vkDestroyImage\n");
         VulkanReplayConsumer::Process_vkDestroyImage(call_info, device, image, pAllocator);
-    }
-    else
-    {
-        printf("@@Skipping Process_vkDestroyImage\n");
     }
     // Remove image from allocatedLoopResources
     if (inAllocatedLoopResources(image))
@@ -501,15 +445,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateImageView(
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateImageView\n");
         VulkanReplayConsumer::Process_vkCreateImageView(call_info, returnValue, device, pCreateInfo, pAllocator, pView);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateImageView\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyImageView(
@@ -530,12 +472,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyImageView(
         inAllocatedLoopResources(imageView) ||
         getFrameLoopInfo().IsFinalIteration())
     {
-        printf("@@Executing Process_vkDestroyImageView\n");
         VulkanReplayConsumer::Process_vkDestroyImageView(call_info, device, imageView, pAllocator);
-    }
-    else
-    {
-        printf("@@Skipping Process_vkDestroyImageView\n");
     }
     // Remove imageView from allocatedLoopResources
     if (inAllocatedLoopResources(imageView))
@@ -558,15 +495,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateCommandPool(
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateCommandPool\n");
         VulkanReplayConsumer::Process_vkCreateCommandPool(call_info, returnValue, device, pCreateInfo, pAllocator, pCommandPool);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateCommandPool\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyCommandPool(
@@ -587,12 +522,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyCommandPool(
         inAllocatedLoopResources(commandPool) ||
         getFrameLoopInfo().IsFinalIteration())
     {
-        printf("@@Executing Process_vkDestroyCommandPool\n");
         VulkanReplayConsumer::Process_vkDestroyCommandPool(call_info, device, commandPool, pAllocator);
-    }
-    else
-    {
-        printf("@@Skipping Process_vkDestroyCommandPool\n");
     }
     // Remove commandPool from allocatedLoopResources
     if (inAllocatedLoopResources(commandPool))
@@ -615,15 +545,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateEvent(
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateEvent\n");
         VulkanReplayConsumer::Process_vkCreateEvent(call_info, returnValue, device, pCreateInfo, pAllocator, pEvent);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateEvent\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyEvent(
@@ -644,12 +572,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyEvent(
         inAllocatedLoopResources(event) ||
         getFrameLoopInfo().IsFinalIteration())
     {
-        printf("@@Executing Process_vkDestroyEvent\n");
         VulkanReplayConsumer::Process_vkDestroyEvent(call_info, device, event, pAllocator);
-    }
-    else
-    {
-        printf("@@Skipping Process_vkDestroyEvent\n");
     }
     // Remove event from allocatedLoopResources
     if (inAllocatedLoopResources(event))
@@ -672,15 +595,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateBufferView(
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateBufferView\n");
         VulkanReplayConsumer::Process_vkCreateBufferView(call_info, returnValue, device, pCreateInfo, pAllocator, pView);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateBufferView\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyBufferView(
@@ -701,12 +622,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyBufferView(
         inAllocatedLoopResources(bufferView) ||
         getFrameLoopInfo().IsFinalIteration())
     {
-        printf("@@Executing Process_vkDestroyBufferView\n");
         VulkanReplayConsumer::Process_vkDestroyBufferView(call_info, device, bufferView, pAllocator);
-    }
-    else
-    {
-        printf("@@Skipping Process_vkDestroyBufferView\n");
     }
     // Remove bufferView from allocatedLoopResources
     if (inAllocatedLoopResources(bufferView))
@@ -729,15 +645,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateShaderModule(
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateShaderModule\n");
         VulkanReplayConsumer::Process_vkCreateShaderModule(call_info, returnValue, device, pCreateInfo, pAllocator, pShaderModule);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateShaderModule\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyShaderModule(
@@ -758,12 +672,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyShaderModule(
         inAllocatedLoopResources(shaderModule) ||
         getFrameLoopInfo().IsFinalIteration())
     {
-        printf("@@Executing Process_vkDestroyShaderModule\n");
         VulkanReplayConsumer::Process_vkDestroyShaderModule(call_info, device, shaderModule, pAllocator);
-    }
-    else
-    {
-        printf("@@Skipping Process_vkDestroyShaderModule\n");
     }
     // Remove shaderModule from allocatedLoopResources
     if (inAllocatedLoopResources(shaderModule))
@@ -786,15 +695,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreatePipelineCache(
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreatePipelineCache\n");
         VulkanReplayConsumer::Process_vkCreatePipelineCache(call_info, returnValue, device, pCreateInfo, pAllocator, pPipelineCache);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreatePipelineCache\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyPipelineCache(
@@ -815,17 +722,82 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyPipelineCache(
         inAllocatedLoopResources(pipelineCache) ||
         getFrameLoopInfo().IsFinalIteration())
     {
-        printf("@@Executing Process_vkDestroyPipelineCache\n");
         VulkanReplayConsumer::Process_vkDestroyPipelineCache(call_info, device, pipelineCache, pAllocator);
-    }
-    else
-    {
-        printf("@@Skipping Process_vkDestroyPipelineCache\n");
     }
     // Remove pipelineCache from allocatedLoopResources
     if (inAllocatedLoopResources(pipelineCache))
     {
         allocatedLoopResources.erase(pipelineCache);
+    }
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkCreateComputePipelines(
+    const ApiCallInfo&                          call_info,
+    VkResult                                    returnValue,
+    format::HandleId                            device,
+    format::HandleId                            pipelineCache,
+    uint32_t                                    createInfoCount,
+    StructPointerDecoder<Decoded_VkComputePipelineCreateInfo>* pCreateInfos,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
+    HandlePointerDecoder<VkPipeline>*           pPipelines)
+{
+    // Pass the call along if we are not looping or if all the handles are not in allocatedLoopResources.
+    bool doReplay = false;
+    if (!getFrameLoopInfo().IsLooping())
+    {
+        doReplay = true;
+    }
+    else
+    {
+        for (uint32_t i=0; i < createInfoCount; i++)
+        {
+            format::HandleId handle = *(pPipelines[i].GetPointer());
+            if (!inAllocatedLoopResources(handle))
+            {
+                doReplay = true;
+                break;
+            }
+        }
+    }
+    if (doReplay)
+    {
+        VulkanReplayConsumer::Process_vkCreateComputePipelines(call_info, returnValue, device, pipelineCache, createInfoCount, pCreateInfos, pAllocator, pPipelines);
+    }
+    // If we are looping, save the handles in allocatedLoopResources
+    if (getFrameLoopInfo().IsLooping())
+    {
+        for (uint32_t i=0; i < createInfoCount; i++)
+        {
+            format::HandleId handle = *(pPipelines[i].GetPointer());
+            allocatedLoopResources.insert(handle);
+        }
+    }
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyPipeline(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            device,
+    format::HandleId                            pipeline,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
+{
+    // Skip for loop iterations 1-(n-1).
+    // Skip if looping and if not final iteration
+    // Execute if pipeline is in allocatedLoopResources
+
+    // Call Process_vkDestroyPipeline if:
+    //    We are not looping
+    //    We are looping and pipeline is in allocatedLoopResources
+    //    We are looping and this is the last iteration
+    if (!getFrameLoopInfo().IsLooping() ||
+        inAllocatedLoopResources(pipeline) ||
+        getFrameLoopInfo().IsFinalIteration())
+    {
+        VulkanReplayConsumer::Process_vkDestroyPipeline(call_info, device, pipeline, pAllocator);
+    }
+    // Remove pipeline from allocatedLoopResources
+    if (inAllocatedLoopResources(pipeline))
+    {
+        allocatedLoopResources.erase(pipeline);
     }
 }
 
@@ -843,15 +815,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreatePipelineLayout(
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreatePipelineLayout\n");
         VulkanReplayConsumer::Process_vkCreatePipelineLayout(call_info, returnValue, device, pCreateInfo, pAllocator, pPipelineLayout);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreatePipelineLayout\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyPipelineLayout(
@@ -872,12 +842,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyPipelineLayout(
         inAllocatedLoopResources(pipelineLayout) ||
         getFrameLoopInfo().IsFinalIteration())
     {
-        printf("@@Executing Process_vkDestroyPipelineLayout\n");
         VulkanReplayConsumer::Process_vkDestroyPipelineLayout(call_info, device, pipelineLayout, pAllocator);
-    }
-    else
-    {
-        printf("@@Skipping Process_vkDestroyPipelineLayout\n");
     }
     // Remove pipelineLayout from allocatedLoopResources
     if (inAllocatedLoopResources(pipelineLayout))
@@ -900,15 +865,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateSampler(
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateSampler\n");
         VulkanReplayConsumer::Process_vkCreateSampler(call_info, returnValue, device, pCreateInfo, pAllocator, pSampler);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateSampler\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroySampler(
@@ -929,12 +892,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroySampler(
         inAllocatedLoopResources(sampler) ||
         getFrameLoopInfo().IsFinalIteration())
     {
-        printf("@@Executing Process_vkDestroySampler\n");
         VulkanReplayConsumer::Process_vkDestroySampler(call_info, device, sampler, pAllocator);
-    }
-    else
-    {
-        printf("@@Skipping Process_vkDestroySampler\n");
     }
     // Remove sampler from allocatedLoopResources
     if (inAllocatedLoopResources(sampler))
@@ -957,15 +915,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDescriptorSetLayout(
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateDescriptorSetLayout\n");
         VulkanReplayConsumer::Process_vkCreateDescriptorSetLayout(call_info, returnValue, device, pCreateInfo, pAllocator, pSetLayout);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateDescriptorSetLayout\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDescriptorSetLayout(
@@ -986,12 +942,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDescriptorSetLayout(
         inAllocatedLoopResources(descriptorSetLayout) ||
         getFrameLoopInfo().IsFinalIteration())
     {
-        printf("@@Executing Process_vkDestroyDescriptorSetLayout\n");
         VulkanReplayConsumer::Process_vkDestroyDescriptorSetLayout(call_info, device, descriptorSetLayout, pAllocator);
-    }
-    else
-    {
-        printf("@@Skipping Process_vkDestroyDescriptorSetLayout\n");
     }
     // Remove descriptorSetLayout from allocatedLoopResources
     if (inAllocatedLoopResources(descriptorSetLayout))
@@ -1014,15 +965,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDescriptorPool(
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateDescriptorPool\n");
         VulkanReplayConsumer::Process_vkCreateDescriptorPool(call_info, returnValue, device, pCreateInfo, pAllocator, pDescriptorPool);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateDescriptorPool\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDescriptorPool(
@@ -1043,17 +992,55 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDescriptorPool(
         inAllocatedLoopResources(descriptorPool) ||
         getFrameLoopInfo().IsFinalIteration())
     {
-        printf("@@Executing Process_vkDestroyDescriptorPool\n");
         VulkanReplayConsumer::Process_vkDestroyDescriptorPool(call_info, device, descriptorPool, pAllocator);
-    }
-    else
-    {
-        printf("@@Skipping Process_vkDestroyDescriptorPool\n");
     }
     // Remove descriptorPool from allocatedLoopResources
     if (inAllocatedLoopResources(descriptorPool))
     {
         allocatedLoopResources.erase(descriptorPool);
+    }
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkCreateGraphicsPipelines(
+    const ApiCallInfo&                          call_info,
+    VkResult                                    returnValue,
+    format::HandleId                            device,
+    format::HandleId                            pipelineCache,
+    uint32_t                                    createInfoCount,
+    StructPointerDecoder<Decoded_VkGraphicsPipelineCreateInfo>* pCreateInfos,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
+    HandlePointerDecoder<VkPipeline>*           pPipelines)
+{
+    // Pass the call along if we are not looping or if all the handles are not in allocatedLoopResources.
+    bool doReplay = false;
+    if (!getFrameLoopInfo().IsLooping())
+    {
+        doReplay = true;
+    }
+    else
+    {
+        for (uint32_t i=0; i < createInfoCount; i++)
+        {
+            format::HandleId handle = *(pPipelines[i].GetPointer());
+            if (!inAllocatedLoopResources(handle))
+            {
+                doReplay = true;
+                break;
+            }
+        }
+    }
+    if (doReplay)
+    {
+        VulkanReplayConsumer::Process_vkCreateGraphicsPipelines(call_info, returnValue, device, pipelineCache, createInfoCount, pCreateInfos, pAllocator, pPipelines);
+    }
+    // If we are looping, save the handles in allocatedLoopResources
+    if (getFrameLoopInfo().IsLooping())
+    {
+        for (uint32_t i=0; i < createInfoCount; i++)
+        {
+            format::HandleId handle = *(pPipelines[i].GetPointer());
+            allocatedLoopResources.insert(handle);
+        }
     }
 }
 
@@ -1071,15 +1058,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateFramebuffer(
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateFramebuffer\n");
         VulkanReplayConsumer::Process_vkCreateFramebuffer(call_info, returnValue, device, pCreateInfo, pAllocator, pFramebuffer);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateFramebuffer\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyFramebuffer(
@@ -1100,12 +1085,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyFramebuffer(
         inAllocatedLoopResources(framebuffer) ||
         getFrameLoopInfo().IsFinalIteration())
     {
-        printf("@@Executing Process_vkDestroyFramebuffer\n");
         VulkanReplayConsumer::Process_vkDestroyFramebuffer(call_info, device, framebuffer, pAllocator);
-    }
-    else
-    {
-        printf("@@Skipping Process_vkDestroyFramebuffer\n");
     }
     // Remove framebuffer from allocatedLoopResources
     if (inAllocatedLoopResources(framebuffer))
@@ -1128,15 +1108,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateRenderPass(
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateRenderPass\n");
         VulkanReplayConsumer::Process_vkCreateRenderPass(call_info, returnValue, device, pCreateInfo, pAllocator, pRenderPass);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateRenderPass\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyRenderPass(
@@ -1157,12 +1135,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyRenderPass(
         inAllocatedLoopResources(renderPass) ||
         getFrameLoopInfo().IsFinalIteration())
     {
-        printf("@@Executing Process_vkDestroyRenderPass\n");
         VulkanReplayConsumer::Process_vkDestroyRenderPass(call_info, device, renderPass, pAllocator);
-    }
-    else
-    {
-        printf("@@Skipping Process_vkDestroyRenderPass\n");
     }
     // Remove renderPass from allocatedLoopResources
     if (inAllocatedLoopResources(renderPass))
@@ -1185,15 +1158,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDescriptorUpdateTemplate
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateDescriptorUpdateTemplate\n");
         VulkanReplayConsumer::Process_vkCreateDescriptorUpdateTemplate(call_info, returnValue, device, pCreateInfo, pAllocator, pDescriptorUpdateTemplate);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateDescriptorUpdateTemplate\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDescriptorUpdateTemplate(
@@ -1214,12 +1185,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDescriptorUpdateTemplat
         inAllocatedLoopResources(descriptorUpdateTemplate) ||
         getFrameLoopInfo().IsFinalIteration())
     {
-        printf("@@Executing Process_vkDestroyDescriptorUpdateTemplate\n");
         VulkanReplayConsumer::Process_vkDestroyDescriptorUpdateTemplate(call_info, device, descriptorUpdateTemplate, pAllocator);
-    }
-    else
-    {
-        printf("@@Skipping Process_vkDestroyDescriptorUpdateTemplate\n");
     }
     // Remove descriptorUpdateTemplate from allocatedLoopResources
     if (inAllocatedLoopResources(descriptorUpdateTemplate))
@@ -1242,15 +1208,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateSamplerYcbcrConversion(
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateSamplerYcbcrConversion\n");
         VulkanReplayConsumer::Process_vkCreateSamplerYcbcrConversion(call_info, returnValue, device, pCreateInfo, pAllocator, pYcbcrConversion);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateSamplerYcbcrConversion\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroySamplerYcbcrConversion(
@@ -1271,12 +1235,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroySamplerYcbcrConversion(
         inAllocatedLoopResources(ycbcrConversion) ||
         getFrameLoopInfo().IsFinalIteration())
     {
-        printf("@@Executing Process_vkDestroySamplerYcbcrConversion\n");
         VulkanReplayConsumer::Process_vkDestroySamplerYcbcrConversion(call_info, device, ycbcrConversion, pAllocator);
-    }
-    else
-    {
-        printf("@@Skipping Process_vkDestroySamplerYcbcrConversion\n");
     }
     // Remove ycbcrConversion from allocatedLoopResources
     if (inAllocatedLoopResources(ycbcrConversion))
@@ -1299,15 +1258,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateRenderPass2(
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateRenderPass2\n");
         VulkanReplayConsumer::Process_vkCreateRenderPass2(call_info, returnValue, device, pCreateInfo, pAllocator, pRenderPass);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateRenderPass2\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreatePrivateDataSlot(
@@ -1324,15 +1281,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreatePrivateDataSlot(
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreatePrivateDataSlot\n");
         VulkanReplayConsumer::Process_vkCreatePrivateDataSlot(call_info, returnValue, device, pCreateInfo, pAllocator, pPrivateDataSlot);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreatePrivateDataSlot\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyPrivateDataSlot(
@@ -1353,12 +1308,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyPrivateDataSlot(
         inAllocatedLoopResources(privateDataSlot) ||
         getFrameLoopInfo().IsFinalIteration())
     {
-        printf("@@Executing Process_vkDestroyPrivateDataSlot\n");
         VulkanReplayConsumer::Process_vkDestroyPrivateDataSlot(call_info, device, privateDataSlot, pAllocator);
-    }
-    else
-    {
-        printf("@@Skipping Process_vkDestroyPrivateDataSlot\n");
     }
     // Remove privateDataSlot from allocatedLoopResources
     if (inAllocatedLoopResources(privateDataSlot))
@@ -1385,12 +1335,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroySurfaceKHR(
         inAllocatedLoopResources(surface) ||
         getFrameLoopInfo().IsFinalIteration())
     {
-        printf("@@Executing Process_vkDestroySurfaceKHR\n");
         VulkanReplayConsumer::Process_vkDestroySurfaceKHR(call_info, instance, surface, pAllocator);
-    }
-    else
-    {
-        printf("@@Skipping Process_vkDestroySurfaceKHR\n");
     }
     // Remove surface from allocatedLoopResources
     if (inAllocatedLoopResources(surface))
@@ -1413,15 +1358,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateSwapchainKHR(
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateSwapchainKHR\n");
         VulkanReplayConsumer::Process_vkCreateSwapchainKHR(call_info, returnValue, device, pCreateInfo, pAllocator, pSwapchain);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateSwapchainKHR\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroySwapchainKHR(
@@ -1442,12 +1385,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroySwapchainKHR(
         inAllocatedLoopResources(swapchain) ||
         getFrameLoopInfo().IsFinalIteration())
     {
-        printf("@@Executing Process_vkDestroySwapchainKHR\n");
         VulkanReplayConsumer::Process_vkDestroySwapchainKHR(call_info, device, swapchain, pAllocator);
-    }
-    else
-    {
-        printf("@@Skipping Process_vkDestroySwapchainKHR\n");
     }
     // Remove swapchain from allocatedLoopResources
     if (inAllocatedLoopResources(swapchain))
@@ -1471,15 +1409,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDisplayModeKHR(
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateDisplayModeKHR\n");
         VulkanReplayConsumer::Process_vkCreateDisplayModeKHR(call_info, returnValue, physicalDevice, display, pCreateInfo, pAllocator, pMode);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateDisplayModeKHR\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDisplayPlaneSurfaceKHR(
@@ -1496,15 +1432,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDisplayPlaneSurfaceKHR(
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateDisplayPlaneSurfaceKHR\n");
         VulkanReplayConsumer::Process_vkCreateDisplayPlaneSurfaceKHR(call_info, returnValue, instance, pCreateInfo, pAllocator, pSurface);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateDisplayPlaneSurfaceKHR\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateXlibSurfaceKHR(
@@ -1521,15 +1455,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateXlibSurfaceKHR(
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateXlibSurfaceKHR\n");
         VulkanReplayConsumer::Process_vkCreateXlibSurfaceKHR(call_info, returnValue, instance, pCreateInfo, pAllocator, pSurface);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateXlibSurfaceKHR\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateXcbSurfaceKHR(
@@ -1546,15 +1478,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateXcbSurfaceKHR(
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateXcbSurfaceKHR\n");
         VulkanReplayConsumer::Process_vkCreateXcbSurfaceKHR(call_info, returnValue, instance, pCreateInfo, pAllocator, pSurface);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateXcbSurfaceKHR\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateWaylandSurfaceKHR(
@@ -1571,15 +1501,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateWaylandSurfaceKHR(
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateWaylandSurfaceKHR\n");
         VulkanReplayConsumer::Process_vkCreateWaylandSurfaceKHR(call_info, returnValue, instance, pCreateInfo, pAllocator, pSurface);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateWaylandSurfaceKHR\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateAndroidSurfaceKHR(
@@ -1596,15 +1524,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateAndroidSurfaceKHR(
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateAndroidSurfaceKHR\n");
         VulkanReplayConsumer::Process_vkCreateAndroidSurfaceKHR(call_info, returnValue, instance, pCreateInfo, pAllocator, pSurface);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateAndroidSurfaceKHR\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateWin32SurfaceKHR(
@@ -1621,15 +1547,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateWin32SurfaceKHR(
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateWin32SurfaceKHR\n");
         VulkanReplayConsumer::Process_vkCreateWin32SurfaceKHR(call_info, returnValue, instance, pCreateInfo, pAllocator, pSurface);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateWin32SurfaceKHR\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateVideoSessionKHR(
@@ -1646,15 +1570,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateVideoSessionKHR(
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateVideoSessionKHR\n");
         VulkanReplayConsumer::Process_vkCreateVideoSessionKHR(call_info, returnValue, device, pCreateInfo, pAllocator, pVideoSession);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateVideoSessionKHR\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyVideoSessionKHR(
@@ -1675,12 +1597,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyVideoSessionKHR(
         inAllocatedLoopResources(videoSession) ||
         getFrameLoopInfo().IsFinalIteration())
     {
-        printf("@@Executing Process_vkDestroyVideoSessionKHR\n");
         VulkanReplayConsumer::Process_vkDestroyVideoSessionKHR(call_info, device, videoSession, pAllocator);
-    }
-    else
-    {
-        printf("@@Skipping Process_vkDestroyVideoSessionKHR\n");
     }
     // Remove videoSession from allocatedLoopResources
     if (inAllocatedLoopResources(videoSession))
@@ -1703,15 +1620,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateVideoSessionParametersKH
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateVideoSessionParametersKHR\n");
         VulkanReplayConsumer::Process_vkCreateVideoSessionParametersKHR(call_info, returnValue, device, pCreateInfo, pAllocator, pVideoSessionParameters);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateVideoSessionParametersKHR\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyVideoSessionParametersKHR(
@@ -1732,12 +1647,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyVideoSessionParametersK
         inAllocatedLoopResources(videoSessionParameters) ||
         getFrameLoopInfo().IsFinalIteration())
     {
-        printf("@@Executing Process_vkDestroyVideoSessionParametersKHR\n");
         VulkanReplayConsumer::Process_vkDestroyVideoSessionParametersKHR(call_info, device, videoSessionParameters, pAllocator);
-    }
-    else
-    {
-        printf("@@Skipping Process_vkDestroyVideoSessionParametersKHR\n");
     }
     // Remove videoSessionParameters from allocatedLoopResources
     if (inAllocatedLoopResources(videoSessionParameters))
@@ -1760,15 +1670,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDescriptorUpdateTemplate
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateDescriptorUpdateTemplateKHR\n");
         VulkanReplayConsumer::Process_vkCreateDescriptorUpdateTemplateKHR(call_info, returnValue, device, pCreateInfo, pAllocator, pDescriptorUpdateTemplate);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateDescriptorUpdateTemplateKHR\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDescriptorUpdateTemplateKHR(
@@ -1789,12 +1697,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDescriptorUpdateTemplat
         inAllocatedLoopResources(descriptorUpdateTemplate) ||
         getFrameLoopInfo().IsFinalIteration())
     {
-        printf("@@Executing Process_vkDestroyDescriptorUpdateTemplateKHR\n");
         VulkanReplayConsumer::Process_vkDestroyDescriptorUpdateTemplateKHR(call_info, device, descriptorUpdateTemplate, pAllocator);
-    }
-    else
-    {
-        printf("@@Skipping Process_vkDestroyDescriptorUpdateTemplateKHR\n");
     }
     // Remove descriptorUpdateTemplate from allocatedLoopResources
     if (inAllocatedLoopResources(descriptorUpdateTemplate))
@@ -1817,15 +1720,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateRenderPass2KHR(
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateRenderPass2KHR\n");
         VulkanReplayConsumer::Process_vkCreateRenderPass2KHR(call_info, returnValue, device, pCreateInfo, pAllocator, pRenderPass);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateRenderPass2KHR\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateSamplerYcbcrConversionKHR(
@@ -1842,15 +1743,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateSamplerYcbcrConversionKH
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateSamplerYcbcrConversionKHR\n");
         VulkanReplayConsumer::Process_vkCreateSamplerYcbcrConversionKHR(call_info, returnValue, device, pCreateInfo, pAllocator, pYcbcrConversion);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateSamplerYcbcrConversionKHR\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroySamplerYcbcrConversionKHR(
@@ -1871,12 +1770,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroySamplerYcbcrConversionK
         inAllocatedLoopResources(ycbcrConversion) ||
         getFrameLoopInfo().IsFinalIteration())
     {
-        printf("@@Executing Process_vkDestroySamplerYcbcrConversionKHR\n");
         VulkanReplayConsumer::Process_vkDestroySamplerYcbcrConversionKHR(call_info, device, ycbcrConversion, pAllocator);
-    }
-    else
-    {
-        printf("@@Skipping Process_vkDestroySamplerYcbcrConversionKHR\n");
     }
     // Remove ycbcrConversion from allocatedLoopResources
     if (inAllocatedLoopResources(ycbcrConversion))
@@ -1898,15 +1792,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDeferredOperationKHR(
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateDeferredOperationKHR\n");
         VulkanReplayConsumer::Process_vkCreateDeferredOperationKHR(call_info, returnValue, device, pAllocator, pDeferredOperation);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateDeferredOperationKHR\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDeferredOperationKHR(
@@ -1927,17 +1819,39 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDeferredOperationKHR(
         inAllocatedLoopResources(operation) ||
         getFrameLoopInfo().IsFinalIteration())
     {
-        printf("@@Executing Process_vkDestroyDeferredOperationKHR\n");
         VulkanReplayConsumer::Process_vkDestroyDeferredOperationKHR(call_info, device, operation, pAllocator);
-    }
-    else
-    {
-        printf("@@Skipping Process_vkDestroyDeferredOperationKHR\n");
     }
     // Remove operation from allocatedLoopResources
     if (inAllocatedLoopResources(operation))
     {
         allocatedLoopResources.erase(operation);
+    }
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyPipelineBinaryKHR(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            device,
+    format::HandleId                            pipelineBinary,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
+{
+    // Skip for loop iterations 1-(n-1).
+    // Skip if looping and if not final iteration
+    // Execute if pipelineBinary is in allocatedLoopResources
+
+    // Call Process_vkDestroyPipelineBinaryKHR if:
+    //    We are not looping
+    //    We are looping and pipelineBinary is in allocatedLoopResources
+    //    We are looping and this is the last iteration
+    if (!getFrameLoopInfo().IsLooping() ||
+        inAllocatedLoopResources(pipelineBinary) ||
+        getFrameLoopInfo().IsFinalIteration())
+    {
+        VulkanReplayConsumer::Process_vkDestroyPipelineBinaryKHR(call_info, device, pipelineBinary, pAllocator);
+    }
+    // Remove pipelineBinary from allocatedLoopResources
+    if (inAllocatedLoopResources(pipelineBinary))
+    {
+        allocatedLoopResources.erase(pipelineBinary);
     }
 }
 
@@ -1955,15 +1869,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDebugReportCallbackEXT(
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateDebugReportCallbackEXT\n");
         VulkanReplayConsumer::Process_vkCreateDebugReportCallbackEXT(call_info, returnValue, instance, pCreateInfo, pAllocator, pCallback);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateDebugReportCallbackEXT\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDebugReportCallbackEXT(
@@ -1984,12 +1896,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDebugReportCallbackEXT(
         inAllocatedLoopResources(callback) ||
         getFrameLoopInfo().IsFinalIteration())
     {
-        printf("@@Executing Process_vkDestroyDebugReportCallbackEXT\n");
         VulkanReplayConsumer::Process_vkDestroyDebugReportCallbackEXT(call_info, instance, callback, pAllocator);
-    }
-    else
-    {
-        printf("@@Skipping Process_vkDestroyDebugReportCallbackEXT\n");
     }
     // Remove callback from allocatedLoopResources
     if (inAllocatedLoopResources(callback))
@@ -2012,15 +1919,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateStreamDescriptorSurfaceG
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateStreamDescriptorSurfaceGGP\n");
         VulkanReplayConsumer::Process_vkCreateStreamDescriptorSurfaceGGP(call_info, returnValue, instance, pCreateInfo, pAllocator, pSurface);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateStreamDescriptorSurfaceGGP\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateViSurfaceNN(
@@ -2037,15 +1942,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateViSurfaceNN(
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateViSurfaceNN\n");
         VulkanReplayConsumer::Process_vkCreateViSurfaceNN(call_info, returnValue, instance, pCreateInfo, pAllocator, pSurface);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateViSurfaceNN\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateIOSSurfaceMVK(
@@ -2062,15 +1965,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateIOSSurfaceMVK(
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateIOSSurfaceMVK\n");
         VulkanReplayConsumer::Process_vkCreateIOSSurfaceMVK(call_info, returnValue, instance, pCreateInfo, pAllocator, pSurface);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateIOSSurfaceMVK\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateMacOSSurfaceMVK(
@@ -2087,15 +1988,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateMacOSSurfaceMVK(
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateMacOSSurfaceMVK\n");
         VulkanReplayConsumer::Process_vkCreateMacOSSurfaceMVK(call_info, returnValue, instance, pCreateInfo, pAllocator, pSurface);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateMacOSSurfaceMVK\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDebugUtilsMessengerEXT(
@@ -2112,15 +2011,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDebugUtilsMessengerEXT(
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateDebugUtilsMessengerEXT\n");
         VulkanReplayConsumer::Process_vkCreateDebugUtilsMessengerEXT(call_info, returnValue, instance, pCreateInfo, pAllocator, pMessenger);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateDebugUtilsMessengerEXT\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDebugUtilsMessengerEXT(
@@ -2141,12 +2038,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDebugUtilsMessengerEXT(
         inAllocatedLoopResources(messenger) ||
         getFrameLoopInfo().IsFinalIteration())
     {
-        printf("@@Executing Process_vkDestroyDebugUtilsMessengerEXT\n");
         VulkanReplayConsumer::Process_vkDestroyDebugUtilsMessengerEXT(call_info, instance, messenger, pAllocator);
-    }
-    else
-    {
-        printf("@@Skipping Process_vkDestroyDebugUtilsMessengerEXT\n");
     }
     // Remove messenger from allocatedLoopResources
     if (inAllocatedLoopResources(messenger))
@@ -2169,15 +2061,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateValidationCacheEXT(
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateValidationCacheEXT\n");
         VulkanReplayConsumer::Process_vkCreateValidationCacheEXT(call_info, returnValue, device, pCreateInfo, pAllocator, pValidationCache);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateValidationCacheEXT\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyValidationCacheEXT(
@@ -2198,12 +2088,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyValidationCacheEXT(
         inAllocatedLoopResources(validationCache) ||
         getFrameLoopInfo().IsFinalIteration())
     {
-        printf("@@Executing Process_vkDestroyValidationCacheEXT\n");
         VulkanReplayConsumer::Process_vkDestroyValidationCacheEXT(call_info, device, validationCache, pAllocator);
-    }
-    else
-    {
-        printf("@@Skipping Process_vkDestroyValidationCacheEXT\n");
     }
     // Remove validationCache from allocatedLoopResources
     if (inAllocatedLoopResources(validationCache))
@@ -2226,15 +2111,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateAccelerationStructureNV(
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateAccelerationStructureNV\n");
         VulkanReplayConsumer::Process_vkCreateAccelerationStructureNV(call_info, returnValue, device, pCreateInfo, pAllocator, pAccelerationStructure);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateAccelerationStructureNV\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyAccelerationStructureNV(
@@ -2255,17 +2138,55 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyAccelerationStructureNV
         inAllocatedLoopResources(accelerationStructure) ||
         getFrameLoopInfo().IsFinalIteration())
     {
-        printf("@@Executing Process_vkDestroyAccelerationStructureNV\n");
         VulkanReplayConsumer::Process_vkDestroyAccelerationStructureNV(call_info, device, accelerationStructure, pAllocator);
-    }
-    else
-    {
-        printf("@@Skipping Process_vkDestroyAccelerationStructureNV\n");
     }
     // Remove accelerationStructure from allocatedLoopResources
     if (inAllocatedLoopResources(accelerationStructure))
     {
         allocatedLoopResources.erase(accelerationStructure);
+    }
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkCreateRayTracingPipelinesNV(
+    const ApiCallInfo&                          call_info,
+    VkResult                                    returnValue,
+    format::HandleId                            device,
+    format::HandleId                            pipelineCache,
+    uint32_t                                    createInfoCount,
+    StructPointerDecoder<Decoded_VkRayTracingPipelineCreateInfoNV>* pCreateInfos,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
+    HandlePointerDecoder<VkPipeline>*           pPipelines)
+{
+    // Pass the call along if we are not looping or if all the handles are not in allocatedLoopResources.
+    bool doReplay = false;
+    if (!getFrameLoopInfo().IsLooping())
+    {
+        doReplay = true;
+    }
+    else
+    {
+        for (uint32_t i=0; i < createInfoCount; i++)
+        {
+            format::HandleId handle = *(pPipelines[i].GetPointer());
+            if (!inAllocatedLoopResources(handle))
+            {
+                doReplay = true;
+                break;
+            }
+        }
+    }
+    if (doReplay)
+    {
+        VulkanReplayConsumer::Process_vkCreateRayTracingPipelinesNV(call_info, returnValue, device, pipelineCache, createInfoCount, pCreateInfos, pAllocator, pPipelines);
+    }
+    // If we are looping, save the handles in allocatedLoopResources
+    if (getFrameLoopInfo().IsLooping())
+    {
+        for (uint32_t i=0; i < createInfoCount; i++)
+        {
+            format::HandleId handle = *(pPipelines[i].GetPointer());
+            allocatedLoopResources.insert(handle);
+        }
     }
 }
 
@@ -2283,15 +2204,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateImagePipeSurfaceFUCHSIA(
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateImagePipeSurfaceFUCHSIA\n");
         VulkanReplayConsumer::Process_vkCreateImagePipeSurfaceFUCHSIA(call_info, returnValue, instance, pCreateInfo, pAllocator, pSurface);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateImagePipeSurfaceFUCHSIA\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateMetalSurfaceEXT(
@@ -2308,15 +2227,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateMetalSurfaceEXT(
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateMetalSurfaceEXT\n");
         VulkanReplayConsumer::Process_vkCreateMetalSurfaceEXT(call_info, returnValue, instance, pCreateInfo, pAllocator, pSurface);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateMetalSurfaceEXT\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateHeadlessSurfaceEXT(
@@ -2333,15 +2250,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateHeadlessSurfaceEXT(
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateHeadlessSurfaceEXT\n");
         VulkanReplayConsumer::Process_vkCreateHeadlessSurfaceEXT(call_info, returnValue, instance, pCreateInfo, pAllocator, pSurface);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateHeadlessSurfaceEXT\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateIndirectCommandsLayoutNV(
@@ -2358,15 +2273,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateIndirectCommandsLayoutNV
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateIndirectCommandsLayoutNV\n");
         VulkanReplayConsumer::Process_vkCreateIndirectCommandsLayoutNV(call_info, returnValue, device, pCreateInfo, pAllocator, pIndirectCommandsLayout);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateIndirectCommandsLayoutNV\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyIndirectCommandsLayoutNV(
@@ -2387,12 +2300,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyIndirectCommandsLayoutN
         inAllocatedLoopResources(indirectCommandsLayout) ||
         getFrameLoopInfo().IsFinalIteration())
     {
-        printf("@@Executing Process_vkDestroyIndirectCommandsLayoutNV\n");
         VulkanReplayConsumer::Process_vkDestroyIndirectCommandsLayoutNV(call_info, device, indirectCommandsLayout, pAllocator);
-    }
-    else
-    {
-        printf("@@Skipping Process_vkDestroyIndirectCommandsLayoutNV\n");
     }
     // Remove indirectCommandsLayout from allocatedLoopResources
     if (inAllocatedLoopResources(indirectCommandsLayout))
@@ -2415,15 +2323,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreatePrivateDataSlotEXT(
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreatePrivateDataSlotEXT\n");
         VulkanReplayConsumer::Process_vkCreatePrivateDataSlotEXT(call_info, returnValue, device, pCreateInfo, pAllocator, pPrivateDataSlot);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreatePrivateDataSlotEXT\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyPrivateDataSlotEXT(
@@ -2444,12 +2350,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyPrivateDataSlotEXT(
         inAllocatedLoopResources(privateDataSlot) ||
         getFrameLoopInfo().IsFinalIteration())
     {
-        printf("@@Executing Process_vkDestroyPrivateDataSlotEXT\n");
         VulkanReplayConsumer::Process_vkDestroyPrivateDataSlotEXT(call_info, device, privateDataSlot, pAllocator);
-    }
-    else
-    {
-        printf("@@Skipping Process_vkDestroyPrivateDataSlotEXT\n");
     }
     // Remove privateDataSlot from allocatedLoopResources
     if (inAllocatedLoopResources(privateDataSlot))
@@ -2472,15 +2373,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDirectFBSurfaceEXT(
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateDirectFBSurfaceEXT\n");
         VulkanReplayConsumer::Process_vkCreateDirectFBSurfaceEXT(call_info, returnValue, instance, pCreateInfo, pAllocator, pSurface);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateDirectFBSurfaceEXT\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateScreenSurfaceQNX(
@@ -2497,15 +2396,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateScreenSurfaceQNX(
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateScreenSurfaceQNX\n");
         VulkanReplayConsumer::Process_vkCreateScreenSurfaceQNX(call_info, returnValue, instance, pCreateInfo, pAllocator, pSurface);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateScreenSurfaceQNX\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateMicromapEXT(
@@ -2522,15 +2419,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateMicromapEXT(
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateMicromapEXT\n");
         VulkanReplayConsumer::Process_vkCreateMicromapEXT(call_info, returnValue, device, pCreateInfo, pAllocator, pMicromap);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateMicromapEXT\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyMicromapEXT(
@@ -2551,12 +2446,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyMicromapEXT(
         inAllocatedLoopResources(micromap) ||
         getFrameLoopInfo().IsFinalIteration())
     {
-        printf("@@Executing Process_vkDestroyMicromapEXT\n");
         VulkanReplayConsumer::Process_vkDestroyMicromapEXT(call_info, device, micromap, pAllocator);
-    }
-    else
-    {
-        printf("@@Skipping Process_vkDestroyMicromapEXT\n");
     }
     // Remove micromap from allocatedLoopResources
     if (inAllocatedLoopResources(micromap))
@@ -2579,15 +2469,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateOpticalFlowSessionNV(
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateOpticalFlowSessionNV\n");
         VulkanReplayConsumer::Process_vkCreateOpticalFlowSessionNV(call_info, returnValue, device, pCreateInfo, pAllocator, pSession);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateOpticalFlowSessionNV\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyOpticalFlowSessionNV(
@@ -2608,17 +2496,56 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyOpticalFlowSessionNV(
         inAllocatedLoopResources(session) ||
         getFrameLoopInfo().IsFinalIteration())
     {
-        printf("@@Executing Process_vkDestroyOpticalFlowSessionNV\n");
         VulkanReplayConsumer::Process_vkDestroyOpticalFlowSessionNV(call_info, device, session, pAllocator);
-    }
-    else
-    {
-        printf("@@Skipping Process_vkDestroyOpticalFlowSessionNV\n");
     }
     // Remove session from allocatedLoopResources
     if (inAllocatedLoopResources(session))
     {
         allocatedLoopResources.erase(session);
+    }
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDataGraphPipelinesARM(
+    const ApiCallInfo&                          call_info,
+    VkResult                                    returnValue,
+    format::HandleId                            device,
+    format::HandleId                            deferredOperation,
+    format::HandleId                            pipelineCache,
+    uint32_t                                    createInfoCount,
+    StructPointerDecoder<Decoded_VkDataGraphPipelineCreateInfoARM>* pCreateInfos,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
+    HandlePointerDecoder<VkPipeline>*           pPipelines)
+{
+    // Pass the call along if we are not looping or if all the handles are not in allocatedLoopResources.
+    bool doReplay = false;
+    if (!getFrameLoopInfo().IsLooping())
+    {
+        doReplay = true;
+    }
+    else
+    {
+        for (uint32_t i=0; i < createInfoCount; i++)
+        {
+            format::HandleId handle = *(pPipelines[i].GetPointer());
+            if (!inAllocatedLoopResources(handle))
+            {
+                doReplay = true;
+                break;
+            }
+        }
+    }
+    if (doReplay)
+    {
+        VulkanReplayConsumer::Process_vkCreateDataGraphPipelinesARM(call_info, returnValue, device, deferredOperation, pipelineCache, createInfoCount, pCreateInfos, pAllocator, pPipelines);
+    }
+    // If we are looping, save the handles in allocatedLoopResources
+    if (getFrameLoopInfo().IsLooping())
+    {
+        for (uint32_t i=0; i < createInfoCount; i++)
+        {
+            format::HandleId handle = *(pPipelines[i].GetPointer());
+            allocatedLoopResources.insert(handle);
+        }
     }
 }
 
@@ -2636,15 +2563,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDataGraphPipelineSession
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateDataGraphPipelineSessionARM\n");
         VulkanReplayConsumer::Process_vkCreateDataGraphPipelineSessionARM(call_info, returnValue, device, pCreateInfo, pAllocator, pSession);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateDataGraphPipelineSessionARM\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDataGraphPipelineSessionARM(
@@ -2665,12 +2590,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDataGraphPipelineSessio
         inAllocatedLoopResources(session) ||
         getFrameLoopInfo().IsFinalIteration())
     {
-        printf("@@Executing Process_vkDestroyDataGraphPipelineSessionARM\n");
         VulkanReplayConsumer::Process_vkDestroyDataGraphPipelineSessionARM(call_info, device, session, pAllocator);
-    }
-    else
-    {
-        printf("@@Skipping Process_vkDestroyDataGraphPipelineSessionARM\n");
     }
     // Remove session from allocatedLoopResources
     if (inAllocatedLoopResources(session))
@@ -2693,15 +2613,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateIndirectCommandsLayoutEX
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateIndirectCommandsLayoutEXT\n");
         VulkanReplayConsumer::Process_vkCreateIndirectCommandsLayoutEXT(call_info, returnValue, device, pCreateInfo, pAllocator, pIndirectCommandsLayout);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateIndirectCommandsLayoutEXT\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyIndirectCommandsLayoutEXT(
@@ -2722,12 +2640,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyIndirectCommandsLayoutE
         inAllocatedLoopResources(indirectCommandsLayout) ||
         getFrameLoopInfo().IsFinalIteration())
     {
-        printf("@@Executing Process_vkDestroyIndirectCommandsLayoutEXT\n");
         VulkanReplayConsumer::Process_vkDestroyIndirectCommandsLayoutEXT(call_info, device, indirectCommandsLayout, pAllocator);
-    }
-    else
-    {
-        printf("@@Skipping Process_vkDestroyIndirectCommandsLayoutEXT\n");
     }
     // Remove indirectCommandsLayout from allocatedLoopResources
     if (inAllocatedLoopResources(indirectCommandsLayout))
@@ -2750,15 +2663,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateIndirectExecutionSetEXT(
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateIndirectExecutionSetEXT\n");
         VulkanReplayConsumer::Process_vkCreateIndirectExecutionSetEXT(call_info, returnValue, device, pCreateInfo, pAllocator, pIndirectExecutionSet);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateIndirectExecutionSetEXT\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyIndirectExecutionSetEXT(
@@ -2779,12 +2690,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyIndirectExecutionSetEXT
         inAllocatedLoopResources(indirectExecutionSet) ||
         getFrameLoopInfo().IsFinalIteration())
     {
-        printf("@@Executing Process_vkDestroyIndirectExecutionSetEXT\n");
         VulkanReplayConsumer::Process_vkDestroyIndirectExecutionSetEXT(call_info, device, indirectExecutionSet, pAllocator);
-    }
-    else
-    {
-        printf("@@Skipping Process_vkDestroyIndirectExecutionSetEXT\n");
     }
     // Remove indirectExecutionSet from allocatedLoopResources
     if (inAllocatedLoopResources(indirectExecutionSet))
@@ -2807,15 +2713,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateAccelerationStructureKHR
     // if we are looping and the handle is not in allocatedLoopResources
     if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
-        printf("@@Executing Process_vkCreateAccelerationStructureKHR\n");
         VulkanReplayConsumer::Process_vkCreateAccelerationStructureKHR(call_info, returnValue, device, pCreateInfo, pAllocator, pAccelerationStructure);
         // If we are looping, save the handle in allocatedLoopResources
         if (getFrameLoopInfo().IsLooping())
         {
             allocatedLoopResources.insert(handle);
         }
-    } else
-        printf("@@Skipping Process_vkCreateAccelerationStructureKHR\n");
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyAccelerationStructureKHR(
@@ -2836,12 +2740,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyAccelerationStructureKH
         inAllocatedLoopResources(accelerationStructure) ||
         getFrameLoopInfo().IsFinalIteration())
     {
-        printf("@@Executing Process_vkDestroyAccelerationStructureKHR\n");
         VulkanReplayConsumer::Process_vkDestroyAccelerationStructureKHR(call_info, device, accelerationStructure, pAllocator);
-    }
-    else
-    {
-        printf("@@Skipping Process_vkDestroyAccelerationStructureKHR\n");
     }
     // Remove accelerationStructure from allocatedLoopResources
     if (inAllocatedLoopResources(accelerationStructure))

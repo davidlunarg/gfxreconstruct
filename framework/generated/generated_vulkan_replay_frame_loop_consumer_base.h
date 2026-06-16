@@ -247,6 +247,22 @@ class VulkanReplayFrameLoopConsumerBase : public VulkanReplayConsumer
         format::HandleId                            pipelineCache,
         StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator) override;
 
+    void Process_vkCreateComputePipelines(
+        const ApiCallInfo&                          call_info,
+        VkResult                                    returnValue,
+        format::HandleId                            device,
+        format::HandleId                            pipelineCache,
+        uint32_t                                    createInfoCount,
+        StructPointerDecoder<Decoded_VkComputePipelineCreateInfo>* pCreateInfos,
+        StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
+        HandlePointerDecoder<VkPipeline>*           pPipelines) override;
+
+    void Process_vkDestroyPipeline(
+        const ApiCallInfo&                          call_info,
+        format::HandleId                            device,
+        format::HandleId                            pipeline,
+        StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator) override;
+
     void Process_vkCreatePipelineLayout(
         const ApiCallInfo&                          call_info,
         VkResult                                    returnValue,
@@ -302,6 +318,16 @@ class VulkanReplayFrameLoopConsumerBase : public VulkanReplayConsumer
         format::HandleId                            device,
         format::HandleId                            descriptorPool,
         StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator) override;
+
+    void Process_vkCreateGraphicsPipelines(
+        const ApiCallInfo&                          call_info,
+        VkResult                                    returnValue,
+        format::HandleId                            device,
+        format::HandleId                            pipelineCache,
+        uint32_t                                    createInfoCount,
+        StructPointerDecoder<Decoded_VkGraphicsPipelineCreateInfo>* pCreateInfos,
+        StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
+        HandlePointerDecoder<VkPipeline>*           pPipelines) override;
 
     void Process_vkCreateFramebuffer(
         const ApiCallInfo&                          call_info,
@@ -535,6 +561,12 @@ class VulkanReplayFrameLoopConsumerBase : public VulkanReplayConsumer
         format::HandleId                            operation,
         StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator) override;
 
+    void Process_vkDestroyPipelineBinaryKHR(
+        const ApiCallInfo&                          call_info,
+        format::HandleId                            device,
+        format::HandleId                            pipelineBinary,
+        StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator) override;
+
     void Process_vkCreateDebugReportCallbackEXT(
         const ApiCallInfo&                          call_info,
         VkResult                                    returnValue,
@@ -622,6 +654,16 @@ class VulkanReplayFrameLoopConsumerBase : public VulkanReplayConsumer
         format::HandleId                            device,
         format::HandleId                            accelerationStructure,
         StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator) override;
+
+    void Process_vkCreateRayTracingPipelinesNV(
+        const ApiCallInfo&                          call_info,
+        VkResult                                    returnValue,
+        format::HandleId                            device,
+        format::HandleId                            pipelineCache,
+        uint32_t                                    createInfoCount,
+        StructPointerDecoder<Decoded_VkRayTracingPipelineCreateInfoNV>* pCreateInfos,
+        StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
+        HandlePointerDecoder<VkPipeline>*           pPipelines) override;
 
     void Process_vkCreateImagePipeSurfaceFUCHSIA(
         const ApiCallInfo&                          call_info,
@@ -718,6 +760,17 @@ class VulkanReplayFrameLoopConsumerBase : public VulkanReplayConsumer
         format::HandleId                            device,
         format::HandleId                            session,
         StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator) override;
+
+    void Process_vkCreateDataGraphPipelinesARM(
+        const ApiCallInfo&                          call_info,
+        VkResult                                    returnValue,
+        format::HandleId                            device,
+        format::HandleId                            deferredOperation,
+        format::HandleId                            pipelineCache,
+        uint32_t                                    createInfoCount,
+        StructPointerDecoder<Decoded_VkDataGraphPipelineCreateInfoARM>* pCreateInfos,
+        StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
+        HandlePointerDecoder<VkPipeline>*           pPipelines) override;
 
     void Process_vkCreateDataGraphPipelineSessionARM(
         const ApiCallInfo&                          call_info,

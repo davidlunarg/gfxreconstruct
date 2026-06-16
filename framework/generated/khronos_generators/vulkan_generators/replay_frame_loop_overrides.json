@@ -66,7 +66,12 @@
         "vkCreateTensorViewARM",
         "vkCreateValidationCacheEXT",
         "vkCreateVideoSessionKHR",
-        "vkCreateVideoSessionParametersKHR"
+        "vkCreateVideoSessionParametersKHR",
+        "vkCreateComputePipelines",
+        "vkCreateDataGraphPipelinesARM",
+        "vkCreateGraphicsPipelines",
+        "vkCreateRayTracingPipelinesKHR",
+        "vkCreateRayTracingPipelinesNV"
   ],
 
   "comment" : "These are entry points that free resources specified via a handle",
@@ -115,7 +120,9 @@
         "vkDestroyTensorViewARM",
         "vkDestroyValidationCacheEXT",
         "vkDestroyVideoSessionKHR",
-        "vkDestroyVideoSessionParametersKHR"
+        "vkDestroyVideoSessionParametersKHR",
+        "vkDestroyPipeline",
+        "vkDestroyPipelineBinaryKHR"
   ],
 
 
@@ -123,20 +130,6 @@
   "comment":"Entry points that I need to figure out how to handle.",
 
   "comment":"Here are some notes.",
-
-  "comment":"Pipelines: these are difficult because one call can create",
-  "comment":"several pipelines, but the destroy only destroys one.",
-  "comment":"   vkCreateComputePipelines",
-  "comment":"   vkCreateDataGraphPipelinesARM",
-  "comment":"   vkCreateGraphicsPipelines",
-  "comment":"   vkCreateRayTracingPipelinesKHR",
-  "comment":"   vkCreateRayTracingPipelinesNV",
-  "comment":"   vkDestroyPipeline",
-
-  "comment":"Pipeline Binaries: these are difficult because one call can create several,",
-  "comment":"but destroy one at at time. And handles are inside a struct.",
-  "comment":"    vkCreatePipelineBinariesKHR",
-  "comment":"    vkDestroyPipelineBinaryKHR",
 
   "comment":"Create shaders: one call can create several, destroy one at a time",
   "comment":"    vkCreateShadersEXT",
