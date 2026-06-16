@@ -71,7 +71,9 @@
         "vkCreateDataGraphPipelinesARM",
         "vkCreateGraphicsPipelines",
         "vkCreateRayTracingPipelinesKHR",
-        "vkCreateRayTracingPipelinesNV"
+        "vkCreateRayTracingPipelinesNV",
+        "vkCreateShadersEXT",
+        "vkCreateSharedSwapchainsKHR"
   ],
 
   "comment" : "These are entry points that free resources specified via a handle",
@@ -122,22 +124,14 @@
         "vkDestroyVideoSessionKHR",
         "vkDestroyVideoSessionParametersKHR",
         "vkDestroyPipeline",
-        "vkDestroyPipelineBinaryKHR"
+        "vkDestroyPipelineBinaryKHR",
+        "vkDestroyShaderEXT"
   ],
 
 
 
   "comment":"Entry points that I need to figure out how to handle.",
-
   "comment":"Here are some notes.",
-
-  "comment":"Create shaders: one call can create several, destroy one at a time",
-  "comment":"    vkCreateShadersEXT",
-  "comment":"    vkDestroyShaderEXT",
-
-  "comment":"Create shared swapchains: one call can create several, destroy one at a time",
-  "comment":"    vkCreateSharedSwapchainsKHR",
-        
   "comment": "memory mapping doesn't involve handles:",
   "comment": "   vkMapMemory",
   "comment": "   vkMapMemory2",

@@ -31,8 +31,13 @@ class KhronosReplayFrameLoopConsumerBaseBodyGenerator():
         body = ''
 
         if name in self.REPLAY_FRAME_LOOP_RESOURCE_ALLOCATE_OVERRIDES:
-            # Special case vkCreate*Pipelines because it creates multiple pipelines
-            if name.startswith("vkCreate") and "Pipelines" in name:
+            # Special case vkCreate*Pipelines, vkCreateShadersEXT, and vkCreateSharedSwapchainsKHR.
+            # They create multiple handles.
+            if ((name.startswith("vkCreate") and "Pipelines" in name) or
+                name == "vkCreateShadersEXT" or
+                name == "vkCreateSharedSwapchainsKHR"
+            ):
+                print("@@Special case: ", name)
                 body += '    // Pass the call along if we are not looping or if all the handles are not in allocatedLoopResources.\n'
                 body += '    bool doReplay = false;\n'
                 body += '    if (!getFrameLoopInfo().IsLooping())\n'
@@ -41,9 +46,9 @@ class KhronosReplayFrameLoopConsumerBaseBodyGenerator():
                 body += '    }\n'
                 body += '    else\n'
                 body += '    {\n'
-                body += '        for (uint32_t i=0; i < createInfoCount; i++)\n'      # CHANGE??
+                body += '        for (uint32_t i=0; i < '+values[-4].name+'; i++)\n'
                 body += '        {\n'
-                body += '            format::HandleId handle = *(pPipelines[i].GetPointer());\n'
+                body += '            format::HandleId handle = *('+values[-1].name+'[i].GetPointer());\n'
                 body += '            if (!inAllocatedLoopResources(handle))\n'
                 body += '            {\n'
                 body += '                doReplay = true;\n'
@@ -63,9 +68,9 @@ class KhronosReplayFrameLoopConsumerBaseBodyGenerator():
                 body += '    // If we are looping, save the handles in allocatedLoopResources\n'
                 body += '    if (getFrameLoopInfo().IsLooping())\n'
                 body += '    {\n'
-                body += '        for (uint32_t i=0; i < createInfoCount; i++)\n'
+                body += '        for (uint32_t i=0; i < '+values[-4].name+'; i++)\n'
                 body += '        {\n'
-                body += '            format::HandleId handle = *(pPipelines[i].GetPointer());\n'
+                body += '            format::HandleId handle = *('+values[-1].name+'[i].GetPointer());\n'
                 body += '            allocatedLoopResources.insert(handle);\n'
                 body += '        }\n'
             else:

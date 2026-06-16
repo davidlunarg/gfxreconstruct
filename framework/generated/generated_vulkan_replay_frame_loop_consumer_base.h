@@ -444,6 +444,15 @@ class VulkanReplayFrameLoopConsumerBase : public VulkanReplayConsumer
         StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
         HandlePointerDecoder<VkSurfaceKHR>*         pSurface) override;
 
+    void Process_vkCreateSharedSwapchainsKHR(
+        const ApiCallInfo&                          call_info,
+        VkResult                                    returnValue,
+        format::HandleId                            device,
+        uint32_t                                    swapchainCount,
+        StructPointerDecoder<Decoded_VkSwapchainCreateInfoKHR>* pCreateInfos,
+        StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
+        HandlePointerDecoder<VkSwapchainKHR>*       pSwapchains) override;
+
     void Process_vkCreateXlibSurfaceKHR(
         const ApiCallInfo&                          call_info,
         VkResult                                    returnValue,
@@ -759,6 +768,21 @@ class VulkanReplayFrameLoopConsumerBase : public VulkanReplayConsumer
         const ApiCallInfo&                          call_info,
         format::HandleId                            device,
         format::HandleId                            session,
+        StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator) override;
+
+    void Process_vkCreateShadersEXT(
+        const ApiCallInfo&                          call_info,
+        VkResult                                    returnValue,
+        format::HandleId                            device,
+        uint32_t                                    createInfoCount,
+        StructPointerDecoder<Decoded_VkShaderCreateInfoEXT>* pCreateInfos,
+        StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
+        HandlePointerDecoder<VkShaderEXT>*          pShaders) override;
+
+    void Process_vkDestroyShaderEXT(
+        const ApiCallInfo&                          call_info,
+        format::HandleId                            device,
+        format::HandleId                            shader,
         StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator) override;
 
     void Process_vkCreateDataGraphPipelinesARM(

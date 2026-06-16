@@ -1441,6 +1441,48 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDisplayPlaneSurfaceKHR(
     }
 }
 
+void VulkanReplayFrameLoopConsumerBase::Process_vkCreateSharedSwapchainsKHR(
+    const ApiCallInfo&                          call_info,
+    VkResult                                    returnValue,
+    format::HandleId                            device,
+    uint32_t                                    swapchainCount,
+    StructPointerDecoder<Decoded_VkSwapchainCreateInfoKHR>* pCreateInfos,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
+    HandlePointerDecoder<VkSwapchainKHR>*       pSwapchains)
+{
+    // Pass the call along if we are not looping or if all the handles are not in allocatedLoopResources.
+    bool doReplay = false;
+    if (!getFrameLoopInfo().IsLooping())
+    {
+        doReplay = true;
+    }
+    else
+    {
+        for (uint32_t i=0; i < swapchainCount; i++)
+        {
+            format::HandleId handle = *(pSwapchains[i].GetPointer());
+            if (!inAllocatedLoopResources(handle))
+            {
+                doReplay = true;
+                break;
+            }
+        }
+    }
+    if (doReplay)
+    {
+        VulkanReplayConsumer::Process_vkCreateSharedSwapchainsKHR(call_info, returnValue, device, swapchainCount, pCreateInfos, pAllocator, pSwapchains);
+    }
+    // If we are looping, save the handles in allocatedLoopResources
+    if (getFrameLoopInfo().IsLooping())
+    {
+        for (uint32_t i=0; i < swapchainCount; i++)
+        {
+            format::HandleId handle = *(pSwapchains[i].GetPointer());
+            allocatedLoopResources.insert(handle);
+        }
+    }
+}
+
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateXlibSurfaceKHR(
     const ApiCallInfo&                          call_info,
     VkResult                                    returnValue,
@@ -2502,6 +2544,75 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyOpticalFlowSessionNV(
     if (inAllocatedLoopResources(session))
     {
         allocatedLoopResources.erase(session);
+    }
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkCreateShadersEXT(
+    const ApiCallInfo&                          call_info,
+    VkResult                                    returnValue,
+    format::HandleId                            device,
+    uint32_t                                    createInfoCount,
+    StructPointerDecoder<Decoded_VkShaderCreateInfoEXT>* pCreateInfos,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
+    HandlePointerDecoder<VkShaderEXT>*          pShaders)
+{
+    // Pass the call along if we are not looping or if all the handles are not in allocatedLoopResources.
+    bool doReplay = false;
+    if (!getFrameLoopInfo().IsLooping())
+    {
+        doReplay = true;
+    }
+    else
+    {
+        for (uint32_t i=0; i < createInfoCount; i++)
+        {
+            format::HandleId handle = *(pShaders[i].GetPointer());
+            if (!inAllocatedLoopResources(handle))
+            {
+                doReplay = true;
+                break;
+            }
+        }
+    }
+    if (doReplay)
+    {
+        VulkanReplayConsumer::Process_vkCreateShadersEXT(call_info, returnValue, device, createInfoCount, pCreateInfos, pAllocator, pShaders);
+    }
+    // If we are looping, save the handles in allocatedLoopResources
+    if (getFrameLoopInfo().IsLooping())
+    {
+        for (uint32_t i=0; i < createInfoCount; i++)
+        {
+            format::HandleId handle = *(pShaders[i].GetPointer());
+            allocatedLoopResources.insert(handle);
+        }
+    }
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyShaderEXT(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            device,
+    format::HandleId                            shader,
+    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
+{
+    // Skip for loop iterations 1-(n-1).
+    // Skip if looping and if not final iteration
+    // Execute if shader is in allocatedLoopResources
+
+    // Call Process_vkDestroyShaderEXT if:
+    //    We are not looping
+    //    We are looping and shader is in allocatedLoopResources
+    //    We are looping and this is the last iteration
+    if (!getFrameLoopInfo().IsLooping() ||
+        inAllocatedLoopResources(shader) ||
+        getFrameLoopInfo().IsFinalIteration())
+    {
+        VulkanReplayConsumer::Process_vkDestroyShaderEXT(call_info, device, shader, pAllocator);
+    }
+    // Remove shader from allocatedLoopResources
+    if (inAllocatedLoopResources(shader))
+    {
+        allocatedLoopResources.erase(shader);
     }
 }
 
