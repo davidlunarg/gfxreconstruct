@@ -30,8 +30,11 @@ class KhronosFrameLoopConsumerBaseHeaderGenerator():
     """
 
     def skip_generating_command(self, command):
-        return ((command not in self.REPLAY_FRAME_LOOP_RESOURCE_ALLOCATE_OVERRIDES) and
-                (command not in self.REPLAY_FRAME_LOOP_RESOURCE_FREE_OVERRIDES))
+        return (command not in
+                (self.REPLAY_FRAME_LOOP_RESOURCE_ALLOCATE_SINGLE_HANDLE_OVERRIDES +
+                 self.REPLAY_FRAME_LOOP_RESOURCE_ALLOCATE_MULTIPLE_HANDLES_OVERRIDES +
+                 self.REPLAY_FRAME_LOOP_RESOURCE_FREE_SINGLE_HANDLE_OVERRIDES))
+
 
     def write_class_setup(self, class_name, constructor_args):
         write(
@@ -72,8 +75,10 @@ class KhronosFrameLoopConsumerBaseHeaderGenerator():
     def write_class_contents(self):
         for cmd in self.get_all_filtered_cmd_names():
 
-            if ((cmd not in self.REPLAY_FRAME_LOOP_RESOURCE_ALLOCATE_OVERRIDES) and
-                (cmd not in self.REPLAY_FRAME_LOOP_RESOURCE_FREE_OVERRIDES)
+            if (cmd not in
+                (self.REPLAY_FRAME_LOOP_RESOURCE_ALLOCATE_SINGLE_HANDLE_OVERRIDES +
+                 self.REPLAY_FRAME_LOOP_RESOURCE_ALLOCATE_MULTIPLE_HANDLES_OVERRIDES +
+                 self.REPLAY_FRAME_LOOP_RESOURCE_FREE_SINGLE_HANDLE_OVERRIDES)
             ):
                 continue
 

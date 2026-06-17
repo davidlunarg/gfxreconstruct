@@ -1450,34 +1450,16 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateSharedSwapchainsKHR(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkSwapchainKHR>*       pSwapchains)
 {
-    // Pass the call along if we are not looping or if all the handles are not in allocatedLoopResources.
-    bool doReplay = false;
-    if (!getFrameLoopInfo().IsLooping())
-    {
-        doReplay = true;
-    }
-    else
-    {
-        for (uint32_t i=0; i < swapchainCount; i++)
-        {
-            format::HandleId handle = *(pSwapchains[i].GetPointer());
-            if (!inAllocatedLoopResources(handle))
-            {
-                doReplay = true;
-                break;
-            }
-        }
-    }
-    if (doReplay)
+    format::HandleId handle = *pSwapchains->GetPointer();
+
+    // Pass the call along if we are not looping or
+    // if we are looping and the handle is not in allocatedLoopResources
+    if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
         VulkanReplayConsumer::Process_vkCreateSharedSwapchainsKHR(call_info, returnValue, device, swapchainCount, pCreateInfos, pAllocator, pSwapchains);
-    }
-    // If we are looping, save the handles in allocatedLoopResources
-    if (getFrameLoopInfo().IsLooping())
-    {
-        for (uint32_t i=0; i < swapchainCount; i++)
+        // If we are looping, save the handle in allocatedLoopResources
+        if (getFrameLoopInfo().IsLooping())
         {
-            format::HandleId handle = *(pSwapchains[i].GetPointer());
             allocatedLoopResources.insert(handle);
         }
     }
@@ -2162,33 +2144,6 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateAccelerationStructureNV(
     }
 }
 
-void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyAccelerationStructureNV(
-    const ApiCallInfo&                          call_info,
-    format::HandleId                            device,
-    format::HandleId                            accelerationStructure,
-    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
-{
-    // Skip for loop iterations 1-(n-1).
-    // Skip if looping and if not final iteration
-    // Execute if accelerationStructure is in allocatedLoopResources
-
-    // Call Process_vkDestroyAccelerationStructureNV if:
-    //    We are not looping
-    //    We are looping and accelerationStructure is in allocatedLoopResources
-    //    We are looping and this is the last iteration
-    if (!getFrameLoopInfo().IsLooping() ||
-        inAllocatedLoopResources(accelerationStructure) ||
-        getFrameLoopInfo().IsFinalIteration())
-    {
-        VulkanReplayConsumer::Process_vkDestroyAccelerationStructureNV(call_info, device, accelerationStructure, pAllocator);
-    }
-    // Remove accelerationStructure from allocatedLoopResources
-    if (inAllocatedLoopResources(accelerationStructure))
-    {
-        allocatedLoopResources.erase(accelerationStructure);
-    }
-}
-
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateRayTracingPipelinesNV(
     const ApiCallInfo&                          call_info,
     VkResult                                    returnValue,
@@ -2556,34 +2511,16 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateShadersEXT(
     StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
     HandlePointerDecoder<VkShaderEXT>*          pShaders)
 {
-    // Pass the call along if we are not looping or if all the handles are not in allocatedLoopResources.
-    bool doReplay = false;
-    if (!getFrameLoopInfo().IsLooping())
-    {
-        doReplay = true;
-    }
-    else
-    {
-        for (uint32_t i=0; i < createInfoCount; i++)
-        {
-            format::HandleId handle = *(pShaders[i].GetPointer());
-            if (!inAllocatedLoopResources(handle))
-            {
-                doReplay = true;
-                break;
-            }
-        }
-    }
-    if (doReplay)
+    format::HandleId handle = *pShaders->GetPointer();
+
+    // Pass the call along if we are not looping or
+    // if we are looping and the handle is not in allocatedLoopResources
+    if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))
     {
         VulkanReplayConsumer::Process_vkCreateShadersEXT(call_info, returnValue, device, createInfoCount, pCreateInfos, pAllocator, pShaders);
-    }
-    // If we are looping, save the handles in allocatedLoopResources
-    if (getFrameLoopInfo().IsLooping())
-    {
-        for (uint32_t i=0; i < createInfoCount; i++)
+        // If we are looping, save the handle in allocatedLoopResources
+        if (getFrameLoopInfo().IsLooping())
         {
-            format::HandleId handle = *(pShaders[i].GetPointer());
             allocatedLoopResources.insert(handle);
         }
     }
@@ -2830,33 +2767,6 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateAccelerationStructureKHR
         {
             allocatedLoopResources.insert(handle);
         }
-    }
-}
-
-void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyAccelerationStructureKHR(
-    const ApiCallInfo&                          call_info,
-    format::HandleId                            device,
-    format::HandleId                            accelerationStructure,
-    StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator)
-{
-    // Skip for loop iterations 1-(n-1).
-    // Skip if looping and if not final iteration
-    // Execute if accelerationStructure is in allocatedLoopResources
-
-    // Call Process_vkDestroyAccelerationStructureKHR if:
-    //    We are not looping
-    //    We are looping and accelerationStructure is in allocatedLoopResources
-    //    We are looping and this is the last iteration
-    if (!getFrameLoopInfo().IsLooping() ||
-        inAllocatedLoopResources(accelerationStructure) ||
-        getFrameLoopInfo().IsFinalIteration())
-    {
-        VulkanReplayConsumer::Process_vkDestroyAccelerationStructureKHR(call_info, device, accelerationStructure, pAllocator);
-    }
-    // Remove accelerationStructure from allocatedLoopResources
-    if (inAllocatedLoopResources(accelerationStructure))
-    {
-        allocatedLoopResources.erase(accelerationStructure);
     }
 }
 

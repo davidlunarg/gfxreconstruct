@@ -94,6 +94,13 @@ class VulkanReplayFrameLoopConsumer : public VulkanReplayFrameLoopConsumerBase
                                format::HandleId   device,
                                format::HandleId   memory);
 
+    void Process_vkAcquireProfilingLockKHR(const ApiCallInfo&                                           call_info,
+                                           VkResult                                                     returnValue,
+                                           format::HandleId                                             device,
+                                           StructPointerDecoder<Decoded_VkAcquireProfilingLockInfoKHR>* pInfo);
+
+    void Process_vkReleaseProfilingLockKHR(const ApiCallInfo& call_info,
+                                           format::HandleId device);
 
   private:
     void RemovePoolDanglingCreateDescriptors(format::HandleId descriptorPool);
@@ -116,6 +123,9 @@ class VulkanReplayFrameLoopConsumer : public VulkanReplayFrameLoopConsumerBase
         return std::find(mappedLoopMemory.begin(), mappedLoopMemory.end(), handle) !=
                mappedLoopMemory.end();
     }
+
+    // Support for vkAcquireProfilingLockKHR/vkReleaseProfilingLockKHR
+    std::unordered_map<format::HandleId, bool> profilingLockState;
 };
 
 GFXRECON_END_NAMESPACE(decode)

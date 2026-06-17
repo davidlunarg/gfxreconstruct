@@ -658,12 +658,6 @@ class VulkanReplayFrameLoopConsumerBase : public VulkanReplayConsumer
         StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
         HandlePointerDecoder<VkAccelerationStructureNV>* pAccelerationStructure) override;
 
-    void Process_vkDestroyAccelerationStructureNV(
-        const ApiCallInfo&                          call_info,
-        format::HandleId                            device,
-        format::HandleId                            accelerationStructure,
-        StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator) override;
-
     void Process_vkCreateRayTracingPipelinesNV(
         const ApiCallInfo&                          call_info,
         VkResult                                    returnValue,
@@ -845,12 +839,6 @@ class VulkanReplayFrameLoopConsumerBase : public VulkanReplayConsumer
         StructPointerDecoder<Decoded_VkAccelerationStructureCreateInfoKHR>* pCreateInfo,
         StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator,
         HandlePointerDecoder<VkAccelerationStructureKHR>* pAccelerationStructure) override;
-
-    void Process_vkDestroyAccelerationStructureKHR(
-        const ApiCallInfo&                          call_info,
-        format::HandleId                            device,
-        format::HandleId                            accelerationStructure,
-        StructPointerDecoder<Decoded_VkAllocationCallbacks>* pAllocator) override;
 
     protected:
         std::set<format::HandleId> allocatedLoopResources;

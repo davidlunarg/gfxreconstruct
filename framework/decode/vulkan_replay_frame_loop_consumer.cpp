@@ -293,5 +293,38 @@ void VulkanReplayFrameLoopConsumer::Process_vkUnmapMemory(
     }
 }
 
+void VulkanReplayFrameLoopConsumer::Process_vkAcquireProfilingLockKHR(
+    const ApiCallInfo&                          call_info,
+    VkResult                                    returnValue,
+    format::HandleId                            device,
+    StructPointerDecoder<Decoded_VkAcquireProfilingLockInfoKHR>* pInfo)
+{
+    // If we are not looping, if current lock state for this device is undefined, or
+    // the current state is false (not acquired), call replay consumer
+    if (!getFrameLoopInfo().IsLooping() || !profilingLockState.contains(device) ||
+        !profilingLockState[device])
+   {
+        VulkanReplayConsumer::Process_vkAcquireProfilingLockKHR(call_info, returnValue, device, pInfo);
+        // We're assuming call was successful. We don't have a way to check result.
+        profilingLockState[device] = true;
+   }
+}
+
+void VulkanReplayFrameLoopConsumer::Process_vkReleaseProfilingLockKHR(
+    const ApiCallInfo&                          call_info,
+    format::HandleId                            device)
+{
+    // If we are not looping, if current lock state for this device is undefined, or
+    // the current state is true (acquired), call replay consumer
+    if (!getFrameLoopInfo().IsLooping() || !profilingLockState.contains(device) ||
+        profilingLockState[device])
+   {
+        VulkanReplayConsumer::Process_vkReleaseProfilingLockKHR(call_info, device);
+        // We're assuming call was successful. We don't have a way to check result.
+        profilingLockState[device] = false;
+   }
+}
+
+
 GFXRECON_END_NAMESPACE(decode)
 GFXRECON_END_NAMESPACE(gfxrecon)
