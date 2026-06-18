@@ -26,6 +26,23 @@ from khronos_base_generator import write
 class KhronosReplayFrameLoopConsumerBaseBodyGenerator():
     """Base class for generating replay frame loop consumers body code."""
 
+    def skip_generating_command(self, command):
+        return (command not in
+                (self.REPLAY_FRAME_LOOP_RESOURCE_ALLOCATE_SINGLE_HANDLE_OVERRIDES +
+                 self.REPLAY_FRAME_LOOP_RESOURCE_ALLOCATE_MULTIPLE_HANDLES_OVERRIDES +
+                 self.REPLAY_FRAME_LOOP_RESOURCE_FREE_SINGLE_HANDLE_OVERRIDES +
+                 self.REPLAY_FRAME_LOOP_RESOURCE_ALLOCATE_NOT_FULLY_IMPLEMENTED +
+                 self.REPLAY_FRAME_LOOP_RESOURCE_FREE_NOT_FULLY_IMPLEMENTED))
+
+    def genCallReplayConsumer(self, return_type, name, values):
+        call = 'VulkanReplayConsumer::Process_' + name + '('
+        args=['call_info']
+        if return_type != 'void':
+            args.append('returnValue')
+        [ args.append(value.name) for value in values ]
+        call += ", ".join(args) + ');\n'
+        return call
+
     def make_replay_frame_loop_consumer_func_body(self, api_data, return_type, name, values):
 
         body = ''
@@ -37,12 +54,7 @@ class KhronosReplayFrameLoopConsumerBaseBodyGenerator():
             body += '    // if we are looping and the handle is not in allocatedLoopResources\n'
             body += '    if (!getFrameLoopInfo().IsLooping() || !inAllocatedLoopResources(handle))\n'
             body += '    {\n'
-            body += '        VulkanReplayConsumer::Process_' + name + '('
-            args=['call_info']
-            if return_type != 'void':
-                args.append('returnValue')
-            [ args.append(value.name) for value in values ]
-            body += ", ".join(args) + ');\n'
+            body += '        ' + self.genCallReplayConsumer(return_type, name, values)
             body += '        // If we are looping, save the handle in allocatedLoopResources\n'
             body += '        if (getFrameLoopInfo().IsLooping())\n'
             body += '        {\n'
@@ -72,20 +84,15 @@ class KhronosReplayFrameLoopConsumerBaseBodyGenerator():
             body += '    }\n'
             body += '    if (doReplay)\n'
             body += '    {\n'
-            body += '        VulkanReplayConsumer::Process_' + name + '('
-            args=['call_info']
-            if return_type != 'void':
-                args.append('returnValue')
-            [ args.append(value.name) for value in values ]
-            body += ", ".join(args) + ');\n'
-            body += '    }\n'
-            body += '    // If we are looping, save the handles in allocatedLoopResources\n'
-            body += '    if (getFrameLoopInfo().IsLooping())\n'
-            body += '    {\n'
-            body += '        for (uint32_t i=0; i < '+values[-4].name+'; i++)\n'
+            body += '        ' + self.genCallReplayConsumer(return_type, name, values)
+            body += '        // If we are looping, save the handles in allocatedLoopResources\n'
+            body += '        if (getFrameLoopInfo().IsLooping())\n'
             body += '        {\n'
-            body += '            format::HandleId handle = *('+values[-1].name+'[i].GetPointer());\n'
-            body += '            allocatedLoopResources.insert(handle);\n'
+            body += '            for (uint32_t i=0; i < '+values[-4].name+'; i++)\n'
+            body += '            {\n'
+            body += '                format::HandleId handle = *('+values[-1].name+'[i].GetPointer());\n'
+            body += '                allocatedLoopResources.insert(handle);\n'
+            body += '            }\n'
             body += '        }\n'
             body += '    }\n'
 
@@ -102,18 +109,30 @@ class KhronosReplayFrameLoopConsumerBaseBodyGenerator():
             body += '        inAllocatedLoopResources(' + values[-2].name + ') ||\n'
             body += '        getFrameLoopInfo().IsFinalIteration())\n'
             body += '    {\n'
-            body += '        VulkanReplayConsumer::Process_' + name +'('
-            args=['call_info']
-            if return_type != 'void':
-                args.append('returnValue')
-            [ args.append(value.name) for value in values ]
-            body += ", ".join(args) + ');\n'
+            body += '        ' + self.genCallReplayConsumer(return_type, name, values)
+            body += '        // Remove ' + values[-2].name + ' from allocatedLoopResources\n'
+            body += '        if (inAllocatedLoopResources(' + values[-2].name + '))\n'
+            body += '        {\n'
+            body += '            allocatedLoopResources.erase(' + values[-2].name + ');\n'
+            body += '        }\n'
             body += '    }\n'
-            body += '    // Remove ' + values[-2].name + ' from allocatedLoopResources\n'
-            body += '    if (inAllocatedLoopResources(' + values[-2].name + '))\n'
+
+        elif name in self.REPLAY_FRAME_LOOP_RESOURCE_ALLOCATE_NOT_FULLY_IMPLEMENTED:
+
+            body += '    // Return if not the first time through loop\n'
+            body += '    if (getFrameLoopInfo().IsRepetition())\n'
             body += '    {\n'
-            body += '        allocatedLoopResources.erase(' + values[-2].name + ');\n'
+            body += '        return;\n'
             body += '    }\n'
+            body += '    ' + self.genCallReplayConsumer(return_type, name, values)
+
+        elif name in self.REPLAY_FRAME_LOOP_RESOURCE_FREE_NOT_FULLY_IMPLEMENTED:
+
+            body += '    if (getFrameLoopInfo().IsLooping() && !getFrameLoopInfo().IsFinalIteration())\n'
+            body += '    {\n'
+            body += '        return;\n'
+            body += '    }\n'
+            body += '    ' + self.genCallReplayConsumer(return_type, name, values)
 
         else:
             assert False, "Bad function name in make_replay_frame_loop_consumer_func_body"
@@ -129,11 +148,7 @@ class KhronosReplayFrameLoopConsumerBaseBodyGenerator():
 
         for cmd in self.get_all_filtered_cmd_names():
 
-            if (cmd not in
-                (self.REPLAY_FRAME_LOOP_RESOURCE_ALLOCATE_SINGLE_HANDLE_OVERRIDES +
-                 self.REPLAY_FRAME_LOOP_RESOURCE_ALLOCATE_MULTIPLE_HANDLES_OVERRIDES +
-                 self.REPLAY_FRAME_LOOP_RESOURCE_FREE_SINGLE_HANDLE_OVERRIDES)
-            ):
+            if self.skip_generating_command(cmd):
                 continue
 
             info = self.all_cmd_params[cmd]
