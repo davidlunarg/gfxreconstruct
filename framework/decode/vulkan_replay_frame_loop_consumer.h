@@ -75,6 +75,14 @@ class VulkanReplayFrameLoopConsumer : public VulkanReplayFrameLoopConsumerBase
 
     void Process_vkUnmapMemory(const ApiCallInfo& call_info, args::UnmapMemory& args) override;
 
+    void Process_vkMapMemory2(const ApiCallInfo& call_info, args::MapMemory2& args) override;
+
+    void Process_vkUnmapMemory2(const ApiCallInfo& call_info, args::UnmapMemory2& args) override;
+
+    void Process_vkMapMemory2KHR(const ApiCallInfo& call_info, args::MapMemory2KHR& args) override;
+
+    void Process_vkUnmapMemory2KHR(const ApiCallInfo& call_info, args::UnmapMemory2KHR& args) override;
+
     void Process_vkAcquireProfilingLockKHR(const ApiCallInfo& call_info, args::AcquireProfilingLockKHR& args) override;
 
     void Process_vkReleaseProfilingLockKHR(const ApiCallInfo& call_info, args::ReleaseProfilingLockKHR& args) override;
@@ -120,7 +128,8 @@ class VulkanReplayFrameLoopConsumer : public VulkanReplayFrameLoopConsumerBase
     std::unordered_set<format::HandleId>                host_visible_events_;
     std::unordered_map<format::HandleId, EventTracking> per_device_event_tracking_;
 
-    // Support for vkMapMemory/vkUnMapMemory
+    // Support for vkMapMemory/vkUnMapMemory, vkMapMemory2/vkUnMapMemory2,
+    // vkMapMemory2KHR/vkUnMapMemory2KHR
     std::set<format::HandleId> mapped_loop_memory;
 
     // Support for vkAcquireProfilingLockKHR/vkReleaseProfilingLockKHR

@@ -540,6 +540,43 @@ void VulkanReplayFrameLoopConsumer::Process_vkQueueSubmit2(const ApiCallInfo& ca
             FrameBoundaryEndOfFrame(args.queue, submit.pNext);
         }
     }
+
+void VulkanReplayFrameLoopConsumer::Process_vkMapMemory2(const ApiCallInfo& call_info, args::MapMemory2& args)
+{
+    // Pass the call along if we are not looping or
+    // if we are looping and the handle is not in mapped_loop_memory
+    format::HandleId memory = args.pMemoryMapInfo.GetMetaStructPointer()->memory;
+
+    if (frame_loop_info_.IsLooping())
+    {
+        if (mapped_loop_memory.contains(memory))
+        {
+            return; // Already mapped in loop range, skip re-mapping
+        }
+
+        // First time mapping in the loop
+        mapped_loop_memory.insert(memory);
+    }
+    VulkanReplayConsumer::Process_vkMapMemory2(call_info, args);
+}
+
+void VulkanReplayFrameLoopConsumer::Process_vkMapMemory2KHR(const ApiCallInfo& call_info, args::MapMemory2KHR& args)
+{
+    // Pass the call along if we are not looping or
+    // if we are looping and the handle is not in mapped_loop_memory
+    format::HandleId memory = args.pMemoryMapInfo.GetMetaStructPointer()->memory;
+
+    if (frame_loop_info_.IsLooping())
+    {
+        if (mapped_loop_memory.contains(memory))
+        {
+            return; // Already mapped in loop range, skip re-mapping
+        }
+
+        // First time mapping in the loop
+        mapped_loop_memory.insert(memory);
+    }
+    VulkanReplayConsumer::Process_vkMapMemory2KHR(call_info, args);
 }
 
 void VulkanReplayFrameLoopConsumer::Process_vkQueuePresentKHR(const ApiCallInfo& call_info, args::QueuePresentKHR& args)
@@ -591,6 +628,72 @@ void VulkanReplayFrameLoopConsumer::Process_vkUnmapMemory(const ApiCallInfo& cal
         // This resource has been allocated BEFORE the loop range.
         // Since it might still be in use during the loop range, ONLY free it in the last iteration.
         VulkanReplayConsumer::Process_vkUnmapMemory(call_info, args);
+    }
+}
+
+void VulkanReplayFrameLoopConsumer::Process_vkUnmapMemory2(const ApiCallInfo& call_info, args::UnmapMemory2& args)
+{
+    // Skip for loop iterations 1-(n-1).
+    // Skip if looping and if not final iteration
+    // Execute if memory is in mapped_loop_memory
+
+    // Call Process_vkUnmapMemory2 if:
+    //    We are not looping
+    //    We are looping and memory is in mapped_loop_memory, i.e. it is mapped/unmapped inside loop
+    //    We are looping and this is the last iteration
+    format::HandleId memory = args.pMemoryUnmapInfo.GetMetaStructPointer()->memory;
+
+    if (!getFrameLoopInfo().IsLooping())
+    {
+        GFXRECON_ASSERT(!allocatedLoopResources.contains(memory));
+        VulkanReplayConsumer::Process_vkUnmapMemory2(call_info, args);
+    }
+    else if (mapped_loop_memory.contains(memory))
+    {
+        // Looping special case:
+        // This resource has been allocated WITHIN the loop range.
+        VulkanReplayConsumer::Process_vkUnmapMemory2(call_info, args);
+        mapped_loop_memory.erase(memory);
+    }
+    else if (getFrameLoopInfo().IsFinalIteration())
+    {
+        // Looping special case:
+        // This resource has been allocated BEFORE the loop range.
+        // Since it might still be in use during the loop range, ONLY free it in the last iteration.
+        VulkanReplayConsumer::Process_vkUnmapMemory2(call_info, args);
+    }
+}
+
+void VulkanReplayFrameLoopConsumer::Process_vkUnmapMemory2KHR(const ApiCallInfo& call_info, args::UnmapMemory2KHR& args)
+{
+    // Skip for loop iterations 1-(n-1).
+    // Skip if looping and if not final iteration
+    // Execute if memory is in mapped_loop_memory
+
+    // Call Process_vkUnmapMemory2KHR if:
+    //    We are not looping
+    //    We are looping and memory is in mapped_loop_memory, i.e. it is mapped/unmapped inside loop
+    //    We are looping and this is the last iteration
+    format::HandleId memory = args.pMemoryUnmapInfo.GetMetaStructPointer()->memory;
+
+    if (!getFrameLoopInfo().IsLooping())
+    {
+        GFXRECON_ASSERT(!allocatedLoopResources.contains(memory));
+        VulkanReplayConsumer::Process_vkUnmapMemory2KHR(call_info, args);
+    }
+    else if (mapped_loop_memory.contains(memory))
+    {
+        // Looping special case:
+        // This resource has been allocated WITHIN the loop range.
+        VulkanReplayConsumer::Process_vkUnmapMemory2KHR(call_info, args);
+        mapped_loop_memory.erase(memory);
+    }
+    else if (getFrameLoopInfo().IsFinalIteration())
+    {
+        // Looping special case:
+        // This resource has been allocated BEFORE the loop range.
+        // Since it might still be in use during the loop range, ONLY free it in the last iteration.
+        VulkanReplayConsumer::Process_vkUnmapMemory2KHR(call_info, args);
     }
 }
 

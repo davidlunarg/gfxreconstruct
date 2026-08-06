@@ -278,14 +278,6 @@ class VulkanReplayFrameLoopConsumerBase : public VulkanReplayConsumer
         const ApiCallInfo&                          call_info,
         args::DestroyPrivateDataSlot&               args) override;
 
-    void Process_vkMapMemory2(
-        const ApiCallInfo&                          call_info,
-        args::MapMemory2&                           args) override;
-
-    void Process_vkUnmapMemory2(
-        const ApiCallInfo&                          call_info,
-        args::UnmapMemory2&                         args) override;
-
     void Process_vkTransitionImageLayout(
         const ApiCallInfo&                          call_info,
         args::TransitionImageLayout&                args) override;
@@ -397,14 +389,6 @@ class VulkanReplayFrameLoopConsumerBase : public VulkanReplayConsumer
     void Process_vkDestroyDeferredOperationKHR(
         const ApiCallInfo&                          call_info,
         args::DestroyDeferredOperationKHR&          args) override;
-
-    void Process_vkMapMemory2KHR(
-        const ApiCallInfo&                          call_info,
-        args::MapMemory2KHR&                        args) override;
-
-    void Process_vkUnmapMemory2KHR(
-        const ApiCallInfo&                          call_info,
-        args::UnmapMemory2KHR&                      args) override;
 
     void Process_vkCreatePipelineBinariesKHR(
         const ApiCallInfo&                          call_info,

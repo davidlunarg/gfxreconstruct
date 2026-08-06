@@ -126,7 +126,9 @@
     "vkDestroyVideoSessionParametersKHR",
     "vkDestroyPipeline",
     "vkDestroyPipelineBinaryKHR",
-    "vkDestroyShaderEXT"
+    "vkDestroyShaderEXT",
+    "vkDestroyAccelerationStructureKHR",
+    "vkDestroyAccelerationStructureNV"
   ],
 
   "comment" : "These resource allocation entry points are not yet fully",
@@ -152,8 +154,6 @@
     "vkCreateSharedSwapchainsKHR",
     "vkImportFenceFdKHR",
     "vkImportSemaphoreFdKHR",
-    "vkMapMemory2",
-    "vkMapMemory2KHR",
     "vkMergePipelineCaches",
     "vkQueueBindSparse",
     "vkRegisterDeviceEventEXT",
@@ -168,10 +168,6 @@
   "comment" : "executing the last looping iteration.",
   "resourceFreeNotFullyImplemented":
   [
-    "vkDestroyAccelerationStructureKHR",
-    "vkDestroyAccelerationStructureNV",
-    "vkUnmapMemory2",
-    "vkUnmapMemory2KHR",
     "vkFreeCommandBuffers",
     "vkReleaseCapturedPipelineDataKHR",
     "vkReleaseDisplayEXT",

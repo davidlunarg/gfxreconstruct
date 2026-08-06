@@ -209,6 +209,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkBindBufferMemory(
     const ApiCallInfo&                          call_info,
     args::BindBufferMemory&                     args)
 {
+    // Not fully implemented yet.
     // Return if not the first time through loop
     if (getFrameLoopInfo().IsRepetition())
     {
@@ -221,6 +222,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkBindImageMemory(
     const ApiCallInfo&                          call_info,
     args::BindImageMemory&                      args)
 {
+    // Not fully implemented yet.
     // Return if not the first time through loop
     if (getFrameLoopInfo().IsRepetition())
     {
@@ -233,6 +235,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkQueueBindSparse(
     const ApiCallInfo&                          call_info,
     args::QueueBindSparse&                      args)
 {
+    // Not fully implemented yet.
     // Return if not the first time through loop
     if (getFrameLoopInfo().IsRepetition())
     {
@@ -620,6 +623,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkAllocateCommandBuffers(
     const ApiCallInfo&                          call_info,
     args::AllocateCommandBuffers&               args)
 {
+    // Not fully implemented yet.
     // Return if not the first time through loop
     if (getFrameLoopInfo().IsRepetition())
     {
@@ -632,6 +636,8 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkFreeCommandBuffers(
     const ApiCallInfo&                          call_info,
     args::FreeCommandBuffers&                   args)
 {
+    // Not fully implemented yet.
+    // Return if looping and we are not executing the last iteration.
     if (getFrameLoopInfo().IsLooping() && !getFrameLoopInfo().IsFinalIteration())
     {
         return;
@@ -871,6 +877,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkMergePipelineCaches(
     const ApiCallInfo&                          call_info,
     args::MergePipelineCaches&                  args)
 {
+    // Not fully implemented yet.
     // Return if not the first time through loop
     if (getFrameLoopInfo().IsRepetition())
     {
@@ -1299,6 +1306,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkBindBufferMemory2(
     const ApiCallInfo&                          call_info,
     args::BindBufferMemory2&                    args)
 {
+    // Not fully implemented yet.
     // Return if not the first time through loop
     if (getFrameLoopInfo().IsRepetition())
     {
@@ -1311,6 +1319,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkBindImageMemory2(
     const ApiCallInfo&                          call_info,
     args::BindImageMemory2&                     args)
 {
+    // Not fully implemented yet.
     // Return if not the first time through loop
     if (getFrameLoopInfo().IsRepetition())
     {
@@ -1514,33 +1523,11 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyPrivateDataSlot(
     }
 }
 
-void VulkanReplayFrameLoopConsumerBase::Process_vkMapMemory2(
-    const ApiCallInfo&                          call_info,
-    args::MapMemory2&                           args)
-{
-    // Return if not the first time through loop
-    if (getFrameLoopInfo().IsRepetition())
-    {
-        return;
-    }
-    VulkanReplayConsumer::Process_vkMapMemory2(call_info, args);
-}
-
-void VulkanReplayFrameLoopConsumerBase::Process_vkUnmapMemory2(
-    const ApiCallInfo&                          call_info,
-    args::UnmapMemory2&                         args)
-{
-    if (getFrameLoopInfo().IsLooping() && !getFrameLoopInfo().IsFinalIteration())
-    {
-        return;
-    }
-    VulkanReplayConsumer::Process_vkUnmapMemory2(call_info, args);
-}
-
 void VulkanReplayFrameLoopConsumerBase::Process_vkTransitionImageLayout(
     const ApiCallInfo&                          call_info,
     args::TransitionImageLayout&                args)
 {
+    // Not fully implemented yet.
     // Return if not the first time through loop
     if (getFrameLoopInfo().IsRepetition())
     {
@@ -1905,6 +1892,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkBindVideoSessionMemoryKHR(
     const ApiCallInfo&                          call_info,
     args::BindVideoSessionMemoryKHR&            args)
 {
+    // Not fully implemented yet.
     // Return if not the first time through loop
     if (getFrameLoopInfo().IsRepetition())
     {
@@ -1974,6 +1962,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkImportSemaphoreFdKHR(
     const ApiCallInfo&                          call_info,
     args::ImportSemaphoreFdKHR&                 args)
 {
+    // Not fully implemented yet.
     // Return if not the first time through loop
     if (getFrameLoopInfo().IsRepetition())
     {
@@ -2067,6 +2056,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkImportFenceFdKHR(
     const ApiCallInfo&                          call_info,
     args::ImportFenceFdKHR&                     args)
 {
+    // Not fully implemented yet.
     // Return if not the first time through loop
     if (getFrameLoopInfo().IsRepetition())
     {
@@ -2136,6 +2126,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkBindBufferMemory2KHR(
     const ApiCallInfo&                          call_info,
     args::BindBufferMemory2KHR&                 args)
 {
+    // Not fully implemented yet.
     // Return if not the first time through loop
     if (getFrameLoopInfo().IsRepetition())
     {
@@ -2148,6 +2139,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkBindImageMemory2KHR(
     const ApiCallInfo&                          call_info,
     args::BindImageMemory2KHR&                  args)
 {
+    // Not fully implemented yet.
     // Return if not the first time through loop
     if (getFrameLoopInfo().IsRepetition())
     {
@@ -2213,33 +2205,11 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyDeferredOperationKHR(
     }
 }
 
-void VulkanReplayFrameLoopConsumerBase::Process_vkMapMemory2KHR(
-    const ApiCallInfo&                          call_info,
-    args::MapMemory2KHR&                        args)
-{
-    // Return if not the first time through loop
-    if (getFrameLoopInfo().IsRepetition())
-    {
-        return;
-    }
-    VulkanReplayConsumer::Process_vkMapMemory2KHR(call_info, args);
-}
-
-void VulkanReplayFrameLoopConsumerBase::Process_vkUnmapMemory2KHR(
-    const ApiCallInfo&                          call_info,
-    args::UnmapMemory2KHR&                      args)
-{
-    if (getFrameLoopInfo().IsLooping() && !getFrameLoopInfo().IsFinalIteration())
-    {
-        return;
-    }
-    VulkanReplayConsumer::Process_vkUnmapMemory2KHR(call_info, args);
-}
-
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreatePipelineBinariesKHR(
     const ApiCallInfo&                          call_info,
     args::CreatePipelineBinariesKHR&            args)
 {
+    // Not fully implemented yet.
     // Return if not the first time through loop
     if (getFrameLoopInfo().IsRepetition())
     {
@@ -2285,6 +2255,8 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkReleaseCapturedPipelineDataKHR
     const ApiCallInfo&                          call_info,
     args::ReleaseCapturedPipelineDataKHR&       args)
 {
+    // Not fully implemented yet.
+    // Return if looping and we are not executing the last iteration.
     if (getFrameLoopInfo().IsLooping() && !getFrameLoopInfo().IsFinalIteration())
     {
         return;
@@ -2296,6 +2268,8 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkReleaseSwapchainImagesKHR(
     const ApiCallInfo&                          call_info,
     args::ReleaseSwapchainImagesKHR&            args)
 {
+    // Not fully implemented yet.
+    // Return if looping and we are not executing the last iteration.
     if (getFrameLoopInfo().IsLooping() && !getFrameLoopInfo().IsFinalIteration())
     {
         return;
@@ -2412,6 +2386,8 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkReleaseDisplayEXT(
     const ApiCallInfo&                          call_info,
     args::ReleaseDisplayEXT&                    args)
 {
+    // Not fully implemented yet.
+    // Return if looping and we are not executing the last iteration.
     if (getFrameLoopInfo().IsLooping() && !getFrameLoopInfo().IsFinalIteration())
     {
         return;
@@ -2423,6 +2399,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkRegisterDeviceEventEXT(
     const ApiCallInfo&                          call_info,
     args::RegisterDeviceEventEXT&               args)
 {
+    // Not fully implemented yet.
     // Return if not the first time through loop
     if (getFrameLoopInfo().IsRepetition())
     {
@@ -2435,6 +2412,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkRegisterDisplayEventEXT(
     const ApiCallInfo&                          call_info,
     args::RegisterDisplayEventEXT&              args)
 {
+    // Not fully implemented yet.
     // Return if not the first time through loop
     if (getFrameLoopInfo().IsRepetition())
     {
@@ -2633,17 +2611,40 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyAccelerationStructureNV
     const ApiCallInfo&                          call_info,
     args::DestroyAccelerationStructureNV&       args)
 {
-    if (getFrameLoopInfo().IsLooping() && !getFrameLoopInfo().IsFinalIteration())
+    // Skip for loop iterations 1-(n-1).
+    // Skip if looping and if not final iteration
+    // Execute if args.accelerationStructure is in allocatedLoopResources
+
+    // Call Process_vkDestroyAccelerationStructureNV if:
+    //    We are not looping
+    //    We are looping and args.accelerationStructure is in allocatedLoopResources
+    //    We are looping and this is the last iteration
+    if (!getFrameLoopInfo().IsLooping())
     {
-        return;
+        GFXRECON_ASSERT(!allocatedLoopResources.contains(args.accelerationStructure))
+        VulkanReplayConsumer::Process_vkDestroyAccelerationStructureNV(call_info, args);
     }
-    VulkanReplayConsumer::Process_vkDestroyAccelerationStructureNV(call_info, args);
+    else if (allocatedLoopResources.contains(args.accelerationStructure))
+    {
+        // Looping special case:
+        // This resource has been allocated WITHIN the loop range.
+        VulkanReplayConsumer::Process_vkDestroyAccelerationStructureNV(call_info, args);
+        allocatedLoopResources.erase(args.accelerationStructure);
+    }
+    else if (getFrameLoopInfo().IsFinalIteration())
+    {
+        // Looping special case:
+        // This resource has been allocated BEFORE the loop range.
+        // Since it might still be in use during the loop range, ONLY free it in the last iteration.
+        VulkanReplayConsumer::Process_vkDestroyAccelerationStructureNV(call_info, args);
+    }
 }
 
 void VulkanReplayFrameLoopConsumerBase::Process_vkBindAccelerationStructureMemoryNV(
     const ApiCallInfo&                          call_info,
     args::BindAccelerationStructureMemoryNV&    args)
 {
+    // Not fully implemented yet.
     // Return if not the first time through loop
     if (getFrameLoopInfo().IsRepetition())
     {
@@ -2693,6 +2694,8 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkReleasePerformanceConfiguratio
     const ApiCallInfo&                          call_info,
     args::ReleasePerformanceConfigurationINTEL& args)
 {
+    // Not fully implemented yet.
+    // Return if looping and we are not executing the last iteration.
     if (getFrameLoopInfo().IsLooping() && !getFrameLoopInfo().IsFinalIteration())
     {
         return;
@@ -2752,6 +2755,8 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkReleaseFullScreenExclusiveMode
     const ApiCallInfo&                          call_info,
     args::ReleaseFullScreenExclusiveModeEXT&    args)
 {
+    // Not fully implemented yet.
+    // Return if looping and we are not executing the last iteration.
     if (getFrameLoopInfo().IsLooping() && !getFrameLoopInfo().IsFinalIteration())
     {
         return;
@@ -2787,6 +2792,8 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkReleaseSwapchainImagesEXT(
     const ApiCallInfo&                          call_info,
     args::ReleaseSwapchainImagesEXT&            args)
 {
+    // Not fully implemented yet.
+    // Return if looping and we are not executing the last iteration.
     if (getFrameLoopInfo().IsLooping() && !getFrameLoopInfo().IsFinalIteration())
     {
         return;
@@ -3131,6 +3138,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkBindTensorMemoryARM(
     const ApiCallInfo&                          call_info,
     args::BindTensorMemoryARM&                  args)
 {
+    // Not fully implemented yet.
     // Return if not the first time through loop
     if (getFrameLoopInfo().IsRepetition())
     {
@@ -3200,6 +3208,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkBindOpticalFlowSessionImageNV(
     const ApiCallInfo&                          call_info,
     args::BindOpticalFlowSessionImageNV&        args)
 {
+    // Not fully implemented yet.
     // Return if not the first time through loop
     if (getFrameLoopInfo().IsRepetition())
     {
@@ -3343,6 +3352,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkBindDataGraphPipelineSessionMe
     const ApiCallInfo&                          call_info,
     args::BindDataGraphPipelineSessionMemoryARM& args)
 {
+    // Not fully implemented yet.
     // Return if not the first time through loop
     if (getFrameLoopInfo().IsRepetition())
     {
@@ -3526,11 +3536,33 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyAccelerationStructureKH
     const ApiCallInfo&                          call_info,
     args::DestroyAccelerationStructureKHR&      args)
 {
-    if (getFrameLoopInfo().IsLooping() && !getFrameLoopInfo().IsFinalIteration())
+    // Skip for loop iterations 1-(n-1).
+    // Skip if looping and if not final iteration
+    // Execute if args.accelerationStructure is in allocatedLoopResources
+
+    // Call Process_vkDestroyAccelerationStructureKHR if:
+    //    We are not looping
+    //    We are looping and args.accelerationStructure is in allocatedLoopResources
+    //    We are looping and this is the last iteration
+    if (!getFrameLoopInfo().IsLooping())
     {
-        return;
+        GFXRECON_ASSERT(!allocatedLoopResources.contains(args.accelerationStructure))
+        VulkanReplayConsumer::Process_vkDestroyAccelerationStructureKHR(call_info, args);
     }
-    VulkanReplayConsumer::Process_vkDestroyAccelerationStructureKHR(call_info, args);
+    else if (allocatedLoopResources.contains(args.accelerationStructure))
+    {
+        // Looping special case:
+        // This resource has been allocated WITHIN the loop range.
+        VulkanReplayConsumer::Process_vkDestroyAccelerationStructureKHR(call_info, args);
+        allocatedLoopResources.erase(args.accelerationStructure);
+    }
+    else if (getFrameLoopInfo().IsFinalIteration())
+    {
+        // Looping special case:
+        // This resource has been allocated BEFORE the loop range.
+        // Since it might still be in use during the loop range, ONLY free it in the last iteration.
+        VulkanReplayConsumer::Process_vkDestroyAccelerationStructureKHR(call_info, args);
+    }
 }
 
 GFXRECON_END_NAMESPACE(decode)
