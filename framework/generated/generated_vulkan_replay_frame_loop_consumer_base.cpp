@@ -3191,6 +3191,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkBindOpticalFlowSessionImageNV(
     VulkanReplayConsumer::Process_vkBindOpticalFlowSessionImageNV(call_info, args);
 }
 
+// TODO: Put this in code gen!!!
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateShadersEXT(
     const ApiCallInfo&                          call_info,
     args::CreateShadersEXT&                     args)
@@ -3231,71 +3232,22 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateShadersEXT(
         // in allocatedLoopResources.
         for (uint32_t i=0; i < args.createInfoCount; i++)
         {
-            args::CreateShadersEXT arg;
-            arg.result = args.result;
-            arg.device = args.device;
-            arg.createInfoCount = 1;
-
-            // These are all attempts and experiments
-            // arg.pCreateInfos.GetPointer() = &args.pCreateInfos.GetPointer()[i];    Bad l-value
-            // arg.pCreateInfos = args.pCreateInfos;                    Expression works
-            // args.pCreateInfos.GetPointer()[i];                     Expression works
-            // arg.pCreateInfos = &args.pCreateInfos.GetPointer()[i];    No = operator
-            // arg.pCreateInfos = &args.pCreateInfos[i];                 No [] operator
-            //arg.pCreateInfos = args.pCreateInfos.GetPointer()[i];      No = operator
-            //args.pCreateInfos.GetPointer()[i] = &args.pCreateInfos.GetPointer()[i];  // No = operator
-
-            //void *t;
-            //t = &args.pCreateInfos.GetPointer()[i];
-            //arg.pCreateInfos.GetPointer()[0] = t;  // No = operator
-
-            // Not sure if this will work....
-            printf("Crash??\n"); fflush(stdout);
-            printf("%p\n", (&(arg.pCreateInfos.GetPointer()[0]))); fflush(stdout);   // THIS IS 0!
-            printf("C1\n"); fflush(stdout);
-            printf("C1\n"); fflush(stdout);
-            //printf("%p", &args.pCreateInfos.GetPointer()[i]); fflush(stdout);
-            //*(&(arg.pCreateInfos.GetPointer()[0])) = args.pCreateInfos.GetPointer()[i];   Crashes
-            arg.pCreateInfos = args.pCreateInfos;
-            printf("C2\n"); fflush(stdout);
-            printf("C2\n"); fflush(stdout);
-            printf("C3\n"); fflush(stdout);
-            printf("C3\n"); fflush(stdout);
-            printf("%p\n", &arg.pCreateInfos); fflush(stdout);
-            printf("C4\n"); fflush(stdout);
-            printf("C4\n"); fflush(stdout);
-            printf("C4\n"); fflush(stdout);
-            printf("C5\n"); fflush(stdout);
-            printf("C5\n"); fflush(stdout);
-            printf("%p\n", &arg.pCreateInfos.GetPointer()[i]); fflush(stdout);
-            printf("C6\n"); fflush(stdout);
-            printf("C6\n"); fflush(stdout);
-            *(&(arg.pCreateInfos.GetPointer()[0])) = args.pCreateInfos.GetPointer()[i];
-            printf("No Crash!\n"); fflush(stdout);
-            printf("No Crash!\n"); fflush(stdout);
-
-
-            //arg.pAllocator = &args.pAllocator[i];
-            //*(&(arg.pAllocator.GetPointer()[0])) = args.pAllocator.GetPointer()[i];
-            printf("A1\n"); fflush(stdout);
-            arg.pAllocator = args.pAllocator;   // Not correct, need to index it...
-            printf("A2\n"); fflush(stdout);
-            //*(&(arg.pAllocator.GetPointer()[0])) = args.pAllocator.GetPointer()[i];
-            printf("A3\n"); fflush(stdout);
-
-            //arg.pShaders = &args.pShaders[i];
-            //*(&(arg.pShaders.GetHandlePointer()[0])) = args.pShaders.GetHandlePointer()[i];
-            printf("S1\n"); fflush(stdout);
-            arg.pShaders = args.pShaders;   // Not correct, need to index it...
-            printf("S2\n"); fflush(stdout);
-            //*(&(arg.pShaders.GetHandlePointer()[0])) = args.pShaders.GetHandlePointer()[i];
-            printf("S3\n"); fflush(stdout);
-
-            VulkanReplayConsumer::Process_vkCreateShadersEXT(call_info, arg);
-            if (arg.result == VK_SUCCESS)
+            format::HandleId handle = args.pShaders.GetPointer()[i];
+            if (!allocatedLoopResources.contains(handle))
             {
-                format::HandleId handle = arg.pShaders.GetPointer()[0];
-                allocatedLoopResources.insert(handle);
+                args::CreateShadersEXT arg;
+                arg.result = args.result;
+                arg.device = args.device;
+                arg.createInfoCount = 1;
+                arg.pCreateInfos = args.pCreateInfos;
+                *(&(arg.pCreateInfos.GetPointer()[0])) = args.pCreateInfos.GetPointer()[i];
+                arg.pAllocator = args.pAllocator;
+                arg.pShaders = args.pShaders;
+                VulkanReplayConsumer::Process_vkCreateShadersEXT(call_info, arg);
+                if (arg.result == VK_SUCCESS)
+                {
+                    allocatedLoopResources.insert(handle);
+                }
             }
         }
     }
