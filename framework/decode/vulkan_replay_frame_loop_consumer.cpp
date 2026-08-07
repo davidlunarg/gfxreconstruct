@@ -540,6 +540,7 @@ void VulkanReplayFrameLoopConsumer::Process_vkQueueSubmit2(const ApiCallInfo& ca
             FrameBoundaryEndOfFrame(args.queue, submit.pNext);
         }
     }
+}
 
 void VulkanReplayFrameLoopConsumer::Process_vkMapMemory2(const ApiCallInfo& call_info, args::MapMemory2& args)
 {
@@ -721,6 +722,16 @@ void VulkanReplayFrameLoopConsumer::Process_vkReleaseProfilingLockKHR(const ApiC
         // We're assuming call was successful. We don't have a way to check result.
         profilingLockState[args.device] = false;
     }
+}
+
+void VulkanReplayFrameLoopConsumer::Process_vkAllocateCommandBuffers(const ApiCallInfo&            call_info,
+                                                                     args::AllocateCommandBuffers& args)
+{
+}
+
+void VulkanReplayFrameLoopConsumer::Process_vkFreeCommandBuffers(const ApiCallInfo&        call_info,
+                                                                 args::FreeCommandBuffers& args)
+{
 }
 
 GFXRECON_END_NAMESPACE(decode)

@@ -210,7 +210,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkBindBufferMemory(
     args::BindBufferMemory&                     args)
 {
     // Not fully implemented yet.
-    // Return if not the first time through loop
+    // Return if not the first time through the loop
     if (getFrameLoopInfo().IsRepetition())
     {
         return;
@@ -223,7 +223,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkBindImageMemory(
     args::BindImageMemory&                      args)
 {
     // Not fully implemented yet.
-    // Return if not the first time through loop
+    // Return if not the first time through the loop
     if (getFrameLoopInfo().IsRepetition())
     {
         return;
@@ -236,7 +236,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkQueueBindSparse(
     args::QueueBindSparse&                      args)
 {
     // Not fully implemented yet.
-    // Return if not the first time through loop
+    // Return if not the first time through the loop
     if (getFrameLoopInfo().IsRepetition())
     {
         return;
@@ -619,32 +619,6 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyCommandPool(
     }
 }
 
-void VulkanReplayFrameLoopConsumerBase::Process_vkAllocateCommandBuffers(
-    const ApiCallInfo&                          call_info,
-    args::AllocateCommandBuffers&               args)
-{
-    // Not fully implemented yet.
-    // Return if not the first time through loop
-    if (getFrameLoopInfo().IsRepetition())
-    {
-        return;
-    }
-    VulkanReplayConsumer::Process_vkAllocateCommandBuffers(call_info, args);
-}
-
-void VulkanReplayFrameLoopConsumerBase::Process_vkFreeCommandBuffers(
-    const ApiCallInfo&                          call_info,
-    args::FreeCommandBuffers&                   args)
-{
-    // Not fully implemented yet.
-    // Return if looping and we are not executing the last iteration.
-    if (getFrameLoopInfo().IsLooping() && !getFrameLoopInfo().IsFinalIteration())
-    {
-        return;
-    }
-    VulkanReplayConsumer::Process_vkFreeCommandBuffers(call_info, args);
-}
-
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateEvent(
     const ApiCallInfo&                          call_info,
     args::CreateEvent&                          args)
@@ -878,7 +852,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkMergePipelineCaches(
     args::MergePipelineCaches&                  args)
 {
     // Not fully implemented yet.
-    // Return if not the first time through loop
+    // Return if not the first time through the loop
     if (getFrameLoopInfo().IsRepetition())
     {
         return;
@@ -1307,7 +1281,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkBindBufferMemory2(
     args::BindBufferMemory2&                    args)
 {
     // Not fully implemented yet.
-    // Return if not the first time through loop
+    // Return if not the first time through the loop
     if (getFrameLoopInfo().IsRepetition())
     {
         return;
@@ -1320,7 +1294,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkBindImageMemory2(
     args::BindImageMemory2&                     args)
 {
     // Not fully implemented yet.
-    // Return if not the first time through loop
+    // Return if not the first time through the loop
     if (getFrameLoopInfo().IsRepetition())
     {
         return;
@@ -1528,7 +1502,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkTransitionImageLayout(
     args::TransitionImageLayout&                args)
 {
     // Not fully implemented yet.
-    // Return if not the first time through loop
+    // Return if not the first time through the loop
     if (getFrameLoopInfo().IsRepetition())
     {
         return;
@@ -1893,7 +1867,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkBindVideoSessionMemoryKHR(
     args::BindVideoSessionMemoryKHR&            args)
 {
     // Not fully implemented yet.
-    // Return if not the first time through loop
+    // Return if not the first time through the loop
     if (getFrameLoopInfo().IsRepetition())
     {
         return;
@@ -1963,7 +1937,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkImportSemaphoreFdKHR(
     args::ImportSemaphoreFdKHR&                 args)
 {
     // Not fully implemented yet.
-    // Return if not the first time through loop
+    // Return if not the first time through the loop
     if (getFrameLoopInfo().IsRepetition())
     {
         return;
@@ -2057,7 +2031,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkImportFenceFdKHR(
     args::ImportFenceFdKHR&                     args)
 {
     // Not fully implemented yet.
-    // Return if not the first time through loop
+    // Return if not the first time through the loop
     if (getFrameLoopInfo().IsRepetition())
     {
         return;
@@ -2127,7 +2101,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkBindBufferMemory2KHR(
     args::BindBufferMemory2KHR&                 args)
 {
     // Not fully implemented yet.
-    // Return if not the first time through loop
+    // Return if not the first time through the loop
     if (getFrameLoopInfo().IsRepetition())
     {
         return;
@@ -2140,7 +2114,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkBindImageMemory2KHR(
     args::BindImageMemory2KHR&                  args)
 {
     // Not fully implemented yet.
-    // Return if not the first time through loop
+    // Return if not the first time through the loop
     if (getFrameLoopInfo().IsRepetition())
     {
         return;
@@ -2210,7 +2184,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreatePipelineBinariesKHR(
     args::CreatePipelineBinariesKHR&            args)
 {
     // Not fully implemented yet.
-    // Return if not the first time through loop
+    // Return if not the first time through the loop
     if (getFrameLoopInfo().IsRepetition())
     {
         return;
@@ -2400,7 +2374,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkRegisterDeviceEventEXT(
     args::RegisterDeviceEventEXT&               args)
 {
     // Not fully implemented yet.
-    // Return if not the first time through loop
+    // Return if not the first time through the loop
     if (getFrameLoopInfo().IsRepetition())
     {
         return;
@@ -2413,7 +2387,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkRegisterDisplayEventEXT(
     args::RegisterDisplayEventEXT&              args)
 {
     // Not fully implemented yet.
-    // Return if not the first time through loop
+    // Return if not the first time through the loop
     if (getFrameLoopInfo().IsRepetition())
     {
         return;
@@ -2645,7 +2619,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkBindAccelerationStructureMemor
     args::BindAccelerationStructureMemoryNV&    args)
 {
     // Not fully implemented yet.
-    // Return if not the first time through loop
+    // Return if not the first time through the loop
     if (getFrameLoopInfo().IsRepetition())
     {
         return;
@@ -3139,7 +3113,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkBindTensorMemoryARM(
     args::BindTensorMemoryARM&                  args)
 {
     // Not fully implemented yet.
-    // Return if not the first time through loop
+    // Return if not the first time through the loop
     if (getFrameLoopInfo().IsRepetition())
     {
         return;
@@ -3209,7 +3183,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkBindOpticalFlowSessionImageNV(
     args::BindOpticalFlowSessionImageNV&        args)
 {
     // Not fully implemented yet.
-    // Return if not the first time through loop
+    // Return if not the first time through the loop
     if (getFrameLoopInfo().IsRepetition())
     {
         return;
@@ -3221,8 +3195,9 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateShadersEXT(
     const ApiCallInfo&                          call_info,
     args::CreateShadersEXT&                     args)
 {
-    // Pass the call along if we are not looping or if all the handles are not in allocatedLoopResources.
+    // Pass the call along as is if we are not looping or if none of the handles are in allocatedLoopResources
     bool doReplay = false;
+    bool noneInAllocatedLoopResources = true;
     if (!getFrameLoopInfo().IsLooping())
     {
         doReplay = true;
@@ -3232,14 +3207,11 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateShadersEXT(
         for (uint32_t i=0; i < args.createInfoCount; i++)
         {
             format::HandleId handle = args.pShaders.GetPointer()[i];
-            if (!allocatedLoopResources.contains(handle))
-            {
-                doReplay = true;
-                break;
-            }
+            noneInAllocatedLoopResources &= (!allocatedLoopResources.contains(handle));
         }
     }
-    if (doReplay)
+
+    if (doReplay || noneInAllocatedLoopResources)
     {
         VulkanReplayConsumer::Process_vkCreateShadersEXT(call_info, args);
         // If we are looping, save the handles in allocatedLoopResources
@@ -3248,6 +3220,49 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateShadersEXT(
             for (uint32_t i=0; i < args.createInfoCount; i++)
             {
                 format::HandleId handle = args.pShaders.GetPointer()[i];
+                allocatedLoopResources.insert(handle);
+            }
+        }
+    }
+    else
+    {
+        // We are looping and some of the handles are in allocatedLoopResources
+        // and some are not. So we need to allocate only the ones that are not
+        // in allocatedLoopResources.
+        for (uint32_t i=0; i < args.createInfoCount; i++)
+        {
+            args::CreateShadersEXT arg;
+            arg.result = args.result;
+            arg.device = args.device;
+            arg.createInfoCount = 1;
+
+            // These are all attempts and experiments
+            // arg.pCreateInfos.GetPointer() = &args.pCreateInfos.GetPointer()[i];    Bad l-value
+            // arg.pCreateInfos = args.pCreateInfos;                    Expression works
+            // args.pCreateInfos.GetPointer()[i];                     Expression works
+            // arg.pCreateInfos = &args.pCreateInfos.GetPointer()[i];    No = operator
+            // arg.pCreateInfos = &args.pCreateInfos[i];                 No [] operator
+            //arg.pCreateInfos = args.pCreateInfos.GetPointer()[i];      No = operator
+            //args.pCreateInfos.GetPointer()[i] = &args.pCreateInfos.GetPointer()[i];  // No = operator
+
+            //void *t;
+            //t = &args.pCreateInfos.GetPointer()[i];
+            //arg.pCreateInfos.GetPointer()[0] = t;  // No = operator
+
+            // Not sure if this will work....
+            *(&(arg.pCreateInfos.GetPointer()[0])) = args.pCreateInfos.GetPointer()[i];
+
+
+            //arg.pAllocator = &args.pAllocator[i];
+            *(&(arg.pAllocator.GetPointer()[0])) = args.pAllocator.GetPointer()[i];
+
+            //arg.pShaders = &args.pShaders[i];
+            *(&(arg.pShaders.GetHandlePointer()[0])) = args.pShaders.GetHandlePointer()[i];
+
+            VulkanReplayConsumer::Process_vkCreateShadersEXT(call_info, arg);
+            if (arg.result == VK_SUCCESS)
+            {
+                format::HandleId handle = arg.pShaders.GetPointer()[i];
                 allocatedLoopResources.insert(handle);
             }
         }
@@ -3353,7 +3368,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkBindDataGraphPipelineSessionMe
     args::BindDataGraphPipelineSessionMemoryARM& args)
 {
     // Not fully implemented yet.
-    // Return if not the first time through loop
+    // Return if not the first time through the loop
     if (getFrameLoopInfo().IsRepetition())
     {
         return;

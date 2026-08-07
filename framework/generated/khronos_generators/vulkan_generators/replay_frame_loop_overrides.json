@@ -137,7 +137,6 @@
   "comment" : "executing the first looping iteration.",
   "resourceAllocateNotFullyImplemented":
   [
-    "vkAllocateCommandBuffers",
     "vkBindAccelerationStructureMemoryKHR",
     "vkBindAccelerationStructureMemoryNV",
     "vkBindBufferMemory",
@@ -168,7 +167,6 @@
   "comment" : "executing the last looping iteration.",
   "resourceFreeNotFullyImplemented":
   [
-    "vkFreeCommandBuffers",
     "vkReleaseCapturedPipelineDataKHR",
     "vkReleaseDisplayEXT",
     "vkReleaseFullScreenExclusiveModeEXT",
