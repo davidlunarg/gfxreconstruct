@@ -3196,12 +3196,13 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateShadersEXT(
     const ApiCallInfo&                          call_info,
     args::CreateShadersEXT&                     args)
 {
+    printf("@@In Process_vkCreateShadersEXT!\n");
     // Pass the call along as is if we are not looping or if none of the handles are in allocatedLoopResources
-    bool doReplay = false;
+    bool doFullReplay = false;
     bool noneInAllocatedLoopResources = true;
     if (!getFrameLoopInfo().IsLooping())
     {
-        doReplay = true;
+        doFullReplay = true;
     }
     else
     {
@@ -3212,7 +3213,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateShadersEXT(
         }
     }
 
-    if (doReplay || noneInAllocatedLoopResources)
+    if (doFullReplay || noneInAllocatedLoopResources)
     {
         VulkanReplayConsumer::Process_vkCreateShadersEXT(call_info, args);
         // If we are looping, save the handles in allocatedLoopResources
@@ -3221,21 +3222,27 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateShadersEXT(
             for (uint32_t i=0; i < args.createInfoCount; i++)
             {
                 format::HandleId handle = args.pShaders.GetPointer()[i];
+                printf("@@Inserting1 handle %d!\n",(int)handle);
                 allocatedLoopResources.insert(handle);
             }
         }
     }
     else
     {
+        printf("@@doFullReplay=%d noneInallocateLoopResources=%d!\n", doFullReplay, noneInAllocatedLoopResources);
         // We are looping and some of the handles are in allocatedLoopResources
         // and some are not. So we need to allocate only the ones that are not
         // in allocatedLoopResources.
+        printf("@@args.createInfoCount=%d\n", (int)args.createInfoCount);
         for (uint32_t i=0; i < args.createInfoCount; i++)
         {
             format::HandleId handle = args.pShaders.GetPointer()[i];
+            printf("@@In Loop, handle=%d\n", (int)handle);
+            printf("@@!allocatedLoopResources.contains(handle)=%d\n", allocatedLoopResources.contains(handle));
             if (!allocatedLoopResources.contains(handle))
             {
                 args::CreateShadersEXT arg;
+#if 0
                 arg.result = args.result;
                 arg.device = args.device;
                 arg.createInfoCount = 1;
@@ -3243,9 +3250,18 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateShadersEXT(
                 *(&(arg.pCreateInfos.GetPointer()[0])) = args.pCreateInfos.GetPointer()[i];
                 arg.pAllocator = args.pAllocator;
                 arg.pShaders = args.pShaders;
+#endif
+                arg = args;
+                arg.createInfoCount = 1;
+                printf("@@args ptr  = %p\n", &(args.pCreateInfos.GetPointer()[0]));
+                //printf("@@args *ptr = %p\n", *(&(args.pCreateInfos.GetPointer()[0])));
+                printf("@@arg  ptr  = %p\n", &(arg.pCreateInfos.GetPointer()[0]));
+                //printf("@@arg  *ptr = %p\n", *(&(arg.pCreateInfos.GetPointer()[0])));
+                *(&(arg.pCreateInfos.GetPointer()[0])) = arg.pCreateInfos.GetPointer()[i];
                 VulkanReplayConsumer::Process_vkCreateShadersEXT(call_info, arg);
                 if (arg.result == VK_SUCCESS)
                 {
+                    printf("@@Inserting2 handle %d!\n",(int)handle);
                     allocatedLoopResources.insert(handle);
                 }
             }
