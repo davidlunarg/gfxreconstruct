@@ -562,10 +562,6 @@ class VulkanReplayFrameLoopConsumerBase : public VulkanReplayConsumer
         const ApiCallInfo&                          call_info,
         args::DestroyShaderEXT&                     args) override;
 
-    void Process_vkCreateDataGraphPipelinesARM(
-        const ApiCallInfo&                          call_info,
-        args::CreateDataGraphPipelinesARM&          args) override;
-
     void Process_vkCreateDataGraphPipelineSessionARM(
         const ApiCallInfo&                          call_info,
         args::CreateDataGraphPipelineSessionARM&    args) override;
