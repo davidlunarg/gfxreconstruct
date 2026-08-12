@@ -3519,6 +3519,96 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyShaderEXT(
     }
 }
 
+void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDataGraphPipelinesARM(
+    const ApiCallInfo&                          call_info,
+    args::CreateDataGraphPipelinesARM&          args)
+{
+    // Pass the call along unchanged if we are not looping.
+    if (!getFrameLoopInfo().IsLooping())
+    {
+        VulkanReplayConsumer::Process_vkCreateDataGraphPipelinesARM(call_info, args);
+        return;
+    }
+
+    const format::HandleId* capture_ids = args.pPipelines.GetPointer();
+
+    std::vector<uint32_t> to_create;
+    for (uint32_t i = 0; i < args.createInfoCount; ++i)
+    {
+        if (!allocatedLoopResources.contains(capture_ids[i]))
+        {
+            to_create.push_back(i);
+        }
+    }
+
+    if (to_create.empty())
+    {
+        // Every handle in this batch already exists from an earlier loop iteration.
+        return;
+    }
+
+    if (to_create.size() == args.createInfoCount)
+    {
+        // Nothing pre-exists; take the normal batched path.
+        VulkanReplayConsumer::Process_vkCreateDataGraphPipelinesARM(call_info, args);
+
+        for (uint32_t i = 0; i < args.createInfoCount; ++i)
+        {
+            allocatedLoopResources.insert(capture_ids[i]);
+        }
+        return;
+    }
+
+    // Mixed case: some handles in this batch already exist, others do not.
+    VkDataGraphPipelineCreateInfoARM* raw_infos  = args.pCreateInfos.GetPointer();
+    Decoded_VkDataGraphPipelineCreateInfoARM* meta_infos = args.pCreateInfos.GetMetaStructPointer();
+
+    auto*   device_info = GetObjectInfoTable().GetVkDeviceInfo(args.device);
+    VkDevice in_device  = device_info->handle;
+    for (uint32_t i : to_create)
+    {
+        // Move index i into slot 0 so Override/driver code (which always
+        // starts at index 0) operates on the shader we actually want.
+        std::swap(raw_infos[0], raw_infos[i]);
+        std::swap(meta_infos[0], meta_infos[i]);
+        meta_infos[0].decoded_value = &raw_infos[0];
+        meta_infos[i].decoded_value = &raw_infos[i];
+        args.pPipelines.SetHandleLength(1);   // (re)allocate a 1-element output slot
+
+         VkResult replay_result = OverrideCreateDataGraphPipelinesARM(
+                                            GetDeviceTable(in_device)->CreateDataGraphPipelinesARM,
+                                            args.result,
+                                            device_info,
+                                            GetObjectInfoTable().GetVkDeferredOperationKHRInfo(args.deferredOperation),
+                                            GetObjectInfoTable().GetVkPipelineCacheInfo(args.pipelineCache),
+                                            1,
+                                            &args.pCreateInfos,
+                                            &args.pAllocator,
+                                            &args.pPipelines);
+
+        VkPipeline out_handle = args.pPipelines.GetHandlePointer()[0];
+
+        if (replay_result == VK_SUCCESS)
+        {
+            AddHandle<VulkanPipelineInfo>(
+                args.device, &capture_ids[i], &out_handle, &CommonObjectInfoTable::AddVkPipelineInfo);
+            allocatedLoopResources.insert(capture_ids[i]);
+        }
+        else
+        {
+            GFXRECON_LOG_ERROR(
+                "Frame loop: failed to create ?? (capture id %" PRIu64 ") during loop repetition, VkResult = %d",
+                capture_ids[i], replay_result);
+        }
+
+        // Restore original order before moving to the next index.
+        std::swap(raw_infos[0], raw_infos[i]);
+        std::swap(meta_infos[0], meta_infos[i]);
+        meta_infos[0].decoded_value = &raw_infos[0];
+        meta_infos[i].decoded_value = &raw_infos[i];
+    }
+}
+
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDataGraphPipelineSessionARM(
     const ApiCallInfo&                          call_info,
     args::CreateDataGraphPipelineSessionARM&    args)

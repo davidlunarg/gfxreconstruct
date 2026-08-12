@@ -141,6 +141,8 @@ class KhronosReplayFrameLoopConsumerBaseBodyGenerator():
             body += '                                            GetDeviceTable(in_device)->{},\n'.format(base_name)
             body += '                                            args.result,\n'
             body += '                                            device_info,\n'
+            if base_name == "CreateRayTracingPipelinesKHR)" or base_name == "CreateDataGraphPipelinesARM":   # Kludge!   Get AI TO FIX IT??
+                body += '                                            GetObjectInfoTable().GetVkDeferredOperationKHRInfo(args.deferredOperation),\n'
             if base_name != "CreateShadersEXT" and base_name != "CreateSharedSwapchainsKHR":   # Kludge!   Get AI TO FIX IT??
                 body += '                                            GetObjectInfoTable().GetVkPipelineCacheInfo(args.pipelineCache),\n'
             body += '                                            1,\n'

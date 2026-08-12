@@ -69,11 +69,12 @@
   ],
 
   "comment" : "These are entry points that allocate multiple handles",
-  "comment" : "Removed a couple of entries for code dev/turnon",
   "resourceAllocateMultipleHandles":
   [
     "vkCreateComputePipelines",
+    "vkCreateDataGraphPipelinesARM",
     "vkCreateGraphicsPipelines",
+    "vkCreateRayTracingPipelinesKHR",
     "vkCreateRayTracingPipelinesNV",
     "vkCreateShadersEXT",
     "vkCreateSharedSwapchainsKHR"
