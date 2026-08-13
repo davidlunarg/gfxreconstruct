@@ -208,7 +208,7 @@ class KhronosReplayFrameLoopConsumerBaseBodyGenerator():
         elif name in self.REPLAY_FRAME_LOOP_RESOURCE_ALLOCATE_NOT_FULLY_IMPLEMENTED:
 
             body += '    // Not fully implemented yet.\n'
-            body += '    // Return if not the first time through the loop\n'
+            body += '    // Return if not the first time through loop\n'
             body += '    if (getFrameLoopInfo().IsRepetition())\n'
             body += '    {\n'
             body += '        return;\n'

@@ -210,7 +210,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkBindBufferMemory(
     args::BindBufferMemory&                     args)
 {
     // Not fully implemented yet.
-    // Return if not the first time through the loop
+    // Return if not the first time through loop
     if (getFrameLoopInfo().IsRepetition())
     {
         return;
@@ -223,7 +223,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkBindImageMemory(
     args::BindImageMemory&                      args)
 {
     // Not fully implemented yet.
-    // Return if not the first time through the loop
+    // Return if not the first time through loop
     if (getFrameLoopInfo().IsRepetition())
     {
         return;
@@ -236,7 +236,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkQueueBindSparse(
     args::QueueBindSparse&                      args)
 {
     // Not fully implemented yet.
-    // Return if not the first time through the loop
+    // Return if not the first time through loop
     if (getFrameLoopInfo().IsRepetition())
     {
         return;
@@ -624,7 +624,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkAllocateCommandBuffers(
     args::AllocateCommandBuffers&               args)
 {
     // Not fully implemented yet.
-    // Return if not the first time through the loop
+    // Return if not the first time through loop
     if (getFrameLoopInfo().IsRepetition())
     {
         return;
@@ -878,7 +878,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkMergePipelineCaches(
     args::MergePipelineCaches&                  args)
 {
     // Not fully implemented yet.
-    // Return if not the first time through the loop
+    // Return if not the first time through loop
     if (getFrameLoopInfo().IsRepetition())
     {
         return;
@@ -1411,7 +1411,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkBindBufferMemory2(
     args::BindBufferMemory2&                    args)
 {
     // Not fully implemented yet.
-    // Return if not the first time through the loop
+    // Return if not the first time through loop
     if (getFrameLoopInfo().IsRepetition())
     {
         return;
@@ -1424,7 +1424,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkBindImageMemory2(
     args::BindImageMemory2&                     args)
 {
     // Not fully implemented yet.
-    // Return if not the first time through the loop
+    // Return if not the first time through loop
     if (getFrameLoopInfo().IsRepetition())
     {
         return;
@@ -1632,7 +1632,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkTransitionImageLayout(
     args::TransitionImageLayout&                args)
 {
     // Not fully implemented yet.
-    // Return if not the first time through the loop
+    // Return if not the first time through loop
     if (getFrameLoopInfo().IsRepetition())
     {
         return;
@@ -2048,7 +2048,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkBindVideoSessionMemoryKHR(
     args::BindVideoSessionMemoryKHR&            args)
 {
     // Not fully implemented yet.
-    // Return if not the first time through the loop
+    // Return if not the first time through loop
     if (getFrameLoopInfo().IsRepetition())
     {
         return;
@@ -2118,7 +2118,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkImportSemaphoreFdKHR(
     args::ImportSemaphoreFdKHR&                 args)
 {
     // Not fully implemented yet.
-    // Return if not the first time through the loop
+    // Return if not the first time through loop
     if (getFrameLoopInfo().IsRepetition())
     {
         return;
@@ -2212,7 +2212,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkImportFenceFdKHR(
     args::ImportFenceFdKHR&                     args)
 {
     // Not fully implemented yet.
-    // Return if not the first time through the loop
+    // Return if not the first time through loop
     if (getFrameLoopInfo().IsRepetition())
     {
         return;
@@ -2282,7 +2282,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkBindBufferMemory2KHR(
     args::BindBufferMemory2KHR&                 args)
 {
     // Not fully implemented yet.
-    // Return if not the first time through the loop
+    // Return if not the first time through loop
     if (getFrameLoopInfo().IsRepetition())
     {
         return;
@@ -2295,7 +2295,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkBindImageMemory2KHR(
     args::BindImageMemory2KHR&                  args)
 {
     // Not fully implemented yet.
-    // Return if not the first time through the loop
+    // Return if not the first time through loop
     if (getFrameLoopInfo().IsRepetition())
     {
         return;
@@ -2365,7 +2365,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreatePipelineBinariesKHR(
     args::CreatePipelineBinariesKHR&            args)
 {
     // Not fully implemented yet.
-    // Return if not the first time through the loop
+    // Return if not the first time through loop
     if (getFrameLoopInfo().IsRepetition())
     {
         return;
@@ -2555,7 +2555,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkRegisterDeviceEventEXT(
     args::RegisterDeviceEventEXT&               args)
 {
     // Not fully implemented yet.
-    // Return if not the first time through the loop
+    // Return if not the first time through loop
     if (getFrameLoopInfo().IsRepetition())
     {
         return;
@@ -2568,7 +2568,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkRegisterDisplayEventEXT(
     args::RegisterDisplayEventEXT&              args)
 {
     // Not fully implemented yet.
-    // Return if not the first time through the loop
+    // Return if not the first time through loop
     if (getFrameLoopInfo().IsRepetition())
     {
         return;
@@ -2800,7 +2800,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkBindAccelerationStructureMemor
     args::BindAccelerationStructureMemoryNV&    args)
 {
     // Not fully implemented yet.
-    // Return if not the first time through the loop
+    // Return if not the first time through loop
     if (getFrameLoopInfo().IsRepetition())
     {
         return;
@@ -3346,7 +3346,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkBindTensorMemoryARM(
     args::BindTensorMemoryARM&                  args)
 {
     // Not fully implemented yet.
-    // Return if not the first time through the loop
+    // Return if not the first time through loop
     if (getFrameLoopInfo().IsRepetition())
     {
         return;
@@ -3416,7 +3416,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkBindOpticalFlowSessionImageNV(
     args::BindOpticalFlowSessionImageNV&        args)
 {
     // Not fully implemented yet.
-    // Return if not the first time through the loop
+    // Return if not the first time through loop
     if (getFrameLoopInfo().IsRepetition())
     {
         return;
@@ -3664,7 +3664,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkBindDataGraphPipelineSessionMe
     args::BindDataGraphPipelineSessionMemoryARM& args)
 {
     // Not fully implemented yet.
-    // Return if not the first time through the loop
+    // Return if not the first time through loop
     if (getFrameLoopInfo().IsRepetition())
     {
         return;
