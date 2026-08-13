@@ -724,15 +724,5 @@ void VulkanReplayFrameLoopConsumer::Process_vkReleaseProfilingLockKHR(const ApiC
     }
 }
 
-//void VulkanReplayFrameLoopConsumer::Process_vkAllocateCommandBuffers(const ApiCallInfo&            call_info,
-//                                                                     args::AllocateCommandBuffers& args)
-//{
-//}
-
-//void VulkanReplayFrameLoopConsumer::Process_vkFreeCommandBuffers(const ApiCallInfo&        call_info,
-//                                                                 args::FreeCommandBuffers& args)
-//{
-//}
-
 GFXRECON_END_NAMESPACE(decode)
 GFXRECON_END_NAMESPACE(gfxrecon)

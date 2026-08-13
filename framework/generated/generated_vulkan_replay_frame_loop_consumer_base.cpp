@@ -619,6 +619,32 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkDestroyCommandPool(
     }
 }
 
+void VulkanReplayFrameLoopConsumerBase::Process_vkAllocateCommandBuffers(
+    const ApiCallInfo&                          call_info,
+    args::AllocateCommandBuffers&               args)
+{
+    // Not fully implemented yet.
+    // Return if not the first time through the loop
+    if (getFrameLoopInfo().IsRepetition())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkAllocateCommandBuffers(call_info, args);
+}
+
+void VulkanReplayFrameLoopConsumerBase::Process_vkFreeCommandBuffers(
+    const ApiCallInfo&                          call_info,
+    args::FreeCommandBuffers&                   args)
+{
+    // Not fully implemented yet.
+    // Return if looping and we are not executing the last iteration.
+    if (getFrameLoopInfo().IsLooping() && !getFrameLoopInfo().IsFinalIteration())
+    {
+        return;
+    }
+    VulkanReplayConsumer::Process_vkFreeCommandBuffers(call_info, args);
+}
+
 void VulkanReplayFrameLoopConsumerBase::Process_vkCreateEvent(
     const ApiCallInfo&                          call_info,
     args::CreateEvent&                          args)

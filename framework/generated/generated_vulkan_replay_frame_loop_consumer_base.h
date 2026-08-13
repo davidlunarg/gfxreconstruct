@@ -142,6 +142,14 @@ class VulkanReplayFrameLoopConsumerBase : public VulkanReplayConsumer
         const ApiCallInfo&                          call_info,
         args::DestroyCommandPool&                   args) override;
 
+    void Process_vkAllocateCommandBuffers(
+        const ApiCallInfo&                          call_info,
+        args::AllocateCommandBuffers&               args) override;
+
+    void Process_vkFreeCommandBuffers(
+        const ApiCallInfo&                          call_info,
+        args::FreeCommandBuffers&                   args) override;
+
     void Process_vkCreateEvent(
         const ApiCallInfo&                          call_info,
         args::CreateEvent&                          args) override;
