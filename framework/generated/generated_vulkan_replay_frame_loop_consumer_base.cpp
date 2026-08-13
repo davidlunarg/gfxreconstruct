@@ -963,7 +963,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateComputePipelines(
         else
         {
             GFXRECON_LOG_ERROR(
-                "Frame loop: failed to create ?? (capture id %" PRIu64 ") during loop repetition, VkResult = %d",
+                "Frame loop: failed to create VkPipeline (capture id %" PRIu64 ") during loop repetition, VkResult = %d",
                 capture_ids[i], replay_result);
         }
 
@@ -1280,7 +1280,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateGraphicsPipelines(
         else
         {
             GFXRECON_LOG_ERROR(
-                "Frame loop: failed to create ?? (capture id %" PRIu64 ") during loop repetition, VkResult = %d",
+                "Frame loop: failed to create VkPipeline (capture id %" PRIu64 ") during loop repetition, VkResult = %d",
                 capture_ids[i], replay_result);
         }
 
@@ -1854,7 +1854,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateSharedSwapchainsKHR(
         else
         {
             GFXRECON_LOG_ERROR(
-                "Frame loop: failed to create ?? (capture id %" PRIu64 ") during loop repetition, VkResult = %d",
+                "Frame loop: failed to create VkSwapchainKHR (capture id %" PRIu64 ") during loop repetition, VkResult = %d",
                 capture_ids[i], replay_result);
         }
 
@@ -2885,7 +2885,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateRayTracingPipelinesNV(
         else
         {
             GFXRECON_LOG_ERROR(
-                "Frame loop: failed to create ?? (capture id %" PRIu64 ") during loop repetition, VkResult = %d",
+                "Frame loop: failed to create VkPipeline (capture id %" PRIu64 ") during loop repetition, VkResult = %d",
                 capture_ids[i], replay_result);
         }
 
@@ -3500,7 +3500,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateShadersEXT(
         else
         {
             GFXRECON_LOG_ERROR(
-                "Frame loop: failed to create ?? (capture id %" PRIu64 ") during loop repetition, VkResult = %d",
+                "Frame loop: failed to create VkShaderEXT (capture id %" PRIu64 ") during loop repetition, VkResult = %d",
                 capture_ids[i], replay_result);
         }
 
@@ -3623,7 +3623,7 @@ void VulkanReplayFrameLoopConsumerBase::Process_vkCreateDataGraphPipelinesARM(
         else
         {
             GFXRECON_LOG_ERROR(
-                "Frame loop: failed to create ?? (capture id %" PRIu64 ") during loop repetition, VkResult = %d",
+                "Frame loop: failed to create VkPipeline (capture id %" PRIu64 ") during loop repetition, VkResult = %d",
                 capture_ids[i], replay_result);
         }
 

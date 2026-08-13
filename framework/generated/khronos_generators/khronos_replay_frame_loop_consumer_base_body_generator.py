@@ -74,6 +74,14 @@ class KhronosReplayFrameLoopConsumerBaseBodyGenerator():
             create_info_param = values[-3]
             handles_param     = values[-1]
 
+            # Any parameters between the device handle and the count are extra
+            # "companion" handles that the Override function needs looked up
+            # in the object info table (e.g. VkPipelineCache, VkDeferredOperationKHR).
+            # Discovering them positionally means this code keeps working for any
+            # future *CreateXxx(device, ..., count, pCreateInfos, pAllocator, pHandles)
+            # entry point without needing to special-case it by name below.
+            extra_params = values[1:-4]
+
             count_name       = count_param.prefixed_name
             createinfo_name  = create_info_param.prefixed_name
             handles_name     = handles_param.prefixed_name
@@ -135,16 +143,13 @@ class KhronosReplayFrameLoopConsumerBaseBodyGenerator():
             body += '        meta_infos[i].decoded_value = &raw_infos[i];\n'
             body += '        {}.SetHandleLength(1);   // (re)allocate a 1-element output slot\n'.format(handles_name)
             body += '\n'
-            #body += '        VkResult replay_result = Override{}(\n'.format(name)
-            #body += '                                            GetDeviceTable(in_device)->{},\n'.format(name)
             body += '         VkResult replay_result = Override{}(\n'.format(base_name)
             body += '                                            GetDeviceTable(in_device)->{},\n'.format(base_name)
             body += '                                            args.result,\n'
             body += '                                            device_info,\n'
-            if base_name == "CreateRayTracingPipelinesKHR)" or base_name == "CreateDataGraphPipelinesARM":   # Kludge!   Get AI TO FIX IT??
-                body += '                                            GetObjectInfoTable().GetVkDeferredOperationKHRInfo(args.deferredOperation),\n'
-            if base_name != "CreateShadersEXT" and base_name != "CreateSharedSwapchainsKHR":   # Kludge!   Get AI TO FIX IT??
-                body += '                                            GetObjectInfoTable().GetVkPipelineCacheInfo(args.pipelineCache),\n'
+            for extra_param in extra_params:
+                body += '                                            GetObjectInfoTable().Get{}Info({}),\n'.format(
+                    extra_param.base_type, extra_param.prefixed_name)
             body += '                                            1,\n'
             body += '                                            &args.pCreateInfos,\n'
             body += '                                            &args.pAllocator,\n'
@@ -154,9 +159,6 @@ class KhronosReplayFrameLoopConsumerBaseBodyGenerator():
             body += '\n'
             body += '        if (replay_result == VK_SUCCESS)\n'
             body += '        {\n'
-            #body += '            AddHandle<VulkanShaderEXTInfo>(\n'
-            #body += '                args.device, &capture_ids[i], &out_handle, &CommonObjectInfoTable::AddVkShaderEXTInfo);\n'
-            #body += '            allocatedLoopResources.insert(capture_ids[i]);\n'
             body += '            AddHandle<{}>(\n'.format(info_type)
             body += '                args.device, &capture_ids[i], &out_handle, &CommonObjectInfoTable::Add{}Info);\n'.format(handle_base_type)
             body += '            allocatedLoopResources.insert(capture_ids[i]);\n'
@@ -164,7 +166,7 @@ class KhronosReplayFrameLoopConsumerBaseBodyGenerator():
             body += '        else\n'
             body += '        {\n'
             body += '            GFXRECON_LOG_ERROR(\n'
-            body += '                "Frame loop: failed to create {} (capture id %" PRIu64 ") during loop repetition, VkResult = %d",\n'.format('??')
+            body += '                "Frame loop: failed to create {} (capture id %" PRIu64 ") during loop repetition, VkResult = %d",\n'.format(handle_base_type)
             body += '                capture_ids[i], replay_result);\n'
             body += '        }\n'
             body += '\n'
