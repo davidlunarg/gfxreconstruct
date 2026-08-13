@@ -38,12 +38,7 @@ GENERATOR_DIR = os.path.join(SCRIPT_DIR, 'khronos_generators', 'vulkan_generator
 VK_HEADERS_DIR = os.path.join(SCRIPT_DIR, '..', '..', 'external', 'Vulkan-Headers')
 
 # File names to provide to the Vulkan XML Registry generator script.
-# To speed up compiles???
 generate_targets = [
-    'generated_vulkan_replay_frame_loop_consumer_base.h',
-    'generated_vulkan_replay_frame_loop_consumer_base.cpp',
-]
-orig_generate_targets = [
     'generated_vulkan_struct_encoders.h',
     'generated_vulkan_struct_encoders.cpp',
     'generated_vulkan_struct_handle_wrappers.h',
