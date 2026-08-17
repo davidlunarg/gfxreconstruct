@@ -65,7 +65,7 @@ class KhronosReplayFrameLoopConsumerBaseBodyGenerator():
 
             """Generates per-element create/skip logic for batched multi-handle create calls
             (vkCreateShadersEXT, vkCreateGraphicsPipelines, vkCreateComputePipelines,
-            vkCreateRayTracingPipelinesKHR/NV, vkCreateDataGraphPipelinesARM,
+            vkCreateRayTracingPipelinesNV, vkCreateDataGraphPipelinesARM,
             vkCreateSharedSwapchainsKHR, and any future call with the same
             (..., count, pCreateInfos, pAllocator, pHandles) trailing shape).
             """
