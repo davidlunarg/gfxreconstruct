@@ -80,6 +80,19 @@ class KhronosReplayFrameLoopConsumerBaseBodyGenerator():
             handle_base_type     = handles_param.base_type       # e.g. VkShaderEXT
             decoded_type          = 'Decoded_{}'.format(createinfo_base_type)
 
+            # Every parameter whose decoded array length is driven by count_param (typically
+            # create_info_param and handles_param, but written generically in case a future
+            # command in this override list has additional count_param-sized arrays). Each of
+            # these has its own independently-tracked decoded length (GetLength()), which is
+            # distinct from count_name and is NOT overridden just by reassigning count_name.
+            # Process_{name}() and any code it calls may consult either count_name or a given
+            # array's own GetLength() to determine how many elements to operate on, so both
+            # must be restricted to a single element for the duration of the singleton call
+            # below.
+            length_linked_params = [
+                value for value in values if value.array_length == count_param.name
+            ]
+
             body = ''
             body += '    // Pass the call along unchanged if we are not looping.\n'
             body += '    if (!getFrameLoopInfo().IsLooping())\n'
@@ -119,14 +132,10 @@ class KhronosReplayFrameLoopConsumerBaseBodyGenerator():
             body += '    {}* raw_infos  = {}.GetPointer();\n'.format(createinfo_base_type, createinfo_name)
             body += '    {}* meta_infos = {}.GetMetaStructPointer();\n\n'.format(decoded_type, createinfo_name)
 
-            body += '    // {}/{} retain their original (full-batch) decoded length\n'.format(createinfo_name, handles_name)
-            body += '    // regardless of {}, so Process_{}() will still run\n'.format(count_name, name)
-            body += '    // MapStructArrayHandles() over the *entire* {} array once per to_create entry\n'.format(createinfo_name)
-            body += '    // below (not just the single slot-0 entry being replayed that iteration). That\n'
-            body += '    // repeated work does no harm since MapStructHandles() writes mapped handles into\n'
-            body += '    // each struct\'s live fields while leaving the wrapper\'s original capture-id\n'
-            body += '    // fields untouched.\n'
-            body += '    const uint32_t original_count_value = {};\n\n'.format(count_name)
+            body += '    const uint32_t original_count_value = {};\n'.format(count_name)
+            for value in length_linked_params:
+                body += '    const size_t original_{}_length = {}.GetLength();\n'.format(value.name, value.prefixed_name)
+            body += '\n'
 
             body += '    for (uint32_t i : to_create)\n'
             body += '    {\n'
@@ -139,18 +148,27 @@ class KhronosReplayFrameLoopConsumerBaseBodyGenerator():
             body += '        meta_infos[i].decoded_value = &raw_infos[i];\n'
             body += '        std::swap(capture_ids[0], capture_ids[i]);\n'
             body += '\n'
-            body += '        // Restrict this call to a single create info/handle: Process_{}()\n'.format(name)
-            body += '        // uses {} (not GetLength()) to size the output handle array and to\n'.format(count_name)
-            body += '        // decide how many entries of {} to pass along, so overriding it to 1\n'.format(createinfo_name)
-            body += '        // makes it operate only on slot 0.\n'
+            body += '        // Restrict this call to a single create info/handle. Process_{}()\n'.format(name)
+            body += '        // and anything it calls may consult either {} or the\n'.format(count_name)
+            body += '        // independently-tracked decoded length (GetLength()) of each\n'
+            body += '        // {}-sized array to determine how many entries to\n'.format(count_name)
+            body += '        // process, so both must be overridden to make this call operate on\n'
+            body += '        // only slot 0. Each array\'s length is restored below so that the\n'
+            body += '        // full-length raw_infos/meta_infos/capture_ids arrays remain valid\n'
+            body += '        // for the swap-based indexing used on the next to_create entry.\n'
             body += '        {} = 1;\n'.format(count_name)
+            for value in length_linked_params:
+                body += '        {}.SetLength(1);\n'.format(value.prefixed_name)
             body += '\n'
             body += '        // Calls MapStructArrayHandles on {} to fix up the handles referenced\n'.format(createinfo_name)
             body += '        // by the create info, invokes the driver, and registers the resulting\n'
             body += '        // {} under target_capture_id in the object info table.\n'.format(handle_base_type)
             body += '        ' + self.genCallReplayConsumer(None, name, values)
             body += '\n'
-            body += '        {} = original_count_value;\n\n'.format(count_name)
+            body += '        {} = original_count_value;\n'.format(count_name)
+            for value in length_linked_params:
+                body += '        {}.SetLength(original_{}_length);\n'.format(value.prefixed_name, value.name)
+            body += '\n'
 
             body += '        // {}.SetHandleLength(), called internally by Process_{}()\n'.format(handles_name, name)
             body += '        // above, (re)allocates {}\'s handle buffer to exactly {} = 1\n'.format(handles_name, count_name)
